@@ -102,11 +102,20 @@
 #annot:checked ~ .sher-bar .toggle .sw{background:var(--green)}
 #annot:checked ~ .sher-bar .toggle .sw::after{transform:translateX(23px)}
 #annot{position:absolute;opacity:0;pointer-events:none}
+/* anno toggle button */
+.anno-btn{position:fixed;bottom:24px;right:24px;z-index:200;background:var(--purple);color:#fff;border:none;
+  border-radius:999px;padding:11px 18px;font-family:var(--fh);font-weight:700;font-size:13px;
+  cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.35);transition:background .2s;white-space:nowrap}
+.anno-btn:hover{background:#7b1fa2}
+/* anno class toggle */
+.anno{display:none}
+body.show-anno .anno{display:block !important}
 .eo{padding-top:56px}
 
 /* annotations hidden by default */
 .note{display:none}
 #annot:checked ~ .eo .note{display:block}
+body.show-anno .eo .note{display:block}
 .note{position:relative;margin:14px 0 6px;background:#fff;border-radius:12px;padding:15px 17px 15px 19px;
   border-left:5px solid var(--purple);box-shadow:0 14px 40px rgba(0,0,0,.4);font-family:var(--fb);
   color:#2E2E2E;font-size:14.5px;line-height:1.6;max-width:78ch}
@@ -117,6 +126,7 @@
 .note b{color:#111}
 /* highlight the proposed blocks when annotations are on */
 #annot:checked ~ .eo .enrich{outline:2px dashed rgba(102,36,131,.55);outline-offset:7px}
+body.show-anno .eo .enrich{outline:2px dashed rgba(102,36,131,.55);outline-offset:7px}
 
 @media(max-width:900px){
   .eo .grid{grid-template-columns:1fr 1fr}.eo .subgrid{grid-template-columns:1fr}.eo h1.eo-h1{font-size:36px}
@@ -176,7 +186,6 @@
 
   <div class="resline"><h2>Belgi&euml; &mdash; Antwerpen</h2><span class="tag">Alle resultaten &middot; 400+ locaties</span></div>
 
-  <div class="note"><span class="k">Waarom Google deze pagina niet indexeert</span>De locatiekaarten hieronder worden pas door <b>JavaScript</b> ingeladen. In de HTML die Google krijgt, staan ze niet. Samen met de generieke tekst onderaan ziet Google dus een zo goed als <b>lege, dubbele pagina</b> &mdash; vandaar &ldquo;duplicaat&rdquo; en &ldquo;gecrawld &ndash; niet ge&iuml;ndexeerd&rdquo;. De kaarten blijven zoals ze zijn; we vullen wat er server-side ontbreekt.</div>
 
   <div class="grid">
     <div class="card"><div class="ph"><span class="badge">Aangeraden</span></div><div class="body">
@@ -228,3 +237,5 @@
   <div class="note"><span class="k">Onzichtbaar, maar telt mee</span>De SERP toont een <b>local pack</b> voor deze zoekterm. Daarom voegen we ook <b>LocalBusiness/NAP-signalen</b> toe. Verwachting: van positie <b>3</b> naar <b>1</b> &mdash; jullie hebben al de beste inhoudelijke dekking van alle spelers (75% tegenover 40% bij de huidige nummer 1).</div>
 
 </div></div>
+
+<button class="anno-btn" onclick="document.body.classList.toggle('show-anno')">🎯 Strategie-annotaties aan/uit</button>
