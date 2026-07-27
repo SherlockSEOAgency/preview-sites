@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Condensatieketel vervangen in Antwerpen — Emiel bvba (voorstel)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --purple:#662483; --green:#6BB869;
+  --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
+  --green-tint:rgba(107,184,105,.14);
+  --steel:#1f2a37; --steel-2:#33465b; --amber:#e4720b; --paper:#fbfbfa;
+  --page-bg:#f4f5f7; --card:#ffffff; --frame:#ece9f1;
+  --head:"Raleway","Segoe UI",system-ui,-apple-system,sans-serif;
+  --body:"Open Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ink:#e9e7ee; --muted:#a5a1ad; --line:#33303b; --surface:#211d28;
+  --page-bg:#0f0d13; --card:#1b1720; --frame:#221c2b; --paper:#1b1720; --steel:#0d1520; --steel-2:#24384d;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page-bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px 60px}
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;line-height:1.18;margin:0;text-wrap:balance}
+p{margin:0}
+/* slim sherlock strip */
+.sbar{display:flex;align-items:center;gap:9px;padding:12px 2px;color:var(--muted);font-size:.78rem}
+.q{width:20px;height:20px;border-radius:5px;background:var(--purple);position:relative;flex:0 0 auto}
+.q::after{content:"";position:absolute;inset:5px;border-radius:50%;border:2px solid var(--green)}
+.sbar b{font-family:var(--head);color:var(--ink)}
+.sbar .tag{margin-left:auto;background:var(--purple);color:#fff;border-radius:6px;padding:2px 9px;font-size:.66rem;text-transform:uppercase;letter-spacing:.07em}
+/* browser frame */
+.browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--frame)}
+.bchrome{display:flex;align-items:center;gap:7px;padding:9px 13px;background:var(--frame);border-bottom:1px solid var(--line)}
+.bdot{width:10px;height:10px;border-radius:50%;background:#cfc8da}
+.baddr{margin-left:6px;flex:1;background:var(--card);border:1px solid var(--line);border-radius:7px;padding:4px 11px;font-size:.78rem;color:var(--muted)}
+.baddr b{color:var(--ink)}
+/* emiel page */
+.emiel{background:var(--paper);color:var(--ink)}
+.ehero{background:linear-gradient(160deg,var(--steel),var(--steel-2));color:#eef3f8;padding:30px 26px}
+.ebrand{font-family:var(--head);font-weight:700;letter-spacing:.03em;display:flex;align-items:center;gap:8px}
+.flame{width:12px;height:12px;border-radius:50% 50% 50% 0;background:var(--amber);transform:rotate(45deg)}
+.geo{display:inline-block;margin-top:14px;background:rgba(228,114,11,.16);border:1px solid var(--amber);color:#ffcf9e;
+  font-family:var(--head);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:6px}
+.ehero h1{font-size:clamp(1.5rem,4.3vw,2.15rem);margin:12px 0 8px;color:#fff;max-width:20ch}
+.ehero h1 em{color:var(--amber);font-style:normal}
+.ehero .sub{color:#c7d3df;max-width:48ch}
+.ecta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{border-radius:9px;padding:11px 18px;font-weight:700;font-family:var(--head);font-size:.9rem;text-decoration:none;border:1px solid transparent;display:inline-block}
+.btn.primary{background:var(--amber);color:#fff}
+.btn.ghost{background:transparent;color:#eef3f8;border-color:rgba(255,255,255,.4)}
+.ebody{padding:24px 26px}
+.sec-h{font-family:var(--head);font-weight:700;font-size:1.12rem;margin:26px 0 8px}
+.sec-h .pin{color:var(--amber)}
+.snippet{border:1px solid var(--line);border-left:4px solid var(--amber);background:var(--card);border-radius:0 10px 10px 0;padding:14px 16px}
+.snippet .q2{font-family:var(--head);font-weight:700;margin-bottom:4px}
+.snippet p{font-size:.93rem}
+p.body,li{font-size:.93rem}
+ul{margin:8px 0 0;padding-left:18px} li{margin:3px 0}
+/* decision helper */
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.86rem}
+thead{background:var(--steel);color:#fff}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--head);font-weight:700;font-size:.8rem}
+tr.win td{background:var(--green-tint)}
+.tagm{font-size:.72rem;color:var(--muted)}
+/* image gallery */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+@media(max-width:560px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gal figure{margin:0}
+.gal .ph{aspect-ratio:4/3;border-radius:9px;border:1px solid var(--line);
+  background:linear-gradient(135deg,#e7edf2,#d3dde6);display:flex;align-items:center;justify-content:center;
+  color:#6a7c8c;font-family:var(--head);font-weight:700;font-size:.74rem;text-align:center;padding:8px}
+@media(prefers-color-scheme:dark){.gal .ph{background:linear-gradient(135deg,#243444,#1a2836);color:#7f93a5}}
+.gal figcaption{font-size:.72rem;color:var(--muted);margin-top:4px}
+/* video */
+.video{margin-top:10px;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(160deg,var(--steel),var(--steel-2));aspect-ratio:16/9;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;color:#cfe;gap:10px;text-align:center;padding:16px}
+.video .play{width:56px;height:56px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center}
+.video .play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.video .vt{font-family:var(--head);font-weight:700}
+.video .vs{font-size:.8rem;color:#9fb4c4;max-width:34ch}
+/* local */
+.local{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:8px;font-size:.9rem}
+.badge{font-size:.7rem;font-weight:700;color:var(--green);border:1px solid var(--green);border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:6px}
+.faq details{border:1px solid var(--line);border-radius:9px;background:var(--card);margin-top:7px}
+.faq summary{cursor:pointer;padding:10px 12px;font-weight:700;font-family:var(--head);font-size:.9rem;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+ ";color:var(--amber)}
+.faq details[open] summary::before{content:"– "}
+.faq p{padding:0 12px 12px;font-size:.9rem;color:var(--muted)}
+.rel{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.rel a{font-size:.78rem;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:5px 10px;color:var(--ink);text-decoration:none}
+.rel a.soon{color:var(--muted);border-style:dashed}
+/* data strip */
+.data{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.data h3{font-family:var(--head);font-size:.95rem;color:var(--purple);text-transform:uppercase;letter-spacing:.06em}
+.data .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+@media(max-width:640px){.data .grid{grid-template-columns:1fr}}
+.data table{font-size:.8rem;margin-top:4px}
+.data thead{background:var(--purple)}
+.src{font-size:.72rem;color:var(--muted);margin-top:12px}
+.src code{background:var(--surface);padding:1px 5px;border-radius:4px}
+.foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.foot b{font-family:var(--head);color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="sbar">
+    <span class="q"></span><b>Sherlock SEO</b> · pagina-voorstel
+    <span class="tag">geo · Antwerpen</span>
+  </div>
+
+  <div class="browser">
+    <div class="bchrome">
+      <span class="bdot"></span><span class="bdot"></span><span class="bdot"></span>
+      <span class="baddr">🔒 emielbvba.be/verwarming/<b>condensatieketel-vervangen-antwerpen</b></span>
+    </div>
+    <div class="emiel">
+
+      <div class="ehero">
+        <div class="ebrand"><span class="flame"></span> Emiel bvba</div>
+        <span class="geo">📍 Regio Antwerpen</span>
+        <h1>Gascondensatieketel <em>vervangen</em> in Antwerpen</h1>
+        <p class="sub">Is uw gascondensatieketel aan vervanging toe, maar kan u niet goed beslissen? Warmtepomp, hybride, of toch weer gas — wij zetten de opties op een rij én plaatsen ze, erkend en met attest.</p>
+        <div class="ecta">
+          <a class="btn primary" href="#offerte">Vraag een offerte in Antwerpen</a>
+          <a class="btn ghost" href="#keuze">Help mij kiezen</a>
+        </div>
+      </div>
+
+      <div class="ebody">
+
+        <div class="snippet">
+          <div class="q2">Wat kost een gasketel vervangen in Antwerpen?</div>
+          <p>Een bestaande gasketel vervangen door een nieuwe condensatieketel kost, inclusief installatie, gemiddeld tussen <b>€2.000 en €7.500</b>. De prijs hangt af van type, vermogen en de aanpassingen aan rookgasafvoer en leidingen.</p>
+        </div>
+
+        <h2 class="sec-h" id="keuze"><span class="pin">▸</span> Warmtepomp, hybride of condensatieketel? De keuze in 30 seconden</h2>
+        <p class="body">De regels en prijzen veranderen snel, dus de keuze voelt onoverzichtelijk. Zo staan de opties er vandaag in Vlaanderen bij:</p>
+        <table>
+          <thead><tr><th>Optie</th><th>Wanneer past het</th><th>Indicatie</th><th>Regelgeving nu</th></tr></thead>
+          <tbody>
+            <tr class="win"><td><b>Gascondensatieketel</b></td><td>Bestaande gasaansluiting, beperkt budget, snelle vervanging</td><td>€2.000–7.500</td><td>Vervangen mag; 21% btw bij renovatie</td></tr>
+            <tr><td>Hybride (ketel + warmtepomp)</td><td>Geleidelijk verduurzamen, behoud van gas als backup</td><td>hoger</td><td>Toegestaan</td></tr>
+            <tr><td>Volledige warmtepomp</td><td>Goed geïsoleerde woning, lage-temperatuur-verwarming</td><td>hoogst</td><td>Verplichting geschrapt — geen must</td></tr>
+          </tbody>
+        </table>
+        <p class="tagm">Twijfelt u? Wij komen langs in Antwerpen, bekijken uw installatie en zeggen eerlijk wat voor úw woning het slimst is.</p>
+
+        <h2 class="sec-h"><span class="pin">▸</span> Onze plaatsingen in Antwerpen</h2>
+        <p class="tagm">Image pack rankt op deze zoekterm — dus tonen we echte projectfoto's (hier plaatshouders voor Emiels eigen beeld, met beschrijvende alt-tekst).</p>
+        <div class="gal">
+          <figure><div class="ph">Vervanging wandketel · Berchem</div><figcaption>Vaillant condensatieketel, appartement</figcaption></figure>
+          <figure><div class="ph">Vloerketel · Deurne</div><figcaption>Rijwoning, volledige vervanging</figcaption></figure>
+          <figure><div class="ph">Rookgasafvoer · Merksem</div><figcaption>Nieuwe afvoer + attest</figcaption></figure>
+          <figure><div class="ph">Hybride opstelling · Ekeren</div><figcaption>Ketel + warmtepomp</figcaption></figure>
+          <figure><div class="ph">CLV-appartement · Antwerpen</div><figcaption>Collectieve rookgasafvoer</figcaption></figure>
+          <figure><div class="ph">Afwerking · Hoboken</div><figcaption>Nette oplevering</figcaption></figure>
+        </div>
+
+        <h2 class="sec-h"><span class="pin">▸</span> Zo verloopt een vervanging</h2>
+        <p class="tagm">Video rankt op deze SERP — plaatshouder voor Emiels eigen plaatsingsvideo (geen DIY-video: dat is precies wat we níét willen tonen).</p>
+        <div class="video">
+          <div class="play"></div>
+          <div class="vt">Video: een ketelvervanging in Antwerpen, stap voor stap</div>
+          <div class="vs">Te produceren — een korte eigen video scoort hier beter dan de zelfbouw-video's die nu ranken.</div>
+        </div>
+
+        <h2 class="sec-h"><span class="pin">▸</span> Premie &amp; regelgeving in 2026 — eerlijk</h2>
+        <ul>
+          <li>De <b>Mijn VerbouwPremie</b> voor een nieuwe gasketel is <b>sinds 2024 niet meer aan te vragen</b>.</li>
+          <li>Bij renovatie (woning &gt; 10 jaar) stijgt de btw op een nieuwe condensatieketel van <b>6% naar 21%</b>.</li>
+          <li>In nieuwbouw geen gas meer sinds 2025 — een <b>bestaande gasketel vervangen mag wél</b>.</li>
+          <li>De warmtepomp-verplichting bij ketelvervanging is <b>geschrapt</b>: u kiest zelf.</li>
+        </ul>
+
+        <h2 class="sec-h"><span class="pin">▸</span> Werkgebied &amp; contact</h2>
+        <div class="local">
+          <span class="badge">Local pack · NAP + LocalBusiness-schema</span><br>
+          <b>Emiel bvba</b> — verwarming &amp; sanitair, erkend technicus gasvormige brandstof<br>
+          Antwerpen · Merksem · Deurne · Berchem · Ekeren · Hemiksem · Schelle · Niel<br>
+          📞 03 xx xx xx · ✉ info@emielbvba.be
+        </div>
+
+        <h2 class="sec-h" id="offerte"><span class="pin">▸</span> Veelgestelde vragen</h2>
+        <div class="faq">
+          <details open><summary>Mag ik na 2026 nog een condensatieketel plaatsen?</summary><p>Ja. De geplande verplichte hybride-warmtepomp is geschrapt; u kunt ook na 2026 gewoon een condensatieketel laten vervangen.</p></details>
+          <details><summary>Is er nog een premie?</summary><p>Nee, de premie voor een nieuwe gasketel verviel in 2024 en bij renovatie geldt 21% btw. We rekenen dat transparant mee in de offerte.</p></details>
+          <details><summary>Hoe lang duurt een vervanging?</summary><p>Een standaard ketelvervanging in Antwerpen doen we doorgaans op één dag, inclusief keuring en attest van eerste inbedrijfstelling.</p></details>
+          <details><summary>Werken jullie ook buiten Antwerpen?</summary><p>Ja — voor Nederlands-Zeeland maken we een aparte pagina; voor de rest van de regio Antwerpen bent u hier goed.</p></details>
+        </div>
+
+        <div class="rel">
+          <a href="#">→ Onderhoud gasketel Antwerpen</a>
+          <a href="#">→ Herstelling condensatieketel</a>
+          <a class="soon" href="#">→ Condensatieketel vervangen Zeeland (volgt)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- data provenance -->
+  <div class="data">
+    <h3>Waarop deze pagina is gebaseerd</h3>
+    <div class="grid">
+      <div>
+        <b style="font-family:var(--head);font-size:.85rem">Money-head (live DataForSEO)</b>
+        <table>
+          <thead><tr><th>Keyword</th><th>Vol</th><th>Y/Y</th><th>CPC</th><th>Intent</th></tr></thead>
+          <tbody>
+            <tr class="win"><td>cv ketel vervangen</td><td>170</td><td>+50%</td><td>€3,70</td><td>commercial</td></tr>
+            <tr><td>gasketel vervangen</td><td>320</td><td>−46%</td><td>€6,33</td><td>transactional</td></tr>
+            <tr><td>condensatieketel plaatsen</td><td>30</td><td>−50%</td><td>€15,09</td><td>transactional</td></tr>
+            <tr><td>…antwerpen-varianten</td><td>0–10</td><td>—</td><td>—</td><td>local</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <b style="font-family:var(--head);font-size:.85rem">SERP-realiteit + geo-logica</b>
+        <ul style="margin-top:6px">
+          <li><b>Local pack</b> aanwezig → stad in URL+H1 matcht de intentie (waarom geo werkt).</li>
+          <li>SERP-features: <b>image pack</b> + <b>video</b> + PAA(13) + AI Overview → daarom staan die nu als echte blokken op de pagina.</li>
+          <li>Reachability <b>10/10</b>; top-3 = fabrikanten/portalen zonder reviews of lokaal signaal.</li>
+          <li>Autoriteitskloof: emiel 69 vs concurrent-gem. ~471–1.398 verwijzende domeinen → GMB + linkbuilding blijven de hefboom.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="src">Bron: <code>compose_page_plan</code> · <code>dataforseo_keyword_overview</code> · <code>dataforseo_serp_results</code> · <code>get_search_analytics</code> — site <code>site_emielbvba-be</code>. Prijzen/premie/regelgeving uit de live PAA.</p>
+  </div>
+
+  <div class="foot">
+    <span><b>Sherlock SEO</b> · Digital Growth Intelligence</span>
+    <span>Geo-voorstel · Emiel bvba · condensatieketel vervangen Antwerpen · 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
