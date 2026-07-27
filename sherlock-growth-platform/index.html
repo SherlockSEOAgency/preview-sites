@@ -50,6 +50,13 @@
   .triad div{background:var(--surface);padding:20px}
   .triad h2{font-size:18px;font-weight:800;margin-bottom:4px}
   .triad p{margin:0;color:var(--muted);font-size:14.5px}
+  .proof{margin:26px 0 8px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);padding:20px 22px}
+  .proof p{margin:6px 0 12px;color:var(--muted);font-size:14.5px}
+  .proof-sites{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .proof-sites a{font-size:14px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+  .proof-sites a:hover{border-color:var(--purple-soft)}
+  .proof-caps{font-size:13.5px;color:var(--muted);line-height:1.95}
+  .proof-caps b{color:var(--green);font-weight:800;margin-left:6px}
 
   .join{margin:56px 0 30px;border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:var(--shadow);padding:38px;display:grid;grid-template-columns:1fr 1.1fr;gap:38px}
   .join .intro h2{font-size:clamp(23px,3.2vw,30px);font-weight:820}
@@ -93,8 +100,8 @@
 <main>
   <section class="hero"><div class="wrap">
     <div class="eyebrow">Sherlock Growth Platform · aangedreven door Sherlock OS</div>
-    <h1 style="margin-top:14px">Vertel ons wat je wilt bouwen, meten of laten groeien.</h1>
-    <p class="lead">We openen in fases. De eerste aanvragen gebruiken we om het aanbod en de productielijnen scherper te maken — dus wat jij nu vraagt, bepaalt mee wat we bouwen.</p>
+    <h1 style="margin-top:14px">Van website naar groei. Eén systeem.</h1>
+    <p class="lead">Stop met vijf losse tools aan elkaar knopen. Eén platform dat je site bouwt, je cijfers meet en je groei aanjaagt — jouw tempo, jouw combinatie. We openen in fases: de eerste aanvragen bepalen mee wat we als volgende bouwen.</p>
     <div class="prio"><span aria-hidden="true">◆</span> <span><strong>Partners krijgen als eerste toegang.</strong> Klanten mogen zich net zo goed inschrijven.</span></div>
     <div class="hero-actions">
       <a href="#join" class="btn">Zet me op de wachtlijst →</a>
@@ -106,14 +113,26 @@
       <div><h2>Meet</h2><p>Tracking, conversie, dashboards.</p></div>
       <div><h2>Groei</h2><p>SEO, AI-search, ads, content.</p></div>
     </div>
+
+    <div class="proof">
+      <div class="eyebrow" style="color:var(--muted)">Vandaag al live</div>
+      <p>Geen belofte op papier — sites die we met dit systeem bouwden en die nu draaien:</p>
+      <div class="proof-sites">
+        <a href="https://www.ckservice.be" target="_blank" rel="noopener">CK Service</a>
+        <a href="https://www.extraproper.be" target="_blank" rel="noopener">Extra Proper</a>
+        <a href="https://knokkeluxuryrentals.be" target="_blank" rel="noopener">Knokke Luxury Rentals</a>
+        <a href="https://yc.preview.sherlockseo.com" target="_blank" rel="noopener">YC Ramen &amp; Deuren</a>
+      </div>
+      <div class="proof-caps"><b>✓</b> Websites<b>✓</b> SEO<b>✓</b> Server-side tracking<b>✓</b> AI-content<b>✓</b> Google Ads<b>✓</b> Monitoring</div>
+    </div>
   </div></section>
 
   <section id="join"><div class="wrap">
     <div class="join">
       <div class="intro">
         <div class="eyebrow">Wachtlijst</div>
-        <h2 style="margin-top:10px">Schrijf je in — en zeg wat je nodig hebt.</h2>
-        <p>We lezen elke aanvraag. Ben je een bureau of maker? Kies “Partner” — die lijst behandelen we eerst. Zoek je het voor je eigen bedrijf? Ook welkom.</p>
+        <h2 style="margin-top:10px">Schrijf je in — en bepaal mee wat we bouwen.</h2>
+        <p>De eerste aanvragen bepalen mee welke productielijnen we als volgende bouwen. Ben je een bureau of maker? Kies “Partner” — die krijgen <strong>voorrang op toegang</strong>. Voor je eigen bedrijf? Ook welkom.</p>
         <p class="note" style="margin-top:16px">Bouw. Meet. Groei. — jouw tempo, jouw combinatie.</p>
       </div>
 
