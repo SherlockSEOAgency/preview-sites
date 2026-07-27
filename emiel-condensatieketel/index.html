@@ -1,0 +1,306 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<title>Voorstel — Emiel · condensatieketel plaatsen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --purple:#662483; --green:#6BB869; --white:#fff;
+  --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
+  --green-tint:rgba(107,184,105,.14); --purple-tint:rgba(102,36,131,.09);
+  /* emiel mockup world — steel + warm amber (heating) */
+  --steel:#1f2a37; --steel-2:#33465b; --amber:#e4720b; --paper:#fbfbfa;
+  --page-bg:#f4f5f7; --card:#ffffff; --frame:#ece9f1;
+  --head:"Raleway","Segoe UI",system-ui,-apple-system,sans-serif;
+  --body:"Open Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --ink:#e9e7ee; --muted:#a5a1ad; --line:#33303b; --surface:#211d28;
+    --white:#161219; --page-bg:#0f0d13; --card:#1b1720; --frame:#221c2b; --paper:#1b1720;
+    --steel:#0d1520; --steel-2:#24384d; }
+}
+:root[data-theme="dark"]{ --ink:#e9e7ee; --muted:#a5a1ad; --line:#33303b; --surface:#211d28;
+  --white:#161219; --page-bg:#0f0d13; --card:#1b1720; --frame:#221c2b; --paper:#1b1720;
+  --steel:#0d1520; --steel-2:#24384d; }
+:root[data-theme="light"]{ --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
+  --white:#fff; --page-bg:#f4f5f7; --card:#fff; --frame:#ece9f1; --paper:#fbfbfa;
+  --steel:#1f2a37; --steel-2:#33465b; }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--page-bg);color:var(--ink);font-family:var(--body);line-height:1.6;
+  -webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:940px;margin:0 auto;padding:0 20px 64px}
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--purple)}
+.eyebrow{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  font-size:.72rem;color:var(--purple)}
+.accent{color:var(--purple)} .accent-green{color:var(--green)}
+
+/* ---- Sherlock cover ---- */
+.cover{position:relative;overflow:hidden;background:var(--purple);color:#fff;border-radius:14px;
+  margin:28px 0 0;padding:30px 34px 34px}
+.cover::after{content:"";position:absolute;right:-60px;bottom:-60px;width:260px;height:260px;
+  background:linear-gradient(135deg,transparent 46%,var(--green) 47%);opacity:.9;transform:rotate(8deg)}
+.cover svg.net{position:absolute;right:14px;top:12px;width:150px;height:90px;opacity:.5}
+.brandrow{display:flex;align-items:center;gap:10px;position:relative;z-index:2}
+.qmark{width:26px;height:26px;border-radius:6px;background:#fff;position:relative;flex:0 0 auto}
+.qmark::after{content:"";position:absolute;inset:6px;border-radius:50%;border:3px solid var(--green)}
+.wordmark{font-family:var(--head);font-weight:700;font-size:1.05rem;letter-spacing:.02em}
+.wordmark small{display:block;font-weight:700;font-size:.52rem;letter-spacing:.22em;opacity:.8}
+.cover h1{position:relative;z-index:2;font-size:clamp(1.7rem,4.6vw,2.5rem);margin:22px 0 6px;max-width:16ch}
+.cover .sub{position:relative;z-index:2;opacity:.92;max-width:56ch;font-size:1.02rem}
+.urlbar{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:7px 14px;font-family:var(--body);font-size:.86rem}
+.urlbar .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+
+/* ---- chips ---- */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 13px;
+  display:flex;flex-direction:column;gap:1px;min-width:120px}
+.chip b{font-family:var(--head);font-size:1.12rem}
+.chip span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.chip.win{border-color:var(--green);background:var(--green-tint)}
+
+/* ---- section blocks ---- */
+.block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:16px 0 0}
+.block > h2{font-size:1.18rem;margin-bottom:4px;display:flex;align-items:center;gap:9px}
+.block .lead{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.num{font-family:var(--head);color:var(--purple);font-weight:700}
+.callout{border-left:4px solid var(--green);background:var(--surface);border-radius:0 10px 10px 0;
+  padding:14px 16px;margin:14px 0 0}
+.callout.purple{border-left-color:var(--purple)}
+.callout h4{font-size:.95rem;margin-bottom:4px}
+.callout p{font-size:.92rem;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.mini .t{font-family:var(--head);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.mini .v{font-size:.94rem;margin-top:3px}
+
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9rem}
+thead{background:var(--purple);color:#fff}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--head);font-weight:700;font-size:.82rem}
+tr.win td{background:var(--green-tint)}
+td .tag{font-size:.72rem;color:var(--muted)}
+
+/* ---- device / page mockup ---- */
+.previewwrap{margin:16px 0 0}
+.browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--frame)}
+.bchrome{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--frame);border-bottom:1px solid var(--line)}
+.bdot{width:11px;height:11px;border-radius:50%;background:#cfc8da}
+.baddr{margin-left:8px;flex:1;background:var(--card);border:1px solid var(--line);border-radius:7px;
+  padding:5px 12px;font-size:.8rem;color:var(--muted);font-family:var(--body)}
+.baddr b{color:var(--ink)}
+.tag-pill{font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
+  background:var(--purple);color:#fff;padding:3px 8px;border-radius:6px}
+
+/* the emiel page itself */
+.emiel{background:var(--paper);color:var(--ink);font-family:var(--body)}
+.emiel .ehero{background:linear-gradient(160deg,var(--steel),var(--steel-2));color:#eef3f8;padding:30px 26px 28px}
+.emiel .ebrand{font-family:var(--head);font-weight:700;letter-spacing:.03em;font-size:1rem;display:flex;align-items:center;gap:8px}
+.emiel .ebrand .flame{width:12px;height:12px;border-radius:50% 50% 50% 0;background:var(--amber);transform:rotate(45deg)}
+.emiel .ehero h3{font-family:var(--head);font-size:clamp(1.35rem,3.6vw,1.9rem);margin:16px 0 8px;color:#fff;max-width:20ch}
+.emiel .ehero p{color:#c7d3df;max-width:46ch;font-size:.96rem}
+.emiel .ecta{display:inline-flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{display:inline-block;border-radius:9px;padding:11px 18px;font-weight:700;font-family:var(--head);
+  font-size:.9rem;text-decoration:none;border:1px solid transparent}
+.btn.primary{background:var(--amber);color:#fff}
+.btn.ghost{background:transparent;color:#eef3f8;border-color:rgba(255,255,255,.4)}
+.emiel .ebody{padding:22px 26px 26px}
+.snippet{border:1px solid var(--line);border-left:4px solid var(--amber);background:var(--card);
+  border-radius:0 10px 10px 0;padding:14px 16px}
+.snippet .q{font-family:var(--head);font-weight:700;font-size:.98rem;margin-bottom:4px}
+.snippet p{font-size:.92rem;color:var(--ink)}
+.sec-h{font-family:var(--head);font-weight:700;font-size:1.05rem;margin:22px 0 8px;color:var(--ink)}
+.emiel ul{margin:8px 0 0;padding-left:18px;font-size:.92rem}
+.emiel ul li{margin:3px 0}
+.local{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:8px}
+.local .nap{font-size:.9rem}
+.local .badge{font-size:.72rem;font-weight:700;color:var(--green);border:1px solid var(--green);
+  border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:6px}
+.faq{margin-top:8px}
+.faq details{border:1px solid var(--line);border-radius:9px;background:var(--card);margin-top:7px;padding:2px 4px}
+.faq summary{cursor:pointer;padding:10px 12px;font-weight:700;font-family:var(--head);font-size:.9rem;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+ ";color:var(--amber);font-weight:700}
+.faq details[open] summary::before{content:"– "}
+.faq p{padding:0 12px 12px;font-size:.9rem;color:var(--muted)}
+.chipmini{display:inline-block;font-size:.7rem;background:var(--surface);border:1px solid var(--line);
+  border-radius:5px;padding:1px 7px;color:var(--muted);margin:2px 4px 2px 0}
+
+/* removed sections note */
+.removed{border:1px dashed #c9483f;background:rgba(201,72,63,.06);border-radius:12px;padding:18px 20px;margin:16px 0 0}
+.removed h3{color:#c9483f;font-size:1rem;display:flex;align-items:center;gap:8px}
+.removed .x{font-size:.86rem;text-decoration:line-through;color:var(--muted)}
+.removed .rrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
+.foot{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);display:flex;
+  justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.8rem;color:var(--muted)}
+.foot b{font-family:var(--head);color:var(--ink)}
+.src{font-size:.74rem;color:var(--muted);margin-top:10px}
+.src code{background:var(--surface);padding:1px 5px;border-radius:4px}
+</style>
+</head><body>
+
+<div class="wrap">
+
+  <!-- ============ SHERLOCK COVER ============ -->
+  <div class="cover">
+    <svg class="net" viewBox="0 0 150 90" fill="none" stroke="#6BB869" stroke-width="1">
+      <circle cx="20" cy="20" r="2.5" fill="#6BB869"/><circle cx="80" cy="14" r="2.5" fill="#6BB869"/>
+      <circle cx="130" cy="40" r="2.5" fill="#6BB869"/><circle cx="55" cy="60" r="2.5" fill="#6BB869"/>
+      <circle cx="110" cy="76" r="2.5" fill="#6BB869"/>
+      <path d="M20 20L80 14L130 40L110 76L55 60Z M80 14L55 60 M130 40L55 60"/>
+    </svg>
+    <div class="brandrow">
+      <span class="qmark"></span>
+      <span class="wordmark">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></span>
+    </div>
+    <h1>Voorstel: pagina <span class="accent-green">condensatieketel&nbsp;plaatsen</span></h1>
+    <p class="sub">Composition plan voor Emiel bvba — gegrond op de live SERP, echte zoekintentie, concurrent-structuur en de autoriteitskloof. Dit is wat we nú al weten, vóór de volledige pipeline.</p>
+    <span class="urlbar"><span class="dot"></span>preview.sherlockseo.com/<b>emiel-condensatieketel</b></span>
+  </div>
+
+  <!-- ============ PLAN METRICS ============ -->
+  <div class="chips">
+    <div class="chip win"><b>10/10</b><span>Opportunity</span></div>
+    <div class="chip"><b>#5</b><span>Best realistisch</span></div>
+    <div class="chip"><b>75%</b><span>Transactioneel</span></div>
+    <div class="chip"><b>±1.830</b><span>Doel woorden</span></div>
+    <div class="chip"><b>service_page</b><span>Pagina-type</span></div>
+    <div class="chip"><b>15</b><span>Bereikbare posities</span></div>
+  </div>
+
+  <!-- ============ INTELLIGENCE ============ -->
+  <div class="block">
+    <h2><span class="num">01</span> De zoekintentie — als zin</h2>
+    <p class="lead">Handmatig geformuleerd — het platform leverde alleen de labelverdeling (75% transactioneel), geen beschrijvende zin. Dit is precies de laag die nog ontbreekt.</p>
+    <div class="callout purple">
+      <p>“Iemand met een <b>oude of kapotte gasketel</b> die 'm wil laten vervangen, ongerust over de regelgeving vanaf 2025, wil weten <b>wat het kost</b> en of er <b>nog premie</b> is (weg sinds 2024), twijfelt tussen zelf-doen en een pro, en zoekt uiteindelijk een <b>lokale erkende installateur</b> die het inclusief attest komt doen.”</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">02</span> Waarom Emiel hier kan winnen</h2>
+    <p class="lead">De top van deze SERP is generiek — fabrikanten en portalen, géén lokale installateur, géén reviews. Dat is de opening.</p>
+    <div class="grid2">
+      <div class="mini"><div class="t">Wie rankt nu</div><div class="v">vaillant.be · centraleverwarmingcv.be · buderus.com — allemaal content/fabrikant, zonder review- of lokaal signaal.</div></div>
+      <div class="mini"><div class="t">SERP-vorm</div><div class="v">AI Overview · Featured snippet · 13× PAA · Local pack · video (DIY-zelfbouw). → antwoord-blok + FAQ + NAP verplicht.</div></div>
+    </div>
+    <div class="callout">
+      <h4>De offer-wedge <span class="accent-green">(uit de intake)</span></h4>
+      <p>Geen enkele rankende concurrent biedt een <b>lokale erkende installateur die de oude gasketel vervangt, inclusief attest en conform de Vlaamse regelgeving</b>. Dat op het commerciële kantelpunt tonen is de differentiator die content-only sites missen.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">03</span> De autoriteitskloof <span style="font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted)">— content alleen wint dit niet</span></h2>
+    <table>
+      <thead><tr><th>Domein</th><th>Verwijzende domeinen</th><th>Rol</th></tr></thead>
+      <tbody>
+        <tr class="win"><td><b>emielbvba.be</b></td><td>69</td><td>nu</td></tr>
+        <tr><td>centraleverwarmingcv.be</td><td>348</td><td>concurrent</td></tr>
+        <tr><td>vaillant.be</td><td>817</td><td>concurrent</td></tr>
+        <tr><td>buderus.com</td><td>3.030</td><td>concurrent</td></tr>
+        <tr><td colspan="3" style="color:var(--muted);font-size:.84rem">Gemiddelde concurrent ≈ <b>1.398</b> → kloof ~<b>1.329</b> domeinen. Naast content is <b>gerichte linkbuilding + GMB</b> de hefboom.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ PAGE MOCKUP ============ -->
+  <h2 style="margin:30px 0 2px;font-size:1.25rem"><span class="num">04</span> De pagina — preview</h2>
+  <p class="src" style="margin-top:4px">Schone render uit het plan. Alle teksten grounded op de live SERP (prijzen, premie, regelgeving uit de PAA). <b>Nog geen definitieve copy</b> — dit toont structuur, hoek en bewijs.</p>
+  <div class="previewwrap">
+    <div class="browser">
+      <div class="bchrome">
+        <span class="bdot"></span><span class="bdot"></span><span class="bdot"></span>
+        <span class="baddr">🔒 preview.sherlockseo.com/<b>emiel-condensatieketel</b></span>
+        <span class="tag-pill">mockup</span>
+      </div>
+      <div class="emiel">
+        <div class="ehero">
+          <div class="ebrand"><span class="flame"></span> Emiel bvba</div>
+          <h3>Condensatieketel plaatsen in regio Antwerpen</h3>
+          <p>Uw oude gasketel vervangen door een zuinige condensatieketel — geplaatst door een erkend technicus, inclusief keuring en attest van eerste inbedrijfstelling.</p>
+          <div class="ecta">
+            <a class="btn primary" href="#">Vraag een offerte</a>
+            <a class="btn ghost" href="#">Bel 03 — vrijblijvend advies</a>
+          </div>
+        </div>
+        <div class="ebody">
+          <div class="snippet">
+            <div class="q">Wat kost een condensatieketel plaatsen?</div>
+            <p>Een condensatieketel start vanaf ± <b>€2.000 inclusief plaatsing</b>; de plaatsing zelf ligt rond <b>€700–1.200</b>, afhankelijk van de aanpassingen. Een compleet nieuwe gasketel geplaatst gaat gemiddeld van <b>€2.000 tot €7.500</b> (incl. btw).</p>
+          </div>
+
+          <div class="sec-h">Zelf plaatsen of laten plaatsen?</div>
+          <p style="font-size:.92rem">Zelf plaatsen mág, maar de ketel moet gekeurd worden met een <b>attest van eerste inbedrijfstelling</b>. Wij zijn erkend technicus gasvormige brandstof en leveren dat attest standaard — zo bent u meteen in orde.</p>
+
+          <div class="sec-h">Premie & regelgeving in 2026 — eerlijk uitgelegd</div>
+          <ul>
+            <li>De <b>Mijn VerbouwPremie</b> voor een nieuwe gasketel is <b>sinds 2024 niet meer aan te vragen</b>.</li>
+            <li>Bij renovatie (woning &gt; 10 jaar) stijgt het btw-tarief op een nieuwe condensatieketel van <b>6% naar 21%</b>.</li>
+            <li>In nieuwbouw in Vlaanderen mag sinds 2025 geen gasketel meer — een <b>bestaande gasketel vervangen mag wél</b>.</li>
+            <li>De geplande warmtepomp-verplichting bij ketelvervanging is <b>geschrapt</b>: u kunt ook na 2026 gewoon voor een condensatieketel kiezen.</li>
+          </ul>
+
+          <div class="sec-h">Welke ketel voor uw woning?</div>
+          <table style="font-size:.86rem">
+            <thead><tr><th>Type</th><th>Wanneer</th><th>Indicatie</th></tr></thead>
+            <tbody>
+              <tr><td><b>Wandketel (combi)</b></td><td>Appartement / rijwoning, verwarming + sanitair warm water</td><td>vanaf €2.000</td></tr>
+              <tr><td><b>Vloerketel</b></td><td>Grotere woning, hoger vermogen</td><td>op maat</td></tr>
+              <tr><td>+ Aparte boiler</td><td>Veel warmwaterverbruik</td><td>meerprijs</td></tr>
+            </tbody>
+          </table>
+
+          <div class="sec-h">Werkgebied & contact</div>
+          <div class="local">
+            <div class="nap">
+              <span class="badge">Local pack-signaal · NAP + LocalBusiness-schema</span><br>
+              <b>Emiel bvba</b> — verwarming &amp; sanitair<br>
+              Regio Antwerpen · Merksem · Deurne · Berchem · Ekeren<br>
+              📞 03 xx xx xx · ✉ info@emielbvba.be
+            </div>
+          </div>
+
+          <div class="sec-h">Veelgestelde vragen</div>
+          <div class="faq">
+            <details open><summary>Is een condensatieketel nog interessant?</summary><p>Ja. De investering ligt lager dan een warmtepomp en de installatie is minder ingrijpend, terwijl het verbruik fors daalt tegenover een oude niet-condenserende ketel.</p></details>
+            <details><summary>Is er nog een premie voor een condensatieketel?</summary><p>Nee — de premie voor een nieuwe gasketel verviel in 2024, en bij renovatie geldt nu 21% btw i.p.v. 6%. We rekenen dat transparant mee in de offerte.</p></details>
+            <details><summary>Hoe lang mag je nog met gas verwarmen in België?</summary><p>Bestaande gasketels mag u blijven gebruiken en vervangen; enkel in nieuwbouw geldt sinds 2025 een verbod op nieuwe gasaansluitingen.</p></details>
+            <details><summary>Kan ik na 2026 nog een cv-ketel kopen?</summary><p>Ja. De geplande hybride-warmtepomp-verplichting is geschrapt — u kunt ook na 2026 gewoon een condensatieketel laten plaatsen.</p></details>
+          </div>
+          <div style="margin-top:14px">
+            <span class="chipmini">→ cv-ketel vervangen</span>
+            <span class="chipmini">→ onderhoud gasketel Antwerpen</span>
+            <span class="chipmini">→ condensatieketel prijs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ REMOVED / PLATFORM NOTE ============ -->
+  <div class="removed">
+    <h3>⚠︎ Uit het plan gehaald — platform-contaminatie</h3>
+    <p style="font-size:.9rem;margin-top:6px">Het systeem genereerde (óók onder <code style="font-size:.82rem">platform=watson</code>) secties uit het <b>Activate.me</b>-model omdat de intake een <em>offer</em> bevat. Voor een verwarmingsinstallateur zijn die onzin — hier verwijderd, en gemeld als product-bug:</p>
+    <div class="rrow">
+      <span class="x">Coaches &amp; begeleiders voor condensatieketel plaatsen</span>
+      <span class="x">Workshops &amp; trajecten</span>
+      <span class="x">Organisaties &amp; praktijken</span>
+      <span class="x">“geleide meditaties van je activators (coaches)”</span>
+    </div>
+  </div>
+
+  <p class="src">Bron: <code>mcp__sherlock__compose_page_plan</code> (grounded: serp/intent/entities/authority = live) · <code>dataforseo_serp_results</code> · <code>get_search_analytics</code> · intake via <code>update_client_ontology</code>. Site: <code>site_emielbvba-be</code>.</p>
+
+  <div class="foot">
+    <span><b>Sherlock SEO</b> · Digital Growth Intelligence</span>
+    <span>Voorstel · Emiel bvba · condensatieketel plaatsen · 2026</span>
+  </div>
+
+</div>
+</body></html>
