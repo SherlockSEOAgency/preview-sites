@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Zo'n website ook? — Sherlock SEO · wachtlijst</title>
+<meta name="description" content="Datagedreven lokale service-websites die ranken én converteren. Schrijf je in op de wachtlijst.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --purple:#662483; --green:#6BB869; --white:#fff;
+  --ink:#22222a; --muted:#6B6B6B; --line:#e6e4ec; --surface:#f6f5f9;
+  --green-tint:rgba(107,184,105,.14); --purple-tint:rgba(102,36,131,.08);
+  --page-bg:#ffffff; --card:#ffffff;
+  --head:"Raleway","Segoe UI",system-ui,-apple-system,sans-serif;
+  --body:"Open Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --ink:#ece9f3; --muted:#a5a1ad; --line:#332c40; --surface:#1b1622;
+  --page-bg:#120e18; --card:#1a1522; --green-tint:rgba(107,184,105,.16); --purple-tint:rgba(146,86,180,.14);}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page-bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--purple)}
+.eyebrow{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--purple)}
+
+/* nav */
+.nav{display:flex;align-items:center;gap:10px;padding:20px 2px}
+.q{width:24px;height:24px;border-radius:6px;background:var(--purple);position:relative}
+.q::after{content:"";position:absolute;inset:6px;border-radius:50%;border:2.5px solid var(--green)}
+.nav b{font-family:var(--head);font-size:1.05rem}
+.nav small{display:block;font-size:.56rem;letter-spacing:.2em;color:var(--muted);font-weight:700}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--purple);color:#fff;border-radius:18px;padding:44px 40px 40px;margin-top:6px}
+.hero::after{content:"";position:absolute;right:-70px;bottom:-70px;width:300px;height:300px;background:linear-gradient(135deg,transparent 47%,var(--green) 48%);opacity:.9;transform:rotate(8deg)}
+.hero h1{position:relative;z-index:2;font-size:clamp(2rem,5.4vw,3.1rem);max-width:16ch}
+.hero h1 .g{color:var(--green)}
+.hero p{position:relative;z-index:2;margin-top:14px;font-size:1.12rem;max-width:52ch;color:#efe8f5}
+.hero .cta{position:relative;z-index:2;margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{border-radius:10px;padding:14px 24px;font-weight:700;font-family:var(--head);font-size:1rem;text-decoration:none;border:1px solid transparent;display:inline-block;cursor:pointer}
+.btn.primary{background:var(--green);color:#0b2b0b}
+.btn.on-p{background:#fff;color:var(--purple)}
+.hero .micro{position:relative;z-index:2;margin-top:12px;font-size:.82rem;color:#d7c8e6}
+
+/* value row */
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:680px){.vals{grid-template-columns:1fr}}
+.val{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px}
+.val h3{font-size:1rem}
+.val h3 .n{color:var(--purple);font-family:var(--head)}
+.val p{font-size:.9rem;color:var(--muted);margin-top:5px}
+
+/* portfolio */
+.sec{margin-top:40px}
+.sec > .eyebrow{display:block;margin-bottom:6px}
+.sec h2{font-size:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
+.pf{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;color:var(--ink);transition:transform .12s ease,box-shadow .12s ease}
+.pf:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(102,36,131,.12)}
+.pf .shot{aspect-ratio:16/10;background:linear-gradient(150deg,var(--purple),#8a49ac);display:flex;align-items:flex-end;padding:14px;color:#fff}
+.pf .shot .badge{font-family:var(--head);font-weight:700;font-size:.72rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:2px 8px}
+.pf.s2 .shot{background:linear-gradient(150deg,#2e8b57,#57b06f)}
+.pf.s3 .shot{background:linear-gradient(150deg,#1f2a37,#33465b)}
+.pf.s4 .shot{background:linear-gradient(150deg,#b5533a,#e4720b)}
+.pf.s5 .shot{background:linear-gradient(150deg,#3a4db5,#5a78d0)}
+.pf .meta{padding:14px 16px}
+.pf .meta b{font-family:var(--head);font-size:1rem}
+.pf .meta .sub{font-size:.82rem;color:var(--muted);margin-top:2px}
+.pf .meta .live{font-size:.78rem;color:var(--purple);font-weight:700;margin-top:8px;display:inline-block}
+
+/* waitlist form */
+.wl{margin-top:44px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:34px 32px}
+.wl h2{font-size:1.7rem;max-width:18ch}
+.wl h2 .g{color:var(--green)}
+.wl p.intro{color:var(--muted);margin-top:8px;max-width:52ch}
+.form{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px}
+@media(max-width:560px){.form{grid-template-columns:1fr}}
+.form .full{grid-column:1/-1}
+.form label{font-size:.78rem;font-weight:700;font-family:var(--head);color:var(--ink);display:block;margin-bottom:4px}
+.form input,.form textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font-family:var(--body);font-size:.95rem}
+.form input:focus,.form textarea:focus{outline:2px solid var(--purple);border-color:var(--purple)}
+.form .submit{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.form .note{font-size:.76rem;color:var(--muted)}
+.wl-ok{display:none;margin-top:16px;background:var(--green-tint);border:1px solid var(--green);border-radius:10px;padding:14px 16px;font-weight:700;font-family:var(--head);color:var(--ink)}
+
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.foot b{font-family:var(--head);color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav">
+    <span class="q"></span>
+    <b>Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></b>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Wil je <span class="g">zo'n website</span> ook?</h1>
+    <p>Datagedreven lokale service-websites die niet alleen mooi zijn, maar <b>ranken én converteren</b> — gebouwd op echte zoekdata, de stem van jouw bedrijf en de intentie van je klant.</p>
+    <div class="cta">
+      <a class="btn primary" href="#wachtlijst">Zet mij op de wachtlijst</a>
+      <a class="btn on-p" href="#werk">Bekijk het werk</a>
+    </div>
+    <p class="micro">Beperkte plaatsen per kwartaal — we bouwen ze goed, niet snel.</p>
+  </div>
+
+  <!-- VALUE -->
+  <div class="vals">
+    <div class="val"><h3><span class="n">01.</span> Data, geen gok</h3><p>Elke pagina op echte zoekvolumes, SERP-realiteit en zoekintentie — niet op onderbuik.</p></div>
+    <div class="val"><h3><span class="n">02.</span> Jouw stem</h3><p>We schrijven in de toon van jouw bedrijf, met overtuigingsopbouw die converteert.</p></div>
+    <div class="val"><h3><span class="n">03.</span> Lokaal winnen</h3><p>Geo-pagina's die de local pack pakken en je telefoon laten rinkelen.</p></div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div class="sec" id="werk">
+    <span class="eyebrow">Live &amp; in de lucht</span>
+    <h2>Websites die we al bouwden</h2>
+    <div class="grid">
+      <a class="pf s2" href="https://www.ckservice.be" target="_blank" rel="noopener">
+        <div class="shot"><span class="badge">Reiniging</span></div>
+        <div class="meta"><b>CK Service</b><div class="sub">Professionele reiniging</div><span class="live">ckservice.be →</span></div>
+      </a>
+      <a class="pf s3" href="https://www.extraproper.be" target="_blank" rel="noopener">
+        <div class="shot"><span class="badge">Schoonmaak</span></div>
+        <div class="meta"><b>Extra Proper</b><div class="sub">Schoonmaakdiensten</div><span class="live">extraproper.be →</span></div>
+      </a>
+      <a class="pf s5" href="https://knokkeluxuryrentals.be" target="_blank" rel="noopener">
+        <div class="shot"><span class="badge">Vastgoed</span></div>
+        <div class="meta"><b>Knokke Luxury Rentals</b><div class="sub">Luxe verhuur aan de kust</div><span class="live">knokkeluxuryrentals.be →</span></div>
+      </a>
+      <a class="pf s4" href="https://yc.preview.sherlockseo.com" target="_blank" rel="noopener">
+        <div class="shot"><span class="badge">Schrijnwerk</span></div>
+        <div class="meta"><b>YC Ramen &amp; Deuren</b><div class="sub">Ramen, deuren &amp; renovatie</div><span class="live">Bekijk live →</span></div>
+      </a>
+      <a class="pf s1" href="https://emiel-condensatieketel-antwerpen.preview.sherlockseo.com" target="_blank" rel="noopener">
+        <div class="shot"><span class="badge">Verwarming</span></div>
+        <div class="meta"><b>Emiel bvba</b><div class="sub">Verwarming &amp; sanitair · Antwerpen</div><span class="live">Bekijk live →</span></div>
+      </a>
+      <a class="pf s2" href="#wachtlijst">
+        <div class="shot" style="background:linear-gradient(150deg,#4a4a55,#6b6b78)"><span class="badge">Binnenkort</span></div>
+        <div class="meta"><b>Jouw website?</b><div class="sub">Beperkte plaatsen per kwartaal</div><span class="live">Zet mij op de lijst →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- WAITLIST -->
+  <div class="wl" id="wachtlijst">
+    <span class="eyebrow">Wachtlijst</span>
+    <h2>Klaar voor een site die <span class="g">werkt voor je bedrijf</span>?</h2>
+    <p class="intro">Laat je gegevens achter. We nemen contact op zodra er een plaats vrijkomt — en we vertellen je eerlijk of jouw markt geschikt is.</p>
+    <form class="form" id="wlform">
+      <div><label for="naam">Naam</label><input id="naam" name="naam" required></div>
+      <div><label for="bedrijf">Bedrijf</label><input id="bedrijf" name="bedrijf"></div>
+      <div class="full"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+      <div class="full"><label for="website">Huidige website (optioneel)</label><input id="website" name="website" placeholder="www.jouwbedrijf.be"></div>
+      <div class="full"><label for="bericht">Wat wil je bereiken? (optioneel)</label><textarea id="bericht" name="bericht" rows="2"></textarea></div>
+      <div class="submit">
+        <button class="btn primary" type="submit">Zet mij op de wachtlijst</button>
+        <span class="note">We gebruiken je gegevens enkel om contact op te nemen.</span>
+      </div>
+    </form>
+    <div class="wl-ok" id="wlok">✓ Bedankt! Je staat op de wachtlijst — we nemen contact op.</div>
+  </div>
+
+  <div class="foot">
+    <span><b>Sherlock SEO</b> · Digital Growth Intelligence</span>
+    <span>sherlockseo.com</span>
+  </div>
+
+</div>
+<script>
+// Interim capture — vervangen door directe CRM web-to-lead POST zodra endpoint bekend is.
+document.getElementById('wlform').addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=new FormData(e.target), q=[];
+  d.forEach(function(v,k){ if(v) q.push(encodeURIComponent(k)+'='+encodeURIComponent(v)); });
+  // fallback zodat geen lead verloren gaat tot CRM gekoppeld is:
+  var body=encodeURIComponent('Nieuwe wachtlijst-aanmelding:\n\n'+decodeURIComponent(q.join('\n')));
+  window.location.href='mailto:info@sherlockseo.com?subject=Wachtlijst%20aanmelding&body='+body;
+  document.getElementById('wlok').style.display='block';
+  e.target.reset();
+});
+</script>
+</body>
+</html>
