@@ -120,6 +120,21 @@ a.arrow:hover{text-decoration:underline}
 .scanoffer .price{font-family:var(--head);font-weight:800;font-size:1.3rem;color:var(--purple);margin:14px 0 18px}
 .after{font-size:.92rem;color:var(--muted);margin-top:18px;max-width:640px}
 .catnote{font-style:italic;color:var(--muted);margin-top:18px;font-size:.95rem}
+/* ladder + assets */
+.ladder{display:flex;flex-wrap:wrap;gap:0;margin:32px 0 8px;counter-reset:step}
+.ladder-step{flex:1 1 160px;position:relative;padding:18px 16px 16px;background:#fff;border:1px solid var(--line);border-radius:8px;margin:6px}
+.ladder-step .n{font-family:var(--head);font-weight:800;color:var(--purple);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.ladder-step h4{font-size:1rem;margin-bottom:4px}
+.ladder-step p{font-size:.85rem;color:var(--muted)}
+.ladder-arrow{align-self:center;color:var(--line);font-size:1.4rem;font-weight:800;padding:0 2px;display:flex;align-items:center}
+@media(max-width:900px){.ladder-arrow{display:none}}
+.assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:36px}
+.asset{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px}
+.asset h4{font-size:.98rem;margin-bottom:6px}
+.asset p{font-size:.86rem;color:var(--muted);margin-bottom:10px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--head);font-weight:700;font-size:.7rem;letter-spacing:.04em;padding:3px 9px;border-radius:99px;margin:0 6px 6px 0}
+.chip-live{background:var(--green-tint);color:#3d7a3c}
+.chip-soon{background:var(--surface);color:var(--muted);border:1px dashed var(--line)}
 /* footer */
 footer{border-top:1px solid var(--line);padding:40px 0;font-size:.85rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
@@ -222,15 +237,64 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 
 <section class="alt" id="start">
   <div class="wrap">
-    <div class="eyebrow">Starten</div>
-    <h2>Het begint met begrijpen<br><span class="g">hoe je bedrijf klanten wint</span>.</h2>
-    <div class="scanoffer">
-      <p>De eerste stap is een scan: in twee weken zie je waar je staat, wat je laat liggen, en wat wij als eerste zouden aanpakken — besproken in een gesprek, niet gedropt in je mailbox. Het is de eerste versie van het model waar daarna alles op draait.</p>
+    <div class="eyebrow">Zo koop je</div>
+    <h2>Eén weg om te beginnen.<br><span class="g">Los verkrijgbaar waar dat zinvol is.</span></h2>
+    <p class="lead">De meeste klanten doorlopen de hele weg. Sommigen willen maar één stuk — dat kan.</p>
+
+    <div class="ladder">
+      <div class="ladder-step"><div class="n">1</div><h4>Scan</h4><p>Waar je staat, wat je laat liggen.</p></div>
+      <div class="ladder-arrow">&rarr;</div>
+      <div class="ladder-step"><div class="n">2</div><h4>Fundament &amp; blauwdruk</h4><p>Het model van je bedrijf, vertaald naar een plan.</p></div>
+      <div class="ladder-arrow">&rarr;</div>
+      <div class="ladder-step"><div class="n">3</div><h4>Uitvoering</h4><p>Content, site, advertenties — gebouwd op het plan.</p></div>
+      <div class="ladder-arrow">&rarr;</div>
+      <div class="ladder-step"><div class="n">4</div><h4>Doorlopend</h4><p>Elke maand meten, bijsturen, rapporteren.</p></div>
+    </div>
+
+    <div class="scanoffer" style="margin-top:30px">
+      <p>De eerste stap is meestal de scan: in twee weken zie je waar je staat, wat je laat liggen, en wat wij als eerste zouden aanpakken — besproken in een gesprek, niet gedropt in je mailbox.</p>
       <p style="margin-top:14px;font-family:var(--head);font-weight:700">De investering bespreken we als je weet wat je krijgt.</p>
       <a class="btn btn-purple" href="mailto:info@sherlockseo.com?subject=Startscan%20aanvragen" style="margin-top:18px">Vraag je scan aan</a>
     </div>
-    <p class="after">Daarna: een afgebakende sprint — het fundament van je bedrijf in kaart plus het plan dat eruit volgt — of doorlopende uitvoering op jouw doelen.</p>
+
+    <h3 style="margin-top:52px;font-size:1.15rem">Ook los verkrijgbaar</h3>
+    <p class="lead" style="margin-top:8px">Sommige klanten hebben geen volledig traject nodig — alleen een stuk. Ook dat kan.</p>
+    <div class="assets">
+      <div class="asset">
+        <span class="chip chip-live">Vandaag</span>
+        <h4>Doorlichting van je site</h4>
+        <p>Eén rapport: waar je staat, wat je laat liggen, wat we eerst zouden aanpakken.</p>
+      </div>
+      <div class="asset">
+        <span class="chip chip-live">Vandaag</span>
+        <h4>Briefing voor één of meerdere pagina&rsquo;s</h4>
+        <p>Per pagina: welke vraag ze beantwoordt, welke structuur, welke concurrentie — klaar om te laten schrijven.</p>
+      </div>
+      <div class="asset">
+        <span class="chip chip-live">Vandaag</span>
+        <h4>Blauwdruk van je site-structuur</h4>
+        <p>Welke pagina&rsquo;s je nodig hebt en hoe ze samenhangen. Wij leveren &eacute;n bouwen &rsquo;m mee, of jij zet &rsquo;m zelf om.</p>
+      </div>
+      <div class="asset">
+        <span class="chip chip-soon">Binnenkort</span>
+        <h4>Zelf verder met de blauwdruk</h4>
+        <p>De structuur als bestand, zodat jouw eigen team of AI-assistent er direct mee verder kan.</p>
+      </div>
+      <div class="asset">
+        <span class="chip chip-live">Vandaag</span>
+        <h4>Content, site &amp; advertenties</h4>
+        <p>Wij schrijven, bouwen (samen met onze websitepartner) en adverteren op basis van het plan.</p>
+      </div>
+      <div class="asset">
+        <span class="chip chip-soon">Binnenkort</span>
+        <h4>Toegang voor je eigen AI-assistent</h4>
+        <p>Laat je eigen AI-assistent rechtstreeks met jouw model werken — veilig, alleen jouw data.</p>
+      </div>
+    </div>
+
   </div>
+</section>
+
 </section>
 
 <section>
