@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Sherlock — Marketing die klanten oplevert</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+:root{
+  --purple:#662483; --green:#6BB869; --white:#FFFFFF;
+  --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
+  --green-tint:rgba(107,184,105,.12); --purple-tint:rgba(102,36,131,.08);
+  --head:"Raleway",system-ui,sans-serif; --body:"Open Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.15}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--head);font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;margin-bottom:14px}
+.btn{display:inline-block;font-family:var(--head);font-weight:700;text-decoration:none;border-radius:6px;padding:14px 28px;font-size:1rem;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 2px 10px rgba(107,184,105,.35)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-note{display:block;margin-top:10px;font-size:.85rem;color:var(--muted)}
+/* nav */
+nav{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.wordmark{font-family:var(--head);font-weight:800;font-size:1.15rem;color:var(--purple);text-decoration:none;letter-spacing:.01em}
+.wordmark small{display:block;font-weight:700;font-size:.5rem;letter-spacing:.22em;color:var(--muted)}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+nav a.link{font-family:var(--head);font-weight:700;font-size:.9rem;color:var(--ink);text-decoration:none}
+nav a.link:hover{color:var(--purple)}
+nav a.cta{background:var(--purple);color:#fff;padding:9px 18px;border-radius:6px;font-family:var(--head);font-weight:700;font-size:.9rem;text-decoration:none}
+/* page toggle */
+.page{display:none}.page.active{display:block}
+/* hero */
+.hero{position:relative;background:var(--purple);color:#fff;overflow:hidden}
+.hero .wrap{padding:96px 24px 110px;position:relative;z-index:2;max-width:900px}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);color:#fff}
+.hero h1 .g{color:var(--green)}
+.hero p.sub{font-family:var(--head);font-weight:300;font-size:clamp(1.05rem,2.2vw,1.35rem);margin:22px 0 34px;color:rgba(255,255,255,.92);max-width:640px}
+.hero .angle{position:absolute;bottom:-1px;left:0;right:0;height:90px;z-index:1}
+.hero svg.net{position:absolute;top:0;right:0;width:420px;opacity:.5;z-index:1}
+/* sections */
+section{padding:76px 0}
+section.alt{background:var(--surface)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:18px}
+h2 .p{color:var(--purple)} h2 .g{color:var(--green)}
+.lead{max-width:680px;color:var(--ink)}
+/* herkenbaar */
+.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:34px 0 26px}
+.pain{background:#fff;border:1px solid var(--line);border-left:4px solid var(--purple);border-radius:8px;padding:22px 24px;font-size:1rem}
+.pain strong{font-family:var(--head)}
+.kicker{font-family:var(--head);font-weight:700;font-size:1.15rem}
+.kicker .g{color:var(--green)}
+/* systeem */
+.model-list{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.model-list span{background:var(--purple-tint);color:var(--purple);font-family:var(--head);font-weight:700;font-size:.85rem;padding:7px 14px;border-radius:999px}
+a.arrow{font-family:var(--head);font-weight:700;color:var(--purple);text-decoration:none}
+a.arrow:hover{text-decoration:underline}
+/* demo */
+.demo{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:center}
+@media(max-width:820px){.demo{grid-template-columns:1fr}}
+.browser{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 50px rgba(46,46,46,.12);overflow:hidden}
+.browser .bar{background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;gap:6px;align-items:center}
+.browser .dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.browser .url{margin-left:10px;font-size:.72rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px 12px}
+.scan{padding:24px}
+.scan .head{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.ring{width:74px;height:74px;border-radius:50%;background:conic-gradient(var(--green) 0 62%,var(--line) 62% 100%);display:grid;place-items:center;flex:none}
+.ring b{background:#fff;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-size:1.05rem;color:var(--ink)}
+.scan .head h3{font-size:1.05rem}
+.scan .head p{font-size:.82rem;color:var(--muted)}
+.chance{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px;font-size:.88rem}
+.chance b{font-family:var(--head);display:block;font-size:.92rem}
+.chance.win{background:var(--green-tint);border-color:rgba(107,184,105,.4)}
+.chance small{color:var(--muted)}
+.scan .next{border-left:4px solid var(--green);background:var(--surface);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.88rem}
+.scan .next b{font-family:var(--head)}
+.demo figcaption{font-size:.85rem;color:var(--muted);margin-top:12px;font-style:italic}
+/* team */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:30px}
+.member{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px}
+.member .avatar{width:52px;height:52px;border-radius:50%;background:var(--purple-tint);color:var(--purple);font-family:var(--head);font-weight:800;display:grid;place-items:center;font-size:1.2rem;margin-bottom:14px}
+.member h3{font-size:1.05rem;margin-bottom:6px}
+.member p{font-size:.92rem;color:var(--muted)}
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin:36px 0 30px}
+.offer{background:#fff;border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column}
+.offer.mid{border-color:var(--green);box-shadow:0 10px 30px rgba(107,184,105,.15)}
+.offer h3{font-size:1.15rem;margin-bottom:8px}
+.offer .tag{font-family:var(--head);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:8px}
+.offer p{font-size:.95rem;color:var(--ink);flex:1}
+.offer .price{font-family:var(--head);font-weight:800;font-size:1.25rem;color:var(--purple);margin-top:18px}
+.offer .price small{font-weight:700;font-size:.8rem;color:var(--muted)}
+/* closing */
+.closing{background:var(--purple);color:#fff;text-align:center;position:relative;overflow:hidden}
+.closing h2{color:#fff}
+.closing p{color:rgba(255,255,255,.9);max-width:560px;margin:14px auto 30px}
+/* aanpak page */
+.step{display:grid;grid-template-columns:64px 1fr;gap:22px;padding:30px 0;border-bottom:1px solid var(--line)}
+.step:last-of-type{border-bottom:none}
+.step .num{font-family:var(--head);font-weight:800;font-size:1.9rem;color:var(--purple);opacity:.85}
+.step h3{font-size:1.2rem;margin-bottom:8px}
+.step p{color:var(--ink);max-width:640px}
+.step .naam{font-family:var(--head);font-weight:700;color:var(--green);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+.finebox{border-left:4px solid var(--purple);background:var(--surface);border-radius:0 8px 8px 0;padding:24px 28px;margin-top:44px}
+.finebox h3{font-size:1.05rem;margin-bottom:10px}
+.finebox p{font-size:.95rem;color:var(--ink)}
+.finebox p+p{margin-top:12px}
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="wordmark" href="#" onclick="show('home');return false">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></a>
+    <ul>
+      <li><a class="link" href="#" onclick="show('aanpak');return false">Aanpak</a></li>
+      <li><a class="link" href="#start" onclick="show('home','start');return false">Starten</a></li>
+      <li><a class="cta" href="mailto:info@sherlockseo.com?subject=Kennismaking%20Sherlock">Plan een kennismaking</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== HOMEPAGE ===================== -->
+<div class="page active" id="page-home">
+
+<header class="hero">
+  <svg class="net" viewBox="0 0 400 300" fill="none" aria-hidden="true">
+    <g stroke="#6BB869" stroke-width="1" opacity=".8">
+      <path d="M40 60 L150 30 L260 90 L370 40"/><path d="M150 30 L190 140 L260 90"/>
+      <path d="M40 60 L110 180 L190 140 L310 200 L370 40"/><path d="M110 180 L260 260 L310 200"/>
+    </g>
+    <g fill="#6BB869"><circle cx="40" cy="60" r="4"/><circle cx="150" cy="30" r="4"/><circle cx="260" cy="90" r="4"/><circle cx="370" cy="40" r="4"/><circle cx="190" cy="140" r="4"/><circle cx="110" cy="180" r="4"/><circle cx="310" cy="200" r="4"/><circle cx="260" cy="260" r="4"/></g>
+  </svg>
+  <div class="wrap">
+    <h1>Marketing die <span class="g">klanten oplevert</span>.<br>Niet alleen rapporten.</h1>
+    <p class="sub">Site, vindbaarheid, advertenties en meting — één aanpak, één team, gericht op aanvragen en omzet. Zo weet je wat werkt, wat het oplevert en wat er nu moet gebeuren.</p>
+    <a class="btn btn-primary" href="mailto:info@sherlockseo.com?subject=Kennismaking%20Sherlock">Plan een kennismaking</a>
+    <span class="btn-note" style="color:rgba(255,255,255,.75)">Gratis gesprek van 20 minuten — daarna weet je waar je het beste start.</span>
+  </div>
+  <svg class="angle" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,10 100,0 100,10" fill="#6BB869"/>
+    <polygon points="18,10 100,2.2 100,10" fill="#FFFFFF"/>
+  </svg>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Herkenbaar?</div>
+    <h2>Veel cijfers. <span class="p">Weinig antwoorden.</span></h2>
+    <div class="pains">
+      <div class="pain">Je krijgt rapporten vol <strong>clicks en impressies</strong>. Maar niemand zegt wat het opbracht.</div>
+      <div class="pain">Je website, je advertenties en je bureau vertellen <strong>elk een ander verhaal</strong>.</div>
+      <div class="pain">Alles wat je over je klanten weet, zit in <strong>hoofden en spreadsheets</strong>.</div>
+    </div>
+    <p class="kicker">Dan mist je bedrijf geen marketing. <span class="g">Het mist een systeem.</span></p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Eén systeem</div>
+    <h2>Wij beginnen niet met campagnes.<br><span class="p">We beginnen met je bedrijf.</span></h2>
+    <p class="lead">Voor we iets bouwen of adverteren, brengen we in kaart hoe jouw bedrijf commercieel werkt. Dat wordt één levend model van je bedrijf — en daar werkt alles uit: je website, je vindbaarheid, je advertenties en je meting. Eén begrip van je bedrijf, in plaats van tien tools en drie partijen die elk hun stukje zien.</p>
+    <div class="model-list">
+      <span>wat je verkoopt</span><span>aan wie</span><span>waarom ze bij jou kopen</span><span>wat je markt doet</span><span>waar je klanten naar zoeken</span><span>welke cijfers ertoe doen</span>
+    </div>
+    <a class="arrow" href="#" onclick="show('aanpak');return false">Zo werken we — onze aanpak in vijf stappen →</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Zo ziet dat eruit</div>
+    <div class="demo">
+      <div>
+        <h2>Geen beloftes.<br><span class="g">Een voorbeeld.</span></h2>
+        <p class="lead">Dit is wat je na twee weken ziet: waar je staat, wat je laat liggen — en wat wij als eerste zouden aanpakken. In gewone taal, met de cijfers erbij.</p>
+      </div>
+      <figure>
+        <div class="browser">
+          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">sherlockseo.com/uw-rapport</span></div>
+          <div class="scan">
+            <div class="head">
+              <div class="ring"><b>62</b></div>
+              <div><h3>Zo staat u er nu voor</h3><p>Houtbedrijf · deuren, kasten en vloeren · regio Antwerpen</p></div>
+            </div>
+            <div class="chance win"><b>Mensen zoeken naar binnendeuren op maat — u bent onzichtbaar</b><small>380 zoekopdrachten per maand in uw regio · concurrent staat bovenaan</small></div>
+            <div class="chance"><b>Uw vloerenpagina trekt bezoek, maar overtuigt niet</b><small>veel bezoekers, nauwelijks aanvragen — de pagina mist prijsindicatie en voorbeelden</small></div>
+            <div class="chance"><b>Advertenties lopen op woorden die niets opleveren</b><small>30% van het budget gaat naar zoekers buiten uw regio</small></div>
+            <div class="next"><b>Eerste stap:</b> de binnendeuren-pagina bouwen en de advertenties bijsturen — zichtbaar resultaat binnen zes weken.</div>
+          </div>
+        </div>
+        <figcaption>Voorbeeldweergave van een echte scan (gegevens geanonimiseerd).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">De mensen</div>
+    <h2>Drie mensen die elk <span class="p">het hele speelveld</span> kennen.</h2>
+    <div class="team">
+      <div class="member"><div class="avatar">J</div><h3>Jef</h3><p>Strategie, zoekgedrag, content en de bouw van het systeem. Verbindt alles tot een geheel dat converteert.</p></div>
+      <div class="member"><div class="avatar">F</div><h3>Franny</h3><p>Advertising. Kent Google Ads door en door — en schaalt pas op als de cijfers kloppen.</p></div>
+      <div class="member"><div class="avatar">J</div><h3>Johan</h3><p>Meting en projectmanagement. Zorgt dat elke euro traceerbaar is en elk project blijft lopen.</p></div>
+    </div>
+    <p style="margin-top:22px;color:var(--muted);font-size:.95rem">Bij grotere projecten schalen we op met specialisten uit ons netwerk.</p>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <div class="eyebrow">Starten</div>
+    <h2>We beginnen <span class="g">altijd klein</span>.</h2>
+    <p class="lead">Een concreet project, een duidelijk resultaat. Zo leren we je bedrijf kennen, jij leert ons kennen — en pas dan schalen we op.</p>
+    <div class="offers">
+      <div class="offer">
+        <div class="tag">Instap</div>
+        <h3>Commercial Growth Scan</h3>
+        <p>Waar je staat, wat je laat liggen, en wat wij als eerste zouden aanpakken. Besproken in een gesprek — niet gedropt in je mailbox. Klaar in twee weken.</p>
+        <div class="price">vanaf €750 <small>excl. btw</small></div>
+      </div>
+      <div class="offer mid">
+        <div class="tag">Project</div>
+        <h3>Growth Sprint</h3>
+        <p>Een afgebakend project met duidelijk resultaat: het fundament van je bedrijf in kaart, en het plan dat eruit volgt — welke pagina's, welke campagnes, welk meetplan. En waarom.</p>
+        <div class="price">vanaf €2.500 <small>excl. btw</small></div>
+      </div>
+      <div class="offer">
+        <div class="tag">Doorlopend</div>
+        <h3>Managed Growth</h3>
+        <p>Wij voeren uit en sturen bij — maandelijks, op jouw doelen, in jouw taal. Content, vindbaarheid, advertenties en meting, met één afzender en één verhaal.</p>
+        <div class="price">op aanvraag</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap" style="position:relative;z-index:2;padding-top:20px;padding-bottom:20px">
+    <h2>Niet zeker waar te beginnen?</h2>
+    <p>Bel of mail. We doen een kort gesprek van 20 minuten — gratis, geen verplichtingen. Daarna weet je of het zin heeft om samen te werken. En zo ja: waar je het beste start.</p>
+    <a class="btn btn-primary" href="mailto:info@sherlockseo.com?subject=Kennismaking%20Sherlock">Plan een kennismaking</a>
+  </div>
+</section>
+
+</div>
+
+<!-- ===================== /AANPAK ===================== -->
+<div class="page" id="page-aanpak">
+
+<header class="hero" style="padding-bottom:0">
+  <div class="wrap" style="padding-top:72px;padding-bottom:86px">
+    <div class="eyebrow" style="color:var(--green)">Onze aanpak</div>
+    <h1 style="font-size:clamp(1.9rem,4.2vw,2.8rem)">We beginnen niet bij marketing.<br><span class="g">We beginnen bij je bedrijf.</span></h1>
+    <p class="sub">De meeste marketing vertrekt bij een kanaal: "we moeten iets met SEO", "we moeten adverteren". Wij draaien het om — in vijf stappen.</p>
+  </div>
+  <svg class="angle" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,10 100,0 100,10" fill="#6BB869"/>
+    <polygon points="18,10 100,2.2 100,10" fill="#FFFFFF"/>
+  </svg>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="step"><div class="num">1</div><div>
+      <div class="naam">Startscan</div><h3>Bedrijfscontext</h3>
+      <p>Eerst begrijpen we je bedrijf: wat je verkoopt, aan wie, waarom klanten voor jou kiezen, hoe je markt werkt en wie je concurrenten zijn. Niet uit beleefdheid — omdat elke goede beslissing hieruit volgt.</p>
+    </div></div>
+    <div class="step"><div class="num">2</div><div>
+      <div class="naam">Fundament</div><h3>Doelen en cijfers</h3>
+      <p>"Meer omzet" is geen plan. We vertalen je bedrijfsdoelen naar doelen die marketing kan dragen, meetpunten die er echt toe doen en streefwaarden waar je ons aan mag houden. Verkeer is geen bedrijfsdoel. Een ranking is geen eindresultaat.</p>
+    </div></div>
+    <div class="step"><div class="num">3</div><div>
+      <div class="naam">Fundament</div><h3>Het model</h3>
+      <p>Alles wat we leren, komt samen in één levend model van je bedrijf: je aanbod, je doelgroepen, je markt en concurrenten, waar je klanten naar zoeken, je doelen en streefwaarden. Zo gaat er niets verloren tussen tools en partijen — en spreekt alles wat we doen dezelfde taal.</p>
+    </div></div>
+    <div class="step"><div class="num">4</div><div>
+      <div class="naam">Groeiplan &amp; uitvoering</div><h3>Uitvoering</h3>
+      <p>Vanuit het model bouwen en voeren we uit: je website (samen met onze gespecialiseerde websitepartner), content die bestaat omdat er echte vraag achter zit, advertenties en meting. Eén afzender, één verhaal. Jij beslist alleen waar jouw keuze nodig is.</p>
+    </div></div>
+    <div class="step"><div class="num">5</div><div>
+      <div class="naam">Opvolging</div><h3>Meten en bijsturen</h3>
+      <p>We meten tegen de streefwaarden uit stap 2 en rapporteren in jouw taal: aanvragen en leads, niet clicks. Wat werkt, doen we meer. Wat niet werkt, stoppen we — en het model wordt bijgewerkt. Zo wordt elke maand slimmer dan de vorige.</p>
+    </div></div>
+
+    <div class="finebox">
+      <h3>Voor wie het graag scherper heeft</h3>
+      <p>Onze werkwijze bouwt op het gedachtegoed van Avinash Kaushik: vertrek vanuit het bedrijf, de doelstellingen en de meting — nooit vanuit kanalen of tools. Het verschil: bij ons is dat geen denkkader op een slide. We hebben het gebouwd. Ons eigen systeem — je zou het het commerciële besturingssysteem van je bedrijf kunnen noemen — bewaart het model, stuurt de uitvoering en meet het resultaat. AI helpt daarbij waar het beter of sneller is; mensen beoordelen alles wat naar buiten gaat. Technologie is bij ons het bewijs dat het kan, niet de verkooppraat.</p>
+      <p><strong>En morgen?</strong> Het model wordt waardevoller naarmate er meer op aansluit. We werken aan koppelingen met CRM en AI-assistenten, zodat ook die vanuit hetzelfde begrip van je bedrijf werken. Dat is een uitbreidingsrichting — geen belofte waar je vandaag voor betaalt.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:52px">
+      <a class="btn btn-purple" href="#" onclick="show('home','start');return false">Bekijk hoe je start</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div><span style="font-family:var(--head);font-weight:800;color:var(--purple)">Sherlock SEO</span> <span style="letter-spacing:.18em;font-size:.62rem;font-weight:700">DIGITAL GROWTH INTELLIGENCE</span></div>
+    <div>sherlockseo.com · info@sherlockseo.com · Prijzen excl. btw · Advertentiebudget niet inbegrepen</div>
+  </div>
+</footer>
+
+<script>
+function show(page, anchor){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  if(anchor){ setTimeout(()=>{document.getElementById(anchor).scrollIntoView({behavior:'smooth'});},50); }
+  else { window.scrollTo({top:0}); }
+}
+</script>
+</body>
+</html>
