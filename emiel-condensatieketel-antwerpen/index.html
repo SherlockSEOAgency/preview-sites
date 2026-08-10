@@ -20,28 +20,25 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--page-bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:860px;margin:0 auto}
-h1,h2,h3,h4{font-family:var(--head);font-weight:700;line-height:1.18;margin:0;text-wrap:balance}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.18;margin:0;text-wrap:balance}
 p{margin:0}
 a{color:var(--amber)}
-
 .hero{background:linear-gradient(160deg,var(--steel),var(--steel-2));color:#eef3f8;padding:40px 30px 34px}
 .brand{font-family:var(--head);font-weight:700;letter-spacing:.03em;display:flex;align-items:center;gap:8px;font-size:1.05rem}
 .flame{width:13px;height:13px;border-radius:50% 50% 50% 0;background:var(--amber);transform:rotate(45deg)}
 .geo{display:inline-block;margin-top:16px;background:var(--amber-tint);border:1px solid var(--amber);color:#ffcf9e;font-family:var(--head);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:6px}
 .hero h1{font-size:clamp(1.7rem,4.6vw,2.4rem);margin:14px 0 8px;color:#fff;max-width:20ch}
 .hero h1 em{color:var(--amber);font-style:normal}
-.hero .lead{color:#dbe6f0;max-width:52ch;font-size:1.1rem;font-weight:700}
-.hero .sub{color:#c1cedb;max-width:54ch;margin-top:8px}
+.hero .lead{color:#dbe6f0;max-width:54ch;font-size:1.1rem;font-weight:700}
+.hero .sub{color:#c1cedb;max-width:56ch;margin-top:8px}
 .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
 .btn{border-radius:9px;padding:13px 22px;font-weight:700;font-family:var(--head);font-size:.95rem;text-decoration:none;border:1px solid transparent;display:inline-block}
 .btn.primary{background:var(--amber);color:#fff}
 .btn.ghost{background:transparent;color:#eef3f8;border-color:rgba(255,255,255,.4)}
 .reassure{margin-top:12px;font-size:.82rem;color:#9fb4c4}
-
 .trustbar{display:flex;flex-wrap:wrap;gap:8px;padding:16px 30px;background:var(--surface);border-bottom:1px solid var(--line)}
 .trustbar .t{display:flex;align-items:center;gap:6px;font-size:.79rem;font-weight:700;font-family:var(--head);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
 .trustbar .t .c{color:var(--green)}
-
 .body{padding:26px 30px 34px}
 .sec-h{font-family:var(--head);font-weight:700;font-size:1.2rem;margin:30px 0 10px}
 .snippet{border:1px solid var(--line);border-left:4px solid var(--amber);background:var(--surface);border-radius:0 10px 10px 0;padding:16px 18px}
@@ -49,50 +46,40 @@ a{color:var(--amber)}
 .snippet p{font-size:.96rem}
 p.t,li{font-size:.96rem}
 ul{margin:10px 0 0;padding-left:18px} li{margin:4px 0}
-
 .proof{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
 @media(max-width:600px){.proof{grid-template-columns:1fr}}
 .quote{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
 .quote .stars{color:var(--amber);letter-spacing:2px}
 .quote p{font-size:.94rem;font-style:italic;margin-top:6px}
 .quote .who{font-size:.8rem;color:var(--muted);margin-top:10px;font-style:normal;font-weight:700}
-
 .obj{background:var(--green-tint);border:1px solid var(--green);border-radius:12px;padding:18px 20px;margin-top:14px}
 .obj h3{font-size:1.05rem}
 .obj p{font-size:.95rem;margin-top:6px}
-
 table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.9rem}
 thead{background:var(--steel);color:#fff}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-family:var(--head);font-weight:700;font-size:.82rem}
 tr.win td{background:var(--green-tint)}
-
-.urgency{border-left:4px solid var(--amber);background:var(--amber-tint);border-radius:0 10px 10px 0;padding:16px 18px;margin-top:14px}
-.urgency b{color:var(--amber)}
-
+.note{border-left:4px solid var(--amber);background:var(--amber-tint);border-radius:0 10px 10px 0;padding:16px 18px;margin-top:14px;font-size:.94rem}
 .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 @media(max-width:560px){.gal{grid-template-columns:repeat(2,1fr)}}
 .gal figure{margin:0}
 .gal .ph{aspect-ratio:4/3;border-radius:10px;border:1px solid var(--line);background:linear-gradient(135deg,#e7edf2,#d3dde6);display:flex;align-items:center;justify-content:center;color:#6a7c8c;font-family:var(--head);font-weight:700;font-size:.76rem;text-align:center;padding:10px}
 @media(prefers-color-scheme:dark){.gal .ph{background:linear-gradient(135deg,#243444,#1a2836);color:#7f93a5}}
 .gal figcaption{font-size:.76rem;color:var(--muted);margin-top:5px}
-
-.video{margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,var(--steel),var(--steel-2));aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#cfe;gap:12px;text-align:center;padding:18px}
-.video .play{width:60px;height:60px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center}
-.video .play::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
-.video .vt{font-family:var(--head);font-weight:700;font-size:1.05rem}
-
+.video{margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:#000}
+.video iframe{width:100%;height:100%;border:0;display:block}
+.local{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:8px;font-size:.9rem}
+.badge{font-size:.7rem;font-weight:700;color:var(--green);border:1px solid var(--green);border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:6px}
 .faq details{border:1px solid var(--line);border-radius:9px;background:var(--card);margin-top:8px}
 .faq summary{cursor:pointer;padding:12px 14px;font-weight:700;font-family:var(--head);font-size:.95rem;list-style:none}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::before{content:"+ ";color:var(--amber)}
 .faq details[open] summary::before{content:"– "}
 .faq p{padding:0 14px 12px;font-size:.92rem;color:var(--muted)}
-
 .finalcta{background:linear-gradient(160deg,var(--steel),var(--steel-2));color:#eef3f8;border-radius:14px;padding:26px 24px;margin-top:20px;text-align:center}
 .finalcta h3{color:#fff;font-size:1.3rem}
-.finalcta p{color:#c1cedb;font-size:.95rem;margin:8px auto 16px;max-width:46ch}
-
+.finalcta p{color:#c1cedb;font-size:.95rem;margin:8px auto 16px;max-width:48ch}
 .foot{background:var(--surface);border-top:1px solid var(--line);padding:22px 30px;font-size:.86rem;color:var(--muted)}
 .foot b{font-family:var(--head);color:var(--ink)}
 .foot a{color:var(--amber);text-decoration:none}
@@ -103,15 +90,15 @@ tr.win td{background:var(--green-tint)}
 
   <div class="hero">
     <div class="brand"><span class="flame"></span> Emiel bvba · Energieke oplossingen</div>
-    <span class="geo">📍 Groot-Antwerpen</span>
+    <span class="geo">📍 Antwerpen &amp; districten</span>
     <h1>Uw gasketel <em>vervangen</em> in Antwerpen?</h1>
-    <p class="lead">Dan heeft u nood aan een eerlijke expert — geen verkoper.</p>
-    <p class="sub">Warmtepomp, hybride of toch weer een condensatieketel? De regels en prijzen wisselen snel. Wij komen langs, bekijken úw installatie en zeggen eerlijk wat het slimst is. Erkend, mét keuring en attest.</p>
+    <p class="lead">Dan heeft u nood aan een expert die u eerlijk adviseert.</p>
+    <p class="sub">Een nieuwe condensatieketel, of toch een hybride of warmtepomp? De keuze is niet vanzelfsprekend. Wij komen langs, bekijken uw installatie en zeggen u eerlijk wat het beste past bij uw woning. Erkend geplaatst, mét keuring en attest.</p>
     <div class="cta">
-      <a class="btn primary" href="#cta">Vraag uw eerlijk advies</a>
-      <a class="btn ghost" href="#keuze">Toon mij de opties</a>
+      <a class="btn primary" href="#cta">Vraag ons eerlijk advies</a>
+      <a class="btn ghost" href="#keuze">Bekijk de opties</a>
     </div>
-    <p class="reassure">✓ CERGA-erkend&nbsp;&nbsp;·&nbsp;&nbsp;✓ Antwoord binnen 24u&nbsp;&nbsp;·&nbsp;&nbsp;✓ Gratis advies aan huis in Antwerpen</p>
+    <p class="reassure">✓ CERGA-erkend&nbsp;&nbsp;·&nbsp;&nbsp;✓ Antwoord binnen 24u&nbsp;&nbsp;·&nbsp;&nbsp;✓ Advies aan huis in Antwerpen</p>
   </div>
 
   <div class="trustbar">
@@ -125,38 +112,44 @@ tr.win td{background:var(--green-tint)}
 
     <div class="snippet">
       <div class="q2">Wat kost een gasketel vervangen in Antwerpen?</div>
-      <p>Een bestaande gasketel vervangen door een nieuwe condensatieketel kost, inclusief plaatsing, doorgaans tussen <b>€2.000 en €7.500</b> — afhankelijk van type, vermogen en de rookgasafvoer. In uw offerte zeggen wij eerlijk waar het minder kan.</p>
+      <p>Een bestaande gasketel vervangen door een nieuwe condensatieketel kost, inclusief plaatsing, doorgaans tussen <b>€2.000 en €7.500</b> — afhankelijk van type, vermogen en de rookgasafvoer. Een moderne condensatieketel haalt een <b>hoger rendement</b> dan uw oude toestel, wat op uw energiefactuur en energielabel weegt. In uw offerte zeggen wij eerlijk waar het minder kan.</p>
     </div>
 
-    <h2 class="sec-h">Waarom mensen in Antwerpen Emiel bellen</h2>
+    <h2 class="sec-h">Wat klanten uit Antwerpen zeggen</h2>
     <div class="proof">
       <div class="quote"><div class="stars">★★★★★</div><p>Klantgetuigenis uit Merksem.</p><div class="who">— naam klant</div></div>
       <div class="quote"><div class="stars">★★★★★</div><p>Klantgetuigenis uit Berchem.</p><div class="who">— naam klant</div></div>
     </div>
 
-    <h2 class="sec-h" id="keuze">Warmtepomp, hybride of condensatieketel? De keuze in 30 seconden</h2>
-    <p class="t">U hoeft dit niet alleen uit te zoeken. Zo staan de opties er vandaag in Vlaanderen bij — en wij zeggen eerlijk welke bij úw woning past:</p>
+    <h2 class="sec-h" id="keuze">Condensatieketel, hybride of warmtepomp?</h2>
+    <p class="t">U hoeft dit niet alleen uit te zoeken. Zo staan de opties er vandaag in Vlaanderen bij — en wij zeggen eerlijk welke bij uw woning past:</p>
     <table>
-      <thead><tr><th>Optie</th><th>Wanneer past het</th><th>Indicatie</th><th>Regelgeving nu</th></tr></thead>
+      <thead><tr><th>Optie</th><th>Wanneer past het</th><th>Indicatie (incl. plaatsing)</th><th>Regelgeving</th></tr></thead>
       <tbody>
-        <tr class="win"><td><b>Gascondensatieketel</b></td><td>Bestaande gasaansluiting, beperkt budget, snelle vervanging</td><td>€2.000–7.500</td><td>Vervangen mag; 21% btw bij renovatie</td></tr>
+        <tr class="win"><td><b>Gascondensatieketel</b></td><td>Bestaande gasaansluiting, beperkt budget, snelle vervanging</td><td>€2.000 – €7.500</td><td>Vervangen mag; 21% btw bij renovatie</td></tr>
         <tr><td>Hybride (ketel + warmtepomp)</td><td>Geleidelijk verduurzamen, gas als backup</td><td>hoger</td><td>Toegestaan</td></tr>
-        <tr><td>Volledige warmtepomp</td><td>Goed geïsoleerde woning, lage-temperatuur-verwarming</td><td>hoogst</td><td>Verplichting geschrapt — geen must</td></tr>
+        <tr><td>Volledige warmtepomp</td><td>Goed geïsoleerde woning, lage-temperatuur-verwarming</td><td>± €10.000 – €14.000 (lucht-water)</td><td>Verplichting geschrapt — geen must</td></tr>
       </tbody>
     </table>
+    <p class="t" style="margin-top:8px;color:var(--muted);font-size:.88rem">Schakelt u over van mazout naar een warmtepomp, dan loopt dat gemiddeld op tot €13.000 – €25.000, inclusief het verwijderen van uw oude ketel.</p>
 
     <div class="obj">
-      <h3>“Gaan ze me een dure warmtepomp aanpraten?”</h3>
-      <p>Nee. Wij zijn installateur, geen verkoper. Voor de ene woning is een condensatieketel de slimste keuze, voor de andere hybride — wij zeggen het u eerlijk, ook als dat de goedkopere oplossing is. Expertise zit in de details.</p>
+      <h3>“Gaan jullie me een dure warmtepomp aanpraten?”</h3>
+      <p>Dat doen we niet. Voor de ene woning is een condensatieketel de beste keuze, voor de andere een hybride. Wij adviseren u eerlijk — ook als dat de eenvoudigere oplossing is. Expertise zit in de details.</p>
     </div>
 
-    <h2 class="sec-h">Premie &amp; prijs in 2026 — eerlijk uitgelegd</h2>
-    <div class="urgency">
-      <p>De <b>Mijn VerbouwPremie</b> voor een nieuwe gasketel verviel in 2024, en bij renovatie (woning &gt; 10 jaar) steeg de btw van <b>6% naar 21%</b>. Concreet: <b>uitstellen maakt vervangen duurder, niet goedkoper.</b> Uw oude, niet-condenserende ketel verbruikt intussen elke winter te veel.</p>
+    <h2 class="sec-h">Advies in beeld: warmtepomp of cv-ketel?</h2>
+    <p class="t" style="color:var(--muted);font-size:.9rem">Emiel legt het zelf uit.</p>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/_Okyc08ffcI" title="Warmtepomp of cv ketel? — Emiel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
+    <h2 class="sec-h">Premie, btw &amp; regelgeving in 2026</h2>
     <ul>
-      <li>In nieuwbouw geen gas meer sinds 2025 — een <b>bestaande gasketel vervangen mag wél</b>.</li>
-      <li>De verplichte hybride-warmtepomp bij vervanging is <b>geschrapt</b>: u kiest zelf.</li>
+      <li>De <b>Mijn VerbouwPremie</b> voor een nieuwe gasketel is sinds 2024 niet meer aan te vragen.</li>
+      <li>Bij renovatie (woning ouder dan 10 jaar) geldt <b>21% btw</b> op een nieuwe condensatieketel in plaats van 6%.</li>
+      <li>In nieuwbouw mag geen gas meer sinds 2025 — een <b>bestaande gasketel vervangen mag wél</b>.</li>
+      <li>De verplichte hybride-warmtepomp bij vervanging is geschrapt: u kiest zelf.</li>
     </ul>
 
     <h2 class="sec-h">Onze plaatsingen in Antwerpen</h2>
@@ -169,30 +162,30 @@ tr.win td{background:var(--green-tint)}
       <figure><div class="ph">Projectfoto</div><figcaption>Oplevering · Hoboken</figcaption></figure>
     </div>
 
-    <h2 class="sec-h">Advies in beeld</h2>
-    <div class="video">
-      <div class="play"></div>
-      <div class="vt">Emiel legt uit: zo verloopt een ketelvervanging</div>
-    </div>
-
     <h2 class="sec-h">Veelgestelde vragen</h2>
     <div class="faq">
-      <details open><summary>Mag ik na 2026 nog een condensatieketel plaatsen?</summary><p>Ja. De geplande verplichte hybride-warmtepomp is geschrapt; u kunt ook na 2026 gewoon een condensatieketel laten vervangen.</p></details>
-      <details><summary>Duwen jullie me richting de duurste oplossing?</summary><p>Nooit. Wij adviseren eerlijk wat bij uw woning past — soms is dat net de eenvoudigere condensatieketel.</p></details>
-      <details><summary>Hoe lang duurt een vervanging?</summary><p>Een standaard ketelvervanging in Antwerpen doen we doorgaans op één dag, inclusief keuring en attest van eerste inbedrijfstelling.</p></details>
-      <details><summary>In welke regio zijn jullie actief?</summary><p>In Groot-Antwerpen: Antwerpen, Merksem, Deurne, Borgerhout, Berchem, Ekeren, Wilrijk en Hoboken.</p></details>
+      <details open><summary>Wat kost het gemiddeld om een cv-ketel te vervangen?</summary><p>Een nieuwe gascondensatieketel, inclusief plaatsing, kost doorgaans tussen €2.000 en €7.500. De prijs hangt af van het type, het vermogen en de aanpassingen aan rookgasafvoer en leidingen.</p></details>
+      <details><summary>Na hoeveel jaar moet een cv-ketel vervangen worden?</summary><p>Een goed onderhouden cv-ketel gaat gemiddeld 10 tot 15 jaar mee. Wordt hij ouder, dan stijgt de kans op storingen en zakt het rendement — dan is vervangen vaak voordeliger dan blijven herstellen.</p></details>
+      <details><summary>Hoe weet ik of mijn ketel aan vervanging toe is?</summary><p>Let op de leeftijd (15+ jaar), terugkerende storingen, een stijgend verbruik, roest of vocht rond het toestel, en oplopende herstelkosten. Twijfelt u? Wij komen langs en zeggen u eerlijk of vervangen zin heeft.</p></details>
+      <details><summary>Kan ik mijn gasketel zelf vervangen?</summary><p>Nee. Een gasketel moet geplaatst en gekeurd worden door een erkend technicus, met een attest van eerste inbedrijfstelling. Wij zijn CERGA-erkend en leveren dat attest standaard.</p></details>
+      <details><summary>Kan ik na 2026 nog een condensatieketel plaatsen?</summary><p>Ja. De geplande verplichte hybride-warmtepomp bij vervanging is geschrapt; u kunt ook na 2026 gewoon een condensatieketel laten plaatsen.</p></details>
+      <details><summary>Kan ik mijn gasketel vervangen door een warmtepomp?</summary><p>In veel woningen kan dat. Het hangt af van uw isolatie en verwarmingssysteem (lage temperatuur werkt het best). Wij bekijken of het bij u haalbaar en rendabel is.</p></details>
+      <details><summary>Wat kost het om over te schakelen naar een warmtepomp?</summary><p>Een lucht-water warmtepomp kost gemiddeld €10.000 tot €14.000 inclusief plaatsing. Overschakelen van mazout loopt gemiddeld op tot €13.000 – €25.000, inclusief verwijdering van de oude ketel.</p></details>
+      <details><summary>Is er nog een premie voor een condensatieketel?</summary><p>Nee. De premie voor een nieuwe gasketel verviel in 2024, en bij renovatie geldt 21% btw. We rekenen dat transparant mee in uw offerte.</p></details>
+      <details><summary>Hoe lang duurt een vervanging?</summary><p>Een standaard ketelvervanging doen we doorgaans op één dag, inclusief keuring en attest van eerste inbedrijfstelling.</p></details>
+      <details><summary>In welke regio zijn jullie actief?</summary><p>In Antwerpen-stad en de districten: Merksem, Deurne, Borgerhout, Berchem, Ekeren, Wilrijk, Hoboken, Antwerpen-Noord, het Eilandje en Linkeroever — en de buurgemeenten Hemiksem, Schelle, Niel en Schoten.</p></details>
     </div>
 
     <div class="finalcta" id="cta">
-      <h3>Twijfelt u nog? Vraag uw eerlijk advies.</h3>
-      <p>Emiel komt langs in Antwerpen, bekijkt uw installatie en zegt eerlijk wat het slimst is. U krijgt binnen 24u antwoord.</p>
+      <h3>Twijfelt u nog? Vraag ons eerlijk advies.</h3>
+      <p>Wij komen langs in Antwerpen, bekijken uw installatie en zeggen u eerlijk wat het beste past. U krijgt binnen 24u antwoord.</p>
       <a class="btn primary" href="tel:+3236440112">📞 03 644 01 12</a>
       &nbsp;<a class="btn ghost" href="mailto:info@emielbvba.be">Vraag advies aan huis</a>
     </div>
   </div>
 
   <div class="foot">
-    <b>Emiel bvba</b> — Energieke oplossingen in sanitair en verwarming · Groot-Antwerpen<br>
+    <b>Emiel bvba</b> — Energieke oplossingen in sanitair en verwarming · Antwerpen &amp; districten<br>
     📞 <a href="tel:+3236440112">03 644 01 12</a> &nbsp;·&nbsp; ✉ <a href="mailto:info@emielbvba.be">info@emielbvba.be</a>
   </div>
 
