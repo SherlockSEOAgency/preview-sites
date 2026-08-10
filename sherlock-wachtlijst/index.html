@@ -2,186 +2,322 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<title>Zo'n website ook? | Sherlock SEO · wachtlijst</title>
-<meta name="description" content="Datagedreven lokale service-websites die ranken én converteren. Schrijf je in op de wachtlijst.">
+<title>Sherlock | De eerste SEO Agent, die je website ook bouwt</title>
+<meta name="description" content="Sherlock is een SEO Agent die niet stopt bij analyse. Vertel hem wat je bedrijf doet, en hij bouwt er een echte website mee. Zet je op de wachtlijst.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --purple:#662483; --green:#6BB869; --white:#fff;
-  --ink:#22222a; --muted:#6B6B6B; --line:#e6e4ec; --surface:#f6f5f9;
-  --green-tint:rgba(107,184,105,.14); --purple-tint:rgba(102,36,131,.08);
-  --page-bg:#ffffff; --card:#ffffff;
-  --head:"Raleway","Segoe UI",system-ui,-apple-system,sans-serif;
-  --body:"Open Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --black:#0b0b0b; --ink:#141414; --paper:#f3f0ea; --white:#ffffff;
+  --accent:#ff2f17; --line:#2a2a2a; --line-paper:#d9d5cc; --muted:#8a8a8a; --muted-paper:#6d675c;
+  --display:"Anton",Impact,system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --body:"Inter",system-ui,-apple-system,Segoe UI,sans-serif;
 }
-@media (prefers-color-scheme:dark){:root{
-  --ink:#ece9f3; --muted:#a5a1ad; --line:#332c40; --surface:#1b1622;
-  --page-bg:#120e18; --card:#1a1522; --green-tint:rgba(107,184,105,.16); --purple-tint:rgba(146,86,180,.14);}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--page-bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
-h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.15;margin:0;text-wrap:balance}
-p{margin:0}
-a{color:var(--purple)}
-.eyebrow{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--purple)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--paper);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+h1,h2,h3{margin:0}
+.disp{font-family:var(--display);font-weight:400;line-height:.92;letter-spacing:.005em;text-transform:uppercase}
 
-/* nav */
-.nav{display:flex;align-items:center;gap:10px;padding:20px 2px}
-.q{width:24px;height:24px;border-radius:6px;background:var(--purple);position:relative}
-.q::after{content:"";position:absolute;inset:6px;border-radius:50%;border:2.5px solid var(--green)}
-.nav b{font-family:var(--head);font-size:1.05rem}
-.nav small{display:block;font-size:.56rem;letter-spacing:.2em;color:var(--muted);font-weight:700}
+/* top bar */
+.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,11,11,.86);backdrop-filter:blur(6px);z-index:40}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--display);font-size:1.35rem;letter-spacing:.02em;text-transform:uppercase}
+.brand b{color:var(--accent)}
+.topmeta{color:var(--muted)}
+.top .cta-sm{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--paper);padding:8px 14px;color:var(--paper)}
+.top .cta-sm:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(max-width:640px){.topmeta{display:none}}
 
 /* hero */
-.hero{position:relative;overflow:hidden;background:var(--purple);color:#fff;border-radius:18px;padding:44px 40px 40px;margin-top:6px}
-.hero::after{content:"";position:absolute;right:-70px;bottom:-70px;width:300px;height:300px;background:linear-gradient(135deg,transparent 47%,var(--green) 48%);opacity:.9;transform:rotate(8deg)}
-.hero h1{position:relative;z-index:2;font-size:clamp(2rem,5.4vw,3.1rem);max-width:16ch}
-.hero h1 .g{color:var(--green)}
-.hero p{position:relative;z-index:2;margin-top:14px;font-size:1.12rem;max-width:52ch;color:#efe8f5}
-.hero .cta{position:relative;z-index:2;margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.btn{border-radius:10px;padding:14px 24px;font-weight:700;font-family:var(--head);font-size:1rem;text-decoration:none;border:1px solid transparent;display:inline-block;cursor:pointer}
-.btn.primary{background:var(--green);color:#0b2b0b}
-.btn.on-p{background:#fff;color:var(--purple)}
-.hero .micro{position:relative;z-index:2;margin-top:12px;font-size:.82rem;color:#d7c8e6}
+.hero{padding:74px 0 64px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(3rem,10vw,7.6rem);margin:20px 0 0;max-width:15ch}
+.hero h1 .u{color:var(--accent)}
+.hero .lead{margin-top:26px;max-width:56ch;font-size:1.15rem;color:#d7d2c8}
+.hero .lead b{color:var(--white)}
+.hero .btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-block;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:15px 26px;border:1px solid var(--paper)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.btn:hover{background:var(--paper);color:var(--black)}
+.btn.solid:hover{background:#fff;color:var(--black)}
+.tickers{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+.tickers span b{color:var(--paper)}
 
-/* value row */
-.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
-@media(max-width:680px){.vals{grid-template-columns:1fr}}
-.val{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px}
-.val h3{font-size:1rem}
-.val h3 .n{color:var(--purple);font-family:var(--head)}
-.val p{font-size:.9rem;color:var(--muted);margin-top:5px}
+/* statement billboard = the repeatable campaign device */
+.statement{background:var(--black);border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);padding:64px 0}
+.statement .tag{color:var(--accent);margin-bottom:20px}
+.statement .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:.01em}
+.statement .big .u{color:var(--accent)}
+.statement .sub{margin-top:22px;max-width:60ch;color:#cfcabf;font-size:1.05rem}
+.statement.invert{background:var(--paper);color:var(--ink)}
+.statement.invert .sub{color:var(--muted-paper)}
 
-/* portfolio */
-.sec{margin-top:40px}
-.sec > .eyebrow{display:block;margin-bottom:6px}
-.sec h2{font-size:1.5rem}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.grid{grid-template-columns:1fr}}
-.pf{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);text-decoration:none;color:var(--ink);transition:transform .12s ease,box-shadow .12s ease}
-.pf:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(102,36,131,.12)}
-.pf .shot{aspect-ratio:16/10;background:linear-gradient(150deg,var(--purple),#8a49ac);display:flex;align-items:flex-end;padding:14px;color:#fff}
-.pf .shot .badge{font-family:var(--head);font-weight:700;font-size:.72rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:2px 8px}
-.pf.s2 .shot{background:linear-gradient(150deg,#2e8b57,#57b06f)}
-.pf.s3 .shot{background:linear-gradient(150deg,#1f2a37,#33465b)}
-.pf.s4 .shot{background:linear-gradient(150deg,#b5533a,#e4720b)}
-.pf.s5 .shot{background:linear-gradient(150deg,#3a4db5,#5a78d0)}
-.pf .meta{padding:14px 16px}
-.pf .meta b{font-family:var(--head);font-size:1rem}
-.pf .meta .sub{font-size:.82rem;color:var(--muted);margin-top:2px}
-.pf .meta .live{font-size:.78rem;color:var(--purple);font-weight:700;margin-top:8px;display:inline-block}
+/* paper section */
+.paper{background:var(--paper);color:var(--ink)}
+.paper .mono,.paper .eyebrow{color:var(--accent)}
+.sec{padding:76px 0}
+.sec h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.95;margin-top:14px;max-width:20ch}
+.sec .intro{margin-top:16px;max-width:60ch;font-size:1.08rem;color:var(--muted-paper)}
 
-/* waitlist form */
-.wl{margin-top:44px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:34px 32px}
-.wl h2{font-size:1.7rem;max-width:18ch}
-.wl h2 .g{color:var(--green)}
-.wl p.intro{color:var(--muted);margin-top:8px;max-width:52ch}
-.form{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px}
+/* how it works flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch;margin-top:40px}
+@media(max-width:820px){.flow{grid-template-columns:1fr;gap:16px}.flow .arrow{transform:rotate(90deg);justify-self:start;margin:0 0 0 8px}}
+.node{border:1px solid var(--ink);padding:22px 20px;background:var(--white)}
+.node .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.node h3{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;margin:8px 0 10px;line-height:1}
+.node ul{margin:0;padding-left:16px;font-size:.9rem;color:#3a362e}
+.node li{margin:3px 0}
+.node.mid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.node.mid ul{color:#cfcabf}
+.arrow{align-self:center;font-family:var(--display);font-size:1.6rem;color:var(--accent)}
+
+/* portfolio editorial list */
+.work{margin-top:36px;border-top:2px solid var(--ink)}
+.work a{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;padding:22px 4px;border-bottom:1px solid var(--line-paper);color:var(--ink);transition:padding .12s ease,background .12s ease}
+.work a:hover{background:var(--ink);color:var(--paper);padding-left:16px}
+.work a:hover .sector,.work a:hover .go{color:var(--paper)}
+.work .no{font-family:var(--mono);color:var(--accent);font-size:.9rem}
+.work .nm{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.4rem,3.6vw,2.2rem);line-height:1}
+.work .sector{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-paper);margin-top:4px}
+.work .go{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-paper);white-space:nowrap}
+.work .go .accent{color:var(--accent)}
+.worknote{margin-top:16px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-paper)}
+
+/* ladder */
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border:1px solid var(--line)}
+@media(max-width:820px){.ladder{grid-template-columns:1fr}}
+.rung{padding:28px 24px;border-right:1px solid var(--line)}
+.rung:last-child{border-right:0}
+@media(max-width:820px){.rung{border-right:0;border-bottom:1px solid var(--line)}.rung:last-child{border-bottom:0}}
+.rung .step{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.rung h3{font-family:var(--display);text-transform:uppercase;font-size:1.9rem;margin:10px 0 4px;line-height:1}
+.rung .said{font-style:italic;color:#cfcabf;margin:0 0 12px;font-size:.98rem}
+.rung p{margin:0;color:#bdb8ad;font-size:.94rem}
+.caps{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
+.caps span{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);padding:4px 9px;color:var(--paper)}
+
+/* waitlist */
+.wl{padding:84px 0}
+.wl h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.4rem,7vw,5rem);line-height:.92;max-width:16ch}
+.wl h2 .u{color:var(--accent)}
+.wl .intro{margin-top:18px;max-width:54ch;color:#cfcabf;font-size:1.08rem}
+.form{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px}
 @media(max-width:560px){.form{grid-template-columns:1fr}}
 .form .full{grid-column:1/-1}
-.form label{font-size:.78rem;font-weight:700;font-family:var(--head);color:var(--ink);display:block;margin-bottom:4px}
-.form input,.form textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font-family:var(--body);font-size:.95rem}
-.form input:focus,.form textarea:focus{outline:2px solid var(--purple);border-color:var(--purple)}
-.form .submit{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.form .note{font-size:.76rem;color:var(--muted)}
-.wl-ok{display:none;margin-top:16px;background:var(--green-tint);border:1px solid var(--green);border-radius:10px;padding:14px 16px;font-weight:700;font-family:var(--head);color:var(--ink)}
+.form label{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
+.form input,.form textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:#111;color:var(--paper);font-family:var(--body);font-size:.98rem}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--accent)}
+.form .submit{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px}
+.form button{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:.82rem;background:var(--accent);color:#fff;border:0;padding:16px 30px;cursor:pointer}
+.form button:hover{background:#fff;color:var(--black)}
+.form .note{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.wl-ok{display:none;margin-top:18px;border-left:3px solid var(--accent);padding:14px 16px;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;background:#141414}
 
-.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.foot b{font-family:var(--head);color:var(--ink)}
+.foot{border-top:1px solid var(--line);padding:28px 0 46px;color:var(--muted);font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot b{color:var(--paper);font-family:var(--display);letter-spacing:.02em}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="nav">
-    <span class="q"></span>
-    <b>Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></b>
-  </div>
-
-  <!-- HERO -->
-  <div class="hero">
-    <h1>Wil je <span class="g">zo'n website</span> ook?</h1>
-    <p>Datagedreven lokale service-websites die niet alleen mooi zijn, maar <b>ranken én converteren</b>, gebouwd op echte zoekdata, de stem van jouw bedrijf en de intentie van je klant.</p>
-    <div class="cta">
-      <a class="btn primary" href="#wachtlijst">Zet mij op de wachtlijst</a>
-      <a class="btn on-p" href="#werk">Bekijk het werk</a>
+  <header class="top">
+    <div class="wrap">
+      <span class="brand">SHER<b>L</b>OCK</span>
+      <span class="mono topmeta">// CATEGORY: SEO AGENT</span>
+      <a class="cta-sm" href="#wachtlijst">Wachtlijst</a>
     </div>
-    <p class="micro">Beperkte plaatsen per kwartaal. We bouwen ze goed, niet snel.</p>
-  </div>
+  </header>
 
-  <!-- VALUE -->
-  <div class="vals">
-    <div class="val"><h3><span class="n">01.</span> Data, geen gok</h3><p>Elke pagina op echte zoekvolumes, SERP-realiteit en zoekintentie, niet op giswerk.</p></div>
-    <div class="val"><h3><span class="n">02.</span> Jouw stem</h3><p>We schrijven in de toon van jouw bedrijf, met overtuigingsopbouw die converteert.</p></div>
-    <div class="val"><h3><span class="n">03.</span> Lokaal winnen</h3><p>Geo-pagina's die de local pack pakken en je telefoon laten rinkelen.</p></div>
-  </div>
-
-  <!-- PORTFOLIO -->
-  <div class="sec" id="werk">
-    <span class="eyebrow">Voorbeelden</span>
-    <h2>Zo ziet het eruit</h2>
-    <div class="grid">
-      <a class="pf s2" href="https://ck.preview.sherlockseo.com" target="_blank" rel="noopener">
-        <div class="shot"><span class="badge">Reiniging</span></div>
-        <div class="meta"><b>CK Service</b><div class="sub">Professionele reiniging</div><span class="live">Bekijk voorbeeld →</span></div>
-      </a>
-      <a class="pf s3" href="https://extraproper.preview.sherlockseo.com" target="_blank" rel="noopener">
-        <div class="shot"><span class="badge">Schoonmaak</span></div>
-        <div class="meta"><b>Extra Proper</b><div class="sub">Schoonmaakdiensten</div><span class="live">Bekijk voorbeeld →</span></div>
-      </a>
-      <a class="pf s5" href="https://knokke.preview.sherlockseo.com" target="_blank" rel="noopener">
-        <div class="shot"><span class="badge">Vastgoed</span></div>
-        <div class="meta"><b>Knokke Luxury Rentals</b><div class="sub">Luxe verhuur aan de kust</div><span class="live">Bekijk voorbeeld →</span></div>
-      </a>
-      <a class="pf s4" href="https://yc.preview.sherlockseo.com" target="_blank" rel="noopener">
-        <div class="shot"><span class="badge">Schrijnwerk</span></div>
-        <div class="meta"><b>YC Ramen &amp; Deuren</b><div class="sub">Ramen, deuren &amp; renovatie</div><span class="live">Bekijk voorbeeld →</span></div>
-      </a>
-      <a class="pf s1" href="https://emiel-condensatieketel-antwerpen.preview.sherlockseo.com" target="_blank" rel="noopener">
-        <div class="shot"><span class="badge">Verwarming</span></div>
-        <div class="meta"><b>Emiel bvba</b><div class="sub">Verwarming &amp; sanitair · Antwerpen</div><span class="live">Bekijk voorbeeld →</span></div>
-      </a>
-      <a class="pf s2" href="#wachtlijst">
-        <div class="shot" style="background:linear-gradient(150deg,#4a4a55,#6b6b78)"><span class="badge">Binnenkort</span></div>
-        <div class="meta"><b>Jouw website?</b><div class="sub">Beperkte plaatsen per kwartaal</div><span class="live">Zet mij op de lijst →</span></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- WAITLIST -->
-  <div class="wl" id="wachtlijst">
-    <span class="eyebrow">Wachtlijst</span>
-    <h2>Klaar voor een site die <span class="g">werkt voor je bedrijf</span>?</h2>
-    <p class="intro">Laat je gegevens achter. We nemen contact op zodra er een plaats vrijkomt, en we vertellen je eerlijk of jouw markt geschikt is.</p>
-    <form class="form" id="wlform">
-      <div><label for="naam">Naam</label><input id="naam" name="naam" required></div>
-      <div><label for="bedrijf">Bedrijf</label><input id="bedrijf" name="bedrijf"></div>
-      <div class="full"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
-      <div class="full"><label for="website">Huidige website (optioneel)</label><input id="website" name="website" placeholder="www.jouwbedrijf.be"></div>
-      <div class="full"><label for="bericht">Wat wil je bereiken? (optioneel)</label><textarea id="bericht" name="bericht" rows="2"></textarea></div>
-      <div class="submit">
-        <button class="btn primary" type="submit">Zet mij op de wachtlijst</button>
-        <span class="note">We gebruiken je gegevens enkel om contact op te nemen.</span>
+  <!-- 1. CATEGORY / HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="mono eyebrow">Maak kennis met Sherlock // De eerste SEO Agent</div>
+      <h1 class="disp">De SEO Agent die je website <span class="u">ook bouwt</span>.</h1>
+      <p class="lead">De meeste tools analyseren en adviseren. Sherlock <b>voert uit</b>. Vertel hem wat je bedrijf doet, en hij vertaalt dat in een echte website: een doordachte structuur, copy en basis-SEO. Search-data en verdere optimalisatie komen daar bovenop wanneer je ze nodig hebt.</p>
+      <div class="btns">
+        <a class="btn solid" href="#wachtlijst">Zet mij op de wachtlijst</a>
+        <a class="btn" href="#werk">Bekijk het werk</a>
       </div>
-    </form>
-    <div class="wl-ok" id="wlok">✓ Bedankt! Je staat op de wachtlijst. We nemen contact op.</div>
-  </div>
+      <div class="tickers mono">
+        <span><b>1.</b> Vertel wat je doet</span>
+        <span><b>2.</b> Sherlock bouwt</span>
+        <span><b>3.</b> Uitbreiden wanneer nodig</span>
+      </div>
+    </div>
+  </section>
 
-  <div class="foot">
-    <span><b>Sherlock SEO</b> · Digital Growth Intelligence</span>
-    <span>sherlockseo.com</span>
-  </div>
+  <!-- CAMPAIGN DEVICE: Sherlock Statement #1 -->
+  <section class="statement">
+    <div class="wrap">
+      <div class="mono tag">// Demand exists. Sherlock finds it. Then acts on it.</div>
+      <div class="big">Your next customer<br>is already <span class="u">searching</span>.</div>
+      <p class="sub">Een zoekopdracht is vraag, met de hand al omhoog. De meeste software telt die vraag alleen. Sherlock zet ze om in werk.</p>
+    </div>
+  </section>
 
-</div>
+  <!-- 2. SHOW, DON'T TELL -->
+  <section class="paper">
+    <div class="sec wrap">
+      <div class="mono eyebrow">Hoe het werkt</div>
+      <h2>Jij levert de kennis. Sherlock doet het werk.</h2>
+      <p class="intro">Je hoeft geen SEO-strategie te kopen om een goede website te krijgen. Je vertelt via de intake wat je bedrijf is. Sherlock maakt daar een gestructureerde site van.</p>
+      <div class="flow">
+        <div class="node">
+          <div class="k">Input // jij</div>
+          <h3>Jouw bedrijf</h3>
+          <ul>
+            <li>Aanbod en klanten</li>
+            <li>Regio en positionering</li>
+            <li>Tone of voice</li>
+            <li>Gewenste acties</li>
+            <li>Eventueel keywords</li>
+          </ul>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="node mid">
+          <div class="k" style="color:var(--accent)">Agent // Sherlock</div>
+          <h3>Doet het werk</h3>
+          <ul>
+            <li>Pagina-architectuur</li>
+            <li>Copy in jouw stem</li>
+            <li>Basis-SEO en schema</li>
+            <li>Opgebouwd, niet gegokt</li>
+          </ul>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="node">
+          <div class="k">Output // resultaat</div>
+          <h3>Je website</h3>
+          <ul>
+            <li>Een echte, live site</li>
+            <li>Klaar voor je goedkeuring</li>
+            <li>Modulair uitbreidbaar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. REAL WORK -->
+  <section class="paper" id="werk" style="border-top:1px solid var(--line-paper)">
+    <div class="sec wrap">
+      <div class="mono eyebrow">Echt werk</div>
+      <h2>Voorbeelden, geen mockups.</h2>
+      <p class="intro">Sites die Sherlock bouwde, in de stem van elk bedrijf. Bekijk ze.</p>
+      <div class="work">
+        <a href="https://ck.preview.sherlockseo.com" target="_blank" rel="noopener">
+          <span class="no">01</span>
+          <span><span class="nm">CK Service</span><span class="sector">Professionele reiniging</span></span>
+          <span class="go">Bekijk voorbeeld <span class="accent">&rarr;</span></span>
+        </a>
+        <a href="https://extraproper.preview.sherlockseo.com" target="_blank" rel="noopener">
+          <span class="no">02</span>
+          <span><span class="nm">Extra Proper</span><span class="sector">Schoonmaakdiensten</span></span>
+          <span class="go">Bekijk voorbeeld <span class="accent">&rarr;</span></span>
+        </a>
+        <a href="https://knokke.preview.sherlockseo.com" target="_blank" rel="noopener">
+          <span class="no">03</span>
+          <span><span class="nm">Knokke Luxury Rentals</span><span class="sector">Luxe verhuur aan de kust</span></span>
+          <span class="go">Bekijk voorbeeld <span class="accent">&rarr;</span></span>
+        </a>
+        <a href="https://yc.preview.sherlockseo.com" target="_blank" rel="noopener">
+          <span class="no">04</span>
+          <span><span class="nm">YC Ramen &amp; Deuren</span><span class="sector">Schrijnwerk en renovatie</span></span>
+          <span class="go">Bekijk voorbeeld <span class="accent">&rarr;</span></span>
+        </a>
+        <a href="https://emiel-condensatieketel-antwerpen.preview.sherlockseo.com" target="_blank" rel="noopener">
+          <span class="no">05</span>
+          <span><span class="nm">Emiel bvba</span><span class="sector">Verwarming en sanitair, Antwerpen</span></span>
+          <span class="go">Bekijk voorbeeld <span class="accent">&rarr;</span></span>
+        </a>
+      </div>
+      <p class="worknote">// Previews ter goedkeuring. Elke site vertrekt van de eigen intake van het bedrijf.</p>
+    </div>
+  </section>
+
+  <!-- CAMPAIGN DEVICE: Sherlock Statement #2 -->
+  <section class="statement">
+    <div class="wrap">
+      <div class="mono tag">// Find demand. Do the work. Prove it.</div>
+      <div class="big">De meeste software<br>rapporteert.<br>Sherlock <span class="u">voert uit</span>.</div>
+      <p class="sub">Analyse zonder uitvoering is een rapport dat blijft liggen. Sherlock beslist en bouwt, met een mens die stuurt en finetunet.</p>
+    </div>
+  </section>
+
+  <!-- 4 + 5. A WEBSITE IS JUST THE BEGINNING (ladder) -->
+  <section>
+    <div class="sec wrap">
+      <div class="mono eyebrow" style="color:var(--accent)">Een website is het begin</div>
+      <h2 class="disp" style="font-size:clamp(2rem,5vw,3.4rem);margin-top:14px">Begin eenvoudig. Breid uit wanneer het telt.</h2>
+      <p class="intro" style="color:#bdb8ad">Dezelfde basis groeit mee. Je koopt geen pakket, je zet aan wat relevant wordt.</p>
+      <div class="ladder">
+        <div class="rung">
+          <div class="step">01 // Build</div>
+          <h3>Website</h3>
+          <p class="said">"Ik weet welke website ik nodig heb."</p>
+          <p>Je intake wordt een gestructureerde site met copy en basis-SEO. Simpel starten, zonder SEO-traject.</p>
+        </div>
+        <div class="rung">
+          <div class="step">02 // Optimize</div>
+          <h3>Wat je nodig hebt</h3>
+          <p class="said">"Ik weet wat ik wil verbeteren."</p>
+          <p>Zet capabilities aan wanneer ze relevant zijn:</p>
+          <div class="caps">
+            <span>Search</span><span>Local</span><span>Content</span><span>Conversion</span><span>Meting</span><span>Advertenties</span><span>Extra pagina's</span>
+          </div>
+        </div>
+        <div class="rung">
+          <div class="step">03 // Grow</div>
+          <h3>Groeikansen</h3>
+          <p class="said">"Onderzoek waar mijn groei zit."</p>
+          <p>Sherlock en menselijke expertise brengen doelen, markt, klanten, vraag en concurrentie samen tot prioriteiten en een roadmap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WAITLIST -->
+  <section class="wl" id="wachtlijst" style="border-top:2px solid var(--accent)">
+    <div class="wrap">
+      <div class="mono eyebrow">Wachtlijst</div>
+      <h2 class="disp">Laat Sherlock je <span class="u">eerste website</span> bouwen.</h2>
+      <p class="intro">Sherlock bouwt nu de eerste websites. Laat je gegevens achter, dan nemen we contact op zodra er plek is, en zeggen we je eerlijk of jouw markt geschikt is.</p>
+      <form class="form" id="wlform">
+        <div><label for="naam">Naam</label><input id="naam" name="naam" required></div>
+        <div><label for="bedrijf">Bedrijf</label><input id="bedrijf" name="bedrijf"></div>
+        <div class="full"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+        <div class="full"><label for="website">Huidige website (optioneel)</label><input id="website" name="website" placeholder="www.jouwbedrijf.be"></div>
+        <div class="full"><label for="bericht">Wat wil je bereiken? (optioneel)</label><textarea id="bericht" name="bericht" rows="2"></textarea></div>
+        <div class="submit">
+          <button type="submit">Zet mij op de wachtlijst</button>
+          <span class="note">We gebruiken je gegevens enkel om contact op te nemen.</span>
+        </div>
+      </form>
+      <div class="wl-ok" id="wlok">&#10003; Bedankt. Je staat op de wachtlijst. We nemen contact op.</div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span><b>SHERLOCK</b> // de eerste SEO Agent</span>
+      <span>sherlockseo.com</span>
+    </div>
+  </footer>
+
 <script>
-// Interim capture, vervangen door directe CRM web-to-lead POST zodra endpoint bekend is.
+// Interim capture, vervangen door directe CRM web-to-lead POST zodra het endpoint bekend is.
 document.getElementById('wlform').addEventListener('submit',function(e){
   e.preventDefault();
   var d=new FormData(e.target), q=[];
-  d.forEach(function(v,k){ if(v) q.push(encodeURIComponent(k)+'='+encodeURIComponent(v)); });
-  // fallback zodat geen lead verloren gaat tot CRM gekoppeld is:
-  var body=encodeURIComponent('Nieuwe wachtlijst-aanmelding:\n\n'+decodeURIComponent(q.join('\n')));
+  d.forEach(function(v,k){ if(v) q.push(k+': '+v); });
+  var body=encodeURIComponent('Nieuwe wachtlijst-aanmelding:\n\n'+q.join('\n'));
   window.location.href='mailto:info@sherlockseo.com?subject=Wachtlijst%20aanmelding&body='+body;
   document.getElementById('wlok').style.display='block';
   e.target.reset();
