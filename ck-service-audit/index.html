@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website-audit — CK Service</title>
+<!--
+  ECHTE-KLANT AUDIT (nulmeting) — CK Service (ckservice.be)
+  ---------------------------------------------------------
+  Alle cijfers zijn LIVE uit Sherlock OS op 10-08-2026 (GSC 90d, GA4 90d, keyword_data,
+  topics/relevance). Niets is verzonnen. Waar een bron nog niet uitleest, staat dat
+  eerlijk ("koppeling herstellen" / "nog niet gemeten"), nooit een verzonnen getal.
+  Trend = leeg: dit is de eerste meting (nulmeting/baseline).
+
+  Verwerkte feedback (Jef, 10/8): klant-taal, geen jargon; "geen webshop" weg; doel &
+  contactwijze samengevoegd + herkomst getoond; richtcijfer klein + tooltip; €-onderbouwing
+  = CPC × gemiste vraag (advertentiewaarde), exact zodra conversiewaarde gemeten;
+  vaste volgorde techniek→content→autoriteit met verkooppagina's/lokaal VROEG;
+  planning = "aan te passen in samenspraak met uw consultant"; visualisaties toegevoegd;
+  detaildata → link naar platform.
+-->
+<style>
+:root{
+  --purple:#662483; --green:#6BB869; --white:#FFFFFF;
+  --ink:#232326; --muted:#6B6B6B; --line:#E6E6EA; --surface:#F6F6F8;
+  --green-tint:rgba(107,184,105,.14); --purple-tint:rgba(102,36,131,.08);
+  --amber:#B8860B; --amber-tint:rgba(184,134,11,.12); --red:#b22828;
+  --font-head:"Raleway",system-ui,-apple-system,Segoe UI,sans-serif;
+  --font-body:"Open Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --shadow:0 1px 2px rgba(16,16,20,.05),0 8px 26px rgba(16,16,20,.07);
+}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Open+Sans:wght@400;600;700&display=swap');
+*{box-sizing:border-box}
+body{margin:0;background:#EAEAEE;color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.6}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;margin:0;color:var(--ink)}
+h1{font-size:2.7rem;line-height:1.06}h2{font-size:1.55rem;line-height:1.15}h3{font-size:1.18rem}h4{font-size:1rem}
+p{margin:.55rem 0}a{color:var(--purple);font-weight:600}
+.accent-green{color:var(--green)}
+.deck{max-width:1000px;margin:0 auto;padding:26px 16px 64px}
+.page{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin:0 0 24px;padding:44px 48px;position:relative;overflow:hidden}
+.kicker{font-family:var(--font-head);font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;margin:0 0 8px}
+.lead{font-size:1.06rem;color:#3c3c40;max-width:66ch}
+.small{font-size:.85rem;color:var(--muted)}
+.src{font-size:.72rem;color:var(--muted);font-style:italic}
+
+/* cover */
+.cover{background:var(--purple);color:#fff;padding:0;border:none}
+.cover .in{position:relative;z-index:2;padding:56px 50px 52px}
+.cover h1{color:#fff;margin:.4rem 0 .5rem}
+.cover .url{font-family:var(--font-head);font-weight:700;color:var(--green);font-size:1.35rem}
+.cover .company{color:rgba(255,255,255,.82);font-size:1.02rem;margin-top:2px}
+.cover .wm{font-family:var(--font-head);font-weight:700;color:#fff;font-size:1.25rem}
+.cover .wm small{display:block;font-weight:500;font-size:.6rem;letter-spacing:.34em;color:var(--green);margin-top:2px}
+.cover .meta{margin-top:34px;color:rgba(255,255,255,.9);font-size:.92rem}
+.cover .sliver{position:absolute;top:0;right:0;width:44%;height:100%;background:linear-gradient(115deg,transparent 0 48%,var(--green) 48% 49%,transparent 49%);opacity:.9;z-index:1}
+.cover svg.net{position:absolute;top:0;right:0;width:320px;height:210px;z-index:1;opacity:.5}
+
+.toc{list-style:none;padding:0;margin:14px 0 0}
+.toc li{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
+.toc li .no{font-family:var(--font-head);font-weight:700;color:var(--purple);width:26px}
+.toc li .tt{font-family:var(--font-head);font-weight:700}
+.toc li .ds{color:var(--muted);font-size:.9rem;margin-left:auto;text-align:right;max-width:48%}
+
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+@media(max-width:680px){.ctx{grid-template-columns:1fr}}
+.ctx .cell{background:var(--surface);border-radius:10px;padding:13px 15px}
+.ctx .cell .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-family:var(--font-head);font-weight:700}
+.ctx .cell .v{font-weight:600;margin-top:2px}
+.ctx .cell .v .badge{display:inline-block;background:var(--green-tint);color:#2f7d34;border-radius:999px;padding:1px 9px;font-size:.72rem;font-weight:700;font-family:var(--font-head);margin-left:6px}
+
+/* score bars */
+.sbar{display:grid;grid-template-columns:200px 1fr 118px;gap:14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+@media(max-width:680px){.sbar{grid-template-columns:130px 1fr 96px}}
+.sbar .nm{font-family:var(--font-head);font-weight:700;font-size:.94rem}
+.sbar .nm small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
+.track{height:12px;border-radius:7px;background:#EEE;overflow:hidden;position:relative}
+.track>i{display:block;height:100%;border-radius:7px}
+.track.dim{background:repeating-linear-gradient(135deg,#f2f2f4,#f2f2f4 7px,#eaeaee 7px,#eaeaee 14px)}
+.sbar .rt{text-align:right;font-family:var(--font-head);font-weight:700;white-space:nowrap}
+.sbar .rt b{font-size:1.05rem}.sbar .rt small{color:var(--muted);font-weight:500}
+.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.72rem;font-weight:700;font-family:var(--font-head)}
+.tag.strong{background:var(--green-tint);color:#2f7d34}
+.tag.ok{background:var(--amber-tint);color:#8a6400}
+.tag.attention{background:rgba(178,40,40,.10);color:#a12828}
+.tag.na{background:var(--surface);color:var(--muted);border:1px dashed var(--line)}
+.tag.soon{background:var(--purple-tint);color:var(--purple)}
+
+.overall{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 8px 6px 14px;cursor:help;position:relative}
+.overall .lbl{font-size:.78rem;color:var(--muted);font-family:var(--font-head);font-weight:700}
+.overall .pill{font-family:var(--font-head);font-weight:700;background:var(--purple);color:#fff;border-radius:999px;padding:3px 11px;font-size:.95rem}
+.overall .tip{visibility:hidden;opacity:0;transition:.15s;position:absolute;top:calc(100% + 8px);left:0;width:320px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:10px;padding:11px 13px;font-size:.82rem;color:#444;z-index:5;font-weight:400;line-height:1.5}
+.overall:hover .tip,.overall:focus .tip{visibility:visible;opacity:1}
+.overall .tip b{color:var(--purple)}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+@media(max-width:680px){.cols{grid-template-columns:1fr}}
+.stack{list-style:none;padding:0;margin:8px 0 0}
+.stack li{border:1px solid var(--line);border-radius:11px;padding:12px 15px;margin-bottom:10px;background:#fff}
+.stack.win li{border-left:4px solid var(--green)}
+.stack.watch li{border-left:4px solid var(--amber)}
+.stack.opp li{border-left:4px solid var(--purple)}
+.stack .t{font-family:var(--font-head);font-weight:700}
+.stack .d{font-size:.9rem;color:#4a4a4e;margin-top:3px}
+.value{display:inline-block;margin-top:8px;background:var(--green-tint);color:#2f7d34;border-radius:8px;padding:5px 10px;font-size:.82rem;font-weight:700;font-family:var(--font-head)}
+.value small{font-weight:500;color:#3a7d3f}
+
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+@media(max-width:680px){.layers{grid-template-columns:1fr}}
+.layer{border:1px solid var(--line);border-radius:12px;padding:16px 17px;background:#fff}
+.layer .n{font-family:var(--font-head);font-weight:700;font-size:1.6rem;color:var(--green);line-height:1}
+.layer h4{margin:6px 0 4px}.layer p{font-size:.9rem;color:#4a4a4e;margin:0}
+
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+@media(max-width:680px){.plan{grid-template-columns:1fr}}
+.col{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.col .hd{background:var(--purple);color:#fff;padding:10px 14px;font-family:var(--font-head);font-weight:700;font-size:.95rem}
+.col .hd small{display:block;font-weight:500;color:rgba(255,255,255,.8);font-size:.72rem}
+.col ul{margin:0;padding:12px 14px 14px 30px;font-size:.9rem}.col li{margin:6px 0}
+.editnote{margin-top:12px;border-left:4px solid var(--green);background:var(--green-tint);border-radius:0 10px 10px 0;padding:11px 15px;font-size:.9rem}
+
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--surface);padding-bottom:14px;margin-bottom:8px}
+.chead .no{font-family:var(--font-head);font-weight:700;color:var(--purple);font-size:.9rem}
+.microstats{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0;padding:12px 16px;background:var(--surface);border-radius:11px}
+.microstats .m .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-family:var(--font-head);font-weight:700}
+.microstats .m .v{font-family:var(--font-head);font-weight:700;font-size:1.15rem;margin-top:1px}
+.finding{font-size:1rem;color:#3c3c40;max-width:70ch}
+.actions{list-style:none;padding:0;margin:12px 0 0}
+.actions li{position:relative;padding:11px 15px 11px 40px;border:1px solid var(--line);border-radius:10px;margin-bottom:9px;background:#fff}
+.actions li::before{content:"→";position:absolute;left:15px;top:11px;color:var(--green);font-weight:700;font-family:var(--font-head)}
+.actions li .t{font-weight:700;font-family:var(--font-head)}.actions li .d{font-size:.9rem;color:#4a4a4e;margin-top:2px}
+.platlink{margin-top:14px;display:flex;align-items:center;gap:10px;background:var(--purple-tint);border-radius:10px;padding:11px 15px;font-size:.9rem}
+.platlink .ic{width:22px;height:22px;flex:0 0 auto;color:var(--purple)}
+
+/* viz */
+.viz{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;align-items:center}
+@media(max-width:680px){.viz{grid-template-columns:1fr}}
+.leak{display:flex;flex-direction:column;gap:10px}
+.leak .row .lab{font-size:.82rem;color:var(--muted);font-family:var(--font-head);font-weight:700;display:flex;justify-content:space-between}
+.leak .bar{height:26px;border-radius:7px;margin-top:3px}
+.leak .bar.imp{background:var(--purple-tint);border:1px solid rgba(102,36,131,.25)}
+.leak .bar.clk{background:var(--green)}
+.buckets{display:flex;flex-direction:column;gap:8px}
+.bk{display:grid;grid-template-columns:96px 1fr 34px;gap:10px;align-items:center;font-size:.82rem}
+.bk .kb{font-family:var(--font-head);font-weight:700;color:#4a4a4e}
+.bk .tb{height:16px;border-radius:6px;background:#EEE;overflow:hidden}
+.bk .tb>i{display:block;height:100%}
+.bk .nb{font-family:var(--font-head);font-weight:700;text-align:right}
+.donutwrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.legend{font-size:.86rem}
+.legend .li{display:flex;align-items:center;gap:8px;margin:5px 0}
+.legend .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+.callout{background:var(--amber-tint);border:1px dashed var(--amber);border-radius:10px;padding:8px 12px;font-size:.84rem;color:#6a5100;font-weight:600;margin-top:10px}
+
+.fams{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+@media(max-width:680px){.fams{grid-template-columns:1fr}}
+.fam{border:1px solid var(--line);border-radius:12px;padding:15px 17px;background:#fff}
+.fam .fh{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fam .fl{font-family:var(--font-head);font-weight:700}.fam p{font-size:.9rem;color:#4a4a4e;margin:8px 0 0}
+.diagbox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:680px){.diagbox{grid-template-columns:1fr}}
+.box{border-radius:0 11px 11px 0;padding:14px 16px}
+.box.diag{border-left:4px solid var(--purple);background:var(--purple-tint)}
+.box.treat{border-left:4px solid var(--green);background:var(--green-tint)}
+.box .l{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:.7rem;letter-spacing:.06em}
+.box.diag .l{color:var(--purple)}.box.treat .l{color:#2f7d34}
+
+.chan{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+@media(max-width:680px){.chan{grid-template-columns:1fr}}
+.chan .c{border:1px solid var(--line);border-radius:11px;padding:15px;background:#fff}
+.chan .c h4{margin:0 0 4px}.chan .c p{font-size:.88rem;color:#4a4a4e;margin:0}
+
+.footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.82rem}
+.footer .wm{font-family:var(--font-head);font-weight:700;color:var(--purple)}
+@media print{body{background:#fff}.deck{max-width:none;padding:0}.page{box-shadow:none;border:none;border-radius:0;margin:0;padding:24mm 18mm;page-break-after:always}.overall .tip{display:none}@page{size:A4;margin:0}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck"></div>
+<script>
+/* ===== ECHTE DATA — CK Service, live uit Sherlock OS (10-08-2026) ===== */
+const AUDIT = {
+  site:{ url:"ckservice.be", company:"CK Service" },
+  date:"10 augustus 2026", kind:"Nulmeting",
+  platform_url:"https://app.sherlockseo.com/klant/ck-service",
+
+  context:{
+    // elke waarde met herkomst (intake/site/GSC/GA4) — auto-genereerbaar, niets verzonnen
+    type:{ v:"Badkamer- & doucherenovatie", src:"intake + site", status:"bevestigd" },
+    goal:{ v:"Offerteaanvraag — via formulier of telefoon", src:"site (/offerte/, /contact/) + GA4" },
+    region:{ v:"België · regio Antwerpen", src:"intake · GSC/GA4 nl-BE" },
+    audience:{ v:"Particulieren, met focus op senioren — veilig & comfortabel douchen", src:"site: seniorendouches, ‘veilig douchen in 1 dag’" },
+    note:"Dit profiel bepaalt waar we op letten. Een renovatiebedrijf leggen we niet op dezelfde meetlat als een webshop."
+  },
+
+  overall:{ score:5.2, label:"Sterke basis — de groei zit in de commerciële kern",
+    tip:"Een richtcijfer over de onderdelen die we vandaag kunnen meten — het geeft de startpositie en het relatieve belang aan, geen examencijfer. Dit is een <b>nulmeting</b>: vanaf hier meten we de vooruitgang. Het echte verhaal staat per hoofdstuk." },
+
+  dimensions:[
+    { name:"Context & markt",       sub:"Wie u bent en tegen wie u het opneemt", score:7.5, status:"strong" },
+    { name:"Herkenbaarheid online", sub:"Snapt Google waar u voor staat?",       score:4.0, status:"attention" },
+    { name:"Techniek",              sub:"Vindbaar, leesbaar, snel genoeg",       score:6.0, status:"ok" },
+    { name:"Pagina's & content",    sub:"De juiste pagina's, goed geschreven",   score:4.5, status:"attention" },
+    { name:"Vindbaarheid",          sub:"Gevonden worden waar mensen zoeken",    score:5.0, status:"ok" },
+    { name:"Meten & bijsturen",     sub:"Weten wat werkt, in euro's",            score:5.5, status:"ok" },
+    { name:"Betaald verkeer",       sub:"Google Ads",                            state:"reconnect", note:"Koppeling verlopen — opnieuw autoriseren" },
+    { name:"Klantbehoud & e-mail",  sub:"Reviews, nieuwsbrief, terugkerende klanten", state:"coming_soon", note:"Binnenkort" },
+    { name:"Sociale kanalen",       sub:"Facebook, Instagram",                   state:"minor", note:"Brengt nu wat verkeer, geen actieve strategie" }
+  ],
+
+  strengths:[
+    { t:"Wie binnenkomt, blijft ook", d:"69% betrokkenheid, ~2 min per bezoek en maar 31% bounce (GA4, 90 dagen). Uw aanbod en de foto's van uw werk overtuigen — het probleem zit niet op de pagina zelf." },
+    { t:"Sterke reputatie + volop vraag", d:"U staat sterk op uw eigen naam (positie 5 op ‘ck service’) en er komen 32.644 vertoningen in Google binnen in 90 dagen. De interesse én het vertrouwen zijn er — ze worden alleen nog niet omgezet in kliks en aanvragen." }
+  ],
+  attention:[
+    { t:"De conversieteller staat op 0", d:"GA4 registreert over 90 dagen 0 conversies. Er komen wél aanvragen binnen, maar ze worden niet gemeten — dus we kunnen (nog) geen euro aan een lead hangen. Dit is de eerste fix." },
+    { t:"Uw sterkste zoekwoorden missen een eigen pagina", d:"Gemiddelde positie 16 en 0,89% doorklik. Termen als ‘badkamer renovatie’ en ‘douchecabine’ (elk 5.400 zoekopdrachten/mnd) ranken via de homepage of een FAQ-antwoord — niet via een eigen verkooppagina die de koop afmaakt." }
+  ],
+  opportunities:[
+    { t:"Bouw een echte verkooppagina per kern-service", why:"Badkamerrenovatie, inloopdouche, douchecabine en seniorendouche ranken nu via FAQ-antwoorden. Geen enkel kernonderwerp heeft een eigen pagina.",
+      value:"~€2.000–3.500 / maand", value_note:"advertentiewaarde — de cluster ‘badkamerrenovatie’ is samen ±12.400 zoekopdrachten/mnd aan een klikprijs van ±€8. Conservatief gerekend; exact zodra de conversieteller werkt." },
+    { t:"Zet conversiemeting aan (formulier + telefoon)", why:"Zonder gemeten aanvragen blijft élk resultaat een schatting. Mét, rekenen we alles terug naar offertes en omzet.",
+      value:"Alles afrekenbaar", value_note:"De basis (Analytics, Search Console, server-side) staat er al — alleen de sleutel-conversie ontbreekt nog." },
+    { t:"Haal de ‘bijna-daar’ zoekwoorden naar pagina 1", why:"Tientallen commerciële zoekwoorden staan op positie 8–13 met echte vertoningen. Kleine duw = pagina 1.",
+      value:"Meer kliks, zelfde budget", value_note:"De ‘premie badkamer’-pagina alleen al: 6.112 vertoningen, 22 kliks (positie 12). Dat is verzilverbare vraag." },
+    { t:"Pak de regio met lokale pagina's", why:"We vonden echte vraag per gemeente — ‘badkamerrenovatie Antwerpen / Borgerhout / Brasschaat / Berchem’ — maar u heeft er geen pagina voor. Lokaal is voor u de kortste weg naar een aanvraag.",
+      value:"Lokale koopintentie", value_note:"Zoekers die hun gemeente typen, willen een lokale vakman boeken — hoge intentie, weinig concurrentie per gemeente." }
+  ],
+
+  approach:[
+    { n:"1", h:"Techniek als fundament", p:"Google moet uw pagina's vinden, lezen en redelijk snel tonen. De site wordt goed geïndexeerd — de basis staat. Geen jacht op een perfecte technische score." },
+    { n:"2", h:"Pagina's & content", p:"Dit is waar de winst zit: echte verkooppagina's per service, en de FAQ's die er intern naar linken. Zo wordt u dé renovator, niet alleen een vraagbaak." },
+    { n:"3", h:"Autoriteit opbouwen", p:"Reviews, vermeldingen en vertrouwen van buitenaf. Werkt pas echt als 1 en 2 staan." }
+  ],
+  planning:[
+    { period:"Nu — eerste weken", sub:"meten + de kern online", items:[
+      "Conversiemeting aanzetten: offerteaanvraag + telefoon als sleutel-conversie (GA4)",
+      "Verkooppagina's live zetten voor de grootste termen: badkamerrenovatie, inloopdouche, douchecabine",
+      "Google Ads-koppeling opnieuw autoriseren" ] },
+    { period:"Maand 2–3", sub:"verbinden + verzilveren", items:[
+      "Interne links bundelen vanuit de FAQ's naar de nieuwe verkooppagina's",
+      "De ‘bijna-daar’ zoekwoorden (positie 8–13) gericht versterken",
+      "Ruis in de onderwerpen opschonen (nu 255 als ruis herkend)" ] },
+    { period:"Maand 4 en verder", sub:"uitbouwen", items:[
+      "Reviews & lokale autoriteit structureel opbouwen",
+      "Uitbreiden naar aanpalende vraag (premies, seniorenrenovatie)" ] }
+  ],
+  planning_note:"Dit is een voorstel — aan te passen in samenspraak met uw consultant (bij een doe-het-zelf-abonnement past u het zelf aan in het platform).",
+
+  // findability viz data (echte GSC/keyword cijfers)
+  find:{ impressions:32644, clicks:291, ctr:0.89, position:16.1,
+    buckets:[ {k:"Top 3", n:2, c:"#2f7d34"}, {k:"Pos 4–10", n:6, c:"#6BB869"}, {k:"Pos 11–20", n:30, c:"#B8860B"}, {k:"21+", n:2, c:"#b22828"} ],
+    note:"Van uw belangrijkste commerciële zoekwoorden staat bijna niets in de top 3 — het gros zit op pagina 2. Daar wordt nauwelijks geklikt.",
+    branded:"Op merknaam (‘ck service’) staat u sterk (positie 5, 45 kliks). De uitdaging zit in de niet-merk, koopgerichte zoekopdrachten." },
+
+  // strategische duiding — mensenwerk, boven de data (editbaar door consultant)
+  strategic_note:{
+    title:"‘Veilig douchen in 1 dag’ — voorzichtig mee omgaan",
+    body:"Deze slogan is groot gemaakt door een concurrent met een aparte campagnesite (veiligdouchen.be). Hoe meer u het concept zelf overneemt in teksten en advertenties, hoe meer u zoekers naar díe naam — en dus naar de concurrent — duwt. Advies: gebruik het hooguit op één pagina en bouw uw positionering op uw éigen sterktes (maatwerk, senioren, netjes klaar in 1 dag) zonder de term van een ander groot te maken."
+  },
+
+  // entity viz data (echte topics/relevance cijfers — na herberekening)
+  entity:{ score:4.0, total:1137, kept:136, excluded:1001, grounded:0,
+    intro:"Herkenbaarheid vergelijkt vier onafhankelijke bronnen van ‘waar gaat deze website over’, en zoekt de breuken ertussen: wat u zélf verklaart, hoe u intern verbindt, waarmee het web u associeert, en waarvoor Google u feitelijk behandelt.",
+    families:[
+      { name:"Wat de site zélf verklaart", state:"scored", p:"De homepage is helder (‘veilig douchen in 1 dag’, badkamerrenovatie). Maar de commerciële kern — douchecabine, inloopdouche — bestaat amper als eigen verkooppagina." },
+      { name:"Hoe de site intern verbindt", state:"scored", p:"Zwak. Geen enkel kernonderwerp is aan een eigen pagina gekoppeld (0 ‘grounded’). Uw sterkste zoekwoorden ranken via FAQ-antwoorden; de interne kracht gaat naar de vraagbaak, niet naar de verkooppagina." },
+      { name:"Waarmee het web u associeert", state:"unknown", p:"Nog niet gemeten — er is nog geen backlink-bron gekoppeld. Dit verlaagt onze zekerheid, niet uw score. We straffen u niet voor wat we (nog) niet zien." },
+      { name:"Waarvoor Google u behandelt", state:"scored", p:"Google toont u vooral op merknaam en op informatieve premie-/FAQ-vragen. Op de grote koopgerichte termen staat u op pagina 2. Google ziet u nu eerder als vraagbaak dan als de renovator om te boeken." }
+    ],
+    diagnosis:"U verkoopt badkamer- en doucherenovaties, maar uw sterkste commerciële zoekwoorden (inloopdouche, douchecabine, badkamerrenovatie) ranken via FAQ-antwoorden en de homepage i.p.v. eigen verkooppagina's — geen enkel kernonderwerp is aan een pagina gekoppeld. Van 1.137 gevonden onderwerpen zijn er 136 echt relevant en 0 verankerd. Er is zelfs duidelijke lokale vraag per gemeente (Antwerpen, Borgerhout, Brasschaat…) zonder bijhorende pagina.",
+    treatment:"Bouw per kern-service een echte verkooppagina en koppel het onderwerp eraan; bundel interne links vanuit de FAQ's naar die pagina's; schoon de ruis op. Zo gaat wat u verklaart, wat u intern versterkt én waarvoor Google u kent weer dezelfde kant op."
+  },
+
+  chapters:[
+    { name:"Pagina's & content", no:4, status:"attention", score:4.5, priority:"Hoog", confidence:"Hoog", confidence_note:"uit uw eigen pagina's + zoekdata",
+      finding:"De site heeft veel sterke FAQ-pagina's — goed voor vragen, en ze vangen nu zelfs uw commerciële verkeer op. Maar de commerciële kern mist eigen verkooppagina's, en de offertepagina staat nog niet live. Grote zoektermen ranken daardoor via de verkeerde pagina: ‘badkamer renovatie’ (5.400/mnd) komt binnen op de seniorendouche-pagina.",
+      actions:[
+        { t:"Bouw een verkooppagina per service", d:"Badkamerrenovatie, inloopdouche, douchecabine, seniorendouche — elk met projecten, prijsindicatie en een duidelijke offerte-knop." },
+        { t:"Zet de offertepagina live", d:"Nu staat /offerte/ nog op ‘gepland’; dit is de belangrijkste conversiepagina." },
+        { t:"Verleg interne links van FAQ → verkooppagina", d:"Laat de FAQ-antwoorden verwijzen naar de nieuwe verkooppagina's i.p.v. zelf te ranken." }
+      ],
+      why_priority:"Dit raakt direct koopgerichte zoekopdrachten. De cluster ‘badkamerrenovatie’ is samen ±12.400 zoekopdrachten/mnd aan ±€8 klikprijs: conservatief ~€2.000–3.500/mnd aan advertentiewaarde. Exact zodra de conversieteller werkt.",
+      platform:"Alle pagina's, hun onderwerpen en de content-gaten staan in het platform." },
+
+    { name:"Meten & bijsturen", no:6, status:"ok", score:5.5, priority:"Hoog (eerst)", confidence:"Hoog", confidence_note:"Analytics, Search Console én server-side zijn gekoppeld",
+      finding:"De meetbasis is er — en die is goed: Google Analytics, Search Console en server-side tracking staan. Maar de conversieteller leest over 90 dagen 0: aanvragen worden nog niet als conversie geregistreerd, en de Google Ads-koppeling is verlopen. Daardoor kunnen we resultaat nog niet in euro's uitdrukken.",
+      actions:[
+        { t:"Markeer aanvraag + telefoon als sleutel-conversie", d:"Zonder dit blijft élk advies een schatting; mét wordt alles afrekenbaar op offertes." },
+        { t:"Herstel de Google Ads-koppeling", d:"Opnieuw autoriseren (token verlopen) zodat we ook betaald verkeer live zien." },
+        { t:"Hang een waarde aan een aanvraag", d:"Bijv. gemiddelde renovatie × slaagkans — dan rekenen we elke inspanning terug naar omzet." }
+      ],
+      why_priority:"Dit is de eerste stap: pas als aanvragen gemeten worden, worden alle andere adviezen (en hun euro's) hard i.p.v. geschat.",
+      platform:"De meetopzet en doelen beheert u in het platform." }
+  ],
+
+  channels:[
+    { name:"Betaald verkeer (Google Ads)", state:"reconnect", text:"De koppeling is verlopen — even opnieuw autoriseren. Daarna tonen we hier live wat advertenties opleveren (kost per aanvraag, rendement)." },
+    { name:"Sociale kanalen", state:"minor", text:"Facebook en Instagram brengen nu wat verkeer (±100 bezoeken/90 dagen), maar er is geen actieve strategie. Kan later aangezet worden." },
+    { name:"Klantbehoud & e-mail", state:"coming_soon", text:"Binnenkort: reviews, nieuwsbrief en terugkerende klanten. Voor een renovatiebedrijf vooral sterk voor reviews en doorverwijzing." }
+  ]
+};
+
+/* ===== RENDERER ===== */
+const $=(h)=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
+const deck=document.getElementById('deck'); const add=(h)=>deck.appendChild($(h));
+const esc=(s)=>String(s==null?"":s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const num=(v)=>v==null?"—":Number(v).toFixed(1);
+const nf=(n)=>n.toLocaleString('nl-BE');
+const barColor=(s)=>s>=7?"var(--green)":s>=5?"var(--amber)":"var(--red)";
+const tagLabel={strong:"Sterk",ok:"Redelijk",attention:"Aandacht",reconnect:"Koppeling herstellen",coming_soon:"Binnenkort",minor:"Beperkt"};
+
+/* cover */
+const s=AUDIT.site;
+add(`
+<section class="page cover">
+  <div class="sliver"></div>
+  <svg class="net" viewBox="0 0 320 210" fill="none" stroke="#6BB869" stroke-width="1">
+    <circle cx="55" cy="40" r="3" fill="#6BB869"/><circle cx="145" cy="85" r="3" fill="#6BB869"/><circle cx="240" cy="45" r="3" fill="#6BB869"/>
+    <circle cx="285" cy="135" r="3" fill="#6BB869"/><circle cx="190" cy="165" r="3" fill="#6BB869"/><circle cx="100" cy="150" r="3" fill="#6BB869"/>
+    <path d="M55 40 L145 85 L240 45 M145 85 L190 165 M240 45 L285 135 L190 165 M145 85 L100 150"/>
+  </svg>
+  <div class="in">
+    <div class="wm">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></div>
+    <div class="kicker" style="margin-top:40px;color:var(--green)">Website-audit · ${esc(AUDIT.kind)}</div>
+    <div class="url">${esc(s.url)}</div>
+    <div class="company">${esc(s.company)}</div>
+    <div class="meta">Opgemaakt op ${esc(AUDIT.date)}</div>
+  </div>
+</section>`);
+
+/* toc */
+const chapList=[
+  ["1","Samenvatting","Uw situatie, de kansen en de aanpak"],
+  ["2","Herkenbaarheid online","Snapt Google waar u voor staat?"],
+  ["3","Pagina's & content","De juiste pagina's, goed geschreven"],
+  ["4","Vindbaarheid","Gevonden worden waar mensen zoeken"],
+  ["5","Meten & bijsturen","Weten wat werkt, in euro's"],
+  ["6","Kanalen in ontwikkeling","Wat er nog aankomt"]
+];
+add(`
+<section class="page">
+  <div class="kicker">Inhoud</div><h2>Wat u in dit rapport vindt</h2>
+  <ol class="toc">${chapList.map(([n,t,d])=>`<li><span class="no">${n}</span><span class="tt">${esc(t)}</span><span class="ds">${esc(d)}</span></li>`).join("")}</ol>
+  <div class="platlink" style="margin-top:20px">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg>
+    <div>De detaildata — elke pagina, elk zoekwoord, elke positie per week — staat volledig in het platform. Dit rapport vat samen en wijst de weg. <a href="${esc(AUDIT.platform_url)}">Open het platform →</a></div>
+  </div>
+</section>`);
+
+/* samenvatting */
+const c=AUDIT.context, ov=AUDIT.overall;
+const ctxCell=(k,o)=>`<div class="cell"><div class="k">${k}</div><div class="v">${esc(o.v)}${o.status?` <span class="badge">${esc(o.status)}</span>`:''}</div><div class="src">bron: ${esc(o.src)}</div></div>`;
+let bars=AUDIT.dimensions.map(d=>{
+  if(d.state){
+    const tg={reconnect:"reconnect",coming_soon:"coming_soon",minor:"minor"}[d.state];
+    return `<div class="sbar"><div class="nm">${esc(d.name)}<small>${esc(d.sub)}</small></div>
+      <div class="track dim"></div>
+      <div class="rt"><span class="tag ${tg}" style="font-size:.68rem">${tagLabel[d.state]}</span></div></div>`;
+  }
+  return `<div class="sbar"><div class="nm">${esc(d.name)}<small>${esc(d.sub)}</small></div>
+    <div class="track"><i style="width:${d.score*10}%;background:${barColor(d.score)}"></i></div>
+    <div class="rt"><b>${num(d.score)}</b><small>/10</small> · <span class="tag ${d.status}">${tagLabel[d.status]}</span></div></div>`;
+}).join("");
+
+add(`
+<section class="page">
+  <div class="kicker">Samenvatting</div>
+  <h2>${esc(s.company)} — waar u staat, en de snelste weg vooruit</h2>
+  <div class="ctx">
+    ${ctxCell("Type bedrijf",c.type)}
+    ${ctxCell("Doel / hoe klanten aanvragen",c.goal)}
+    ${ctxCell("Regio",c.region)}
+    ${ctxCell("Voor wie",c.audience)}
+  </div>
+  <p class="small" style="margin-top:8px">${esc(c.note)}</p>
+
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:22px 0 4px">
+    <div class="overall" tabindex="0"><span class="lbl">Algemene indicatie</span><span class="pill">${num(ov.score)}/10</span><span class="tip">${ov.tip}</span></div>
+    <div style="font-family:var(--font-head);font-weight:700;color:#3c3c40">${esc(ov.label)}</div>
+  </div>
+
+  <h3 style="margin-top:22px">De onderdelen in één oogopslag</h3>
+  <div style="margin-top:6px">${bars}</div>
+
+  <div class="cols" style="margin-top:26px">
+    <div><div class="kicker" style="color:var(--green)">Wat sterk is</div>
+      <ul class="stack win">${AUDIT.strengths.map(x=>`<li><div class="t">${esc(x.t)}</div><div class="d">${esc(x.d)}</div></li>`).join("")}</ul></div>
+    <div><div class="kicker" style="color:var(--amber)">Wat aandacht vraagt</div>
+      <ul class="stack watch">${AUDIT.attention.map(x=>`<li><div class="t">${esc(x.t)}</div><div class="d">${esc(x.d)}</div></li>`).join("")}</ul></div>
+  </div>
+
+  <div class="kicker" style="margin-top:24px">De grootste kansen</div>
+  <ul class="stack opp">${AUDIT.opportunities.map(o=>`<li><div class="t">${esc(o.t)}</div><div class="d">${esc(o.why)}</div>
+    <span class="value">${esc(o.value)} <small>— ${esc(o.value_note)}</small></span></li>`).join("")}</ul>
+
+  <div style="margin-top:24px;border:1px dashed var(--purple);border-radius:12px;background:var(--purple-tint);padding:16px 18px">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <span class="kicker" style="margin:0;color:var(--purple)">Strategische duiding</span>
+      <span class="tag" style="background:#fff;color:var(--purple);border:1px solid var(--line);font-size:.66rem">door uw consultant</span>
+    </div>
+    <div style="font-family:var(--font-head);font-weight:700;margin-top:8px">${esc(AUDIT.strategic_note.title)}</div>
+    <p style="margin:.4rem 0 0;font-size:.94rem;color:#3c3c40">${esc(AUDIT.strategic_note.body)}</p>
+    <p class="small" style="margin-top:8px">De cijfers in dit rapport komen rechtstreeks uit uw data. De strategische keuzes hierboven zijn menselijke duiding — die bepalen en verfijnen we samen.</p>
+  </div>
+</section>`);
+
+/* aanpak & planning */
+add(`
+<section class="page">
+  <div class="kicker">De aanpak</div>
+  <h2>Zo pakken we het aan — altijd in deze volgorde</h2>
+  <p class="lead">Een website verbeteren is geen willekeurige lijst. Eerst het fundament, dan de inhoud, dan de autoriteit. Elke laag bouwt op de vorige.</p>
+  <div class="layers">${AUDIT.approach.map(a=>`<div class="layer"><div class="n">${esc(a.n)}</div><h4>${esc(a.h)}</h4><p>${esc(a.p)}</p></div>`).join("")}</div>
+  <h3 style="margin-top:28px">Voorgestelde planning</h3>
+  <div class="plan">${AUDIT.planning.map(p=>`<div class="col"><div class="hd">${esc(p.period)}<small>${esc(p.sub)}</small></div><ul>${p.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
+  <div class="editnote"><b>Samen in te vullen.</b> ${esc(AUDIT.planning_note)}</div>
+</section>`);
+
+/* HERKENBAARHEID + donut viz */
+const e=AUDIT.entity;
+const R=52, CIRC=2*Math.PI*R, keptFrac=e.kept/e.total, exclFrac=e.excluded/e.total;
+add(`
+<section class="page">
+  <div class="chead"><div><div class="no">Hoofdstuk 2</div><h2>Herkenbaarheid online</h2></div>
+    <span class="tag ${e.score>=5?'ok':'attention'}" style="font-size:.85rem;padding:5px 13px">Aandacht · ${num(e.score)}/10</span></div>
+  <p class="lead">${esc(e.intro)}</p>
+  <div class="viz">
+    <div class="donutwrap">
+      <svg width="150" height="150" viewBox="0 0 150 150">
+        <circle cx="75" cy="75" r="${R}" fill="none" stroke="#EEE" stroke-width="20"/>
+        <circle cx="75" cy="75" r="${R}" fill="none" stroke="#6BB869" stroke-width="20" stroke-dasharray="${(CIRC*keptFrac).toFixed(1)} ${CIRC.toFixed(1)}" transform="rotate(-90 75 75)"/>
+        <circle cx="75" cy="75" r="${R}" fill="none" stroke="#B8860B" stroke-width="20" stroke-dasharray="${(CIRC*exclFrac).toFixed(1)} ${CIRC.toFixed(1)}" stroke-dashoffset="${(-CIRC*keptFrac).toFixed(1)}" transform="rotate(-90 75 75)"/>
+        <text x="75" y="70" text-anchor="middle" font-family="Raleway" font-weight="700" font-size="26" fill="#232326">${e.total}</text>
+        <text x="75" y="90" text-anchor="middle" font-family="Open Sans" font-size="10" fill="#6B6B6B">onderwerpen</text>
+      </svg>
+      <div class="legend">
+        <div class="li"><span class="sw" style="background:#6BB869"></span> ${e.kept} relevant gehouden</div>
+        <div class="li"><span class="sw" style="background:#B8860B"></span> ${e.excluded} als ruis herkend</div>
+        <div class="callout">${e.grounded} onderwerpen zijn aan een eigen pagina gekoppeld</div>
+      </div>
+    </div>
+    <div class="fams" style="grid-template-columns:1fr;margin-top:0">
+      ${e.families.map(f=>`<div class="fam"><div class="fh"><div class="fl">${esc(f.name)}</div>${f.state==="unknown"?'<span class="tag na">nog niet gemeten</span>':''}</div><p>${esc(f.p)}</p></div>`).join("")}
+    </div>
+  </div>
+  <div class="diagbox">
+    <div class="box diag"><div class="l">Wat er aan de hand is</div><p style="margin:.4rem 0 0">${esc(e.diagnosis)}</p></div>
+    <div class="box treat"><div class="l">Wat we eraan doen</div><p style="margin:.4rem 0 0">${esc(e.treatment)}</p></div>
+  </div>
+</section>`);
+
+/* CHAPTER: pagina's & content */
+function chapter(ch){
+  add(`
+  <section class="page">
+    <div class="chead"><div><div class="no">Hoofdstuk ${ch.no}</div><h2>${esc(ch.name)}</h2></div>
+      <span class="tag ${ch.status}" style="font-size:.85rem;padding:5px 13px">${tagLabel[ch.status]} · ${num(ch.score)}/10</span></div>
+    <div class="microstats">
+      <div class="m"><div class="k">Score (nulmeting)</div><div class="v">${num(ch.score)}<span style="font-size:.8rem;color:var(--muted)">/10</span></div></div>
+      <div class="m"><div class="k">Prioriteit</div><div class="v">${esc(ch.priority)}</div></div>
+      <div class="m"><div class="k">Betrouwbaarheid</div><div class="v">${esc(ch.confidence)}</div><div class="small">${esc(ch.confidence_note)}</div></div>
+    </div>
+    <p class="finding">${esc(ch.finding)}</p>
+    <h4 style="margin-top:16px">Wat we concreet doen</h4>
+    <ul class="actions">${ch.actions.map(a=>`<li><div class="t">${esc(a.t)}</div><div class="d">${esc(a.d)}</div></li>`).join("")}</ul>
+    <div class="editnote" style="border-left-color:var(--purple);background:var(--purple-tint)"><b>Waarom dit eerst?</b> ${esc(ch.why_priority)}</div>
+    <div class="platlink"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><div>${esc(ch.platform)} <a href="${esc(AUDIT.platform_url)}">Bekijk in het platform →</a></div></div>
+  </section>`);
+}
+chapter(AUDIT.chapters[0]);
+
+/* VINDBAARHEID + leak/bucket viz */
+const f=AUDIT.find, maxB=Math.max(...f.buckets.map(b=>b.n));
+const clkPct=(f.clicks/f.impressions*100);
+add(`
+<section class="page">
+  <div class="chead"><div><div class="no">Hoofdstuk 4</div><h2>Vindbaarheid</h2></div>
+    <span class="tag ok" style="font-size:.85rem;padding:5px 13px">Redelijk · 5.0/10</span></div>
+  <p class="lead">Gevonden worden waar uw klanten zoeken. De vraag ís er — de kunst is ze naar pagina 1 en naar een klik te brengen.</p>
+  <div class="viz">
+    <div class="leak">
+      <div class="row"><div class="lab"><span>Vertoningen in Google</span><span>${nf(f.impressions)}</span></div><div class="bar imp" style="width:100%"></div></div>
+      <div class="row"><div class="lab"><span>Daadwerkelijke kliks</span><span>${nf(f.clicks)} · ${f.ctr}%</span></div><div class="bar clk" style="width:${Math.max(clkPct,1.2)}%"></div></div>
+      <p class="small">90 dagen · gemiddelde positie ${f.position}. Er wordt volop naar u getoond, maar op pagina 2 wordt nauwelijks geklikt — dáár zit het lek.</p>
+    </div>
+    <div>
+      <div class="small" style="font-family:var(--font-head);font-weight:700;color:#4a4a4e;margin-bottom:8px">Uw commerciële zoekwoorden — waar ze staan</div>
+      <div class="buckets">
+        ${f.buckets.map(b=>`<div class="bk"><span class="kb">${b.k}</span><div class="tb"><i style="width:${Math.max(b.n/maxB*100,4)}%;background:${b.c}"></i></div><span class="nb">${b.n}</span></div>`).join("")}
+      </div>
+      <p class="small" style="margin-top:10px">${esc(f.note)}</p>
+    </div>
+  </div>
+  <p class="finding" style="margin-top:14px">${esc(f.branded)}</p>
+  <div class="platlink"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg><div>De volledige lijst zoekopdrachten, posities en de evolutie per week staat in het platform. <a href="${esc(AUDIT.platform_url)}">Bekijk alle zoekopdrachten →</a></div></div>
+</section>`);
+
+/* CHAPTER: meten */
+chapter(AUDIT.chapters[1]);
+
+/* KANALEN */
+const chanTag={reconnect:["reconnect","Koppeling herstellen"],coming_soon:["coming_soon","Binnenkort"],minor:["minor","Beperkt"]};
+add(`
+<section class="page">
+  <div class="kicker">Hoofdstuk 6</div><h2>Kanalen in ontwikkeling</h2>
+  <p class="lead">Niet alles meten we vandaag al mee. Wat ontbreekt, tellen we nooit als een nul — we laten eerlijk zien wat er nog aankomt, zodat u kunt kiezen waar u op wilt inzetten.</p>
+  <div class="chan">${AUDIT.channels.map(ch=>{const [t,l]=chanTag[ch.state];return `<div class="c"><h4>${esc(ch.name)} <span class="tag ${t}" style="font-size:.66rem">${l}</span></h4><p>${esc(ch.text)}</p></div>`;}).join("")}</div>
+</section>`);
+
+/* footer */
+add(`
+<section class="page" style="padding:26px 48px">
+  <div class="footer"><div><span class="wm">Sherlock SEO</span> · Digital Growth Intelligence · sherlockseo.com</div>
+    <div>Website-audit · ${esc(s.url)} · ${esc(AUDIT.date)}</div></div>
+  <p class="small" style="margin-top:12px">Alle cijfers in dit rapport komen live uit uw gekoppelde bronnen (Search Console, Analytics) op ${esc(AUDIT.date)}. We rekenen in groei die u voelt — aanvragen en omzet, niet losse bezoekcijfers.</p>
+</section>`);
+</script>
+</body>
+</html>
