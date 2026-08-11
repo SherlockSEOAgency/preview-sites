@@ -449,29 +449,49 @@ document.getElementById('wlform').addEventListener('submit',function(e){
 (function(){
   var canvas=document.getElementById('demandField'); if(!canvas||!canvas.getContext) return;
   var sec=canvas.closest('.demand'); if(!sec) return; var ctx=canvas.getContext('2d');
+  // scattered market language resolves into named themes - each theme is a page Sherlock builds
+  var CLUSTERS=[
+    {label:'Vindbaar & verkopen', re:/website|webshop|wordpress|webdesign|logo|seo|marketing|google ads|sociale media|vertaalbureau/i},
+    {label:'Verbouwen & interieur', re:/renov|keuken|badkamer|traprenov|isolatie|vloerverwarming|schrijnwerk|meubel|raamdecoratie|stukador|stukadoor|vloerder|interieur|maatkast|dressing|chape|crepi|buitenschrijnwerk|veranda|sauna|wellness|poolhouse/i},
+    {label:'Techniek & energie', re:/warmtepomp|zonnepanel|airco|laadpaal|fotovolta|thuisbatterij|domotica|verwarming|cv ketel|ketel|elektricien|regenwaterput|septische|riolering|betonvloer/i},
+    {label:'Tuin & buitenwerk', re:/tuin|dak|gevel|oprit|terras|klinker|hovenier|snoei|bomen|haag|gazon|vijver|pergola|carport|zwembad|zonwering|rolluik|sectionaalpoort|hekwerk|beregening|robotmaaier|grondwerk|afbraak|container|kraan|stelling|glaszetter|schilder|schoorsteen|ongedierte|onkruid/i},
+    {label:'Lokale vakmensen', re:/loodgieter|boekhouder|advocaat|notaris|architect|aannemer|fotograaf|verhuis|poets|autokeuring|banden|garage|fietsen|koffiemachine|slotenmaker|industrieel reinigen/i},
+    {label:'Zorg & gezondheid', re:/osteopaat|kinesist|tandarts/i}
+  ];
   var QUERIES=['website laten maken','loodgieter antwerpen','boekhouder voor zelfstandige','ramen vervangen premie','industrieel reinigen','seo bureau','warmtepomp installateur','webdesign kortrijk','keuken op maat','dakwerken gent','advocaat bouwrecht','tuinaanleg prijs','zonnepanelen installateur','fotograaf huwelijk','schilder binnenwerk','airco plaatsen','website laten maken prijs','marketing bureau antwerpen','google ads uitbesteden','boekhouder kmo','elektricien antwerpen','verhuisfirma offerte','interieurarchitect','koffiemachine huren bedrijf','wordpress website laten maken','webshop bouwen','logo laten maken','sociale media beheer','fotograaf bedrijf','vertaalbureau','traprenovatie','badkamer renoveren','zwembad aanleggen','isolatie premie','vloerverwarming plaatsen','tuinman zoeken','schrijnwerk op maat','meubelmaker','raamdecoratie','poetsvrouw zoeken','autokeuring afspraak','bandencentrale','garage in de buurt','fietsenwinkel','osteopaat','kinesist','tandarts spoed','notaris tarief','architect woning','aannemer verbouwing','hovenier','stukadoor','vloerder','glaszetter','zonwering','pergola op maat','carport hout','oprit aanleggen','gevelreiniging','dakgoot reinigen','schoorsteenveger','ongediertebestrijding','slotenmaker spoed','verwarmingsketel onderhoud','cv ketel vervangen','airco service','domotica installateur','laadpaal thuis','ev laadpaal premie','fotovoltaïsche panelen','thuisbatterij','regenwaterput','septische put','riolering aanleggen','grondwerken','afbraakwerken','containerverhuur','kraanverhuur','stellingbouw','betonvloer','chape gieten','crepi gevel','buitenschrijnwerk pvc','veranda op maat','rolluiken','sectionaalpoort','hekwerk plaatsen','klinkers leggen','terras aanleggen','vijver aanleggen','gazon aanleggen','snoeiwerken','bomen rooien','haag planten','onkruidbestrijding','beregening tuin','robotmaaier','tuinverlichting','poolhouse','sauna plaatsen','wellness op maat','interieurinrichting','maatkasten','dressing op maat','totaalrenovatie','kleine renovatie','energierenovatie premie'];
-  var COMMERCIAL=/prijs|kost|laten maken|installateur|bureau|offerte|premie|renov|op maat|plaatsen|aanleggen|vervangen|uitbesteden|spoed/i;
+  var COMMERCIAL=/prijs|kost|laten maken|installateur|bureau|offerte|premie|renov|op maat|plaatsen|aanleggen|vervangen|uitbesteden|spoed|tarief|onderhoud|afspraak/i;
+  function clusterOf(q){ for(var i=0;i<CLUSTERS.length;i++){ if(CLUSTERS[i].re.test(q)) return i; } return 4; }
   var W=0,H=0,DPR=1,FONT='13px "Open Sans",system-ui,sans-serif';
-  function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); var r=sec.getBoundingClientRect(); W=Math.round(r.width)||sec.clientWidth||window.innerWidth||1200; H=Math.round(r.height)||sec.clientHeight||window.innerHeight||800; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); var r=sec.getBoundingClientRect(); W=Math.round(r.width)||sec.clientWidth||window.innerWidth||1200; H=Math.round(r.height)||sec.clientHeight||window.innerHeight||800; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); layoutAnchors(); }
+  function layoutAnchors(){ var cx=W/2, cy=H/2, rx=Math.min(W*0.37,640), ry=H*0.35; for(var i=0;i<CLUSTERS.length;i++){ var a=-Math.PI/2 + i/CLUSTERS.length*Math.PI*2; CLUSTERS[i].ax=cx+Math.cos(a)*rx; CLUSTERS[i].ay=cy+Math.sin(a)*ry; } }
   var parts=[];
-  function build(){ ctx.font=FONT; parts=QUERIES.map(function(q){ return {t:q, x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-0.5)*0.16, vy:(Math.random()-0.5)*0.16, w:ctx.measureText(q).width, hot:COMMERCIAL.test(q)}; }); }
+  function build(){ ctx.font=FONT; var R=Math.min(W,H)*0.15; parts=QUERIES.map(function(q){ var ci=clusterOf(q), ang=Math.random()*Math.PI*2, rr=R*(0.32+0.68*Math.random()); return {t:q, c:ci, hot:COMMERCIAL.test(q), ang:ang, r:rr, spin:(Math.random()-0.5)*0.005, x:CLUSTERS[ci].ax+Math.cos(ang)*rr, y:CLUSTERS[ci].ay+Math.sin(ang)*rr, vx:0, vy:0, w:ctx.measureText(q).width}; }); }
   var mouse={x:-1e5,y:-1e5,on:false};
   sec.addEventListener('mousemove',function(e){ var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.on=true; });
   sec.addEventListener('mouseleave',function(){ mouse.on=false; mouse.x=mouse.y=-1e5; });
+  function activeCluster(){ if(!mouse.on) return -1; var best=-1,bd=290*290; for(var i=0;i<CLUSTERS.length;i++){ var dx=CLUSTERS[i].ax-mouse.x,dy=CLUSTERS[i].ay-mouse.y,d2=dx*dx+dy*dy; if(d2<bd){bd=d2;best=i;} } return best; }
   function step(){
-    for(var i=0;i<parts.length;i++){ var p=parts[i]; p.x+=p.vx; p.y+=p.vy;
-      if(p.x<-p.w-20) p.x=W+20; if(p.x>W+20) p.x=-p.w-20; if(p.y<-14) p.y=H+14; if(p.y>H+14) p.y=-14;
-      if(mouse.on){ var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy; if(d2<17000){ var d=Math.sqrt(d2)||1,f=70/d; p.x+=(dx/d)*f; p.y+=(dy/d)*f; } }
+    for(var i=0;i<parts.length;i++){ var p=parts[i], A=CLUSTERS[p.c];
+      p.ang+=p.spin; var tx=A.ax+Math.cos(p.ang)*p.r, ty=A.ay+Math.sin(p.ang)*p.r*0.72;
+      p.vx=(p.vx+(tx-p.x)*0.02)*0.86; p.vy=(p.vy+(ty-p.y)*0.02)*0.86; p.x+=p.vx; p.y+=p.vy;
+      if(mouse.on){ var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy; if(d2<14000){ var d=Math.sqrt(d2)||1,f=46/d; p.x+=(dx/d)*f; p.y+=(dy/d)*f; } }
     }
   }
   function draw(){
-    ctx.clearRect(0,0,W,H); ctx.textBaseline='middle'; ctx.font=FONT;
-    for(var i=0;i<parts.length;i++){ var p=parts[i]; var a=0.20,c='232,228,239';
-      if(mouse.on){ var dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<180){ var near=1-d/180; a=0.20+near*0.78; if(p.hot) c='107,184,105'; else c='255,255,255'; }
-      }
-      ctx.fillStyle='rgba('+c+','+a.toFixed(3)+')'; ctx.fillText(p.t,p.x,p.y);
+    ctx.clearRect(0,0,W,H); var act=activeCluster();
+    if(act>=0){ var Aa=CLUSTERS[act]; ctx.strokeStyle='rgba(107,184,105,0.17)'; ctx.lineWidth=1; ctx.beginPath(); for(var i=0;i<parts.length;i++){ if(parts[i].c===act){ ctx.moveTo(Aa.ax,Aa.ay); ctx.lineTo(parts[i].x,parts[i].y); } } ctx.stroke(); }
+    ctx.textBaseline='middle'; ctx.textAlign='left'; ctx.font=FONT;
+    for(var i=0;i<parts.length;i++){ var p=parts[i], a=0.16, c='210,206,220';
+      if(p.c===act){ a=0.92; c=p.hot?'107,184,105':'255,255,255'; } else if(act>=0){ a=0.08; }
+      ctx.fillStyle='rgba('+c+','+a+')'; ctx.fillText(p.t,p.x,p.y);
     }
+    ctx.textAlign='center';
+    for(var i=0;i<CLUSTERS.length;i++){ var A=CLUSTERS[i], on=(i===act);
+      ctx.font=on?'800 18px "Raleway",system-ui,sans-serif':'700 15px "Raleway",system-ui,sans-serif';
+      ctx.fillStyle=on?'rgba(107,184,105,0.96)':'rgba(240,238,245,0.40)';
+      ctx.fillText(A.label.toUpperCase(), A.ax, A.ay);
+    }
+    ctx.textAlign='left';
   }
   var raf=0; function loop(){ step(); draw(); raf=requestAnimationFrame(loop); }
   function reflow(){ resize(); build(); }
