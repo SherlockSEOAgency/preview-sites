@@ -12,7 +12,7 @@
 <style>
 :root{
   --black:#0b0b0b; --ink:#141414; --paper:#f3f0ea; --white:#ffffff;
-  --accent:#ff2f17; --line:#2a2a2a; --line-paper:#d9d5cc; --muted:#8a8a8a; --muted-paper:#6d675c;
+  --accent:#6BB869; --accent2:#662483; --line:#2a2a2a; --line-paper:#d9d5cc; --muted:#8a8a8a; --muted-paper:#6d675c;
   --display:"Anton",Impact,system-ui,sans-serif;
   --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --body:"Inter",system-ui,-apple-system,Segoe UI,sans-serif;
@@ -52,27 +52,28 @@ h1,h2,h3{margin:0}
 .tickers span b{color:var(--accent)}
 
 /* statement billboard = the repeatable campaign device */
-.statement{background:var(--black);border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);padding:64px 0}
-.statement .tag{color:var(--accent);margin-bottom:20px}
-.statement .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:.01em}
+/* statement billboard = the signature purple field (brand block device) */
+.statement{background:var(--accent2);color:#fff;padding:66px 0}
+.statement .tag{color:#bfe3bd;margin-bottom:20px}
+.statement .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:.01em;color:#fff}
 .statement .big .u{color:var(--accent)}
-.statement .sub{margin-top:22px;max-width:62ch;color:#cfcabf;font-size:1.05rem}
-.statement .sub b{color:var(--white)}
+.statement .sub{margin-top:22px;max-width:62ch;color:#ece3f2;font-size:1.05rem}
+.statement .sub b{color:#fff}
 
-/* the escalation trap (dashboard/chatbot/sherlock) */
-.trap{margin-top:30px;border:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}
+/* the escalation trap (dashboard/chatbot/sherlock) - sits on the purple field */
+.trap{margin-top:30px;border:1px solid rgba(255,255,255,.24);display:grid;grid-template-columns:repeat(3,1fr)}
 @media(max-width:720px){.trap{grid-template-columns:1fr}}
-.trap .row{padding:16px 18px;border-right:1px solid var(--line)}
+.trap .row{padding:16px 18px;border-right:1px solid rgba(255,255,255,.24)}
 .trap .row:last-child{border-right:0}
-@media(max-width:720px){.trap .row{border-right:0;border-bottom:1px solid var(--line)}.trap .row:last-child{border-bottom:0}}
-.trap .w{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;letter-spacing:.02em}
+@media(max-width:720px){.trap .row{border-right:0;border-bottom:1px solid rgba(255,255,255,.24)}.trap .row:last-child{border-bottom:0}}
+.trap .w{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;letter-spacing:.02em;color:#fff}
 .trap .row.on .w{color:var(--accent)}
-.trap .d{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:#bdb8ad;margin-top:6px;line-height:1.5}
-.reversible{margin-top:16px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.reversible b{color:var(--paper)}
+.trap .d{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:#e6dcef;margin-top:6px;line-height:1.5}
+.reversible{margin-top:16px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:#d9c9e6}
+.reversible b{color:#fff}
 
-/* paper section */
-.paper{background:var(--paper);color:var(--ink)}
+/* paper section - purple accent on the light canvas (readable on paper) */
+.paper{background:var(--paper);color:var(--ink);--accent:#662483}
 .paper .mono,.paper .eyebrow{color:var(--accent)}
 .sec{padding:76px 0}
 .sec h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.95;margin-top:14px;max-width:20ch}
@@ -92,7 +93,7 @@ h1,h2,h3{margin:0}
 .node h3{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;margin:8px 0 10px;line-height:1}
 .node ul{margin:0;padding-left:16px;font-size:.9rem;color:#3a362e}
 .node li{margin:3px 0}
-.node.mid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.node.mid{background:var(--ink);color:var(--paper);border-color:var(--ink);--accent:#6BB869}
 .node.mid ul{color:#cfcabf}
 .node.mid .hot{display:block;margin-top:12px;font-family:var(--body);font-size:.95rem;color:#fff;border-left:2px solid var(--accent);padding-left:12px;font-style:italic}
 .arrow{align-self:center;font-family:var(--display);font-size:1.6rem;color:var(--accent)}
