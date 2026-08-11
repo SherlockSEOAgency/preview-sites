@@ -59,6 +59,10 @@ h1,h2,h3{margin:0}
 .statement .big .u{color:var(--accent)}
 .statement .sub{margin-top:22px;max-width:62ch;color:#ece3f2;font-size:1.05rem}
 .statement .sub b{color:#fff}
+/* fill statement — pretext.js fits the headline to the viewport (clamp is the fallback) */
+.statement.fill{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:48px 0}
+.statement.fill .wrap{max-width:1400px;width:100%}
+.statement.fill .big{font-size:clamp(2.6rem,13vw,11rem);line-height:.92}
 
 /* the escalation trap (dashboard/chatbot/sherlock) - sits on the purple field */
 .trap{margin-top:30px;border:1px solid rgba(255,255,255,.24);display:grid;grid-template-columns:repeat(3,1fr)}
@@ -188,10 +192,10 @@ h1,h2,h3{margin:0}
   </section>
 
   <!-- CAMPAIGN DEVICE: Sherlock Statement #1 (brand line, NL) -->
-  <section class="statement">
+  <section class="statement fill">
     <div class="wrap">
-      <div class="mono tag">// De vraag bestaat al. Sherlock vindt ze. En handelt erop.</div>
-      <div class="big">Je volgende klant<br>zoekt nu <span class="u">al</span>.</div>
+      <div class="mono tag">De vraag bestaat al. Sherlock vindt ze. En handelt erop.</div>
+      <div class="big fit" data-lines="3">Je volgende klant zoekt <span class="u">nu al</span></div>
       <p class="sub">Een zoekopdracht is vraag, met de hand al omhoog. De meeste software telt die vraag alleen. Sherlock zet ze om in werk.</p>
     </div>
   </section>
@@ -397,6 +401,29 @@ document.getElementById('wlform').addEventListener('submit',function(e){
   document.getElementById('wlok').style.display='block';
   e.target.reset();
 });
+</script>
+
+<!-- pretext.js: DOM-free text measurement -> fit the headline to the viewport width -->
+<script type="module">
+  import { prepare, layout } from 'https://esm.sh/@chenglou/pretext@0.0.8';
+  function fit(el){
+    const text=(el.textContent||'').replace(/\s+/g,' ').trim();
+    const cw=el.clientWidth||(el.parentElement&&el.parentElement.clientWidth);
+    if(!text||!cw) return;
+    const lines=parseInt(el.dataset.lines||'3',10), lh=parseFloat(el.dataset.lh||'0.92');
+    let lo=16,hi=Math.min(cw*1.25,1400),best=lo;
+    for(let i=0;i<20;i++){
+      const mid=(lo+hi)/2;
+      const {lineCount}=layout(prepare(text,'900 '+mid+'px Raleway'),cw,mid*lh);
+      if(lineCount<=lines){best=mid;lo=mid;}else{hi=mid;}
+    }
+    el.style.fontSize=Math.floor(best)+'px';
+    el.style.lineHeight=(best*lh)+'px';
+  }
+  function run(){document.querySelectorAll('.fit').forEach(fit);}
+  // measure only after Raleway is loaded, else Canvas measures a fallback font
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(run);
+  new ResizeObserver(()=>run()).observe(document.documentElement);
 </script>
 </body>
 </html>
