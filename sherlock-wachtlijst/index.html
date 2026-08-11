@@ -452,7 +452,7 @@ document.getElementById('wlform').addEventListener('submit',function(e){
   var QUERIES=['website laten maken','loodgieter antwerpen','boekhouder voor zelfstandige','ramen vervangen premie','industrieel reinigen','seo bureau','warmtepomp installateur','webdesign kortrijk','keuken op maat','dakwerken gent','advocaat bouwrecht','tuinaanleg prijs','zonnepanelen installateur','fotograaf huwelijk','schilder binnenwerk','airco plaatsen','website laten maken prijs','marketing bureau antwerpen','google ads uitbesteden','boekhouder kmo','elektricien antwerpen','verhuisfirma offerte','interieurarchitect','koffiemachine huren bedrijf','wordpress website laten maken','webshop bouwen','logo laten maken','sociale media beheer','fotograaf bedrijf','vertaalbureau','traprenovatie','badkamer renoveren','zwembad aanleggen','isolatie premie','vloerverwarming plaatsen','tuinman zoeken','schrijnwerk op maat','meubelmaker','raamdecoratie','poetsvrouw zoeken','autokeuring afspraak','bandencentrale','garage in de buurt','fietsenwinkel','osteopaat','kinesist','tandarts spoed','notaris tarief','architect woning','aannemer verbouwing','hovenier','stukadoor','vloerder','glaszetter','zonwering','pergola op maat','carport hout','oprit aanleggen','gevelreiniging','dakgoot reinigen','schoorsteenveger','ongediertebestrijding','slotenmaker spoed','verwarmingsketel onderhoud','cv ketel vervangen','airco service','domotica installateur','laadpaal thuis','ev laadpaal premie','fotovoltaïsche panelen','thuisbatterij','regenwaterput','septische put','riolering aanleggen','grondwerken','afbraakwerken','containerverhuur','kraanverhuur','stellingbouw','betonvloer','chape gieten','crepi gevel','buitenschrijnwerk pvc','veranda op maat','rolluiken','sectionaalpoort','hekwerk plaatsen','klinkers leggen','terras aanleggen','vijver aanleggen','gazon aanleggen','snoeiwerken','bomen rooien','haag planten','onkruidbestrijding','beregening tuin','robotmaaier','tuinverlichting','poolhouse','sauna plaatsen','wellness op maat','interieurinrichting','maatkasten','dressing op maat','totaalrenovatie','kleine renovatie','energierenovatie premie'];
   var COMMERCIAL=/prijs|kost|laten maken|installateur|bureau|offerte|premie|renov|op maat|plaatsen|aanleggen|vervangen|uitbesteden|spoed/i;
   var W=0,H=0,DPR=1,FONT='13px "Open Sans",system-ui,sans-serif';
-  function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); W=canvas.clientWidth||sec.clientWidth; H=canvas.clientHeight||sec.clientHeight; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); var r=sec.getBoundingClientRect(); W=Math.round(r.width)||sec.clientWidth||window.innerWidth||1200; H=Math.round(r.height)||sec.clientHeight||window.innerHeight||800; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
   var parts=[];
   function build(){ ctx.font=FONT; parts=QUERIES.map(function(q){ return {t:q, x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-0.5)*0.16, vy:(Math.random()-0.5)*0.16, w:ctx.measureText(q).width, hot:COMMERCIAL.test(q)}; }); }
   var mouse={x:-1e5,y:-1e5,on:false};
@@ -474,8 +474,10 @@ document.getElementById('wlform').addEventListener('submit',function(e){
     }
   }
   var raf=0; function loop(){ step(); draw(); raf=requestAnimationFrame(loop); }
-  function start(){ resize(); build(); if(!raf) loop(); }
-  window.addEventListener('resize',function(){ resize(); build(); });
+  function reflow(){ resize(); build(); }
+  function start(){ reflow(); if(!raf) loop(); requestAnimationFrame(reflow); }
+  window.addEventListener('resize',reflow);
+  window.addEventListener('load',reflow);
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(start);
 })();
 </script>
