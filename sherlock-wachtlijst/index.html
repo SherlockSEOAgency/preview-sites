@@ -54,6 +54,16 @@ h1,h2,h3{margin:0}
 .tickers{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
 .tickers span b{color:var(--accent)}
 
+/* motion + depth (premium lift, progressive enhancement) */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important}}
+.node{box-shadow:0 18px 40px -26px rgba(0,0,0,.55)}
+.node,.chan,.rung,.work a{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.node:hover{transform:translateY(-4px);box-shadow:0 26px 50px -24px rgba(102,36,131,.35)}
+.chan:hover{transform:translateY(-3px);border-color:var(--accent)}
+.rung:hover{background:rgba(107,184,105,.06)}
+
 /* statement billboard = the repeatable campaign device */
 /* statement billboard = the signature purple field (brand block device) */
 .statement{background:var(--accent2);color:#fff;padding:66px 0}
@@ -405,6 +415,20 @@ document.getElementById('wlform').addEventListener('submit',function(e){
   document.getElementById('wlok').style.display='block';
   e.target.reset();
 });
+</script>
+
+<!-- scroll-reveal: sections rise in as they enter the viewport (premium lift) -->
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var sel='.sec h2,.sec .intro,.model,.node,.proof,.work a,.worknote,.hub .core,.chan,.hubnote,.rung,.statement .big,.statement .sub,.trap,.reversible,.wl h2,.wl .intro,.form';
+  var els=[].slice.call(document.querySelectorAll(sel));
+  els.forEach(function(el){ el.classList.add('reveal'); });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
+  els.forEach(function(el,i){ io.observe(el); });
+})();
 </script>
 
 <!-- living knowledge graph behind the hero (self-contained force-directed sim) -->
