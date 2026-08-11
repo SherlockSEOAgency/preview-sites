@@ -36,8 +36,11 @@ h1,h2,h3{margin:0}
 .top .cta-sm:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 @media(max-width:640px){.topmeta{display:none}}
 
-/* hero */
-.hero{padding:74px 0 64px;border-bottom:1px solid var(--line)}
+/* hero — living knowledge graph behind the headline */
+.hero{position:relative;overflow:hidden;min-height:100svh;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+#kg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--black) 0%,rgba(11,11,11,.82) 34%,rgba(11,11,11,.35) 66%,rgba(11,11,11,.05) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
 .eyebrow{color:var(--accent)}
 .hero h1{font-size:clamp(3rem,10vw,7.6rem);margin:20px 0 0;max-width:15ch}
 .hero h1 .u{color:var(--accent)}
@@ -173,8 +176,9 @@ h1,h2,h3{margin:0}
     </div>
   </header>
 
-  <!-- 1. CATEGORY / HERO -->
+  <!-- 1. HERO — living knowledge graph -->
   <section class="hero">
+    <canvas id="kg" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="mono eyebrow">Maak kennis met Sherlock · De eerste SEO Agent</div>
       <h1 class="disp">De SEO Agent die <span class="u">ook</span> je website <span class="u">bouwt</span>.</h1>
@@ -401,6 +405,53 @@ document.getElementById('wlform').addEventListener('submit',function(e){
   document.getElementById('wlok').style.display='block';
   e.target.reset();
 });
+</script>
+
+<!-- living knowledge graph behind the hero (self-contained force-directed sim) -->
+<script>
+(function(){
+  var canvas=document.getElementById('kg'); if(!canvas||!canvas.getContext) return;
+  var hero=canvas.closest('.hero'); if(!hero) return; var ctx=canvas.getContext('2d');
+  var PURPLE='#662483', GREEN='#6BB869';
+  var W=0,H=0,DPR=1;
+  function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); W=canvas.clientWidth||hero.clientWidth; H=canvas.clientHeight||hero.clientHeight; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  var channels=['Website','SEO','Meting','Content','Ads','CRM','Agents'];
+  var topics=['WordPress','Webdesign','Local pack','Schema.org','Zoekintentie','Backlinks','Conversie','Landingspagina','Doelgroep','Entiteiten','Money keyword','SERP','Autoriteit','Hosting','Snelheid','Structuur','Copy','Keuken op maat','Renovatie','Offerte','Regio','Vindbaarheid','Meubelmaker','Koffiemachine huren'];
+  var nodes=[], edges=[];
+  var core={label:'Jouw bedrijf',type:'core',r:24,x:0,y:0,vx:0,vy:0}; nodes.push(core);
+  var chNodes=channels.map(function(c){ var n={label:c,type:'channel',r:11,x:0,y:0,vx:0,vy:0}; nodes.push(n); edges.push([core,n]); return n; });
+  topics.forEach(function(t){ var n={label:t,type:'topic',r:3+Math.random()*3,x:0,y:0,vx:0,vy:0}; nodes.push(n); edges.push([chNodes[Math.floor(Math.random()*chNodes.length)],n]); });
+  function cx(){return W*0.64;} function cy(){return H*0.5;}
+  function initPos(){ nodes.forEach(function(n){ n.x=cx()+(Math.random()-0.5)*W*0.5; n.y=cy()+(Math.random()-0.5)*H*0.6; n.vx=0;n.vy=0; }); }
+  var mouse={x:-1e4,y:-1e4};
+  hero.addEventListener('mousemove',function(e){ var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+  hero.addEventListener('mouseleave',function(){ mouse.x=mouse.y=-1e4; });
+  function step(){
+    for(var i=0;i<nodes.length;i++){ var a=nodes[i];
+      for(var j=i+1;j<nodes.length;j++){ var b=nodes[j]; var dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy||1; if(d2<36000){ var d=Math.sqrt(d2),f=340/d2; dx/=d;dy/=d; a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f; } }
+      a.vx+=(cx()-a.x)*0.0011; a.vy+=(cy()-a.y)*0.0011;
+      var mdx=a.x-mouse.x,mdy=a.y-mouse.y,md2=mdx*mdx+mdy*mdy; if(md2<26000){ var md=Math.sqrt(md2)||1,mf=1600/md2; a.vx+=(mdx/md)*mf; a.vy+=(mdy/md)*mf; }
+    }
+    edges.forEach(function(e){ var a=e[0],b=e[1],dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1,rest=(a===core)?118:66,f=(d-rest)*0.012; dx/=d;dy/=d; a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f; });
+    core.vx+=(cx()-core.x)*0.02; core.vy+=(cy()-core.y)*0.02;
+    nodes.forEach(function(n){ n.vx*=0.85;n.vy*=0.85; n.x+=n.vx;n.y+=n.vy; n.x=Math.max(16,Math.min(W-16,n.x)); n.y=Math.max(60,Math.min(H-24,n.y)); });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H); ctx.lineWidth=1;
+    edges.forEach(function(e){ var a=e[0],b=e[1]; ctx.strokeStyle=(a===core)?'rgba(107,184,105,.22)':'rgba(255,255,255,.09)'; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); });
+    nodes.forEach(function(n){
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,6.2832);
+      if(n.type==='core'){ ctx.fillStyle=PURPLE; ctx.shadowColor=PURPLE; ctx.shadowBlur=26; } else if(n.type==='channel'){ ctx.fillStyle=GREEN; ctx.shadowColor='rgba(107,184,105,.55)'; ctx.shadowBlur=10; } else { ctx.fillStyle='rgba(255,255,255,.45)'; ctx.shadowBlur=0; }
+      ctx.fill(); ctx.shadowBlur=0;
+      if(n.type!=='topic'){ ctx.fillStyle='#efeaf5'; ctx.font=(n.type==='core'?'800 14px':'700 11px')+' Raleway,system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillText(n.label.toUpperCase(), n.x, n.y-n.r-7); }
+    });
+  }
+  var raf=0;
+  function loop(){ step(); draw(); raf=requestAnimationFrame(loop); }
+  function start(){ resize(); initPos(); for(var k=0;k<60;k++) step(); if(!raf) loop(); }
+  window.addEventListener('resize',resize);
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(start);
+})();
 </script>
 
 <!-- pretext.js: DOM-free text measurement -> fit the headline to the viewport width -->
