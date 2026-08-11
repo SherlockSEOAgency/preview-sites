@@ -213,10 +213,10 @@ const AUDIT = {
   ],
   attention:[
     { t:"De conversieteller staat op 0", d:"GA4 registreert over 90 dagen 0 conversies. Er komen wél aanvragen binnen, maar ze worden niet gemeten — dus we kunnen (nog) geen euro aan een lead hangen. Dit is de eerste fix." },
-    { t:"Uw sterkste zoekwoorden missen een eigen pagina", d:"Gemiddelde positie 16 en 0,89% doorklik. Termen als ‘badkamer renovatie’ en ‘douchecabine’ (elk 5.400 zoekopdrachten/mnd) ranken via de homepage of een FAQ-antwoord — niet via een eigen verkooppagina die de koop afmaakt." }
+    { t:"Uw grootste money-termen missen een eigen pagina", d:"Gemiddelde positie 16 en 0,89% doorklik. ‘badkamer renovatie’ (5.400/mnd) en ‘inloopdouche’ ranken via de homepage of een FAQ-antwoord — niet via een eigen verkooppagina die de koop afmaakt." }
   ],
   opportunities:[
-    { t:"Bouw een echte verkooppagina per kern-service", why:"Badkamerrenovatie, inloopdouche, douchecabine en seniorendouche ranken nu via FAQ-antwoorden. Geen enkel kernonderwerp heeft een eigen pagina.",
+    { t:"Bouw verkooppagina's voor de money-termen zonder eigen pagina", why:"Uw grootste vragen — badkamerrenovatie en inloopdouche — ranken nu via FAQ-antwoorden of de homepage, zonder eigen verkooppagina die de koop afmaakt (douchecabine en senioren hebben er wél een; die scherpen we aan).",
       value:"~€2.000–3.500 / maand", value_note:"advertentiewaarde — de cluster ‘badkamerrenovatie’ is samen ±12.400 zoekopdrachten/mnd aan een klikprijs van ±€8. Conservatief gerekend; exact zodra de conversieteller werkt." },
     { t:"Zet conversiemeting aan (formulier + telefoon)", why:"Zonder gemeten aanvragen blijft élk resultaat een schatting. Mét, rekenen we alles terug naar offertes en omzet.",
       value:"Alles afrekenbaar", value_note:"De basis (Analytics, Search Console, server-side) staat er al — alleen de sleutel-conversie ontbreekt nog." },
@@ -263,11 +263,11 @@ const AUDIT = {
     intro:"Herkenbaarheid vergelijkt vier onafhankelijke bronnen van ‘waar gaat deze website over’, en zoekt de breuken ertussen: wat u zélf verklaart, hoe u intern verbindt, waarmee het web u associeert, en waarvoor Google u feitelijk behandelt.",
     families:[
       { name:"Wat de site zélf verklaart", state:"scored", p:"De homepage is helder (‘veilig douchen in 1 dag’, badkamerrenovatie). Maar de commerciële kern — douchecabine, inloopdouche — bestaat amper als eigen verkooppagina." },
-      { name:"Hoe de site intern verbindt", state:"scored", p:"Zwak. Geen enkel kernonderwerp is aan een eigen pagina gekoppeld (0 ‘grounded’). Uw sterkste zoekwoorden ranken via FAQ-antwoorden; de interne kracht gaat naar de vraagbaak, niet naar de verkooppagina." },
+      { name:"Hoe de site intern verbindt", state:"scored", p:"Uw grootste money-termen — ‘badkamerrenovatie’ en ‘inloopdouche’ — ranken via FAQ-antwoorden of de homepage in plaats van via een eigen verkooppagina. Bestaande pagina's (onze douches, seniorendouches) krijgen intern weinig kracht. De autoriteit gaat naar de vraagbaak, niet naar de verkooppagina." },
       { name:"Waarmee het web u associeert", state:"unknown", p:"Nog niet gemeten — er is nog geen backlink-bron gekoppeld. Dit verlaagt onze zekerheid, niet uw score. We straffen u niet voor wat we (nog) niet zien." },
       { name:"Waarvoor Google u behandelt", state:"scored", p:"Google toont u vooral op merknaam en op informatieve premie-/FAQ-vragen. Op de grote koopgerichte termen staat u op pagina 2. Google ziet u nu eerder als vraagbaak dan als de renovator om te boeken." }
     ],
-    diagnosis:"U verkoopt badkamer- en doucherenovaties, maar uw sterkste commerciële zoekwoorden (inloopdouche, douchecabine, badkamerrenovatie) ranken via FAQ-antwoorden en de homepage i.p.v. eigen verkooppagina's — geen enkel kernonderwerp is aan een pagina gekoppeld. Van 1.137 gevonden onderwerpen zijn er 136 echt relevant en 0 verankerd. Er is zelfs duidelijke lokale vraag per gemeente (Antwerpen, Borgerhout, Brasschaat…) zonder bijhorende pagina.",
+    diagnosis:"U verkoopt badkamer- en doucherenovaties. Enkele diensten hebben een eigen pagina (onze douches, seniorendouches), maar uw grootste money-termen — badkamerrenovatie en inloopdouche — ranken via FAQ-antwoorden of de homepage, zonder eigen verkooppagina die de koop afmaakt. Van 1.137 gevonden onderwerpen zijn er 136 écht relevant, de rest is ruis. Er is bovendien duidelijke lokale vraag per gemeente (Antwerpen, Borgerhout, Brasschaat…) zonder bijhorende pagina.",
     treatment:"Bouw per kern-service een echte verkooppagina en koppel het onderwerp eraan; bundel interne links vanuit de FAQ's naar die pagina's; schoon de ruis op. Zo gaat wat u verklaart, wat u intern versterkt én waarvoor Google u kent weer dezelfde kant op."
   },
 
@@ -364,8 +364,35 @@ let bars=AUDIT.dimensions.map(d=>{
 
 add(`
 <section class="page">
-  <div class="kicker">Samenvatting</div>
-  <h2>${esc(s.company)} — waar u staat, en de snelste weg vooruit</h2>
+  <div class="kicker">Commerciële kansen-review</div>
+  <h2>${esc(s.company)} laat online commerciële kansen liggen</h2>
+  <p class="lead" style="margin-top:6px">We onderzochten uw website én uw markt en zien <b>drie manieren om meer aanvragen uit de markt te halen</b>. Geen lijst met SEO-problemen — drie commerciële kansen, met wat het u vandaag kost en wat het kan opleveren.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 4px">
+    <div style="border:1px solid var(--line);border-left:4px solid var(--purple);border-radius:0 11px 11px 0;background:#fff;padding:14px 16px">
+      <div class="kicker" style="margin:0">1 · Vraag die u misloopt</div>
+      <div style="font-family:var(--font-head);font-weight:700;margin:6px 0 2px">Uw grootste diensten staan op pagina 2</div>
+      <p style="font-size:.9rem;color:#4a4a4e;margin:0">‘badkamer renovatie’ en ‘inloopdouche’ hebben geen eigen verkooppagina en blijven onder de vouw.</p>
+      <span class="value" style="margin-top:8px">Kost u nu ~€2.000–3.500/mnd <small>aan gemiste verkeerswaarde</small></span>
+    </div>
+    <div style="border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:0 11px 11px 0;background:#fff;padding:14px 16px">
+      <div class="kicker" style="margin:0;color:var(--amber)">2 · Aanvragen niet gemeten</div>
+      <div style="font-family:var(--font-head);font-weight:700;margin:6px 0 2px">U vliegt blind op resultaat</div>
+      <p style="font-size:.9rem;color:#4a4a4e;margin:0">De conversieteller staat op 0: er komen aanvragen binnen, maar u ziet niet welke inspanning ze oplevert.</p>
+      <span class="value" style="margin-top:8px;background:var(--amber-tint);color:#8a6400">Elke euro nu onmeetbaar</span>
+    </div>
+    <div style="border:1px solid var(--line);border-left:4px solid var(--green);border-radius:0 11px 11px 0;background:#fff;padding:14px 16px">
+      <div class="kicker" style="margin:0;color:#2f7d34">3 · Groeikans lokaal</div>
+      <div style="font-family:var(--font-head);font-weight:700;margin:6px 0 2px">Regio om uit te bouwen</div>
+      <p style="font-size:.9rem;color:#4a4a4e;margin:0">Duidelijke vraag per gemeente (Antwerpen, Borgerhout, Brasschaat…) zonder bijhorende pagina.</p>
+      <span class="value" style="margin-top:8px">Lokale koopintentie <small>= warmste leads</small></span>
+    </div>
+  </div>
+
+  <div class="editnote" style="border-left-color:var(--purple);background:var(--purple-tint)"><b>Dit zouden wij eerst doen:</b> ① de offertepagina live zetten + een sterke badkamerrenovatie-pagina · ② conversiemeting aanzetten (aanvraag + telefoon) · ③ de eerste lokale pagina (Antwerpen). <span class="small">Interventies zijn niet per se ‘SEO’: het kan ook een pagina, propositie, promotie of advertentie zijn — wat de kans het best verzilvert.</span></div>
+
+  <p class="small" style="margin-top:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-family:var(--font-head);font-weight:700">Het bewijs onder deze conclusie — uit uw eigen Search Console &amp; Analytics</p>
+
   <div class="ctx">
     ${ctxCell("Type bedrijf",c.type)}
     ${ctxCell("Doel / hoe klanten aanvragen",c.goal)}
@@ -436,7 +463,7 @@ add(`
       <div class="legend">
         <div class="li"><span class="sw" style="background:#6BB869"></span> ${e.kept} relevant gehouden</div>
         <div class="li"><span class="sw" style="background:#B8860B"></span> ${e.excluded} als ruis herkend</div>
-        <div class="callout">${e.grounded} onderwerpen zijn aan een eigen pagina gekoppeld</div>
+        <div class="callout">Slechts ${e.kept} van ${e.total} onderwerpen zijn écht relevant — de rest is ruis</div>
       </div>
     </div>
     <div class="fams" style="grid-template-columns:1fr;margin-top:0">
