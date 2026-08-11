@@ -405,17 +405,20 @@ document.getElementById('wlform').addEventListener('submit',function(e){
 
 <!-- pretext.js: DOM-free text measurement -> fit the headline to the viewport width -->
 <script type="module">
-  import { prepare, layout } from 'https://esm.sh/@chenglou/pretext@0.0.8';
+  import { prepare, measureLineStats } from 'https://esm.sh/@chenglou/pretext@0.0.8';
   function fit(el){
     const text=(el.textContent||'').replace(/\s+/g,' ').trim();
     const cw=el.clientWidth||(el.parentElement&&el.parentElement.clientWidth);
     if(!text||!cw) return;
-    const lines=parseInt(el.dataset.lines||'3',10), lh=parseFloat(el.dataset.lh||'0.92');
-    let lo=16,hi=Math.min(cw*1.25,1400),best=lo;
-    for(let i=0;i<20;i++){
+    const lh=parseFloat(el.dataset.lh||'0.9');
+    const targetH=(window.innerHeight||800)*parseFloat(el.dataset.fill||'0.72');
+    // biggest font whose wrapped block fills the target height AND no line overflows width
+    let lo=16,hi=1400,best=lo;
+    for(let i=0;i<22;i++){
       const mid=(lo+hi)/2;
-      const {lineCount}=layout(prepare(text,'900 '+mid+'px Raleway'),cw,mid*lh);
-      if(lineCount<=lines){best=mid;lo=mid;}else{hi=mid;}
+      const st=measureLineStats(prepare(text,'900 '+mid+'px Raleway'),cw,mid*lh);
+      const h=st.lineCount*mid*lh;
+      if(st.maxLineWidth<=cw && h<=targetH){best=mid;lo=mid;}else{hi=mid;}
     }
     el.style.fontSize=Math.floor(best)+'px';
     el.style.lineHeight=(best*lh)+'px';
