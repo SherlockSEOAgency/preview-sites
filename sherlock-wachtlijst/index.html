@@ -417,17 +417,19 @@ document.getElementById('wlform').addEventListener('submit',function(e){
 });
 </script>
 
-<!-- scroll-reveal: sections rise in as they enter the viewport (premium lift) -->
+<!-- scroll-reveal: sections rise in as they enter the viewport (fail-open, no IO dependency) -->
 <script>
 (function(){
-  if(!('IntersectionObserver' in window)) return;
   var sel='.sec h2,.sec .intro,.model,.node,.proof,.work a,.worknote,.hub .core,.chan,.hubnote,.rung,.statement .big,.statement .sub,.trap,.reversible,.wl h2,.wl .intro,.form';
   var els=[].slice.call(document.querySelectorAll(sel));
   els.forEach(function(el){ el.classList.add('reveal'); });
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-  },{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
-  els.forEach(function(el,i){ io.observe(el); });
+  function vh(){ return window.innerHeight||document.documentElement.clientHeight||800; }
+  function check(){ for(var i=0;i<els.length;i++){ var el=els[i]; if(el.classList.contains('in')) continue; if(el.getBoundingClientRect().top < vh()*0.92){ el.classList.add('in'); } } }
+  check();
+  window.addEventListener('scroll',check,{passive:true});
+  window.addEventListener('resize',check,{passive:true});
+  // fail-open safety: never leave content hidden (degenerate viewport / no scroll ever)
+  window.addEventListener('load',function(){ check(); setTimeout(function(){ if(vh()<=1){ els.forEach(function(el){ el.classList.add('in'); }); } },1500); });
 })();
 </script>
 
