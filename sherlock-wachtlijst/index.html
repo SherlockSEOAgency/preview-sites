@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>Sherlock | De eerste SEO Agent, die je website ook bouwt</title>
-<meta name="description" content="Sherlock is een SEO Agent die niet stopt bij analyse. Vertel hem wat je bedrijf doet, en hij bouwt er een echte website mee. Zet je op de wachtlijst.">
+<meta name="description" content="Sherlock brengt je bedrijf en zoekmarkt in kaart en bouwt daaruit de structuur, content en het design van je website. Meting, SEO en advertising bouwen op dezelfde basis verder. Zet je op de wachtlijst.">
+<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +41,7 @@ h1,h2,h3{margin:0}
 .eyebrow{color:var(--accent)}
 .hero h1{font-size:clamp(3rem,10vw,7.6rem);margin:20px 0 0;max-width:15ch}
 .hero h1 .u{color:var(--accent)}
-.hero .lead{margin-top:26px;max-width:56ch;font-size:1.15rem;color:#d7d2c8}
+.hero .lead{margin-top:26px;max-width:60ch;font-size:1.15rem;color:#d7d2c8}
 .hero .lead b{color:var(--white)}
 .hero .btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
 .btn{display:inline-block;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:15px 26px;border:1px solid var(--paper)}
@@ -48,26 +49,43 @@ h1,h2,h3{margin:0}
 .btn:hover{background:var(--paper);color:var(--black)}
 .btn.solid:hover{background:#fff;color:var(--black)}
 .tickers{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
-.tickers span b{color:var(--paper)}
+.tickers span b{color:var(--accent)}
 
 /* statement billboard = the repeatable campaign device */
 .statement{background:var(--black);border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);padding:64px 0}
 .statement .tag{color:var(--accent);margin-bottom:20px}
 .statement .big{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:.01em}
 .statement .big .u{color:var(--accent)}
-.statement .sub{margin-top:22px;max-width:60ch;color:#cfcabf;font-size:1.05rem}
-.statement.invert{background:var(--paper);color:var(--ink)}
-.statement.invert .sub{color:var(--muted-paper)}
+.statement .sub{margin-top:22px;max-width:62ch;color:#cfcabf;font-size:1.05rem}
+.statement .sub b{color:var(--white)}
+
+/* the escalation trap (dashboard/chatbot/sherlock) */
+.trap{margin-top:30px;border:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}
+@media(max-width:720px){.trap{grid-template-columns:1fr}}
+.trap .row{padding:16px 18px;border-right:1px solid var(--line)}
+.trap .row:last-child{border-right:0}
+@media(max-width:720px){.trap .row{border-right:0;border-bottom:1px solid var(--line)}.trap .row:last-child{border-bottom:0}}
+.trap .w{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;letter-spacing:.02em}
+.trap .row.on .w{color:var(--accent)}
+.trap .d{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:#bdb8ad;margin-top:6px;line-height:1.5}
+.reversible{margin-top:16px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.reversible b{color:var(--paper)}
 
 /* paper section */
 .paper{background:var(--paper);color:var(--ink)}
 .paper .mono,.paper .eyebrow{color:var(--accent)}
 .sec{padding:76px 0}
 .sec h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.95;margin-top:14px;max-width:20ch}
-.sec .intro{margin-top:16px;max-width:60ch;font-size:1.08rem;color:var(--muted-paper)}
+.sec .intro{margin-top:16px;max-width:64ch;font-size:1.08rem;color:var(--muted-paper)}
+
+/* knowledge-model mini diagram */
+.model{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.model span{border:1px solid var(--ink);padding:8px 12px;background:var(--white)}
+.model span.hot{background:var(--ink);color:var(--paper)}
+.model .ar{border:0;padding:0;color:var(--accent);background:transparent;font-family:var(--display);font-size:1.1rem}
 
 /* how it works flow */
-.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch;margin-top:40px}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch;margin-top:34px}
 @media(max-width:820px){.flow{grid-template-columns:1fr;gap:16px}.flow .arrow{transform:rotate(90deg);justify-self:start;margin:0 0 0 8px}}
 .node{border:1px solid var(--ink);padding:22px 20px;background:var(--white)}
 .node .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
@@ -76,7 +94,10 @@ h1,h2,h3{margin:0}
 .node li{margin:3px 0}
 .node.mid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .node.mid ul{color:#cfcabf}
+.node.mid .hot{display:block;margin-top:12px;font-family:var(--body);font-size:.95rem;color:#fff;border-left:2px solid var(--accent);padding-left:12px;font-style:italic}
 .arrow{align-self:center;font-family:var(--display);font-size:1.6rem;color:var(--accent)}
+.proof{margin-top:20px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-paper)}
+.proof b{color:var(--ink)}
 
 /* portfolio editorial list */
 .work{margin-top:36px;border-top:2px solid var(--ink)}
@@ -90,24 +111,36 @@ h1,h2,h3{margin:0}
 .work .go .accent{color:var(--accent)}
 .worknote{margin-top:16px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-paper)}
 
-/* ladder */
-.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border:1px solid var(--line)}
-@media(max-width:820px){.ladder{grid-template-columns:1fr}}
-.rung{padding:28px 24px;border-right:1px solid var(--line)}
+/* hub: one knowledge layer, many channels */
+.hub{padding:76px 0;border-top:2px solid var(--accent)}
+.hub .core{border:1px solid var(--accent);background:#141414;padding:22px 24px;max-width:640px;margin:30px auto 0;text-align:center}
+.hub .core .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.hub .core h3{font-family:var(--display);text-transform:uppercase;font-size:1.9rem;margin:8px 0 4px}
+.hub .core p{margin:6px 0 0;color:#bdb8ad;font-size:.92rem}
+.chans{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.chan{border:1px solid var(--line);padding:15px 14px;background:#0e0e0e}
+.chan .nm{font-family:var(--display);text-transform:uppercase;font-size:1.25rem;line-height:1}
+.chan .st{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;margin-top:7px;display:inline-block}
+.chan .st.now{color:var(--accent)}
+.chan .st.exp{color:var(--muted)}
+.hubnote{margin-top:22px;max-width:64ch;color:#cfcabf;font-size:1rem}
+.hubnote b{color:var(--white)}
+
+/* ladder (expansion path, 5 stages) */
+.ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:36px;border:1px solid var(--line)}
+@media(max-width:900px){.ladder{grid-template-columns:1fr}}
+.rung{padding:24px 20px;border-right:1px solid var(--line)}
 .rung:last-child{border-right:0}
-@media(max-width:820px){.rung{border-right:0;border-bottom:1px solid var(--line)}.rung:last-child{border-bottom:0}}
-.rung .step{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.rung h3{font-family:var(--display);text-transform:uppercase;font-size:1.9rem;margin:10px 0 4px;line-height:1}
-.rung .said{font-style:italic;color:#cfcabf;margin:0 0 12px;font-size:.98rem}
-.rung p{margin:0;color:#bdb8ad;font-size:.94rem}
-.caps{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
-.caps span{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);padding:4px 9px;color:var(--paper)}
+@media(max-width:900px){.rung{border-right:0;border-bottom:1px solid var(--line)}.rung:last-child{border-bottom:0}}
+.rung .step{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.rung h3{font-family:var(--display);text-transform:uppercase;font-size:1.7rem;margin:10px 0 8px;line-height:1}
+.rung p{margin:0;color:#bdb8ad;font-size:.9rem}
 
 /* waitlist */
 .wl{padding:84px 0}
 .wl h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.4rem,7vw,5rem);line-height:.92;max-width:16ch}
 .wl h2 .u{color:var(--accent)}
-.wl .intro{margin-top:18px;max-width:54ch;color:#cfcabf;font-size:1.08rem}
+.wl .intro{margin-top:18px;max-width:56ch;color:#cfcabf;font-size:1.08rem}
 .form{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px}
 @media(max-width:560px){.form{grid-template-columns:1fr}}
 .form .full{grid-column:1/-1}
@@ -140,44 +173,50 @@ h1,h2,h3{margin:0}
     <div class="wrap">
       <div class="mono eyebrow">Maak kennis met Sherlock // De eerste SEO Agent</div>
       <h1 class="disp">De SEO Agent die je website <span class="u">ook bouwt</span>.</h1>
-      <p class="lead">De meeste tools analyseren en adviseren. Sherlock <b>voert uit</b>. Vertel hem wat je bedrijf doet, en hij vertaalt dat in een echte website: een doordachte structuur, copy en basis-SEO. Search-data en verdere optimalisatie komen daar bovenop wanneer je ze nodig hebt.</p>
+      <p class="lead">Sherlock brengt eerst je bedrijf en zoekmarkt in kaart: wat je verkoopt, voor wie, waar de vraag zit en welke onderwerpen ertoe doen. Vanuit die kennis bouwt Sherlock de <b>structuur, content en het design</b> van je website. Daarna bouwen meting, SEO en advertising op dezelfde basis verder.</p>
       <div class="btns">
         <a class="btn solid" href="#wachtlijst">Zet mij op de wachtlijst</a>
         <a class="btn" href="#werk">Bekijk het werk</a>
       </div>
       <div class="tickers mono">
-        <span><b>1.</b> Vertel wat je doet</span>
+        <span><b>1.</b> Sherlock begrijpt</span>
         <span><b>2.</b> Sherlock bouwt</span>
-        <span><b>3.</b> Uitbreiden wanneer nodig</span>
+        <span><b>3.</b> Jij breidt uit</span>
       </div>
     </div>
   </section>
 
-  <!-- CAMPAIGN DEVICE: Sherlock Statement #1 -->
+  <!-- CAMPAIGN DEVICE: Sherlock Statement #1 (brand line, NL) -->
   <section class="statement">
     <div class="wrap">
-      <div class="mono tag">// Demand exists. Sherlock finds it. Then acts on it.</div>
-      <div class="big">Your next customer<br>is already <span class="u">searching</span>.</div>
+      <div class="mono tag">// De vraag bestaat al. Sherlock vindt ze. En handelt erop.</div>
+      <div class="big">Je volgende klant<br>zoekt nu <span class="u">al</span>.</div>
       <p class="sub">Een zoekopdracht is vraag, met de hand al omhoog. De meeste software telt die vraag alleen. Sherlock zet ze om in werk.</p>
     </div>
   </section>
 
-  <!-- 2. SHOW, DON'T TELL -->
+  <!-- 2 + 3. HOW IT WORKS: the knowledge model -->
   <section class="paper">
     <div class="sec wrap">
       <div class="mono eyebrow">Hoe het werkt</div>
-      <h2>Jij levert de kennis. Sherlock doet het werk.</h2>
-      <p class="intro">Je hoeft geen SEO-strategie te kopen om een goede website te krijgen. Je vertelt via de intake wat je bedrijf is. Sherlock maakt daar een gestructureerde site van.</p>
+      <h2>Eerst begrijpen. Dan bouwen.</h2>
+      <p class="intro">Sherlock begint niet met keywords, maar met een werkend model van je bedrijf: je aanbod, je doelgroepen, je doelen, je markt, je concurrenten en de zoekintenties die ertoe doen. Uit dat model volgt de site, geen willekeurige pagina's.</p>
+      <div class="model">
+        <span class="hot">Business</span><span class="ar">&rarr;</span>
+        <span>Goals</span><span class="ar">&rarr;</span>
+        <span class="hot">Kennismodel</span><span class="ar">&rarr;</span>
+        <span>Search demand</span>
+      </div>
       <div class="flow">
         <div class="node">
           <div class="k">Input // jij</div>
           <h3>Jouw bedrijf</h3>
           <ul>
             <li>Aanbod en klanten</li>
-            <li>Regio en positionering</li>
+            <li>Doelgroepen en doelen</li>
+            <li>Markt en concurrenten</li>
+            <li>Zoekintenties</li>
             <li>Tone of voice</li>
-            <li>Gewenste acties</li>
-            <li>Eventueel keywords</li>
           </ul>
         </div>
         <div class="arrow">&rarr;</div>
@@ -187,25 +226,27 @@ h1,h2,h3{margin:0}
           <ul>
             <li>Pagina-architectuur</li>
             <li>Copy in jouw stem</li>
+            <li>Ontworpen site, geen template</li>
             <li>Basis-SEO en schema</li>
-            <li>Opgebouwd, niet gegokt</li>
           </ul>
+          <span class="hot">Geen 100 AI-pagina's omdat het kan. De juiste pagina's omdat de vraag bestaat.</span>
         </div>
         <div class="arrow">&rarr;</div>
         <div class="node">
           <div class="k">Output // resultaat</div>
           <h3>Je website</h3>
           <ul>
-            <li>Een echte, live site</li>
+            <li>Een echte, ontworpen site</li>
             <li>Klaar voor je goedkeuring</li>
             <li>Modulair uitbreidbaar</li>
           </ul>
         </div>
       </div>
+      <p class="proof">// Technische laag: <b>ontology en entities</b>. Je bedrijf als netwerk van onderwerpen en relaties, zodat elke pagina klopt met wat je echt bent.</p>
     </div>
   </section>
 
-  <!-- 3. REAL WORK -->
+  <!-- REAL WORK (proof, kept high) -->
   <section class="paper" id="werk" style="border-top:1px solid var(--line-paper)">
     <div class="sec wrap">
       <div class="mono eyebrow">Echt werk</div>
@@ -242,42 +283,75 @@ h1,h2,h3{margin:0}
     </div>
   </section>
 
-  <!-- CAMPAIGN DEVICE: Sherlock Statement #2 -->
-  <section class="statement">
+  <!-- 4. HUB: one business, one knowledge layer, many channels -->
+  <section class="hub">
     <div class="wrap">
-      <div class="mono tag">// Find demand. Do the work. Prove it.</div>
-      <div class="big">De meeste software<br>rapporteert.<br>Sherlock <span class="u">voert uit</span>.</div>
-      <p class="sub">Analyse zonder uitvoering is een rapport dat blijft liggen. Sherlock beslist en bouwt, met een mens die stuurt en finetunet.</p>
+      <div class="mono eyebrow" style="color:var(--accent)">One business. One knowledge layer. Multiple execution channels.</div>
+      <h2 class="disp" style="font-size:clamp(2rem,5vw,3.4rem);margin-top:14px">Eén bedrijfscontext. Meerdere kanalen.</h2>
+      <div class="core">
+        <div class="k">In het midden</div>
+        <h3>Kennismodel</h3>
+        <p>Je bedrijf, je markt en je vraag, op één plek.</p>
+      </div>
+      <div class="chans">
+        <div class="chan"><div class="nm">Website</div><span class="st now">// Nu</span></div>
+        <div class="chan"><div class="nm">SEO</div><span class="st now">// Nu</span></div>
+        <div class="chan"><div class="nm">Meting</div><span class="st now">// Nu</span></div>
+        <div class="chan"><div class="nm">Content</div><span class="st now">// Nu</span></div>
+        <div class="chan"><div class="nm">Ads</div><span class="st exp">// In uitbouw</span></div>
+        <div class="chan"><div class="nm">CRM</div><span class="st exp">// In uitbouw</span></div>
+        <div class="chan"><div class="nm">Agents</div><span class="st exp">// In uitbouw</span></div>
+      </div>
+      <p class="hubnote">Gebouwd zodat extra kanalen vanuit dezelfde bedrijfscontext werken. <b>Vandaag is de website de meest tastbare output.</b> Ads, social en CRM-activatie bouwen op dezelfde basis verder, met een mens die stuurt.</p>
     </div>
   </section>
 
-  <!-- 4 + 5. A WEBSITE IS JUST THE BEGINNING (ladder) -->
+  <!-- 5. CAMPAIGN DEVICE: Sherlock Statement #2 + the escalation trap -->
+  <section class="statement">
+    <div class="wrap">
+      <div class="mono tag">// Analyse zonder uitvoering blijft liggen.</div>
+      <div class="big">De meeste software<br>rapporteert.<br>Sherlock <span class="u">voert uit</span>.</div>
+      <p class="sub"><b>Software speed &times; expert judgement.</b> Menselijke expertise is deel van het product: strategie en kwaliteitscontrole, geen tijdelijke tekortkoming. Consultancy is een premium laag, geen verplicht handwerk tussen elke stap.</p>
+      <div class="trap">
+        <div class="row"><div class="w">Dashboard</div><div class="d">toont</div></div>
+        <div class="row"><div class="w">Chatbot</div><div class="d">antwoordt</div></div>
+        <div class="row on"><div class="w">Sherlock</div><div class="d">begrijpt &rarr; stelt voor &rarr; bouwt &rarr; voert uit binnen grenzen</div></div>
+      </div>
+      <p class="reversible">// Waar uitvoering bestaat: <b>voorstel &rarr; preview &rarr; goedkeuring &rarr; uitvoering</b>. Omkeerbaar.</p>
+    </div>
+  </section>
+
+  <!-- 7. EXPANSION PATH (5 stages) -->
   <section>
     <div class="sec wrap">
       <div class="mono eyebrow" style="color:var(--accent)">Een website is het begin</div>
       <h2 class="disp" style="font-size:clamp(2rem,5vw,3.4rem);margin-top:14px">Begin eenvoudig. Breid uit wanneer het telt.</h2>
-      <p class="intro" style="color:#bdb8ad">Dezelfde basis groeit mee. Je koopt geen pakket, je zet aan wat relevant wordt.</p>
+      <p class="intro" style="color:#bdb8ad">Meer verkeer is geen bedrijfsdoel. Sherlock vertrekt van wat je bedrijf wil bereiken en bepaalt daarna wat marketing moet meten. Dezelfde basis groeit mee, je zet aan wat relevant wordt.</p>
       <div class="ladder">
         <div class="rung">
-          <div class="step">01 // Build</div>
+          <div class="step">01 // Start</div>
           <h3>Website</h3>
-          <p class="said">"Ik weet welke website ik nodig heb."</p>
-          <p>Je intake wordt een gestructureerde site met copy en basis-SEO. Simpel starten, zonder SEO-traject.</p>
+          <p>Je intake wordt een gestructureerde, ontworpen site met copy en basis-SEO.</p>
         </div>
         <div class="rung">
-          <div class="step">02 // Optimize</div>
-          <h3>Wat je nodig hebt</h3>
-          <p class="said">"Ik weet wat ik wil verbeteren."</p>
-          <p>Zet capabilities aan wanneer ze relevant zijn:</p>
-          <div class="caps">
-            <span>Search</span><span>Local</span><span>Content</span><span>Conversion</span><span>Meting</span><span>Advertenties</span><span>Extra pagina's</span>
-          </div>
+          <div class="step">02 // Add</div>
+          <h3>Search</h3>
+          <p>Search intelligence en semantic SEO: de juiste onderwerpen, op echte vraag.</p>
         </div>
         <div class="rung">
-          <div class="step">03 // Grow</div>
-          <h3>Groeikansen</h3>
-          <p class="said">"Onderzoek waar mijn groei zit."</p>
-          <p>Sherlock en menselijke expertise brengen doelen, markt, klanten, vraag en concurrentie samen tot prioriteiten en een roadmap.</p>
+          <div class="step">03 // Measure</div>
+          <h3>Meting</h3>
+          <p>Tracking en business-KPI's: meten wat je bedrijf wil bereiken, niet enkel verkeer.</p>
+        </div>
+        <div class="rung">
+          <div class="step">04 // Grow</div>
+          <h3>Groei</h3>
+          <p>SEO, content en advertising die op dezelfde bedrijfscontext verder bouwen.</p>
+        </div>
+        <div class="rung">
+          <div class="step">05 // Operate</div>
+          <h3>Uitvoeren</h3>
+          <p>Agents en managed execution, binnen grenzen, met een mens die stuurt.</p>
         </div>
       </div>
     </div>
@@ -306,13 +380,13 @@ h1,h2,h3{margin:0}
 
   <footer class="foot">
     <div class="wrap">
-      <span><b>SHERLOCK</b> // de eerste SEO Agent</span>
+      <span><b>SHERLOCK</b> // one business. one knowledge layer. multiple channels.</span>
       <span>sherlockseo.com</span>
     </div>
   </footer>
 
 <script>
-// Interim capture, vervangen door directe CRM web-to-lead POST zodra het endpoint bekend is.
+// Interim capture, vervangen door directe CRM web-to-lead POST zodra het endpoint bevestigd is.
 document.getElementById('wlform').addEventListener('submit',function(e){
   e.preventDefault();
   var d=new FormData(e.target), q=[];
