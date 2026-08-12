@@ -219,7 +219,7 @@ h1,h2,h3{margin:0}
   <section class="demand" id="demand">
     <canvas id="demandField" aria-hidden="true"></canvas>
     <div class="demand-center">
-      <div class="mono tag">Élke term is een échte Google-zoekopdracht · 90 dagen · één klant</div>
+      <div class="mono tag">Échte Google-zoekvraag · sherlockseo.com · laatste 90 dagen</div>
       <h2 class="disp big2">Je volgende klant<br>zoekt <span class="u">nu al</span>.</h2>
       <div class="hint">Beweeg door het veld · jouw cursor is Sherlock · groter = meer vraag</div>
     </div>
@@ -449,19 +449,20 @@ document.getElementById('wlform').addEventListener('submit',function(e){
 (function(){
   var canvas=document.getElementById('demandField'); if(!canvas||!canvas.getContext) return;
   var sec=canvas.closest('.demand'); if(!sec) return; var ctx=canvas.getContext('2d');
-  // REAL Google Search Console demand from one live Sherlock client (ckservice.be, 90 days) -
-  // scattered searches resolve into the pages that business actually needs. Text size = real impressions.
+  // REAL Google Search Console demand for sherlockseo.com (own site, 90 days). The relevance gate
+  // in action: the 258k-impression "what is google" noise is dropped, the commercial demand stays.
+  // Scattered searches resolve into the pages the business actually needs. Text size = real impressions.
   var CLUSTERS=[
-    {label:'Snel & zonder breken', re:/zonder breken|zonder slopen|in 1 dag|in een dag|in een week|tijdsduur/i},
-    {label:'Bad wordt douche', re:/inloopdouche|bad naar|bad vervangen door|bad omvormen|bad eruit|seniorendouche|douchecabine|douche renovatie|met inloopdouche|veilig douch/i},
-    {label:'Premies & senioren', re:/premie|subsidie|senioren|ouderen|aanpass|invalide/i},
-    {label:'Wat kost het', re:/prijs|kost|offerte|per m2|goedkoop|betaalbaar/i},
-    {label:'In de buurt', re:/geel|mol|berlaar|kempen|westerlo|essen|retie|kasterlee|vlaanderen|brabant|in de buurt/i},
-    {label:'Meubel & materiaal', re:/meubel|wandpanelen|tegel|rocko|accessoires|winkel|wasmachine|betonlook/i}
+    {label:'Merk Sherlock', re:/sherlock/i},
+    {label:'In de buurt', re:/belgium|belgi|antwerp|leuven|bruges|brugge|almere|haarlem|gent/i},
+    {label:'Ads & tracking', re:/call tracking|google ads|adwords|mcc|ppc|ads call|add user|audit/i},
+    {label:'Software & tools', re:/software|serps|reporting|enterprise|tracking for seo|seo tool|client tool/i},
+    {label:'Content & links', re:/copywriting|link|hyperlink|yoast|content/i},
+    {label:'SEO-bureau', re:/agency|agence|agences|agentie|bureau|webmarketing|onpage|seo/i}
   ];
-  var Q=[["bad vervangen door inloopdouche",576],["premie badkamerrenovatie",719],["badkamer renovatie zonder breken",363],["bad vervangen door douche",287],["badkamerrenovatie",229],["badkamerrenovatie premie",179],["badkamerrenovatie geel",167],["wasmachine in badkamer",165],["badkamer senioren",161],["badkamerrenovatie senioren",161],["seniorendouche",152],["badkamer renovatie premie",147],["badkamerrenovatie zonder breken",141],["badkamerrenovatie westerlo",138],["badkamerrenovatie mol",123],["badkamer renoveren in 1 dag",121],["badkamer verbouwen",111],["badkamerrenovatie kempen",107],["badkamerrenovatie in een dag",106],["badkamerrenovatie essen",105],["badkamerrenovatie in 1 dag",100],["badkamerrenovatie berlaar",99],["badkamer verbouwen tijdsduur",93],["rocko wandpanelen",92],["badkamermeubel",87],["bad vervangen zonder breken",86],["premie inloopdouche senioren",84],["badkamer renoveren",78],["gesloten douchecabine met afzuiging",72],["badkamermeubels geel",65],["subsidie aanpassing badkamer",64],["badkamerspecialist geel",57],["badkamerrenovatie retie",56],["badkamer renovatie prijs",55],["bad omvormen douche",53],["bad naar inloopdouche",52],["badkamer voor senioren",50],["douchecabine lage instap",47],["badkuip vervangen zonder breken",45],["bad verwisselen zonder breken",40],["badkamer accessoires",13],["aanpassingspremie badkamer",13],["betonlook wandpanelen badkamer vlaanderen",9],["badkamerwinkel in de buurt",9],["badkamer renoveren vlaanderen",7],["badkamerrenovatie vlaams-brabant",7],["douche renovatie",171],["douche in 1 dag",15],["veilig douchen in 1 dag",14],["badkamer meubel",19],["badkamer winkel",17],["badkamer in 1 dag kosten",3],["badkamer renovatie prijs per m2",2],["bad vervangen door douche kosten",5],["badkamer met inloopdouche",1],["bad eruit douche erin",1],["badkamer renoveren zonder slopen",1],["badkamer aanpassen senioren",1],["badkamer renovatie offerte",1],["badkamer tegels",3]];
-  var HOT=/prijs|premie|offerte|kost|zonder breken|in 1 dag|in een dag|subsidie|inloopdouche|specialist/i;
-  function clusterOf(q){ for(var i=0;i<CLUSTERS.length;i++){ if(CLUSTERS[i].re.test(q)) return i; } return 0; }
+  var Q=[["seo copywriting",5715],["seo agency",4384],["sherlock search",272],["add user to google ads",105],["sherlock agency",94],["call tracking",91],["agency seo",175],["about link building",43],["sherlock marketing",43],["agence linkbuilding",37],["add user to google adwords",36],["agency for seo",38],["sherlock seo agency",58],["adwords mcc",31],["sherlock search engine",31],["sherlock digital",29],["antwerpes seo",28],["enterprise seo reporting software",27],["enterprise seo software",20],["enterprise software for seo",20],["tracking for seo agency",65],["agency onpage seo",14],["agency seo tools",13],["sherlock seo",13],["links",12],["serps enterprise seo software",11],["seo agency belgium",6],["what is yoast seo?",61],["a hyperlink",6],["seo agency almere",5],["seo client tool",1],["ppc agency audit",1],["seo agency antwerp",1],["seo agency leuven",1],["seo agency bruges",1],["seo agency haarlem",1],["agence de webmarketing seo",1],["advertising agency seo",3],["agences seo",1],["agentie seo",3],["ads call",3],["google ads mcc",2],["adwords call tracking",4]];
+  var HOT=/agency|agence|bureau|call tracking|ppc|audit|copywriting|belgium|belgi|antwerp|leuven|bruges/i;
+  function clusterOf(q){ for(var i=0;i<CLUSTERS.length;i++){ if(CLUSTERS[i].re.test(q)) return i; } return 5; }
   function sizeOf(imp){ return 11 + Math.min(13, Math.log(imp+1)/Math.LN2*1.5); }
   var W=0,H=0,DPR=1;
   function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); var r=sec.getBoundingClientRect(); W=Math.round(r.width)||sec.clientWidth||window.innerWidth||1200; H=Math.round(r.height)||sec.clientHeight||window.innerHeight||800; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); layoutAnchors(); }
