@@ -219,9 +219,9 @@ h1,h2,h3{margin:0}
   <section class="demand" id="demand">
     <canvas id="demandField" aria-hidden="true"></canvas>
     <div class="demand-center">
-      <div class="mono tag">De vraag bestaat al. Sherlock vindt ze. En handelt erop.</div>
+      <div class="mono tag">Élke term is een échte Google-zoekopdracht · 90 dagen · één klant</div>
       <h2 class="disp big2">Je volgende klant<br>zoekt <span class="u">nu al</span>.</h2>
-      <div class="hint">Beweeg door het veld · jouw cursor is Sherlock.</div>
+      <div class="hint">Beweeg door het veld · jouw cursor is Sherlock · groter = meer vraag</div>
     </div>
   </section>
 
@@ -449,23 +449,25 @@ document.getElementById('wlform').addEventListener('submit',function(e){
 (function(){
   var canvas=document.getElementById('demandField'); if(!canvas||!canvas.getContext) return;
   var sec=canvas.closest('.demand'); if(!sec) return; var ctx=canvas.getContext('2d');
-  // scattered market language resolves into named themes - each theme is a page Sherlock builds
+  // REAL Google Search Console demand from one live Sherlock client (ckservice.be, 90 days) -
+  // scattered searches resolve into the pages that business actually needs. Text size = real impressions.
   var CLUSTERS=[
-    {label:'Vindbaar & verkopen', re:/website|webshop|wordpress|webdesign|logo|seo|marketing|google ads|sociale media|vertaalbureau/i},
-    {label:'Verbouwen & interieur', re:/renov|keuken|badkamer|traprenov|isolatie|vloerverwarming|schrijnwerk|meubel|raamdecoratie|stukador|stukadoor|vloerder|interieur|maatkast|dressing|chape|crepi|buitenschrijnwerk|veranda|sauna|wellness|poolhouse/i},
-    {label:'Techniek & energie', re:/warmtepomp|zonnepanel|airco|laadpaal|fotovolta|thuisbatterij|domotica|verwarming|cv ketel|ketel|elektricien|regenwaterput|septische|riolering|betonvloer/i},
-    {label:'Tuin & buitenwerk', re:/tuin|dak|gevel|oprit|terras|klinker|hovenier|snoei|bomen|haag|gazon|vijver|pergola|carport|zwembad|zonwering|rolluik|sectionaalpoort|hekwerk|beregening|robotmaaier|grondwerk|afbraak|container|kraan|stelling|glaszetter|schilder|schoorsteen|ongedierte|onkruid/i},
-    {label:'Lokale vakmensen', re:/loodgieter|boekhouder|advocaat|notaris|architect|aannemer|fotograaf|verhuis|poets|autokeuring|banden|garage|fietsen|koffiemachine|slotenmaker|industrieel reinigen/i},
-    {label:'Zorg & gezondheid', re:/osteopaat|kinesist|tandarts/i}
+    {label:'Snel & zonder breken', re:/zonder breken|zonder slopen|in 1 dag|in een dag|in een week|tijdsduur/i},
+    {label:'Bad wordt douche', re:/inloopdouche|bad naar|bad vervangen door|bad omvormen|bad eruit|seniorendouche|douchecabine|douche renovatie|met inloopdouche|veilig douch/i},
+    {label:'Premies & senioren', re:/premie|subsidie|senioren|ouderen|aanpass|invalide/i},
+    {label:'Wat kost het', re:/prijs|kost|offerte|per m2|goedkoop|betaalbaar/i},
+    {label:'In de buurt', re:/geel|mol|berlaar|kempen|westerlo|essen|retie|kasterlee|vlaanderen|brabant|in de buurt/i},
+    {label:'Meubel & materiaal', re:/meubel|wandpanelen|tegel|rocko|accessoires|winkel|wasmachine|betonlook/i}
   ];
-  var QUERIES=['website laten maken','loodgieter antwerpen','boekhouder voor zelfstandige','ramen vervangen premie','industrieel reinigen','seo bureau','warmtepomp installateur','webdesign kortrijk','keuken op maat','dakwerken gent','advocaat bouwrecht','tuinaanleg prijs','zonnepanelen installateur','fotograaf huwelijk','schilder binnenwerk','airco plaatsen','website laten maken prijs','marketing bureau antwerpen','google ads uitbesteden','boekhouder kmo','elektricien antwerpen','verhuisfirma offerte','interieurarchitect','koffiemachine huren bedrijf','wordpress website laten maken','webshop bouwen','logo laten maken','sociale media beheer','fotograaf bedrijf','vertaalbureau','traprenovatie','badkamer renoveren','zwembad aanleggen','isolatie premie','vloerverwarming plaatsen','tuinman zoeken','schrijnwerk op maat','meubelmaker','raamdecoratie','poetsvrouw zoeken','autokeuring afspraak','bandencentrale','garage in de buurt','fietsenwinkel','osteopaat','kinesist','tandarts spoed','notaris tarief','architect woning','aannemer verbouwing','hovenier','stukadoor','vloerder','glaszetter','zonwering','pergola op maat','carport hout','oprit aanleggen','gevelreiniging','dakgoot reinigen','schoorsteenveger','ongediertebestrijding','slotenmaker spoed','verwarmingsketel onderhoud','cv ketel vervangen','airco service','domotica installateur','laadpaal thuis','ev laadpaal premie','fotovoltaïsche panelen','thuisbatterij','regenwaterput','septische put','riolering aanleggen','grondwerken','afbraakwerken','containerverhuur','kraanverhuur','stellingbouw','betonvloer','chape gieten','crepi gevel','buitenschrijnwerk pvc','veranda op maat','rolluiken','sectionaalpoort','hekwerk plaatsen','klinkers leggen','terras aanleggen','vijver aanleggen','gazon aanleggen','snoeiwerken','bomen rooien','haag planten','onkruidbestrijding','beregening tuin','robotmaaier','tuinverlichting','poolhouse','sauna plaatsen','wellness op maat','interieurinrichting','maatkasten','dressing op maat','totaalrenovatie','kleine renovatie','energierenovatie premie'];
-  var COMMERCIAL=/prijs|kost|laten maken|installateur|bureau|offerte|premie|renov|op maat|plaatsen|aanleggen|vervangen|uitbesteden|spoed|tarief|onderhoud|afspraak/i;
-  function clusterOf(q){ for(var i=0;i<CLUSTERS.length;i++){ if(CLUSTERS[i].re.test(q)) return i; } return 4; }
-  var W=0,H=0,DPR=1,FONT='13px "Open Sans",system-ui,sans-serif';
+  var Q=[["bad vervangen door inloopdouche",576],["premie badkamerrenovatie",719],["badkamer renovatie zonder breken",363],["bad vervangen door douche",287],["badkamerrenovatie",229],["badkamerrenovatie premie",179],["badkamerrenovatie geel",167],["wasmachine in badkamer",165],["badkamer senioren",161],["badkamerrenovatie senioren",161],["seniorendouche",152],["badkamer renovatie premie",147],["badkamerrenovatie zonder breken",141],["badkamerrenovatie westerlo",138],["badkamerrenovatie mol",123],["badkamer renoveren in 1 dag",121],["badkamer verbouwen",111],["badkamerrenovatie kempen",107],["badkamerrenovatie in een dag",106],["badkamerrenovatie essen",105],["badkamerrenovatie in 1 dag",100],["badkamerrenovatie berlaar",99],["badkamer verbouwen tijdsduur",93],["rocko wandpanelen",92],["badkamermeubel",87],["bad vervangen zonder breken",86],["premie inloopdouche senioren",84],["badkamer renoveren",78],["gesloten douchecabine met afzuiging",72],["badkamermeubels geel",65],["subsidie aanpassing badkamer",64],["badkamerspecialist geel",57],["badkamerrenovatie retie",56],["badkamer renovatie prijs",55],["bad omvormen douche",53],["bad naar inloopdouche",52],["badkamer voor senioren",50],["douchecabine lage instap",47],["badkuip vervangen zonder breken",45],["bad verwisselen zonder breken",40],["badkamer accessoires",13],["aanpassingspremie badkamer",13],["betonlook wandpanelen badkamer vlaanderen",9],["badkamerwinkel in de buurt",9],["badkamer renoveren vlaanderen",7],["badkamerrenovatie vlaams-brabant",7],["douche renovatie",171],["douche in 1 dag",15],["veilig douchen in 1 dag",14],["badkamer meubel",19],["badkamer winkel",17],["badkamer in 1 dag kosten",3],["badkamer renovatie prijs per m2",2],["bad vervangen door douche kosten",5],["badkamer met inloopdouche",1],["bad eruit douche erin",1],["badkamer renoveren zonder slopen",1],["badkamer aanpassen senioren",1],["badkamer renovatie offerte",1],["badkamer tegels",3]];
+  var HOT=/prijs|premie|offerte|kost|zonder breken|in 1 dag|in een dag|subsidie|inloopdouche|specialist/i;
+  function clusterOf(q){ for(var i=0;i<CLUSTERS.length;i++){ if(CLUSTERS[i].re.test(q)) return i; } return 0; }
+  function sizeOf(imp){ return 11 + Math.min(13, Math.log(imp+1)/Math.LN2*1.5); }
+  var W=0,H=0,DPR=1;
   function resize(){ DPR=Math.min(window.devicePixelRatio||1,2); var r=sec.getBoundingClientRect(); W=Math.round(r.width)||sec.clientWidth||window.innerWidth||1200; H=Math.round(r.height)||sec.clientHeight||window.innerHeight||800; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); layoutAnchors(); }
   function layoutAnchors(){ var cx=W/2, cy=H/2, rx=Math.min(W*0.37,640), ry=H*0.35; for(var i=0;i<CLUSTERS.length;i++){ var a=-Math.PI/2 + i/CLUSTERS.length*Math.PI*2; CLUSTERS[i].ax=cx+Math.cos(a)*rx; CLUSTERS[i].ay=cy+Math.sin(a)*ry; } }
   var parts=[];
-  function build(){ ctx.font=FONT; var R=Math.min(W,H)*0.15; parts=QUERIES.map(function(q){ var ci=clusterOf(q), ang=Math.random()*Math.PI*2, rr=R*(0.32+0.68*Math.random()); return {t:q, c:ci, hot:COMMERCIAL.test(q), ang:ang, r:rr, spin:(Math.random()-0.5)*0.005, x:CLUSTERS[ci].ax+Math.cos(ang)*rr, y:CLUSTERS[ci].ay+Math.sin(ang)*rr, vx:0, vy:0, w:ctx.measureText(q).width}; }); }
+  function build(){ var R=Math.min(W,H)*0.15; parts=Q.map(function(row){ var q=row[0], ci=clusterOf(q), fs=sizeOf(row[1]), ang=Math.random()*Math.PI*2, rr=R*(0.30+0.70*Math.random()); return {t:q, c:ci, hot:HOT.test(q), fs:fs, ang:ang, r:rr, spin:(Math.random()-0.5)*0.005, x:CLUSTERS[ci].ax+Math.cos(ang)*rr, y:CLUSTERS[ci].ay+Math.sin(ang)*rr, vx:0, vy:0}; }); }
   var mouse={x:-1e5,y:-1e5,on:false};
   sec.addEventListener('mousemove',function(e){ var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.on=true; });
   sec.addEventListener('mouseleave',function(){ mouse.on=false; mouse.x=mouse.y=-1e5; });
@@ -480,9 +482,10 @@ document.getElementById('wlform').addEventListener('submit',function(e){
   function draw(){
     ctx.clearRect(0,0,W,H); var act=activeCluster();
     if(act>=0){ var Aa=CLUSTERS[act]; ctx.strokeStyle='rgba(107,184,105,0.17)'; ctx.lineWidth=1; ctx.beginPath(); for(var i=0;i<parts.length;i++){ if(parts[i].c===act){ ctx.moveTo(Aa.ax,Aa.ay); ctx.lineTo(parts[i].x,parts[i].y); } } ctx.stroke(); }
-    ctx.textBaseline='middle'; ctx.textAlign='left'; ctx.font=FONT;
+    ctx.textBaseline='middle'; ctx.textAlign='left';
     for(var i=0;i<parts.length;i++){ var p=parts[i], a=0.16, c='210,206,220';
       if(p.c===act){ a=0.92; c=p.hot?'107,184,105':'255,255,255'; } else if(act>=0){ a=0.08; }
+      ctx.font=p.fs.toFixed(1)+'px "Open Sans",system-ui,sans-serif';
       ctx.fillStyle='rgba('+c+','+a+')'; ctx.fillText(p.t,p.x,p.y);
     }
     ctx.textAlign='center';
