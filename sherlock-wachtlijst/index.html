@@ -1089,41 +1089,547 @@ h1,h2,h3{margin:0}
     </div>
   </section>
 
-  <!-- 7. EXPANSION PATH (5 stages) -->
-  <section>
-    <div class="sec wrap">
-      <div class="mono eyebrow" style="color:var(--accent)">Een website is het begin</div>
-      <h2 class="disp" style="font-size:clamp(2rem,5vw,3.4rem);margin-top:14px">Begin eenvoudig. Breid uit wanneer het telt.</h2>
-      <p class="intro" style="color:#bdb8ad">Meer verkeer is geen bedrijfsdoel. Sherlock vertrekt van wat je bedrijf wil bereiken en bepaalt daarna wat marketing moet meten. Dezelfde basis groeit mee, je zet aan wat relevant wordt.</p>
-      <div class="ladder">
-        <div class="rung">
-          <div class="step">01 // Start</div>
-          <h3>Website</h3>
-          <p>Je intake wordt een gestructureerde, ontworpen site met copy en basis-SEO.</p>
-        </div>
-        <div class="rung">
-          <div class="step">02 // Add</div>
-          <h3>Search</h3>
-          <p>Search intelligence en semantic SEO: de juiste onderwerpen, op echte vraag.</p>
-        </div>
-        <div class="rung">
-          <div class="step">03 // Measure</div>
-          <h3>Meting</h3>
-          <p>Tracking en business-KPI's: meten wat je bedrijf wil bereiken, niet enkel verkeer.</p>
-        </div>
-        <div class="rung">
-          <div class="step">04 // Grow</div>
-          <h3>Groei</h3>
-          <p>SEO, content en advertising die op dezelfde bedrijfscontext verder bouwen.</p>
-        </div>
-        <div class="rung">
-          <div class="step">05 // Operate</div>
-          <h3>Uitvoeren</h3>
-          <p>Agents en managed execution, binnen grenzen, met een mens die stuurt.</p>
-        </div>
+<!-- FACTORY / CONVEYOR SECTION - drop-in replacement for the flat 5-rung ladder section.
+     Self-contained: vanilla canvas, no external libs. Belt runs left-to-right on desktop,
+     top-to-bottom under ~820px. Raw demand enters, gains structure at each of the 5
+     stations, exits as a finished, live (green) site. Purple = Sherlock/the machine. -->
+<section class="beltx-sec" id="beltxSection" style="background:#0b0b0b">
+  <div class="beltx-wrap">
+    <div class="beltx-mono beltx-eyebrow">Een website is het begin</div>
+    <h2 class="disp beltx-h2">Begin eenvoudig. Breid uit wanneer het telt.</h2>
+    <p class="beltx-intro">Meer verkeer is geen bedrijfsdoel. Sherlock vertrekt van wat je bedrijf wil bereiken en bepaalt daarna wat marketing moet meten. Dezelfde basis groeit mee, je zet aan wat relevant wordt.</p>
+  </div>
+
+  <div class="beltx-factory" id="beltxFactory">
+    <canvas id="beltField" class="beltx-canvas" aria-hidden="true"></canvas>
+
+    <div class="beltx-tag beltx-tag-in"><span class="beltx-mono">Vraag</span></div>
+    <div class="beltx-tag beltx-tag-out"><span class="beltx-mono">Live site</span></div>
+
+    <div class="beltx-stations" id="beltxStations">
+      <div class="beltx-station">
+        <span class="beltx-num beltx-mono">01</span>
+        <h3>Website</h3>
+        <p>Je intake wordt een gestructureerde, ontworpen site met copy en basis-SEO.</p>
+      </div>
+      <div class="beltx-station">
+        <span class="beltx-num beltx-mono">02</span>
+        <h3>Search</h3>
+        <p>Search intelligence en semantic SEO: de juiste onderwerpen, op echte vraag.</p>
+      </div>
+      <div class="beltx-station">
+        <span class="beltx-num beltx-mono">03</span>
+        <h3>Meting</h3>
+        <p>Tracking en business-KPI's: meten wat je bedrijf wil bereiken, niet enkel verkeer.</p>
+      </div>
+      <div class="beltx-station">
+        <span class="beltx-num beltx-mono">04</span>
+        <h3>Groei</h3>
+        <p>SEO, content en advertising die op dezelfde bedrijfscontext verder bouwen.</p>
+      </div>
+      <div class="beltx-station">
+        <span class="beltx-num beltx-mono">05</span>
+        <h3>Uitvoeren</h3>
+        <p>Agents en managed execution, binnen grenzen, met een mens die stuurt.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  .beltx-sec{
+    background:#0b0b0b;
+    color:#f3f0ea;
+    padding:96px 24px 88px;
+    box-sizing:border-box;
+  }
+  .beltx-sec *{ box-sizing:border-box; }
+  .beltx-mono{
+    font-family:"Open Sans",system-ui,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+  }
+  .beltx-wrap{ max-width:1180px; margin:0 auto 58px; }
+  .beltx-eyebrow{ color:#6BB869; margin-bottom:16px; }
+  .beltx-h2{
+    font-family:"Raleway",Impact,system-ui,sans-serif;
+    font-weight:800;
+    font-size:clamp(2rem,5vw,3.4rem);
+    line-height:1.06;
+    text-transform:uppercase;
+    margin:0 0 18px;
+    color:#f3f0ea;
+  }
+  .beltx-intro{
+    font-family:"Open Sans",system-ui,sans-serif;
+    max-width:640px;
+    color:#bdb8ad;
+    font-size:1.05rem;
+    line-height:1.65;
+    margin:0;
+  }
+
+  .beltx-factory{
+    position:relative;
+    max-width:1180px;
+    margin:0 auto;
+    height:380px;
+    border-top:1px solid #2a2a2a;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .beltx-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  .beltx-tag{
+    position:absolute;
+    z-index:3;
+    color:#8a8a8a;
+    pointer-events:none;
+  }
+  .beltx-tag-in{ top:14px; left:4%; }
+  .beltx-tag-out{ top:14px; right:4%; color:#6BB869; }
+
+  .beltx-stations{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    height:100%;
+    pointer-events:none;
+  }
+  .beltx-station{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+    text-align:center;
+    padding:0 10px 22px;
+  }
+  .beltx-num{
+    color:#8a8a8a;
+    margin-bottom:6px;
+  }
+  .beltx-station h3{
+    font-family:"Raleway",Impact,system-ui,sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    margin:0 0 6px;
+    color:#f3f0ea;
+  }
+  .beltx-station p{
+    font-family:"Open Sans",system-ui,sans-serif;
+    font-size:.8rem;
+    line-height:1.45;
+    color:#8a8a8a;
+    margin:0;
+    max-width:180px;
+  }
+
+  @media (max-width:820px){
+    .beltx-sec{ padding:72px 18px 64px; }
+    .beltx-factory{ height:920px; }
+    .beltx-tag-in{ top:16px; left:60px; }
+    .beltx-tag-out{ top:auto; bottom:16px; right:auto; left:60px; }
+    .beltx-stations{
+      grid-template-columns:1fr;
+      grid-template-rows:repeat(5,1fr);
+    }
+    .beltx-station{
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      text-align:left;
+      padding:0 20px 0 92px;
+    }
+    .beltx-station p{ max-width:240px; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .beltx-canvas{ opacity:1; }
+  }
+</style>
+
+<script>
+(function(){
+  var canvas = document.getElementById('beltField');
+  var factory = document.getElementById('beltxFactory');
+  if(!canvas || !factory) return;
+  var ctx = canvas.getContext('2d');
+
+  var PURPLE = [102,36,131];
+  var GREEN  = [107,184,105];
+  var PAPER  = [243,240,234];
+  var MUTED  = [138,138,138];
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function lerpRGB(c1,c2,t){
+    return [ lerp(c1[0],c2[0],t), lerp(c1[1],c2[1],t), lerp(c1[2],c2[2],t) ];
+  }
+  function rgba(c,a){ return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + a + ')'; }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W = 0, H = 0, orientation = 'horizontal';
+  var rafId = null;
+  var startTime = null;
+
+  function getOrientation(){
+    return window.matchMedia && window.matchMedia('(max-width:820px)').matches ? 'vertical' : 'horizontal';
+  }
+
+  function layout(){
+    var pos = { stations: [] };
+    if(orientation === 'horizontal'){
+      var beltY = H * 0.30;
+      var marginX = Math.max(24, W * 0.04);
+      pos.beltStart = { x: marginX, y: beltY };
+      pos.beltEnd   = { x: W - marginX, y: beltY };
+      pos.brain     = { x: W / 2, y: Math.max(30, beltY - H * 0.17) };
+      for(var i=0;i<5;i++){
+        pos.stations.push({ x: (i + 0.5) * W / 5, y: beltY });
+      }
+    } else {
+      var beltX = 44;
+      var marginY = 60;
+      pos.beltStart = { x: beltX, y: marginY };
+      pos.beltEnd   = { x: beltX, y: H - 36 };
+      pos.brain     = { x: beltX, y: 28 };
+      for(var j=0;j<5;j++){
+        pos.stations.push({ x: beltX, y: marginY + (j + 0.5) * (H - marginY - 36) / 5 });
+      }
+    }
+    return pos;
+  }
+
+  function resize(){
+    var rect = factory.getBoundingClientRect();
+    W = Math.max(1, Math.round(rect.width));
+    H = Math.max(1, Math.round(rect.height));
+    orientation = getOrientation();
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if(reduced){
+      drawStatic();
+    }
+  }
+
+  function stageColor(stageFloat){
+    var t = Math.max(0, Math.min(1, stageFloat / 4));
+    if(t < 0.5){
+      return lerpRGB(MUTED, PURPLE, t / 0.5);
+    }
+    return lerpRGB(PURPLE, GREEN, (t - 0.5) / 0.5);
+  }
+
+  function drawBelt(pos, t){
+    var a = pos.beltStart, b = pos.beltEnd;
+    ctx.save();
+    ctx.strokeStyle = rgba(MUTED, 0.28);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+
+    // conveyor hatch ticks, slow drift
+    var len = orientation === 'horizontal' ? (b.x - a.x) : (b.y - a.y);
+    var spacing = 22;
+    var offset = reduced ? 0 : (t / 1000 * 10) % spacing;
+    ctx.strokeStyle = rgba(MUTED, 0.16);
+    for(var d = -offset; d < len; d += spacing){
+      if(orientation === 'horizontal'){
+        var x = a.x + d;
+        ctx.beginPath();
+        ctx.moveTo(x, a.y - 5);
+        ctx.lineTo(x - 6, a.y + 5);
+        ctx.stroke();
+      } else {
+        var y = a.y + d;
+        ctx.beginPath();
+        ctx.moveTo(a.x - 5, y);
+        ctx.lineTo(a.x + 5, y - 6);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawStationGlow(p, hit, stageIdx){
+    var col = stageColor(stageIdx);
+    var r = 5 + hit * 10;
+    ctx.save();
+    ctx.shadowColor = rgba(col, 0.9);
+    ctx.shadowBlur = 8 + hit * 18;
+    ctx.fillStyle = rgba(col, 0.14 + hit * 0.35);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.save();
+    ctx.strokeStyle = rgba(MUTED, 0.35);
+    ctx.lineWidth = 1;
+    if(orientation === 'horizontal'){
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y - 9);
+      ctx.lineTo(p.x, p.y + 9);
+      ctx.stroke();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(p.x - 9, p.y);
+      ctx.lineTo(p.x + 9, p.y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawBrain(pos, pulse, boost){
+    var col = PURPLE;
+    var glowA = 0.28 + pulse * 0.22 + boost * 0.4;
+    var r = 9 + pulse * 1.5 + boost * 3;
+    ctx.save();
+    ctx.shadowColor = rgba(col, 0.95);
+    ctx.shadowBlur = 16 + boost * 22;
+    ctx.strokeStyle = rgba(col, Math.min(1, 0.7 + boost * 0.3));
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = rgba(PAPER, 0.85);
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 2.1, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = rgba(col, glowA);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, r + 6, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+
+    // faint control lines down to the belt
+    ctx.save();
+    ctx.strokeStyle = rgba(col, 0.10);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    if(orientation === 'horizontal'){
+      ctx.moveTo(pos.x, pos.y + r + 6);
+      ctx.lineTo(pos.x, pos.y + r + 26);
+    } else {
+      ctx.moveTo(pos.x + r + 6, pos.y);
+      ctx.lineTo(pos.x + r + 26, pos.y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawTokenShape(stage, x, y, alpha, scale){
+    if(alpha <= 0.01) return;
+    var col = stageColor(stage);
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(scale, scale);
+    ctx.globalAlpha = alpha;
+
+    if(stage <= 0){
+      // raw demand: a small query dot with a faint search ripple
+      ctx.strokeStyle = rgba(MUTED, 0.5);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(0, 0, 6, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = rgba(PAPER, 0.6);
+      ctx.beginPath();
+      ctx.arc(0, 0, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+    } else if(stage <= 1){
+      // website: a small page block with a header line
+      ctx.strokeStyle = rgba(col, 0.9);
+      ctx.lineWidth = 1.2;
+      roundRect(-6, -5, 12, 10, 2);
+      ctx.stroke();
+      ctx.strokeStyle = rgba(col, 0.6);
+      ctx.beginPath();
+      ctx.moveTo(-3.5, -2);
+      ctx.lineTo(3.5, -2);
+      ctx.stroke();
+    } else if(stage <= 2){
+      // search: page block + radiating signal ticks
+      ctx.strokeStyle = rgba(col, 0.9);
+      ctx.lineWidth = 1.2;
+      roundRect(-6, -5, 12, 10, 2);
+      ctx.stroke();
+      ctx.strokeStyle = rgba(PAPER, 0.55);
+      ctx.beginPath();
+      ctx.arc(0, -9, 3, Math.PI * 1.15, Math.PI * 1.85);
+      ctx.stroke();
+    } else if(stage <= 3){
+      // meting: page block with a small rising sparkline
+      ctx.strokeStyle = rgba(col, 0.9);
+      ctx.lineWidth = 1.2;
+      roundRect(-6, -5, 12, 10, 2);
+      ctx.stroke();
+      ctx.strokeStyle = rgba(col, 0.85);
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(-3.5, 2);
+      ctx.lineTo(-1, -0.5);
+      ctx.lineTo(1.5, 1.2);
+      ctx.lineTo(4, -2.5);
+      ctx.stroke();
+    } else {
+      // finished, live: solid glowing block, browser-chrome hint
+      ctx.shadowColor = rgba(GREEN, 0.85);
+      ctx.shadowBlur = 10;
+      ctx.fillStyle = rgba(GREEN, 0.92);
+      roundRectFill(-6.5, -5.5, 13, 11, 2.2);
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = rgba([11,11,11], 0.7);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(-6.5, -2.2);
+      ctx.lineTo(6.5, -2.2);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function roundRect(x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function roundRectFill(x, y, w, h, r){
+    roundRect(x, y, w, h, r);
+    ctx.fill();
+  }
+
+  function pointAt(pos, p){
+    return {
+      x: lerp(pos.beltStart.x, pos.beltEnd.x, p),
+      y: lerp(pos.beltStart.y, pos.beltEnd.y, p)
+    };
+  }
+
+  function drawStatic(){
+    ctx.clearRect(0, 0, W, H);
+    var pos = layout();
+    drawBelt(pos, 0);
+    for(var i = 0; i < 5; i++){
+      drawStationGlow(pos.stations[i], 0.35, i);
+    }
+    drawBrain(pos.brain, 0, 0.15);
+    for(var s = 0; s < 5; s++){
+      drawTokenShape(s, pos.stations[s].x, pos.stations[s].y, 1, 1);
+    }
+  }
+
+  var NUM_TOKENS = 6;
+  var DURATION = 11000;
+
+  function frame(ts){
+    if(startTime === null) startTime = ts;
+    var t = ts - startTime;
+    var pos = layout();
+
+    ctx.clearRect(0, 0, W, H);
+    drawBelt(pos, t);
+
+    var stationHits = [0,0,0,0,0];
+    var tokenData = [];
+
+    for(var i = 0; i < NUM_TOKENS; i++){
+      var phase = i / NUM_TOKENS;
+      var p = ((t / DURATION) + phase) % 1;
+      var sPos = p * 5;
+      for(var s = 0; s < 5; s++){
+        var dist = Math.abs(sPos - (s + 0.5));
+        var hit = Math.max(0, 1 - dist / 0.5);
+        hit = hit * hit;
+        if(hit > stationHits[s]) stationHits[s] = hit;
+      }
+      tokenData.push({ p: p, sPos: sPos });
+    }
+
+    for(var st = 0; st < 5; st++){
+      drawStationGlow(pos.stations[st], stationHits[st], st);
+    }
+
+    var pulse = 0.5 + 0.5 * Math.sin(t / 1800);
+    var boost = Math.max.apply(null, stationHits);
+    drawBrain(pos.brain, pulse, boost);
+
+    for(var k = 0; k < tokenData.length; k++){
+      var td = tokenData[k];
+      var pt = pointAt(pos, td.p);
+      var stageIdx = Math.floor(td.sPos);
+      if(stageIdx > 4) stageIdx = 4;
+      var frac = td.sPos - stageIdx;
+
+      var alpha = 1;
+      if(td.p < 0.05) alpha = td.p / 0.05;
+      if(td.p > 0.95) alpha = (1 - td.p) / 0.05;
+      alpha = Math.max(0, Math.min(1, alpha));
+
+      var nearestDist = Infinity;
+      for(var m = 0; m < 5; m++){
+        var d2 = Math.abs(td.sPos - (m + 0.5));
+        if(d2 < nearestDist) nearestDist = d2;
+      }
+      var tokenHit = Math.max(0, 1 - nearestDist / 0.35);
+      var scale = 1 + tokenHit * 0.22;
+
+      var next = Math.min(4, stageIdx + 1);
+      drawTokenShape(stageIdx, pt.x, pt.y, alpha * (1 - frac * 0.6), scale);
+      if(next !== stageIdx){
+        drawTokenShape(next, pt.x, pt.y, alpha * (frac * 0.6), scale);
+      }
+    }
+
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function start(){
+    resize();
+    if(reduced){
+      drawStatic();
+      return;
+    }
+    if(rafId) cancelAnimationFrame(rafId);
+    startTime = null;
+    rafId = requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', function(){
+    resize();
+    if(reduced) drawStatic();
+  });
+  window.addEventListener('load', function(){
+    resize();
+    if(reduced) drawStatic();
+  });
+
+  var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  fontsReady.then(start);
+})();
+</script>
 
   <!-- 6. WAITLIST -->
   <section class="wl" id="wachtlijst" style="border-top:2px solid var(--accent)">
