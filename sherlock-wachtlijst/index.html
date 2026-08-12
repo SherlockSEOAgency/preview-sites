@@ -225,56 +225,437 @@ h1,h2,h3{margin:0}
     </div>
   </section>
 
-  <!-- 2 + 3. HOW IT WORKS: the knowledge model -->
-  <section class="paper">
-    <div class="sec wrap">
-      <div class="mono eyebrow">Hoe het werkt</div>
-      <h2>Eerst begrijpen. Dan bouwen.</h2>
-      <p class="intro">Sherlock begint niet met keywords, maar met een werkend model van je bedrijf: je aanbod, je doelgroepen, je doelen, je markt, je concurrenten en de zoekintenties die ertoe doen. Uit dat model volgt de site, geen willekeurige pagina's.</p>
-      <div class="model">
-        <span class="hot">Business</span><span class="ar">&rarr;</span>
-        <span>Goals</span><span class="ar">&rarr;</span>
-        <span class="hot">Kennismodel</span><span class="ar">&rarr;</span>
-        <span>Search demand</span>
-      </div>
-      <div class="flow">
-        <div class="node">
-          <div class="k">Input // jij</div>
-          <h3>Jouw bedrijf</h3>
-          <ul>
-            <li>Aanbod en klanten</li>
-            <li>Doelgroepen en doelen</li>
-            <li>Markt en concurrenten</li>
-            <li>Zoekintenties</li>
-            <li>Tone of voice</li>
-          </ul>
-        </div>
-        <div class="arrow">&rarr;</div>
-        <div class="node mid">
-          <div class="k" style="color:var(--accent)">Agent // Sherlock</div>
-          <h3>Doet het werk</h3>
-          <ul>
-            <li>Pagina-architectuur</li>
-            <li>Copy in jouw stem</li>
-            <li>Ontworpen site, geen template</li>
-            <li>Basis-SEO en schema</li>
-          </ul>
-          <span class="hot">Geen 100 AI-pagina's omdat het kan. De juiste pagina's omdat de vraag bestaat.</span>
-        </div>
-        <div class="arrow">&rarr;</div>
-        <div class="node">
-          <div class="k">Output // resultaat</div>
-          <h3>Je website</h3>
-          <ul>
-            <li>Een echte, ontworpen site</li>
-            <li>Klaar voor je goedkeuring</li>
-            <li>Modulair uitbreidbaar</li>
-          </ul>
-        </div>
-      </div>
-      <p class="proof">// Technische laag: <b>ontology en entities</b>. Je bedrijf als netwerk van onderwerpen en relaties, zodat elke pagina klopt met wat je echt bent.</p>
+<!-- ============================================================
+     Sherlock / Watson Web Studio - "Hoe het werkt" section
+     Living pipeline: input facets -> Sherlock core -> output items
+     Self-contained drop-in block. Class prefix: hiw-
+     ============================================================ -->
+<section class="hiw-sec" id="hiwSection">
+  <div class="hiw-wrap">
+    <div class="hiw-mono hiw-eyebrow">Hoe het werkt</div>
+    <h2 class="hiw-h2">Eerst begrijpen. Dan bouwen.</h2>
+    <p class="hiw-intro">Sherlock begint niet met keywords, maar met een werkend model van je bedrijf: je aanbod, je doelgroepen, je doelen, je markt, je concurrenten en de zoekintenties die ertoe doen. Uit dat model volgt de site, geen willekeurige pagina's.</p>
+
+    <div class="hiw-model" aria-hidden="false">
+      <span class="hiw-model-item hiw-hot">Business</span>
+      <span class="hiw-model-arrow">&rarr;</span>
+      <span class="hiw-model-item">Goals</span>
+      <span class="hiw-model-arrow">&rarr;</span>
+      <span class="hiw-model-item hiw-hot">Kennismodel</span>
+      <span class="hiw-model-arrow">&rarr;</span>
+      <span class="hiw-model-item">Search demand</span>
     </div>
-  </section>
+
+    <div class="hiw-flow" id="hiwFlow">
+      <svg class="hiw-svg" id="hiwSvg" preserveAspectRatio="none"></svg>
+
+      <div class="hiw-col hiw-col-in">
+        <div class="hiw-col-label hiw-mono">Jij levert</div>
+        <ul class="hiw-nodelist" id="hiwIn">
+          <li data-node="in" class="hiw-node"><span class="hiw-nodedot"></span>Aanbod en klanten</li>
+          <li data-node="in" class="hiw-node"><span class="hiw-nodedot"></span>Doelgroepen en doelen</li>
+          <li data-node="in" class="hiw-node"><span class="hiw-nodedot"></span>Markt en concurrenten</li>
+          <li data-node="in" class="hiw-node"><span class="hiw-nodedot"></span>Zoekintenties</li>
+          <li data-node="in" class="hiw-node"><span class="hiw-nodedot"></span>Tone of voice</li>
+        </ul>
+      </div>
+
+      <div class="hiw-core" id="hiwCore">
+        <div class="hiw-core-ring hiw-core-ring-a"></div>
+        <div class="hiw-core-ring hiw-core-ring-b"></div>
+        <div class="hiw-core-body">
+          <div class="hiw-core-name">Sherlock</div>
+          <div class="hiw-core-sub">verwerkt tot kennismodel</div>
+        </div>
+      </div>
+
+      <div class="hiw-col hiw-col-out">
+        <div class="hiw-col-label hiw-mono">Resultaat</div>
+        <ul class="hiw-nodelist" id="hiwOut">
+          <li data-node="out" class="hiw-node hiw-node-out"><span class="hiw-nodedot hiw-nodedot-out"></span>Een echte, ontworpen site</li>
+          <li data-node="out" class="hiw-node hiw-node-out"><span class="hiw-nodedot hiw-nodedot-out"></span>Klaar voor je goedkeuring</li>
+          <li data-node="out" class="hiw-node hiw-node-out"><span class="hiw-nodedot hiw-nodedot-out"></span>Modulair uitbreidbaar</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="hiw-callout"><strong>Geen 100 AI-pagina's omdat het kan. De juiste pagina's omdat de vraag bestaat.</strong></p>
+
+    <p class="hiw-proof">Onder de motorkap: <b>ontology en entities</b>. Je bedrijf als netwerk van onderwerpen en relaties, zodat elke pagina klopt met wat je echt bent.</p>
+  </div>
+</section>
+
+<style>
+  .hiw-sec{
+    --hiw-black:var(--black,#0b0b0b);
+    --hiw-ink:var(--ink,#141414);
+    --hiw-paper:var(--paper,#f3f0ea);
+    --hiw-white:var(--white,#ffffff);
+    --hiw-accent:var(--accent,#6BB869);
+    --hiw-accent2:var(--accent2,#662483);
+    --hiw-line:var(--line-paper,#d9d5cc);
+    --hiw-muted:var(--muted-paper,#6d675c);
+    background:var(--hiw-paper);
+    color:var(--hiw-ink);
+    padding:6rem 1.5rem;
+    box-sizing:border-box;
+    font-family:"Open Sans",system-ui,sans-serif;
+  }
+  .hiw-sec *{box-sizing:border-box;}
+  .hiw-wrap{max-width:1180px;margin:0 auto;}
+
+  .hiw-mono{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .hiw-eyebrow{color:var(--hiw-accent2);font-weight:700;margin-bottom:.9rem;}
+
+  .hiw-h2{
+    font-family:"Raleway",Impact,system-ui,sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:clamp(2rem,4.2vw,3.2rem);
+    line-height:1.05;
+    margin:0 0 1.1rem;
+    color:var(--hiw-black);
+  }
+
+  .hiw-intro{
+    font-size:1.08rem;
+    line-height:1.65;
+    color:var(--hiw-muted);
+    max-width:62ch;
+    margin:0 0 2.6rem;
+  }
+
+  /* ---- model row ---- */
+  .hiw-model{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.5rem;
+    padding:1.1rem 1.4rem;
+    margin:0 0 3.4rem;
+    background:var(--hiw-white);
+    border:1px solid var(--hiw-line);
+    border-radius:12px;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:.92rem;
+  }
+  .hiw-model-item{
+    padding:.3rem .7rem;
+    border-radius:999px;
+    background:var(--hiw-paper);
+    border:1px solid var(--hiw-line);
+    color:var(--hiw-ink);
+  }
+  .hiw-model-item.hiw-hot{
+    background:var(--hiw-accent2);
+    border-color:var(--hiw-accent2);
+    color:var(--hiw-white);
+  }
+  .hiw-model-arrow{
+    color:var(--hiw-accent);
+    font-weight:700;
+    display:inline-block;
+    animation:hiw-arrow-pulse 1.8s ease-in-out infinite;
+  }
+  .hiw-model-arrow:nth-of-type(1){animation-delay:0s;}
+  .hiw-model-arrow:nth-of-type(2){animation-delay:.3s;}
+  .hiw-model-arrow:nth-of-type(3){animation-delay:.6s;}
+  @keyframes hiw-arrow-pulse{
+    0%,100%{transform:translateX(0);opacity:.55;}
+    50%{transform:translateX(4px);opacity:1;}
+  }
+
+  /* ---- flow ---- */
+  .hiw-flow{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2.2rem;
+    padding:2.6rem 0;
+  }
+  .hiw-svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+    overflow:visible;
+  }
+
+  .hiw-col{
+    position:relative;
+    z-index:1;
+    flex:1 1 0;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:.65rem;
+  }
+  .hiw-col-label{
+    color:var(--hiw-accent2);
+    font-weight:700;
+    margin-bottom:.3rem;
+  }
+  .hiw-nodelist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem;}
+
+  .hiw-node{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    background:var(--hiw-white);
+    border:1px solid var(--hiw-line);
+    border-radius:999px;
+    padding:.55rem 1rem;
+    font-size:.92rem;
+    line-height:1.3;
+    color:var(--hiw-ink);
+  }
+  .hiw-col-out .hiw-node{justify-content:flex-start;}
+
+  .hiw-nodedot{
+    flex:0 0 auto;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--hiw-accent2);
+  }
+  .hiw-nodedot-out{background:var(--hiw-accent);}
+
+  .hiw-core{
+    position:relative;
+    z-index:2;
+    flex:0 0 auto;
+    width:158px;
+    height:158px;
+    border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #7d3a9c 0%, var(--hiw-accent2) 62%, #4d1a63 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 30px rgba(102,36,131,.28);
+  }
+  .hiw-core-body{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:var(--hiw-white);
+    padding:0 .6rem;
+  }
+  .hiw-core-name{
+    font-family:"Raleway",Impact,system-ui,sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-size:1.15rem;
+  }
+  .hiw-core-sub{
+    font-size:.72rem;
+    opacity:.85;
+    margin-top:.25rem;
+    line-height:1.3;
+  }
+  .hiw-core-ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1px solid rgba(102,36,131,.35);
+    animation:hiw-ring-pulse 3.2s ease-out infinite;
+  }
+  .hiw-core-ring-b{animation-delay:1.6s;}
+  @keyframes hiw-ring-pulse{
+    0%{transform:scale(1);opacity:.6;}
+    100%{transform:scale(1.55);opacity:0;}
+  }
+
+  /* connector line + moving dot styling (drawn as SVG els, classes for JS) */
+  .hiw-path{
+    fill:none;
+    stroke:var(--hiw-line);
+    stroke-width:1.4;
+  }
+  .hiw-flowdot{
+    fill:var(--hiw-accent);
+  }
+  .hiw-flowdot.hiw-flowdot-out{
+    fill:var(--hiw-accent2);
+  }
+
+  /* ---- callout + proof ---- */
+  .hiw-callout{
+    margin:2.8rem 0 1.4rem;
+    padding:1.1rem 1.4rem;
+    background:var(--hiw-white);
+    border-left:4px solid var(--hiw-accent);
+    border-radius:6px;
+    font-size:1.05rem;
+    line-height:1.5;
+    color:var(--hiw-black);
+  }
+  .hiw-callout strong{font-weight:700;}
+
+  .hiw-proof{
+    font-size:.92rem;
+    color:var(--hiw-muted);
+    line-height:1.6;
+    margin:0;
+  }
+  .hiw-proof b{color:var(--hiw-accent2);}
+
+  @media (prefers-reduced-motion:reduce){
+    .hiw-model-arrow,.hiw-core-ring{animation:none !important;}
+  }
+
+  /* ---- mobile stack ---- */
+  @media (max-width:820px){
+    .hiw-sec{padding:4rem 1.1rem;}
+    .hiw-flow{flex-direction:column;gap:1.8rem;padding:2rem 0;}
+    .hiw-col{width:100%;}
+    .hiw-col-out .hiw-node{justify-content:flex-start;}
+    .hiw-core{order:0;}
+    .hiw-model{font-size:.82rem;padding:.9rem 1rem;}
+  }
+</style>
+
+<script>
+(function(){
+  var section = document.getElementById('hiwSection');
+  if(!section) return;
+
+  var flow = document.getElementById('hiwFlow');
+  var svg = document.getElementById('hiwSvg');
+  var core = document.getElementById('hiwCore');
+  var inNodes = Array.prototype.slice.call(document.getElementById('hiwIn').querySelectorAll('[data-node="in"]'));
+  var outNodes = Array.prototype.slice.call(document.getElementById('hiwOut').querySelectorAll('[data-node="out"]'));
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var links = []; // { path, dots: [{el,offset}], length, isOut }
+
+  function rectRelativeTo(el, containerRect){
+    var r = el.getBoundingClientRect();
+    return {
+      left:r.left-containerRect.left, top:r.top-containerRect.top,
+      width:r.width, height:r.height,
+      cx:r.left-containerRect.left+r.width/2, cy:r.top-containerRect.top+r.height/2
+    };
+  }
+
+  // point on the boundary of `rect` in the direction of target (tx,ty)
+  function anchorPoint(rect, tx, ty){
+    var dx = tx - rect.cx, dy = ty - rect.cy;
+    if (dx === 0 && dy === 0) return { x: rect.cx, y: rect.cy };
+    var halfW = rect.width/2, halfH = rect.height/2;
+    var scaleX = halfW / Math.max(Math.abs(dx), 1e-6);
+    var scaleY = halfH / Math.max(Math.abs(dy), 1e-6);
+    var scale = Math.min(scaleX, scaleY);
+    return { x: rect.cx + dx*scale, y: rect.cy + dy*scale };
+  }
+
+  function buildPathD(p1, p2){
+    var mx = (p1.x + p2.x) / 2;
+    return 'M ' + p1.x + ' ' + p1.y + ' C ' + mx + ' ' + p1.y + ', ' + mx + ' ' + p2.y + ', ' + p2.x + ' ' + p2.y;
+  }
+
+  function clearSvg(){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+  }
+
+  function draw(){
+    var containerRect = flow.getBoundingClientRect();
+    svg.setAttribute('width', containerRect.width);
+    svg.setAttribute('height', containerRect.height);
+    svg.setAttribute('viewBox', '0 0 ' + containerRect.width + ' ' + containerRect.height);
+    clearSvg();
+    links = [];
+
+    var coreRect = rectRelativeTo(core, containerRect);
+
+    inNodes.forEach(function(node, i){
+      var nodeRect = rectRelativeTo(node, containerRect);
+      var p1 = anchorPoint(nodeRect, coreRect.cx, coreRect.cy);
+      var p2 = anchorPoint(coreRect, nodeRect.cx, nodeRect.cy);
+      addLink(p1, p2, false, i);
+    });
+
+    outNodes.forEach(function(node, i){
+      var nodeRect = rectRelativeTo(node, containerRect);
+      var p1 = anchorPoint(coreRect, nodeRect.cx, nodeRect.cy);
+      var p2 = anchorPoint(nodeRect, coreRect.cx, coreRect.cy);
+      addLink(p1, p2, true, i);
+    });
+  }
+
+  function addLink(p1, p2, isOut, idx){
+    var path = document.createElementNS(SVGNS, 'path');
+    path.setAttribute('d', buildPathD(p1, p2));
+    path.setAttribute('class', 'hiw-path');
+    svg.appendChild(path);
+
+    var length = path.getTotalLength();
+    var dotCount = reduceMotion ? 3 : 1;
+    var dots = [];
+
+    for (var d = 0; d < dotCount; d++){
+      var dot = document.createElementNS(SVGNS, 'circle');
+      dot.setAttribute('r', 3);
+      dot.setAttribute('class', 'hiw-flowdot' + (isOut ? ' hiw-flowdot-out' : ''));
+      svg.appendChild(dot);
+
+      var offset = reduceMotion ? (d / dotCount) : (idx * 0.18) % 1;
+      var pt = path.getPointAtLength(offset * length);
+      dot.setAttribute('cx', pt.x);
+      dot.setAttribute('cy', pt.y);
+      dots.push({ el: dot, offset: offset });
+    }
+
+    links.push({ path: path, length: length, dots: dots });
+  }
+
+  var lastTs = 0;
+  var speed = 0.00012; // fraction of path per ms
+
+  function tick(ts){
+    if (!lastTs) lastTs = ts;
+    var dt = ts - lastTs;
+    lastTs = ts;
+
+    links.forEach(function(link){
+      link.dots.forEach(function(d){
+        d.offset = (d.offset + dt * speed) % 1;
+        var pt = link.path.getPointAtLength(d.offset * link.length);
+        d.el.setAttribute('cx', pt.x);
+        d.el.setAttribute('cy', pt.y);
+      });
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  var resizeTimer;
+  function scheduleRedraw(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(draw, 120);
+  }
+
+  var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  ready.then(function(){
+    draw();
+    window.addEventListener('resize', scheduleRedraw);
+    window.addEventListener('load', scheduleRedraw);
+    if (!reduceMotion){
+      requestAnimationFrame(tick);
+    }
+  });
+})();
+</script>
 
   <!-- REAL WORK (proof, kept high) -->
   <section class="paper" id="werk" style="border-top:1px solid var(--line-paper)">
@@ -313,28 +694,385 @@ h1,h2,h3{margin:0}
     </div>
   </section>
 
-  <!-- 4. HUB: one business, one knowledge layer, many channels -->
-  <section class="hub">
-    <div class="wrap">
-      <div class="mono eyebrow" style="color:var(--accent)">One business. One knowledge layer. Multiple execution channels.</div>
-      <h2 class="disp" style="font-size:clamp(2rem,5vw,3.4rem);margin-top:14px">Eén bedrijfscontext. Meerdere kanalen.</h2>
-      <div class="core">
-        <div class="k">In het midden</div>
-        <h3>Kennismodel</h3>
-        <p>Je bedrijf, je markt en je vraag, op één plek.</p>
-      </div>
-      <div class="chans">
-        <div class="chan"><div class="nm">Website</div><span class="st now">// Nu</span></div>
-        <div class="chan"><div class="nm">SEO</div><span class="st now">// Nu</span></div>
-        <div class="chan"><div class="nm">Meting</div><span class="st now">// Nu</span></div>
-        <div class="chan"><div class="nm">Content</div><span class="st now">// Nu</span></div>
-        <div class="chan"><div class="nm">Ads</div><span class="st exp">// In uitbouw</span></div>
-        <div class="chan"><div class="nm">CRM</div><span class="st exp">// In uitbouw</span></div>
-        <div class="chan"><div class="nm">Agents</div><span class="st exp">// In uitbouw</span></div>
-      </div>
-      <p class="hubnote">Gebouwd zodat extra kanalen vanuit dezelfde bedrijfscontext werken. <b>Vandaag is de website de meest tastbare output.</b> Ads, social en CRM-activatie bouwen op dezelfde basis verder, met een mens die stuurt.</p>
-    </div>
-  </section>
+<!--
+  Sherlock / Watson Web Studio - "Eén bedrijfscontext. Meerdere kanalen." (radial knowledge-model block)
+  Drop-in, self-contained. Replaces the flat .hub markup + static chip list with a living
+  canvas: one purple core (het kennismodel) with soft facet words orbiting it, and streams
+  of pulses flowing outward to each execution-kanaal. Live kanalen pulse steady green;
+  kanalen in uitbouw pulse faint/occasional. No external deps.
+-->
+<section class="hubx-section">
+  <div class="hubx-wrap">
+    <div class="hubx-eyebrow">One business. One knowledge layer. Multiple execution channels.</div>
+    <h2 class="disp hubx-heading">Eén bedrijfscontext. Meerdere kanalen.</h2>
+
+    <canvas id="hubField" class="hubx-canvas" aria-hidden="true"></canvas>
+    <span class="hubx-sr-only">
+      Kennismodel voedt zeven kanalen. Nu actief: Website, SEO, Meting, Content.
+      In uitbouw: Ads, CRM, Agents.
+    </span>
+
+    <div class="hubx-spacer"></div>
+
+    <p class="hubx-note">
+      Gebouwd zodat extra kanalen vanuit dezelfde bedrijfscontext werken.
+      <b>Vandaag is de website de meest tastbare output.</b>
+      Ads, social en CRM-activatie bouwen op dezelfde basis verder, met een mens die stuurt.
+    </p>
+  </div>
+</section>
+
+<style>
+  .hubx-section{
+    position:relative;
+    background:var(--black,#0b0b0b);
+    overflow:hidden;
+    padding:88px 24px 64px;
+    isolation:isolate;
+  }
+  .hubx-wrap{
+    position:relative;
+    z-index:2;
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    min-height:660px;
+  }
+  .hubx-eyebrow{
+    font-family:"Open Sans",system-ui,sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent,#6BB869);
+    margin:0;
+  }
+  .hubx-heading{
+    font-family:"Raleway",Impact,system-ui,sans-serif;
+    font-weight:800;
+    color:var(--white,#fff);
+    font-size:clamp(2rem,5vw,3.4rem);
+    line-height:1.08;
+    margin:14px 0 0;
+    max-width:660px;
+  }
+  .hubx-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    z-index:1;
+  }
+  .hubx-spacer{
+    flex:1 1 auto;
+    min-height:440px;
+  }
+  .hubx-note{
+    position:relative;
+    z-index:2;
+    max-width:600px;
+    margin:0 0 0;
+    padding:20px 22px 20px 0;
+    color:var(--muted,#a8a8a8);
+    font-family:"Open Sans",system-ui,sans-serif;
+    font-size:15px;
+    line-height:1.65;
+    background:linear-gradient(180deg, rgba(11,11,11,0) 0%, rgba(11,11,11,.55) 28%, rgba(11,11,11,.82) 100%);
+    border-radius:8px;
+  }
+  .hubx-note b{
+    color:var(--white,#fff);
+    font-weight:700;
+  }
+  .hubx-sr-only{
+    position:absolute;
+    width:1px;height:1px;
+    padding:0;margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+
+  @media (max-width:820px){
+    .hubx-section{ padding:64px 18px 44px; }
+    .hubx-wrap{ min-height:760px; }
+    .hubx-spacer{ min-height:560px; }
+    .hubx-note{ max-width:100%; padding-right:0; }
+  }
+</style>
+
+<script>
+(function(){
+  var canvas = document.getElementById('hubField');
+  if(!canvas || !canvas.getContext) return;
+  var section = canvas.closest('.hubx-section');
+  if(!section) return;
+  var ctx = canvas.getContext('2d');
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var W = 0, H = 0, DPR = 1;
+
+  var CHANNELS = [
+    { name:'Website',  status:'live', a:-90  },
+    { name:'SEO',      status:'live', a:-90 + 51.4286 },
+    { name:'Meting',   status:'live', a:-90 + 51.4286*2 },
+    { name:'Content',  status:'live', a:-90 + 51.4286*3 },
+    { name:'Ads',      status:'exp',  a:-90 + 51.4286*4 },
+    { name:'CRM',      status:'exp',  a:-90 + 51.4286*5 },
+    { name:'Agents',   status:'exp',  a:-90 + 51.4286*6 }
+  ];
+
+  var FACETS = ['Aanbod','Doelgroepen','Markt','Vraag','Concurrenten','Toon'];
+
+  var COL_GREEN = '107,184,105';
+  var COL_PURPLE = '102,36,131';
+  var COL_MUTED = '150,150,150';
+  var COL_WHITE = '255,255,255';
+
+  function deg2rad(d){ return d * Math.PI / 180; }
+
+  function fitCanvas(){
+    var rect = section.getBoundingClientRect();
+    W = Math.max(rect.width, 1);
+    H = Math.max(rect.height, 1);
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * DPR);
+    canvas.height = Math.round(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  function layout(){
+    var mobile = W < 820;
+    var cx = W * 0.5;
+    var cy = H * (mobile ? 0.42 : 0.56);
+    var rx = Math.min(W * (mobile ? 0.40 : 0.33), mobile ? 190 : 400);
+    var ry = Math.min(H * (mobile ? 0.30 : 0.33), mobile ? 230 : 240);
+    var coreR = mobile ? 24 : 34;
+    var facetR = coreR + (mobile ? 30 : 44);
+    return { mobile:mobile, cx:cx, cy:cy, rx:rx, ry:ry, coreR:coreR, facetR:facetR };
+  }
+
+  function nodePos(L, ch){
+    var a = deg2rad(ch.a);
+    return {
+      x: L.cx + Math.cos(a) * L.rx,
+      y: L.cy + Math.sin(a) * L.ry,
+      nx: Math.cos(a),
+      ny: Math.sin(a)
+    };
+  }
+
+  // -- particle streams --------------------------------------------------
+  var particles = [];
+  var spawnTimers = CHANNELS.map(function(ch){ return ch.status === 'live' ? 260 + Math.random()*300 : 1400 + Math.random()*1200; });
+
+  function spawnInterval(ch){
+    return ch.status === 'live' ? 620 + Math.random()*380 : 2600 + Math.random()*1800;
+  }
+
+  function ease(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  var mouse = { x:-9999, y:-9999, active:false };
+  var hoverIdx = -1;
+  var hoverAmt = 0;
+
+  function draw(now, dt){
+    var L = layout();
+    ctx.clearRect(0,0,W,H);
+
+    // nearest-node hover detection
+    var nearest = -1, nearestD = 46;
+    if(mouse.active){
+      for(var i=0;i<CHANNELS.length;i++){
+        var p = nodePos(L, CHANNELS[i]);
+        var d = Math.hypot(mouse.x-p.x, mouse.y-p.y);
+        if(d < nearestD){ nearestD = d; nearest = i; }
+      }
+    }
+    hoverIdx = nearest;
+    hoverAmt += ((hoverIdx>=0?1:0) - hoverAmt) * 0.12;
+
+    // links: core -> channel
+    for(var i=0;i<CHANNELS.length;i++){
+      var ch = CHANNELS[i];
+      var p = nodePos(L, ch);
+      var isHover = (hoverIdx === i);
+      var base = ch.status === 'live' ? 0.22 : 0.10;
+      var alpha = base + (isHover ? 0.28 : 0);
+      var col = ch.status === 'live' ? COL_GREEN : COL_MUTED;
+      ctx.beginPath();
+      ctx.moveTo(L.cx, L.cy);
+      ctx.lineTo(p.x, p.y);
+      ctx.strokeStyle = 'rgba(' + col + ',' + alpha + ')';
+      ctx.lineWidth = isHover ? 1.4 : 1;
+      ctx.stroke();
+    }
+
+    // facet words orbiting the core, slow rotation
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '600 10px "Open Sans",system-ui,sans-serif';
+    for(var f=0; f<FACETS.length; f++){
+      var fa = (now * 0.00003) + (f / FACETS.length) * Math.PI * 2;
+      var fx = L.cx + Math.cos(fa) * L.facetR;
+      var fy = L.cy + Math.sin(fa) * (L.facetR * 0.62);
+      var fAlpha = 0.30 + 0.14 * Math.sin(now*0.0006 + f);
+      ctx.fillStyle = 'rgba(' + COL_WHITE + ',' + fAlpha.toFixed(3) + ')';
+      ctx.save();
+      ctx.translate(fx, fy);
+      ctx.fillText(FACETS[f].toUpperCase(), 0, 0);
+      ctx.restore();
+    }
+
+    // core node: purple glow
+    var pulse = 0.85 + 0.15 * Math.sin(now * 0.0011);
+    var grad = ctx.createRadialGradient(L.cx, L.cy, 0, L.cx, L.cy, L.coreR * 2.6);
+    grad.addColorStop(0, 'rgba(' + COL_PURPLE + ',' + (0.55*pulse) + ')');
+    grad.addColorStop(1, 'rgba(' + COL_PURPLE + ',0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(L.cx, L.cy, L.coreR * 2.6, 0, Math.PI*2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(L.cx, L.cy, L.coreR, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(' + COL_PURPLE + ',' + (0.9*pulse) + ')';
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(' + COL_WHITE + ',0.18)';
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(' + COL_WHITE + ',0.96)';
+    ctx.font = '800 12px "Raleway",Impact,system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('KENNISMODEL', L.cx, L.cy);
+
+    // channel nodes + labels
+    for(var j=0;j<CHANNELS.length;j++){
+      var c = CHANNELS[j];
+      var np = nodePos(L, c);
+      var hov = (hoverIdx === j) ? hoverAmt : 0;
+      var live = c.status === 'live';
+      var col2 = live ? COL_GREEN : COL_MUTED;
+      var r = (live ? 6 : 5) + hov*2;
+
+      if(live){
+        var g2 = ctx.createRadialGradient(np.x, np.y, 0, np.x, np.y, r*4);
+        g2.addColorStop(0, 'rgba(' + COL_GREEN + ',' + (0.35+hov*0.25) + ')');
+        g2.addColorStop(1, 'rgba(' + COL_GREEN + ',0)');
+        ctx.fillStyle = g2;
+        ctx.beginPath();
+        ctx.arc(np.x, np.y, r*4, 0, Math.PI*2);
+        ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(np.x, np.y, r, 0, Math.PI*2);
+      if(live){
+        ctx.fillStyle = 'rgba(' + COL_GREEN + ',' + (0.85+hov*0.15) + ')';
+        ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(11,11,11,0.9)';
+        ctx.fill();
+        ctx.lineWidth = 1.3;
+        ctx.strokeStyle = 'rgba(' + COL_MUTED + ',' + (0.55+hov*0.3) + ')';
+        ctx.stroke();
+      }
+
+      var lx = L.cx + np.nx * (Math.hypot(np.x-L.cx,np.y-L.cy) + (L.mobile?16:20));
+      var ly = L.cy + np.ny * (Math.hypot(np.x-L.cx,np.y-L.cy) + (L.mobile?16:20));
+
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '700 ' + (L.mobile?12:13) + 'px "Raleway",Impact,system-ui,sans-serif';
+      ctx.fillStyle = 'rgba(' + COL_WHITE + ',' + (0.85+hov*0.15) + ')';
+      ctx.fillText(c.name, lx, ly - 7);
+
+      ctx.font = '600 9px "Open Sans",system-ui,sans-serif';
+      ctx.fillStyle = live ? 'rgba(' + COL_GREEN + ',0.95)' : 'rgba(' + COL_MUTED + ',0.8)';
+      ctx.fillText(live ? 'Nu' : 'In uitbouw', lx, ly + 7);
+    }
+
+    // particle streams
+    for(var k=particles.length-1; k>=0; k--){
+      var pt = particles[k];
+      var prog = (now - pt.start) / pt.dur;
+      if(prog >= 1){ particles.splice(k,1); continue; }
+      var chn = CHANNELS[pt.ch];
+      var pp = nodePos(L, chn);
+      var e = ease(prog);
+      var x = L.cx + (pp.x - L.cx) * e;
+      var y = L.cy + (pp.y - L.cy) * e;
+      var fade = Math.sin(prog * Math.PI);
+      var pcol = chn.status === 'live' ? COL_GREEN : COL_PURPLE;
+      var pr = chn.status === 'live' ? 2.4 : 1.8;
+      ctx.beginPath();
+      ctx.arc(x, y, pr, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(' + pcol + ',' + (fade * pt.alpha).toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    if(!reduceMotion){
+      for(var s=0;s<CHANNELS.length;s++){
+        spawnTimers[s] -= dt;
+        if(spawnTimers[s] <= 0){
+          var chS = CHANNELS[s];
+          particles.push({
+            ch:s,
+            start: now,
+            dur: 1200 + Math.random()*500,
+            alpha: chS.status === 'live' ? (0.75 + Math.random()*0.2) : (0.32 + Math.random()*0.18)
+          });
+          spawnTimers[s] = spawnInterval(chS) + (hoverIdx===s ? -300 : 0);
+        }
+      }
+    }
+  }
+
+  var lastT = 0;
+  function frame(ts){
+    var dt = lastT ? (ts - lastT) : 16;
+    lastT = ts;
+    draw(ts, dt);
+    raf = requestAnimationFrame(frame);
+  }
+  var raf = null;
+
+  function onMove(e){
+    var rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  }
+  function onLeave(){ mouse.active = false; }
+
+  function start(){
+    fitCanvas();
+    if(reduceMotion){
+      draw(0, 0);
+      return;
+    }
+    canvas.addEventListener('mousemove', onMove, { passive:true });
+    canvas.addEventListener('mouseleave', onLeave, { passive:true });
+    if(raf) cancelAnimationFrame(raf);
+    lastT = 0;
+    raf = requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', fitCanvas);
+  window.addEventListener('load', fitCanvas);
+
+  var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  ready.then(start);
+})();
+</script>
 
   <!-- 5. CAMPAIGN DEVICE: Sherlock Statement #2 + the escalation trap -->
   <section class="statement">
