@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<title>Sherlock | De eerste SEO Agent, die je website ook bouwt</title>
+<title>Sherlock | De SEO-agent die ook je website bouwt</title>
 <meta name="description" content="Sherlock brengt je bedrijf en zoekmarkt in kaart en bouwt daaruit de structuur, content en het design van je website. Meting, SEO en advertising bouwen op dezelfde basis verder. Zet je op de wachtlijst.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,7 +85,9 @@ h1,h2,h3{margin:0}
 .demand-center .tag{color:var(--accent);margin-bottom:18px}
 .demand-center .big2{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(2.6rem,8vw,6.2rem);line-height:.94;color:#fff}
 .demand-center .big2 .u{color:var(--accent)}
-.demand-center .hint{margin-top:22px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.demand-center .punch{margin-top:16px;font-family:var(--body);font-weight:700;font-size:clamp(1rem,2.4vw,1.4rem);line-height:1.3;color:#fff}
+.demand-center .punch b{color:var(--accent);font-weight:700}
+.demand-center .hint{margin-top:20px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
 /* the escalation trap (dashboard/chatbot/sherlock) - sits on the purple field */
 .trap{margin-top:30px;border:1px solid rgba(255,255,255,.24);display:grid;grid-template-columns:repeat(3,1fr)}
@@ -200,9 +202,9 @@ h1,h2,h3{margin:0}
   <section class="hero">
     <canvas id="kg" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="mono eyebrow">Maak kennis met Sherlock · De eerste SEO Agent</div>
+      <div class="mono eyebrow">Maak kennis met Sherlock · de agent die onderzoekt én bouwt</div>
       <h1 class="disp">De SEO Agent die <span class="u">ook</span> je website <span class="u">bouwt</span>.</h1>
-      <p class="lead">Sherlock brengt eerst je bedrijf en zoekmarkt in kaart: wat je verkoopt, voor wie, waar de vraag zit en welke onderwerpen ertoe doen. Vanuit die kennis bouwt Sherlock de <b>structuur, content en het design</b> van je website. Daarna bouwen meting, SEO en advertising op dezelfde basis verder.</p>
+      <p class="lead">Je klanten zoeken nu al - de vraag is of ze jou vinden, of je concurrent. Sherlock brengt eerst je bedrijf en die zoekmarkt in kaart: wat je verkoopt, voor wie, en waar de vraag zit. Vanuit die kennis bouwt Sherlock je website - <b>structuur, content én design</b> - rond wat mensen écht zoeken. Meting, SEO en advertising bouwen daarna op dezelfde basis verder.</p>
       <div class="btns">
         <a class="btn solid" href="#wachtlijst">Zet mij op de wachtlijst</a>
         <a class="btn" href="#werk">Bekijk het werk</a>
@@ -221,6 +223,7 @@ h1,h2,h3{margin:0}
     <div class="demand-center">
       <div class="mono tag">Échte Google-zoekvraag · sherlockseo.com · laatste 90 dagen</div>
       <h2 class="disp big2">Je volgende klant<br>zoekt <span class="u">nu al</span>.</h2>
+      <div class="punch">En vindt vandaag <b>je concurrent</b>. Tenzij jij er staat.</div>
       <div class="hint">Beweeg door het veld · jouw cursor is Sherlock · groter = meer vraag</div>
     </div>
   </section>
@@ -662,7 +665,7 @@ h1,h2,h3{margin:0}
     <div class="sec wrap">
       <div class="mono eyebrow">Echt werk</div>
       <h2>Voorbeelden, geen mockups.</h2>
-      <p class="intro">Sites die Sherlock bouwde, in de stem van elk bedrijf. Bekijk ze.</p>
+      <p class="intro">Sites die Sherlock bouwde, in de stem van elk bedrijf - vijf sectoren, elk rond de vraag in hun markt. Bekijk ze.</p>
       <div class="work">
         <a href="https://ck.preview.sherlockseo.com" target="_blank" rel="noopener">
           <span class="no">01</span>
@@ -703,7 +706,7 @@ h1,h2,h3{margin:0}
 -->
 <section class="hubx-section">
   <div class="hubx-wrap">
-    <div class="hubx-eyebrow">One business. One knowledge layer. Multiple execution channels.</div>
+    <div class="hubx-eyebrow">Eén bedrijf. Eén kennislaag. Meerdere kanalen.</div>
     <h2 class="disp hubx-heading">Eén bedrijfscontext. Meerdere kanalen.</h2>
 
     <canvas id="hubField" class="hubx-canvas" aria-hidden="true"></canvas>
@@ -1631,12 +1634,676 @@ h1,h2,h3{margin:0}
 })();
 </script>
 
+  <!-- OUTCOMES: close the circle - business outcomes, bidirectional data flow -->
+<!--
+  Section: "De cirkel rond" · outcomes cockpit
+  Purpose: payoff section. Shows the closed loop (goal -> knowledge model -> build -> measure -> outcome ->
+  feeds back into the knowledge model) and the business outcomes that result, depending on the client's goal.
+  Deliberately contrasts with the rest of the page: dense, monospace, terminal/cockpit feel instead of
+  big brand type + soft particle graphs. Self-contained, no external deps. Class prefix: .outx-
+-->
+<section id="outx-outcomes" class="outx-section" aria-labelledby="outx-heading">
+  <div class="outx-wrap">
+
+    <header class="outx-head">
+      <p class="outx-eyebrow">De cirkel rond</p>
+      <h2 id="outx-heading" class="outx-h disp">Verkeer is geen doel.<br>Klanten wel.</h2>
+      <p class="outx-intro">Meer bezoekers is geen bedrijfsdoel. Sherlock vertrekt van wat jouw bedrijf wil
+        bereiken en bepaalt daarna welke resultaten ertoe doen &middot; en meet die.</p>
+    </header>
+
+    <div class="outx-grid">
+
+      <!-- LOOP DIAGRAM -->
+      <div class="outx-loop-panel">
+        <div class="outx-panel-label">
+          <span class="outx-dot" aria-hidden="true"></span>
+          <span>DE LUS</span>
+        </div>
+        <div class="outx-canvas-wrap">
+          <canvas id="loopField" aria-hidden="true"></canvas>
+          <div class="outx-loop-caption">
+            <span class="outx-loop-caption-mark" aria-hidden="true">&#8635;</span>
+            Wat je meet, scherpt het model aan. Een mens stuurt.
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTCOMES READOUTS -->
+      <div class="outx-outcomes-panel">
+        <div class="outx-panel-label">
+          <span class="outx-dot outx-dot--green" aria-hidden="true"></span>
+          <span>UITKOMSTEN</span>
+        </div>
+        <p class="outx-outcomes-heading">Wat je terugziet &middot; afhankelijk van jouw doel:</p>
+
+        <ul class="outx-readouts" role="list">
+          <li class="outx-readout" data-base="128" data-jitter="1" data-suffix="">
+            <span class="outx-readout-label">Klanten</span>
+            <span class="outx-readout-value-row">
+              <span class="outx-readout-value" data-value>000</span>
+              <span class="outx-readout-delta" data-delta aria-hidden="true">+0</span>
+            </span>
+          </li>
+          <li class="outx-readout" data-base="342" data-jitter="2" data-suffix="">
+            <span class="outx-readout-label">Leads</span>
+            <span class="outx-readout-value-row">
+              <span class="outx-readout-value" data-value>000</span>
+              <span class="outx-readout-delta" data-delta aria-hidden="true">+0</span>
+            </span>
+          </li>
+          <li class="outx-readout" data-base="57" data-jitter="1" data-suffix="">
+            <span class="outx-readout-label">Offertes</span>
+            <span class="outx-readout-value-row">
+              <span class="outx-readout-value" data-value>00</span>
+              <span class="outx-readout-delta" data-delta aria-hidden="true">+0</span>
+            </span>
+          </li>
+          <li class="outx-readout" data-base="19" data-jitter="1" data-suffix="">
+            <span class="outx-readout-label">Sollicitanten</span>
+            <span class="outx-readout-value-row">
+              <span class="outx-readout-value" data-value>00</span>
+              <span class="outx-readout-delta" data-delta aria-hidden="true">+0</span>
+            </span>
+          </li>
+          <li class="outx-readout" data-base="24" data-jitter="1" data-suffix="%">
+            <span class="outx-readout-label">Zichtbaarheid</span>
+            <span class="outx-readout-value-row">
+              <span class="outx-readout-value" data-value>00%</span>
+              <span class="outx-readout-delta" data-delta aria-hidden="true">+0</span>
+            </span>
+          </li>
+        </ul>
+
+        <p class="outx-outcomes-note">Geen ijdele cijfers. Resultaten waar je iets mee kan.</p>
+        <p class="outx-illustrative">
+          <span class="outx-illustrative-tag">voorbeeld</span>
+          illustratie van een live cockpit &middot; geen klantcijfers
+        </p>
+      </div>
+
+    </div>
+
+    <div class="outx-footer">
+      <span class="outx-footer-dot" aria-hidden="true"></span>
+      <span class="outx-footer-text">LIVE &middot; business-KPI's, geen vanity metrics</span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #outx-outcomes.outx-section {
+    background: #0b0b0b;
+    color: #f3f0ea;
+    padding: clamp(56px, 8vw, 108px) clamp(20px, 4vw, 48px);
+    position: relative;
+    overflow: hidden;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    isolation: isolate;
+  }
+
+  #outx-outcomes .outx-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Header ---------- */
+  #outx-outcomes .outx-head {
+    max-width: 760px;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  #outx-outcomes .outx-eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6BB869;
+    margin: 0 0 14px;
+  }
+
+  #outx-outcomes .outx-h.disp {
+    font-family: Raleway, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(28px, 4.4vw, 48px);
+    line-height: 1.08;
+    letter-spacing: 0.005em;
+    margin: 0 0 18px;
+    color: #ffffff;
+  }
+
+  #outx-outcomes .outx-intro {
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.6;
+    color: #c9c6c0;
+    margin: 0;
+    max-width: 58ch;
+  }
+
+  /* ---------- Grid ---------- */
+  #outx-outcomes .outx-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 1px;
+    background: #2a2a2a;
+    border: 1px solid #2a2a2a;
+  }
+
+  #outx-outcomes .outx-loop-panel,
+  #outx-outcomes .outx-outcomes-panel {
+    background: #111111;
+    padding: clamp(20px, 3vw, 32px);
+  }
+
+  #outx-outcomes .outx-panel-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin-bottom: 18px;
+  }
+
+  #outx-outcomes .outx-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #662483;
+    box-shadow: 0 0 8px rgba(102, 36, 131, 0.8);
+    flex: none;
+  }
+
+  #outx-outcomes .outx-dot--green {
+    background: #6BB869;
+    box-shadow: 0 0 8px rgba(107, 184, 105, 0.8);
+  }
+
+  /* ---------- Loop canvas ---------- */
+  #outx-outcomes .outx-canvas-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 300px;
+  }
+
+  #outx-outcomes #loopField {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #outx-outcomes .outx-loop-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    text-align: center;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #a9a6a0;
+    padding: 0 8px;
+  }
+
+  #outx-outcomes .outx-loop-caption-mark {
+    color: #6BB869;
+    margin-right: 4px;
+  }
+
+  /* ---------- Outcomes readouts ---------- */
+  #outx-outcomes .outx-outcomes-heading {
+    font-size: 14px;
+    color: #e8e5df;
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+
+  #outx-outcomes .outx-readouts {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: #262626;
+    border: 1px solid #262626;
+  }
+
+  #outx-outcomes .outx-readout {
+    background: #151515;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 12px 14px;
+  }
+
+  #outx-outcomes .outx-readout-label {
+    font-size: 13.5px;
+    color: #cfccc6;
+  }
+
+  #outx-outcomes .outx-readout-value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  #outx-outcomes .outx-readout-value {
+    font-size: 19px;
+    font-weight: 600;
+    color: #6BB869;
+    font-variant-numeric: tabular-nums;
+    min-width: 3.2ch;
+    text-align: right;
+  }
+
+  #outx-outcomes .outx-readout-delta {
+    font-size: 11px;
+    color: #4d4d4d;
+    min-width: 2.4ch;
+    transition: color 0.25s ease, opacity 0.25s ease;
+    opacity: 0;
+  }
+
+  #outx-outcomes .outx-readout-delta.is-active {
+    color: #6BB869;
+    opacity: 1;
+  }
+
+  #outx-outcomes .outx-outcomes-note {
+    font-size: 13px;
+    color: #8a8a8a;
+    margin: 0 0 14px;
+  }
+
+  #outx-outcomes .outx-illustrative {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: #6b6b6b;
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid #232323;
+  }
+
+  #outx-outcomes .outx-illustrative-tag {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #662483;
+    border: 1px solid #662483;
+    border-radius: 3px;
+    padding: 2px 6px;
+  }
+
+  /* ---------- Footer ---------- */
+  #outx-outcomes .outx-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: #6b6b6b;
+  }
+
+  #outx-outcomes .outx-footer-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #6BB869;
+    box-shadow: 0 0 6px rgba(107, 184, 105, 0.9);
+    flex: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #outx-outcomes .outx-footer-dot,
+    #outx-outcomes .outx-dot {
+      box-shadow: none;
+    }
+  }
+
+  /* ---------- Mobile reflow ---------- */
+  @media (max-width: 820px) {
+    #outx-outcomes .outx-grid {
+      grid-template-columns: 1fr;
+    }
+    #outx-outcomes .outx-canvas-wrap {
+      aspect-ratio: 5 / 4;
+      min-height: 260px;
+    }
+    #outx-outcomes .outx-h.disp {
+      font-size: clamp(26px, 7vw, 34px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    #outx-outcomes .outx-readout-value {
+      font-size: 17px;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  var section = document.getElementById("outx-outcomes");
+  if (!section) return;
+
+  var reduceMotion = false;
+  try {
+    reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch (e) {
+    reduceMotion = false;
+  }
+
+  /* =========================================================
+     LOOP DIAGRAM (canvas)
+     ========================================================= */
+  var canvas = document.getElementById("loopField");
+  if (canvas) {
+    var wrap = canvas.closest(".outx-canvas-wrap");
+    var ctx = canvas.getContext("2d");
+    var W = 0, H = 0, dpr = 1;
+    var particles = [];
+    var rafId = null;
+    var startTime = null;
+
+    var STATIONS = [
+      { key: "DOEL", kind: "neutral" },
+      { key: "KENNISMODEL", kind: "purple" },
+      { key: "VRAAG", kind: "neutral" },
+      { key: "WEBSITE", kind: "neutral" },
+      { key: "METING", kind: "neutral" },
+      { key: "UITKOMST", kind: "green" }
+    ];
+
+    var COLOR_LINE = "rgba(138,138,138,0.45)";
+    var COLOR_PURPLE = "#662483";
+    var COLOR_GREEN = "#6BB869";
+    var COLOR_TEXT = "#e8e5df";
+    var COLOR_TEXT_MUTED = "#8a8a8a";
+
+    function nodePositions() {
+      var cx = W / 2, cy = H / 2;
+      var r = Math.min(W, H) * 0.36;
+      var n = STATIONS.length;
+      var pts = [];
+      for (var i = 0; i < n; i++) {
+        // start at top, go clockwise
+        var angle = -Math.PI / 2 + (i / n) * Math.PI * 2;
+        pts.push({
+          x: cx + Math.cos(angle) * r,
+          y: cy + Math.sin(angle) * r,
+          angle: angle
+        });
+      }
+      return pts;
+    }
+
+    function resize() {
+      var rect = (wrap || canvas).getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(1, Math.round(rect.width));
+      H = Math.max(1, Math.round(rect.height));
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      canvas.style.width = W + "px";
+      canvas.style.height = H + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw(reduceMotion ? 1 : (particles.length ? particleT : 0));
+    }
+
+    var particleT = 0;
+
+    function drawArrowHead(x, y, angle, color) {
+      var size = 5;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-size * 1.6, -size * 0.8);
+      ctx.lineTo(-size * 1.6, size * 0.8);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawStraightEdge(a, b, color, dashed) {
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.4;
+      if (dashed) ctx.setLineDash([3, 4]);
+      ctx.beginPath();
+      // shrink toward nodes so line doesn't run under the dot
+      var dx = b.x - a.x, dy = b.y - a.y;
+      var len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var pad = 22;
+      var ax = a.x + (dx / len) * pad;
+      var ay = a.y + (dy / len) * pad;
+      var bx = b.x - (dx / len) * pad;
+      var by = b.y - (dy / len) * pad;
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(bx, by);
+      ctx.stroke();
+      ctx.restore();
+      var ang = Math.atan2(dy, dx);
+      drawArrowHead(bx, by, ang, color);
+    }
+
+    function drawReturnArc(from, to) {
+      // curved arc through the center-ish area, from UITKOMST back to KENNISMODEL
+      var cx = W / 2, cy = H / 2;
+      var mx = (from.x + to.x) / 2;
+      var my = (from.y + to.y) / 2;
+      // pull control point toward center so the arc reads as "coming back"
+      var ctrlX = cx + (mx - cx) * 0.15;
+      var ctrlY = cy + (my - cy) * 0.15;
+
+      var grad = ctx.createLinearGradient(from.x, from.y, to.x, to.y);
+      grad.addColorStop(0, COLOR_GREEN);
+      grad.addColorStop(1, COLOR_PURPLE);
+
+      ctx.save();
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.6;
+      ctx.setLineDash([2, 5]);
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.quadraticCurveTo(ctrlX, ctrlY, to.x, to.y);
+      ctx.stroke();
+      ctx.restore();
+
+      // arrowhead near "to" along the curve tangent
+      var t = 0.94;
+      var tx = (1 - t) * (1 - t) * from.x + 2 * (1 - t) * t * ctrlX + t * t * to.x;
+      var ty = (1 - t) * (1 - t) * from.y + 2 * (1 - t) * t * ctrlY + t * t * to.y;
+      var ang = Math.atan2(to.y - ty, to.x - tx);
+      drawArrowHead(to.x, to.y, ang, COLOR_PURPLE);
+
+      return { ctrlX: ctrlX, ctrlY: ctrlY };
+    }
+
+    function pointOnQuad(p0, c, p1, t) {
+      var x = (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * c.x + t * t * p1.x;
+      var y = (1 - t) * (1 - t) * p0.y + 2 * (1 - t) * t * c.y + t * t * p1.y;
+      return { x: x, y: y };
+    }
+
+    function draw(tParticle) {
+      if (!W || !H) return;
+      ctx.clearRect(0, 0, W, H);
+
+      var pts = nodePositions();
+      var n = pts.length;
+
+      // forward edges (build direction)
+      for (var i = 0; i < n - 1; i++) {
+        drawStraightEdge(pts[i], pts[i + 1], COLOR_LINE, false);
+      }
+
+      // return arc: UITKOMST (last) -> KENNISMODEL (index 1)
+      var arcCtrl = drawReturnArc(pts[n - 1], pts[1]);
+
+      // nodes
+      ctx.font = "600 10.5px ui-monospace, 'SF Mono', Menlo, Consolas, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (var j = 0; j < n; j++) {
+        var st = STATIONS[j];
+        var p = pts[j];
+        var col = st.kind === "purple" ? COLOR_PURPLE : (st.kind === "green" ? COLOR_GREEN : COLOR_TEXT_MUTED);
+        var radius = st.kind === "neutral" ? 4.5 : 6;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = st.kind === "neutral" ? "#3a3a3a" : col;
+        ctx.fill();
+        if (st.kind !== "neutral") {
+          ctx.save();
+          ctx.shadowColor = col;
+          ctx.shadowBlur = 8;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+          ctx.fillStyle = col;
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // label placement: push outward from center
+        var cx = W / 2, cy = H / 2;
+        var dx = p.x - cx, dy = p.y - cy;
+        var dlen = Math.sqrt(dx * dx + dy * dy) || 1;
+        var lx = p.x + (dx / dlen) * 20;
+        var ly = p.y + (dy / dlen) * 20;
+        ctx.fillStyle = st.kind === "neutral" ? COLOR_TEXT : col;
+        ctx.fillText(st.key, lx, ly);
+      }
+
+      // moving particles along forward path (skipped entirely under reduced motion)
+      if (!reduceMotion && typeof tParticle === "number") {
+        var segCount = n - 1;
+        var totalT = tParticle % 1;
+        var flowPos = totalT * segCount;
+        var segIdx = Math.floor(flowPos);
+        var segT = flowPos - segIdx;
+        if (segIdx >= 0 && segIdx < segCount) {
+          var a = pts[segIdx], b = pts[segIdx + 1];
+          var fx = a.x + (b.x - a.x) * segT;
+          var fy = a.y + (b.y - a.y) * segT;
+          ctx.beginPath();
+          ctx.arc(fx, fy, 2.4, 0, Math.PI * 2);
+          ctx.fillStyle = "#f3f0ea";
+          ctx.fill();
+        }
+
+        // return-arc particle, offset in time so it feels like the delayed feedback
+        var retT = (tParticle * 0.6 + 0.5) % 1;
+        var rp = pointOnQuad(pts[n - 1], { x: arcCtrl.ctrlX, y: arcCtrl.ctrlY }, pts[1], retT);
+        ctx.beginPath();
+        ctx.arc(rp.x, rp.y, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = COLOR_GREEN;
+        ctx.fill();
+      }
+    }
+
+    function loop(ts) {
+      if (startTime === null) startTime = ts;
+      var elapsed = (ts - startTime) / 1000;
+      particleT = (elapsed / 6) % 1; // full cycle every ~6s
+      draw(particleT);
+      rafId = window.requestAnimationFrame(loop);
+    }
+
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(function () {
+      resize();
+      if (!reduceMotion) {
+        rafId = window.requestAnimationFrame(loop);
+      } else {
+        draw(1);
+      }
+    });
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("load", resize);
+  }
+
+  /* =========================================================
+     TICKING OUTCOME READOUTS
+     ========================================================= */
+  var readouts = section.querySelectorAll(".outx-readout");
+
+  function formatValue(n, suffix) {
+    return String(n) + (suffix || "");
+  }
+
+  readouts.forEach(function (el) {
+    var base = parseInt(el.getAttribute("data-base"), 10) || 0;
+    var jitter = parseInt(el.getAttribute("data-jitter"), 10) || 1;
+    var suffix = el.getAttribute("data-suffix") || "";
+    var valueEl = el.querySelector("[data-value]");
+    var deltaEl = el.querySelector("[data-delta]");
+    var current = base;
+
+    if (!valueEl) return;
+
+    if (reduceMotion) {
+      valueEl.textContent = formatValue(current, suffix);
+      return;
+    }
+
+    valueEl.textContent = formatValue(current, suffix);
+
+    function tick() {
+      var step = 1 + Math.floor(Math.random() * jitter);
+      // mostly upward, occasional flat tick, to feel like a live counter without runaway numbers
+      var goUp = Math.random() < 0.82;
+      if (goUp) {
+        current += step;
+      }
+      valueEl.textContent = formatValue(current, suffix);
+
+      if (deltaEl) {
+        if (goUp) {
+          deltaEl.textContent = "+" + step;
+          deltaEl.classList.add("is-active");
+          window.setTimeout(function () {
+            deltaEl.classList.remove("is-active");
+          }, 900);
+        }
+      }
+
+      var next = 2200 + Math.random() * 3200;
+      window.setTimeout(tick, next);
+    }
+
+    // stagger start per-item so the row doesn't tick in unison
+    window.setTimeout(tick, 800 + Math.random() * 2000);
+  });
+
+})();
+</script>
+
   <!-- 6. WAITLIST -->
   <section class="wl" id="wachtlijst" style="border-top:2px solid var(--accent)">
     <div class="wrap">
       <div class="mono eyebrow">Wachtlijst</div>
-      <h2 class="disp">Laat Sherlock je <span class="u">eerste website</span> bouwen.</h2>
-      <p class="intro">Sherlock bouwt nu de eerste websites. Laat je gegevens achter, dan nemen we contact op zodra er plek is, en zeggen we je eerlijk of jouw markt geschikt is.</p>
+      <h2 class="disp">Bouw waar je <span class="u">volgende klant</span> naar zoekt.</h2>
+      <p class="intro">We bouwen nu de eerste sites, in beperkte oplage. Laat je gegevens achter: je krijgt eerst een voorstel en preview te zien, en we zeggen eerlijk of jouw markt geschikt is. Jij beslist.</p>
       <form class="form" id="wlform">
         <div><label for="naam">Naam</label><input id="naam" name="naam" required></div>
         <div><label for="bedrijf">Bedrijf</label><input id="bedrijf" name="bedrijf"></div>
