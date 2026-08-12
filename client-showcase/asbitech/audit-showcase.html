@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asbitech · commerciële vindbaarheid — waar de leads liggen</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#662483;--purple-dark:#4a1a60;--green:#6BB869;--green-dark:#4f9a4d;
+    --ink:#1a1420;--muted:#6b6577;--line:#e9e4ef;--bg:#ffffff;--bg-soft:#f7f4fb;
+    --bg-purple:#f3edf8;--amber:#b5730a;--red:#b23b3b;
+    --shadow:0 1px 2px rgba(26,20,32,.04),0 8px 30px rgba(102,36,131,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Raleway',system-ui,-apple-system,Segoe UI,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;
+    font-weight:400;overflow-x:hidden;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  code{overflow-wrap:anywhere;word-break:break-word;font-size:.86em;background:var(--bg-purple);padding:1px 5px;border-radius:5px}
+  h1,h2,h3{font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0}
+  h2{font-size:clamp(1.5rem,3.2vw,2.1rem)}
+  h3{font-size:1.12rem;font-weight:700}
+  p{margin:.6em 0}
+  a{color:var(--purple);text-decoration:none}
+  small{color:var(--muted)}
+
+  header.frame{background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 62%,#3a1550 100%);
+    color:#fff;padding:56px 0 64px;position:relative;overflow:hidden;}
+  header.frame::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(107,184,105,.35),transparent 62%);pointer-events:none;}
+  .brandrow{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .glyph{width:42px;height:42px;border-radius:11px;background:#fff;color:var(--purple);
+    display:grid;place-items:center;font-weight:800;font-size:1.25rem;flex:none;}
+  .brandrow b{font-size:1.05rem;font-weight:700;letter-spacing:.02em}
+  .brandrow span{color:rgba(255,255,255,.7);font-size:.85rem}
+  .kicker{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green);background:rgba(107,184,105,.14);
+    border:1px solid rgba(107,184,105,.4);padding:5px 12px;border-radius:999px;margin-bottom:20px;}
+  header h1{font-size:clamp(2rem,5.2vw,3.2rem);max-width:18ch;color:#fff}
+  header .lede{font-size:clamp(1.05rem,2.2vw,1.28rem);color:rgba(255,255,255,.86);max-width:60ch;margin-top:18px;font-weight:400}
+  .metabar{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;font-size:.86rem;color:rgba(255,255,255,.78)}
+  .metabar b{color:#fff;font-weight:700}
+
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-weight:800;color:var(--green-dark);font-size:.95rem;flex:none}
+  .sec-sub{color:var(--muted);max-width:66ch;margin:6px 0 34px;font-size:1.02rem}
+  .block-title{font-size:1.02rem;font-weight:700;margin:34px 0 4px}
+  .block-note{color:var(--muted);font-size:.92rem;margin:0 0 16px;max-width:72ch}
+
+  .src{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;letter-spacing:.02em;
+    color:var(--purple);background:var(--bg-purple);border:1px solid var(--line);padding:3px 9px;border-radius:6px;white-space:nowrap;}
+  .src.gsc{color:var(--green-dark);background:#eef8ee;border-color:#d5edd4}
+  .src.mkt{color:#5a4a66;background:#f0ecf4;border-color:#e2dcea}
+  .src.na{color:#8a8391;background:#f4f2f6;border-color:#e8e4ee}
+
+  .grid{display:grid;gap:18px}.grid>*{min-width:0}
+  .g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+  .stat{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+  .stat .n{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .stat .n.green{color:var(--green-dark)}.stat .n.purple{color:var(--purple)}
+  .stat .n.amber{color:var(--amber)}.stat .n.red{color:var(--red)}
+  .stat .l{font-size:.86rem;color:var(--muted);margin-top:8px}
+  .stat .src{margin-top:12px}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+  .card h3{margin-bottom:6px}.card .src{margin-top:14px}
+
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:580px;font-size:.9rem}
+  table.wide{min-width:820px}
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg-purple);font-weight:700;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--purple-dark);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+  td.kw{color:#2c2637;font-size:.85rem}
+  td.url code{font-size:.78rem;background:none;padding:0;color:var(--purple)}
+  .tbl-cap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+  .pill{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .pill.win{background:#eef8ee;color:var(--green-dark)}
+  .pill.watch{background:#fff4e5;color:var(--amber)}
+  .pill.leak{background:#fbe9e9;color:var(--red)}
+  .pill.hot{background:var(--bg-purple);color:var(--purple)}
+  .pill.core{background:var(--purple);color:#fff}
+  .pill.sup{background:var(--bg-purple);color:var(--purple)}
+  .dest{font-weight:600;font-size:.84rem}
+  .reason{color:var(--muted);font-size:.8rem;font-style:italic}
+
+  .bars{display:grid;gap:14px;margin-top:4px}
+  .bar-row{display:grid;grid-template-columns:150px 1fr 46px;align-items:center;gap:14px}
+  .bar-row .lab{font-size:.9rem;font-weight:600}
+  .track{height:11px;background:var(--bg-purple);border-radius:999px;overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--green))}
+  .fill.low{background:linear-gradient(90deg,#b23b3b,#d98a37)}
+  .bar-row .v{font-weight:700;font-size:.9rem;text-align:right}
+
+  .moves{display:grid;gap:16px}
+  .move{display:grid;grid-template-columns:40px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+  .move .idx{width:32px;height:32px;border-radius:9px;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+  .move h3{margin-bottom:4px}
+  .move p{margin:.35em 0;font-size:.96rem;color:#2c2637}
+  .move .src{margin-top:10px}
+  .move.opp .idx{background:var(--green)}
+
+  .note{background:var(--bg-purple);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:16px 20px;font-size:.94rem;margin-top:24px}
+  .note.gap{background:#fff4e5;border-left-color:#e0902a}
+  .note.na{background:#f4f2f6;border-left-color:#9a93a3}
+
+  .tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .tag.noise{background:#fbe9e9;color:var(--red)}
+  .tag.keep{background:#eef8ee;color:var(--green-dark)}
+
+  footer{padding:44px 0 60px;color:var(--muted);font-size:.82rem}
+  footer .disc{max-width:80ch;margin-top:10px}
+  .srclist{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+  @media(max-width:820px){
+    .g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:120px 1fr 40px}
+  }
+  @media(max-width:520px){
+    .g4{grid-template-columns:1fr}section{padding:44px 0}
+    .move{grid-template-columns:32px 1fr;gap:12px;padding:18px}
+    .sec-head{gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="glyph">S</div>
+      <div><b>SHERLOCK</b> &nbsp;<span>commerciële vindbaarheid · analyse</span></div>
+    </div>
+    <span class="kicker">Asbitech — door de mangel</span>
+    <h1>Het verkeer komt binnen. De opdrachten glippen weg.</h1>
+    <p class="lede">Asbitech is een erkend asbestverwijderaar. Toch staat de site vooraan voor
+      <em>“hoe herken ik asbest”</em> en achteraan voor <em>“laat asbest verwijderen”</em>.
+      De bezoekers die willen kópen, zien vooral iemand anders bovenaan. Dit is waar dat gebeurt — met de echte cijfers eronder.</p>
+    <div class="metabar">
+      <span>Domein <b>asbitech.eu</b></span>
+      <span>Search Console <b>1 feb – 11 aug 2026</b></span>
+      <span>Bezoekcijfers <b>90 dagen</b></span>
+      <span>Live vindbaarheidstest <b>12 aug 2026</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DECISION LAYER ============ -->
+<section id="verdict">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">—</span><h2>De kern in één alinea</h2></div>
+    <p class="sec-sub">Wat een klant in dertig seconden moet weten, vóór de tabellen die het bewijzen.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n green">7.478</div><div class="l">klikken uit zoekresultaten (6 mnd)</div><span class="src gsc">Search Console</span></div>
+      <div class="stat"><div class="n purple">391.867</div><div class="l">keer getoond in de resultaten</div><span class="src gsc">Search Console</span></div>
+      <div class="stat"><div class="n amber">pos. 23,8</div><div class="l">gemiddelde positie van de eigen homepage op “asbestverwijderaar”-vragen</div><span class="src gsc">Search Console</span></div>
+      <div class="stat"><div class="n red">0</div><div class="l">gemeten aanvragen / conversies in de bezoekcijfers</div><span class="src gsc">Bezoekcijfers · 90d</span></div>
+    </div>
+
+    <div class="note">
+      <b>De diagnose.</b> Het grootste deel van het verkeer komt op <em>herkennings</em>-pagina’s binnen
+      (“is dit asbest?”) — daar staat Asbitech op positie 5. De pagina’s die een opdracht opleveren —
+      asbest laten verwijderen, dak, golfplaten, premie — staan op positie 15 tot 27, terwijl daar
+      tienduizenden vertoningen op wachten. Bezoekers die klaar zijn om te bellen, belanden dus bij de
+      concurrent of bij een prijsvergelijker. Op de kaart (Google-bedrijfsprofiel, 4,8★, 69 reviews)
+      wint Asbitech; in het antwoord dat Google zélf schrijft, komt het niet voor.
+    </div>
+
+    <h3 class="block-title">De drie zetten met de meeste hefboom</h3>
+    <div class="moves" style="margin-top:14px">
+      <div class="move opp"><div class="idx">1</div><div>
+        <h3>Herbouw de verkoop-hub (homepage + /sanering/)</h3>
+        <p>Voor de eigen kernwoorden — <em>asbest verwijderen, asbestverwijderaar, asbestsanering</em> —
+        staat de homepage op 23,8 en /sanering/ op 29,1, terwijl herkenningspagina’s op 5 staan.
+        ~56.000 vertoningen staan hier op de verkeerde positie. Dit is de grootste, snelste winst.</p>
+        <span class="src gsc">Search Console · pagina’s</span></div></div>
+      <div class="move opp"><div class="idx">2</div><div>
+        <h3>Claim de dak- &amp; golfplaten-cluster</h3>
+        <p>“asbest dak verwijderen” (25.191 vertoningen, pos. 26) en “asbest golfplaten” (10.730, pos. 17):
+        de meeste vraag, de slechtste positie. Bovendien vult Google hier zélf het antwoord — met OVAM,
+        prijsportalen en fabrikanten, niet met Asbitech. Eén sterke dak-pagina met echte m²-prijzen, premie en erkenning wint hier terrein én komt in het AI-antwoord.</p>
+        <span class="src mkt">Search Console + live test</span></div></div>
+      <div class="move opp"><div class="idx">3</div><div>
+        <h3>Zet het herkenningspubliek om — en meet het</h3>
+        <p>De herkenningspagina’s trekken samen ~4.400 klikken (pos. 5), maar zijn doodlopers.
+        Een duidelijk pad “gevonden? laat het veilig weghalen” + interne links naar /sanering/ en contact,
+        en een conversiemeting (nu 0 gemeten aanvragen) maakt die aandacht pas geld waard.</p>
+        <span class="src gsc">Search Console · Bezoekcijfers</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 00 · DE VERDWENEN OMZET-ZOEKWOORDEN (HEADLINE) ============ -->
+<section id="trend">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">00</span><h2>De headline: waar het “laat asbest verwijderen”-verkeer gebleven is</h2></div>
+    <p class="sec-sub">De vraag naar verwijdering is niet verdwenen — de pagina’s die ’m vingen wél. Tussen 2025 en 2026
+      veranderde een reeks URL’s. De herkennings-inhoud kwam grotendeels terug; de removal-money-pagina’s en één grote toevoer-pagina niet.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n amber">≈ −45%</div><div class="l">vertoningen op “verwijder”-vragen: ~17k/mnd (piek ’25) → ~8–9k/mnd nu</div><span class="src gsc">Search Console · 16 mnd</span></div>
+      <div class="stat"><div class="n green">35 → 17</div><div class="l">gem. positie removal-cluster — verbeterd, maar bleef pagina 2</div><span class="src gsc">Search Console · 16 mnd</span></div>
+      <div class="stat"><div class="n red">3.210 → 0</div><div class="l">klikken op de FR dak/gevel-pagina — grotendeels weg na migratie</div><span class="src gsc">Search Console · j-o-j</span></div>
+      <div class="stat"><div class="n red">68 → 0</div><div class="l">klikken op de aparte “asbest laten verwijderen”-pagina — verdwenen</div><span class="src gsc">Search Console · j-o-j</span></div>
+    </div>
+
+    <h3 class="block-title">Welke pagina’s hun positie verloren bij de migratie</h3>
+    <p class="block-note">Vergelijking apr–aug 2025 (P1) tegen apr–aug 2026 (P2). De herkennings-inhoud vinyl/lino kwam terug op een nieuwe URL; het dak/gevel-onderwerp en de money-pagina’s niet.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Oude pagina</th><th class="num">Klikken ’25</th><th class="num">Klikken ’26</th><th>Wat er gebeurde</th></tr></thead>
+        <tbody>
+          <tr><td class="url"><code>/fr/…/hoe-herkent-u-een-dak-of-gevel-met-asbest/</code></td><td class="num">3.210</td><td class="num">0</td><td class="kw">Vervanger haalt slechts 223 — dé toevoer naar dak-verwijdering brak af</td></tr>
+          <tr><td class="url"><code>/fr/…/hoe-herkent-u-vinyltegels-en-vinylzeil/</code></td><td class="num">2.062</td><td class="num">0</td><td class="kw"><span class="pill win">hersteld</span> op nieuwe URL (1.758)</td></tr>
+          <tr><td class="url"><code>/nieuws/hoe-herkent-u-vinyltegels-en-vinylzeil/</code></td><td class="num">1.345</td><td class="num">0</td><td class="kw"><span class="pill win">hersteld</span> op nieuwe URL (1.093)</td></tr>
+          <tr><td class="url"><code>/fr/nieuws/wie-mag-asbest-verwijderen/</code></td><td class="num">566</td><td class="num">0</td><td class="kw">Verdwenen, geen rankende vervanger</td></tr>
+          <tr><td class="url"><code>/asbestsanering/asbest-laten-verwijderen.html</code></td><td class="num">68</td><td class="num">0</td><td class="kw"><b>De money-pagina — dood.</b> Deels opgevangen door /prijs-…/ (27) + /sanering/</td></tr>
+          <tr><td class="url"><code>/…/mag-ik-zonnepanelen-op-asbesthoudend-dak/</code></td><td class="num">417</td><td class="num">~3</td><td class="kw">Vrijwel volledig weg</td></tr>
+          <tr><td class="url"><code>/fr/nieuws/overzicht-premies-asbestverwijdering/</code></td><td class="num">55</td><td class="num">0</td><td class="kw">Premie-pagina (koop-trigger) verdwenen</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Positie verbeterde doordat oude URL’s werden samengevoegd; de vertoningen halveerden doordat een deel van de oude pagina’s hun ranking níet meekreeg.</small><span class="src gsc">Search Console · pagina’s · j-o-j</span></div>
+
+    <div class="note gap"><b>De conclusie.</b> Dit is geen zoekwoord-probleem, het is een <em>overdracht</em>-probleem: bij de
+      URL-wissel is een deel van de opgebouwde autoriteit — met name de dak/gevel-toevoer en de aparte
+      “laten verwijderen”-money-pagina — niet meeverhuisd. De vraag staat nog altijd op de deur te kloppen
+      (~8–9k vertoningen/maand), maar er is geen sterke pagina meer die ’m opvangt. Herstellen van die twee pagina’s + een redirect-controle is de meest aanwijsbare, snelste terugwinst.</div>
+  </div>
+</section>
+
+<!-- ============ 01 · WAAR DE OMZET ZIT vs WAAR HET VERKEER ZIT ============ -->
+<section id="split">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Waar het verkeer binnenkomt — en waar de opdrachten zitten</h2></div>
+    <p class="sec-sub">Dezelfde site, twee heel verschillende werelden. De pagina’s die winnen leveren geen opdracht op;
+      de pagina’s die een opdracht opleveren winnen niet.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n">1,91%</div><div class="l">gem. doorklikratio</div><span class="src gsc">Search Console · 6 mnd</span></div>
+      <div class="stat"><div class="n">10,9</div><div class="l">gemiddelde positie (alle vragen)</div><span class="src gsc">Search Console · 6 mnd</span></div>
+      <div class="stat"><div class="n green">9.631</div><div class="l">sessies op de site (90 dagen)</div><span class="src gsc">Bezoekcijfers · 90d</span></div>
+      <div class="stat"><div class="n">57%</div><div class="l">betrokken bezoek (leest door)</div><span class="src gsc">Bezoekcijfers · 90d</span></div>
+    </div>
+
+    <h3 class="block-title">De pagina’s die winnen — maar geen opdracht opleveren</h3>
+    <p class="block-note">Herkennings- en info-inhoud. Hoog in de resultaten, veel verkeer, lage koopintentie.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Pagina</th><th>Onderwerp</th><th class="num">Vertoningen</th><th class="num">Positie</th><th class="num">Klikken</th><th>Rol</th></tr></thead>
+        <tbody>
+          <tr><td class="url"><code>/fr/comment-reconnaitre-…-vinyle-linoleum</code></td><td class="kw">Asbest herkennen in vinyl/lino (FR)</td><td class="num">29.280</td><td class="num">4,9</td><td class="num">2.760</td><td><span class="pill win">wint</span></td></tr>
+          <tr><td class="url"><code>/asbest-vinyl-tegels-zeil-vloer-herkennen/</code></td><td class="kw">Asbest herkennen in vloer/zeil (NL)</td><td class="num">51.565</td><td class="num">5,5</td><td class="num">1.648</td><td><span class="pill win">wint</span></td></tr>
+          <tr><td class="url"><code>/fr/amiante-dans-le-platre/</code></td><td class="kw">Asbest in pleister (FR)</td><td class="num">11.277</td><td class="num">4,7</td><td class="num">381</td><td><span class="pill win">wint</span></td></tr>
+          <tr><td class="url"><code>/fr/identifier-lamiante/</code></td><td class="kw">Asbest identificeren (FR)</td><td class="num">21.585</td><td class="num">7,5</td><td class="num">236</td><td><span class="pill win">wint</span></td></tr>
+          <tr><td class="url"><code>/asbest-isolatie/</code></td><td class="kw">Asbest in isolatie</td><td class="num">14.457</td><td class="num">4,9</td><td class="num">130</td><td><span class="pill win">wint · commercieel</span></td></tr>
+          <tr><td class="url"><code>/asbest-buizen-leidingen/</code></td><td class="kw">Asbest rond leidingen</td><td class="num">10.368</td><td class="num">8,3</td><td class="num">173</td><td><span class="pill win">wint · commercieel</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Top-pagina’s op klikken.</small><span class="src gsc">Search Console · pagina’s · 6 mnd</span></div>
+
+    <h3 class="block-title">De pagina’s die een opdracht opleveren — maar de positie missen</h3>
+    <p class="block-note">Verkoop- en dienstpagina’s. Veel vraag (vertoningen), maar te laag om de klik te winnen.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Pagina</th><th>Onderwerp</th><th class="num">Vertoningen</th><th class="num">Positie</th><th class="num">Klikken</th><th>Rol</th></tr></thead>
+        <tbody>
+          <tr><td class="url"><code>/</code> (homepage)</td><td class="kw">Verkoop-hub: asbestverwijderaar / -sanering</td><td class="num">49.094</td><td class="num">23,8</td><td class="num">564</td><td><span class="pill leak">lekt</span></td></tr>
+          <tr><td class="url"><code>/asbest-platen/</code></td><td class="kw">Asbestplaten laten verwijderen</td><td class="num">28.605</td><td class="num">13,1</td><td class="num">132</td><td><span class="pill leak">lekt</span></td></tr>
+          <tr><td class="url"><code>/asbest-dak-verwijderen/</code></td><td class="kw">Asbestdak verwijderen</td><td class="num">25.191</td><td class="num">26,2</td><td class="num">28</td><td><span class="pill leak">lekt</span></td></tr>
+          <tr><td class="url"><code>/premies/</code></td><td class="kw">Premies asbestverwijdering</td><td class="num">22.757</td><td class="num">15,5</td><td class="num">67</td><td><span class="pill watch">op de rand</span></td></tr>
+          <tr><td class="url"><code>/wetgeving/</code></td><td class="kw">Wetgeving / verplichtingen</td><td class="num">13.237</td><td class="num">18,1</td><td class="num">46</td><td><span class="pill watch">op de rand</span></td></tr>
+          <tr><td class="url"><code>/asbest-golfplaten/</code></td><td class="kw">Asbest golfplaten</td><td class="num">10.730</td><td class="num">17,0</td><td class="num">25</td><td><span class="pill leak">lekt</span></td></tr>
+          <tr><td class="url"><code>/sanering/</code></td><td class="kw">Dé kern-dienstpagina (asbestsanering)</td><td class="num">7.123</td><td class="num">29,1</td><td class="num">16</td><td><span class="pill leak">lekt</span></td></tr>
+          <tr><td class="url"><code>/prijs-asbest-laten-verwijderen/</code></td><td class="kw">Prijs asbest verwijderen</td><td class="num">3.044</td><td class="num">16,1</td><td class="num">37</td><td><span class="pill watch">op de rand</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small><b>/sanering/</b> is nochtans dé drukst bezochte pagina in de bezoekcijfers (2.568 weergaven) — bereikt via interne navigatie, niet via de zoekmachine.</small><span class="src gsc">Search Console + Bezoekcijfers</span></div>
+
+    <div class="note gap"><b>Wat dit betekent commercieel.</b> De vraag naar “laat het verwijderen” ís er — samen goed voor
+      ruim 160.000 vertoningen op deze pagina’s. Maar op positie 15–29 wint een pagina zelden de klik.
+      Elke plaats richting de top drie op deze acht pagina’s is een directe stroom offerte-aanvragen die vandaag naar een ander gaat.</div>
+  </div>
+</section>
+
+<!-- ============ 02 · MONEY-TOPICS MET BESTEMMING ============ -->
+<section id="money">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>De omzet-onderwerpen — elk met een bestemming</h2></div>
+    <p class="sec-sub">Niet “welk zoekwoord scoort het best”, maar: welk onderwerp brengt een betálende klant,
+      staat het al op een pagina, en wat is de zet? De positie is een richtpunt, geen belofte.</p>
+
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Onderwerp / cluster</th><th>Representatieve vragen</th><th>Pagina die scoort</th><th class="num">Positie</th><th class="num">Vertoningen</th><th>Bestemming</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="pill core">kern</span> Asbestverwijderaar / -sanering</td>
+            <td class="kw">asbestverwijderaar · asbestsanering · asbest verwijderen firma</td>
+            <td class="url"><code>/</code> + <code>/sanering/</code></td>
+            <td class="num">8–24</td><td class="num">~11.000</td>
+            <td><span class="dest">Versterk hub</span><br><span class="reason">identiteit op één sterke pagina bundelen</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill core">kern</span> Asbestdak verwijderen</td>
+            <td class="kw">asbest dak verwijderen · asbestdaken verwijderen · verwijderen asbest dak</td>
+            <td class="url"><code>/asbest-dak-verwijderen/</code></td>
+            <td class="num">26,2</td><td class="num">25.191</td>
+            <td><span class="dest">Versterk</span><br><span class="reason">grootste vraagpool, slechtste positie = #1 kans</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill core">kern</span> Asbest golfplaten</td>
+            <td class="kw">asbest golfplaten · asbest golfplaten verwijderen · afvoeren golfplaten</td>
+            <td class="url"><code>/asbest-golfplaten/</code></td>
+            <td class="num">17,0</td><td class="num">10.730</td>
+            <td><span class="dest">Versterk / voeg samen</span><br><span class="reason">bundel met dak-cluster tot één sterke hub</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill core">kern</span> Asbestplaten (muur/gevel)</td>
+            <td class="kw">asbest platen · asbesthoudende platen · eternit platen</td>
+            <td class="url"><code>/asbest-platen/</code></td>
+            <td class="num">13,1</td><td class="num">28.605</td>
+            <td><span class="dest">Versterk</span><br><span class="reason">bijna op rand p1; veel vraag</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill sup">steun</span> Premies</td>
+            <td class="kw">premie asbest verwijderen 2026 · asbest verwijderen premie</td>
+            <td class="url"><code>/premies/</code></td>
+            <td class="num">15,5</td><td class="num">22.757</td>
+            <td><span class="dest">Versterk</span><br><span class="reason">koop-trigger; nu net onder p1</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill sup">steun</span> Prijs / kosten</td>
+            <td class="kw">prijs asbest laten verwijderen · wat kost asbest verwijderen</td>
+            <td class="url"><code>/prijs-asbest-laten-verwijderen/</code></td>
+            <td class="num">16,1</td><td class="num">3.044</td>
+            <td><span class="dest">Versterk</span><br><span class="reason">geef echte m²-prijzen — dat vult vandaag de concurrent</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill sup">steun</span> Erkend asbestverwijderaar</td>
+            <td class="kw">erkende asbestverwijderaars · gecertificeerd bedrijf</td>
+            <td class="url"><code>/</code> (homepage)</td>
+            <td class="num">9,5</td><td class="num">1.148</td>
+            <td><span class="dest">Versterk vertrouwen</span><br><span class="reason">erkenningsnummer + reviews expliciet tonen</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill sup">steun</span> Leidingisolatie</td>
+            <td class="kw">asbest buizen leidingen · asbest isolatie · leidingisolatie</td>
+            <td class="url"><code>/asbest-buizen-leidingen/</code> · <code>/asbest-isolatie/</code></td>
+            <td class="num">4,9–8,3</td><td class="num">~25.000</td>
+            <td><span class="dest">Beschermen + omzetten</span><br><span class="reason">scoort al; voeg duidelijke offerte-CTA toe</span></td>
+          </tr>
+          <tr>
+            <td><span class="pill watch">FR</span> Désamiantage (Franstalig)</td>
+            <td class="kw">désamiantage belgique · société de désamiantage</td>
+            <td class="url"><code>/fr/</code></td>
+            <td class="num">38+</td><td class="num">~600</td>
+            <td><span class="dest">Betaalde test / heroverweeg</span><br><span class="reason">Wallonië-domein; organisch duur, eerst betaald toetsen</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Onderwerpen gerangschikt op commerciële waarde, niet op zoekvolume. Positie = richtpunt uit Search Console.</small><span class="src mkt">Search Console + marktdata</span></div>
+
+    <div class="note"><b>Bestemmingslogica.</b> “Versterk” = de pagina bestaat en heeft vraag, maar mist positie —
+      inhoud + interne links + bewijs (erkenning, prijzen, premie) verdiepen. “Voeg samen” = twee dunne
+      pagina’s die om dezelfde klant concurreren, tot één gezaghebbende hub maken. “Betaalde test” = de
+      vraag is echt maar het speelveld ongunstig — eerst met advertenties toetsen of het rendeert vóór er organisch in geïnvesteerd wordt.</div>
+  </div>
+</section>
+
+<!-- ============ 03 · ENTITEIT & ONDERWERPEN ============ -->
+<section id="entity">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Wie is deze site, volgens de zoekmachine?</h2></div>
+    <p class="sec-sub">Een zoekmachine beloont een scherpe identiteit. Asbitech is glashelder een asbestverwijderaar —
+      maar het signaal wordt verdund door ruis en door pagina’s die niet aan onderwerpen hangen.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n purple">8,6<span style="font-size:1rem">/10</span></div><div class="l">Context &amp; markt — sterk gepositioneerd</div><span class="src">Sherlock OS · 9-dim audit</span></div>
+      <div class="stat"><div class="n amber">3,5<span style="font-size:1rem">/10</span></div><div class="l">Entiteit-samenhang — verdund</div><span class="src">Sherlock OS · 9-dim audit</span></div>
+      <div class="stat"><div class="n red">2,0<span style="font-size:1rem">/10</span></div><div class="l">On-page &amp; inhoud — onderwerpen niet aan pagina’s gekoppeld</div><span class="src">Sherlock OS · 9-dim audit</span></div>
+      <div class="stat"><div class="n">48<span style="font-size:1rem"> / 93</span></div><div class="l">onderwerpen behouden na relevantiepoort (45 als ruis eruit)</div><span class="src">Sherlock OS · relevance</span></div>
+    </div>
+
+    <h3 class="block-title">Waar de identiteit lekt — de vier lagen</h3>
+    <div class="bars" style="max-width:640px">
+      <div class="bar-row"><span class="lab">Wie/wat is dit</span><div class="track"><div class="fill low" style="width:28%"></div></div><span class="v">2,8</span></div>
+      <div class="bar-row"><span class="lab">Wat definieert het</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="v">4,0</span></div>
+      <div class="bar-row"><span class="lab">Wat hangt eraan</span><div class="track"><div class="fill" style="width:44%"></div></div><span class="v">4,4</span></div>
+      <div class="bar-row"><span class="lab">Wanneer is dit het antwoord</span><div class="track"><div class="fill low" style="width:27%"></div></div><span class="v">2,7</span></div>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>De zwakste lagen: “wie is dit” (o.a. ontbrekende titel/H1 op de homepage) en “wanneer is dit het antwoord”.</small><span class="src">Sherlock OS · coherence scorer</span></div>
+
+    <h3 class="block-title">De ruis die het signaal verdunt</h3>
+    <p class="block-note">Onderwerpen die uit de tekst zijn opgepikt maar niets met de dienst te maken hebben —
+      ze trekken het profiel van de site weg van “asbestverwijderaar”. Kandidaten om uit te sluiten of samen te voegen:</p>
+    <div>
+      <span class="tag noise">Zuhal Demir</span><span class="tag noise">New Flemish Alliance</span>
+      <span class="tag noise">Politics of Flanders</span><span class="tag noise">Boerenbond</span>
+      <span class="tag noise">Tapijt (Tennis)</span><span class="tag noise">Honeycomb Structure</span>
+      <span class="tag noise">People from Genk</span><span class="tag noise">Metamorphosis</span>
+      <span class="tag noise">Branches of Science</span><span class="tag noise">Metalworking Cutting Tools</span>
+      <span class="tag noise">Toxicology</span><span class="tag noise">Temperature</span>
+    </div>
+    <p class="block-note" style="margin-top:18px">De onderwerpen die er wél toe doen — en die aan een sterke pagina moeten hangen:</p>
+    <div>
+      <span class="tag keep">Asbestsanering</span><span class="tag keep">Asbestdak</span>
+      <span class="tag keep">Golfplaten / asbestcement</span><span class="tag keep">Vloerbedekking &amp; balatum</span>
+      <span class="tag keep">Leidingisolatie</span><span class="tag keep">Premies &amp; subsidies</span>
+      <span class="tag keep">Veiligheid &amp; regelgeving</span><span class="tag keep">Erkend asbestverwijderaar</span>
+    </div>
+
+    <div class="note gap"><b>De kernbevinding.</b> Van 93 onderwerpen hebben er bijna geen een vaste pagina toegewezen,
+      en slechts 13 zijn aan echte zoekwoorden gekoppeld (dekking 14%). Daardoor rekent alles wat erop
+      volgt — welke pagina welk onderwerp “bezit”, waar links heen moeten — over een half-lege kaart. De
+      identiteit opschonen en de omzet-onderwerpen aan sterke pagina’s hangen is de fundering onder elke andere zet.</div>
+  </div>
+</section>
+
+<!-- ============ 04 · GATEN vs CONCURRENTIE ============ -->
+<section id="gaps">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>De gaten — waar de opdracht naar een ander gaat</h2></div>
+    <p class="sec-sub">Twee soorten gaten: koop-onderwerpen zonder sterke pagina, en onderwerpen waar concurrenten
+      of prijsportalen het antwoord bezetten terwijl Asbitech het werk wél levert.</p>
+
+    <div class="grid g2">
+      <div class="card">
+        <h3>Gat 1 — De verkoop-hub onderbouwt zichzelf niet</h3>
+        <p style="font-size:.95rem;color:#2c2637">De homepage moet “asbestverwijderaar / asbestsanering” winnen,
+          maar staat op 23,8. De herkenningspagina’s (positie 5) trekken alle autoriteit naar zich toe.
+          Het huis heeft een sterke voordeur, maar de wegwijzers sturen iedereen naar de bijkeuken.</p>
+        <span class="src gsc">Search Console · pagina’s</span>
+      </div>
+      <div class="card">
+        <h3>Gat 2 — Onderbedeeld tegenover de concurrent</h3>
+        <p style="font-size:.95rem;color:#2c2637">Op “asbestsanering bedrijf” staat een prijsportaal en de
+          overheid bovenaan; erkende collega’s als <em>aars.be</em>, <em>4best.be</em> en <em>abesco.be</em>
+          verschijnen hoger dan de dienstpagina’s van Asbitech. Op de kaart wint Asbitech (4,8★, 69 reviews) —
+          in de organische lijst en het AI-antwoord niet.</p>
+        <span class="src mkt">live test · 12 aug 2026</span>
+      </div>
+    </div>
+
+    <div class="note"><b>Kans in het herkenningsverkeer.</b> De grootste troef is tegelijk het grootste onbenutte gat:
+      duizenden mensen die net ontdekt hebben dat ze mógelijk asbest hebben, lezen een Asbitech-pagina —
+      en krijgen geen duidelijke volgende stap. Dat publiek is een warme leadstroom die vandaag onbenut wegloopt.</div>
+  </div>
+</section>
+
+<!-- ============ 05 · AI-VINDBAARHEID ============ -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vindbaarheid in het antwoord dat Google zelf schrijft</h2></div>
+    <p class="sec-sub">Steeds vaker beantwoordt de zoekmachine de vraag bovenaan zélf, met een handvol geciteerde bronnen.
+      We testten 8 echte koopvragen, live op 12 augustus 2026. De uitkomst is scherp — en eerlijk.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n">8</div><div class="l">koopvragen getest (NL + FR)</div><span class="src mkt">live test · 12 aug 2026</span></div>
+      <div class="stat"><div class="n amber">4</div><div class="l">vragen met een volledig AI-antwoord bovenaan</div><span class="src mkt">live test</span></div>
+      <div class="stat"><div class="n red">0</div><div class="l">daarvan citeert Asbitech</div><span class="src mkt">live test · bronnen</span></div>
+      <div class="stat"><div class="n green">top&nbsp;3</div><div class="l">Asbitech op de kaart bij “asbestverwijderaar / -sanering”</div><span class="src mkt">live test · kaart</span></div>
+    </div>
+
+    <h3 class="block-title">Per vraag: verschijnt Asbitech, en wie vult het antwoord?</h3>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Koopvraag</th><th>AI-antwoord?</th><th>Asbitech in ’t antwoord</th><th>Wie het antwoord / de top vult</th><th class="num">Asbitech elders</th></tr></thead>
+        <tbody>
+          <tr><td class="kw">prijs asbest laten verwijderen</td><td><span class="pill leak">ja</span></td><td>nee</td><td class="kw">bobex · asbestinventarisatie · kosten-asbest · OVAM</td><td class="num">organisch #27</td></tr>
+          <tr><td class="kw">asbest dak verwijderen</td><td><span class="pill leak">ja</span></td><td>nee</td><td class="kw">OVAM · bobex · ivvo · eternit · milieucentraal</td><td class="num">organisch #25</td></tr>
+          <tr><td class="kw">asbest golfplaten verwijderen</td><td><span class="pill leak">ja</span></td><td>nee</td><td class="kw">eternit · ecowerf · bouwinfo · milieucentraal</td><td class="num">niet in resultaten</td></tr>
+          <tr><td class="kw">premie asbest verwijderen 2026</td><td><span class="pill leak">ja</span></td><td>nee</td><td class="kw">OVAM · fluvius · asbest-advies · bobex</td><td class="num">organisch #10</td></tr>
+          <tr><td class="kw">asbestverwijderaar</td><td><span class="pill watch">nee</span></td><td>n.v.t.</td><td class="kw">kaart: asbestverwijdering.be · aars · <b>Asbitech</b></td><td class="num">kaart #3 · org #3</td></tr>
+          <tr><td class="kw">asbestsanering bedrijf</td><td><span class="pill watch">nee</span></td><td>n.v.t.</td><td class="kw">kaart: asbestverwijdering.be · <b>Asbitech</b> · aars</td><td class="num">kaart #2 · org #6</td></tr>
+          <tr><td class="kw">erkende asbestverwijderaars</td><td><span class="pill watch">nee</span></td><td>n.v.t.</td><td class="kw">overheid + vergelijkers (werk.belgie.be · OVAM)</td><td class="num">organisch #13</td></tr>
+          <tr><td class="kw">désamiantage belgique (FR)</td><td><span class="pill watch">nee</span></td><td>n.v.t.</td><td class="kw">Wallonië-firma’s (demeuter · renotec · laurenty)</td><td class="num">organisch #38</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Live test met een zoekmachine mét AI-antwoorden, België. “n.v.t.” = geen AI-antwoord op deze vraag, dus niets om in geciteerd te worden.</small><span class="src mkt">live test · 12 aug 2026</span></div>
+
+    <div class="note gap"><b>Sterk op de kaart, afwezig in het antwoord.</b> Waar Google een lijstje bedrijven toont
+      (“asbestverwijderaar”, “asbestsanering bedrijf”), staat Asbitech in de top drie — het bedrijfsprofiel
+      met 4,8★ en 69 reviews doet zijn werk. Maar zodra Google het antwoord zélf opstelt — over prijs, dak,
+      golfplaten, premie — komt Asbitech er niet in voor. Dat antwoord wordt gevuld door de overheid, door
+      prijsvergelijkers en door fabrikanten. Wie de vraag beantwoordt met echte cijfers en heldere structuur, wordt de geciteerde bron.</div>
+
+    <div class="note na"><b>Eerlijk over de meting.</b> Deze test leest de openbare zoekresultaten mét AI-antwoord
+      (België, NL/FR). Het is een momentopname van 12 augustus 2026; AI-antwoorden variëren per dag en per
+      formulering. De acht vragen hierboven zijn de geteste set — er is niets bijgeschat.</div>
+  </div>
+</section>
+
+<!-- ============ 06 · MEETBARE FRAME + NIET BESCHIKBAAR ============ -->
+<section id="frame">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Wat we meten — en wat vandaag nog niet klopt</h2></div>
+    <p class="sec-sub">Een analyse is pas geld waard als de opbrengst meetbaar is. Twee zaken staan die meting nu in de weg —
+      geen verwijt, wel het eerste dat op orde moet.</p>
+
+    <div class="grid g3">
+      <div class="card"><h3>Zoekbaarheid</h3><p style="font-size:.92rem;color:var(--muted)">Positie + klikken per omzet-pagina, per koopvraag — de acht onderwerpen hierboven.</p><span class="src gsc">Search Console · sc-domain:asbitech.eu</span></div>
+      <div class="card"><h3>Aanvragen &amp; omzet</h3><p style="font-size:.92rem;color:var(--muted)">Offerte-aanvragen gekoppeld aan de pagina die ze bracht. Nu: <b>0 gemeten</b> — het contactformulier telt geen conversie.</p><span class="src gsc">Bezoekcijfers · property 269726808</span></div>
+      <div class="card"><h3>AI- &amp; entiteitgezondheid</h3><p style="font-size:.92rem;color:var(--muted)">Samenhang-score, dekkingsgraad en AI-aanwezigheid, opnieuw gemeten per cyclus.</p><span class="src">Sherlock OS · 9-dim audit</span></div>
+    </div>
+
+    <div class="note na"><b>Niet beschikbaar op dit moment.</b>
+      <ul style="margin:.5em 0 0;padding-left:1.2em;font-size:.92rem">
+        <li><b>Advertentiecijfers</b> — de koppeling met het advertentieaccount moet opnieuw geautoriseerd worden voordat betaalde prestaties meetellen. Zonder her-autorisatie is er geen zicht op wat advertenties nu opleveren.</li>
+        <li><b>Conversiemeting</b> — de bezoekcijfers registreren 9.631 sessies over 90 dagen, maar 0 aanvragen. Het formulier en de telefoon-klik worden niet als doel geteld; daardoor is “verkeer → opdracht” vandaag onzichtbaar.</li>
+        <li><b>Betaald verkeer, sociaal en klantbehoud</b> (dim. 6–8 van de audit) hebben nog geen gekoppelde databron — bewust leeg gelaten in plaats van geschat.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" style="border-bottom:none;padding:56px 0 12px">
+  <div class="wrap">
+    <div style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:18px;padding:48px 32px;text-align:center;color:#fff">
+      <h2 style="color:#fff;max-width:24ch;margin:0 auto">Van “gevonden worden” naar “gebeld worden”.</h2>
+      <p style="color:rgba(255,255,255,.85);max-width:52ch;margin:16px auto 0">
+        De vraag is aantoonbaar aanwezig — tienduizenden keren per maand. De volgende stap is die vraag
+        omzetten in offerte-aanvragen: de verkoop-hub versterken, de dak- en golfplaten-cluster claimen,
+        en het herkenningspubliek een duidelijk pad geven. Meetbaar, één pagina per keer.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Bronnen &amp; venster.</b>
+    <p class="disc">Alle cijfers komen uit de eigen meetbronnen van Asbitech. Zoekcijfers: Search Console
+      (sc-domain:asbitech.eu), 1 feb – 11 aug 2026. Bezoekcijfers: 90 dagen (14 mei – 12 aug 2026).
+      Onderwerp- en samenhangdata: Sherlock OS entiteitgraaf &amp; 9-dimensie audit. Vindbaarheid in
+      AI-antwoorden: live marktdata-test, België, 12 aug 2026. Positie is een richtpunt uit gemeten data,
+      geen belofte over toekomstige rangorde. Waar een databron ontbreekt, staat “niet beschikbaar” —
+      er is niets bijgeschat.</p>
+    <div class="srclist">
+      <span class="src gsc">Search Console · sc-domain:asbitech.eu · 1 feb–11 aug 2026</span>
+      <span class="src">Sherlock OS · entiteitgraaf &amp; 9-dim audit</span>
+      <span class="src mkt">marktdata · live AI-test · 12 aug 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

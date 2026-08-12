@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CK Service — door de mangel · wat het platform ziet</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#662483;
+    --purple-dark:#4a1a60;
+    --green:#6BB869;
+    --green-dark:#4f9a4d;
+    --ink:#1a1420;
+    --muted:#6b6577;
+    --line:#e9e4ef;
+    --bg:#ffffff;
+    --bg-soft:#f7f4fb;
+    --bg-purple:#f3edf8;
+    --amber:#b5730a;
+    --shadow:0 1px 2px rgba(26,20,32,.04),0 8px 30px rgba(102,36,131,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:'Raleway',system-ui,-apple-system,Segoe UI,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;
+    -webkit-font-smoothing:antialiased;font-weight:400;overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  code{overflow-wrap:anywhere;word-break:break-word;font-size:.86em;background:var(--bg-purple);padding:1px 5px;border-radius:5px}
+  h1,h2,h3{font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0}
+  h2{font-size:clamp(1.5rem,3.2vw,2.1rem)}
+  h3{font-size:1.12rem;font-weight:700}
+  p{margin:.6em 0}
+  a{color:var(--purple);text-decoration:none}
+  small{color:var(--muted)}
+
+  header.frame{
+    background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 62%,#3a1550 100%);
+    color:#fff;padding:56px 0 64px;position:relative;overflow:hidden;
+  }
+  header.frame::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(107,184,105,.35),transparent 62%);pointer-events:none;
+  }
+  .brandrow{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .glyph{
+    width:42px;height:42px;border-radius:11px;background:#fff;color:var(--purple);
+    display:grid;place-items:center;font-weight:800;font-size:1.25rem;flex:none;
+  }
+  .brandrow b{font-size:1.05rem;font-weight:700;letter-spacing:.02em}
+  .brandrow span{color:rgba(255,255,255,.7);font-size:.85rem}
+  .kicker{
+    display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green);background:rgba(107,184,105,.14);
+    border:1px solid rgba(107,184,105,.4);padding:5px 12px;border-radius:999px;margin-bottom:20px;
+  }
+  header h1{font-size:clamp(2rem,5.2vw,3.2rem);max-width:18ch;color:#fff}
+  header .lede{font-size:clamp(1.05rem,2.2vw,1.28rem);color:rgba(255,255,255,.86);max-width:58ch;margin-top:18px;font-weight:400}
+  .metabar{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;font-size:.86rem;color:rgba(255,255,255,.78)}
+  .metabar b{color:#fff;font-weight:700}
+
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-weight:800;color:var(--green-dark);font-size:.95rem;flex:none}
+  .sec-sub{color:var(--muted);max-width:66ch;margin:6px 0 34px;font-size:1.02rem}
+  .block-title{font-size:1.02rem;font-weight:700;margin:34px 0 4px}
+  .block-note{color:var(--muted);font-size:.92rem;margin:0 0 16px;max-width:72ch}
+
+  .src{
+    display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;
+    letter-spacing:.02em;color:var(--purple);background:var(--bg-purple);
+    border:1px solid var(--line);padding:3px 9px;border-radius:6px;white-space:nowrap;
+  }
+  .src.gsc{color:var(--green-dark);background:#eef8ee;border-color:#d5edd4}
+  .src.mkt{color:#5a4a66;background:#f0ecf4;border-color:#e2dcea}
+  .src.web{color:#1e5b8a;background:#e9f2f9;border-color:#d2e4f0}
+
+  .grid{display:grid;gap:18px}
+  .grid>*{min-width:0}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .stat{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);
+  }
+  .stat .n{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .stat .n.green{color:var(--green-dark)}
+  .stat .n.purple{color:var(--purple)}
+  .stat .n.amber{color:var(--amber)}
+  .stat .l{font-size:.86rem;color:var(--muted);margin-top:8px}
+  .stat .src{margin-top:12px}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+  .card h3{margin-bottom:6px}
+  .card .src{margin-top:14px}
+
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem}
+  table.wide{min-width:820px}
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg-purple);font-weight:700;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--purple-dark);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+  td.kw{color:#2c2637;font-size:.85rem}
+  td.url code{font-size:.78rem;background:none;padding:0;color:var(--purple)}
+  .tbl-cap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+  .pill{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .pill.win{background:#eef8ee;color:var(--green-dark)}
+  .pill.watch{background:#fff4e5;color:var(--amber)}
+  .pill.hot{background:var(--bg-purple);color:var(--purple)}
+  .pill.core{background:var(--purple);color:#fff}
+  .pill.sup{background:var(--bg-purple);color:var(--purple)}
+  .dest{font-weight:600;font-size:.84rem}
+  .reason{color:var(--muted);font-size:.8rem;font-style:italic}
+  .anchor{color:#2c2637;font-size:.82rem}
+
+  .bars{display:grid;gap:14px;margin-top:4px}
+  .bar-row{display:grid;grid-template-columns:130px 1fr 46px;align-items:center;gap:14px}
+  .bar-row .lab{font-size:.9rem;font-weight:600}
+  .track{height:11px;background:var(--bg-purple);border-radius:999px;overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--green))}
+  .bar-row .v{font-weight:700;font-size:.9rem;text-align:right}
+
+  .moves{display:grid;gap:16px}
+  .move{display:grid;grid-template-columns:40px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+  .move .idx{width:32px;height:32px;border-radius:9px;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+  .move h3{margin-bottom:4px}
+  .move p{margin:.35em 0;font-size:.96rem;color:#2c2637}
+  .move .src{margin-top:10px}
+  .move.opp .idx{background:var(--green)}
+
+  .target{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+  .target:last-child{border-bottom:none}
+  .target .now{color:var(--muted);font-size:.9rem}
+  .target .arrow{color:var(--green-dark);font-weight:800;margin:0 6px}
+  .target .goal{font-weight:700}
+
+  .note{background:var(--bg-purple);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:16px 20px;font-size:.94rem;margin-top:24px}
+  .note.gap{background:#fff4e5;border-left-color:#e0902a}
+
+  footer{padding:44px 0 60px;color:var(--muted);font-size:.82rem}
+  footer .disc{max-width:80ch;margin-top:10px}
+  .srclist{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+  @media(max-width:820px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:1fr}
+    .g2{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:110px 1fr 40px}
+  }
+  @media(max-width:520px){
+    .g4{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .target{grid-template-columns:1fr;gap:6px;align-items:start}
+    .target>div:last-child{justify-self:start}
+    .move{grid-template-columns:32px 1fr;gap:12px;padding:18px}
+    .sec-head{gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="glyph">S</div>
+      <div>
+        <b>SHERLOCK</b> <span>· performance marketing</span>
+      </div>
+    </div>
+    <span class="kicker">CK Service — door de mangel</span>
+    <h1>Uw markt, uw cijfers — en waar de klanten blijven liggen.</h1>
+    <p class="lede">Geen mockup. Elke tabel hieronder toont echte rijen uit uw eigen data:
+      de zoekvraag uit Search Console, uw websitestatistieken, de topic- en entiteit-analyse uit
+      Sherlock OS, live marktdata en een echte AI-test. De beslissing staat bovenaan, de ruwe cijfers
+      eronder — zodat u elk getal zelf kunt nakijken.</p>
+    <div class="metabar">
+      <span>Meetvenster: <b>14 mei – 12 aug 2026 (90 dagen)</b></span>
+      <span>Bronnen: <b>Search Console · websitestatistieken · Sherlock OS · marktdata · live AI-test</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= 1 ========================= -->
+<section id="sees">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Wat het platform over CK Service ziet</h2></div>
+    <p class="sec-sub">Nog voor er een zoekwoord in beeld komt, leest het platform de site als een
+      verzameling concepten en scoort hoe dicht elk begrip bij uw eigenlijke vak ligt: de renovatie
+      van douche en badkamer, veilig douchen in 1 dag, seniorendouches en wandpanelen zonder breekwerk.
+      We meten relevantie, niet volume. Van 1.137 kandidaat-concepten blijven er 136 binnen de niche.</p>
+
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n purple">1.137</div>
+        <div class="l">concepten geëxtraheerd uit de site + markt</div>
+        <span class="src">Sherlock OS · entiteitgraaf</span>
+      </div>
+      <div class="stat">
+        <div class="n green">136</div>
+        <div class="l">binnen de niche gehouden (12%)</div>
+        <span class="src">Sherlock OS · relevance</span>
+      </div>
+      <div class="stat">
+        <div class="n">51</div>
+        <div class="l">commerciële topics zónder eigen pagina</div>
+        <span class="src">Sherlock OS · 9-dim audit · D2</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">4,3<small style="font-size:1rem;color:var(--muted)">/10</small></div>
+        <div class="l">entity-coherence — hier zit de grootste hefboom</div>
+        <span class="src">Sherlock OS · 9-dim audit</span>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:34px">
+      <div class="card">
+        <h3>De vier lagen van entity-coherence</h3>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:2px">Een coherente entiteit rankt haar
+          money-topics; een diffuse entiteit verspreidt autoriteit over ruis. De zwakste laag is de vloer —
+          en dat is hier de <em>declaratie</em>: wie is CK Service, hard gemaakt in schema, over-ons en NAP.</p>
+        <div class="bars" style="margin-top:18px">
+          <div class="bar-row"><span class="lab">Declaratie</span><div class="track"><div class="fill" style="width:17%"></div></div><span class="v">1,7</span></div>
+          <div class="bar-row"><span class="lab">Attributen</span><div class="track"><div class="fill" style="width:56%"></div></div><span class="v">5,6</span></div>
+          <div class="bar-row"><span class="lab">Relaties</span><div class="track"><div class="fill" style="width:44%"></div></div><span class="v">4,4</span></div>
+          <div class="bar-row"><span class="lab">Context</span><div class="track"><div class="fill" style="width:54%"></div></div><span class="v">5,4</span></div>
+        </div>
+        <span class="src">Sherlock OS · coherence scorer</span>
+      </div>
+
+      <div class="card">
+        <h3>De commerciële kern die het platform herkent</h3>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:2px">Automatisch als core- of supporting-commercieel
+          geclassificeerd — dit is waar CK Service geld mee verdient, niet wat het meeste volume heeft.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Hub-concept</th><th>Type</th><th style="text-align:right">Rol</th></tr></thead>
+            <tbody>
+              <tr><td>Inloopdouche</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Douchecabine</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Douche plaatsen</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Totale badkamerrenovatie</td><td>dienst</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Senioren inloopdouche</td><td>dienst</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Landelijke badkamer met inloopdouche</td><td>topic</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Prijs badkamerrenovatie</td><td>topic</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Aanvraag premie inloopdouche</td><td>topic</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src">Sherlock OS · topic graph</span>
+      </div>
+    </div>
+
+    <div class="note gap">
+      <b>Eerlijk over de ruis.</b> De entiteitgraaf is nog niet schoon: naast uw eigen begrippen zitten er
+      <b>concurrent-merken</b> in (o.a. <em>Badkamerrenovatie Van Hoof</em>, <em>badkamerrenovatie-antwerpen.be</em>)
+      en generieke geo-/overheidsbegrippen die per ongeluk hoog scoren. Dat verklaart mee de kritieke
+      on-page-score (2/10): de content koppelt te weinig aan uw eigen kernbegrippen. Opschonen is onderdeel
+      van de uitvoering, geen verborgen probleem.
+      <span class="src">Sherlock OS · relevance &amp; D4</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 2 ========================= -->
+<section id="stands">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Waar CK Service vandaag staat</h2></div>
+    <p class="sec-sub">De vraag over 90 dagen, direct uit Search Console en uw websitestatistieken. Drie dingen
+      vallen op: het <b>lokale bedrijfsprofiel</b> is vandaag de motor, de <b>koopklare vraag</b> (premie, bad→douche,
+      zonder breken) staat er wél maar te diep, en er komt verkeer binnen dat <b>nergens als lead wordt geteld</b>.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n green">302</div><div class="l">clicks uit de zoekresultaten (90d)</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n purple">34.978</div><div class="l">vertoningen — de bestaande vraag</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n">1.786</div><div class="l">websitesessies · 69% betrokkenheid</div><span class="src web">websitestatistieken · 90d</span></div>
+      <div class="stat"><div class="n amber">0</div><div class="l">gemeten conversies — leads worden niet geregistreerd</div><span class="src web">websitestatistieken · 90d</span></div>
+    </div>
+
+    <div class="note">
+      <b>Lees deze cijfers niet zonder context.</b> Eén landing — de homepage via het
+      <b>lokale bedrijfsprofiel</b> — haalt alleen al <b>85 clicks op 6.903 vertoningen</b> (positie 7,7). Het merk
+      en de kaartvermelding zijn dus de huidige motor. De niet-merk vraag (badkamerrenovatie, premie, bad
+      vervangen door douche) staat gemiddeld rond positie 15–20: aanwezig, maar net niet op pagina 1 waar de
+      klant klikt.
+      <span class="src gsc" style="margin-top:10px">Search Console · top pages · 90d</span>
+    </div>
+
+    <h3 class="block-title">De echte pagina's, met hun rol en prestatie</h3>
+    <p class="block-note">Geen samenvatting — de daadwerkelijke top-pagina's uit Search Console, elk met de
+      commerciële rol die het platform eraan toekent.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Pagina</th><th>Rol</th><th style="text-align:right">Clicks</th><th style="text-align:right">Impr.</th><th style="text-align:right">CTR</th><th style="text-align:right">Pos.</th></tr></thead>
+        <tbody>
+          <tr><td class="url"><code>/</code> <span class="reason">(via lokaal bedrijfsprofiel)</span></td><td>lokale/merk-motor</td><td class="num">85</td><td class="num">6.903</td><td class="num">1,23%</td><td class="num">7,7</td></tr>
+          <tr><td class="url"><code>/</code></td><td>merk-hub</td><td class="num">77</td><td class="num">2.568</td><td class="num">3,00%</td><td class="num">18,3</td></tr>
+          <tr><td class="url"><code>/faq/…aanpassingspremie…/</code></td><td>premie-magneet</td><td class="num">19</td><td class="num">5.786</td><td class="num">0,33%</td><td class="num">11,6</td></tr>
+          <tr><td class="url"><code>/faq/…wasmachine-in-de-badkamer…/</code></td><td>informatief</td><td class="num">17</td><td class="num">1.202</td><td class="num">1,41%</td><td class="num">9,2</td></tr>
+          <tr><td class="url"><code>/over-ons/</code></td><td>declaratie / vertrouwen</td><td class="num">11</td><td class="num">377</td><td class="num">2,92%</td><td class="num">4,8</td></tr>
+          <tr><td class="url"><code>/voor-en-na/</code></td><td>bewijs / overtuiging</td><td class="num">11</td><td class="num">448</td><td class="num">2,46%</td><td class="num">12,3</td></tr>
+          <tr><td class="url"><code>/seniorendouches/</code></td><td>money-pagina · te diep</td><td class="num">9</td><td class="num">445</td><td class="num">2,02%</td><td class="num">22,4</td></tr>
+          <tr><td class="url"><code>/onze-douches/</code></td><td>money-pagina · beste positie</td><td class="num">8</td><td class="num">514</td><td class="num">1,56%</td><td class="num">8,8</td></tr>
+          <tr><td class="url"><code>/faq/zelf-inloopdouche-plaatsen/</code></td><td>vraagmagneet · begraven</td><td class="num">6</td><td class="num">3.828</td><td class="num">0,16%</td><td class="num">23,2</td></tr>
+          <tr><td class="url"><code>/badkamer-renovatie-wandpanelen/</code></td><td>money-pagina · #1 op de site</td><td class="num">7</td><td class="num">468</td><td class="num">1,50%</td><td class="num">12,3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Top-pagina's op clicks, 90 dagen. <code>/badkamer-renovatie-wandpanelen/</code> is met 917 websitepagina-views tegelijk de drukst bezochte pagina.</small><span class="src gsc">Search Console + websitestatistieken · 90d</span></div>
+
+    <div class="grid g2" style="margin-top:34px">
+      <div class="card">
+        <h3>Het merk en het lokale profiel dragen vandaag de omzet</h3>
+        <p style="color:var(--muted);font-size:.92rem">Branded en lokale queries staan bovenaan en converteren zoals het hoort — dit is de basis waarop de rest kan bouwen.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Query</th><th style="text-align:right">Pos.</th><th style="text-align:right">CTR</th></tr></thead>
+            <tbody>
+              <tr><td>ck service</td><td class="num">5,0</td><td class="num">14,6%</td></tr>
+              <tr><td>ckservice</td><td class="num">6,5</td><td class="num">16,7%</td></tr>
+              <tr><td>cks service</td><td class="num">3,7</td><td class="num">5,6%</td></tr>
+              <tr><td>sanitairwinkel (lokaal)</td><td class="num">2,5</td><td class="num">2,4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src gsc">Search Console · queries · 90d</span>
+      </div>
+
+      <div class="card">
+        <h3>De koopklare vraag ligt net onder pagina 1</h3>
+        <p style="color:var(--muted);font-size:.92rem">Commerciële termen met echte vraag waar CK Service vertoningen op haalt maar (nog) niet klikt — hier ligt de winst buiten het merk.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Query</th><th style="text-align:right">Pos.</th><th style="text-align:right">Impr.</th></tr></thead>
+            <tbody>
+              <tr><td>premie badkamerrenovatie</td><td class="num">12,3</td><td class="num">719</td></tr>
+              <tr><td>bad vervangen door inloopdouche</td><td class="num">16,9</td><td class="num">576</td></tr>
+              <tr><td>badkamer renovatie zonder breken</td><td class="num">18,8</td><td class="num">363</td></tr>
+              <tr><td>douche installeren</td><td class="num">20,0</td><td class="num">263</td></tr>
+              <tr><td>badkamer senioren</td><td class="num">30,6</td><td class="num">161</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src gsc">Search Console · queries · 90d</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 3 ========================= -->
+<section id="money">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>De money-topics — elk met een bestemming</h2></div>
+    <p class="sec-sub">Het platform vindt <b>51 commerciële topics zonder eigen bestemming</b>. Dit is de kern:
+      geen samenvatting, maar de beslistabel. Per topic de echte zoekwoorden, de pagina die er vandaag voor
+      rankt, de positie, de vertoningen, en de bewuste keuze wat ermee gebeurt — geen automatische nieuwe URL.</p>
+
+    <div class="tbl-cap"><small>Positie &amp; vertoningen uit Search Console (90 dagen).</small></div>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr>
+          <th>Money-topic</th><th>Kernzoekwoorden</th><th>Rankende URL vandaag</th>
+          <th style="text-align:right">Pos.</th><th style="text-align:right">Impr.</th><th>Bestemming</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>Bad → veilige inloopdouche <span class="reason">(kern-USP)</span></td>
+            <td class="kw">bad vervangen door inloopdouche · badkamer renovatie zonder breken</td>
+            <td class="url"><code>/faq/een-bad-vervangen-door-een-douche/</code></td>
+            <td class="num">16,9</td><td class="num">576</td>
+            <td class="dest">Nieuwe money-hub <span class="reason">(nu enkel FAQ's)</span></td>
+          </tr>
+          <tr>
+            <td>Inloopdouche plaatsen</td>
+            <td class="kw">inloopdouche · douchewand inloopdouche plaatsen · zelf inloopdouche plaatsen</td>
+            <td class="url"><code>/faq/zelf-inloopdouche-plaatsen/</code></td>
+            <td class="num">23,2</td><td class="num">3.828</td>
+            <td class="dest">Nieuwe servicepagina <span class="reason">(grote vraag, enkel FAQ rankt)</span></td>
+          </tr>
+          <tr>
+            <td>Aanpassingspremie badkamer</td>
+            <td class="kw">premie badkamerrenovatie · badkamerrenovatie premie · subsidie aanpassing badkamer</td>
+            <td class="url"><code>/faq/…aanpassingspremie…/</code></td>
+            <td class="num">11,6</td><td class="num">5.786</td>
+            <td class="dest">FAQ → premie-landingpage versterken <span class="reason">(quick win naar top 5)</span></td>
+          </tr>
+          <tr>
+            <td>Seniorendouche</td>
+            <td class="kw">seniorendouche · douche voor senioren · badkamer senioren</td>
+            <td class="url"><code>/seniorendouches/</code></td>
+            <td class="num">22,4</td><td class="num">445</td>
+            <td class="dest">Bestaande pagina versterken <span class="reason">(money-page te diep)</span></td>
+          </tr>
+          <tr>
+            <td>Gesloten douchecabine</td>
+            <td class="kw">gesloten douchecabine · douchecabine installateur</td>
+            <td class="url"><code>/onze-douches/</code></td>
+            <td class="num">8,8</td><td class="num">514</td>
+            <td class="dest">Bestaande pagina versterken <span class="reason">(al pos 9 — quick win)</span></td>
+          </tr>
+          <tr>
+            <td>Badkamer met wandpanelen</td>
+            <td class="kw">badkamer renoveren met wandpanelen · wandpanelen zonder tegels</td>
+            <td class="url"><code>/badkamer-renovatie-wandpanelen/</code></td>
+            <td class="num">12,3</td><td class="num">468</td>
+            <td class="dest">Versterken <span class="reason">(grootste vraagmagneet: 917 bezoeken)</span></td>
+          </tr>
+          <tr>
+            <td>Douche plaatsen / installeren</td>
+            <td class="kw">douche installeren · douche plaatsen · douche laten plaatsen</td>
+            <td class="url"><code>/faq/alleen-douche-plaatsen/</code></td>
+            <td class="num">20,4</td><td class="num">263</td>
+            <td class="dest">Nieuwe / versterkte servicepagina</td>
+          </tr>
+          <tr>
+            <td>Badkamerrenovatie Geel + Kempen <span class="reason">(lokaal)</span></td>
+            <td class="kw">badkamerrenovatie geel · badkamerrenovatie kempen · badkamerrenovatie mol</td>
+            <td class="url reason">geen lokale pagina</td>
+            <td class="num">5,9</td><td class="num">167</td>
+            <td class="dest">Nieuwe lokale laag <span class="reason">(geo-vraag zonder bestemming)</span></td>
+          </tr>
+          <tr>
+            <td>Totale badkamerrenovatie</td>
+            <td class="kw">badkamer renoveren · volledige badkamerrenovatie · badkamer verbouwen</td>
+            <td class="url"><code>/</code> (homepage)</td>
+            <td class="num">18,3</td><td class="num">—</td>
+            <td class="dest">Nieuwe money-hub <span class="reason">(homepage vangt nu alles)</span></td>
+          </tr>
+          <tr>
+            <td>Prijs badkamerrenovatie</td>
+            <td class="kw">badkamer renovatie prijs · badkamer in 1 dag kosten · prijs inloopdouche</td>
+            <td class="url reason">geen prijspagina</td>
+            <td class="num">15,8</td><td class="num">55</td>
+            <td class="dest">Nieuwe prijs/kosten-pagina <span class="reason">(transactionele intent)</span></td>
+          </tr>
+          <tr>
+            <td>Hoelang duurt een renovatie <span class="reason">(top-of-funnel)</span></td>
+            <td class="kw">hoe lang duurt badkamer renovatie · hoe lang duurt badkamer verbouwen</td>
+            <td class="url"><code>/faq/hoelang-duurt-badkamer-renovatie/</code></td>
+            <td class="num">19,0</td><td class="num">999</td>
+            <td class="dest">Informatief houden <span class="reason">(geen money-URL)</span></td>
+          </tr>
+          <tr>
+            <td>Douchecabine op maat (90×90, 80×80) <span class="reason">(retail-intent)</span></td>
+            <td class="kw">gesloten douchecabine 90x90 · complete douchecabine kopen</td>
+            <td class="url reason">geen pagina</td>
+            <td class="num">—</td><td class="num">—</td>
+            <td class="dest">Deprioriteren / betaalde test <span class="reason">(koopwoord ≠ installateur)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>12 van 51 money-topics; de volledige set staat in het platform.</small>
+      <span class="src mkt">Search Console + Sherlock OS · topic graph</span></div>
+
+    <div class="note">
+      <b>Waarom dit de kern is.</b> Bijna al deze vraag lekt vandaag naar een FAQ-artikel of de homepage in
+      plaats van naar een pagina die de klant overtuigt en laat contacteren. De grootste bewezen vraag —
+      premie, bad→inloopdouche, zonder breken — is precies waar CK Service in de praktijk het sterkst is,
+      maar de site stuurt die vraag nergens gericht naartoe. Dat is het verschil tussen autoriteit die
+      leads oplevert en autoriteit die verdampt.
+      <span class="src">Sherlock OS · 9-dim audit · D2</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 4 ========================= -->
+<section id="does">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Wat het platform zou doen</h2></div>
+    <p class="sec-sub">Concrete moves die volgen uit de tabellen hierboven. Elke move staat op een meetbare bron.</p>
+
+    <div class="moves">
+      <div class="move">
+        <div class="idx">1</div>
+        <div>
+          <h3>Til de bewezen money-pagina's van diep naar pagina 1</h3>
+          <p>Vier pagina's hebben de vraag al, maar staan te diep: <code>gesloten douchecabine</code> (pos 8,8),
+            <code>wandpanelen</code> (pos 12,3), de <code>premie</code>-FAQ (pos 11,6 · 5.786 impr.) en
+            <code>seniorendouches</code> (pos 22,4). Titel/meta scherper, meer diepgang, interne links — geen
+            nieuwe URL. Dit is de snelste weg naar méér contactaanvragen.</p>
+          <span class="src gsc">Search Console · queries &amp; pages</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">2</div>
+        <div>
+          <h3>Geef de kern-USP "bad → veilige inloopdouche zonder breken" een echte money-hub</h3>
+          <p>Op <code>bad vervangen door inloopdouche</code> (576 impr.) en <code>badkamer renovatie zonder
+            breken</code> (363 impr.) rankt vandaag alleen een FAQ-artikel — geen pagina die verkoopt. Dit is
+            precies waar CK Service het snelst en netst werkt; het verdient de sterkste pagina van de site,
+            niet een uitleg-artikeltje.</p>
+          <span class="src mkt">Search Console + Sherlock OS · D2</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">3</div>
+        <div>
+          <h3>Bouw een lokale laag rond Geel en de Kempen</h3>
+          <p>De geo-vraag is er: <code>badkamerrenovatie geel</code> (pos 5,9), <code>… kempen</code> (pos 8,1),
+            <code>… mol</code> (pos 13,7), <code>… westerlo</code> (pos 12,4) — samen honderden vertoningen zonder
+            één eigen lokale pagina. Voor een installateur met een vaste regio is dit gratis, hoog-intent verkeer
+            dat nu wegloopt naar concurrenten en portalen.</p>
+          <span class="src gsc">Search Console · queries</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">4</div>
+        <div>
+          <h3>Versterk de declaratie-laag (1,7/10) — koppel het lokale profiel hard aan de site</h3>
+          <p>De zwakste laag van de entiteit is <em>wie is dit bedrijf</em>: schema (LocalBusiness), NAP,
+            over-ons en reviews. Het lokale bedrijfsprofiel levert al 85 clicks — maar staat los van de
+            site-entiteit. Dat hard verbinden is de goedkoopste winst in coherentie én in AI-vindbaarheid.</p>
+          <span class="src">Sherlock OS · coherence scorer</span>
+        </div>
+      </div>
+
+      <div class="move opp">
+        <div class="idx">+</div>
+        <div>
+          <h3>Kans: meet wat er al binnenkomt</h3>
+          <p>De websitestatistieken registreren <b>0 conversies</b> terwijl de contactpagina 276 keer bekeken
+            werd en 1.786 sessies binnenkwamen. Er komen dus leads binnen die nergens geteld worden. Eén keer
+            lead-tracking instellen maakt elke pagina, elke euro en elke move hierboven <b>afrekenbaar</b> — dit
+            is de basis om resultaat aan te tonen.</p>
+          <span class="src web">websitestatistieken · observatie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note gap">
+      <b>Concurrenten claimen wat CK Service laat liggen.</b> Op dezelfde zoekwoorden verschijnen vooral
+      grote retailers en lead-portalen (x2o, facq, saniweb, bobex, badkamer-gids) plus lokale installateurs.
+      Zij winnen met prijs-, premie- en "hoe lang duurt"-content die CK Service óók kan maken — vaak
+      geloofwaardiger, want als uitvoerder heeft CK Service de echte cijfers en projecten.
+      <span class="src mkt">marktdata · concurrent-overlap</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 5 ========================= -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vindbaarheid in AI-antwoorden</h2></div>
+    <p class="sec-sub">De vraag die telt: als iemand een AI-assistent met webtoegang een koopvraag voorlegt —
+      "veilige seniorendouche laten plaatsen in Vlaanderen" — komt CK Service dan naar boven, en zo niet, wie
+      wél? We hebben het live getest op 12 echte koopintentie-queries uit uw eigen zoekvraag en money-topics.</p>
+
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n green">2<small style="font-size:1rem;color:var(--muted)"> / 12</small></div>
+        <div class="l">koopvragen waarin CK Service verschijnt</div>
+        <span class="src mkt">live AI-test · 12 aug 2026</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">1-dag · senioren</div>
+        <div class="l" style="margin-top:12px">precies de twee thema's waarop CK Service wél wordt genoemd</div>
+        <span class="src mkt">live AI-test</span>
+      </div>
+      <div class="stat">
+        <div class="n">lokale installateurs</div>
+        <div class="l" style="margin-top:12px">vullen de andere antwoorden — plus overheids- en retailbronnen</div>
+        <span class="src mkt">live AI-test · geciteerde bronnen</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">1,7<small style="font-size:1rem;color:var(--muted)">/10</small></div>
+        <div class="l">entiteit-declaratie — bepaalt of AI CK Service eenduidig kan benoemen</div>
+        <span class="src">Sherlock OS · coherence</span>
+      </div>
+    </div>
+
+    <h3 class="block-title">Welke koopvragen mensen stellen — en wie het antwoord vult</h3>
+    <p class="block-note">Per query: verschijnt CK Service in het AI-antwoord, en welke bronnen citeert de
+      assistent in plaats daarvan. Dit is de kern — niet of de site machine-leesbaar is, maar of ze gevonden wordt.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Koopintentie-query</th><th style="text-align:center">CK Service zichtbaar?</th><th>Wie het antwoord vult</th></tr></thead>
+        <tbody>
+          <tr><td>badkamerrenovatie in 1 dag Kempen</td><td style="text-align:center"><span class="pill win">ja</span></td><td class="kw">ckservice.be · slvg.be · mierow.be · total-reno.be</td></tr>
+          <tr><td>veilige seniorendouche laten plaatsen Vlaanderen</td><td style="text-align:center"><span class="pill win">ja</span></td><td class="kw">ckservice.be · seniodouche.be · eauplus.be</td></tr>
+          <tr><td>bad vervangen door inloopdouche zonder breken</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+          <tr><td>badkamer renoveren zonder breken beste bedrijf</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">dmsbadkamers.nl · debadkamerrenovatie.nl · duvira.nl</td></tr>
+          <tr><td>badkamerrenovatie Geel bedrijf</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">alleen een kaart-/zoekverwijzing, geen bedrijf genoemd</td></tr>
+          <tr><td>inloopdouche laten plaatsen prijs Antwerpen</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">vanpoucke.be</td></tr>
+          <tr><td>premie badkamerrenovatie senioren aanvragen</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">vlaanderen.be</td></tr>
+          <tr><td>badkamer renoveren met wandpanelen zonder tegels</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+          <tr><td>gesloten douchecabine op maat laten plaatsen</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+          <tr><td>badkamerspecialist provincie Antwerpen aanrader</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">zedreno.be · groepwouters.be · eckeukens.be</td></tr>
+          <tr><td>hoelang duurt een badkamerrenovatie</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+          <tr><td>bad eruit douche erin senioren zonder breekwerk</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px">
+      <small>Alle 12 queries zijn live uitgevoerd (12/12 geslaagd). Geen enkel resultaat is geschat.</small>
+      <span class="src mkt">live AI-test · assistent met webtoegang · 12 aug 2026</span>
+    </div>
+
+    <div class="note">
+      <b>De diagnose, in één zin.</b> CK Service wordt door AI al genoemd op precies zijn twee sterkste thema's —
+      <em>veilig douchen in 1 dag</em> en <em>seniorendouche</em> — dankzij het lokale profiel en die scherpe
+      positionering. Maar op de bredere en lokale koopvragen (zonder breken, premie, prijs, inloopdouche
+      Antwerpen, badkamerspecialist) vullen concurrenten en overheidsbronnen het antwoord. Zichtbaar worden
+      dáár is geen los knopje, maar het gevolg van de bestemmings- en declaratie-keuzes uit de secties hierboven.
+      <span class="src mkt">live AI-test</span>
+      <span class="src">Sherlock OS · coherence</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 6 ========================= -->
+<section id="frame">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>De meetbare frame</h2></div>
+    <p class="sec-sub">Gekalibreerde doelen met een bekende meetlat: wat we zouden volgen, en waar we het aflezen.
+      Targets en observaties, geen gegarandeerde uitkomsten.</p>
+
+    <div class="card">
+      <div class="target">
+        <div><b>Bewezen money-pagina's naar pagina 1</b><div class="now">douchecabine (8,8), premie-FAQ (11,6), wandpanelen (12,3), seniorendouches (22,4)</div></div>
+        <div><span class="now">pos 9–22</span><span class="arrow">→</span><span class="goal">top 5</span></div>
+      </div>
+      <div class="target">
+        <div><b>Money-topics met een bestemming</b><div class="now">51 commerciële topics zonder eigen pagina</div></div>
+        <div><span class="now">0 van 51</span><span class="arrow">→</span><span class="goal">bewuste keuze per topic</span></div>
+      </div>
+      <div class="target">
+        <div><b>Entity-coherence</b><div class="now">declaratie-laag (1,7) trekt het geheel omlaag</div></div>
+        <div><span class="now">4,3/10</span><span class="arrow">→</span><span class="goal">declaratie ≥ attributen</span></div>
+      </div>
+      <div class="target">
+        <div><b>Zichtbaarheid in AI-antwoorden</b><div class="now">2 van 12 koopvragen tonen CK Service</div></div>
+        <div><span class="now">2 / 12</span><span class="arrow">→</span><span class="goal">aanwezig op zonder-breken, premie &amp; lokaal</span></div>
+      </div>
+      <div class="target">
+        <div><b>Meetbaar leadpad</b><div class="now">0 gemeten conversies terwijl er verkeer binnenkomt</div></div>
+        <div><span class="now">0 gemeten</span><span class="arrow">→</span><span class="goal">lead-tracking live</span></div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><h3>Zoekvraag &amp; posities</h3><p style="font-size:.92rem;color:var(--muted)">Positie + clicks per money-topic-pagina, per query.</p><span class="src gsc">Search Console · sc-domain:ckservice.be</span></div>
+      <div class="card"><h3>Leads &amp; omzet</h3><p style="font-size:.92rem;color:var(--muted)">Contactaanvragen en conversies gekoppeld aan het commerciële pad — zodra de meting staat.</p><span class="src web">websitestatistieken</span></div>
+      <div class="card"><h3>Entiteit- &amp; AI-gezondheid</h3><p style="font-size:.92rem;color:var(--muted)">Coherence-score, dekkingsratio en AI-aanwezigheid, opnieuw gedraaid per cyclus.</p><span class="src">Sherlock OS · 9-dim audit</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b style="color:var(--ink)">Over deze analyse.</b>
+    <p class="disc">Gebouwd op de eigen data van ckservice.be over 14 mei – 12 aug 2026. Alle cijfers zijn
+      gemeten, niet geschat; waar een bron ontbrak of niet beschikbaar was, staat dat er expliciet bij.
+      De advertentie-cijfers konden in dit venster niet worden opgehaald (toegang moet opnieuw worden
+      bevestigd) en zijn daarom niet getoond in plaats van geraden. De doelen hierboven zijn gekalibreerde
+      targets en observaties, geen gegarandeerde uitkomsten. Dit is een demonstratie van wat het platform
+      ziet en zou doen, geen prestatiegarantie.</p>
+    <div class="srclist">
+      <span class="src gsc">Search Console · sc-domain:ckservice.be · 14 mei–12 aug 2026</span>
+      <span class="src web">websitestatistieken · 90 dagen</span>
+      <span class="src">Sherlock OS · entiteitgraaf &amp; 9-dim audit</span>
+      <span class="src mkt">marktdata · concurrent-overlap &amp; live AI-test</span>
+    </div>
+    <p style="margin-top:20px">Sherlock · performance marketing — voor <b style="color:var(--purple)">CK Service</b></p>
+  </div>
+</footer>
+
+</body>
+</html>

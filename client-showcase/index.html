@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sherlock — Client Artifacts Preview</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#1a1d24; --line:#2a2f3a; --ink:#eef1f6;
+    --mut:#9aa4b2; --acc:#f0b429; --acc2:#5b9dff; --new:#3ddc97;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 20px 80px}
+  header{margin-bottom:8px}
+  .kicker{color:var(--acc);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+  h1{font-size:30px;margin:6px 0 6px}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:36px}
+  .group{margin:0 0 30px}
+  .group h2{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);
+    border-bottom:1px solid var(--line);padding-bottom:8px;margin:0 0 12px}
+  a.item{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin:8px 0;transition:border-color .15s,transform .15s}
+  a.item:hover{border-color:var(--acc2);transform:translateY(-1px)}
+  .item .t{font-weight:600}
+  .item .d{color:var(--mut);font-size:13px}
+  .item .meta{margin-left:auto;display:flex;gap:8px;align-items:center;flex-shrink:0}
+  .tag{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;
+    background:#23303f;color:var(--acc2)}
+  .tag.new{background:#123528;color:var(--new)}
+  .arrow{color:var(--mut);font-size:18px}
+  footer{margin-top:40px;color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Sherlock · Preview</div>
+    <h1>Client Artifacts</h1>
+  </header>
+  <p class="sub">Hosted preview van de client-facing artefacten. Klik door, scroll, en volg de cross-links (deck → voorbeeldpagina).</p>
+
+  <div class="group">
+    <h2>Sherlock — Showcase</h2>
+    <a class="item" href="showcase/sherlock-showcase.html">
+      <span><span class="t">Sherlock Showcase</span><br><span class="d">Overzicht / capabilities showcase</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+    <a class="item" href="showcase/sherlock-composition-plan.html">
+      <span><span class="t">Composition Plan</span><br><span class="d">Voorbeeld compositieplan</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+    <a class="item" href="showcase/sherlock-example-page.html">
+      <span><span class="t">Example Page</span><br><span class="d">Gegenereerde voorbeeldpagina (cross-link doel)</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <div class="group">
+    <h2>IDE Coffee</h2>
+    <a class="item" href="ide-coffee/audit-report.html">
+      <span><span class="t">Audit Report</span><br><span class="d">Canonieke audit — meest recent</span></span>
+      <span class="meta"><span class="tag new">NEW / CANONICAL</span><span class="arrow">→</span></span>
+    </a>
+    <a class="item" href="ide-coffee/audit-showcase.html">
+      <span><span class="t">Audit Showcase</span><br><span class="d">Oudere showcase-versie</span></span>
+      <span class="meta"><span class="tag">OLD</span><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <div class="group">
+    <h2>Style at Home</h2>
+    <a class="item" href="styleathome/audit-showcase.html">
+      <span><span class="t">Audit Showcase</span><br><span class="d">Style at Home audit</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <div class="group">
+    <h2>CK Service</h2>
+    <a class="item" href="ck-service/audit-showcase.html">
+      <span><span class="t">Audit Showcase</span><br><span class="d">CK Service audit</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <div class="group">
+    <h2>Asbitech</h2>
+    <a class="item" href="asbitech/audit-showcase.html">
+      <span><span class="t">Audit Showcase</span><br><span class="d">Asbitech audit</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <div class="group">
+    <h2>Tilborghs Hout</h2>
+    <a class="item" href="tilborghshout/deck.html">
+      <span><span class="t">Deck</span><br><span class="d">Voorstel-deck (linkt door naar voorbeeldpagina)</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+    <a class="item" href="tilborghshout/example-page.html">
+      <span><span class="t">Example Page</span><br><span class="d">Voorbeeldpagina (cross-link doel van deck)</span></span>
+      <span class="meta"><span class="arrow">→</span></span>
+    </a>
+  </div>
+
+  <footer>Interne preview · noindex · Sherlock SEO Agency</footer>
+</div>
+</body>
+</html>

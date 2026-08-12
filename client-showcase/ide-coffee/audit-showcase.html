@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idé Coffee · wat het platform ziet</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#662483;
+    --purple-dark:#4a1a60;
+    --green:#6BB869;
+    --green-dark:#4f9a4d;
+    --ink:#1a1420;
+    --muted:#6b6577;
+    --line:#e9e4ef;
+    --bg:#ffffff;
+    --bg-soft:#f7f4fb;
+    --bg-purple:#f3edf8;
+    --amber:#b5730a;
+    --red:#b23b3b;
+    --shadow:0 1px 2px rgba(26,20,32,.04),0 8px 30px rgba(102,36,131,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:'Raleway',system-ui,-apple-system,Segoe UI,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;
+    -webkit-font-smoothing:antialiased;font-weight:400;overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  code{overflow-wrap:anywhere;word-break:break-word;font-size:.86em;background:var(--bg-purple);padding:1px 5px;border-radius:5px}
+  h1,h2,h3{font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0}
+  h2{font-size:clamp(1.5rem,3.2vw,2.1rem)}
+  h3{font-size:1.12rem;font-weight:700}
+  p{margin:.6em 0}
+  a{color:var(--purple);text-decoration:none}
+  small{color:var(--muted)}
+
+  header.frame{
+    background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 62%,#3a1550 100%);
+    color:#fff;padding:56px 0 64px;position:relative;overflow:hidden;
+  }
+  header.frame::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(107,184,105,.35),transparent 62%);pointer-events:none;
+  }
+  .brandrow{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .glyph{
+    width:42px;height:42px;border-radius:11px;background:#fff;color:var(--purple);
+    display:grid;place-items:center;font-weight:800;font-size:1.25rem;flex:none;
+  }
+  .brandrow b{font-size:1.05rem;font-weight:700;letter-spacing:.02em}
+  .brandrow span{color:rgba(255,255,255,.7);font-size:.85rem}
+  .kicker{
+    display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green);background:rgba(107,184,105,.14);
+    border:1px solid rgba(107,184,105,.4);padding:5px 12px;border-radius:999px;margin-bottom:20px;
+  }
+  header h1{font-size:clamp(2rem,5.2vw,3.2rem);max-width:18ch;color:#fff}
+  header .lede{font-size:clamp(1.05rem,2.2vw,1.28rem);color:rgba(255,255,255,.86);max-width:58ch;margin-top:18px;font-weight:400}
+  .metabar{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;font-size:.86rem;color:rgba(255,255,255,.78)}
+  .metabar b{color:#fff;font-weight:700}
+
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-weight:800;color:var(--green-dark);font-size:.95rem;flex:none}
+  .sec-sub{color:var(--muted);max-width:66ch;margin:6px 0 34px;font-size:1.02rem}
+  .block-title{font-size:1.02rem;font-weight:700;margin:34px 0 4px}
+  .block-note{color:var(--muted);font-size:.92rem;margin:0 0 16px;max-width:72ch}
+
+  .src{
+    display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;
+    letter-spacing:.02em;color:var(--purple);background:var(--bg-purple);
+    border:1px solid var(--line);padding:3px 9px;border-radius:6px;white-space:normal;overflow-wrap:anywhere;
+  }
+  .src.gsc{color:var(--green-dark);background:#eef8ee;border-color:#d5edd4}
+  .src.mkt{color:#5a4a66;background:#f0ecf4;border-color:#e2dcea}
+
+  .grid{display:grid;gap:18px}
+  .grid>*{min-width:0}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .stat{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);
+  }
+  .stat .n{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .stat .n.green{color:var(--green-dark)}
+  .stat .n.purple{color:var(--purple)}
+  .stat .n.amber{color:var(--amber)}
+  .stat .l{font-size:.86rem;color:var(--muted);margin-top:8px}
+  .stat .src{margin-top:12px}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+  .card h3{margin-bottom:6px}
+  .card .src{margin-top:14px}
+
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem}
+  table.wide{min-width:820px}
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg-purple);font-weight:700;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--purple-dark);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+  td.kw{color:#2c2637;font-size:.85rem}
+  td.url code{font-size:.78rem;background:none;padding:0;color:var(--purple)}
+  .tbl-cap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+  .pill{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .pill.win{background:#eef8ee;color:var(--green-dark)}
+  .pill.watch{background:#fff4e5;color:var(--amber)}
+  .pill.hot{background:var(--bg-purple);color:var(--purple)}
+  .pill.core{background:var(--purple);color:#fff}
+  .pill.sup{background:var(--bg-purple);color:var(--purple)}
+  .pill.no{background:#fbeaea;color:var(--red)}
+  .dest{font-weight:600;font-size:.84rem}
+  .reason{color:var(--muted);font-size:.8rem;font-style:italic}
+  .anchor{color:#2c2637;font-size:.82rem}
+
+  /* dimension strip */
+  .dims{display:grid;grid-template-columns:repeat(9,1fr);gap:8px;margin-top:6px}
+  .dim{background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center}
+  .dim .dn{font-size:1.25rem;font-weight:800;line-height:1}
+  .dim .dl{font-size:.62rem;color:var(--muted);margin-top:6px;line-height:1.25;text-transform:uppercase;letter-spacing:.02em}
+  .dim.good .dn{color:var(--green-dark)}
+  .dim.mid .dn{color:var(--amber)}
+  .dim.bad .dn{color:var(--red)}
+  .dim.none .dn{color:var(--muted);font-weight:700}
+
+  .bars{display:grid;gap:14px;margin-top:4px}
+  .bar-row{display:grid;grid-template-columns:130px 1fr 46px;align-items:center;gap:14px}
+  .bar-row .lab{font-size:.9rem;font-weight:600}
+  .track{height:11px;background:var(--bg-purple);border-radius:999px;overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--green))}
+  .bar-row .v{font-weight:700;font-size:.9rem;text-align:right}
+
+  .moves{display:grid;gap:16px}
+  .move{display:grid;grid-template-columns:40px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+  .move>*{min-width:0}
+  .move p{overflow-wrap:anywhere}
+  .move .idx{width:32px;height:32px;border-radius:9px;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+  .move h3{margin-bottom:4px}
+  .move p{margin:.35em 0;font-size:.96rem;color:#2c2637}
+  .move .src{margin-top:10px}
+  .move.opp .idx{background:var(--green)}
+
+  .target{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+  .target:last-child{border-bottom:none}
+  .target .now{color:var(--muted);font-size:.9rem}
+  .target .arrow{color:var(--green-dark);font-weight:800;margin:0 6px}
+  .target .goal{font-weight:700}
+
+  .note{background:var(--bg-purple);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:16px 20px;font-size:.94rem;margin-top:24px}
+  .note.gap{background:#fff4e5;border-left-color:#e0902a}
+  .note.win{background:#eef8ee;border-left-color:var(--green-dark)}
+
+  footer{padding:44px 0 60px;color:var(--muted);font-size:.82rem}
+  footer .disc{max-width:80ch;margin-top:10px}
+  .srclist{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+  @media(max-width:820px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:1fr}
+    .g2{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:110px 1fr 40px}
+    .dims{grid-template-columns:repeat(5,1fr)}
+  }
+  @media(max-width:520px){
+    .g4{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .target{grid-template-columns:1fr;gap:6px;align-items:start}
+    .target>div:last-child{justify-self:start}
+    .move{grid-template-columns:32px 1fr;gap:12px;padding:18px}
+    .sec-head{gap:12px}
+    .dims{grid-template-columns:repeat(3,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="glyph">S</div>
+      <div>
+        <b>SHERLOCK</b> <span>· performance marketing</span>
+      </div>
+    </div>
+    <span class="kicker">Analyse — wat het platform ziet</span>
+    <h1>Uw markt, door de mangel gehaald.</h1>
+    <p class="lede">Geen mockup. Elke tabel hieronder toont echte rijen over
+      <b>idecoffee.be</b>: de zoekfootprint uit Search Console, de leads uit uw analytics, de
+      entiteit- en topic-analyse uit Sherlock OS, en live marktdata over uw concurrenten. De
+      beslissing staat bovenaan, de ruwe data eronder — zodat u elk cijfer zelf kunt nakijken.</p>
+    <div class="metabar">
+      <span>Meetvenster: <b>14 mei – 11 aug 2026 (90 dagen)</b></span>
+      <span>Bronnen: <b>Search Console · analytics · Sherlock OS · marktdata</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= 1 ========================= -->
+<section id="sees">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Wat het platform over deze site ziet</h2></div>
+    <p class="sec-sub">Nog voor er een zoekwoord in beeld komt, leest het platform de site als een
+      verzameling concepten en scoort het hoe dicht elk concept bij de eigenlijke niche ligt: koffie
+      voor bedrijven. We meten relevantie, niet volume. Van 1.580 kandidaat-concepten overleeft 7,7%
+      de relevantiepoort — de rest is ruis, concurrent-signaal of, zoals blijkt, vervuiling.</p>
+
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n purple">1.580</div>
+        <div class="l">concepten geëxtraheerd uit de site + markt</div>
+        <span class="src">Sherlock OS · entiteitgraaf</span>
+      </div>
+      <div class="stat">
+        <div class="n green">121</div>
+        <div class="l">on-niche gehouden na relevantiepoort (7,7%)</div>
+        <span class="src">Sherlock OS · relevance</span>
+      </div>
+      <div class="stat">
+        <div class="n">1.459</div>
+        <div class="l">als ruis / off-niche uitgefilterd</div>
+        <span class="src">Sherlock OS · relevance</span>
+      </div>
+      <div class="stat">
+        <div class="n amber">4,1<small style="font-size:1rem;color:var(--muted)">/10</small></div>
+        <div class="l">entity-coherence — waar de grootste kansen zitten</div>
+        <span class="src">Sherlock OS · 9-dim analyse</span>
+      </div>
+    </div>
+
+    <h3 class="block-title">De 9-dimensie-analyse in één oogopslag</h3>
+    <p class="block-note">Het platform scoort de site op negen dimensies. Waar geen betrouwbare
+      databron gekoppeld is, wordt niets gegokt — dan staat er "n.b." (niet beschikbaar). De sterke
+      kant is duidelijk: techniek en vindbaarheid staan. De vloer ligt bij de inhoud en de
+      entiteitsopbouw.</p>
+    <div class="dims">
+      <div class="dim good"><div class="dn">8,6</div><div class="dl">D1 Context &amp; markt</div></div>
+      <div class="dim bad"><div class="dn">4,1</div><div class="dl">D2 Entity coherence</div></div>
+      <div class="dim good"><div class="dn">8,2</div><div class="dl">D3 Technische SEO</div></div>
+      <div class="dim bad"><div class="dn">2,0</div><div class="dl">D4 On-page &amp; content</div></div>
+      <div class="dim good"><div class="dn">9,0</div><div class="dl">D5 Vindbaarheid</div></div>
+      <div class="dim none"><div class="dn">n.b.</div><div class="dl">D6 Betaald verkeer</div></div>
+      <div class="dim none"><div class="dn">n.b.</div><div class="dl">D7 Sociaal</div></div>
+      <div class="dim none"><div class="dn">n.b.</div><div class="dl">D8 Owned/lifecycle</div></div>
+      <div class="dim mid"><div class="dn">6,0</div><div class="dl">D9 Meting</div></div>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Samengestelde score 6,3/10 over 6 van 9 gedekte dimensies. D6 staat op "n.b." omdat de advertentie-koppeling opnieuw geautoriseerd moet worden (zie sectie 06).</small><span class="src">Sherlock OS · 9-dim analyse</span></div>
+
+    <h3 class="block-title">De relevantiepoort, per concept inspecteerbaar</h3>
+    <p class="block-note">Elk concept krijgt een relevantiescore en een dichtste anker (het niche-begrip
+      waar het aan hangt). Wat wordt uitgesloten, wordt uitgesloten <em>met een reden</em>. En de poort
+      legt meteen iets bloot: een reeks concepten die niets met koffie te maken hebben.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Concept</th><th style="text-align:right">Relevantie</th><th>Dichtste niche-anker</th><th>Besluit &amp; reden</th></tr></thead>
+        <tbody>
+          <tr><td>Koffiemachines huren</td><td class="num">0,58</td><td class="anchor">koffiemachine huren belgië</td><td><span class="pill win">gehouden</span> <span class="reason">core-commercieel</span></td></tr>
+          <tr><td>Koffiemachines leasen</td><td class="num">0,53</td><td class="anchor">Koffiemachines Leasen</td><td><span class="pill core">money · geen pagina</span></td></tr>
+          <tr><td>Volautomatische koffiemachine (bonen)</td><td class="num">0,52</td><td class="anchor">refurbished koffiemachine bonen</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Professionele koffiemachine horeca</td><td class="num">0,49</td><td class="anchor">Technisch onderhoud + 24u respons</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Onderhoud / service</td><td class="num">0,47</td><td class="anchor">Technisch onderhoud + 24u respons</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Koffieabonnement</td><td class="num">0,46</td><td class="anchor">Koffielevering (maandelijks abonnement)</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Machine à café pour entreprise</td><td class="num">0,45</td><td class="anchor">machine à café entreprise (FR)</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Internet Service Provider</td><td class="num">0,41</td><td class="anchor">Koffielevering (abonnement)</td><td><span class="pill no">vervuiling</span> <span class="reason">niet-koffie · apex-domein</span></td></tr>
+          <tr><td>Energieleveranciers België</td><td class="num">0,34</td><td class="anchor">—</td><td><span class="pill no">vervuiling</span> <span class="reason">doorway-pagina apex-domein</span></td></tr>
+          <tr><td>Car rental Barcelona / Alicante</td><td class="num">0,31</td><td class="anchor">—</td><td><span class="pill no">vervuiling</span> <span class="reason">doorway-pagina apex-domein</span></td></tr>
+          <tr><td>Belasting erfenis / brandverzekering</td><td class="num">0,30</td><td class="anchor">—</td><td><span class="pill no">vervuiling</span> <span class="reason">doorway-pagina apex-domein</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Greep uit 121 gehouden concepten + de poort die niet-koffie tegenhoudt.</small><span class="src">Sherlock OS · relevance + crawl</span></div>
+
+    <div class="note gap">
+      <b>Bevinding: het merk "Idé" staat niet alleen op koffie.</b> De crawl vindt op het apex-domein
+      (<code>idecoffee.be/…</code>, zonder <code>/nl</code> of <code>/fr</code>) een reeks pagina's die
+      niets met koffie te maken hebben — autoverzekering, autohuur in Barcelona, energieleveranciers,
+      erfenisbelasting — allemaal met de titel "… van Idé | Asse". Voor Google en voor AI-assistenten
+      verwatert dat het signaal "wie is Idé Coffee": het merk wordt geassocieerd met willekeurige
+      onderwerpen in plaats van met koffie voor bedrijven. Dit is de eerste, goedkoopste hygiëne-winst.
+      <span class="src">Sherlock OS · crawl · geconstateerd, te verifiëren</span>
+    </div>
+
+    <div class="grid g2" style="margin-top:34px">
+      <div class="card">
+        <h3>De vier lagen van entity-coherence</h3>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:2px">Een coherente entiteit rankt haar
+          money-topics; een diffuse entiteit verspreidt autoriteit over ruis. De zwakste laag is de vloer.</p>
+        <div class="bars" style="margin-top:18px">
+          <div class="bar-row"><span class="lab">Declaratie</span><div class="track"><div class="fill" style="width:23%"></div></div><span class="v">2,3</span></div>
+          <div class="bar-row"><span class="lab">Attributen</span><div class="track"><div class="fill" style="width:54%"></div></div><span class="v">5,4</span></div>
+          <div class="bar-row"><span class="lab">Relaties</span><div class="track"><div class="fill" style="width:45%"></div></div><span class="v">4,5</span></div>
+          <div class="bar-row"><span class="lab">Context</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="v">4,0</span></div>
+        </div>
+        <p style="color:var(--muted);font-size:.86rem;margin-top:14px">De declaratie-laag — wie/wat is dit
+          bedrijf, hard gemaakt in schema, NAP en merk-signaal — trekt het geheel omlaag. Opvallend, want
+          offline is de basis er wél (zie de bedrijfsprofiel-score in sectie 05).</p>
+        <span class="src">Sherlock OS · coherence scorer</span>
+      </div>
+
+      <div class="card">
+        <h3>De commerciële kern die het platform herkent</h3>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:2px">Automatisch als core- of supporting-commercieel
+          geclassificeerd — dit is waar de site geld mee verdient, niet wat het meeste volume heeft.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Hub-concept</th><th>Type</th><th style="text-align:right">Rol</th></tr></thead>
+            <tbody>
+              <tr><td>Koffiemachines huren</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Koffiemachines leasen</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Koffiemachine bedrijf</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Koffieabonnement</td><td>hub-topic</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Occasie / refurbished</td><td>dienst</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Onderhoud &amp; service</td><td>dienst</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Jura / Technicup / Rheavendors</td><td>merken</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Koffiebonen (levering)</td><td>product</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src">Sherlock OS · topic graph</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 2 ========================= -->
+<section id="stands">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Waar de site vandaag staat</h2></div>
+    <p class="sec-sub">De zoekfootprint over 90 dagen, direct uit Search Console, en de leads uit uw
+      eigen analytics. Twee dingen vallen op: het merk wordt gevonden en converteert, en één grote
+      commerciële pagina haalt enorm veel vertoningen binnen zonder dat het clicks oplevert — puur
+      omdat ze te diep staat.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n green">1.487</div><div class="l">clicks uit organisch zoeken (90 d)</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n purple">171.900</div><div class="l">vertoningen</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n green">53</div><div class="l">conversies / leads (aanvragen)</div><span class="src gsc">analytics · 90d</span></div>
+      <div class="stat"><div class="n">12,4</div><div class="l">gemiddelde positie</div><span class="src gsc">Search Console · 90d</span></div>
+    </div>
+
+    <div class="note">
+      <b>Lees deze cijfers met context.</b> Eén commerciële pagina — <code>/nl/koffiemachine-voor-bedrijven</code> —
+      trekt <b>27.918 vertoningen</b> maar slechts <b>14 clicks</b> (0,05% CTR, gem. positie 30): de vraag ís
+      er massaal, maar de pagina staat te diep in de resultaten om die vraag te oogsten. Op de kern-zoekterm
+      <em>zelf</em> staat ze vandaag wél bovenaan (zie sectie 05) — het lek zit in de tientallen varianten
+      eromheen.
+      <span class="src gsc" style="margin-top:10px">Search Console · top pages · 90d</span>
+    </div>
+
+    <h3 class="block-title">De echte pagina's, met hun rol en prestatie</h3>
+    <p class="block-note">Geen samenvatting — de daadwerkelijke top-pagina's uit Search Console, elk met
+      de commerciële rol die het platform eraan toekent. NL, FR én de webshop draaien op één domein.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Pagina</th><th>Rol</th><th style="text-align:right">Clicks</th><th style="text-align:right">Vert.</th><th style="text-align:right">CTR</th><th style="text-align:right">Pos.</th></tr></thead>
+        <tbody>
+          <tr><td class="url"><code>/nl</code></td><td>NL merk-hub</td><td class="num">211</td><td class="num">5.038</td><td class="num">4,19%</td><td class="num">20,5</td></tr>
+          <tr><td class="url"><code>/ (GMB-instroom)</code></td><td>merk / lokaal</td><td class="num">164</td><td class="num">20.619</td><td class="num">0,80%</td><td class="num">10,1</td></tr>
+          <tr><td class="url"><code>/fr</code></td><td>FR merk-hub</td><td class="num">101</td><td class="num">2.465</td><td class="num">4,10%</td><td class="num">20,8</td></tr>
+          <tr><td class="url"><code>/nl/occasiemachines</code></td><td>money · beste presteerder</td><td class="num">100</td><td class="num">1.879</td><td class="num">5,32%</td><td class="num">8,7</td></tr>
+          <tr><td class="url"><code>/nl/koffiemachine-huren</code></td><td>money-hub</td><td class="num">56</td><td class="num">10.870</td><td class="num">0,52%</td><td class="num">12,7</td></tr>
+          <tr><td class="url"><code>/fr/machines-cafe-occasion</code></td><td>money · FR</td><td class="num">45</td><td class="num">1.448</td><td class="num">3,11%</td><td class="num">14,1</td></tr>
+          <tr><td class="url"><code>/fr/machine-cafe-professionnelle</code></td><td>money-hub · FR</td><td class="num">41</td><td class="num">18.732</td><td class="num">0,22%</td><td class="num">16,4</td></tr>
+          <tr><td class="url"><code>/nl/…/koffiegruis-hergebruiken</code></td><td>informationele magneet</td><td class="num">29</td><td class="num">4.362</td><td class="num">0,66%</td><td class="num">7,9</td></tr>
+          <tr><td class="url"><code>/nl/koffiemachine-voor-bedrijven</code></td><td>koopgids · staat te diep</td><td class="num">14</td><td class="num">27.918</td><td class="num">0,05%</td><td class="num">30,0</td></tr>
+          <tr><td class="url"><code>/nl/ons-verhaal/ons-team</code></td><td>declaratie / E-E-A-T</td><td class="num">21</td><td class="num">994</td><td class="num">2,11%</td><td class="num">2,2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Top-pagina's op clicks, 90 dagen. De webshop-productpagina's (bonen, melk, snacks) converteren los daarvan met hoge CTR op long-tail.</small><span class="src gsc">Search Console · pages · 90d</span></div>
+
+    <div class="grid g2" style="margin-top:34px">
+      <div class="card">
+        <h3>Het merk wordt gevonden</h3>
+        <p style="color:var(--muted);font-size:.92rem">Merkzoekopdrachten staan bovenaan en converteren zoals het hoort — ~62% van de herkenbare zoekwoord-clicks is merk.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Merkzoekopdracht</th><th style="text-align:right">Pos.</th><th style="text-align:right">CTR</th></tr></thead>
+            <tbody>
+              <tr><td>ide coffee</td><td class="num">2,3</td><td class="num">28,9%</td></tr>
+              <tr><td>ide coffee systems</td><td class="num">5,0</td><td class="num">50,5%</td></tr>
+              <tr><td>idecoffee</td><td class="num">1,3</td><td class="num">33,0%</td></tr>
+              <tr><td>ide koffie</td><td class="num">1,0</td><td class="num">34,4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src gsc">Search Console · queries · 90d</span>
+      </div>
+
+      <div class="card">
+        <h3>De niet-merk vraag ligt diep in de resultaten</h3>
+        <p style="color:var(--muted);font-size:.92rem">Commerciële termen met échte vraag waar de site vertoningen op haalt, maar nog niet op pagina 1 staat — hier ligt de omzet buiten het merk.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Zoekopdracht</th><th style="text-align:right">Pos.</th><th style="text-align:right">Vert.</th></tr></thead>
+            <tbody>
+              <tr><td>koffiemachine voor bedrijven</td><td class="num">17,4</td><td class="num">2.621</td></tr>
+              <tr><td>koffieautomaat voor bedrijven</td><td class="num">23,1</td><td class="num">1.059</td></tr>
+              <tr><td>koffiemachine huren zakelijk</td><td class="num">19,6</td><td class="num">979</td></tr>
+              <tr><td>machine à café entreprise (FR)</td><td class="num">20,8</td><td class="num">778</td></tr>
+              <tr><td>koffiemachine leasen</td><td class="num">47,6</td><td class="num">411</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src mkt">Search Console · rankende zoekwoorden</span>
+      </div>
+    </div>
+
+    <div class="note win">
+      <b>De leads worden al gemaakt.</b> In 90 dagen: <b>1.609 sessies</b>, <b>1.068 bezoekers</b> en
+      <b>53 conversies</b> (offerte- en test-aanvragen). Google organisch levert 25 daarvan, direct
+      verkeer 17, Bing 8 — en één AI-assistent (in de meetdata zichtbaar als <code>chatgpt.com</code>)
+      stuurde 5 sessies goed voor 2 conversies. De motor draait; de vraag is hoeveel vraag er nog
+      onbenut blijft liggen op de pagina's die te diep staan.
+      <span class="src gsc">analytics · 90d</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 3 ========================= -->
+<section id="money">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>De money-topics — elk met een bestemming</h2></div>
+    <p class="sec-sub">Dit is de kern van de analyse: geen samenvatting, maar de beslistabel. Per
+      commercieel topic de echte zoekwoorden, de pagina die er vandaag voor rankt, de positie, de
+      vertoningen, en de bewuste keuze wat ermee gebeurt — versterken, nieuw, samenvoegen of
+      deprioriteren. Geen automatische URL's.</p>
+
+    <div class="tbl-cap"><small>Positie met <b>*</b> = Search Console (paginagemiddelde, 90 d); overige uit live marktdata-SERP (12 aug 2026).</small></div>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr>
+          <th>Money-topic</th><th>Kernzoekwoorden</th><th>Rankende URL vandaag</th>
+          <th style="text-align:right">Pos.</th><th style="text-align:right">Vert.</th><th>Bestemming</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>Koffiemachine huren (bedrijven)</td>
+            <td class="kw">koffiemachine huren · koffiemachine huren bedrijf · huur koffiemachine</td>
+            <td class="url"><code>/nl/koffiemachine-huren</code></td>
+            <td class="num">12,7*</td><td class="num">10.870*</td>
+            <td class="dest">Bestaande pagina versterken <span class="reason">(live al #1 op kernterm)</span></td>
+          </tr>
+          <tr>
+            <td>Koffiemachine voor bedrijven</td>
+            <td class="kw">koffiemachine voor bedrijven · koffieautomaat voor bedrijven · bedrijfs koffiemachine</td>
+            <td class="url"><code>/nl/koffiemachine-voor-bedrijven</code></td>
+            <td class="num">30,0*</td><td class="num">27.918*</td>
+            <td class="dest">Versterken + intent splitsen <span class="reason">(head vs. long-tail)</span></td>
+          </tr>
+          <tr>
+            <td>Koffiemachine leasen</td>
+            <td class="kw">koffiemachine leasen · espresso machine lease</td>
+            <td class="url reason">geen eigen pagina</td>
+            <td class="num">47,6*</td><td class="num">411*</td>
+            <td class="dest">Nieuwe pagina <span class="reason">(enig money-topic zónder bestemming; SERP toont AI Overview)</span></td>
+          </tr>
+          <tr>
+            <td>Occasie / refurbished machines</td>
+            <td class="kw">tweedehands koffiemachine · jura refurbished · refurbished koffiemachine bonen</td>
+            <td class="url"><code>/nl/occasiemachines</code></td>
+            <td class="num">8,7*</td><td class="num">1.879*</td>
+            <td class="dest">Versterken <span class="reason">(winnaar — naar top-3 duwen)</span></td>
+          </tr>
+          <tr>
+            <td>Machine à café professionnelle (FR)</td>
+            <td class="kw">machine à café professionnelle · machine à café entreprise · pour entreprise</td>
+            <td class="url"><code>/fr/machine-cafe-professionnelle</code></td>
+            <td class="num">16,4*</td><td class="num">18.732*</td>
+            <td class="dest">Versterken <span class="reason">(grootste FR-vraag; concurrentie zwaar)</span></td>
+          </tr>
+          <tr>
+            <td>Location machine à café (FR)</td>
+            <td class="kw">location machine à café · location machine à café entreprise</td>
+            <td class="url"><code>/fr/location-machine-cafe</code></td>
+            <td class="num">36,5*</td><td class="num">5.013*</td>
+            <td class="dest">Intent uitlijnen + versterken</td>
+          </tr>
+          <tr>
+            <td>Koffiemachine met bonen (professioneel)</td>
+            <td class="kw">koffiemachine met bonen · bonen koffiemachine · barista koffiemachine</td>
+            <td class="url"><code>/nl/…/koffiemachines-met-bonen</code></td>
+            <td class="num">34,3*</td><td class="num">7.824*</td>
+            <td class="dest">Versterken <span class="reason">(grote vraag, staat diep)</span></td>
+          </tr>
+          <tr>
+            <td>Koffieabonnement / bonen-levering</td>
+            <td class="kw">koffie abonnement · abonnement café entreprise · koffiebonen kopen</td>
+            <td class="url"><code>/nl/koffie-abonnement · /nl/formules/koffiebonen</code></td>
+            <td class="num">19,4*</td><td class="num">782*</td>
+            <td class="dest">Versterken <span class="reason">(herhaalomzet — hoogste lifetime value)</span></td>
+          </tr>
+          <tr>
+            <td>Vending / betaalsysteem</td>
+            <td class="kw">koffiemachine met betaalsysteem · vending koffiemachines</td>
+            <td class="url"><code>/nl/vending-koffiemachines</code></td>
+            <td class="num">16,6*</td><td class="num">2.245*</td>
+            <td class="dest">Versterken</td>
+          </tr>
+          <tr>
+            <td>Onderhoud / service / reparatie</td>
+            <td class="kw">jura onderhoud · technieker koffiemachines · koffiemachine reparatie</td>
+            <td class="url"><code>/nl/installatie-onderhoud-and-service</code></td>
+            <td class="num">34,7*</td><td class="num">1.117*</td>
+            <td class="dest">Versterken <span class="reason">(retentie + E-E-A-T-signaal)</span></td>
+          </tr>
+          <tr>
+            <td>Koffiegruis hergebruiken</td>
+            <td class="kw">koffiegruis · koffiegruis planten · wat doen met koffiegruis</td>
+            <td class="url"><code>/nl/nieuws/…-koffiegruis</code></td>
+            <td class="num">7,9*</td><td class="num">4.362*</td>
+            <td class="dest">Deprioriteren als money · interne links naar commercieel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Volledige set beschikbaar in het platform.</small>
+      <span class="src mkt">Search Console + marktdata + Sherlock OS · topic graph</span></div>
+
+    <div class="note">
+      <b>Waarom dit de kern is.</b> Bijna elk commercieel topic hééft al een pagina — het probleem is
+      niet "te weinig content" maar "de vraag lekt weg omdat de juiste pagina te diep staat". Eén
+      uitzondering springt eruit: <b>koffiemachine leasen</b> heeft géén eigen bestemming, staat op
+      positie 47, en juist dáár toont Google vandaag een AI-samenvatting waarin Idé volledig ontbreekt
+      (sectie 05). Dat is het schoolvoorbeeld van een money-topic zonder bestemming.
+      <span class="src">Sherlock OS · 9-dim analyse · D2</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 4 ========================= -->
+<section id="does">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Wat het platform zou doen</h2></div>
+    <p class="sec-sub">Concrete moves die volgen uit de tabellen hierboven. Elke move staat op een
+      meetbare bron — en is gericht op leads en omzet, niet op posities om de posities.</p>
+
+    <div class="moves">
+      <div class="move">
+        <div class="idx">1</div>
+        <div>
+          <h3>Til de commerciële kernpagina's van diep in de resultaten naar de top</h3>
+          <p>Drie pagina's hebben de vraag al, maar staan te diep om ze te oogsten:
+            <code>koffiemachine voor bedrijven</code> (pos 30 · 27.918 vert.),
+            <code>machine à café professionnelle</code> (pos 16 · 18.732 vert.) en
+            <code>koffiemachine met bonen</code> (pos 34 · 7.824 vert.). Titel/meta, inhoudelijke diepgang
+            en interne link-mesh — geen nieuwe URL's. Dit is de grootste directe leadwinst.</p>
+          <span class="src mkt">Search Console · rankende zoekwoorden</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">2</div>
+        <div>
+          <h3>Geef "koffiemachine leasen" een eigen bestemming</h3>
+          <p>Het enige money-topic zonder pagina, positie 47, en precies de zoekterm waar Google nu een
+            AI-samenvatting toont met concurrenten in plaats van Idé. Eén dedicated leasing-pagina die het
+            verschil huren/leasen/kopen scherp uitlegt, vangt die intent in plaats van hem te laten
+            weglekken. Kandidaat om óók als betaalde test te draaien zodra advertenties weer gekoppeld zijn.</p>
+          <span class="src mkt">marktdata · AI Overview + Sherlock OS · D2</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">3</div>
+        <div>
+          <h3>Ruim het apex-domein op — bescherm het merk "Idé"</h3>
+          <p>De doorway-pagina's over autoverzekering, autohuur, energie en erfenisbelasting op
+            <code>idecoffee.be/…</code> horen niet bij een koffiepartner. Ze verwateren de entiteit,
+            verwarren Google over "wie is Idé", en vormen een reputatie- en mogelijk beveiligingsrisico.
+            Verifiëren, verwijderen of de-indexeren — de goedkoopste coherentie-winst die er is.</p>
+          <span class="src">Sherlock OS · crawl · observatie</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">4</div>
+        <div>
+          <h3>Verbind de sterke offline-basis met de online declaratie-laag (2,3/10)</h3>
+          <p>De zwakste entiteitslaag is <em>declaratie</em> — terwijl offline de basis er wél is: een
+            bedrijfsprofiel met <b>4,9 sterren uit 90 reviews</b>. Koppel dat signaal hard aan de site via
+            schema (Organization, LocalBusiness, Product), consistente NAP en een sterke over-ons/team-pagina.
+            Dan kunnen zowel Google als AI-assistenten Idé eenduidig benoemen.</p>
+          <span class="src">Sherlock OS · coherence + marktdata · bedrijfsprofiel</span>
+        </div>
+      </div>
+
+      <div class="move opp">
+        <div class="idx">+</div>
+        <div>
+          <h3>Kans: de Franstalige markt is onderbenut</h3>
+          <p>De FR-pagina's halen nu al fors vertoningen (<code>machine à café professionnelle</code>
+            18.732 vert.) maar staan diep, en de FR-SERP is zwaar op productvergelijkingen. Wallonië en
+            Brussel zijn een tweede thuismarkt die met dezelfde formule (huren/onderhoud/bonen) bediend
+            kan worden — een uitbreiding van bestaand aanbod, geen nieuw product.</p>
+          <span class="src mkt">Search Console · FR-queries + marktdata</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>On-page is de vloer (2,0/10).</b> Van 1.580 herkende entiteiten zijn er slechts 52 aan
+      zoekwoorden gekoppeld (3,3% dekking). Dat is de reden dat sterke pagina's tóch te diep staan: de
+      inhoud is niet gemapt op de intentie waarop mensen zoeken. Intent→content-mapping (1 pagina = 1
+      primaire intentie + topic) plus interne links is het mechanisme achter moves 1 en 2.
+      <span class="src">Sherlock OS · 9-dim analyse · D4</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 5 ========================= -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vindbaarheid in AI-antwoorden en op de SERP</h2></div>
+    <p class="sec-sub">De vraag die telt: als een koper een AI-samenvatting of "Mensen vragen ook" te
+      zien krijgt bij een koop-intentie — "koffiemachine voor mijn bedrijf" — staat Idé dan tussen de
+      bronnen die het antwoord voeden, en zo niet, wie wél? We hebben zes echte koopintentie-zoekopdrachten
+      live getest op de markt.</p>
+
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n green">4<small style="font-size:1rem;color:var(--muted)"> / 6</small></div>
+        <div class="l">koopvragen waar Idé in de resultaten staat die de AI voeden</div>
+        <span class="src mkt">live SERP-test · 12 aug 2026</span>
+      </div>
+      <div class="stat">
+        <div class="n amber">6<small style="font-size:1rem;color:var(--muted)"> / 6</small></div>
+        <div class="l">koopvragen met een AI-antwoordlaag (AI Overview of AI in "Mensen vragen ook")</div>
+        <span class="src mkt">live SERP-test</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">mikocoffee</div>
+        <div class="l" style="margin-top:12px">de meest terugkerende concurrent — plus JDE, Javry, Jura, Lavazza, Illy</div>
+        <span class="src mkt">live SERP-test · concurrenten</span>
+      </div>
+      <div class="stat">
+        <div class="n green">4,9<small style="font-size:1rem;color:var(--muted)">★ · 90</small></div>
+        <div class="l">bedrijfsprofiel-rating — het sterkste entiteit-anker dat Idé al heeft</div>
+        <span class="src mkt">marktdata · lokaal profiel</span>
+      </div>
+    </div>
+
+    <h3 class="block-title">Welke koopvragen mensen stellen — en wie het antwoord vult</h3>
+    <p class="block-note">Per zoekopdracht: is er een AI-antwoordlaag, staat Idé in de resultaten die
+      dat antwoord voeden (organisch of in het lokale pack), en wie domineert er verder. Dit is de kern —
+      niet of we machine-leesbaar zijn, maar of we tussen de bronnen staan.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Koopintentie-zoekopdracht</th><th style="text-align:center">AI-laag?</th><th style="text-align:center">Idé zichtbaar?</th><th>Wie vult het antwoord verder</th></tr></thead>
+        <tbody>
+          <tr><td>koffiemachine huren bedrijf</td><td style="text-align:center"><span class="pill hot">AI in PVA</span></td><td style="text-align:center"><span class="pill win">#1 + lokaal #1</span></td><td class="kw">mikocoffee · JDE Professional · javry · giocoffee</td></tr>
+          <tr><td>koffiemachine voor bedrijven</td><td style="text-align:center"><span class="pill hot">AI in PVA</span></td><td style="text-align:center"><span class="pill win">#1 + lokaal #2</span></td><td class="kw">mikocoffee · JDE · Nespresso · Jura · Illy</td></tr>
+          <tr><td>koffieautomaat voor bedrijven</td><td style="text-align:center"><span class="pill hot">AI in PVA</span></td><td style="text-align:center"><span class="pill watch">#2 + lokaal #2</span></td><td class="kw">mikocoffee · Jura · javry · Lavazza · JDE</td></tr>
+          <tr><td>refurbished jura koffiemachine</td><td style="text-align:center"><span class="pill hot">AI in PVA</span></td><td style="text-align:center"><span class="pill win">#4</span></td><td class="kw">koffiematters · coolblue · dejongkoffie · javry</td></tr>
+          <tr><td>machine à café professionnelle entreprise</td><td style="text-align:center"><span class="pill hot">AI in PVA</span></td><td style="text-align:center"><span class="pill watch">#5</span></td><td class="kw">materielhoreca · javry · charles-liégeois · miko</td></tr>
+          <tr><td>koffiemachine leasen</td><td style="text-align:center"><span class="pill hot">AI Overview</span></td><td style="text-align:center"><span class="pill no">nee</span></td><td class="kw">qc-s.be · Nespresso · giocoffee · koffiematters</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px">
+      <small><b>PVA</b> = "Mensen vragen ook", waar Google nu AI-antwoorden toont. <b>AI Overview</b> = de volledige AI-samenvatting bovenaan.</small>
+      <span class="src mkt">live SERP-test · 12 aug 2026</span>
+    </div>
+
+    <div class="note win">
+      <b>De diagnose, in één zin.</b> Op de transactionele kern — huren, voor bedrijven, occasion — staat
+      Idé sterk, vaak #1 organisch én bovenaan in het lokale pack, gedragen door 90 vijfsterren-reviews.
+      Waar het misgaat is voorspelbaar: bij <b>leasen</b> (geen pagina → AI Overview zónder Idé) en bij de
+      <b>bredere/Franstalige</b> vragen die op productvergelijkingen draaien. Zichtbaar worden in
+      AI-antwoorden is hier geen los knopje, maar het gevolg van de bestemmings- en coherentiekeuzes uit de
+      secties hierboven — en er ligt al een eerste bewijs: een AI-assistent stuurde deze periode 2 conversies.
+      <span class="src mkt">live SERP-test</span>
+      <span class="src gsc">analytics · verwijzende bron</span>
+    </div>
+
+    <h3 class="block-title">De machine-laag — wat we niet betrouwbaar konden meten</h3>
+    <p class="block-note">Eerlijk waar de meting dun is: enkele signalen konden we in deze run niet
+      hard vaststellen. Ze staan hier als open punt, niet als conclusie.</p>
+    <div class="grid g3">
+      <div class="stat">
+        <div class="n green" style="font-size:1.3rem">Aanwezig</div>
+        <div class="l">Lokaal bedrijfsprofiel — geverifieerd, 4,9★ (90 reviews), adres Mollem/Asse</div>
+        <span class="src mkt">marktdata · lokaal profiel</span>
+      </div>
+      <div class="stat">
+        <div class="n amber" style="font-size:1.3rem">Te verifiëren</div>
+        <div class="l">Structured data (Organization / LocalBusiness / Product) op de commerciële pagina's — niet betrouwbaar bevestigd in deze run</div>
+        <span class="src">observatie · open punt</span>
+      </div>
+      <div class="stat">
+        <div class="n amber" style="font-size:1.3rem">n.b.</div>
+        <div class="l">AI-antwoorden laden bij deze marktbron asynchroon; de exact geciteerde bronnen per AI-samenvatting waren niet uitleesbaar</div>
+        <span class="src mkt">live SERP-test · beperking</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 6 ========================= -->
+<section id="frame">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>De meetbare frame</h2></div>
+    <p class="sec-sub">Gekalibreerde doelen met een bekende meetlat: wat we zouden volgen, en waar we
+      het aflezen. Targets en observaties — gericht op leads en omzet — geen gegarandeerde uitkomsten.</p>
+
+    <div class="card">
+      <div class="target">
+        <div><b>Commerciële kernpagina's naar pagina 1</b><div class="now">3 pagina's nu op pos 16–34 met massale, bewezen vraag</div></div>
+        <div><span class="now">pos 16–34</span><span class="arrow">→</span><span class="goal">top 10</span></div>
+      </div>
+      <div class="target">
+        <div><b>Money-topic met een bestemming</b><div class="now">"koffiemachine leasen" heeft geen pagina en staat pos 47</div></div>
+        <div><span class="now">0 pagina</span><span class="arrow">→</span><span class="goal">1 dedicated pagina</span></div>
+      </div>
+      <div class="target">
+        <div><b>Entity-coherence</b><div class="now">declaratie-laag (2,3) trekt het geheel omlaag</div></div>
+        <div><span class="now">4,1/10</span><span class="arrow">→</span><span class="goal">declaratie ≥ attributen</span></div>
+      </div>
+      <div class="target">
+        <div><b>Zichtbaarheid in AI-antwoorden op koopvragen</b><div class="now">nu 4 van 6, met "leasen" en FR-vragen als gat</div></div>
+        <div><span class="now">4 / 6</span><span class="arrow">→</span><span class="goal">aanwezig op de kern-koopvragen</span></div>
+      </div>
+      <div class="target">
+        <div><b>Leads uit organisch + AI</b><div class="now">53 conversies / 90 d als vertrekpunt</div></div>
+        <div><span class="now">basislijn 53</span><span class="arrow">→</span><span class="goal">groei op de versterkte pagina's</span></div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><h3>Zoekzichtbaarheid</h3><p style="font-size:.92rem;color:var(--muted)">Positie + clicks per money-topic-pagina, per zoekopdracht.</p><span class="src gsc">Search Console · sc-domain:idecoffee.be</span></div>
+      <div class="card"><h3>Conversie &amp; omzet</h3><p style="font-size:.92rem;color:var(--muted)">Leads en aanvragen gekoppeld aan het commerciële pad; herhaalomzet uit abonnement/bonen.</p><span class="src gsc">analytics · property 359999097</span></div>
+      <div class="card"><h3>AI- &amp; entiteitgezondheid</h3><p style="font-size:.92rem;color:var(--muted)">Coherence-score, dekkingsratio en AI-aanwezigheid, opnieuw gedraaid per cyclus.</p><span class="src">Sherlock OS · 9-dim analyse</span></div>
+    </div>
+
+    <div class="note gap">
+      <b>Eén meetgat om te sluiten.</b> De advertentie-koppeling moet opnieuw geautoriseerd worden — daarom
+      staat D6 (betaald verkeer) op "n.b." en kunnen we de betaalde tests uit sectie 04 nog niet meten of
+      draaien. Dat is een korte, eenmalige actie langs uw kant; daarna is de zoek-, betaal- en
+      conversie-kant in één beeld af te lezen.
+      <span class="src">Sherlock OS · providers · observatie</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b style="color:var(--ink)">Over deze analyse.</b>
+    <p class="disc">Gebouwd op de eigen data van idecoffee.be — Search Console, uw analytics — aangevuld met
+      live marktdata over uw concurrenten. Alle cijfers zijn gemeten, niet geschat; waar een meting dun,
+      asynchroon of afwezig was, staat dat er expliciet bij ("n.b." / "te verifiëren"). De doelen hierboven
+      zijn gekalibreerde targets en observaties, geen gegarandeerde uitkomsten. Dit is een demonstratie van
+      wat het platform ziet en zou doen, geen prestatiegarantie.</p>
+    <div class="srclist">
+      <span class="src gsc">Search Console · sc-domain:idecoffee.be · 14 mei–11 aug 2026</span>
+      <span class="src gsc">analytics · property 359999097 · 90 d</span>
+      <span class="src">Sherlock OS · entiteitgraaf &amp; 9-dim analyse</span>
+      <span class="src mkt">marktdata · rankende zoekwoorden &amp; live SERP-test</span>
+    </div>
+    <p style="margin-top:20px">Sherlock · performance marketing — <b style="color:var(--purple)">voor Idé Coffee Systems</b></p>
+  </div>
+</footer>
+
+</body>
+</html>

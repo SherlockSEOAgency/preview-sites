@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sherlock Showcase · wat het platform ziet</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#662483;
+    --purple-dark:#4a1a60;
+    --green:#6BB869;
+    --green-dark:#4f9a4d;
+    --ink:#1a1420;
+    --muted:#6b6577;
+    --line:#e9e4ef;
+    --bg:#ffffff;
+    --bg-soft:#f7f4fb;
+    --bg-purple:#f3edf8;
+    --amber:#b5730a;
+    --shadow:0 1px 2px rgba(26,20,32,.04),0 8px 30px rgba(102,36,131,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:'Raleway',system-ui,-apple-system,Segoe UI,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;
+    -webkit-font-smoothing:antialiased;font-weight:400;overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  code{overflow-wrap:anywhere;word-break:break-word;font-size:.86em;background:var(--bg-purple);padding:1px 5px;border-radius:5px}
+  h1,h2,h3{font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0}
+  h2{font-size:clamp(1.5rem,3.2vw,2.1rem)}
+  h3{font-size:1.12rem;font-weight:700}
+  p{margin:.6em 0}
+  a{color:var(--purple);text-decoration:none}
+  small{color:var(--muted)}
+
+  /* ---- header frame ---- */
+  header.frame{
+    background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 62%,#3a1550 100%);
+    color:#fff;padding:56px 0 64px;position:relative;overflow:hidden;
+  }
+  header.frame::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(107,184,105,.35),transparent 62%);pointer-events:none;
+  }
+  .brandrow{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .glyph{
+    width:42px;height:42px;border-radius:11px;background:#fff;color:var(--purple);
+    display:grid;place-items:center;font-weight:800;font-size:1.25rem;flex:none;
+  }
+  .brandrow b{font-size:1.05rem;font-weight:700;letter-spacing:.02em}
+  .brandrow span{color:rgba(255,255,255,.7);font-size:.85rem}
+  .kicker{
+    display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green);background:rgba(107,184,105,.14);
+    border:1px solid rgba(107,184,105,.4);padding:5px 12px;border-radius:999px;margin-bottom:20px;
+  }
+  header h1{font-size:clamp(2rem,5.2vw,3.2rem);max-width:16ch;color:#fff}
+  header .lede{font-size:clamp(1.05rem,2.2vw,1.28rem);color:rgba(255,255,255,.86);max-width:56ch;margin-top:18px;font-weight:400}
+  .metabar{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;font-size:.86rem;color:rgba(255,255,255,.78)}
+  .metabar b{color:#fff;font-weight:700}
+
+  /* ---- section shell ---- */
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-weight:800;color:var(--green-dark);font-size:.95rem;flex:none}
+  .sec-sub{color:var(--muted);max-width:64ch;margin:6px 0 34px;font-size:1.02rem}
+  .block-title{font-size:1.02rem;font-weight:700;margin:34px 0 4px}
+  .block-note{color:var(--muted);font-size:.92rem;margin:0 0 16px;max-width:70ch}
+
+  /* ---- source tag ---- */
+  .src{
+    display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;
+    letter-spacing:.02em;color:var(--purple);background:var(--bg-purple);
+    border:1px solid var(--line);padding:3px 9px;border-radius:6px;white-space:nowrap;
+  }
+  .src.gsc{color:var(--green-dark);background:#eef8ee;border-color:#d5edd4}
+  .src.mkt{color:#5a4a66;background:#f0ecf4;border-color:#e2dcea}
+
+  /* ---- stat grid ---- */
+  .grid{display:grid;gap:18px}
+  .grid>*{min-width:0}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .stat{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);
+  }
+  .stat .n{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .stat .n.green{color:var(--green-dark)}
+  .stat .n.purple{color:var(--purple)}
+  .stat .n.amber{color:var(--amber)}
+  .stat .l{font-size:.86rem;color:var(--muted);margin-top:8px}
+  .stat .src{margin-top:12px}
+
+  /* ---- card ---- */
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+  .card h3{margin-bottom:6px}
+  .card .src{margin-top:14px}
+
+  /* ---- table ---- */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem}
+  table.wide{min-width:760px}
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg-purple);font-weight:700;font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--purple-dark);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+  td.kw{color:#2c2637;font-size:.85rem}
+  td.url code{font-size:.78rem;background:none;padding:0;color:var(--purple)}
+  .tbl-cap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+  .pill{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .pill.win{background:#eef8ee;color:var(--green-dark)}
+  .pill.watch{background:#fff4e5;color:var(--amber)}
+  .pill.hot{background:var(--bg-purple);color:var(--purple)}
+  .pill.core{background:var(--purple);color:#fff}
+  .pill.sup{background:var(--bg-purple);color:var(--purple)}
+  .dest{font-weight:600;font-size:.84rem}
+  .reason{color:var(--muted);font-size:.8rem;font-style:italic}
+  .anchor{color:#2c2637;font-size:.82rem}
+
+  /* ---- coherence bars ---- */
+  .bars{display:grid;gap:14px;margin-top:4px}
+  .bar-row{display:grid;grid-template-columns:130px 1fr 46px;align-items:center;gap:14px}
+  .bar-row .lab{font-size:.9rem;font-weight:600}
+  .track{height:11px;background:var(--bg-purple);border-radius:999px;overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--green))}
+  .bar-row .v{font-weight:700;font-size:.9rem;text-align:right}
+
+  /* ---- move list ---- */
+  .moves{display:grid;gap:16px}
+  .move{display:grid;grid-template-columns:40px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+  .move .idx{width:32px;height:32px;border-radius:9px;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+  .move h3{margin-bottom:4px}
+  .move p{margin:.35em 0;font-size:.96rem;color:#2c2637}
+  .move .src{margin-top:10px}
+  .move.opp .idx{background:var(--green)}
+
+  /* ---- target rows ---- */
+  .target{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+  .target:last-child{border-bottom:none}
+  .target .now{color:var(--muted);font-size:.9rem}
+  .target .arrow{color:var(--green-dark);font-weight:800;margin:0 6px}
+  .target .goal{font-weight:700}
+
+  .note{background:var(--bg-purple);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:16px 20px;font-size:.94rem;margin-top:24px}
+  .note.gap{background:#fff4e5;border-left-color:#e0902a}
+
+  /* ---- footer ---- */
+  footer{padding:44px 0 60px;color:var(--muted);font-size:.82rem}
+  footer .disc{max-width:78ch;margin-top:10px}
+  .srclist{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+  @media(max-width:820px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:1fr}
+    .g2{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:110px 1fr 40px}
+  }
+  @media(max-width:520px){
+    .g4{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .target{grid-template-columns:1fr;gap:6px;align-items:start}
+    .target>div:last-child{justify-self:start}
+    .move{grid-template-columns:32px 1fr;gap:12px;padding:18px}
+    .sec-head{gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="glyph">S</div>
+      <div>
+        <b>SHERLOCK</b> <span>· performance marketing</span>
+      </div>
+    </div>
+    <span class="kicker">Showcase — wat het platform ziet</span>
+    <h1>Ons eigen platform, losgelaten op onze eigen site.</h1>
+    <p class="lede">Dit is geen mockup. Elke tabel hieronder toont echte rijen uit onze live data over
+      <b>sherlockseo.com</b>: de zoekfootprint uit Search Console, de entiteit- en topic-analyse uit
+      Sherlock OS, en live marktdata. De beslissing staat bovenaan, de ruwe data eronder — zodat je
+      elk cijfer zelf kunt nakijken.</p>
+    <div class="metabar">
+      <span>Meetvenster footprint: <b>14 mei – 12 aug 2026 (90 dagen)</b></span>
+      <span>Bronnen: <b>Search Console · Sherlock OS · marktdata</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= 1 ========================= -->
+<section id="sees">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Wat het platform over deze site ziet</h2></div>
+    <p class="sec-sub">Nog voor er een zoekwoord in beeld komt, bouwt het platform een entiteitgraaf:
+      het leest de site als een verzameling concepten en scoort hoe dicht elk concept bij de niche
+      ligt. We meten relevantie, niet volume. Van 2.587 kandidaat-concepten overleeft 3,5% de
+      relevantiepoort.</p>
+
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n purple">2.587</div>
+        <div class="l">concepten geëxtraheerd uit de site + markt</div>
+        <span class="src">Sherlock OS · entiteitgraaf</span>
+      </div>
+      <div class="stat">
+        <div class="n green">91</div>
+        <div class="l">on-niche gehouden na relevantiepoort (3,5%)</div>
+        <span class="src">Sherlock OS · relevance</span>
+      </div>
+      <div class="stat">
+        <div class="n">2.496</div>
+        <div class="l">als ruis / concurrent-bron uitgefilterd</div>
+        <span class="src">Sherlock OS · relevance</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">4,1<small style="font-size:1rem;color:var(--muted)">/10</small></div>
+        <div class="l">entity-coherence — waar de kansen zitten</div>
+        <span class="src">Sherlock OS · 9-dim audit</span>
+      </div>
+    </div>
+
+    <h3 class="block-title">De relevantiepoort, per concept inspecteerbaar</h3>
+    <p class="block-note">Elk concept krijgt een relevantiescore en een dichtste anker (het niche-begrip
+      waar het aan hangt). Wat wordt uitgesloten, wordt uitgesloten <em>met een reden</em> — geen zwarte
+      doos. Een greep uit de gehouden set, en de poort die concurrent-ruis tegenhoudt.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Concept</th><th style="text-align:right">Relevantie</th><th>Dichtste niche-anker</th><th>Besluit &amp; reden</th></tr></thead>
+        <tbody>
+          <tr><td>Influencer Marketing</td><td class="num">1,00</td><td class="anchor">—</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Social Media Analytics</td><td class="num">1,00</td><td class="anchor">—</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Ethiek in Digitale Marketing</td><td class="num">1,00</td><td class="anchor">—</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Website Development</td><td class="num">0,69</td><td class="anchor">website development antwerpen</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Google Ads Management</td><td class="num">0,65</td><td class="anchor">Google Ads Management</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Sherlock SEO</td><td class="num">0,63</td><td class="anchor">Sherlock SEO</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Social Media Campaigns</td><td class="num">0,62</td><td class="anchor">Social Media Campaigns</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Data Analysis Services</td><td class="num">0,60</td><td class="anchor">data analysis antwerpen</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Content Marketing Strategieën</td><td class="num">0,60</td><td class="anchor">Content Strategy &amp; SEO Content</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Technical SEO</td><td class="num">0,59</td><td class="anchor">Technical SEO</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>Schema.org markup</td><td class="num">0,59</td><td class="anchor">Technical SEO</td><td><span class="pill win">gehouden</span></td></tr>
+          <tr><td>SEO Audit</td><td class="num">0,70</td><td class="anchor">SEO Audits</td><td><span class="pill watch">uitgesloten</span> <span class="reason">alleen uit concurrent-bron</span></td></tr>
+          <tr><td>Google Ads agency</td><td class="num">0,67</td><td class="anchor">Google Ads</td><td><span class="pill watch">uitgesloten</span> <span class="reason">alleen uit concurrent-bron</span></td></tr>
+          <tr><td>Search Engine Optimization</td><td class="num">0,63</td><td class="anchor">—</td><td><span class="pill watch">uitgesloten</span> <span class="reason">NL-samenstelling van bestaand concept</span></td></tr>
+          <tr><td>Google Ads</td><td class="num">0,62</td><td class="anchor">Google Ads Management</td><td><span class="pill watch">uitgesloten</span> <span class="reason">off-niche voor site-descriptor</span></td></tr>
+          <tr><td>sortlist.be/…/anvers-be</td><td class="num">0,63</td><td class="anchor">website development antwerpen</td><td><span class="pill watch">uitgesloten</span> <span class="reason">alleen uit concurrent-bron</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>16 van 91 gehouden concepten + 5 poort-beslissingen getoond.</small><span class="src">Sherlock OS · relevance</span></div>
+
+    <div class="grid g2" style="margin-top:34px">
+      <div class="card">
+        <h3>De vier lagen van entity-coherence</h3>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:2px">Een coherente entiteit rankt haar
+          money-topics; een diffuse entiteit verspreidt autoriteit over ruis. De zwakste laag is de vloer.</p>
+        <div class="bars" style="margin-top:18px">
+          <div class="bar-row"><span class="lab">Declaratie</span><div class="track"><div class="fill" style="width:22%"></div></div><span class="v">2,2</span></div>
+          <div class="bar-row"><span class="lab">Attributen</span><div class="track"><div class="fill" style="width:46%"></div></div><span class="v">4,6</span></div>
+          <div class="bar-row"><span class="lab">Relaties</span><div class="track"><div class="fill" style="width:56%"></div></div><span class="v">5,6</span></div>
+          <div class="bar-row"><span class="lab">Context</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="v">4,0</span></div>
+        </div>
+        <span class="src">Sherlock OS · coherence scorer</span>
+      </div>
+
+      <div class="card">
+        <h3>De commerciële kern die het platform herkent</h3>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:2px">Automatisch als core- of supporting-commercieel
+          geclassificeerd — dit is waar de site geld mee verdient, niet wat het meeste volume heeft.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Hub-concept</th><th>Type</th><th style="text-align:right">Rol</th></tr></thead>
+            <tbody>
+              <tr><td>Technical SEO</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Google Ads Management</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Website Development</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Social Media Campaigns</td><td>dienst</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Data Analysis</td><td>hub-topic</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Organic traffic growth</td><td>hub-topic</td><td style="text-align:right"><span class="pill core">core</span></td></tr>
+              <tr><td>Seo Analyse Website</td><td>topic</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+              <tr><td>Franchise SEO</td><td>dienst</td><td style="text-align:right"><span class="pill sup">supporting</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src">Sherlock OS · topic graph</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 2 ========================= -->
+<section id="stands">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Waar de site vandaag staat</h2></div>
+    <p class="sec-sub">De zoekfootprint over 90 dagen, direct uit Search Console. Twee dingen vallen op:
+      het merk converteert goed, en één grote informationele pagina haalt zoveel impressies binnen dat
+      ze de gemiddelden vertekent.</p>
+
+    <div class="grid g4">
+      <div class="stat"><div class="n green">216</div><div class="l">clicks (90 dagen)</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n purple">532.064</div><div class="l">impressies</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n">0,04%</div><div class="l">gemiddelde CTR</div><span class="src gsc">Search Console · 90d</span></div>
+      <div class="stat"><div class="n">21,1</div><div class="l">gemiddelde positie</div><span class="src gsc">Search Console · 90d</span></div>
+    </div>
+
+    <div class="note">
+      <b>Lees deze cijfers niet zonder context.</b> Eén pagina — <code>/academy/what-is-google/</code> —
+      trekt <b>358.525 impressies</b> maar slechts <b>48 clicks</b> (0,01% CTR): informationele
+      zichtbaarheid die de site-brede CTR en positie omlaag trekt. De commerciële cijfers eronder zijn
+      gezonder dan het gemiddelde laat zien.
+      <span class="src gsc" style="margin-top:10px">Search Console · top pages · 90d</span>
+    </div>
+
+    <h3 class="block-title">De echte pagina's, met hun rol en prestatie</h3>
+    <p class="block-note">Geen samenvatting — de daadwerkelijke top-pagina's uit Search Console, elk met
+      de commerciële rol die het platform eraan toekent.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Pagina</th><th>Rol</th><th style="text-align:right">Clicks</th><th style="text-align:right">Impr.</th><th style="text-align:right">CTR</th><th style="text-align:right">Pos.</th></tr></thead>
+        <tbody>
+          <tr><td class="url"><code>/</code></td><td>merk-hub</td><td class="num">64</td><td class="num">6.031</td><td class="num">1,06%</td><td class="num">32,1</td></tr>
+          <tr><td class="url"><code>/academy/what-is-google/</code></td><td>informationele magneet</td><td class="num">48</td><td class="num">358.525</td><td class="num">0,01%</td><td class="num">9,3</td></tr>
+          <tr><td class="url"><code>/online-marketing/</code></td><td>money-hub</td><td class="num">23</td><td class="num">1.384</td><td class="num">1,66%</td><td class="num">27,4</td></tr>
+          <tr><td class="url"><code>/blog/advanced-ad-set-up-for-franchises…/</code></td><td>franchise (blog)</td><td class="num">15</td><td class="num">4.689</td><td class="num">0,32%</td><td class="num">10,4</td></tr>
+          <tr><td class="url"><code>/nl/</code></td><td>NL merk-hub</td><td class="num">8</td><td class="num">29.303</td><td class="num">0,03%</td><td class="num">53,3</td></tr>
+          <tr><td class="url"><code>/retail-marketing-agency/</code></td><td>money-pagina · beste CTR</td><td class="num">6</td><td class="num">163</td><td class="num">3,68%</td><td class="num">11,4</td></tr>
+          <tr><td class="url"><code>/nl/contact/</code></td><td>conversie</td><td class="num">5</td><td class="num">313</td><td class="num">1,60%</td><td class="num">14,6</td></tr>
+          <tr><td class="url"><code>/…/online-advertising-with-google-ads/</code></td><td>ads money-pagina</td><td class="num">4</td><td class="num">181</td><td class="num">2,21%</td><td class="num">21,5</td></tr>
+          <tr><td class="url"><code>/the-team/</code></td><td>declaratie / E-E-A-T</td><td class="num">2</td><td class="num">1.279</td><td class="num">0,16%</td><td class="num">60,3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>Top-pagina's op clicks, 90 dagen.</small><span class="src gsc">Search Console · pages · 90d</span></div>
+
+    <div class="grid g2" style="margin-top:34px">
+      <div class="card">
+        <h3>Het merk is al gewonnen</h3>
+        <p style="color:var(--muted);font-size:.92rem">Branded queries staan bovenaan en converteren zoals het hoort.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Query</th><th style="text-align:right">Pos.</th><th style="text-align:right">CTR</th></tr></thead>
+            <tbody>
+              <tr><td>sherlock seo</td><td class="num">1,0</td><td class="num">38,5%</td></tr>
+              <tr><td>sherlock seo agency</td><td class="num">1,0</td><td class="num">34,5%</td></tr>
+              <tr><td>sherlock marketing</td><td class="num">4,8</td><td class="num">20,9%</td></tr>
+              <tr><td>sherlock agency</td><td class="num">6,1</td><td class="num">3,2%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src gsc">Search Console · queries · 90d</span>
+      </div>
+
+      <div class="card">
+        <h3>De niet-merk vraag ligt diep in de resultaten</h3>
+        <p style="color:var(--muted);font-size:.92rem">Commerciële termen met volume waar de site vertoningen op haalt, maar nog niet op pagina 1 staat — hier ligt de winst buiten het merk.</p>
+        <div class="tbl-wrap" style="margin-top:16px">
+          <table style="min-width:0">
+            <thead><tr><th>Query</th><th style="text-align:right">Pos.</th><th style="text-align:right">Impr.</th></tr></thead>
+            <tbody>
+              <tr><td>seo agency</td><td class="num">20,9</td><td class="num">1.564</td></tr>
+              <tr><td>seo copywriting</td><td class="num">39,3</td><td class="num">2.085</td></tr>
+              <tr><td>seo specialist</td><td class="num">79,0</td><td class="num">1.763</td></tr>
+              <tr><td>technische seo</td><td class="num">62,3</td><td class="num">1.676</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="src mkt">marktdata · rankende zoekwoorden</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 3 ========================= -->
+<section id="money">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>De money-topics — elk met een bestemming</h2></div>
+    <p class="sec-sub">Het platform vindt <b>20 commerciële topics zonder eigen bestemming</b>. Dit is de
+      kern van de showcase: geen samenvatting, maar de volledige beslistabel. Per topic de echte
+      zoekwoorden, de pagina die er vandaag voor rankt, de positie, de vertoningen, en de bewuste keuze
+      wat ermee gebeurt — geen automatische nieuwe URL.</p>
+
+    <div class="tbl-cap"><small>Positie &amp; vertoningen uit marktdata, tenzij gemarkeerd met <b>*</b> (Search Console).</small></div>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr>
+          <th>Money-topic</th><th>Kernzoekwoorden</th><th>Rankende URL vandaag</th>
+          <th style="text-align:right">Pos.</th><th style="text-align:right">Impr.</th><th>Bestemming</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>SEO Copywriting</td>
+            <td class="kw">seo copywriting · seo copywriter · seo tekstschrijver</td>
+            <td class="url"><code>/nl/…/seo/seo-copywriting/</code></td>
+            <td class="num">39,3</td><td class="num">2.085</td>
+            <td class="dest">Bestaande pagina versterken</td>
+          </tr>
+          <tr>
+            <td>SEO Audit</td>
+            <td class="kw">seo audit · seo audit laten doen · technische seo audit</td>
+            <td class="url"><code>/nl/…/seo/seo-website-audit/</code></td>
+            <td class="num">47,8</td><td class="num">941</td>
+            <td class="dest">Bestaande pagina versterken</td>
+          </tr>
+          <tr>
+            <td>Technical SEO</td>
+            <td class="kw">technische seo · seo techniek</td>
+            <td class="url"><code>/nl/…/seo/technische-seo/</code></td>
+            <td class="num">62,3</td><td class="num">1.676</td>
+            <td class="dest">Bestaande pagina versterken</td>
+          </tr>
+          <tr>
+            <td>SEO specialist / expert</td>
+            <td class="kw">seo specialist · expert seo · seo expertise</td>
+            <td class="url"><code>/nl/blog/seo-expertises-en-specialisaties/</code></td>
+            <td class="num">79,0</td><td class="num">1.763</td>
+            <td class="dest">Nieuwe servicepagina <span class="reason">(nu rankt enkel een blog)</span></td>
+          </tr>
+          <tr>
+            <td>Sherlock Seo Agency</td>
+            <td class="kw">seo agency · seo bureau antwerpen · seo company</td>
+            <td class="url"><code>/nl/</code> (homepage)</td>
+            <td class="num">20,9</td><td class="num">1.564</td>
+            <td class="dest">Nieuwe dedicated agency-pagina</td>
+          </tr>
+          <tr>
+            <td>Lokale SEO</td>
+            <td class="kw">lokale seo</td>
+            <td class="url"><code>/nl/…/seo/lokale-seo/</code></td>
+            <td class="num">38,2</td><td class="num">840</td>
+            <td class="dest">Bestaande pagina versterken</td>
+          </tr>
+          <tr>
+            <td>Onpage SEO</td>
+            <td class="kw">seo on-page</td>
+            <td class="url"><code>/nl/…/seo/onpage-seo/</code></td>
+            <td class="num">54,7</td><td class="num">100</td>
+            <td class="dest">Bestaande pagina versterken</td>
+          </tr>
+          <tr>
+            <td>Seo Analyse Website</td>
+            <td class="kw">website laten analyseren · website analyse laten doen</td>
+            <td class="url"><code>/nl/…/web-analytics/web-analyse/</code></td>
+            <td class="num">81,0</td><td class="num">170</td>
+            <td class="dest">Intent uitlijnen + versterken</td>
+          </tr>
+          <tr>
+            <td>Franchise SEO</td>
+            <td class="kw">franchise ad set-up · multi-brand</td>
+            <td class="url"><code>/blog/advanced-ad-set-up-for-franchises…/</code></td>
+            <td class="num">10,4*</td><td class="num">4.689*</td>
+            <td class="dest">Blog → servicepagina omzetten</td>
+          </tr>
+          <tr>
+            <td>Content Marketing Strategieën</td>
+            <td class="kw">contentmarketingstrategie</td>
+            <td class="url"><code>/nl/blog/…</code></td>
+            <td class="num">5,3*</td><td class="num">381*</td>
+            <td class="dest">Bestaande pagina versterken</td>
+          </tr>
+          <tr>
+            <td>Website Development</td>
+            <td class="kw">website laten bouwen · website laten maken</td>
+            <td class="url reason">geen eigen pagina</td>
+            <td class="num">—</td><td class="num">—</td>
+            <td class="dest">Nieuwe pagina</td>
+          </tr>
+          <tr>
+            <td>Google Ads Management</td>
+            <td class="kw">google ads bureau · seo sea strategie</td>
+            <td class="url reason">geen eigen money-pagina</td>
+            <td class="num">—</td><td class="num">—</td>
+            <td class="dest">Nieuwe pagina / betaalde test</td>
+          </tr>
+          <tr>
+            <td>Webshop SEO</td>
+            <td class="kw">webshop seo</td>
+            <td class="url reason">geen eigen pagina</td>
+            <td class="num">—</td><td class="num">—</td>
+            <td class="dest">Nieuwe pagina</td>
+          </tr>
+          <tr>
+            <td>Social Media Campaigns</td>
+            <td class="kw">geen rankende money-query</td>
+            <td class="url reason">geen eigen pagina</td>
+            <td class="num">—</td><td class="num">—</td>
+            <td class="dest">Deprioriteren / betaalde test</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px"><small>13 van ~20 money-topics; volledige set beschikbaar in het platform.</small>
+      <span class="src mkt">marktdata + Sherlock OS · topic graph</span></div>
+
+    <div class="note">
+      <b>Waarom dit de kern is.</b> Elk van deze topics is commercieel én mist een bewuste bestemming.
+      Een coherente entiteit stuurt elk money-topic naar precies één pagina met de juiste intent, in
+      plaats van de vraag te laten weglekken naar een blog of de homepage. Dat is het verschil tussen
+      autoriteit die converteert en autoriteit die verdampt.
+      <span class="src">Sherlock OS · 9-dim audit · D2</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 4 ========================= -->
+<section id="does">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Wat het platform zou doen</h2></div>
+    <p class="sec-sub">Concrete moves die volgen uit de tabellen hierboven. Elke move staat op een
+      meetbare bron.</p>
+
+    <div class="moves">
+      <div class="move">
+        <div class="idx">1</div>
+        <div>
+          <h3>Til de bestaande money-pagina's van diep in de resultaten naar pagina 1</h3>
+          <p>Vier commerciële pagina's hebben de vraag al — ze staan alleen te diep. <code>seo copywriting</code>
+            (pos 39,3 · 2.085 impr.), <code>technische seo</code> (pos 62,3 · 1.676), <code>seo audit</code>
+            (pos 47,8 · 941) en <code>lokale seo</code> (pos 38,2 · 840) draaien elk om een pagina die al
+            bestaat. Titel/meta + interne link-mesh + inhoudelijke diepgang, geen nieuwe URL.</p>
+          <span class="src mkt">marktdata · rankende zoekwoorden</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">2</div>
+        <div>
+          <h3>Geef de merkloze agency-vraag een eigen pagina</h3>
+          <p>Op <code>seo agency</code> (pos 20,9 · 1.564 impr.) en <code>seo specialist</code> (pos 79,0 ·
+            1.763 impr.) rankt vandaag de homepage of een blog — geen dedicated dienstpagina. Dat is de
+            duidelijkste ontbrekende bestemming: één pagina die de agency-intent vangt in plaats van ze
+            te laten uitwaaieren.</p>
+          <span class="src mkt">marktdata + Sherlock OS · D2</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">3</div>
+        <div>
+          <h3>Versterk de declaratie-laag (2,2/10)</h3>
+          <p>De zwakste laag van de entiteit is <em>declaratie</em>: wie/wat is dit bedrijf, hard gemaakt
+            in schema, about-signalen en NAP. Dat is de vloer die de andere drie lagen omhoog trekt — en
+            de goedkoopste winst in coherentie. De <code>/the-team/</code>-pagina (pos 60,3) is een begin
+            dat onderbenut is.</p>
+          <span class="src">Sherlock OS · coherence scorer</span>
+        </div>
+      </div>
+
+      <div class="move">
+        <div class="idx">4</div>
+        <div>
+          <h3>Beslis bewust over de "what is google"-emmer</h3>
+          <p>358k informationele impressies op 0,01% CTR is geen ramp én geen omzet. Het platform legt de
+            keuze bloot: converteren naar een commercieel pad, of deprioriteren zodat site-brede signalen
+            de commerciële kern weerspiegelen. Een expliciete beslissing, geen toeval.</p>
+          <span class="src gsc">Search Console · top pages</span>
+        </div>
+      </div>
+
+      <div class="move opp">
+        <div class="idx">+</div>
+        <div>
+          <h3>Kans: claim &amp; optimaliseer een Google Business Profile</h3>
+          <p>Sherlock SEO heeft vandaag <b>geen Google Business Profile</b>. Voor een bureau met een fysieke
+            basis is dat een ontbrekend, gratis entiteit-anker en lokale-pack-ingang. Aanmaken en koppelen
+            is een directe uitbreiding van de declaratie-laag.</p>
+          <span class="src">Sherlock OS · observatie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>URL-architectuur is generatief.</b> Het platform genereerde voor deze site <b>6 alternatieve
+      URL-architecturen</b> — van een strak intent-model (60 nodes) tot een volledige thema-boom (651
+      nodes) — waaruit de operator er één kiest. Zo vergelijk je architecturen naast elkaar in plaats van
+      er één te gokken.
+      <span class="src">Sherlock OS · url proposals</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 5 ========================= -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vindbaarheid in AI-antwoorden</h2></div>
+    <p class="sec-sub">De vraag die telt: als iemand een AI-assistent met webtoegang een koop-intentie
+      voorlegt — "welk SEO-bureau in België?" — komt Sherlock dan naar boven, en zo niet, wie wél? We
+      hebben het live getest op 14 echte koopintentie-queries (uit Search Console + de money-topics).</p>
+
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n amber">0<small style="font-size:1rem;color:var(--muted)"> / 14</small></div>
+        <div class="l">koopintentie-queries waarin Sherlock betrouwbaar verschijnt</div>
+        <span class="src mkt">live AI-test · 12 aug 2026</span>
+      </div>
+      <div class="stat">
+        <div class="n">1</div>
+        <div class="l">vluchtige vermelding — bij herhaling niet reproduceerbaar</div>
+        <span class="src mkt">live AI-test</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">clutch · sortlist</div>
+        <div class="l" style="margin-top:12px">directories die de antwoorden domineren, plus lokale bureaus</div>
+        <span class="src mkt">live AI-test · geciteerde bronnen</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">2,2<small style="font-size:1rem;color:var(--muted)">/10</small></div>
+        <div class="l">entiteit-declaratie — bepaalt of AI ons eenduidig kan benoemen</div>
+        <span class="src">Sherlock OS · coherence</span>
+      </div>
+    </div>
+
+    <h3 class="block-title">Welke koopvragen mensen stellen — en wie het antwoord vult</h3>
+    <p class="block-note">Per query: verschijnt Sherlock in het AI-antwoord, en welke bronnen citeert de
+      assistent in plaats daarvan. Dit is de kern — niet of we machine-leesbaar zijn, maar of we
+      gevonden worden.</p>
+    <div class="tbl-wrap">
+      <table class="wide">
+        <thead><tr><th>Koopintentie-query</th><th style="text-align:center">Sherlock zichtbaar?</th><th>Wie het antwoord vult</th></tr></thead>
+        <tbody>
+          <tr><td>seo agency belgium</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">wiseo.be · flyeo.be · studio84.be · clutch.co</td></tr>
+          <tr><td>beste seo bureau belgië</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">clutch.co · sortlist.com · kreatix.be</td></tr>
+          <tr><td>seo bureau antwerpen</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">ants.agency · greymont.agency · seoptimize.be</td></tr>
+          <tr><td>seo specialist inhuren belgië</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">malt.be · seo.be · seo.vlaanderen</td></tr>
+          <tr><td>technische seo laten uitvoeren</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+          <tr><td>seo audit laten doen belgië</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">clickforest.com · growl.be · sortlist.be</td></tr>
+          <tr><td>google ads bureau belgië</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">support.google.com · sortlist.be · clutch.co</td></tr>
+          <tr><td>seo copywriting uitbesteden</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">geen bronnen geciteerd</td></tr>
+          <tr><td>lokale seo bureau belgië</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">seobureau.be · lokalseo.be · creativehero.be</td></tr>
+          <tr><td>website laten maken met seo antwerpen</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">web4life.be · webit.be · weblabstudio.be</td></tr>
+          <tr><td>wie is de beste seo expert in belgië</td><td style="text-align:center"><span class="pill hot">vluchtig*</span></td><td class="kw">seo.be · clutch.co · goodfirms.co</td></tr>
+          <tr><td>seo marketing bureau vlaanderen</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">ants.agency · seo.vlaanderen · jakency.com</td></tr>
+          <tr><td>franchise seo bureau</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">reachgiant.com</td></tr>
+          <tr><td>webshop seo specialist belgië</td><td style="text-align:center"><span class="pill watch">nee</span></td><td class="kw">seostudio.be · seor.be · clickforest.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap" style="margin-top:12px">
+      <small><b>*vluchtig</b> = één keer genoemd, bij herhaling van dezelfde vraag niet gereproduceerd.</small>
+      <span class="src mkt">live AI-test · assistent met webtoegang · 12 aug 2026</span>
+    </div>
+
+    <h3 class="block-title">Waarom we (nog) niet verschijnen — de machine-laag</h3>
+    <p class="block-note">De techniek staat er grotendeels; de zichtbaarheid volgt uit de declaratie-laag
+      en uit een bewuste keuze over AI-toegang. Ondergeschikt aan de tabel hierboven, maar het verklaart ze.</p>
+    <div class="grid g4">
+      <div class="stat">
+        <div class="n green" style="font-size:1.4rem">Aanwezig</div>
+        <div class="l">Structured data — JSON-LD op de homepage (Organization, WebSite, FAQPage, Article, Person)</div>
+        <span class="src">observatie · homepage</span>
+      </div>
+      <div class="stat">
+        <div class="n green" style="font-size:1.4rem">Aanwezig</div>
+        <div class="l">llms.txt — staat live op <code>/llms.txt</code> (HTTP 200)</div>
+        <span class="src">observatie · /llms.txt</span>
+      </div>
+      <div class="stat">
+        <div class="n amber" style="font-size:1.4rem">Geblokkeerd</div>
+        <div class="l">AI-training — robots.txt zet <code>ai-train=no</code> en weert o.a. Amazonbot, Applebot-Extended, Bytespider</div>
+        <span class="src">observatie · robots.txt</span>
+      </div>
+      <div class="stat">
+        <div class="n purple">2,2<small style="font-size:1rem;color:var(--muted)">/10</small></div>
+        <div class="l">Declaratie — een model citeert wat het eenduidig kan toeschrijven</div>
+        <span class="src">Sherlock OS · coherence</span>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>De diagnose, in één zin.</b> De site is machine-leesbaar (schema + llms.txt), maar de
+      AI-antwoorden op koopvragen worden gevuld door directories en lokale bureaus terwijl Sherlock
+      afwezig is — precies wat je verwacht bij een declaratie-laag van 2,2/10 en een robots-default die
+      AI-training weert. Zichtbaar worden in AI-antwoorden is dus geen los knopje, maar het gevolg van
+      de coherentie- en bestemmingskeuzes uit de secties hierboven.
+      <span class="src mkt">live AI-test</span>
+      <span class="src">Sherlock OS · coherence</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= 6 ========================= -->
+<section id="frame">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>De meetbare frame</h2></div>
+    <p class="sec-sub">Gekalibreerde doelen met een bekende meetlat: wat we zouden volgen, en waar we het
+      aflezen. Targets en observaties, geen gegarandeerde uitkomsten.</p>
+
+    <div class="card">
+      <div class="target">
+        <div><b>Bestaande money-pagina's naar pagina 1</b><div class="now">4 pagina's nu op pos 38–79 met bewezen vraag</div></div>
+        <div><span class="now">pos 38–79</span><span class="arrow">→</span><span class="goal">top 10</span></div>
+      </div>
+      <div class="target">
+        <div><b>Money-topics met een bestemming</b><div class="now">~20 money-topics zonder eigen bestemming</div></div>
+        <div><span class="now">0 van 20</span><span class="arrow">→</span><span class="goal">bewuste keuze per topic</span></div>
+      </div>
+      <div class="target">
+        <div><b>Entity-coherence</b><div class="now">declaratie-laag trekt het geheel omlaag</div></div>
+        <div><span class="now">4,1/10</span><span class="arrow">→</span><span class="goal">declaratie ≥ attributen</span></div>
+      </div>
+      <div class="target">
+        <div><b>Zichtbaarheid in AI-antwoorden</b><div class="now">0 van 14 koopvragen tonen Sherlock</div></div>
+        <div><span class="now">0 / 14</span><span class="arrow">→</span><span class="goal">aanwezig op de kern-koopvragen</span></div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><h3>Zoekzichtbaarheid</h3><p style="font-size:.92rem;color:var(--muted)">Positie + clicks per money-topic-pagina, per query.</p><span class="src gsc">Search Console · sc-domain:sherlockseo.com</span></div>
+      <div class="card"><h3>Conversie &amp; omzet</h3><p style="font-size:.92rem;color:var(--muted)">Leads en conversies gekoppeld aan het commerciële pad.</p><span class="src gsc">GA4 · property 308267034</span></div>
+      <div class="card"><h3>AI- &amp; entiteitgezondheid</h3><p style="font-size:.92rem;color:var(--muted)">Coherence-score, dekkingsratio en AI-aanwezigheid, opnieuw gedraaid per cyclus.</p><span class="src">Sherlock OS · 9-dim audit</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CTA ========================= -->
+<section id="cta" style="border-bottom:none;padding:56px 0 12px">
+  <div class="wrap">
+    <div style="background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 70%,#3a1550 100%);border-radius:20px;padding:44px 40px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-90px;top:-90px;width:300px;height:300px;background:radial-gradient(circle,rgba(107,184,105,.35),transparent 62%);pointer-events:none"></div>
+      <div style="position:relative">
+        <h2 style="color:#fff;max-width:20ch;margin:0 auto">Van overzicht naar één pagina.</h2>
+        <p style="color:rgba(255,255,255,.86);max-width:52ch;margin:14px auto 26px;font-size:1.05rem">
+          Hierboven zag je hoe het platform de hele site leest en beslist. Zo ziet dat er uit voor één
+          concrete pagina — van intent tot afgewerkte compositie.</p>
+        <a href="sherlock-example-page.html"
+           style="display:inline-block;background:var(--green);color:#12280f;font-weight:800;font-size:1rem;
+                  padding:16px 30px;border-radius:12px;box-shadow:0 8px 24px rgba(107,184,105,.35);
+                  border:1px solid rgba(255,255,255,.25)">
+          Bekijk een voorbeeldpagina — zó pakken we één pagina aan →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b style="color:var(--ink)">Over deze showcase.</b>
+    <p class="disc">Gebouwd op de eigen data van sherlockseo.com — daarom zonder klant-toestemmingsvraag.
+      Alle cijfers zijn gemeten, niet geschat; waar een meting vluchtig of afwezig was, staat dat er
+      expliciet bij. De doelen hierboven zijn gekalibreerde targets en observaties, geen gegarandeerde
+      uitkomsten. Dit is een demonstratie van wat het platform ziet en zou doen, geen prestatiegarantie.</p>
+    <div class="srclist">
+      <span class="src gsc">Search Console · sc-domain:sherlockseo.com · 14 mei–12 aug 2026</span>
+      <span class="src">Sherlock OS · entiteitgraaf &amp; 9-dim audit</span>
+      <span class="src mkt">marktdata · rankende zoekwoorden &amp; live AI-test</span>
+    </div>
+    <p style="margin-top:20px">Sherlock · performance marketing — <b style="color:var(--purple)">sherlockseo.com</b></p>
+  </div>
+</footer>
+
+</body>
+</html>

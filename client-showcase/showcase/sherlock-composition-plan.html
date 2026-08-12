@@ -1,0 +1,333 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compositieplan: de pagina die "seo agency" moet winnen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+  :root{
+    --purple:#662483; --green:#6BB869; --white:#FFFFFF;
+    --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
+    --green-tint:rgba(107,184,105,.12); --purple-tint:rgba(102,36,131,.08);
+    --head:"Raleway",system-ui,-apple-system,Segoe UI,sans-serif;
+    --body:"Open Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,h4{font-family:var(--head);font-weight:700;color:var(--ink);line-height:1.2;margin:0}
+  p{margin:0 0 1em}
+  a{color:var(--purple)}
+  .accent{color:var(--purple)} .accent-green{color:var(--green)}
+  .eyebrow{font-family:var(--head);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}
+
+  /* Cover */
+  .cover{position:relative;background:var(--purple);color:#fff;overflow:hidden}
+  .cover .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:120px}
+  .cover:after{content:"";position:absolute;right:-8%;bottom:-1px;width:60%;height:150%;
+    background:linear-gradient(120deg,transparent 0 48%,var(--green) 48% 52%,#fff 52% 100%);
+    transform:skewX(-14deg);transform-origin:bottom right;z-index:1;opacity:.16}
+  .cover .netlines{position:absolute;top:0;right:0;width:340px;height:220px;z-index:1;opacity:.5}
+  .brandline{display:flex;align-items:center;gap:12px;margin-bottom:44px}
+  .qmark{width:34px;height:34px;border-radius:8px;background:#fff;position:relative;flex:0 0 auto}
+  .qmark:before{content:"";position:absolute;width:15px;height:15px;border:3px solid var(--purple);border-radius:50%;top:6px;left:6px}
+  .qmark:after{content:"";position:absolute;width:3px;height:9px;background:var(--green);transform:rotate(-45deg);bottom:5px;right:7px;border-radius:2px}
+  .wordmark{font-family:var(--head);font-weight:800;letter-spacing:.01em;font-size:1.05rem;color:#fff}
+  .wordmark small{display:block;font-weight:500;font-size:.56rem;letter-spacing:.22em;opacity:.85}
+  .cover h1{color:#fff;font-size:2.5rem;font-weight:800;max-width:15ch;margin-bottom:18px}
+  .cover .lead{font-size:1.18rem;max-width:46ch;color:#efe8f3;font-weight:400}
+  .kbadge{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:8px 16px;font-size:.82rem;font-weight:600}
+  .kbadge b{color:var(--green)}
+  .metaline{margin-top:30px;font-size:.82rem;color:#d9cde2;font-family:var(--head);letter-spacing:.02em}
+
+  /* stat strip */
+  .stripwrap{background:#fff;margin-top:-72px;position:relative;z-index:3}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:#fff;
+    border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(48,20,66,.14);padding:26px 22px}
+  .stat .n{font-family:var(--head);font-weight:800;font-size:1.9rem;color:var(--purple);line-height:1}
+  .stat .n.warn{color:#b23a2e}
+  .stat .l{font-size:.78rem;color:var(--muted);margin-top:7px;line-height:1.35}
+
+  section{padding:56px 0 8px}
+  .snum{font-family:var(--head);font-weight:800;color:var(--green);font-size:.95rem;margin-bottom:6px;letter-spacing:.02em}
+  h2.sec{font-size:1.72rem;margin-bottom:10px;max-width:24ch}
+  .sublead{color:var(--muted);max-width:60ch;margin-bottom:26px}
+
+  .card{border:1px solid var(--line);border-radius:14px;background:#fff;padding:22px 24px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+  /* SERP mockup (client brand lives INSIDE this only) */
+  .serp{border:1px solid var(--line);border-radius:14px;background:#fff;padding:22px 24px;box-shadow:0 8px 26px rgba(48,20,66,.06)}
+  .serp .u{color:#5f6368;font-size:.8rem;font-family:Arial,system-ui,sans-serif}
+  .serp .u b{color:#202124;font-weight:400}
+  .serp .t{color:#1a0dab;font-family:Arial,system-ui,sans-serif;font-size:1.24rem;margin:4px 0 4px;line-height:1.3}
+  .serp .d{color:#4d5156;font-family:Arial,system-ui,sans-serif;font-size:.92rem;line-height:1.5}
+  .serp .posflag{display:inline-block;margin-bottom:12px;background:var(--surface);border:1px dashed var(--line);
+    border-radius:8px;padding:4px 10px;font-family:var(--head);font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.03em}
+  .anno{margin-top:14px;border-left:4px solid var(--green);background:var(--green-tint);border-radius:0 10px 10px 0;padding:12px 16px;font-size:.9rem}
+  .anno b{color:#2E2E2E}
+
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--line);font-size:.97rem}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li:before{content:"";position:absolute;left:4px;top:16px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+  ul.reason li:before{background:var(--purple)}
+
+  .why{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .why:last-child{border-bottom:0}
+  .why .ix{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--purple-tint);color:var(--purple);
+    font-family:var(--head);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1rem}
+  .why h4{font-size:1.04rem;margin-bottom:4px}
+  .why p{margin:0;color:var(--muted);font-size:.95rem}
+  .why .num{font-family:var(--head);font-weight:800;color:var(--purple)}
+
+  .move{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:#fff}
+  .move .tag{font-family:var(--head);font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--green);display:block;margin-bottom:8px}
+  .move h4{font-size:1.06rem;margin-bottom:8px}
+  .move p{font-size:.92rem;color:var(--muted);margin:0}
+  .move .chip{display:inline-block;margin:8px 6px 0 0;background:var(--surface);border:1px solid var(--line);
+    border-radius:7px;padding:3px 9px;font-size:.78rem;color:var(--ink);font-family:var(--head);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:6px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+  thead th{background:var(--purple);color:#fff;font-family:var(--head);font-weight:700;font-size:.82rem;letter-spacing:.02em}
+  thead th:first-child{border-radius:8px 0 0 0} thead th:last-child{border-radius:0 8px 0 0}
+  tbody tr.win{background:var(--green-tint)}
+  td .sub{color:var(--muted);font-size:.8rem}
+  .scroll{overflow-x:auto}
+
+  .goal{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .goal .r{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:0}
+  .goal .r>div{padding:15px 18px;border-bottom:1px solid var(--line)}
+  .goal .r>div:not(:last-child){border-right:1px solid var(--line)}
+  .goal .h{background:var(--surface)}
+  .goal .h>div{font-family:var(--head);font-weight:700;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .goal .now{color:var(--muted)} .goal .tgt{color:var(--purple);font-weight:700}
+  .goal .lab{font-weight:600}
+
+  .callout{border-left:4px solid var(--purple);background:var(--surface);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:24px}
+  .callout .eyebrow{margin-bottom:6px}
+  .callout p{margin:0;font-size:.95rem;color:var(--ink)}
+
+  .src{font-size:.76rem;color:var(--muted);margin-top:12px;font-family:var(--head);letter-spacing:.02em}
+  .src:before{content:"■ ";color:var(--green)}
+
+  footer{margin-top:60px;background:var(--purple);color:#fff;padding:38px 0 46px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer .fnote{font-size:.8rem;color:#d9cde2;max-width:46ch}
+  footer a{color:#fff}
+
+  @media (max-width:720px){
+    body{font-size:16px}
+    .cover h1{font-size:1.95rem}
+    .cover .wrap{padding-bottom:104px}
+    .strip{grid-template-columns:1fr 1fr}
+    .grid2,.grid3{grid-template-columns:1fr}
+    .goal .r{grid-template-columns:1fr}
+    .goal .r>div{border-right:0}
+    .goal .h{display:none}
+    .goal .r>div:before{content:attr(data-l);display:block;font-family:var(--head);font-weight:700;
+      font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+    h2.sec{font-size:1.42rem}
+    .cover .netlines{width:200px}
+  }
+</style>
+
+<header class="cover">
+  <svg class="netlines" viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#6BB869" stroke-width="1.1">
+      <path d="M20 40 L120 20 L210 70 L300 40"/><path d="M120 20 L150 110 L210 70"/>
+      <path d="M150 110 L60 150 L20 40"/><path d="M210 70 L280 140 L300 40"/>
+      <path d="M60 150 L160 190 L280 140"/><path d="M150 110 L160 190"/>
+    </g>
+    <g fill="#6BB869">
+      <circle cx="20" cy="40" r="3"/><circle cx="120" cy="20" r="3"/><circle cx="210" cy="70" r="3"/>
+      <circle cx="300" cy="40" r="3"/><circle cx="150" cy="110" r="3"/><circle cx="60" cy="150" r="3"/>
+      <circle cx="280" cy="140" r="3"/><circle cx="160" cy="190" r="3"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="brandline">
+      <span class="qmark" aria-hidden="true"></span>
+      <span class="wordmark">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></span>
+    </div>
+    <div class="eyebrow" style="color:#cbb6d9">Compositieplan &middot; één pagina</div>
+    <h1>De pagina die <span style="color:var(--green)">"seo agency"</span> moet winnen</h1>
+    <p class="lead">Google toont voor deze zoekterm vandaag de verkeerde pagina. Hier staat welke, waarom ze blijft steken, en wat we concreet veranderen om ze naar pagina één te duwen.</p>
+    <div class="kbadge">Richtdoel, geen belofte &middot; <b>geen gegarandeerde uitkomsten</b></div>
+    <div class="metaline">sherlockseo.com &nbsp;|&nbsp; Google Search Console + live SERP-analyse &nbsp;|&nbsp; 12 augustus 2026</div>
+  </div>
+</header>
+
+<div class="stripwrap">
+  <div class="wrap">
+    <div class="strip">
+      <div class="stat"><div class="n">~13</div><div class="l">Gemiddelde positie voor "seo agency" (pagina 2)</div></div>
+      <div class="stat"><div class="n">1.302</div><div class="l">Vertoningen in 28 dagen &mdash; publiek dat de plek al ziet</div></div>
+      <div class="stat"><div class="n warn">0,08%</div><div class="l">Doorklikratio &mdash; bijna niemand klikt</div></div>
+      <div class="stat"><div class="n">1&nbsp;van&nbsp;16</div><div class="l">Bereikbare posities volgens de live SERP-analyse</div></div>
+    </div>
+    <p class="src">Bron: Google Search Console, sc-domain:sherlockseo.com, 15 jul &ndash; 12 aug 2026 (query "seo agency", pagina /nl/).</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- 1. SITUATIE -->
+  <section>
+    <div class="snum">01 &mdash; De situatie</div>
+    <h2 class="sec">Google toont je Nederlandstalige homepage aan Engelstalige zoekers</h2>
+    <p class="sublead">Voor de zoekterm "seo agency" serveert Google vandaag <b>sherlockseo.com/nl/</b> &mdash; je Nederlandstalige homepage. Ze staat rond positie 13 met ruim 1.300 vertoningen per maand, maar de doorklikratio is 0,08%. Zo goed als niemand klikt. Dit is hoe dat resultaat er in Google uitziet:</p>
+
+    <div class="serp">
+      <span class="posflag">Zoekresultaat &middot; positie ~13 &middot; "seo agency"</span>
+      <div class="u"><b>www.sherlockseo.com</b> › nl</div>
+      <div class="t">Sherlock SEO &ndash; Strategisch SEO Agency sinds 2008</div>
+      <div class="d">Word gezocht in plaats van gevonden. Andere agencies jagen op keywords, Sherlock bouwt strategie en structuur. Meer bezoekers, meer aanvragen, meer controle over je groei&hellip;</div>
+      <div class="anno"><b>Wat hier misloopt:</b> een Engelstalige zoeker ("seo agency") krijgt een Nederlandstalige titel en omschrijving te zien. De koptekst van de pagina is letterlijk <b>"Word gezocht in plaats van gevonden."</b> Taal en zoekvraag matchen niet &mdash; dus de klik blijft uit, en Google twijfelt welke pagina van jou hier écht bij hoort.</div>
+    </div>
+
+    <div class="grid2" style="margin-top:22px">
+      <div class="card">
+        <div class="eyebrow">Wat er verder speelt</div>
+        <ul class="clean" style="margin-top:10px">
+          <li>Je Engelstalige homepage (<b>/</b>) rankt wél voor de varianten <b>"seo agency belgium"</b> (~pos 12), "bruges", "almere" en staat op <b>positie 1</b> voor je merknaam "sherlock seo agency".</li>
+          <li>De kale term "seo agency" wordt daarentegen door <b>/nl/</b> opgepakt. Twee pagina's, twee talen, één zoekvraag.</li>
+          <li>Het signaal is dus versnipperd over <b>/</b>, <b>/nl/</b> en <b>/online-marketing/</b> &mdash; geen enkele pagina "bezit" de term volledig.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="eyebrow">De pagina zelf</div>
+        <ul class="clean" style="margin-top:10px">
+          <li><b>2.946 woorden</b> content &mdash; ruim voldoende body om mee te spelen.</li>
+          <li>Sterke interne links naar diensten, case-studies en contact.</li>
+          <li>Vertrouwenssignalen aanwezig: <b>Google Partner</b>, <b>Meta Business Partner</b>, 4,5/5 klantbeoordeling.</li>
+          <li>De basis is er. Het probleem is niet "te weinig", het is <b>focus en taal</b>.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="src">Bron: live scrape van /nl/ + GSC pagina/query-data, 15 jul &ndash; 12 aug 2026.</p>
+  </section>
+
+  <!-- 2. WAAROM NOG NIET HOGER -->
+  <section>
+    <div class="snum">02 &mdash; Waarom nog niet hoger</div>
+    <h2 class="sec">Vier redenen, elk gemeten &mdash; geen onderbuik</h2>
+    <p class="sublead">We draaiden een live SERP-analyse op "seo agency" in de Belgische markt en vergeleken de pagina's die vandaag boven je staan. Dit houdt je tegen:</p>
+
+    <div class="card">
+      <div class="why">
+        <div class="ix">1</div>
+        <div><h4>Taal- en pagina-verwarring</h4><p>Google koppelt de zoekvraag aan de Nederlandstalige pagina en heeft geen duidelijke, Engelstalige "SEO agency"-dienstpagina om naar te wijzen. Het signaal ligt verspreid over meerdere URL's in twee talen, dus geen enkele pagina bouwt volle autoriteit op.</p></div>
+      </div>
+      <div class="why">
+        <div class="ix">2</div>
+        <div><h4>Autoriteitskloof van <span class="num">~147</span> verwijzende domeinen</h4><p>Je hebt 113 verwijzende domeinen. De pagina's die boven je staan hebben er gemiddeld 260 (depends.be 210, wiseo.be 534). Voor een competitieve commerciële term is dat verschil een echte rem &mdash; en de traagste om te dichten.</p></div>
+      </div>
+      <div class="why">
+        <div class="ix">3</div>
+        <div><h4>Entiteits- en schema-signalen onderbenut</h4><p>De SERP toont een AI Overview, een knowledge panel en "People Also Ask". Dat zijn allemaal entiteitsgedreven features. Zonder sterke Organization/ProfessionalService-schema en gekoppelde profielen laat je die zichtbaarheid liggen.</p></div>
+      </div>
+      <div class="why">
+        <div class="ix">4</div>
+        <div><h4>Concrete vragen onbeantwoord</h4><p>Vier vragen die Google actief toont, worden door <b>geen enkele</b> concurrent beantwoord: "Hoeveel kost SEO per maand?", "Wat houdt SEO in?", "Wat kost een SEO specialist per uur?" en "Wat verdien je als SEO specialist?". Dat is een open gat waar we ons kunnen onderscheiden.</p></div>
+      </div>
+    </div>
+    <p class="src">Bron: live SERP-probe "seo agency" (België/NL) via Sherlock composer &mdash; SERP-features, concurrent-scan en backlink-vergelijking.</p>
+  </section>
+
+  <!-- 3. WAT WE CONCREET DOEN -->
+  <section>
+    <div class="snum">03 &mdash; Wat we concreet doen</div>
+    <h2 class="sec">Vier ingrepen, in volgorde van hefboom</h2>
+    <p class="sublead">Geen algemene "we optimaliseren je SEO". Dit zijn de exacte moves op deze ene pagina, met de doelen die uit de concurrent-analyse rollen.</p>
+
+    <div class="grid2">
+      <div class="move">
+        <span class="tag">Structuur &amp; taal</span>
+        <h4>Eén canonieke dienstpagina die de term bezit</h4>
+        <p>We beslissen welke URL "seo agency" wint en consolideren het signaal daar: heldere Engelstalige titel en H1, correcte hreflang tussen / en /nl/, en interne links met de juiste anker­tekst die naar die ene pagina wijzen in plaats van drie.</p>
+      </div>
+      <div class="move">
+        <span class="tag">Content</span>
+        <h4>Op SERP-maat, niet langer om het lang</h4>
+        <p>De pagina's die ranken zitten rond 1.176 woorden (bereik 999&ndash;1.411) met 7 tot 9 tussenkoppen. We schrijven naar dat profiel en beantwoorden de 14 vragen die de SERP oproept &mdash; inclusief de vier die niemand beantwoordt.</p>
+        <span class="chip">seo</span><span class="chip">technische seo</span><span class="chip">lokale seo</span><span class="chip">linkbuilding</span><span class="chip">case studie</span><span class="chip">GEO</span>
+      </div>
+      <div class="move">
+        <span class="tag">Entiteit &amp; schema</span>
+        <h4>Voeden wat AI Overview en knowledge panel lezen</h4>
+        <p>Organization/ProfessionalService-schema met dienstgebied, gekoppelde profielen (sameAs) en de vertrouwenssignalen die je al hebt: Google Partner, Meta Business Partner, klantbeoordeling. Zo wordt je pagina citeerbaar voor Google én AI-antwoorden.</p>
+      </div>
+      <div class="move">
+        <span class="tag">Autoriteit</span>
+        <h4>Gerichte linkbuilding op de kloof</h4>
+        <p>De ~147 verwijzende domeinen dicht je niet met content alleen. We mikken op relevante, verdiende links naar déze pagina. Dit is de traagste hefboom &mdash; we zetten hem in gang, maar rekenen erop over kwartalen, niet weken.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.12rem;margin:32px 0 4px">Waar je vandaag tegen speelt</h3>
+    <p class="sublead" style="margin-bottom:14px">De echte concurrenten in de Belgische SERP &mdash; gemeten, niet gegokt. Sterke diepgang maar dunne dekking op vragen en entiteiten. Daar zit je opening.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Pagina</th><th>Woorden</th><th>Entiteit-dekking</th><th>Vragen beantwoord</th><th>Verw. domeinen</th></tr></thead>
+        <tbody>
+          <tr><td>depends.be <span class="sub">pos 2</span></td><td>2.069</td><td>11/20</td><td>10/14</td><td>210</td></tr>
+          <tr><td>wiseo.be <span class="sub">pos 4</span></td><td>641</td><td>6/20</td><td>4/14</td><td>534</td></tr>
+          <tr><td>kruisraket.be <span class="sub">pos 5</span></td><td>1.176</td><td>5/20</td><td>9/14</td><td>36</td></tr>
+          <tr class="win"><td>sherlockseo.com <span class="sub">richtprofiel</span></td><td>~1.200</td><td>14+/20</td><td>14/14</td><td>113 &rarr; groeien</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Bron: live concurrent-content-scan + backlink-data, "seo agency" (België/NL), 12 aug 2026. Richtprofiel = wat we voor deze pagina nastreven.</p>
+  </section>
+
+  <!-- 4. HET MEETBARE DOEL -->
+  <section>
+    <div class="snum">04 &mdash; Het meetbare doel</div>
+    <h2 class="sec">Waar we op sturen &mdash; eerlijk gekalibreerd</h2>
+    <p class="sublead">Doelen zijn richtpunten over ongeveer twee kwartalen, geen garanties. De kale term "seo agency" is competitief en de autoriteitskloof kost tijd. We meten in business-taal: vertoningen die klikken worden, en aanvragen.</p>
+
+    <div class="goal">
+      <div class="r h"><div>Wat we meten</div><div>Vandaag</div><div>Richtdoel (2 kwartalen)</div></div>
+      <div class="r">
+        <div class="lab" data-l="Wat we meten">Positie "seo agency" (BE-markt)</div>
+        <div class="now" data-l="Vandaag">~13 &middot; pagina 2</div>
+        <div class="tgt" data-l="Richtdoel">Pagina 1 &middot; top 8&ndash;10</div>
+      </div>
+      <div class="r">
+        <div class="lab" data-l="Wat we meten">Doorklikratio op deze pagina</div>
+        <div class="now" data-l="Vandaag">0,08%</div>
+        <div class="tgt" data-l="Richtdoel">1&ndash;3% (marktbenchmark)</div>
+      </div>
+      <div class="r">
+        <div class="lab" data-l="Wat we meten">Geo-cluster (antwerp, leuven, belgium)</div>
+        <div class="now" data-l="Vandaag">verspreid, pos 5&ndash;12</div>
+        <div class="tgt" data-l="Richtdoel">geconsolideerd op één pagina</div>
+      </div>
+      <div class="r" style="border-bottom:0">
+        <div class="lab" data-l="Wat we meten">Klikken uit deze zoekvraag / maand</div>
+        <div class="now" data-l="Vandaag">~1</div>
+        <div class="tgt" data-l="Richtdoel">richting 15&ndash;40 <span style="color:var(--muted);font-weight:400">(illustratief)</span></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="eyebrow">Onze belofte klopt met de data</div>
+      <p>We beloven geen positie 1 en geen vast aantal klanten. Wat we wél toezeggen: één pagina die de zoekvraag correct bezit, gebouwd op het gemeten SERP-profiel, met de vertrouwens- en entiteitssignalen die vandaag ontbreken. De cijfers hierboven zijn richtpunten uit echte Search Console- en SERP-data &mdash; geen gegarandeerde uitkomsten.</p>
+    </div>
+    <p class="src">Bron: GSC (15 jul &ndash; 12 aug 2026) + live SERP-analyse. Klik-schatting is illustratief, afgeleid van huidige vertoningen × benchmark-doorklikratio.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brandline" style="margin-bottom:0">
+      <span class="qmark" aria-hidden="true"></span>
+      <span class="wordmark">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></span>
+    </div>
+    <p class="fnote">Compositieplan voor één pagina op <a href="https://www.sherlockseo.com">sherlockseo.com</a>. Alle cijfers komen uit Google Search Console en een live SERP-analyse. Marketing die klanten oplevert, niet alleen rapporten.</p>
+  </div>
+</footer>
