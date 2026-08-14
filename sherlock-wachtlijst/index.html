@@ -172,7 +172,7 @@ h1,h2,h3{margin:0}
 .wl h2 .u{color:var(--accent)}
 .wl .intro{margin-top:18px;max-width:56ch;color:#cfcabf;font-size:1.08rem}
 .form{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px}
-@media(max-width:560px){.form{grid-template-columns:1fr}}
+@media(max-width:560px){.form{grid-template-columns:1fr}.wl-merken{grid-template-columns:1fr!important}}
 .form .full{grid-column:1/-1}
 .form label{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
 .form input,.form textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:#111;color:var(--paper);font-family:var(--body);font-size:.98rem}
@@ -2302,20 +2302,43 @@ h1,h2,h3{margin:0}
   <section class="wl" id="wachtlijst" style="border-top:2px solid var(--accent)">
     <div class="wrap">
       <div class="mono eyebrow">Wachtlijst</div>
-      <h2 class="disp">Laat Sherlock je <span class="u">volgende website</span> bouwen.</h2>
-      <p class="intro">We bouwen nu de eerste sites, in beperkte oplage. Laat je gegevens achter: je krijgt eerst een voorstel en preview te zien, en we zeggen eerlijk of jouw markt geschikt is. Jij beslist.</p>
+      <h2 class="disp">Zet je op de wachtlijst. <span class="u">Gratis kennismaking</span> eerst.</h2>
+      <p class="intro">We bouwen nu de eerste sites, in beperkte oplage. Laat je gegevens achter — geen verplichtingen. We nemen contact op voor een gesprek van 20 minuten: we vertellen eerlijk of jouw markt geschikt is, en jij beslist wat er daarna gebeurt.</p>
+
+      <!-- Belofte per merk (Sherlock + Watson) -->
+      <div class="wl-merken" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0 30px;max-width:660px">
+        <div style="border:1px solid var(--line);padding:20px 20px 18px;background:#111">
+          <div class="mono" style="color:var(--accent);margin-bottom:10px;font-size:.68rem">Watson — website</div>
+          <div style="font-size:.95rem;line-height:1.55;color:#d7d2c8">Als je in de eerste lichting zit, krijg je de launchprijs: <b style="color:#fff">€333/maand</b> in plaats van de reguliere prijs — gegarandeerd voor de looptijd van je contract. Plus: jij wordt meegebouwd als referentiecase.</div>
+        </div>
+        <div style="border:1px solid var(--line);padding:20px 20px 18px;background:#111">
+          <div class="mono" style="color:var(--accent2);margin-bottom:10px;font-size:.68rem">Sherlock — groeiplatform</div>
+          <div style="font-size:.95rem;line-height:1.55;color:#d7d2c8">Inschrijvers op de wachtlijst krijgen <b style="color:#fff">prioriteit bij de bètatoegang</b> en scan-prioriteit: je markt wordt als eerste gescand zodra we opengaan. Geen wachttijd, geen lotingssysteem.</div>
+        </div>
+      </div>
+
       <form class="form" id="wlform">
         <div><label for="naam">Naam</label><input id="naam" name="naam" required></div>
         <div><label for="bedrijf">Bedrijf</label><input id="bedrijf" name="bedrijf"></div>
         <div class="full"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
         <div class="full"><label for="website">Huidige website (optioneel)</label><input id="website" name="website" placeholder="www.jouwbedrijf.be"></div>
+        <div class="full">
+          <label for="interesse">Waar ben je in geïnteresseerd?</label>
+          <select id="interesse" name="interesse" style="font-family:var(--mono);font-size:.78rem;padding:10px 12px;background:var(--black);color:var(--paper);border:1px solid var(--line);width:100%">
+            <option value="">— kies —</option>
+            <option value="watson-website">Watson — nieuwe website laten bouwen</option>
+            <option value="sherlock-platform">Sherlock — groeiplatform (SEO, ads, meting)</option>
+            <option value="beide">Beide</option>
+            <option value="nog-niet-zeker">Nog niet zeker</option>
+          </select>
+        </div>
         <div class="full"><label for="bericht">Wat wil je bereiken? (optioneel)</label><textarea id="bericht" name="bericht" rows="2"></textarea></div>
         <div class="submit">
           <button type="submit">Zet mij op de wachtlijst</button>
-          <span class="note">We gebruiken je gegevens enkel om contact op te nemen.</span>
+          <span class="note">We gebruiken je gegevens enkel om contact op te nemen. Geen spam.</span>
         </div>
       </form>
-      <div class="wl-ok" id="wlok">&#10003; Bedankt. Je staat op de wachtlijst. We nemen contact op.</div>
+      <div class="wl-ok" id="wlok">&#10003; Bedankt. Je staat op de wachtlijst. We nemen snel contact op voor een gesprek van 20 minuten.</div>
     </div>
   </section>
 
