@@ -3,313 +3,524 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Website-audit — IDE Coffée Systems</title>
+<title>Website-audit Idé Coffee Systems</title>
+<meta name="robots" content="noindex, nofollow">
 <!--
-  ECHTE-KLANT AUDIT (nulmeting) — CK Service (ckservice.be)
-  ---------------------------------------------------------
-  Alle cijfers zijn LIVE uit Sherlock OS op 10-08-2026 (GSC 90d, GA4 90d, keyword_data,
-  topics/relevance). Niets is verzonnen. Waar een bron nog niet uitleest, staat dat
-  eerlijk ("koppeling herstellen" / "nog niet gemeten"), nooit een verzonnen getal.
-  Trend = leeg: dit is de eerste meting (nulmeting/baseline).
+  KLANTRAPPORT: Idé Coffee Systems (idecoffee.be)
+  ================================================
+  Bouwregel (platformpatroon, niet klantspecifiek):
+  EEN CIJFER MAG NIET RENDEREN ZONDER ONDERBOUWING EN ZONDER ADVIES.
+  Elke dimensie in DATA draagt verplicht:
+    meting[]  = waarnemingen met waarde, bron en periode
+    zegt      = wat het cijfer betekent
+    zegt_niet = wat het cijfer NIET zegt (scopegrens)
+    advies[]  = wat de klant hiermee doet
+  De renderer weigert een score te tonen als meting[] of advies[] ontbreekt
+  (zie functie dimSection): dan verschijnt een zichtbare melding in plaats van
+  een net ogend, nergens op steunend cijfer.
 
-  Verwerkte feedback (Jef, 10/8): klant-taal, geen jargon; "geen webshop" weg; doel &
-  contactwijze samengevoegd + herkomst getoond; richtcijfer klein + tooltip; €-onderbouwing
-  = CPC × gemiste vraag (advertentiewaarde), exact zodra conversiewaarde gemeten;
-  vaste volgorde techniek→content→autoriteit met verkooppagina's/lokaal VROEG;
-  planning = "aan te passen in samenspraak met uw consultant"; visualisaties toegevoegd;
-  detaildata → link naar platform.
+  HERKOMST VAN DE CIJFERS
+  - Dimensiescores D1..D9 en de totaalscore: Sherlock OS audit-snapshot,
+    uitgelezen 16-08-2026. Niet met de hand bijgesteld.
+  - Zoekdata: Search Console, sc-domain:idecoffee.be, 15-05-2026 t/m 12-08-2026.
+  - Gedrag en aanvragen: analytics-property 359999097, 90 dagen t/m 16-08-2026
+    (afwijkende periode, staat expliciet in het rapport).
+  - Zoekwoordwaarde (CPC, volume): laatste verrijking in het platform.
+  Wat niet gemeten is, krijgt geen cijfer en wordt niet als nul geteld.
 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --purple:#662483; --green:#6BB869; --white:#FFFFFF;
   --ink:#232326; --muted:#6B6B6B; --line:#E6E6EA; --surface:#F6F6F8;
   --green-tint:rgba(107,184,105,.14); --purple-tint:rgba(102,36,131,.08);
   --amber:#B8860B; --amber-tint:rgba(184,134,11,.12); --red:#b22828;
+  --red-tint:rgba(178,40,40,.10);
   --font-head:"Raleway",system-ui,-apple-system,Segoe UI,sans-serif;
   --font-body:"Open Sans",system-ui,-apple-system,Segoe UI,sans-serif;
   --shadow:0 1px 2px rgba(16,16,20,.05),0 8px 26px rgba(16,16,20,.07);
 }
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Open+Sans:wght@400;600;700&display=swap');
 *{box-sizing:border-box}
-body{margin:0;background:#EAEAEE;color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.6}
+body{margin:0;overflow-x:hidden;background:#EAEAEE;color:var(--ink);font-family:var(--font-body);font-size:15.5px;line-height:1.62}
 h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;margin:0;color:var(--ink)}
-h1{font-size:2.7rem;line-height:1.06}h2{font-size:1.55rem;line-height:1.15}h3{font-size:1.18rem}h4{font-size:1rem}
+h1{font-size:2.6rem;line-height:1.07}h2{font-size:1.5rem;line-height:1.18}h3{font-size:1.14rem}h4{font-size:1rem}
 p{margin:.55rem 0}a{color:var(--purple);font-weight:600}
-.accent-green{color:var(--green)}
 .deck{max-width:1000px;margin:0 auto;padding:26px 16px 64px}
 .page{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin:0 0 24px;padding:44px 48px;position:relative;overflow:hidden}
+@media(max-width:680px){.page{padding:30px 22px}.cover .in{padding:34px 24px 32px}.cover .sliver{width:60%}}
 .kicker{font-family:var(--font-head);font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;margin:0 0 8px}
-.lead{font-size:1.06rem;color:#3c3c40;max-width:66ch}
+.lead{font-size:1.05rem;color:#3c3c40;max-width:68ch}
 .small{font-size:.85rem;color:var(--muted)}
-.src{font-size:.72rem;color:var(--muted);font-style:italic}
+.src{font-size:.74rem;color:var(--muted)}
 
 /* cover */
 .cover{background:var(--purple);color:#fff;padding:0;border:none}
 .cover .in{position:relative;z-index:2;padding:56px 50px 52px}
 .cover h1{color:#fff;margin:.4rem 0 .5rem}
 .cover .url{font-family:var(--font-head);font-weight:700;color:var(--green);font-size:1.35rem}
-.cover .company{color:rgba(255,255,255,.82);font-size:1.02rem;margin-top:2px}
+.cover .company{color:rgba(255,255,255,.84);font-size:1.02rem;margin-top:2px}
 .cover .wm{font-family:var(--font-head);font-weight:700;color:#fff;font-size:1.25rem}
 .cover .wm small{display:block;font-weight:500;font-size:.6rem;letter-spacing:.34em;color:var(--green);margin-top:2px}
-.cover .meta{margin-top:34px;color:rgba(255,255,255,.9);font-size:.92rem}
+.cover .meta{margin-top:32px;color:rgba(255,255,255,.92);font-size:.93rem}
+.cover .meta b{color:#fff}
+.cover .covernote{margin-top:14px;color:rgba(255,255,255,.80);font-size:.85rem;max-width:62ch;line-height:1.55}
 .cover .sliver{position:absolute;top:0;right:0;width:44%;height:100%;background:linear-gradient(115deg,transparent 0 48%,var(--green) 48% 49%,transparent 49%);opacity:.9;z-index:1}
 .cover svg.net{position:absolute;top:0;right:0;width:320px;height:210px;z-index:1;opacity:.5}
 
+/* table of contents */
 .toc{list-style:none;padding:0;margin:14px 0 0}
-.toc li{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
-.toc li .no{font-family:var(--font-head);font-weight:700;color:var(--purple);width:26px}
+.toc li{display:flex;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line)}
+.toc li .no{font-family:var(--font-head);font-weight:700;color:var(--purple);width:26px;flex:none}
 .toc li .tt{font-family:var(--font-head);font-weight:700}
-.toc li .ds{color:var(--muted);font-size:.9rem;margin-left:auto;text-align:right;max-width:48%}
+.toc li .ds{color:var(--muted);font-size:.9rem;margin-left:auto;text-align:right;max-width:52%}
+@media(max-width:680px){.toc li{flex-wrap:wrap}.toc li .ds{margin-left:40px;text-align:left;max-width:100%}}
 
-.ctx{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
-@media(max-width:680px){.ctx{grid-template-columns:1fr}}
-.ctx .cell{background:var(--surface);border-radius:10px;padding:13px 15px}
-.ctx .cell .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-family:var(--font-head);font-weight:700}
-.ctx .cell .v{font-weight:600;margin-top:2px}
-.ctx .cell .v .badge{display:inline-block;background:var(--green-tint);color:#2f7d34;border-radius:999px;padding:1px 9px;font-size:.72rem;font-weight:700;font-family:var(--font-head);margin-left:6px}
+/* totaalscore */
+.total{display:grid;grid-template-columns:210px 1fr;gap:28px;align-items:start;border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:var(--surface);margin-top:6px}
+@media(max-width:680px){.total{grid-template-columns:1fr;gap:14px}}
+.total .fig{text-align:center}
+.total .fig .n{font-family:var(--font-head);font-weight:700;font-size:4.4rem;line-height:1;color:var(--purple)}
+.total .fig .n span{font-size:1.5rem;color:var(--muted)}
+.total .fig .cap{font-family:var(--font-head);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:6px}
+.total h3{margin-bottom:4px}
+.total p{font-size:.95rem;color:#3c3c40;margin:.4rem 0}
 
-/* score bars */
-.sbar{display:grid;grid-template-columns:200px 1fr 118px;gap:14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
-@media(max-width:680px){.sbar{grid-template-columns:130px 1fr 96px}}
+/* dimensietabel */
+.sbar{display:grid;grid-template-columns:210px 120px 128px 1fr;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
 .sbar .nm{font-family:var(--font-head);font-weight:700;font-size:.94rem}
-.sbar .nm small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
-.track{height:12px;border-radius:7px;background:#EEE;overflow:hidden;position:relative}
-.track>i{display:block;height:100%;border-radius:7px}
+.sbar .nm small{display:block;font-weight:500;color:var(--muted);font-size:.74rem;font-family:var(--font-body)}
+.track{height:10px;border-radius:6px;background:#EDEDF0;overflow:hidden}
+.track>i{display:block;height:100%;border-radius:6px}
 .track.dim{background:repeating-linear-gradient(135deg,#f2f2f4,#f2f2f4 7px,#eaeaee 7px,#eaeaee 14px)}
-.sbar .rt{text-align:right;font-family:var(--font-head);font-weight:700;white-space:nowrap}
+.sbar .rt{font-family:var(--font-head);font-weight:700;white-space:nowrap}
+.sbar .rt .tag{white-space:normal;line-height:1.25;display:inline-block}
 .sbar .rt b{font-size:1.05rem}.sbar .rt small{color:var(--muted);font-weight:500}
+.sbar .bs{font-size:.82rem;color:#4a4a4e}
+.sbar .bs em{font-style:normal;color:var(--muted)}
+@media(max-width:820px){.sbar{grid-template-columns:1fr 1fr;gap:8px}.sbar .nm{grid-column:1/3}.sbar .bs{grid-column:1/3}}
 .tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.72rem;font-weight:700;font-family:var(--font-head)}
 .tag.strong{background:var(--green-tint);color:#2f7d34}
 .tag.ok{background:var(--amber-tint);color:#8a6400}
-.tag.attention{background:rgba(178,40,40,.10);color:#a12828}
+.tag.attention{background:var(--red-tint);color:#a12828}
 .tag.na{background:var(--surface);color:var(--muted);border:1px dashed var(--line)}
 .tag.soon{background:var(--purple-tint);color:var(--purple)}
 
-.overall{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 8px 6px 14px;cursor:help;position:relative}
-.overall .lbl{font-size:.78rem;color:var(--muted);font-family:var(--font-head);font-weight:700}
-.overall .pill{font-family:var(--font-head);font-weight:700;background:var(--purple);color:#fff;border-radius:999px;padding:3px 11px;font-size:.95rem}
-.overall .tip{visibility:hidden;opacity:0;transition:.15s;position:absolute;top:calc(100% + 8px);left:0;width:320px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:10px;padding:11px 13px;font-size:.82rem;color:#444;z-index:5;font-weight:400;line-height:1.5}
-.overall:hover .tip,.overall:focus .tip{visibility:visible;opacity:1}
-.overall .tip b{color:var(--purple)}
+/* profiel */
+.prof{width:100%;border-collapse:collapse;margin-top:0;font-size:.93rem;min-width:560px}
+.prof th{background:var(--purple);color:#fff;font-family:var(--font-head);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;text-align:left;padding:9px 12px}
+.prof td{border-bottom:1px solid var(--line);padding:10px 12px;vertical-align:top}
+.prof td.k{font-family:var(--font-head);font-weight:700;width:23%}
+.prof .st{white-space:nowrap}
+.prof tr.unconfirmed td{background:var(--amber-tint)}
+.prof tr.wrong td{background:var(--red-tint)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:12px}
+table.data{border-collapse:collapse;width:100%;min-width:660px;font-size:.88rem}
+table.data th{background:var(--purple);color:#fff;font-family:var(--font-head);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;text-align:left;padding:9px 12px;position:sticky;top:0}
+table.data td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top}
+table.data td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.data tr.win td{background:var(--green-tint)}
+table.data tr:last-child td{border-bottom:none}
+table.data code{font-size:.82em;color:var(--purple);word-break:break-all}
 
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
-@media(max-width:680px){.cols{grid-template-columns:1fr}}
-.stack{list-style:none;padding:0;margin:8px 0 0}
-.stack li{border:1px solid var(--line);border-radius:11px;padding:12px 15px;margin-bottom:10px;background:#fff}
-.stack.win li{border-left:4px solid var(--green)}
-.stack.watch li{border-left:4px solid var(--amber)}
-.stack.opp li{border-left:4px solid var(--purple)}
-.stack .t{font-family:var(--font-head);font-weight:700}
-.stack .d{font-size:.9rem;color:#4a4a4e;margin-top:3px}
-.value{display:inline-block;margin-top:8px;background:var(--green-tint);color:#2f7d34;border-radius:8px;padding:5px 10px;font-size:.82rem;font-weight:700;font-family:var(--font-head)}
-.value small{font-weight:500;color:#3a7d3f}
+/* adviesblokken */
+.adv{border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:14px;background:#fff}
+.adv .ah{display:flex;gap:12px;align-items:baseline}
+.adv .an{font-family:var(--font-head);font-weight:700;color:#fff;background:var(--purple);border-radius:8px;width:26px;height:26px;display:grid;place-items:center;font-size:.82rem;flex:none}
+.adv h3{font-size:1.06rem}
+.adv .rows{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;margin-top:12px;font-size:.9rem}
+@media(max-width:680px){.adv .rows{grid-template-columns:1fr;gap:2px 0}.adv .rows .k{margin-top:8px}}
+.adv .rows .k{font-family:var(--font-head);font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-top:3px}
 
-.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
-@media(max-width:680px){.layers{grid-template-columns:1fr}}
-.layer{border:1px solid var(--line);border-radius:12px;padding:16px 17px;background:#fff}
-.layer .n{font-family:var(--font-head);font-weight:700;font-size:1.6rem;color:var(--green);line-height:1}
-.layer h4{margin:6px 0 4px}.layer p{font-size:.9rem;color:#4a4a4e;margin:0}
+/* dimensiehoofdstuk */
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--surface);padding-bottom:14px;margin-bottom:10px}
+.chead .no{font-family:var(--font-head);font-weight:700;color:var(--purple);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+.meas{margin-top:14px}
+.meas .mrow{display:grid;grid-template-columns:1fr 150px;gap:14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.meas .mrow:last-child{border-bottom:none}
+.meas .mv{font-family:var(--font-head);font-weight:700}
+.meas .mk{font-size:.93rem}
+.meas .mk .sub{display:block;font-size:.76rem;color:var(--muted);margin-top:1px}
+@media(max-width:680px){.meas .mrow{grid-template-columns:1fr;gap:2px}.meas .mv{order:-1}}
+.judge{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:680px){.judge{grid-template-columns:1fr}}
+.box{border-radius:0 11px 11px 0;padding:14px 16px}
+.box.says{border-left:4px solid var(--green);background:var(--green-tint)}
+.box.saysnot{border-left:4px solid var(--amber);background:var(--amber-tint)}
+.box .l{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:.68rem;letter-spacing:.06em}
+.box.says .l{color:#2f7d34}.box.saysnot .l{color:#8a6400}
+.box p{margin:.35rem 0 0;font-size:.92rem}
+.actions{list-style:none;padding:0;margin:10px 0 0}
+.actions li{position:relative;padding:11px 15px 11px 38px;border:1px solid var(--line);border-radius:10px;margin-bottom:9px;background:#fff}
+.actions li::before{content:"→";position:absolute;left:15px;top:11px;color:var(--green);font-weight:700;font-family:var(--font-head)}
+.actions li .t{font-weight:700;font-family:var(--font-head)}
+.actions li .d{font-size:.9rem;color:#4a4a4e;margin-top:2px}
+.platlink{margin-top:14px;display:flex;align-items:center;gap:10px;background:var(--purple-tint);border-radius:10px;padding:11px 15px;font-size:.88rem}
+.platlink .ic{width:20px;height:20px;flex:0 0 auto;color:var(--purple)}
+.nogo{border:2px dashed var(--red);background:var(--red-tint);border-radius:11px;padding:14px 16px;font-weight:700;color:#a12828;margin-top:12px}
+.note{border-left:4px solid var(--purple);background:var(--surface);border-radius:0 10px 10px 0;padding:13px 16px;font-size:.92rem;margin-top:16px}
+.note.open{border-left-color:var(--amber);background:var(--amber-tint)}
 
-.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+/* planning */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
 @media(max-width:680px){.plan{grid-template-columns:1fr}}
 .col{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.col .hd{background:var(--purple);color:#fff;padding:10px 14px;font-family:var(--font-head);font-weight:700;font-size:.95rem}
-.col .hd small{display:block;font-weight:500;color:rgba(255,255,255,.8);font-size:.72rem}
-.col ul{margin:0;padding:12px 14px 14px 30px;font-size:.9rem}.col li{margin:6px 0}
-.editnote{margin-top:12px;border-left:4px solid var(--green);background:var(--green-tint);border-radius:0 10px 10px 0;padding:11px 15px;font-size:.9rem}
-
-.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--surface);padding-bottom:14px;margin-bottom:8px}
-.chead .no{font-family:var(--font-head);font-weight:700;color:var(--purple);font-size:.9rem}
-.microstats{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0;padding:12px 16px;background:var(--surface);border-radius:11px}
-.microstats .m .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-family:var(--font-head);font-weight:700}
-.microstats .m .v{font-family:var(--font-head);font-weight:700;font-size:1.15rem;margin-top:1px}
-.finding{font-size:1rem;color:#3c3c40;max-width:70ch}
-.actions{list-style:none;padding:0;margin:12px 0 0}
-.actions li{position:relative;padding:11px 15px 11px 40px;border:1px solid var(--line);border-radius:10px;margin-bottom:9px;background:#fff}
-.actions li::before{content:"→";position:absolute;left:15px;top:11px;color:var(--green);font-weight:700;font-family:var(--font-head)}
-.actions li .t{font-weight:700;font-family:var(--font-head)}.actions li .d{font-size:.9rem;color:#4a4a4e;margin-top:2px}
-.platlink{margin-top:14px;display:flex;align-items:center;gap:10px;background:var(--purple-tint);border-radius:10px;padding:11px 15px;font-size:.9rem}
-.platlink .ic{width:22px;height:22px;flex:0 0 auto;color:var(--purple)}
-
-/* viz */
-.viz{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;align-items:center}
-@media(max-width:680px){.viz{grid-template-columns:1fr}}
-.leak{display:flex;flex-direction:column;gap:10px}
-.leak .row .lab{font-size:.82rem;color:var(--muted);font-family:var(--font-head);font-weight:700;display:flex;justify-content:space-between}
-.leak .bar{height:26px;border-radius:7px;margin-top:3px}
-.leak .bar.imp{background:var(--purple-tint);border:1px solid rgba(102,36,131,.25)}
-.leak .bar.clk{background:var(--green)}
-.buckets{display:flex;flex-direction:column;gap:8px}
-.bk{display:grid;grid-template-columns:96px 1fr 34px;gap:10px;align-items:center;font-size:.82rem}
-.bk .kb{font-family:var(--font-head);font-weight:700;color:#4a4a4e}
-.bk .tb{height:16px;border-radius:6px;background:#EEE;overflow:hidden}
-.bk .tb>i{display:block;height:100%}
-.bk .nb{font-family:var(--font-head);font-weight:700;text-align:right}
-.donutwrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.legend{font-size:.86rem}
-.legend .li{display:flex;align-items:center;gap:8px;margin:5px 0}
-.legend .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
-.callout{background:var(--amber-tint);border:1px dashed var(--amber);border-radius:10px;padding:8px 12px;font-size:.84rem;color:#6a5100;font-weight:600;margin-top:10px}
-
-.fams{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
-@media(max-width:680px){.fams{grid-template-columns:1fr}}
-.fam{border:1px solid var(--line);border-radius:12px;padding:15px 17px;background:#fff}
-.fam .fh{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.fam .fl{font-family:var(--font-head);font-weight:700}.fam p{font-size:.9rem;color:#4a4a4e;margin:8px 0 0}
-.diagbox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-@media(max-width:680px){.diagbox{grid-template-columns:1fr}}
-.box{border-radius:0 11px 11px 0;padding:14px 16px}
-.box.diag{border-left:4px solid var(--purple);background:var(--purple-tint)}
-.box.treat{border-left:4px solid var(--green);background:var(--green-tint)}
-.box .l{font-family:var(--font-head);font-weight:700;text-transform:uppercase;font-size:.7rem;letter-spacing:.06em}
-.box.diag .l{color:var(--purple)}.box.treat .l{color:#2f7d34}
-
+.col .hd{background:var(--purple);color:#fff;padding:10px 14px;font-family:var(--font-head);font-weight:700;font-size:.94rem}
+.col .hd small{display:block;font-weight:500;color:rgba(255,255,255,.82);font-size:.72rem}
+.col ul{margin:0;padding:12px 14px 14px 28px;font-size:.9rem}.col li{margin:6px 0}
 .chan{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
 @media(max-width:680px){.chan{grid-template-columns:1fr}}
 .chan .c{border:1px solid var(--line);border-radius:11px;padding:15px;background:#fff}
 .chan .c h4{margin:0 0 4px}.chan .c p{font-size:.88rem;color:#4a4a4e;margin:0}
-
 .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.82rem}
 .footer .wm{font-family:var(--font-head);font-weight:700;color:var(--purple)}
-@media print{body{background:#fff}.deck{max-width:none;padding:0}.page{box-shadow:none;border:none;border-radius:0;margin:0;padding:24mm 18mm;page-break-after:always}.overall .tip{display:none}@page{size:A4;margin:0}}
+@media print{body{background:#fff}.deck{max-width:none;padding:0}.page{box-shadow:none;border:none;border-radius:0;margin:0;padding:20mm 16mm;page-break-after:always}@page{size:A4;margin:0}}
 </style>
 </head>
 <body>
 <div class="deck" id="deck"></div>
 <script>
-/* ===== ECHTE DATA — CK Service, live uit Sherlock OS (10-08-2026) ===== */
-const AUDIT = {
-  site:{ url:"idecoffee.be", company:"IDE Coffée Systems" },
-  date:"11 augustus 2026", kind:"Nulmeting",
+/* =========================================================================
+   DATA. Elke score komt uit de audit-snapshot van het platform (16-08-2026).
+   Geen enkel cijfer in dit bestand is met de hand bijgesteld of geschat.
+   ========================================================================= */
+const DATA = {
+  site:{ url:"idecoffee.be", company:"Idé Coffee Systems" },
+  opgemaakt:"16 augustus 2026",
+  periode:"15 mei tot en met 12 augustus 2026 (90 dagen)",
+  periode_afwijking:"Gedrag en aanvragen komen uit de analytics-property over de 90 dagen tot en met 16 augustus 2026. Die periode loopt vier dagen door op de zoekdata. Bij elk cijfer staat de bron en de periode vermeld.",
+  meting_nr:"Eerste volledige meting van deze negen onderdelen. Er is nog geen eerdere meting van dezelfde onderdelen, dus dit rapport toont standen en geen trends. Vanaf de volgende meting staat de beweging erbij.",
   platform_url:"https://app.sherlockseo.com/klant/ide-coffee",
 
-  context:{
-    type:{ v:"B2B — professionele koffiemachines (huur, verkoop & service)", src:"intake + site", status:"bevestigd" },
-    goal:{ v:"Offerte- & huuraanvragen (formulier/telefoon) + webshop-bestellingen", src:"site + GA4 (55 conversies/90d)" },
-    region:{ v:"België · NL/FR/EN · regio Antwerpen + nationaal", src:"intake · GSC/GA4" },
-    audience:{ v:"Bedrijven, kantoren en horeca die koffie op de werkvloer willen", src:"site: koffiemachine voor bedrijven, horeca" },
-    note:"Dit profiel bepaalt waar we op letten. Een B2B-verhuurder van koffiemachines leggen we niet op dezelfde meetlat als een webshop of een lokale dienstverlener."
+  /* ---------- inhoud ---------- */
+  inhoud:[
+    ["1","Samenvatting en adviezen","Wat wij zien, en wat u ermee doet"],
+    ["2","Uw profiel en de negen dimensies","Waarop wij u beoordelen, en waarop niet"],
+    ["3","Intake tegen de data gelegd","Waar uw opgave en de meting uit elkaar lopen"],
+    ["4","Context en markt","Weten wij genoeg om op te sturen"],
+    ["5","Herkenbaarheid voor zoekmachines en AI","Begrijpen ze waar u voor staat"],
+    ["6","Techniek","Worden uw pagina's gevonden en gelezen"],
+    ["7","Content en pagina's","Eén vraag, één pagina die die vraag afmaakt"],
+    ["8","Vindbaarheid","Wordt u gevonden waar uw klanten zoeken"],
+    ["9","Meten en bijsturen","Weten wat werkt, in aanvragen en contracten"],
+    ["10","Kanalen zonder meting","Wat wij vandaag niet zien"],
+    ["11","Volgorde van werken","Techniek, dan content, dan autoriteit"],
+    ["12","Verantwoording","Bronnen, periodes en de grenzen van dit rapport"]
+  ],
+  platform_note:"Alle onderliggende data staat in het platform: elke pagina, elk zoekwoord, elke positie per week, elke aanvraag. Dit rapport bevat de inzichten, de analyses en de adviezen.",
+  in_ontwikkeling:[
+    "Volledige technische crawl (statuscodes, doorverwijzingen, canonieke URL's, laadtijd). Vandaag beoordelen wij techniek op indexatie en op de volledigheid van de meetkoppeling.",
+    "Klantbehoud en e-mail (reviews, nieuwsbrief, herhaalaankoop). Nog niet in het platform beschikbaar.",
+    "Sociale kanalen. Geen bron gekoppeld, dus geen cijfer.",
+    "Betaald verkeer. De koppeling met de advertentierekening is niet uitleesbaar en moet opnieuw geautoriseerd worden."
+  ],
+
+  /* ---------- samenvatting ---------- */
+  verdict:{
+    kop:"Het bereik is er, de omzetting niet.",
+    body:[
+      "In 90 dagen levert de zoekmachine 159.802 vertoningen op en 1.544 kliks. Dat is 0,97 procent doorklik op een gemiddelde positie van 19,7. De vraag naar wat u verkoopt is groot en u wordt getoond, maar op de tweede resultatenpagina wordt nauwelijks geklikt.",
+      "De aanvragen die binnenkomen zijn meetbaar: 56 formulieraanvragen in 90 dagen, waarvan 25 uit organisch Google, 21 rechtstreeks, 8 via Bing en 2 via ChatGPT. Wat ontbreekt is de waarde per aanvraag, en daarmee de vertaling van dit rapport naar omzet.",
+      "De twee laagste cijfers wijzen naar dezelfde oorzaak: uw commerciële vragen hebben geen pagina die die vraag afmaakt, en wat de site over zichzelf verklaart is te dun om door zoekmachines en AI-assistenten eenduidig gelezen te worden."
+    ]
+  },
+  adviezen:[
+    { t:"Leg vast waarop u afgerekend wilt worden, en wat een aanvraag waard is",
+      basis:"In uw profiel staat geen doelstelling en er zijn nul doelen vastgelegd (context en markt 8,6 van 10, meten en bijsturen 6,0 van 10). De economische parameters in het platform staan op 35 euro omzet per verkoop en 5 aanvragen per verkoop, wat past bij een webshoporder en niet bij een huurcontract.",
+      opbrengst:"Elk advies in dit rapport wordt afrekenbaar in nieuwe klanten en contractwaarde in plaats van in bezoekers.",
+      meetpunt:"Waarde per aanvraagtype ingesteld; aantal nieuwe klanten per maand uit organisch.",
+      termijn:"Deze maand, samen met uw consultant." },
+    { t:"Geef elke commerciële vraag één pagina die de vraag afmaakt",
+      basis:"De pagina koffiemachine voor bedrijven haalt 28.318 vertoningen en 13 kliks (0,05 procent) op gemiddelde positie 29,6. De Franstalige machine cafe professionnelle haalt 19.217 vertoningen en 44 kliks op positie 16,5. Tegelijk rankt de zoekopdracht koffiemachine met bonen (12.100 zoekopdrachten per maand) via de homepage op positie 24,8, terwijl daar een eigen pagina voor bestaat.",
+      opbrengst:"Bestaande, bewezen vraag wordt omgezet in aanvragen. Dit is aanscherpen en intern verbinden, geen nieuwe website.",
+      meetpunt:"Positie naar de eerste tien op de kernvragen, doorklik per pagina, aanvragen per pagina.",
+      termijn:"30 tot 60 dagen." },
+    { t:"Maak expliciet leesbaar wie u bent, voor zoekmachines en voor AI-assistenten",
+      basis:"Herkenbaarheid staat op 4,1 van 10 en de zwakste laag daarbinnen is wat de site zelf verklaart: 2,3 van 10. Van de 121 onderwerpen die na filtering relevant zijn, hebben er vandaag 7 een pagina toegewezen.",
+      opbrengst:"Zoekmachines en AI-assistenten hoeven uw betekenis niet meer af te leiden. Dat is de voorwaarde om op koopvragen genoemd te worden in plaats van alleen op uw eigen naam.",
+      meetpunt:"Declaratielaag opnieuw meten bij de volgende meting; aantal relevante onderwerpen met een pagina.",
+      termijn:"30 tot 90 dagen." },
+    { t:"Herstel de advertentiekoppeling en corrigeer uw bedrijfsprofiel",
+      basis:"Betaald verkeer is niet uitleesbaar, dus staat er geen cijfer. In het profiel staat regio Antwerpen terwijl 1.210 van de 1.495 kliks uit België komen en er ook vraag uit Nederland (135 kliks), Frankrijk (110) en Luxemburg (15) binnenkomt. Het platform classificeert u bovendien als lokale dienstverlener, waardoor het meetplan KPI's voorstelt die niet bij nationale B2B-verkoop passen.",
+      opbrengst:"Betaald en organisch in één beeld, en een profiel dat de juiste meetlat kiest.",
+      meetpunt:"Advertentiedata zichtbaar in het platform; profielvelden bevestigd door u.",
+      termijn:"Deze maand. Autoriseren duurt enkele minuten." }
+  ],
+
+  /* ---------- profiel ---------- */
+  profiel:[
+    { k:"Type bedrijf", v:"B2B, professionele koffiemachines: huur, verkoop, onderhoud en service", bron:"Intake en website", status:"bevestigd" },
+    { k:"Doelstelling", v:"Niet vastgelegd. Volgens uw accountteam is dit vandaag de acquisitie van nieuwe klanten.", bron:"Ontbreekt in de intake", status:"ontbreekt", flag:"unconfirmed" },
+    { k:"Hoe klanten aanvragen", v:"Offerte- en huuraanvraag via formulier, testtoestel aanvragen, telefonisch contact", bron:"Analytics, 90 dagen", status:"gemeten" },
+    { k:"Rol van de webshop", v:"Herhaalaankoop door bestaande klanten (bonen, melk, verbruik). Geen acquisitiedoel.", bron:"Opgave accountteam, niet in de intake", status:"te bevestigen", flag:"unconfirmed" },
+    { k:"Werkgebied", v:"Heel België, bediend door zes accountmanagers met elk een regio. Daarnaast vraag uit Nederland, Frankrijk en Luxemburg.", bron:"Opgave accountteam en zoekdata", status:"corrigeert het profiel", flag:"wrong" },
+    { k:"Doelgroep", v:"Bedrijven en kantoren. Horeca stond in het vorige rapport, maar kwam van de website en niet uit de intake.", bron:"Te bevestigen bij u", status:"niet bevestigd", flag:"unconfirmed" },
+    { k:"Talen", v:"Nederlands, Frans en Engels op één domein", bron:"Website en zoekdata", status:"bevestigd" }
+  ],
+  profiel_note:"Wat wij hier als intake presenteren, moet uit de intake komen. Drie regels hierboven staan gemarkeerd omdat ze dat vandaag niet doen. Wij vullen zulke velden niet aan met wat de website suggereert; wij stellen de vraag.",
+
+  /* ---------- totaalscore ---------- */
+  totaal:{
+    score:6.3, gemeten:6, totaal:9,
+    wat:"De totaalscore is het gewogen gemiddelde van de zes dimensies die vandaag een meetbare bron hebben. De drie dimensies zonder bron tellen niet mee en worden niet als nul geteld.",
+    wat_niet:"Het is geen examencijfer en geen vergelijking met andere bedrijven. Een 6,3 met een 2,0 en een 9,0 erin betekent iets anders dan zes keer een 6. De cijfers per dimensie hieronder zijn wat u stuurt, niet dit ene getal."
   },
 
-  overall:{ score:5.7, label:"Sterke basis én werkende meting — de groei zit in de commerciële pagina's",
-    tip:"Een richtcijfer over de onderdelen die we vandaag kunnen meten — het geeft de startpositie en het relatieve belang aan, geen examencijfer. Dit is een <b>nulmeting</b>: vanaf hier meten we de vooruitgang. Het echte verhaal staat per hoofdstuk." },
-
-  dimensions:[
-    { name:"Context & markt",       sub:"Wie u bent en tegen wie u het opneemt", score:7.5, status:"strong" },
-    { name:"Herkenbaarheid online", sub:"Snapt Google waar u voor staat?",       score:4.5, status:"attention" },
-    { name:"Techniek",              sub:"Vindbaar, leesbaar, snel genoeg",       score:6.0, status:"ok" },
-    { name:"Pagina's & content",    sub:"De juiste pagina's, goed geschreven",   score:5.0, status:"attention" },
-    { name:"Vindbaarheid",          sub:"Gevonden worden waar mensen zoeken",    score:5.5, status:"ok" },
-    { name:"Meten & bijsturen",     sub:"Weten wat werkt, in euro's",            score:7.0, status:"strong" },
-    { name:"Betaald verkeer",       sub:"Google Ads",                            state:"reconnect", note:"Koppeling verlopen — opnieuw autoriseren" },
-    { name:"Klantbehoud & e-mail",  sub:"Reviews, nieuwsbrief, terugkerende klanten", state:"coming_soon", note:"Binnenkort" },
-    { name:"Sociale kanalen",       sub:"Facebook, Instagram",                   state:"minor", note:"Brengt nu wat verkeer, geen actieve strategie" }
+  /* ---------- de negen dimensies (tabel) ---------- */
+  dimensies:[
+    { name:"Context en markt", sub:"Weten wij genoeg om op te sturen", score:8.6, status:"strong",
+      basis:"6 van 7 profielvelden ingevuld; doelstelling ontbreekt", hfst:4 },
+    { name:"Herkenbaarheid", sub:"Begrijpen zoekmachines en AI waar u voor staat", score:4.1, status:"attention",
+      basis:"declaratie 2,3 · attributen 5,4 · relaties 4,5 · context 4,0", hfst:5 },
+    { name:"Techniek", sub:"Worden uw pagina's gevonden en gelezen", score:8.2, status:"strong",
+      basis:"indexatie 959 URL's; meetkoppeling compleet; geen crawl uitgevoerd", hfst:6 },
+    { name:"Content en pagina's", sub:"Eén vraag, één pagina", score:2.0, status:"attention",
+      basis:"52 van 1.580 onderwerpen hebben zoekwoorddekking (3,3%)", hfst:7 },
+    { name:"Vindbaarheid", sub:"Wordt u gevonden waar uw klanten zoeken", score:9.0, status:"strong",
+      basis:"bereik gemeten, niet doorklik: 159.802 vertoningen, 0,97% doorklik", hfst:8 },
+    { name:"Meten en bijsturen", sub:"Weten wat werkt, in aanvragen en contracten", score:6.0, status:"ok",
+      basis:"analytics en Search Console gekoppeld; 0 doelen vastgelegd", hfst:9 },
+    { name:"Betaald verkeer", sub:"Advertenties", state:"reconnect",
+      basis:"koppeling niet uitleesbaar, opnieuw autoriseren", hfst:10 },
+    { name:"Sociale kanalen", sub:"Bereik buiten de zoekmachine", state:"nosource",
+      basis:"geen bron gekoppeld", hfst:10 },
+    { name:"Klantbehoud en e-mail", sub:"Herhaalaankoop en retentie", state:"soon",
+      basis:"nog niet in het platform beschikbaar", hfst:10 }
   ],
 
-  strengths:[
-    { t:"De meting wérkt — en dat is zeldzaam", d:"GA4 registreert 55 conversies over 90 dagen, met server-side tracking. U kunt resultaat hard maken in aanvragen en omzet, niet alleen in bezoekers. Zelfs ChatGPT stuurt al klanten die converteren." },
-    { t:"Sterk merk en enorme vraag", d:"164.579 vertoningen in Google in 90 dagen, en u staat stevig op uw eigen naam (‘ide coffee’ positie 2,2 — 169 kliks). Het bereik is er; het moet nog omgezet worden op de koopgerichte zoekopdrachten." }
-  ],
-  attention:[
-    { t:"De grote koopvragen staan op pagina 2", d:"Gemiddelde positie 20 en 0,98% doorklik. ‘koffiemachine met bonen’ (12.100 zoekopdrachten/mnd) staat op positie 25; ‘jura koffiemachine’ (5.400/mnd) rankt via de homepage — niet via een eigen pagina die de koop afmaakt." },
-    { t:"Sterke pagina's blijven op pagina 2 steken", d:"Uw dienstpagina's bestaan én presteren — ‘koffiemachine huren voor bedrijven’ krijgt 11.626 vertoningen, de FR-pagina ‘machine à café professionnelle’ zelfs 19.402 — maar ze staan op positie 13–16. De pagina's zijn er; ze missen de interne kracht en aanscherping om pagina 1 te halen." },
-    { t:"De Franse vraag blijft liggen", d:"FR-pagina’s halen enorme vertoningen (‘machine-cafe-professionnelle’: 19.402) maar amper kliks op positie 16. Meertaligheid (NL/FR/EN) is voor u een echte hefboom die nog niet benut wordt." }
-  ],
-  opportunities:[
-    { t:"Til uw bestaande dienstpagina’s van pagina 2 naar pagina 1", why:"‘koffiemachine huren voor bedrijven’ en ‘machine à café professionnelle’ bestaan al en krijgen samen tienduizenden vertoningen, maar staan op positie 13–16. Dit is aanscherpen + interne links, geen nieuwbouw.",
-      value:"~€3.000–5.000 / maand", value_note:"advertentiewaarde — deze B2B-termen hebben hoge klikprijzen (‘machine à café pour entreprise’ €25, ‘koffiemachines bedrijven’ €19). U meet al conversies, dus dit rekenen we door naar echte aanvragen." },
-    { t:"Verzilver ‘koffiemachine met bonen’ (12.100/mnd, positie 25)", why:"Enorme volumeterm; de pagina bestaat maar staat te diep. Aanscherpen + interne links tilt dit richting pagina 1.",
-      value:"Grote onbenutte vraag", value_note:"12.100 zoekopdrachten/mnd; nu vrijwel geen kliks omdat u te diep staat." },
-    { t:"Hang een euro-waarde aan elke aanvraag", why:"U telt al conversies — de volgende stap is er een waarde aan koppelen (huurcontract, machineverkoop), zodat elk advies afrekenbaar wordt in omzet.",
-      value:"Alles wordt ROI", value_note:"De meetbasis staat al; alleen de waarde per conversietype ontbreekt nog." }
+  /* ---------- incongruenties ---------- */
+  incongruenties:[
+    { bewering:"Doel is offerteaanvragen en webshopbestellingen",
+      herkomst:"Vorig rapport, afgeleid uit de website",
+      data:"In de gekoppelde analytics-property staan 56 formulieraanvragen en geen bestelgegevens. De webshop draait op een eigen subdomein en wordt in deze property niet gemeten.",
+      actie:"Webshopbestellingen zijn geen acquisitiedoel maar herhaalaankoop. Doelstelling vastleggen op nieuwe klanten." },
+    { bewering:"Regio Antwerpen",
+      herkomst:"Profiel in het platform",
+      data:"1.210 van de 1.495 kliks komen uit België, 135 uit Nederland, 110 uit Frankrijk en 15 uit Luxemburg. Verkoop loopt via zes accountmanagers die samen heel België bedienen.",
+      actie:"Werkgebied corrigeren naar heel België, met grensverkeer als aparte vraag." },
+    { bewering:"Doelgroep horeca",
+      herkomst:"Website, niet de intake",
+      data:"De zoekopdrachten die kliks opleveren gaan over bedrijven en kantoren: koffiemachine voor bedrijven, koffiemachines bedrijven, machine à café pour entreprise. Horeca komt daarin niet naar boven.",
+      actie:"Bij u bevestigen. Is horeca een doelgroep, dan wordt de vraag ernaar vandaag niet bediend." },
+    { bewering:"Bedrijfstype: lokale dienstverlener",
+      herkomst:"Classificatie door het platform",
+      data:"Het meetplan stelt daardoor KPI's voor als routebeschrijvingen en weergaven van het bedrijfsprofiel. Uw verkoop is nationaal en B2B, met een verkoopcyclus over meerdere contactmomenten.",
+      actie:"Bedrijfstype corrigeren, zodat het meetplan de juiste KPI's kiest." },
+    { bewering:"35 euro omzet per verkoop, 5 aanvragen per verkoop",
+      herkomst:"Intake, economische parameters",
+      data:"Daaruit rekent het platform een maximale kost per aanvraag van 101 euro. Dat is een webshopbedrag, geen huurcontract met looptijd en service.",
+      actie:"Waarde per aanbod vastleggen: huur, verkoop, abonnement, webshop." },
+    { bewering:"Meertaligheid werkt gelijk voor NL en FR",
+      herkomst:"Aanname in eerdere rapportage",
+      data:"De Franstalige pagina's halen veel vertoningen (19.217 op één pagina) maar weinig kliks. Van de gemeten contactacties staan er 40 op Nederlandstalige en 12 op Franstalige pagina's.",
+      actie:"Franstalige vraag apart behandelen: de vraag is er, de omzetting niet." }
   ],
 
-  approach:[
-    { n:"1", h:"Techniek als fundament", p:"Google moet uw pagina's (in drie talen) vinden, lezen en redelijk snel tonen. De site wordt goed geïndexeerd — de basis staat. Geen jacht op een perfecte technische score." },
-    { n:"2", h:"Pagina's & content", p:"Dit is waar de winst zit: echte verkooppagina's per B2B-service en per taal, met interne links die er autoriteit heen sturen. Zo wordt u dé koffiepartner, niet één van de vindplaatsen." },
-    { n:"3", h:"Autoriteit opbouwen", p:"Reviews, vermeldingen en vertrouwen van buitenaf. Werkt pas echt als 1 en 2 staan." }
+  /* ---------- hoofdstukken per dimensie ---------- */
+  hoofdstukken:[
+    { no:4, id:"h4", name:"Context en markt", dim:"Dimensie 1", score:8.6, status:"strong",
+      lead:"Deze dimensie meet of wij genoeg over uw bedrijf weten om de rest van het rapport op de juiste meetlat te leggen. Een B2B-verhuurder wordt anders beoordeeld dan een webshop.",
+      meting:[
+        { k:"Ingevulde profielvelden", sub:"bedrijfsnaam, type, diensten, propositie, werkgebied, concurrenten", v:"6 van 7", bron:"Platform, 16-08-2026" },
+        { k:"Doelstelling vastgelegd", sub:"waar u dit jaar op afgerekend wilt worden", v:"ontbreekt", bron:"Platform, 16-08-2026" },
+        { k:"Doelen met streefwaarde", sub:"nulmeting, huidige stand, doel", v:"0", bron:"Platform, 16-08-2026" }
+      ],
+      zegt:"Het profiel is compleet genoeg om op te sturen, op één punt na: het belangrijkste veld is leeg. Daarom staat het cijfer hoog en is het advies toch dringend.",
+      zegt_niet:"Dit cijfer zegt niets over de juistheid van de ingevulde velden. Hoofdstuk 3 laat zien dat drie velden niet kloppen of niet bevestigd zijn.",
+      advies:[
+        { t:"Leg de doelstelling vast", d:"Aantal nieuwe klanten per maand en de waarde van een klant. Zonder dat blijft elk advies een verkeersadvies." },
+        { t:"Bevestig de gemarkeerde profielvelden", d:"Werkgebied, doelgroep en de rol van de webshop. Wij vullen die niet in op basis van uw website." }
+      ],
+      platform:"Het profiel en de doelen beheert u in het platform." },
+
+    { no:5, id:"h5", name:"Herkenbaarheid voor zoekmachines en AI", dim:"Dimensie 2", score:4.1, status:"attention",
+      lead:"Deze dimensie vergelijkt vier onafhankelijke bronnen van de vraag waar deze website over gaat: wat u zelf verklaart, hoe u intern verbindt, waarmee het web u associeert en waarvoor zoekmachines u feitelijk tonen. Het cijfer is het laagste van die vier lagen, niet het gemiddelde gevoel.",
+      meting:[
+        { k:"Wat de site zelf verklaart", sub:"gestructureerde gegevens, over-ons, eenduidige bedrijfsvermelding", v:"2,3 / 10", bron:"Platform, 16-08-2026" },
+        { k:"Wat de site aan eigenschappen toont", sub:"diensten, merken, service, werkgebied", v:"5,4 / 10", bron:"Platform, 16-08-2026" },
+        { k:"Hoe pagina's onderling verbinden", sub:"interne links tussen onderwerpen en pagina's", v:"4,5 / 10", bron:"Platform, 16-08-2026" },
+        { k:"Waarvoor u feitelijk getoond wordt", sub:"de zoekopdrachten waarop u verschijnt", v:"4,0 / 10", bron:"Platform, 16-08-2026" },
+        { k:"Onderwerpen na relevantiefilter", sub:"van alle onderwerpen die op en rond de site gevonden zijn", v:"121 van 1.580", bron:"Platform, 16-08-2026" },
+        { k:"Relevante onderwerpen met een pagina", sub:"onderwerp gekoppeld aan een bestaande URL", v:"7 van 121", bron:"Platform, 16-08-2026" }
+      ],
+      zegt:"De zwakste laag is wat u expliciet verklaart. Zoekmachines en AI-assistenten moeten uw betekenis vandaag afleiden uit losse pagina's. Dat is precies waarom u sterk staat op uw eigen naam en zwak op koopvragen.",
+      zegt_niet:"Dit cijfer bevat geen oordeel over uw autoriteit buiten de site: er is nog geen bron voor verwijzingen en vermeldingen gekoppeld. Dat verlaagt onze zekerheid, niet uw score. Ook de bewering uit het vorige rapport dat koffiemachines leasen het enige onderwerp zonder pagina is, kunnen wij niet hard maken: het platform meldt zelf dat die koppeling nog niet betrouwbaar gelegd is.",
+      advies:[
+        { t:"Verklaar uzelf expliciet", d:"Gestructureerde gegevens voor organisatie, diensten en producten, en een consistente bedrijfsvermelding (naam, adres, telefoon) op elke taalversie." },
+        { t:"Koppel de relevante onderwerpen aan pagina's", d:"Vandaag hebben 7 van de 121 relevante onderwerpen een pagina. Elk onderwerp zonder bestemming is vraag die u niet kunt beantwoorden." },
+        { t:"Laat de leasing-vraag verifiëren", d:"Wij controleren eerst of er werkelijk geen bestemming voor bestaat voordat wij daar een pagina voor aanraden." }
+      ],
+      platform:"De onderwerpen, hun relevantiescore en hun bestemming staan in het platform." },
+
+    { no:6, id:"h6", name:"Techniek", dim:"Dimensie 3", score:8.2, status:"strong",
+      lead:"Deze dimensie meet vandaag of uw pagina's gevonden en geïndexeerd worden en of onze meetkoppeling compleet is. Het is nadrukkelijk nog geen volledige technische doorlichting.",
+      meting:[
+        { k:"Pagina's die posities dragen", sub:"URL's met minstens één positie in de zoekresultaten", v:"959", bron:"Platform, 16-08-2026" },
+        { k:"Zoekwoorden met een positie", sub:"breedte van de indexatie", v:"46.859", bron:"Platform, 16-08-2026" },
+        { k:"Actualiteit van de zoekdata", sub:"hoe vers de gekoppelde meting is", v:"5 dagen", bron:"Platform, 16-08-2026" },
+        { k:"Configuratie merk en concurrenten", sub:"nodig om merk- en niet-merkvraag te scheiden", v:"compleet", bron:"Platform, 16-08-2026" }
+      ],
+      zegt:"Uw site wordt breed geïndexeerd en de meting staat. Er is geen technische herbouw nodig om vooruit te komen.",
+      zegt_niet:"Dit cijfer zegt niets over laadtijd, statuscodes, doorverwijzingen, canonieke URL's of mobiele weergave. Die zijn niet gemeten. Wij noemen dat liever dan er een cijfer over te verzinnen. De volledige crawl staat op de planning.",
+      bewijs:[
+        { t:"De homepage rankt op een URL met een trackingparameter", d:"De variant met ?utm_source=GMB haalt 20.932 vertoningen en 167 kliks, meer bereik dan de gewone Nederlandstalige homepage. Een parameter-URL hoort niet de rankende versie te zijn. Dit is een canonieke kwestie die wij in de crawl nakijken." },
+        { t:"Handleidingen in pdf ranken in plaats van productpagina's", d:"Voor jura x4 en enkele reinigingsinstructies staat een pdf in de resultaten. Een pdf verkoopt niets en verwijst nergens heen." }
+      ],
+      advies:[
+        { t:"Plan de volledige technische crawl", d:"Statuscodes, doorverwijzingen, canonieke URL's, laadtijd en mobiele weergave, in drie talen." },
+        { t:"Los de parameter-URL van de homepage op", d:"Zorg dat de schone homepage de rankende versie is en dat het bereik daar samenkomt." },
+        { t:"Vervang rankende pdf's door pagina's", d:"Wie een handleiding zoekt, is vaak een bestaande of toekomstige klant. Geef die een pagina met een vervolgstap." }
+      ],
+      platform:"De pagina-inventaris en de indexatiestatus staan in het platform." },
+
+    { no:7, id:"h7", name:"Content en pagina's", dim:"Dimensie 4", score:2.0, status:"attention",
+      lead:"Deze dimensie meet of wat de site behandelt aansluit op waar uw klanten op zoeken, en of elke commerciële vraag een pagina heeft die die vraag afmaakt. Dit is het laagste cijfer in het rapport.",
+      meting:[
+        { k:"Onderwerpen met zoekwoorddekking", sub:"onderwerp op de site dat aan werkelijke zoekvraag gekoppeld is", v:"52 van 1.580", bron:"Platform, 16-08-2026" },
+        { k:"Gemiddelde leesbaarheid voor AI-antwoorden", sub:"structuur en directe beantwoording per pagina", v:"0,2 / 10", bron:"Platform, 16-08-2026" },
+        { k:"Pagina's in beheer", sub:"live pagina's die wij volgen", v:"159", bron:"Platform, 16-08-2026" }
+      ],
+      zegt:"De verbinding tussen uw pagina's en de vraag in de markt is vandaag voor ongeveer drie op de honderd onderwerpen gelegd. Daardoor beantwoordt uw site veel vragen half en weinig vragen volledig.",
+      zegt_niet:"Dit is geen oordeel over de schrijfkwaliteit van uw teksten, en het cijfer meet gedeeltelijk hoever wij zelf met die koppeling zijn. Wat het wel hard maakt, staat hieronder: dat zijn waarnemingen uit uw eigen zoekdata.",
+      bewijs:[
+        { t:"De belangrijkste commerciële pagina wordt getoond maar niet aangeklikt", d:"koffiemachine voor bedrijven: 28.318 vertoningen, 13 kliks, 0,05 procent doorklik, gemiddelde positie 29,6. De vraag is bewezen aanwezig, de pagina wint hem niet." },
+        { t:"Twee URL's vechten om dezelfde vraag", d:"koffiemachine met bonen (12.100 zoekopdrachten per maand) rankt via de homepage op positie 24,8, terwijl de eigen pagina koffiemachines-met-bonen op 13,2 staat voor de meervoudsvariant." },
+        { t:"De Franstalige kernpagina heeft dezelfde ziekte", d:"machine-cafe-professionnelle: 19.217 vertoningen, 44 kliks, 0,23 procent doorklik, positie 16,5." },
+        { t:"Wat wel werkt, laat zien dat het kan", d:"occasiemachines: 1.905 vertoningen, 104 kliks, 5,46 procent doorklik, positie 8,7. Dezelfde formule op de kernpagina's is de snelste winst." }
+      ],
+      advies:[
+        { t:"Wijs per commerciële vraag één pagina aan", d:"Begin bij koffiemachine voor bedrijven en machine à café professionnelle. Titel, inleiding en offerteknop op koperstaal, en de vraag volledig afmaken: prijsopbouw, service, looptijd, levering." },
+        { t:"Ontlast de homepage", d:"Waar de homepage nu rankt voor productvragen, moet de productpagina staan. Verbind die pagina's intern vanuit de kernpagina's." },
+        { t:"Gebruik de occasie-pagina als model", d:"Die pagina haalt vijf keer de doorklik van de kernpagina's. Kopieer wat daar werkt naar de pagina's met het meeste bereik." }
+      ],
+      platform:"Per pagina staan de onderwerpen, de zoekwoorden en de gaten in het platform." },
+
+    { no:8, id:"h8", name:"Vindbaarheid", dim:"Dimensie 5", score:9.0, status:"strong",
+      lead:"Deze dimensie meet bereik: hoe vaak en waarvoor u getoond wordt. Het hoge cijfer verdient uitleg, want het staat naast de laagste doorklik in dit rapport.",
+      meting:[
+        { k:"Vertoningen", sub:"hoe vaak u getoond bent", v:"159.802", bron:"Search Console, 15-05 t/m 12-08-2026" },
+        { k:"Kliks", sub:"hoe vaak daarop geklikt is", v:"1.544", bron:"Search Console, 15-05 t/m 12-08-2026" },
+        { k:"Doorklik", sub:"kliks gedeeld door vertoningen", v:"0,97 %", bron:"Search Console, 15-05 t/m 12-08-2026" },
+        { k:"Gemiddelde positie", sub:"over alle zoekopdrachten", v:"19,7", bron:"Search Console, 15-05 t/m 12-08-2026" },
+        { k:"Kliks uit België", sub:"van 1.495 kliks met een land", v:"1.210", bron:"Search Console, 15-05 t/m 12-08-2026" }
+      ],
+      zegt:"Het cijfer weegt de omvang van uw bereik en het aantal zoekopdrachten waarop u verschijnt. Op dat punt staat u sterk: de markt zoekt naar wat u verkoopt en u bent aanwezig.",
+      zegt_niet:"Het weegt de doorklik niet. Met 0,97 procent doorklik op positie 19,7 betekent een 9,0 hier zichtbaarheid, geen resultaat. Wij laten die spanning staan in plaats van er een middelmatig cijfer van te maken dat niets meer verklaart. Ook staat het merkaandeel in de snapshot op nul, terwijl zeven van uw tien best klikkende zoekopdrachten uw eigen naam zijn. Die classificatie corrigeren wij voor de volgende meting.",
+      bewijs:[
+        { t:"Uw eigen naam draagt de kliks", d:"ide coffee (162 kliks, positie 2,2), ide coffee systems (52), idee coffee (34), idecoffee (32). Dat is bestaande bekendheid, geen nieuwe vraag." },
+        { t:"De koopvragen staan net buiten bereik", d:"koffiemachine huren: 1.360 vertoningen op positie 10,1. koffiemachine voor bedrijven: 2.673 vertoningen op 17,3. machine à café pour entreprise: 290 vertoningen op 17,4, met een klikprijs van 25,19 euro in advertenties." },
+        { t:"Grensverkeer is echt", d:"135 kliks uit Nederland, 110 uit Frankrijk, 15 uit Luxemburg. Vandaag wordt daar niets mee gedaan." }
+      ],
+      advies:[
+        { t:"Stuur op posities 11 tot 20", d:"Dat is waar bereik in kliks omslaat. Elke plaats winst op die vragen levert meer op dan nieuwe zoekwoorden erbij." },
+        { t:"Meet doorklik per pagina, niet vertoningen", d:"Vertoningen groeien vanzelf mee met bereik. Doorklik zegt of de titel en de belofte kloppen met de zoekvraag." }
+      ],
+      platform:"De volledige lijst zoekopdrachten en posities per week staat in het platform." },
+
+    { no:9, id:"h9", name:"Meten en bijsturen", dim:"Dimensie 9", score:6.0, status:"ok",
+      lead:"Deze dimensie meet of u kunt zien wat werkt, en of dat in geld uit te drukken is. De basis staat, de waarde ontbreekt.",
+      meting:[
+        { k:"Analytics gekoppeld", sub:"gedrag en aanvragen meetbaar", v:"ja", bron:"Platform, 16-08-2026" },
+        { k:"Search Console gekoppeld", sub:"zoekvraag meetbaar", v:"ja", bron:"Platform, 16-08-2026" },
+        { k:"Doelen met streefwaarde", sub:"waaraan resultaat wordt afgemeten", v:"0", bron:"Platform, 16-08-2026" },
+        { k:"Aanvragen in 90 dagen", sub:"formulierinzendingen als sleutelgebeurtenis", v:"56", bron:"Analytics, 90 dagen t/m 16-08-2026" },
+        { k:"Aanvragen uit organisch Google", sub:"van de 56 aanvragen", v:"25", bron:"Analytics, 90 dagen t/m 16-08-2026" },
+        { k:"Aanvragen via AI-assistenten", sub:"bezoekers via ChatGPT", v:"2", bron:"Analytics, 90 dagen t/m 16-08-2026" }
+      ],
+      zegt:"U meet verder dan de meeste bedrijven: aanvragen worden geregistreerd, ook die uit AI-assistenten. Daardoor is dit rapport te toetsen aan werkelijke aanvragen in plaats van aan bezoekcijfers.",
+      zegt_niet:"Er is geen waarde per aanvraag vastgelegd, dus rendement is vandaag niet te berekenen: niet voor organisch en niet voor advertenties. De economische parameters die wel in het platform staan (35 euro per verkoop, 5 aanvragen per verkoop) passen bij een webshoporder en niet bij een huurcontract, en zij bepalen vandaag wel de rekensom achter elk advies.",
+      advies:[
+        { t:"Zet waarde per aanvraagtype", d:"Huurcontract, machineverkoop, abonnement en webshoporder hebben een verschillende waarde en een verschillende looptijd. Zonder dat onderscheid rekent het systeem alles gelijk." },
+        { t:"Herstel de advertentiekoppeling", d:"Zolang die niet uitleesbaar is, staat betaald verkeer in dit rapport zonder cijfer." },
+        { t:"Splits aanvragen per taal en per aanbod", d:"Vandaag staan 40 contactacties op Nederlandstalige en 12 op Franstalige pagina's. Dat verschil hoort in uw sturing." }
+      ],
+      platform:"De meetopzet, de doelen en de waarde per aanvraag beheert u in het platform." }
   ],
+
+  /* ---------- pagina-tabel ---------- */
+  paginas:{
+    intro:"De tien pagina's met het meeste bereik in de zoekmachine, met wat dat bereik oplevert. Dit is de tabel waaruit de adviezen in hoofdstuk 7 volgen.",
+    bron:"Search Console, 15 mei tot en met 12 augustus 2026",
+    rows:[
+      { u:"/nl/koffiemachine-voor-bedrijven", v:"28.318", k:"13", c:"0,05 %", p:"29,6", r:"Kernpagina. Bewezen vraag, wint hem niet." , flag:"" },
+      { u:"/?utm_source=GMB", v:"20.932", k:"167", c:"0,80 %", p:"10,1", r:"Homepage met trackingparameter. Hoort niet de rankende URL te zijn.", flag:"" },
+      { u:"/fr/machine-cafe-professionnelle", v:"19.217", k:"44", c:"0,23 %", p:"16,5", r:"Franstalige kernpagina. Vraag is er, omzetting niet.", flag:"" },
+      { u:"/nl/koffiemachine-huren", v:"10.969", k:"57", c:"0,52 %", p:"12,6", r:"Staat net buiten de eerste tien.", flag:"" },
+      { u:"/nl", v:"5.111", k:"216", c:"4,23 %", p:"20,5", r:"Homepage. Vangt merkvraag, en te veel productvragen.", flag:"" },
+      { u:"/en/rent-a-coffee-machine", v:"4.503", k:"30", c:"0,67 %", p:"41,5", r:"Engelstalig, diep weggezakt.", flag:"" },
+      { u:"/nl/nieuws/5-tips-om-koffiegruis-te-hergebruiken", v:"4.372", k:"29", c:"0,66 %", p:"8,0", r:"Trekt bezoek, verkoopt niets. Wel bruikbaar als instroom.", flag:"" },
+      { u:"/fr", v:"2.525", k:"104", c:"4,12 %", p:"20,9", r:"Franstalige homepage.", flag:"" },
+      { u:"/nl/vending-koffiemachines", v:"2.320", k:"18", c:"0,78 %", p:"16,6", r:"Aanbod met eigen vraag, onderbenut.", flag:"" },
+      { u:"/nl/occasiemachines", v:"1.905", k:"104", c:"5,46 %", p:"8,7", r:"Het model. Vijf keer de doorklik van de kernpagina's.", flag:"win" }
+    ]
+  },
+
+  /* ---------- kanalen zonder meting ---------- */
+  kanalen:[
+    { name:"Betaald verkeer", state:"reconnect", label:"Koppeling herstellen",
+      text:"De advertentierekening is bekend in het platform maar niet uitleesbaar. Na opnieuw autoriseren tonen wij hier kost per aanvraag en rendement op advertentiebudget, naast de organische cijfers." },
+    { name:"Sociale kanalen", state:"nosource", label:"Geen bron",
+      text:"Er is geen bron gekoppeld, dus geven wij hier geen cijfer. Wij tellen een ontbrekende meting nooit als een nul." },
+    { name:"Klantbehoud en e-mail", state:"soon", label:"In ontwikkeling",
+      text:"Reviews, nieuwsbrief en herhaalaankoop. Voor u het kanaal waar de webshop thuishoort: bestaande klanten die opnieuw bestellen." }
+  ],
+
+  /* ---------- volgorde en planning ---------- */
+  volgorde:[
+    { n:"1", h:"Techniek", p:"Uw pagina's moeten gevonden, gelezen en snel getoond kunnen worden, in drie talen. De indexatie staat. De volledige doorlichting volgt, en de parameter-URL van de homepage wordt opgelost." },
+    { n:"2", h:"Content en pagina's", p:"Hier zit de winst: één pagina per commerciële vraag, die de vraag afmaakt, met interne links die er kracht heen sturen. Dit is aanscherpen, geen nieuwe website." },
+    { n:"3", h:"Autoriteit", p:"Vermeldingen, verwijzingen en vertrouwen van buitenaf. Dit werkt pas als stap 1 en 2 staan, en wij meten het pas als er een bron voor gekoppeld is." }
+  ],
+  volgorde_note:"Binnen elke stap geldt de zwakste schakel als de vloer. Een sterke pagina achter een pdf die rankt levert niets op, en een perfecte techniek zonder pagina die de vraag afmaakt evenmin.",
   planning:[
-    { period:"Nu — eerste weken", sub:"de kern online + waarde meten", items:[
-      "Verkooppagina's live zetten voor de top B2B-termen: koffiemachine huren, voor bedrijven, machine à café entreprise",
-      "Een sterke pagina voor ‘koffiemachine met bonen’ (12.100/mnd)",
-      "Waarde per conversietype instellen (huur, verkoop, webshop) + Google Ads-koppeling herstellen" ] },
-    { period:"Maand 2–3", sub:"verbinden per taal", items:[
-      "Interne links bundelen naar de nieuwe verkooppagina's (NL/FR/EN)",
-      "De Franse vraag gericht binnenhalen (hoge vertoningen, lage positie)",
-      "Rol van de webshop t.o.v. de B2B-kern beslissen + ruis opschonen (1.459 onderwerpen als ruis)" ] },
+    { period:"Nu, eerste weken", sub:"vastleggen en repareren", items:[
+      "Doelstelling en waarde per aanvraagtype vastleggen",
+      "Profielvelden corrigeren: werkgebied, doelgroep, rol van de webshop, bedrijfstype",
+      "Advertentiekoppeling opnieuw autoriseren",
+      "Kernpagina koffiemachine voor bedrijven aanscherpen en intern verbinden" ] },
+    { period:"Maand 2 en 3", sub:"vraag omzetten", items:[
+      "Franstalige kernpagina op gelijke hoogte brengen",
+      "Bestemming per commerciële vraag: bonen, huren, vending, abonnement",
+      "Verklaring versterken: gestructureerde gegevens en eenduidige bedrijfsvermelding",
+      "Volledige technische crawl uitvoeren en opvolgen" ] },
     { period:"Maand 4 en verder", sub:"uitbouwen", items:[
-      "Autoriteit opbouwen (reviews, vermeldingen)",
-      "Occasion/refurbished en aanpalende vraag uitbreiden" ] }
+      "Autoriteit opbouwen en meetbaar maken",
+      "Occasie en refurbished uitbreiden, met de bestaande pagina als model",
+      "Grensverkeer uit Nederland en Frankrijk apart behandelen" ] }
   ],
-  planning_note:"Dit is een voorstel — aan te passen in samenspraak met uw consultant (bij een doe-het-zelf-abonnement past u het zelf aan in het platform).",
+  planning_note:"Dit is een voorstel. De volgorde en het tempo bepaalt u samen met uw consultant.",
 
-  strategic_note:{
-    title:"Eén domein, twee bedrijven? — te bespreken",
-    body:"De machineverhuur/-verkoop (B2B) en de webshop (koffiebonen, melk) trekken Google deels twee kanten op: sommige money-termen ranken via webshop-productpagina’s, andere via de B2B-site. Overweeg of de webshop de B2B-positionering versterkt of verdunt — en of beide een eigen, heldere ingang verdienen. Dit is een strategische keuze die we samen maken, geen cijfer uit de data."
-  },
-
-  entity:{ score:4.5, total:1580, kept:121, excluded:1459, grounded:0,
-    intro:"Herkenbaarheid vergelijkt vier onafhankelijke bronnen van ‘waar gaat deze website over’, en zoekt de breuken ertussen: wat u zélf verklaart, hoe u intern verbindt, waarmee het web u associeert, en waarvoor Google u feitelijk behandelt.",
-    families:[
-      { name:"Wat de site zélf verklaart", state:"scored",
-        p:"Helder B2B-verhaal (koffiemachine huren, voor bedrijven), netjes in NL/FR/EN. Maar de webshop (bonen, melk) mengt er een tweede, retail-verhaal doorheen — dat vertroebelt waar u primair voor staat." },
-      { name:"Hoe de site intern verbindt", state:"scored",
-        p:"De dienstpagina's bestaan (huren, voor bedrijven, professionele machines) en presteren, maar interne links sturen er te weinig autoriteit heen om pagina 1 te halen. Enkele losse eindjes: ‘jura x4’ rankt via een PDF-handleiding i.p.v. een productpagina, en ‘jura koffiemachine’ via de homepage." },
-      { name:"Waarmee het web u associeert", state:"unknown",
-        p:"Nog niet gemeten — er is nog geen backlink-bron gekoppeld. Dit verlaagt onze zekerheid, niet uw score. We straffen u niet voor wat we (nog) niet zien." },
-      { name:"Waarvoor Google u behandelt", state:"scored",
-        p:"Sterk op uw eigen naam; de grote B2B-koopvragen staan op pagina 2. ChatGPT verwijst al bezoekers die converteren — een teken dat uw autoriteit er is, maar op de verkeerde (merk)termen wordt ingezet." }
+  /* ---------- verantwoording ---------- */
+  verantwoording:{
+    bronnen:[
+      "Zoekvraag en posities: Search Console, sc-domain:idecoffee.be, 15 mei tot en met 12 augustus 2026.",
+      "Gedrag en aanvragen: analytics-property 359999097, de 90 dagen tot en met 16 augustus 2026. Deze periode wijkt vier dagen af van de zoekdata.",
+      "Scores per dimensie en de totaalscore: audit-snapshot van het platform, uitgelezen op 16 augustus 2026.",
+      "Zoekwoordvolume en klikprijzen: laatste verrijking van de zoekwoorddata in het platform."
     ],
-    diagnosis:"U verhuurt en verkoopt professionele koffiemachines en heeft daar goede, meertalige pagina's voor — maar de grote koopvragen blijven op pagina 2 hangen (‘koffiemachine huren voor bedrijven’ positie 13 op 11.626 vertoningen, ‘machine à café professionnelle’ positie 16 op 19.402). Van 1.580 gevonden onderwerpen zijn er maar 121 écht relevant: de rest is ruis, en de webshop (bonen/melk) mengt een tweede verhaal. De pagina's zijn er; ze missen interne kracht en focus om te winnen.",
-    treatment:"Versterk de bestaande dienstpagina's per taal, bundel er interne links naartoe en scherp de content aan; schoon de ruis op en beslis de rol van de webshop t.o.v. de B2B-kern. Zo gaat wat u verklaart, wat u intern versterkt én waarvoor Google u kent weer dezelfde kant op."
-  },
-
-  chapters:[
-    { name:"Pagina's & content", no:4, status:"attention", score:5.0, priority:"Hoog", confidence:"Hoog", confidence_note:"uit uw eigen pagina's + zoekdata",
-      finding:"De commerciële pagina's bestaan wél — koffiemachine huren, voor bedrijven, professionele machines, occasiemachines, in NL/FR/EN — en sommige presteren (occasiemachines staat op positie 9). Maar de grote koopvragen blijven op pagina 2: ‘koffiemachine huren voor bedrijven’ (11.626 vertoningen, positie 13), ‘machine à café professionnelle’ (19.402 vertoningen, positie 16), ‘koffiemachine met bonen’ (12.100/mnd, positie 25). De pagina's zijn er; ze moeten aangescherpt en intern versterkt worden om te winnen — plus enkele losse eindjes (‘jura x4’ rankt via een PDF).",
-      actions:[
-        { t:"Scherp de bestaande dienstpagina's aan (per taal)", d:"Koffiemachine huren, voor bedrijven, machine à café professionnelle — sterkere content, duidelijke offerte-/huurknop, en interne links ernaartoe om ze naar pagina 1 te tillen." },
-        { t:"Versterk ‘koffiemachine met bonen’ (12.100/mnd)", d:"De pagina bestaat maar staat op positie 25. Aanscherpen + interne links; een van uw grootste onbenutte hefbomen." },
-        { t:"Ruim de losse eindjes op", d:"Waar nu een PDF (‘jura x4’) of de homepage rankt, hoort een echte product-/merkpagina die informeert én converteert." }
-      ],
-      why_priority:"Dit raakt direct koopgerichte, hoogwaardige B2B-zoekopdrachten (klikprijzen tot €25). Conservatief ~€3.000–5.000/mnd aan advertentiewaarde — en omdat u al conversies meet, rekenen we dit door naar echte aanvragen.",
-      platform:"Alle pagina's, hun onderwerpen en de content-gaten staan in het platform." },
-
-    { name:"Meten & bijsturen", no:6, status:"strong", score:7.0, priority:"Onderhoud", confidence:"Hoog", confidence_note:"Analytics, Search Console én server-side draaien; 55 conversies gemeten",
-      finding:"Dit is een sterkte: de meetbasis wérkt. GA4, Search Console en server-side tracking staan, en er zijn 55 conversies over 90 dagen — inclusief bezoekers via ChatGPT die converteren. Wat nog mist: een euro-waarde per conversietype, en de Google Ads-koppeling is verlopen (dus betaald verkeer lezen we nu niet uit).",
-      actions:[
-        { t:"Hang een waarde aan elk conversietype", d:"Huurcontract, machineverkoop, webshop-order — dan wordt elk advies afrekenbaar op omzet i.p.v. op aantallen." },
-        { t:"Herstel de Google Ads-koppeling", d:"Opnieuw autoriseren (token verlopen) zodat we ook betaald verkeer live zien." },
-        { t:"Segmenteer conversies per taal en dienst", d:"NL/FR/EN en huur vs verkoop vs webshop — zodat u ziet welke markt en welk aanbod het meeste oplevert." }
-      ],
-      why_priority:"U bent hier verder dan de meeste bedrijven. Door waarde per conversie toe te voegen wordt elke euro inspanning terug te rekenen naar omzet — dat maakt de rest van dit plan hard.",
-      platform:"De meetopzet en doelen beheert u in het platform." }
-  ],
-
-  find:{ impressions:164579, clicks:1607, ctr:0.98, position:20.1,
-    buckets:[ {k:"Top 3", n:0, c:"#2f7d34"}, {k:"Pos 4–10", n:14, c:"#6BB869"}, {k:"Pos 11–20", n:15, c:"#B8860B"}, {k:"21+", n:1, c:"#b22828"} ],
-    note:"Van uw belangrijkste commerciële zoekwoorden staat niets in de top 3 — het gros zit net buiten bereik op pagina 1-onder en pagina 2. Daar wordt nauwelijks geklikt.",
-    branded:"Op merknaam (‘ide coffee’) staat u sterk (positie 2, 169 kliks). De uitdaging zit in de niet-merk, koopgerichte B2B-zoekopdrachten — in drie talen." },
-
-  channels:[
-    { name:"Betaald verkeer (Google Ads)", state:"reconnect", text:"De koppeling is verlopen — even opnieuw autoriseren. Daarna tonen we hier live wat advertenties opleveren (kost per aanvraag, rendement)." },
-    { name:"Sociale kanalen", state:"minor", text:"Facebook en Instagram brengen nu wat verkeer, maar er is geen actieve strategie. Kan later aangezet worden." },
-    { name:"Klantbehoud & e-mail", state:"coming_soon", text:"Binnenkort: reviews, nieuwsbrief en terugkerende klanten. Voor een B2B-koffiepartner vooral sterk voor retentie en herhaalorders." }
-  ]
+    grenzen:[
+      "Techniek is beoordeeld op indexatie en op de volledigheid van de meetkoppeling. Laadtijd, statuscodes, doorverwijzingen en canonieke URL's zijn niet gemeten.",
+      "Er is geen bron voor verwijzingen en vermeldingen van buitenaf gekoppeld. Autoriteit is daarom niet beoordeeld en telt niet mee in de totaalscore.",
+      "Betaald verkeer, sociale kanalen en klantbehoud hebben geen bron en krijgen geen cijfer.",
+      "De koppeling tussen onderwerpen en pagina's is nog niet volledig gelegd. Uitspraken over onderwerpen zonder bestemming zijn daarom aangemerkt als te verifiëren.",
+      "Er is geen waarde per aanvraag vastgelegd. Dit rapport bevat daarom geen bedragen aan gemiste omzet."
+    ]
+  }
 };
 
-/* ===== RENDERER ===== */
+/* =========================================================================
+   RENDERER. Weigert een score te tonen zonder meting en advies.
+   ========================================================================= */
 const $=(h)=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
 const deck=document.getElementById('deck'); const add=(h)=>deck.appendChild($(h));
 const esc=(s)=>String(s==null?"":s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const num=(v)=>v==null?"—":Number(v).toFixed(1);
-const nf=(n)=>n.toLocaleString('nl-BE');
+const num=(v)=>v==null?"n.b.":Number(v).toFixed(1).replace('.',',');
 const barColor=(s)=>s>=7?"var(--green)":s>=5?"var(--amber)":"var(--red)";
-const tagLabel={strong:"Sterk",ok:"Redelijk",attention:"Aandacht",reconnect:"Koppeling herstellen",coming_soon:"Binnenkort",minor:"Beperkt"};
+const stateTag={reconnect:["na","Koppeling herstellen"],nosource:["na","Geen bron"],soon:["soon","In ontwikkeling"]};
+const statusTag={strong:"Sterk",ok:"Redelijk",attention:"Aandacht"};
 
 /* cover */
-const s=AUDIT.site;
 add(`
 <section class="page cover">
   <div class="sliver"></div>
@@ -320,198 +531,220 @@ add(`
   </svg>
   <div class="in">
     <div class="wm">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></div>
-    <div class="kicker" style="margin-top:40px;color:var(--green)">Website-audit · ${esc(AUDIT.kind)}</div>
-    <div class="url">${esc(s.url)}</div>
-    <div class="company">${esc(s.company)}</div>
-    <div class="meta">Opgemaakt op ${esc(AUDIT.date)}</div>
+    <div class="kicker" style="margin-top:40px;color:var(--green)">Website-audit</div>
+    <div class="url">${esc(DATA.site.url)}</div>
+    <div class="company">${esc(DATA.site.company)}</div>
+    <div class="meta">Opgemaakt op <b>${esc(DATA.opgemaakt)}</b><br>Meetperiode <b>${esc(DATA.periode)}</b></div>
+    <p class="covernote">${esc(DATA.meting_nr)}</p>
+    <p class="covernote">${esc(DATA.periode_afwijking)}</p>
   </div>
 </section>`);
 
-/* toc */
-const chapList=[
-  ["1","Samenvatting","Uw situatie, de kansen en de aanpak"],
-  ["2","Herkenbaarheid online","Snapt Google waar u voor staat?"],
-  ["3","Pagina's & content","De juiste pagina's, goed geschreven"],
-  ["4","Vindbaarheid","Gevonden worden waar mensen zoeken"],
-  ["5","Meten & bijsturen","Weten wat werkt, in euro's"],
-  ["6","Kanalen in ontwikkeling","Wat er nog aankomt"]
-];
+/* inhoud */
 add(`
 <section class="page">
   <div class="kicker">Inhoud</div><h2>Wat u in dit rapport vindt</h2>
-  <ol class="toc">${chapList.map(([n,t,d])=>`<li><span class="no">${n}</span><span class="tt">${esc(t)}</span><span class="ds">${esc(d)}</span></li>`).join("")}</ol>
+  <p class="lead">Dit rapport beantwoordt vier vragen: weten wij genoeg over uw bedrijf, begrijpen zoekmachines en AI-assistenten waar u voor staat, wordt u gevonden waar uw klanten zoeken, en levert dat aanvragen en klanten op.</p>
+  <ol class="toc">${DATA.inhoud.map(([n,t,d])=>`<li><span class="no">${n}</span><span class="tt">${esc(t)}</span><span class="ds">${esc(d)}</span></li>`).join("")}</ol>
   <div class="platlink" style="margin-top:20px">
     <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg>
-    <div>De detaildata — elke pagina, elk zoekwoord, elke positie per week — staat volledig in het platform. Dit rapport vat samen en wijst de weg. <a href="${esc(AUDIT.platform_url)}">Open het platform →</a></div>
+    <div>${esc(DATA.platform_note)} <a href="${esc(DATA.platform_url)}">Open het platform</a></div>
+  </div>
+  <div class="note open" style="margin-top:16px">
+    <b>Wat nog in ontwikkeling is.</b>
+    <ul style="margin:.5rem 0 0;padding-left:20px">${DATA.in_ontwikkeling.map(x=>`<li style="margin:4px 0">${esc(x)}</li>`).join("")}</ul>
   </div>
 </section>`);
 
 /* samenvatting */
-const c=AUDIT.context, ov=AUDIT.overall;
-const ctxCell=(k,o)=>`<div class="cell"><div class="k">${k}</div><div class="v">${esc(o.v)}${o.status?` <span class="badge">${esc(o.status)}</span>`:''}</div><div class="src">bron: ${esc(o.src)}</div></div>`;
-let bars=AUDIT.dimensions.map(d=>{
-  if(d.state){
-    const tg={reconnect:"reconnect",coming_soon:"coming_soon",minor:"minor"}[d.state];
-    return `<div class="sbar"><div class="nm">${esc(d.name)}<small>${esc(d.sub)}</small></div>
-      <div class="track dim"></div>
-      <div class="rt"><span class="tag ${tg}" style="font-size:.68rem">${tagLabel[d.state]}</span></div></div>`;
-  }
-  return `<div class="sbar"><div class="nm">${esc(d.name)}<small>${esc(d.sub)}</small></div>
-    <div class="track"><i style="width:${d.score*10}%;background:${barColor(d.score)}"></i></div>
-    <div class="rt"><b>${num(d.score)}</b><small>/10</small> · <span class="tag ${d.status}">${tagLabel[d.status]}</span></div></div>`;
-}).join("");
-
 add(`
 <section class="page">
-  <div class="kicker">Samenvatting</div>
-  <h2>${esc(s.company)} — waar u staat, en de snelste weg vooruit</h2>
-  <div class="ctx">
-    ${ctxCell("Type bedrijf",c.type)}
-    ${ctxCell("Doel / hoe klanten aanvragen",c.goal)}
-    ${ctxCell("Regio",c.region)}
-    ${ctxCell("Voor wie",c.audience)}
-  </div>
-  <p class="small" style="margin-top:8px">${esc(c.note)}</p>
-
-  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:22px 0 4px">
-    <div class="overall" tabindex="0"><span class="lbl">Algemene indicatie</span><span class="pill">${num(ov.score)}/10</span><span class="tip">${ov.tip}</span></div>
-    <div style="font-family:var(--font-head);font-weight:700;color:#3c3c40">${esc(ov.label)}</div>
-  </div>
-
-  <h3 style="margin-top:22px">De onderdelen in één oogopslag</h3>
-  <div style="margin-top:6px">${bars}</div>
-
-  <div class="cols" style="margin-top:26px">
-    <div><div class="kicker" style="color:var(--green)">Wat sterk is</div>
-      <ul class="stack win">${AUDIT.strengths.map(x=>`<li><div class="t">${esc(x.t)}</div><div class="d">${esc(x.d)}</div></li>`).join("")}</ul></div>
-    <div><div class="kicker" style="color:var(--amber)">Wat aandacht vraagt</div>
-      <ul class="stack watch">${AUDIT.attention.map(x=>`<li><div class="t">${esc(x.t)}</div><div class="d">${esc(x.d)}</div></li>`).join("")}</ul></div>
-  </div>
-
-  <div class="kicker" style="margin-top:24px">De grootste kansen</div>
-  <ul class="stack opp">${AUDIT.opportunities.map(o=>`<li><div class="t">${esc(o.t)}</div><div class="d">${esc(o.why)}</div>
-    <span class="value">${esc(o.value)} <small>— ${esc(o.value_note)}</small></span></li>`).join("")}</ul>
-
-  <div style="margin-top:24px;border:1px dashed var(--purple);border-radius:12px;background:var(--purple-tint);padding:16px 18px">
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-      <span class="kicker" style="margin:0;color:var(--purple)">Strategische duiding</span>
-      <span class="tag" style="background:#fff;color:var(--purple);border:1px solid var(--line);font-size:.66rem">door uw consultant</span>
-    </div>
-    <div style="font-family:var(--font-head);font-weight:700;margin-top:8px">${esc(AUDIT.strategic_note.title)}</div>
-    <p style="margin:.4rem 0 0;font-size:.94rem;color:#3c3c40">${esc(AUDIT.strategic_note.body)}</p>
-    <p class="small" style="margin-top:8px">De cijfers in dit rapport komen rechtstreeks uit uw data. De strategische keuzes hierboven zijn menselijke duiding — die bepalen en verfijnen we samen.</p>
-  </div>
-</section>`);
-
-/* aanpak & planning */
-add(`
-<section class="page">
-  <div class="kicker">De aanpak</div>
-  <h2>Zo pakken we het aan — altijd in deze volgorde</h2>
-  <p class="lead">Een website verbeteren is geen willekeurige lijst. Eerst het fundament, dan de inhoud, dan de autoriteit. Elke laag bouwt op de vorige.</p>
-  <div class="layers">${AUDIT.approach.map(a=>`<div class="layer"><div class="n">${esc(a.n)}</div><h4>${esc(a.h)}</h4><p>${esc(a.p)}</p></div>`).join("")}</div>
-  <h3 style="margin-top:28px">Voorgestelde planning</h3>
-  <div class="plan">${AUDIT.planning.map(p=>`<div class="col"><div class="hd">${esc(p.period)}<small>${esc(p.sub)}</small></div><ul>${p.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
-  <div class="editnote"><b>Samen in te vullen.</b> ${esc(AUDIT.planning_note)}</div>
-</section>`);
-
-/* HERKENBAARHEID + donut viz */
-const e=AUDIT.entity;
-const R=52, CIRC=2*Math.PI*R, keptFrac=e.kept/e.total, exclFrac=e.excluded/e.total;
-add(`
-<section class="page">
-  <div class="chead"><div><div class="no">Hoofdstuk 2</div><h2>Herkenbaarheid online</h2></div>
-    <span class="tag ${e.score>=5?'ok':'attention'}" style="font-size:.85rem;padding:5px 13px">Aandacht · ${num(e.score)}/10</span></div>
-  <p class="lead">${esc(e.intro)}</p>
-  <div class="viz">
-    <div class="donutwrap">
-      <svg width="150" height="150" viewBox="0 0 150 150">
-        <circle cx="75" cy="75" r="${R}" fill="none" stroke="#EEE" stroke-width="20"/>
-        <circle cx="75" cy="75" r="${R}" fill="none" stroke="#6BB869" stroke-width="20" stroke-dasharray="${(CIRC*keptFrac).toFixed(1)} ${CIRC.toFixed(1)}" transform="rotate(-90 75 75)"/>
-        <circle cx="75" cy="75" r="${R}" fill="none" stroke="#B8860B" stroke-width="20" stroke-dasharray="${(CIRC*exclFrac).toFixed(1)} ${CIRC.toFixed(1)}" stroke-dashoffset="${(-CIRC*keptFrac).toFixed(1)}" transform="rotate(-90 75 75)"/>
-        <text x="75" y="70" text-anchor="middle" font-family="Raleway" font-weight="700" font-size="26" fill="#232326">${e.total}</text>
-        <text x="75" y="90" text-anchor="middle" font-family="Open Sans" font-size="10" fill="#6B6B6B">onderwerpen</text>
-      </svg>
-      <div class="legend">
-        <div class="li"><span class="sw" style="background:#6BB869"></span> ${e.kept} relevant gehouden</div>
-        <div class="li"><span class="sw" style="background:#B8860B"></span> ${e.excluded} als ruis herkend</div>
-        <div class="callout">Slechts ${e.kept} van ${e.total} onderwerpen zijn écht relevant — de rest is ruis</div>
+  <div class="kicker">Hoofdstuk 1</div>
+  <h2>${esc(DATA.site.company)}</h2>
+  <h3 style="margin-top:14px;color:var(--purple)">${esc(DATA.verdict.kop)}</h3>
+  ${DATA.verdict.body.map(p=>`<p class="lead">${esc(p)}</p>`).join("")}
+  <h3 style="margin-top:26px">Wat u hiermee doet</h3>
+  <p class="small">Vier adviezen, elk met de waarneming waarop het rust, wat het oplevert en waaraan wij het afmeten.</p>
+  ${DATA.adviezen.map((a,i)=>`
+    <div class="adv">
+      <div class="ah"><div class="an">${i+1}</div><h3>${esc(a.t)}</h3></div>
+      <div class="rows">
+        <div class="k">Waarop dit rust</div><div>${esc(a.basis)}</div>
+        <div class="k">Wat het oplevert</div><div>${esc(a.opbrengst)}</div>
+        <div class="k">Waaraan wij het meten</div><div>${esc(a.meetpunt)}</div>
+        <div class="k">Termijn</div><div>${esc(a.termijn)}</div>
       </div>
-    </div>
-    <div class="fams" style="grid-template-columns:1fr;margin-top:0">
-      ${e.families.map(f=>`<div class="fam"><div class="fh"><div class="fl">${esc(f.name)}</div>${f.state==="unknown"?'<span class="tag na">nog niet gemeten</span>':''}</div><p>${esc(f.p)}</p></div>`).join("")}
-    </div>
-  </div>
-  <div class="diagbox">
-    <div class="box diag"><div class="l">Wat er aan de hand is</div><p style="margin:.4rem 0 0">${esc(e.diagnosis)}</p></div>
-    <div class="box treat"><div class="l">Wat we eraan doen</div><p style="margin:.4rem 0 0">${esc(e.treatment)}</p></div>
-  </div>
+    </div>`).join("")}
 </section>`);
 
-/* CHAPTER: pagina's & content */
-function chapter(ch){
-  add(`
-  <section class="page">
-    <div class="chead"><div><div class="no">Hoofdstuk ${ch.no}</div><h2>${esc(ch.name)}</h2></div>
-      <span class="tag ${ch.status}" style="font-size:.85rem;padding:5px 13px">${tagLabel[ch.status]} · ${num(ch.score)}/10</span></div>
-    <div class="microstats">
-      <div class="m"><div class="k">Score (nulmeting)</div><div class="v">${num(ch.score)}<span style="font-size:.8rem;color:var(--muted)">/10</span></div></div>
-      <div class="m"><div class="k">Prioriteit</div><div class="v">${esc(ch.priority)}</div></div>
-      <div class="m"><div class="k">Betrouwbaarheid</div><div class="v">${esc(ch.confidence)}</div><div class="small">${esc(ch.confidence_note)}</div></div>
-    </div>
-    <p class="finding">${esc(ch.finding)}</p>
-    <h4 style="margin-top:16px">Wat we concreet doen</h4>
-    <ul class="actions">${ch.actions.map(a=>`<li><div class="t">${esc(a.t)}</div><div class="d">${esc(a.d)}</div></li>`).join("")}</ul>
-    <div class="editnote" style="border-left-color:var(--purple);background:var(--purple-tint)"><b>Waarom dit eerst?</b> ${esc(ch.why_priority)}</div>
-    <div class="platlink"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><div>${esc(ch.platform)} <a href="${esc(AUDIT.platform_url)}">Bekijk in het platform →</a></div></div>
-  </section>`);
-}
-chapter(AUDIT.chapters[0]);
-
-/* VINDBAARHEID + leak/bucket viz */
-const f=AUDIT.find, maxB=Math.max(...f.buckets.map(b=>b.n));
-const clkPct=(f.clicks/f.impressions*100);
+/* profiel + totaalscore + dimensies */
 add(`
 <section class="page">
-  <div class="chead"><div><div class="no">Hoofdstuk 4</div><h2>Vindbaarheid</h2></div>
-    <span class="tag ok" style="font-size:.85rem;padding:5px 13px">Redelijk · 5.0/10</span></div>
-  <p class="lead">Gevonden worden waar uw klanten zoeken. De vraag ís er — de kunst is ze naar pagina 1 en naar een klik te brengen.</p>
-  <div class="viz">
-    <div class="leak">
-      <div class="row"><div class="lab"><span>Vertoningen in Google</span><span>${nf(f.impressions)}</span></div><div class="bar imp" style="width:100%"></div></div>
-      <div class="row"><div class="lab"><span>Daadwerkelijke kliks</span><span>${nf(f.clicks)} · ${f.ctr}%</span></div><div class="bar clk" style="width:${Math.max(clkPct,1.2)}%"></div></div>
-      <p class="small">90 dagen · gemiddelde positie ${f.position}. Er wordt volop naar u getoond, maar op pagina 2 wordt nauwelijks geklikt — dáár zit het lek.</p>
+  <div class="kicker">Hoofdstuk 2</div><h2>Uw profiel en de negen dimensies</h2>
+  <p class="lead">Wij beoordelen elk bedrijf op negen dimensies. Welke meetlat daarbij hoort, volgt uit uw profiel. Daarom staat dat profiel eerst, met de herkomst per regel.</p>
+  <div class="tbl-wrap"><table class="prof">
+    <thead><tr><th>Onderdeel</th><th>Wat wij hanteren</th><th>Herkomst</th><th>Status</th></tr></thead>
+    <tbody>${DATA.profiel.map(r=>`<tr class="${r.flag||''}"><td class="k">${esc(r.k)}</td><td>${esc(r.v)}</td><td class="src">${esc(r.bron)}</td><td class="st"><b>${esc(r.status)}</b></td></tr>`).join("")}</tbody>
+  </table></div>
+  <p class="small" style="margin-top:10px">${esc(DATA.profiel_note)}</p>
+
+  <h3 style="margin-top:30px">Totaalscore</h3>
+  <div class="total">
+    <div class="fig">
+      <div class="n">${num(DATA.totaal.score)}<span>/10</span></div>
+      <div class="cap">${DATA.totaal.gemeten} van ${DATA.totaal.totaal} dimensies gemeten</div>
     </div>
     <div>
-      <div class="small" style="font-family:var(--font-head);font-weight:700;color:#4a4a4e;margin-bottom:8px">Uw commerciële zoekwoorden — waar ze staan</div>
-      <div class="buckets">
-        ${f.buckets.map(b=>`<div class="bk"><span class="kb">${b.k}</span><div class="tb"><i style="width:${Math.max(b.n/maxB*100,4)}%;background:${b.c}"></i></div><span class="nb">${b.n}</span></div>`).join("")}
-      </div>
-      <p class="small" style="margin-top:10px">${esc(f.note)}</p>
+      <h3>Wat dit cijfer is</h3>
+      <p>${esc(DATA.totaal.wat)}</p>
+      <h3 style="margin-top:14px">Wat het niet is</h3>
+      <p>${esc(DATA.totaal.wat_niet)}</p>
     </div>
   </div>
-  <p class="finding" style="margin-top:14px">${esc(f.branded)}</p>
-  <div class="platlink"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg><div>De volledige lijst zoekopdrachten, posities en de evolutie per week staat in het platform. <a href="${esc(AUDIT.platform_url)}">Bekijk alle zoekopdrachten →</a></div></div>
+
+  <h3 style="margin-top:30px">De negen dimensies waarop wij uw business beoordelen</h3>
+  <p class="small">Per dimensie ziet u het cijfer en waarop dat cijfer gemeten is. Het hoofdstuknummer verwijst naar de onderbouwing.</p>
+  <div style="margin-top:10px">
+  ${DATA.dimensies.map(d=>{
+    if(d.state){
+      const [tg,lb]=stateTag[d.state];
+      return `<div class="sbar">
+        <div class="nm">${esc(d.name)}<small>${esc(d.sub)}</small></div>
+        <div class="track dim"></div>
+        <div class="rt"><span class="tag ${tg}" style="font-size:.68rem">${lb}</span></div>
+        <div class="bs">${esc(d.basis)} <em>(hoofdstuk ${d.hfst})</em></div>
+      </div>`;
+    }
+    return `<div class="sbar">
+      <div class="nm">${esc(d.name)}<small>${esc(d.sub)}</small></div>
+      <div class="track"><i style="width:${d.score*10}%;background:${barColor(d.score)}"></i></div>
+      <div class="rt"><b>${num(d.score)}</b><small>/10</small></div>
+      <div class="bs">Gescoord op: ${esc(d.basis)} <em>(hoofdstuk ${d.hfst})</em></div>
+    </div>`;
+  }).join("")}
+  </div>
 </section>`);
 
-/* CHAPTER: meten */
-chapter(AUDIT.chapters[1]);
-
-/* KANALEN */
-const chanTag={reconnect:["reconnect","Koppeling herstellen"],coming_soon:["coming_soon","Binnenkort"],minor:["minor","Beperkt"]};
+/* incongruenties */
 add(`
 <section class="page">
-  <div class="kicker">Hoofdstuk 6</div><h2>Kanalen in ontwikkeling</h2>
-  <p class="lead">Niet alles meten we vandaag al mee. Wat ontbreekt, tellen we nooit als een nul — we laten eerlijk zien wat er nog aankomt, zodat u kunt kiezen waar u op wilt inzetten.</p>
-  <div class="chan">${AUDIT.channels.map(ch=>{const [t,l]=chanTag[ch.state];return `<div class="c"><h4>${esc(ch.name)} <span class="tag ${t}" style="font-size:.66rem">${l}</span></h4><p>${esc(ch.text)}</p></div>`;}).join("")}</div>
+  <div class="kicker">Hoofdstuk 3</div><h2>Intake tegen de data gelegd</h2>
+  <p class="lead">Wat u ons vertelt en wat de data toont, horen dezelfde kant op te wijzen. Waar dat niet zo is, is dat zelf een bevinding: of het profiel klopt niet, of de markt gedraagt zich anders dan u denkt. Beide zijn stuurbaar, maar alleen als het benoemd wordt.</p>
+  <div class="tbl-wrap">
+    <table class="data">
+      <thead><tr><th>Wat er staat</th><th>Herkomst</th><th>Wat de data toont</th><th>Wat wij ermee doen</th></tr></thead>
+      <tbody>${DATA.incongruenties.map(r=>`<tr><td><b>${esc(r.bewering)}</b></td><td class="src">${esc(r.herkomst)}</td><td>${esc(r.data)}</td><td>${esc(r.actie)}</td></tr>`).join("")}</tbody>
+    </table>
+  </div>
+  <div class="note">Wij vullen een leeg intakeveld nooit aan met wat de website suggereert. In het vorige rapport is dat wel gebeurd, met horeca als doelgroep en webshopbestellingen als doel. Beide zijn hierboven rechtgezet. Een ontbrekend antwoord is een vraag aan u, geen aanname van ons.</div>
+</section>`);
+
+/* dimensiehoofdstukken */
+function dimSection(ch){
+  const ontbreekt=[];
+  if(!ch.meting||!ch.meting.length) ontbreekt.push("de meting");
+  if(!ch.advies||!ch.advies.length) ontbreekt.push("het advies");
+  if(!ch.zegt) ontbreekt.push("de uitleg");
+  if(ontbreekt.length){
+    const lijst = ontbreekt.length===1 ? ontbreekt[0] : ontbreekt.slice(0,-1).join(", ")+" en "+ontbreekt.slice(-1);
+    const ww = ontbreekt.length===1 ? "ontbreekt" : "ontbreken";
+    add(`<section class="page" id="${ch.id}">
+      <div class="chead"><div><div class="no">Hoofdstuk ${ch.no} · ${esc(ch.dim)}</div><h2>${esc(ch.name)}</h2></div></div>
+      <div class="nogo">Het cijfer ${num(ch.score)} wordt hier niet getoond omdat ${lijst} ${ww}. Een score zonder onderbouwing en zonder advies zetten wij niet in een rapport.</div>
+    </section>`);
+    return;
+  }
+  add(`
+  <section class="page" id="${ch.id}">
+    <div class="chead">
+      <div><div class="no">Hoofdstuk ${ch.no} · ${esc(ch.dim)}</div><h2>${esc(ch.name)}</h2></div>
+      <span class="tag ${ch.status}" style="font-size:.9rem;padding:6px 14px">${statusTag[ch.status]} · ${num(ch.score)}/10</span>
+    </div>
+    <p class="lead">${esc(ch.lead)}</p>
+
+    <h3 style="margin-top:20px">Waarop dit cijfer gemeten is</h3>
+    <div class="meas">
+      ${ch.meting.map(m=>`<div class="mrow">
+        <div class="mk">${esc(m.k)}<span class="sub">${esc(m.sub||"")}</span></div>
+        <div><div class="mv">${esc(m.v)}</div><div class="src">${esc(m.bron)}</div></div>
+      </div>`).join("")}
+    </div>
+
+    <div class="judge">
+      <div class="box says"><div class="l">Wat het cijfer zegt</div><p>${esc(ch.zegt)}</p></div>
+      <div class="box saysnot"><div class="l">Wat het cijfer niet zegt</div><p>${esc(ch.zegt_niet)}</p></div>
+    </div>
+
+    ${ch.bewijs&&ch.bewijs.length?`<h3 style="margin-top:22px">Wat wij in uw eigen data zien</h3>
+      <ul class="actions" style="margin-top:8px">${ch.bewijs.map(b=>`<li><div class="t">${esc(b.t)}</div><div class="d">${esc(b.d)}</div></li>`).join("")}</ul>`:""}
+
+    <h3 style="margin-top:22px">Wat wij hier concreet doen</h3>
+    <ul class="actions">${ch.advies.map(a=>`<li><div class="t">${esc(a.t)}</div><div class="d">${esc(a.d)}</div></li>`).join("")}</ul>
+
+    <div class="platlink"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+      <div>${esc(ch.platform)} <a href="${esc(DATA.platform_url)}">Bekijk in het platform</a></div></div>
+  </section>`);
+}
+DATA.hoofdstukken.filter(c=>c.no<8).forEach(dimSection);
+
+/* vindbaarheid + paginatabel */
+dimSection(DATA.hoofdstukken.find(c=>c.no===8));
+add(`
+<section class="page">
+  <div class="kicker">Hoofdstuk 8, vervolg</div><h2>Uw pagina's in de zoekresultaten</h2>
+  <p class="lead">${esc(DATA.paginas.intro)}</p>
+  <div class="tbl-wrap">
+    <table class="data">
+      <thead><tr><th>Pagina</th><th style="text-align:right">Vertoningen</th><th style="text-align:right">Kliks</th><th style="text-align:right">Doorklik</th><th style="text-align:right">Positie</th><th>Rol en oordeel</th></tr></thead>
+      <tbody>${DATA.paginas.rows.map(r=>`<tr class="${r.flag}"><td><code>${esc(r.u)}</code></td><td class="num">${esc(r.v)}</td><td class="num">${esc(r.k)}</td><td class="num">${esc(r.c)}</td><td class="num">${esc(r.p)}</td><td>${esc(r.r)}</td></tr>`).join("")}</tbody>
+    </table>
+  </div>
+  <p class="src" style="margin-top:10px">Bron: ${esc(DATA.paginas.bron)}</p>
+</section>`);
+
+/* meten */
+dimSection(DATA.hoofdstukken.find(c=>c.no===9));
+
+/* kanalen zonder meting */
+add(`
+<section class="page">
+  <div class="kicker">Hoofdstuk 10</div><h2>Kanalen zonder meting</h2>
+  <p class="lead">Drie van de negen dimensies hebben vandaag geen bron. Die krijgen geen cijfer en tellen niet mee in de totaalscore. Een ontbrekende meting is geen nul, en wij presenteren die ook niet zo.</p>
+  <div class="chan">${DATA.kanalen.map(c=>{const [tg,lb]=stateTag[c.state];return `<div class="c"><h4>${esc(c.name)} <span class="tag ${tg}" style="font-size:.66rem">${lb}</span></h4><p>${esc(c.text)}</p></div>`;}).join("")}</div>
+</section>`);
+
+/* volgorde en planning */
+add(`
+<section class="page">
+  <div class="kicker">Hoofdstuk 11</div><h2>Volgorde van werken</h2>
+  <p class="lead">Een website verbeteren is geen willekeurige lijst. Eerst het fundament, dan de inhoud, dan de autoriteit van buitenaf.</p>
+  <div class="plan" style="grid-template-columns:repeat(3,1fr)">
+    ${DATA.volgorde.map(v=>`<div class="col"><div class="hd">${v.n}. ${esc(v.h)}</div><div style="padding:12px 14px;font-size:.9rem">${esc(v.p)}</div></div>`).join("")}
+  </div>
+  <p class="small" style="margin-top:12px">${esc(DATA.volgorde_note)}</p>
+  <h3 style="margin-top:26px">Voorgestelde planning</h3>
+  <div class="plan">${DATA.planning.map(p=>`<div class="col"><div class="hd">${esc(p.period)}<small>${esc(p.sub)}</small></div><ul>${p.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
+  <div class="note" style="margin-top:14px">${esc(DATA.planning_note)}</div>
+</section>`);
+
+/* verantwoording */
+add(`
+<section class="page">
+  <div class="kicker">Hoofdstuk 12</div><h2>Verantwoording</h2>
+  <h3 style="margin-top:12px">Bronnen en periodes</h3>
+  <ul style="margin:.4rem 0 0;padding-left:20px;font-size:.93rem">${DATA.verantwoording.bronnen.map(b=>`<li style="margin:5px 0">${esc(b)}</li>`).join("")}</ul>
+  <h3 style="margin-top:20px">Wat dit rapport niet meet</h3>
+  <ul style="margin:.4rem 0 0;padding-left:20px;font-size:.93rem">${DATA.verantwoording.grenzen.map(g=>`<li style="margin:5px 0">${esc(g)}</li>`).join("")}</ul>
+  <div class="note" style="margin-top:18px">Elk cijfer in dit rapport komt uit een meting die u in het platform kunt terugvinden. Waar wij iets niet konden meten, staat dat er. Wij vullen een gat niet met een schatting.</div>
 </section>`);
 
 /* footer */
 add(`
 <section class="page" style="padding:26px 48px">
-  <div class="footer"><div><span class="wm">Sherlock SEO</span> · Digital Growth Intelligence · sherlockseo.com</div>
-    <div>Website-audit · ${esc(s.url)} · ${esc(AUDIT.date)}</div></div>
-  <p class="small" style="margin-top:12px">Alle cijfers in dit rapport komen live uit uw gekoppelde bronnen (Search Console, Analytics) op ${esc(AUDIT.date)}. We rekenen in groei die u voelt — aanvragen en omzet, niet losse bezoekcijfers.</p>
+  <div class="footer">
+    <div><span class="wm">Sherlock SEO</span> · Digital Growth Intelligence · sherlockseo.com</div>
+    <div>Website-audit · ${esc(DATA.site.url)} · ${esc(DATA.opgemaakt)}</div>
+  </div>
 </section>`);
 </script>
 </body>
