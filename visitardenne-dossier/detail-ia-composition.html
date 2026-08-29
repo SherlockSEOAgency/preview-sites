@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>VisitArdenne — deel 2 · IA & compositievoorstel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15161a;--muted:#6a6d78;--line:#e6e6ec;--bg:#fff;--soft:#f7f7fa;
+--accent:#1f4ed8;--accent-soft:#eef2ff;--red:#b3402f;--green:#2e7d4f;--amber:#b5730a;
+--va:#0d7a5f;--va-soft:#e6f4ef;--va-line:#bfe3d6;
+/* page-decision palette */
+--d-keep:#2e7d4f;--d-keep-bg:#e7f4ec;
+--d-improve:#1f4ed8;--d-improve-bg:#eef2ff;
+--d-merge:#8a5cc7;--d-merge-bg:#f1eafb;
+--d-split:#b5730a;--d-split-bg:#fbf1df;
+--d-add:#0d7a5f;--d-add-bg:#e6f4ef;
+--d-remove:#b3402f;--d-remove-bg:#fdece9;
+--d-support:#5a6572;--d-support-bg:#eef0f2;
+--d-dnt:#8a1f3a;--d-dnt-bg:#fbe9ef;}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+color:var(--ink);background:var(--bg);line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-weight:800;line-height:1.16;letter-spacing:-.015em;margin:0}
+h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:8px}
+h3{font-size:1.16rem;font-weight:800;margin:26px 0 6px}
+h4{font-size:.98rem;font-weight:700;margin:16px 0 4px}
+p{margin:.6em 0}
+code{font-size:.85em;background:var(--soft);padding:1px 6px;border-radius:5px;overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+a{color:var(--accent)}
+header{background:linear-gradient(140deg,#0c2a22,#12432f 55%,#0d7a5f);color:#fff;padding:52px 0 56px}
+.kicker{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+background:rgba(255,255,255,.14);padding:5px 11px;border-radius:99px;margin-bottom:16px}
+header h1{font-size:clamp(1.8rem,4vw,2.7rem);max-width:24ch}
+header p{color:rgba(255,255,255,.9);max-width:76ch}
+.toc{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.toc ol{max-width:1120px;margin:0 auto;padding:16px 24px;list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;
+counter-reset:t;font-size:.9rem;font-weight:600}
+.toc li{counter-increment:t}.toc li::before{content:counter(t) ". ";color:var(--va);font-weight:800}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{color:var(--va)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+.lead{font-size:1.04rem;color:var(--muted);max-width:80ch;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem}
+.scroll{overflow-x:auto}
+th{text-align:left;font-size:.67rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+padding:9px 9px;border-bottom:2px solid var(--line);font-weight:700;white-space:nowrap;vertical-align:bottom}
+td{padding:9px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:hover td{background:var(--soft)}
+/* decision chips */
+.chip{display:inline-block;font-size:.66rem;font-weight:800;padding:2px 8px;border-radius:99px;
+white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.c-keep{background:var(--d-keep-bg);color:var(--d-keep)}
+.c-improve{background:var(--d-improve-bg);color:var(--d-improve)}
+.c-merge{background:var(--d-merge-bg);color:var(--d-merge)}
+.c-split{background:var(--d-split-bg);color:var(--d-split)}
+.c-add{background:var(--d-add-bg);color:var(--d-add)}
+.c-remove{background:var(--d-remove-bg);color:var(--d-remove)}
+.c-support{background:var(--d-support-bg);color:var(--d-support)}
+.c-dnt{background:var(--d-dnt-bg);color:var(--d-dnt)}
+.c-review{background:#fff3d6;color:#8a6400;border:1px solid #ecd9a0}
+.verdict{background:var(--va-soft);border:1px solid var(--va-line);border-left:5px solid var(--va);
+border-radius:12px;padding:20px 22px;margin:18px 0}
+.verdict h3{margin-top:0}
+.card{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);
+border-radius:10px;padding:16px 18px;margin:14px 0}
+.card.warn{border-left-color:var(--amber)}.card.bad{border-left-color:var(--red)}
+.card.good{border-left-color:var(--va)}.card p:last-child{margin-bottom:0}
+.ev{font-size:.82rem;color:var(--muted);background:#fbfbfd;border:1px solid var(--line);
+border-radius:8px;padding:11px 13px;margin:8px 0}
+.ev b{color:var(--ink)}
+.ev.unc{background:#fffaf0;border-color:#ecd9a0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+ul,ol.norm{margin:.5em 0;padding-left:1.2em}li{margin:.28em 0}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;color:var(--muted);overflow-wrap:anywhere}
+/* page record */
+.rec{border:1px solid var(--line);border-radius:12px;padding:0;margin:20px 0;overflow:hidden;background:#fff}
+.rec>.h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 18px;background:var(--soft);border-bottom:1px solid var(--line)}
+.rec>.h .t{font-size:1.05rem;font-weight:800}
+.rec>.b{padding:6px 18px 16px}
+.rec dl{display:grid;grid-template-columns:150px 1fr;gap:2px 16px;margin:10px 0;font-size:.9rem}
+.rec dt{color:var(--muted);font-weight:700;padding:6px 0;border-top:1px solid var(--line)}
+.rec dd{margin:0;padding:6px 0;border-top:1px solid var(--line)}
+@media(max-width:680px){.rec dl{grid-template-columns:1fr}.rec dt{border-top:1px solid var(--line);padding-bottom:0}.rec dd{border-top:0;padding-top:2px}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media(max-width:680px){.two{grid-template-columns:1fr}}
+.flag{background:#a2153a;color:#fff;font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:99px;text-transform:uppercase;letter-spacing:.04em}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.8rem;margin:10px 0 4px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+/* tree preview */
+.tree{font-size:.84rem;line-height:1.5}
+.tree .node{border-radius:8px;padding:7px 11px;margin:5px 0;border:1px solid var(--line);background:#fff;
+display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tree .lvl1{font-weight:800;background:var(--soft)}
+.tree .kids{margin-left:22px;border-left:2px solid var(--line);padding-left:14px}
+.tree .u{font-size:.72rem;color:var(--muted)}
+.b-keep{border-left:4px solid var(--d-keep)}
+.b-improve{border-left:4px solid var(--d-improve)}
+.b-merge{border-left:4px solid var(--d-merge)}
+.b-add{border-left:4px solid var(--d-add);border-style:dashed;border-width:1px 1px 1px 4px}
+.b-remove{border-left:4px solid var(--d-remove)}
+.b-support{border-left:4px solid var(--d-support)}
+.b-dnt{border-left:4px solid var(--d-dnt)}
+.big{font-size:1.9rem;font-weight:800;line-height:1;color:var(--va)}
+.big.red{color:var(--red)}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:16px 0}
+.stat{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:1.5rem;font-weight:800;line-height:1.1;color:var(--ink)}
+.stat span{font-size:.78rem;color:var(--muted)}
+footer{padding:30px 0 60px;color:var(--muted);font-size:.83rem}
+.note{font-size:.82rem;color:var(--muted)}
+</style></head><body><div style="background:#662483;color:#fff;font-family:'Raleway',system-ui,sans-serif;font-size:13px;padding:8px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:9999">
+<span style="font-weight:700">Sherlock SEO · VisitArdenne — <span style="opacity:.8">Dossier IA &amp; composition (livrables b·c·d)</span></span>
+<a href="index.html" style="color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #6BB869">← Dossier / Sommaire</a></div>
+
+<header><div class="wrap">
+  <span class="kicker">VisitArdenne · deel 2 · IA &amp; paginacompositie · SERP-gegrond</span>
+  <h1>Behoud de bestemming, herschik de compositie.</h1>
+  <p>Dit document is livrable <b>b</b> (redactionele aanbevelingen), <b>c</b> (validatie/optimalisatie
+     van de arborescentie FR&nbsp;&rarr;&nbsp;NL) en <b>d</b> (contentplan) van de opdracht 2026/855.
+     Het is een <b>reviewbaar voorstel</b>: één canonieke informatiearchitectuur, waarbij taal een
+     <i>compositie</i> is en geen tweede boom. Elke paginabeslissing draagt het bewijs waarop ze rust;
+     waar het bewijs onvoldoende is, staat dat expliciet aangemerkt in plaats van ingevuld.</p>
+</div></header>
+
+<nav class="toc"><ol>
+  <li><a href="#canon">Het beslismodel</a></li>
+  <li><a href="#ia-nu">Huidige IA</a></li>
+  <li><a href="#ia-voorstel">Voorgestelde canonieke IA</a></li>
+  <li><a href="#composities">NL/FR-compositie per pagina</a></li>
+  <li><a href="#linking">Interne-linkmodel</a></li>
+  <li><a href="#preview">Preview (boom)</a></li>
+  <li><a href="#onzeker">Onzekerheden</a></li>
+</ol></nav>
+
+<!-- ============================================================= 0. MODEL -->
+<section id="canon"><div class="wrap">
+  <h2>0 · Het beslismodel — vier dingen die geen synoniemen zijn</h2>
+  <p class="lead">Alle aanbevelingen hieronder gebruiken één vaste beslisketen. Een zoekvraag is
+     <b>bewijs</b>, geen pagina-opdracht. Tussen bewijs en URL staat altijd een expliciete
+     <b>paginabeslissing</b> uit een vaste woordenschat. Bewijs (observatie) en conclusie
+     (interpretatie) blijven gescheiden, zodat een nieuwe waarneming een eerdere conclusie kan corrigeren.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Laag</th><th>Wat het is</th><th>Voorbeeld (VisitArdenne)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Entiteit</b></td><td>wat de bestemming/plaats/activiteit ÍS</td><td><code>Dinant</code> · <code>wandelen</code> · <code>Belgische Ardennen</code></td></tr>
+      <tr><td><b>Pagina&shy;representatie</b></td><td>de canonieke pagina die die entiteit representeert</td><td><span class="mono">/…/hoogtepunten/dinant</span></td></tr>
+      <tr><td><b>Taal&shy;compositie</b></td><td>dezelfde pagina, anders ingevuld per taal/markt</td><td>Dinant NL (Vlaanderen/NL) vs FR</td></tr>
+      <tr><td><b>Zoekbewijs</b></td><td>hoe mensen zoeken + wat Google begrijpt</td><td><code>dinant</code>, <code>que faire à dinant</code>, <code>dinant belgie</code></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>De acht toegestane paginabeslissingen</h3>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--d-keep)"></span><b>keep</b> — behouden zoals het is</span>
+    <span><span class="sw" style="background:var(--d-improve)"></span><b>improve</b> — inhoud/CTR/schema verbeteren, structuur ongemoeid</span>
+    <span><span class="sw" style="background:var(--d-merge)"></span><b>merge</b> — samenvoegen (dubbele pagina&#8217;s)</span>
+    <span><span class="sw" style="background:var(--d-split)"></span><b>split</b> — opsplitsen</span>
+    <span><span class="sw" style="background:var(--d-add)"></span><b>add</b> — nieuwe pagina, bewijs vereist</span>
+    <span><span class="sw" style="background:var(--d-remove)"></span><b>remove</b> — als rubriek weg, evt. transversaal dragen</span>
+    <span><span class="sw" style="background:var(--d-support)"></span><b>support</b> — ondersteunen/doorverwijzen, geen landingpage</span>
+    <span><span class="sw" style="background:var(--d-dnt)"></span><b>do&nbsp;not&nbsp;target</b> — strategisch niet op mikken</span>
+  </div>
+  <div class="card"><p style="margin:0"><b>Regel die dit hele document stuurt (klant-opdracht + engine-canon):</b> de opdracht is
+     uitdrukkelijk <i>niet</i> &#8220;bouw de boom opnieuw&#8221; maar &#8220;behoud de structuur, richt paginacompositie en
+     interne links op hóe mensen zoeken.&#8221; Ranking&nbsp;#1 is niet het einddoel: waar VisitArdenne al
+     zichtbaar is, verschuift de optimalisatie naar <b>doorklik (CTR), SERP-presentatie en de route naar
+     de partner-boeking</b> — niet naar &#8220;hoger ranken&#8221;.</p></div>
+</div></section>
+
+<!-- ============================================================= 1. HUIDIGE IA -->
+<section id="ia-nu"><div class="wrap">
+  <h2>1 · Huidige IA — wat de site vandaag heeft</h2>
+  <p class="lead">Vastgesteld op de <b>live</b> site (nav-crawl van <span class="mono">visitardenne.com/nl</span>
+     en <span class="mono">/fr</span>, 25/08/2026) en bevestigd tegen ranking-URL&#8217;s uit GSC en live SERP&#8217;s.
+     Kernvaststelling: <b>NL en FR zijn vandaag één boom, 1-op-1 gespiegeld</b> — dezelfde vijf rubrieken,
+     vertaalde labels. Taal wordt nu als <i>vertaling</i> behandeld, nog niet als compositie.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Rubriek NL (live)</th><th>Rubriek FR (spiegelt)</th><th>Wat eronder hangt (waargenomen)</th><th>Rol / echte intentie</th></tr></thead>
+    <tbody>
+      <tr><td><b>Belevenissen in de Ardennen</b><br><span class="mono">/nl/belevenissen-ardennen</span></td><td>Expériences ardennaises</td><td>Blog/thema&#8217;s: Natuur, Familie, Camper, Outdoor, Gastronomie, Slowtoerisme (filters op <code>?theme=</code>)</td><td>Inspiratie / redactioneel — ambassadeurs-content</td></tr>
+      <tr><td><b>Het beste van de Ardennen</b><br><span class="mono">/nl/het-beste-van-de-ardennen</span></td><td>Le meilleur de l&#8217;Ardenne</td><td><b>Hoogtepunten</b> (plaats/attractie-pagina&#8217;s: Dinant, Durbuy, La&nbsp;Roche, Grotten van Han, Watervallen Coo, Bouillon…) · <b>Top&nbsp;bestemmingen</b> (thematisch: Rivieren, Natuurparken, Citytrips, Bossen, Meren, Steden&nbsp;en&nbsp;dorpen) · <b>Top&nbsp;10 / Ontdek onze top&nbsp;10&#8217;s</b> (listicles) · <b>Wandelen</b> · <b>Fietsen</b></td><td>Plaats + activiteit — hier zit VisitArdenne&#8217;s zichtbaarheid</td></tr>
+      <tr><td><b>Toeristische routes</b><br><span class="mono">/nl/toeristische-routes</span></td><td>Les routes touristiques</td><td>Fortenroute, Bierroute, Abdijenroute, Rimbaud-Verlaine, Legendenroute, Knooppuntennetwerk</td><td>Themaroutes — niche-inspiratie</td></tr>
+      <tr><td><b>Praktische informatie</b><br><span class="mono">/nl/praktische-informatie</span></td><td>Préparez votre séjour</td><td>Agenda, Ardennen kennen geen grenzen (toegankelijkheid), Overnachten, Duurzaam toerisme, Uitstaptips, Ardennen in beeld, Kaart, Weer&amp;seizoenen, Brochures, Toeristeninfo, Reisbureaus, Reizen, FAQ, Contact, Groepsreizen</td><td>Planning + servicelaag</td></tr>
+      <tr><td colspan="2"><b>Ambassadeurs</b> · <b>Zoeken</b></td><td colspan="2">Utility (login-achtig / zoekfunctie)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card warn"><p style="margin:0"><b>Twee structurele onvolkomenheden die de live crawl blootlegt (bron van de merge-beslissingen in §3):</b></p>
+    <ul style="margin:.5em 0 0">
+      <li><b>Twee &#8220;thuizen&#8221; voor plaatsen.</b> Plaats-pagina&#8217;s bestaan onder <span class="mono">/het-beste-van-de-ardennen/hoogtepunten/…</span>
+        (Dinant, Durbuy) én onder <span class="mono">/…/top-bestemmingen/steden-en-dorpen/…</span> (bv. Han-sur-Lesse). Dezelfde entiteitsklasse, twee locaties.</li>
+      <li><b>Twee wandel-pagina&#8217;s die om dezelfde vraag concurreren.</b> Een top-10-listicle
+        (<span class="mono">/ontdek-onze-top-10s/mooiste-wandelingen-ardennen</span>) én een pijlerpagina
+        (<span class="mono">/wandelen-de-ardennen/wandelingen-ardennen</span>). Zie het bewijs in §3.</li>
+      <li><b>URL-varianten voor één plaats:</b> <span class="mono">…/hoogtepunten/la-roche-ardenne</span> naast
+        <span class="mono">…/hoogtepunten/la-roche-en-ardenne/campings-…</span>.</li>
+    </ul>
+  </div>
+  <p class="note"><span class="flag">review</span> &nbsp;De volledige URL-inventaris (alle plaats-, top-10- en routepagina&#8217;s) is niet exhaustief gecrawld in deze ronde;
+     bovenstaande is vastgesteld via de live navigatie + de GSC-rankingpagina&#8217;s. Een volledige Screaming-Frog-crawl vóór de refonte is aanbevolen om alle dubbele URL&#8217;s en weespagina&#8217;s te vangen.</p>
+
+  <h3>De klant plant mogelijk een refonte naar 6 rubrieken — dit voorstel werkt in beide scenario&#8217;s</h3>
+  <p>De FR-arborescentie-oefening (Yuri&amp;Neil, sept.&nbsp;2025) stelde een <b>rebuild naar 6&nbsp;niveau-1-rubrieken</b> voor
+     (Expériences Ardennaises&nbsp;·&nbsp;Visiter&nbsp;·&nbsp;Balades&nbsp;·&nbsp;Séjour&nbsp;·&nbsp;Activités&nbsp;·&nbsp;Infos&nbsp;pratiques). De intake noteert dat
+     &#8220;refonte&nbsp;vs&nbsp;upgrade&#8221; nog een open beslissing is. <b>Onze paginabeslissingen zijn structuur-onafhankelijk</b>: ze
+     gaan over welke entiteit welke pagina verdient en hoe die gecomponeerd wordt. Ze projecteren op de huidige
+     4-pijler-boom (upgrade) én op de voorgestelde 6-rubriek-boom (rebuild). Welke van de twee it wordt, is een
+     businessbeslissing voor de klant — zie §7.</p>
+</div></section>
+
+<!-- ============================================================= 2. VOORGESTELDE IA -->
+<section id="ia-voorstel"><div class="wrap">
+  <h2>2 · Voorgestelde canonieke IA — keep / merge / add / remove, mét bewijs</h2>
+  <p class="lead">Eén boom. Taal = compositie. De headline-aanbeveling in canon-termen, elk met het bewijs eronder.
+     Merk op dat de meeste beslissingen <b>keep</b> of <b>improve</b> zijn: de structuur klopt grotendeels,
+     de winst zit in compositie, ontdubbeling en interne links — niet in herbouw.</p>
+
+  <div class="statgrid">
+    <div class="stat"><b>4 &rarr; 4</b><span>Niveau-1-pijlers behouden (spine blijft)</span></div>
+    <div class="stat"><b>2</b><span>merges (plaats-model + wandelen)</span></div>
+    <div class="stat"><b>2</b><span>echte toevoegingen (Belgische Ardennen · origineel overnachten)</span></div>
+    <div class="stat"><b>1</b><span>remove-als-rubriek (duurzaamheid &rarr; transversaal)</span></div>
+    <div class="stat"><b>3</b><span>do-not-target-markten (OTA-verblijf)</span></div>
+  </div>
+
+  <div class="verdict">
+    <h3>Headline: houd de bestemmings-spine, dicht het doorklik-gat op de plaatspagina&#8217;s, ontdubbel, en voeg één entiteit toe die de grootste markt (NL) gebruikt om binnen te komen</h3>
+    <p style="margin-bottom:0">De vier huidige pijlers mappen schoon op de vier intentieclusters die de 27+2 live SERP&#8217;s tonen:
+       <b>inspiratie</b> (Belevenissen), <b>plaats&nbsp;+&nbsp;activiteit</b> (Het beste van de Ardennen), <b>route</b>
+       (Toeristische routes), <b>planning</b> (Praktische informatie). Er is geen SERP-bewijs voor een tweede,
+       taal-specifieke boom.</p>
+  </div>
+
+  <h3>De beslissingen, gegroepeerd</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Beslissing</th><th>Op wat</th><th>Waarom (kort)</th><th>Bewijs (kern)</th></tr></thead>
+    <tbody>
+    <tr><td><span class="chip c-keep">keep</span></td><td>De 4 niveau-1-pijlers; de top-10-listicles; kajak/kano-hub; toeristische routes</td><td>Mappen op de echte intentieclusters; de listicles presteren uitstekend</td><td>kajak #1 (11,2% CTR) · wandelen-listicle #1 (14&ndash;29% CTR) · activiteiten 13,6% CTR</td></tr>
+    <tr><td><span class="chip c-improve">improve</span></td><td>Plaatspagina&#8217;s (Dinant, Durbuy, Grotten van Han, La&nbsp;Roche); de streekhub; fietsen; toegankelijkheid</td><td>Zichtbaar maar lage doorklik &rarr; titel/omschrijving, schema, intro-editorial, interne links</td><td>Durbuy 110.655 impr / <b>0,90% CTR</b> / pos&nbsp;8,4 · Grotten van Han 0,56% · Dinant 2,77%</td></tr>
+    <tr><td><span class="chip c-merge">merge</span></td><td>(a) De twee wandel-pagina&#8217;s &rarr; één wandelhub. (b) De twee plaats-&#8220;thuizen&#8221; (hoogtepunten + steden-en-dorpen) &rarr; één plaatsmodel</td><td>Interne concurrentie / versnippering van signaal en linkkracht</td><td>wandelen: VA #1 (listicle) én #28 (pijler) op dezelfde term · plaatsen op twee paden</td></tr>
+    <tr><td><span class="chip c-add">add</span></td><td>(a) <b>Belgische Ardennen</b> als niveau-1-entiteit. (b) <b>Origineel/bijzonder overnachten</b> als inspiratiepagina</td><td>(a) eigen SERP + eigen PAA, NL-markt&#8217;s toegangswoord. (b) enige &#8220;verblijf&#8221;-SERP die een DMO kan winnen</td><td>belgische ardennen VA #3, 8.100 vol&nbsp;NL (20× &gt; Vlaanderen) · bijzonder overnachten VA #18</td></tr>
+    <tr><td><span class="chip c-remove">remove</span></td><td>&#8220;Duurzaam toerisme&#8221; als navigatierubriek</td><td>Geen zoekingang; draag het transversaal op productpagina&#8217;s</td><td>lege SERP in BE én NL; ATD-vraag loopt via producten (boshut, boomhut, brouwerij)</td></tr>
+    <tr><td><span class="chip c-dnt">do not target</span></td><td><code>vakantiehuis</code>, <code>vakantiepark</code>, <code>weekendje weg ardennen</code></td><td>100% OTA-/verhuurterrein; een bestemming wint hier niet met een boekingspagina</td><td>top-10 = Belvilla, Natuurhuisje, Weekendesk, Center Parcs; VA afwezig</td></tr>
+    <tr><td><span class="chip c-support">support</span></td><td>Duurzaamheid (transversaal) · de boekingsstap (Elloha/partners) · FR long-tail verblijf</td><td>Waarde toevoegen zonder een concurrerende landingpage te bouwen</td><td>ATD 380 termen ~130k/mnd via producten · verblijf = partner-redirect</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card good"><p style="margin:0"><b>Taaldivergentie: geen structurele.</b> Eén boom bedient beide markten. De enige plek waar NL en FR
+     wézenlijk verschillen (<code>ardennes</code>&nbsp;FR = Frans département&nbsp;08 vs streek; <code>Vlaamse&nbsp;Ardennen</code> die opduikt
+     bij NL) is een <b>entiteit-resolutieprobleem</b> (canon-regel&nbsp;4) — op te lossen met naamgeving, schema, context en
+     interne relaties, <b>niet</b> met een tweede boom. De &#8220;Belgische Ardennen&#8221;-pagina is één canonieke pagina met een
+     NL-compositie die de term vooropstelt en een FR-compositie (&#8220;Ardenne belge&#8221;) die dat licht houdt.</p></div>
+</div></section>
+
+<!-- ============================================================= 3. COMPOSITIES -->
+<section id="composities"><div class="wrap">
+  <h2>3 · NL/FR-compositiebrief per belangrijke pagina</h2>
+  <p class="lead">Per canonieke pagina: entiteit, huidige URL, paginabeslissing, reden, NL- en FR-intentie, wat de talen
+     <b>delen</b>, welke <b>accenten</b> verschillen, secties &amp; sectievolgorde per taal, verplichte interne links,
+     CTA, gemeten performance (GSC, waar meetbaar) en het SERP-bewijs. Waar bewijs ontbreekt: <span class="flag">review</span>.
+     GSC-cijfers = 90&nbsp;dagen tot 10/08/2026, uitsluitend <span class="mono">/nl/</span>-pagina&#8217;s (livrable&nbsp;a).</p>
+
+  <!-- REC 1 STREEKHUB -->
+  <div class="rec">
+    <div class="h"><span class="chip c-improve">improve</span><span class="t">Streekhub &#8220;Ardennen&#8221; (bestemming)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>De grensoverschrijdende bestemming Ardennen (BE/FR/LUX)</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/het-beste-van-de-ardennen/hoogtepunten</span> + homepage</dd>
+        <dt>Reden</dt><dd>VA is zichtbaar (#3) op de hoofdterm maar wordt voorbijgestreefd door een uitgever (ardennen.nl #2). De winst is <b>redactionele diepte + interne verwijzing</b> naar plaats- en activiteitpagina&#8217;s, geen herbouw.</dd>
+      </dl>
+      <div class="two">
+        <div><h4>NL-intentie</h4><p>Oriëntatie: &#8220;wat is de Ardennen, wat kan ik er doen&#8221;. NL-markt situeert het land (&#8220;Belgische Ardennen&#8221;).</p></div>
+        <div><h4>FR-intentie</h4><p>Oriëntatie + <b>disambiguatie</b>: onderscheid de streek van het Franse département&nbsp;08.</p></div>
+      </div>
+      <p><b>Delen:</b> definitie van de bestemming, natuur/rust-positionering, doorverwijzing naar plaatsen &amp; activiteiten.
+         <b>Accent NL:</b> foreground &#8220;Belgische Ardennen&#8221;, afstand tot NL (2&nbsp;u van Utrecht).
+         <b>Accent FR:</b> expliciete afbakening massief vs département&nbsp;08; &#8220;une Ardenne, 3 pays&#8221;.</p>
+      <h4>Secties &amp; volgorde</h4>
+      <p><b>NL:</b> intro-entiteit &rarr; kaart/situering &rarr; top-plaatsen &rarr; top-activiteiten &rarr; seizoen &rarr; SEO-tekst.
+         <b>FR:</b> intro-entiteit + <b>disambiguatie-blok</b> &rarr; kaart &rarr; top-plaatsen &rarr; activiteiten &rarr; seizoen &rarr; SEO-tekst.</p>
+      <dl>
+        <dt>Interne links UIT</dt><dd>Dinant, Durbuy, La&nbsp;Roche, Grotten van Han · Wandelen · Kajakken · Belgische&nbsp;Ardennen</dd>
+        <dt>Interne links IN</dt><dd>Homepage · alle plaats- en activiteitpagina&#8217;s (breadcrumb-terug)</dd>
+        <dt>CTA / vervolg</dt><dd>&#8220;Kies je plek&#8221; (plaats) of &#8220;Kies je activiteit&#8221; — géén boeking-CTA op hubniveau</dd>
+        <dt>Performance</dt><dd>bezienswaardigheden ardennen &rarr; hoogtepunten: 1.039 impr / 95 clicks / 9,1% / pos&nbsp;4,7</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> SERP <code>ardennen</code> (nl, BE): Wikipedia · ardennen.nl <b>#2</b> · <b>VA #3</b> · VISITWallonia (12.100/mnd). Concurrent = uitgever, geen bestemming — in te halen met inhoud.</div>
+    </div>
+  </div>
+
+  <!-- REC 2 BELGISCHE ARDENNEN -->
+  <div class="rec">
+    <div class="h"><span class="chip c-add">add</span><span class="flag">review</span><span class="t">Belgische Ardennen (niveau-1-entiteit)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>&#8220;Belgische Ardennen&#8221; als afgebakende sub-entiteit van de streek</dd>
+        <dt>Huidige URL</dt><dd>—  (geen eigen canonieke pagina; VA rankt met de streekhub)</dd>
+        <dt>Reden</dt><dd>Google onderhoudt een <b>eigen SERP met eigen PAA-blok</b> voor deze term, los van de kale <code>ardennen</code>. Het is het woord waarmee de <b>grootste markt (NL)</b> het territorium bereikt.</dd>
+      </dl>
+      <div class="two">
+        <div><h4>NL-intentie</h4><p>Situerende oriëntatie — de Nederlander voegt het land toe omdat hij het gebied moet plaatsen.</p></div>
+        <div><h4>FR-intentie</h4><p>Zwak/afwezig — een Franstalige zoekt niet naar &#8220;Ardenne belge&#8221; als toegang.</p></div>
+      </div>
+      <p><b>Delen:</b> afbakening van het Belgische deel, kernplaatsen, natuur. <b>Accent NL:</b> volwaardige entrypagina,
+         vooropgezet in de NL-navigatie/interne links. <b>Accent FR:</b> lichte sectie/redirect binnen de streekhub, niet in de FR-hoofdnav.</p>
+      <div class="ev"><b>Bewijs:</b> <code>belgische ardennen</code> = eigen SERP (featured snippet + PAA), VA <b>#3</b>. Vol 8.100 NL vs 390 Vlaanderen (livrable a) = <b>20×</b> NL-gedreven.</div>
+      <div class="ev unc"><b>Onzeker / review:</b> het SERP-bewijs grondt de <i>vraag</i> hard, maar niet de keuze <b>zelfstandige pagina</b> vs <b>sterke on-page-entiteit + hubsectie</b>. Aanbeveling: één canonieke pagina in de gedeelde boom, met NL-compositie op de voorgrond — te bevestigen met de klant (§7).</div>
+    </div>
+  </div>
+
+  <!-- REC 3 DINANT -->
+  <div class="rec">
+    <div class="h"><span class="chip c-keep">keep</span><span class="chip c-improve">improve</span><span class="t">Dinant (plaats)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Dinant — stad/bestemming aan de Maas</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/het-beste-van-de-ardennen/hoogtepunten/dinant</span> (+ subpagina <span class="mono">/…/dinant/campings-dinant-ardennen</span>)</dd>
+        <dt>Reden</dt><dd>VA staat <b>#1 organisch</b>, maar onder een stapel SERP-features (knowledge graph, top-sights, PAA, video). De hefboom is <b>presentatie/CTR</b>, niet positie.</dd>
+      </dl>
+      <div class="two">
+        <div><h4>NL-intentie</h4><p>Plaats/bezienswaardigheid: &#8220;wat te zien/doen in Dinant&#8221;; NL-variant <code>dinant belgie</code>.</p></div>
+        <div><h4>FR-intentie</h4><p>Idem plaats — maar in FR concurreert de citadelle/officiële site; behoud de eigen invalshoek (beleving+route).</p></div>
+      </div>
+      <p><b>Delen:</b> hero, top-bezienswaardigheden (citadel, Notre-Dame, Sax), praktisch, route/omgeving.
+         <b>Accent NL:</b> &#8220;dagje/2&ndash;3 nachten&#8221;-kader, bereikbaarheid vanuit NL. <b>Accent FR:</b> patrimoine-nadruk.</p>
+      <h4>Secties &amp; volgorde (beide talen)</h4>
+      <p>Hero + korte intro (voor de snippet) &rarr; <b>Top&nbsp;5 bezienswaardigheden</b> &rarr; wat&nbsp;te&nbsp;doen (activiteiten in de buurt: kajak Lesse) &rarr; praktisch (parking/markt/taal — beantwoordt de PAA) &rarr; overnachten (link) &rarr; in&nbsp;de&nbsp;buurt.</p>
+      <dl>
+        <dt>Interne links UIT</dt><dd>Kajakken (Lesse) · Grotten van Han · Freÿr · Origineel overnachten · Streekhub</dd>
+        <dt>Interne links IN</dt><dd>Streekhub · Belgische Ardennen · Top&nbsp;10 kastelen · Citytrips</dd>
+        <dt>CTA / vervolg</dt><dd>&#8220;Plan je bezoek&#8221; &rarr; activiteit of overnachten (partner)</dd>
+        <dt>Performance</dt><dd><b>94.662 impr / 2.618 clicks / 2,77% CTR / pos&nbsp;4,8</b> (GSC). Live organisch #1.</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> SERP <code>dinant</code> (nl, BE): knowledge&nbsp;graph + top&nbsp;sights + PAA + video boven <b>VA #1 organisch</b>; daaronder Wikipedia, ardennen.nl, VISITWallonia. PAA: &#8220;Is Dinant een leuke plaats?&#8221;, &#8220;Op welke dag is er markt?&#8221; &rarr; beantwoord ze op de pagina voor de klik.</div>
+    </div>
+  </div>
+
+  <!-- REC 4 DURBUY -->
+  <div class="rec">
+    <div class="h"><span class="chip c-improve">improve</span><span class="t">Durbuy (plaats) — grootste doorklik-gat van de site</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Durbuy — &#8220;kleinste stadje&#8221;, Adventure Valley</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/het-beste-van-de-ardennen/hoogtepunten/durbuy</span></dd>
+        <dt>Reden</dt><dd>Enorme zichtbaarheid, minimale doorklik. ardennen.nl en Adventure&nbsp;Valley staan boven VA. Dit is de <b>#1-prioriteit op effort/resultaat</b>: geen nieuwe pagina, wél title/snippet/schema + intentie-match.</dd>
+      </dl>
+      <div class="two">
+        <div><h4>NL-intentie</h4><p>Plaats + &#8220;wat te doen&#8221; (Adventure Valley is de trekker); NL-variant <code>durbuy belgië</code> (29× NL).</p></div>
+        <div><h4>FR-intentie</h4><p>Plaats/bezienswaardigheid — minder &#8220;belgië&#8221;-situering nodig.</p></div>
+      </div>
+      <p><b>Accent NL:</b> koppel expliciet aan Adventure Valley (named entity met eigen volume) en gezins-outdoor.
+         <b>Sectievolgorde:</b> hero + intro &rarr; top-attracties (Adventure Valley voorop) &rarr; wandelen/kajak in de buurt &rarr; praktisch &rarr; overnachten.</p>
+      <dl>
+        <dt>Interne links UIT</dt><dd>Adventure Valley · Wandelen · La&nbsp;Roche · Origineel overnachten</dd>
+        <dt>CTA / vervolg</dt><dd>&#8220;Ontdek de activiteiten in Durbuy&#8221;</dd>
+        <dt>Performance</dt><dd><b>110.655 impr / 994 clicks / 0,90% CTR / pos&nbsp;8,4</b> (GSC). Live #6.</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> SERP <code>durbuy</code> (nl, BE): ardennen.nl · Adventure&nbsp;Valley · Wikipedia · durbuy.be · <b>VA #6</b> (90.500/mnd BE; 33.100 Vlaanderen). CTR 0,90% bij pos&nbsp;8,4 = intentie-/presentatiegat, geen positieprobleem alleen.</div>
+    </div>
+  </div>
+
+  <!-- REC 5 GROTTEN VAN HAN + placemodel -->
+  <div class="rec">
+    <div class="h"><span class="chip c-improve">improve</span><span class="chip c-merge">merge</span><span class="t">Plaats- &amp; attractiemodel (Grotten van Han, La&nbsp;Roche, Watervallen Coo, Bouillon…)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteiten</dt><dd>Attracties/plaatsen: Grotten van Han, La&nbsp;Roche-en-Ardenne, Watervallen van Coo, Bouillon, Han-sur-Lesse…</dd>
+        <dt>Huidige URL&#8217;s</dt><dd><span class="mono">/…/hoogtepunten/grotten-van-han</span> · <span class="mono">/…/hoogtepunten/la-roche-ardenne</span> · <span class="mono">/…/hoogtepunten/watervallen-coo-plopsa</span> · <span class="mono">/…/top-bestemmingen/steden-en-dorpen/han-sur-…</span></dd>
+        <dt>Reden</dt><dd><b>improve</b>: dezelfde lage-CTR-diagnose als Durbuy. <b>merge</b>: verenig de twee plaats-thuizen (<i>hoogtepunten</i> én <i>steden-en-dorpen</i>) tot één plaatstemplate + consistente URL (los <code>la-roche-ardenne</code> vs <code>la-roche-en-ardenne</code> op).</dd>
+      </dl>
+      <p><b>Eén plaatstemplate (NL &amp; FR):</b> hero &rarr; top-bezienswaardigheden &rarr; wat&nbsp;te&nbsp;doen (activiteiten in de buurt) &rarr; praktisch (beantwoordt PAA) &rarr; overnachten (partnerlink) &rarr; in&nbsp;de&nbsp;buurt. Consistente schema (TouristDestination/TouristAttraction).</p>
+      <dl>
+        <dt>Interne links</dt><dd>Elke plaats &harr; nabije plaatsen + relevante activiteit (Han &rarr; grotten, La&nbsp;Roche &rarr; wandelen/kajak)</dd>
+        <dt>Performance</dt><dd>Grotten van Han <b>86.763 impr / 0,56% / pos&nbsp;5,8</b> · La&nbsp;Roche 27.051 / 3,23% / 5,4 · Watervallen Coo 30.084 / 0,89% / 7,9</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> GSC-rankingpagina&#8217;s tonen dezelfde entiteitsklasse op twee paden (<code>/hoogtepunten/</code> vs <code>/top-bestemmingen/steden-en-dorpen/</code>). La&nbsp;Roche verschijnt onder twee slug-varianten. Hoge impressies + &lt;1% CTR op de attractiepagina&#8217;s = het doorklik-gat leeft hier, niet op de activiteitenlijstjes.</div>
+    </div>
+  </div>
+
+  <!-- REC 6 WANDELEN MERGE -->
+  <div class="rec">
+    <div class="h"><span class="chip c-merge">merge</span><span class="t">Wandelen-hub — twee pagina&#8217;s die elkaar beconcurreren</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Wandelen in de Ardennen</dd>
+        <dt>Huidige URL&#8217;s</dt><dd><b>Listicle</b> <span class="mono">/…/ontdek-onze-top-10s/mooiste-wandelingen-ardennen</span> (wint) &nbsp;·&nbsp; <b>Pijler</b> <span class="mono">/…/wandelen-de-ardennen/wandelingen-ardennen</span> (verliest)</dd>
+        <dt>Reden</dt><dd>Twee VA-pagina&#8217;s ranken op dezelfde zoekvraag: de listicle op <b>#1</b>, de pijler op <b>#28</b>. Signaal en linkkracht versnipperen. Voeg samen tot één canonieke wandelhub; behoud de winnende (listicle) URL, laat de pijler er 301-canoniek in opgaan of positioneer hem als kind (routes-index) mét canonieke verwijzing.</dd>
+      </dl>
+      <div class="two">
+        <div><h4>NL-intentie</h4><p>&#8220;De mooiste wandelingen&#8221; — inspiratie + concrete routes; sterke long-tail (met kinderen, met hond, met overnachting).</p></div>
+        <div><h4>FR-intentie</h4><p><code>randonnée ardennes</code> — activiteit, VA #2, gezond. Zelfde compositie, FR-labels.</p></div>
+      </div>
+      <p><b>Sectievolgorde:</b> intro (slow-toerisme-lens, past bij missie: &#8220;ondergewaardeerde routes&#8221;) &rarr; top-routes met kaart/GPX &rarr; per profiel (gezin/hond/meerdaags) &rarr; per gebied (La&nbsp;Roche, Semois) &rarr; praktisch.</p>
+      <dl>
+        <dt>Interne links UIT</dt><dd>Kajakken · plaatsen (La&nbsp;Roche, Bouillon) · Knooppuntennetwerk · Origineel overnachten</dd>
+        <dt>Performance</dt><dd>Listicle: <code>wandelen ardennen</code> 2.862 impr / 404 clicks / <b>14,12% / pos&nbsp;1,8</b>; <code>wandelingen ardennen</code> 29,6% / pos&nbsp;1,4. Pijler: live #28 (verwaarloosbaar verkeer).</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> live SERP <code>wandelen ardennen</code> (nl, BE, 25/08): <b>VA #1</b> = de top-10-listicle; <b>VA #28</b> = de wandelpijler — beide visitardenne.com. Klassiek cannibalisatiepatroon.</div>
+    </div>
+  </div>
+
+  <!-- REC 7 KAJAK -->
+  <div class="rec">
+    <div class="h"><span class="chip c-keep">keep</span><span class="t">Kajakken / kano-hub — het exemplarische model</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Kajakken/kanoën (Lesse, Ourthe, Semois)</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/het-beste-van-de-ardennen/ontdek-onze-top-10s/kajak-kano-ardennen</span></dd>
+        <dt>Reden</dt><dd>Eén pagina vangt de héle woordvariatie (kajak/kano/kayak/kanoën) op #1&ndash;#5 met hoge CTR. Dit is het model waar plaats- en wandelpagina&#8217;s naartoe moeten. Niet aanraken aan structuur — alleen seizoen/actualisatie.</dd>
+      </dl>
+      <p><b>Delen:</b> rivieren, aanbieders, praktisch, veiligheid. <b>Accent:</b> gezin vs sportief. Local pack aanwezig in de SERP &rarr; koppel aan operators/plaatsen.</p>
+      <dl>
+        <dt>Performance</dt><dd><b>12.218 impr / 1.369 clicks / 11,2% CTR / pos&nbsp;3,5</b> — plus <code>kano/kayak/kanoën ardennen</code> op dezelfde pagina.</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> SERP <code>kajakken ardennen</code> (nl, BE): <b>VA #1</b> · Adventure&nbsp;Valley · Ardenne&nbsp;Résidences + local pack (1.600/mnd). Eén canonieke activiteitpagina bedient de hele intentie.</div>
+    </div>
+  </div>
+
+  <!-- REC 8 ACTIVITEITEN MODEL -->
+  <div class="rec">
+    <div class="h"><span class="chip c-keep">keep</span><span class="chip c-improve">improve</span><span class="t">Activiteiten-/top-10-model (de motor van de site)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteiten</dt><dd>Activiteiten &amp; thema-lijstjes: spannendste activiteiten, zwemmen, boomhutten, kastelen, brouwerijen, mountainbike, wellness, campings…</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/…/ontdek-onze-top-10s/…</span> (spannendste-activiteit, top-10-zwemmen-ardennen, top-boomhutten-ardennen, mooiste-kastelen-ardennen, top-brouwerijen-ardennen…)</dd>
+        <dt>Reden</dt><dd>Deze listicles presteren stelselmatig het best (CTR 6&ndash;29%, pos&nbsp;1&ndash;3). Behouden; <b>improve</b> = seizoensactualisatie + interne links naar plaats/activiteit + schema (ItemList).</dd>
+      </dl>
+      <p><b>Duurzaamheid transversaal hier:</b> boomhut, boshut, brouwerijbezoek, streekproduct, wandelknooppunten leven in déze lijstjes — dat is waar de ATD-vraag (~130k/mnd) landt, zonder het woord &#8220;duurzaam&#8221;.</p>
+      <dl>
+        <dt>Performance</dt><dd>spannendste-activiteit 3.301 / 450 / <b>13,6% / 2,7</b> · zwemmen 18&ndash;20% CTR · boomhut 6,5% / 2,5 · brouwerij 22,6% / 3,2 · wellness 18,8% / 1,4</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> GSC — de <code>/ontdek-onze-top-10s/</code>-familie domineert VA&#8217;s clickvolume met hoge CTR; het contrast met de attractiepagina&#8217;s (&lt;1%) wijst precies aan waar het compositiewerk moet gebeuren.</div>
+    </div>
+  </div>
+
+  <!-- REC 9 FIETSEN -->
+  <div class="rec">
+    <div class="h"><span class="chip c-improve">improve</span><span class="t">Fietsen / mountainbike</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Fietsen &amp; mountainbike in de Ardennen</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/het-beste-van-de-ardennen/fietsen</span> · MTB-listicle <span class="mono">/…/ontdek-onze-top-10s/mountainbike-spots-ardennen</span></dd>
+        <dt>Reden</dt><dd>Gemengd: op <code>fietsen ardennen</code> staat VA zwak (#7, achter ardennen.nl/VISITWallonia/Komoot), terwijl de <b>MTB-listicle sterk is</b> (pos&nbsp;2,6, 12&ndash;16% CTR). Til de fiets-hub naar het listicle-model; NL-markt overindexeert op fietsen (9.060 vs 4.420 Vlaanderen).</dd>
+      </dl>
+      <div class="two">
+        <div><h4>NL-accent</h4><p>Groter fietspubliek (NL &gt; Vlaanderen); knooppunten + routes met GPX.</p></div>
+        <div><h4>FR-accent</h4><p><code>velo ardennes</code> VA #3 — gezond; behouden.</p></div>
+      </div>
+      <div class="ev"><b>Bewijs:</b> <code>fietsen ardennen</code> (nl, BE) VA #7 (70/mnd, dun); <code>velo ardennes</code> (fr) VA #3. GSC: mountainbike ardennen pos&nbsp;2,6 / 12,2% CTR — het winnende sjabloon bestaat al.</div>
+    </div>
+  </div>
+
+  <!-- REC 10 BIJZONDER OVERNACHTEN -->
+  <div class="rec">
+    <div class="h"><span class="chip c-add">add</span><span class="chip c-improve">improve</span><span class="t">Origineel / bijzonder overnachten (inspiratie vóór de boeking)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Unieke/originele accommodatie (boomhut, boshut, bijzonder overnachten)</dd>
+        <dt>Huidige URL</dt><dd>Deels aanwezig via <span class="mono">/…/ontdek-onze-top-10s/top-boomhutten-ardennen</span>; geen sterke overkoepelende &#8220;bijzonder overnachten&#8221;-hub</dd>
+        <dt>Reden</dt><dd>Dit is de <b>enige verblijf-SERP die een DMO kan winnen</b>: inhoud-gedreven, niet OTA-gedomineerd. VA staat #18 &rarr; naar top-5 met één sterke, goed gelinkte pagina.</dd>
+      </dl>
+      <p><b>Delen:</b> curatie van originele plekken (boomhut, cabane, insolite), verhalen, doorlink naar de accommodatie/partner.
+         <b>Accent NL:</b> <code>bijzonder overnachten</code>, <code>boomhut</code>. <b>Accent FR:</b> <code>hébergement insolite</code>.
+         <b>Duurzaamheid transversaal</b> hier zichtbaar (boshut, off-grid).</p>
+      <dl>
+        <dt>CTA / vervolg</dt><dd>Doorklik naar de accommodatie of Elloha/partner — <b>inspireren, dan doorverwijzen</b></dd>
+        <dt>Performance</dt><dd><code>boomhut ardennen</code> 2.549 impr / 6,5% / pos&nbsp;2,5 (bestaand kind presteert; hub ontbreekt)</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> <code>bijzonder overnachten ardennen</code> (nl, BE): origineelovernachten · Vipio · Nutchel · <b>VA #18</b> — inhoud-SERP, geen kale OTA-lijst. Contrast met de do-not-target-groep hieronder.</div>
+    </div>
+  </div>
+
+  <!-- REC 11 OTA DO NOT TARGET -->
+  <div class="rec">
+    <div class="h"><span class="chip c-dnt">do not target</span><span class="chip c-support">support</span><span class="t">Verblijf-/boekingsvragen (vakantiehuis · vakantiepark · weekendje weg)</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteiten</dt><dd>Boekingsintentie: vakantiehuis, vakantiepark, weekendje weg, camping (deels)</dd>
+        <dt>Huidige URL</dt><dd>n.v.t. — VA is afwezig en dat blijft strategisch zo</dd>
+        <dt>Reden</dt><dd>De top-10 is <b>volledig OTA&#8217;s en verhuurplatformen</b>. Een bestemming wint hier niet met een boekingspagina. <b>Support</b>: bied de inspiratievariant (zie &#8220;origineel overnachten&#8221;) en verwijs door naar partners/Elloha; concurreer niet op inventaris.</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> <code>vakantiehuis ardennen</code> (8.100/mnd) top-10 = ardennes-etape, Belvilla, Ardennenplezier, gitesdewallonie — <b>VA NONE</b>. <code>vakantiepark</code> = Floreal, Center&nbsp;Parcs, Landal. <code>weekendje weg</code> = Weekendesk, Natuurhuisje, Bongo. <code>gite ardennes</code> (fr) VA #28.</div>
+      <p class="note"><b>Nuance (support, niet negeren):</b> <code>camping ardennen</code> (VA #9) en de FR long-tail (<code>week-end/vacances ardennes</code>) dragen wél echte, kleine toeristische intentie — daar mag VA de inspiratiekant (mooiste campings-listicle bestaat al: pos&nbsp;8,3) verstevigen, maar niet de boekingskant.</p>
+    </div>
+  </div>
+
+  <!-- REC 12 DUURZAAM -->
+  <div class="rec">
+    <div class="h"><span class="chip c-remove">remove</span><span class="chip c-support">support</span><span class="t">Duurzaam toerisme — als rubriek weg, transversaal dragen</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Duurzaam/slow toerisme (ATD-thema&#8217;s: duurzaam, te voet, per fiets, inclusie)</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/praktische-informatie/duurzaam-toerisme-ardennen</span> (bestaat, maar mikt op een lege zoekmarkt)</dd>
+        <dt>Reden</dt><dd>De vraag bestaat (~130k/mnd) maar loopt <b>nooit via het woord &#8220;duurzaam&#8221;</b>. Een navigatierubriek &#8220;duurzaam toerisme&#8221; mikt op een zoekvraag die de SERP niet toont. Draag het thema transversaal op productpagina&#8217;s.</dd>
+      </dl>
+      <p><b>Support-plek:</b> boshut/boomhut (origineel overnachten), brouwerijbezoek &amp; streekproduct (gastronomie-listicles), wandelknooppunten (wandelhub), trein-bereikbaarheid. Draag een &#8220;slow/duurzaam&#8221;-lens redactioneel, niet als rubriek.</p>
+      <div class="ev"><b>Bewijs:</b> <code>duurzaam toerisme ardennen</code> gaf een <b>lege SERP in BE én NL</b>. Livrable a: &#8220;vakantie zonder vliegen&#8221; 10/mnd. Twee onafhankelijke signalen &rarr; woordenschat is geen zoekingang.</div>
+    </div>
+  </div>
+
+  <!-- REC 13 TOEGANKELIJKHEID -->
+  <div class="rec">
+    <div class="h"><span class="chip c-improve">improve</span><span class="flag">disambiguatie</span><span class="t">Toegankelijkheid — &#8220;Ardennen kennen geen grenzen&#8221;</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>Toegankelijk reizen / inclusie (Access-i)</dd>
+        <dt>Huidige URL</dt><dd><span class="mono">/nl/praktische-informatie/ardennen-kennen-geen-grenzen</span></dd>
+        <dt>Reden</dt><dd>Strategisch belangrijk voor de opdracht (Interreg-inclusie), maar de term is <b>entiteit-verward</b>: op <code>toegankelijk reizen ardennen</code> staan visitronse.be / visitvlaamseardennen.be (ander gebied) vóór VA. <b>Improve</b> = Access-i-label expliciet + schema; concurreert met VISITWallonia, niet met OTA&#8217;s.</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> <code>toegankelijk reizen ardennen</code> (nl, BE): visitronse / <b>Vlaamse Ardennen</b> · VISITWallonia · ardennes.com · <b>VA #14</b>. Kleine, inclusie-gedreven markt; win op expliciete toegankelijkheidsinformatie, niet op volume.</div>
+    </div>
+  </div>
+
+  <!-- REC 14 ARDENNES FR -->
+  <div class="rec">
+    <div class="h"><span class="chip c-dnt">do not target</span><span class="flag">disambiguatie</span><span class="t">FR-hoofdterm &#8220;ardennes&#8221; — entiteit-resolutie vóór alles</span></div>
+    <div class="b">
+      <dl>
+        <dt>Entiteit</dt><dd>De streek Ardenne (FR-perspectief) — vervuild door het Franse département&nbsp;08</dd>
+        <dt>Huidige URL</dt><dd>Streekhub FR (<span class="mono">/fr/le-meilleur-de-lardenne</span>)</dd>
+        <dt>Reden</dt><dd>De kale FR-hoofdterm splitst over twee entiteiten (département&nbsp;08 vs massief). VA #7. <b>Do-not-target</b> de kale hoofdterm als groeidoel; <b>disambigueer</b> in plaats daarvan (schema, &#8220;Ardenne belge/transfrontalière&#8221;, interne relaties) en target de FR-toeristische long-tail waar VA al gezond is (randonnée #2, vélo #3).</dd>
+      </dl>
+      <div class="ev"><b>Bewijs:</b> SERP <code>ardennes</code> (fr, BE): Wikipedia &#8220;Ardennes&nbsp;(département)&#8221; #1 · ardennes.com #2 · <b>cd08.fr</b> (conseil départemental) #10&ndash;11 · <b>VA #7</b>. PAA/gerelateerd: &#8220;code postal&#8221;, &#8220;région&#8221;, &#8220;numéro&#8221; &rarr; administratief, niet louter toeristisch.</div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:20px"><b>Overige rubrieken (keep, kort):</b> Toeristische routes (Fortenroute, Bierroute, Abdijen, Rimbaud-Verlaine, Legenden, Knooppunten) — niche-inspiratie, behouden met interne links naar plaatsen/activiteiten. Agenda/Evenementen, Kaart (<code>kaart ardennen</code> pos&nbsp;2,6&ndash;3,0, 7&ndash;22% CTR — sterk, keep), Weer&amp;seizoenen, Brochures, Toeristeninfo, Groepsreizen — servicelaag, behouden.</p>
+</div></section>
+
+<!-- ============================================================= 4. LINKING -->
+<section id="linking"><div class="wrap">
+  <h2>4 · Interne-linkmodel — uit entiteit-relaties &amp; bezoekersroutes</h2>
+  <p class="lead">Het linkmesh volgt <b>entiteit-relaties en gebruikersroutes</b>, niet keyword-varianten. Drie
+     bezoekersprofielen uit de intake sturen de routes: <b>Explorers</b> (ontdekken, oriëntatie),
+     <b>Nature-Loving Actifs</b> (activiteit-gedreven), <b>Shortbreakers</b> (weekend/2&ndash;3 nachten).</p>
+
+  <div class="grid2">
+    <div class="card"><h4>Entiteit-relaties (de stabiele ruggengraat)</h4>
+      <ul style="margin:.3em 0">
+        <li><b>Streek</b> &rarr; <b>Plaatsen</b> (Dinant, Durbuy, La&nbsp;Roche…) &rarr; <b>Attracties</b> in die plaats (citadel, Adventure Valley, grotten)</li>
+        <li><b>Plaats</b> &harr; <b>Activiteit in de buurt</b> (Dinant &harr; kajak Lesse; La&nbsp;Roche &harr; wandelen)</li>
+        <li><b>Activiteit-hub</b> (wandelen, kajak, fietsen) &rarr; <b>routes/plekken</b> &rarr; terug naar <b>plaats</b></li>
+        <li><b>Belgische Ardennen</b> = NL-entree &rarr; verdeelt naar plaatsen + activiteiten</li>
+        <li><b>Duurzaamheid</b> = transversale draad die productpagina&#8217;s onderling verbindt (boshut &harr; wandelknooppunt &harr; brouwerij)</li>
+      </ul>
+    </div>
+    <div class="card good"><h4>De regel</h4>
+      <p style="margin:.3em 0">Elke <b>plaatspagina</b> linkt verplicht naar: (1) 1&ndash;2 activiteiten in de buurt, (2) de streekhub (breadcrumb),
+         (3) 2&ndash;3 naburige plaatsen, (4) één overnachtings-/inspiratiepagina. Elke <b>activiteithub</b> linkt terug naar de
+         plaatsen waar de activiteit gebeurt. Zo vangt het net zowel de <b>hoge-impressie-plaatspagina&#8217;s</b> (die linkkracht
+         nodig hebben voor CTR/relevantie) als de <b>winnende listicles</b> (die linkkracht dóórgeven).</p>
+    </div>
+  </div>
+
+  <h3>De drie bezoekersroutes (journeys)</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Profiel</th><th>Instappagina (intentie)</th><th>Route (interne links)</th><th>Vervolgstap / CTA</th></tr></thead>
+    <tbody>
+      <tr><td><b>Explorers</b><br><span class="note">ontdekken, oriëntatie</span></td>
+        <td>Streekhub · Belgische Ardennen · &#8220;bezienswaardigheden ardennen&#8221;</td>
+        <td>Streekhub &rarr; top-plaatsen (Dinant/Durbuy) &rarr; top-10-lijstjes (kastelen, spannendste activiteiten) &rarr; plaats</td>
+        <td>&#8220;Kies je bestemming&#8221; &rarr; plaatspagina</td></tr>
+      <tr><td><b>Nature-Loving Actifs</b><br><span class="note">activiteit-gedreven</span></td>
+        <td>Wandelhub · Kajakhub · Fietshub (VA al #1&ndash;#3)</td>
+        <td>Activiteithub &rarr; route/plek &rarr; nabije plaats &rarr; origineel overnachten</td>
+        <td>&#8220;Plan je activiteit&#8221; &rarr; route/GPX + overnachten (partner)</td></tr>
+      <tr><td><b>Shortbreakers</b><br><span class="note">weekend / 2&ndash;3 nachten</span></td>
+        <td>Origineel overnachten · plaats + &#8220;wat te doen&#8221; · idee&euml;n séjour</td>
+        <td>Inspiratie &rarr; plaats(en) + activiteiten in de buurt &rarr; origineel overnachten &rarr; <b>Elloha/partner</b></td>
+        <td>Doorverwijzen naar boeking (partner) — VA inspireert, partner boekt</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note"><span class="flag">review</span> &nbsp;De boekings-CTA (Elloha vs partner-OTA-redirect) hangt af van het boekingsmodel dat de klant kiest — open punt in de intake (§7).</p>
+</div></section>
+
+<!-- ============================================================= 5. PREVIEW -->
+<section id="preview"><div class="wrap">
+  <h2>5 · Preview — de voorgestelde wijzigingen op de echte sitestructuur</h2>
+  <p class="lead">De huidige boom met per knoop de paginabeslissing zichtbaar (kleur + label), en de NL/FR-compositieverschillen aangeduid.
+     Dit is een voorstel ter review, geen doorgevoerde wijziging.</p>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--d-keep)"></span>keep</span>
+    <span><span class="sw" style="background:var(--d-improve)"></span>improve</span>
+    <span><span class="sw" style="background:var(--d-merge)"></span>merge</span>
+    <span><span class="sw" style="background:var(--d-add)"></span>add</span>
+    <span><span class="sw" style="background:var(--d-remove)"></span>remove</span>
+    <span><span class="sw" style="background:var(--d-support)"></span>support</span>
+    <span><span class="sw" style="background:var(--d-dnt)"></span>do not target</span>
+  </div>
+
+  <div class="tree">
+    <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Ardennen (streekhub / homepage)</b> <span class="u">improve: editorial ≥ ardennen.nl · FR: disambigueer département 08</span></div>
+
+    <div class="kids">
+      <div class="node b-improve"><span class="chip c-improve">improve</span> <b>Belevenissen in de Ardennen</b> <span class="u">/belevenissen-ardennen — inspiratie/blog · draagt duurzaamheid transversaal</span></div>
+
+      <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Het beste van de Ardennen</b> <span class="u">/het-beste-van-de-ardennen — plaats + activiteit</span></div>
+      <div class="kids">
+        <div class="node b-merge"><span class="chip c-merge">merge</span> <b>Plaatsmodel</b> <span class="u">verenig /hoogtepunten/ + /top-bestemmingen/steden-en-dorpen/ &rarr; één plaatstemplate</span></div>
+        <div class="kids">
+          <div class="node b-improve"><span class="chip c-improve">improve</span> Dinant <span class="u">GSC 2,77% / pos 4,8 · live #1 · beantwoord PAA</span></div>
+          <div class="node b-improve"><span class="chip c-improve">improve</span> Durbuy <span class="u">0,90% / pos 8,4 · grootste CTR-gat · koppel Adventure Valley</span></div>
+          <div class="node b-improve"><span class="chip c-improve">improve</span> Grotten van Han <span class="u">0,56% / pos 5,8</span></div>
+          <div class="node b-improve"><span class="chip c-improve">improve</span> La Roche <span class="u">3,23% / pos 5,4 · fix slug-varianten</span></div>
+          <div class="node b-improve"><span class="chip c-improve">improve</span> Watervallen Coo · Bouillon · … <span class="u">zelfde template + schema</span></div>
+        </div>
+        <div class="node b-keep"><span class="chip c-keep">keep</span> <b>Ontdek onze top-10&#8217;s</b> (listicles) <span class="u">de motor: CTR 6&ndash;29% · improve = seizoen + schema + interne links</span></div>
+        <div class="kids">
+          <div class="node b-keep"><span class="chip c-keep">keep</span> Kajak/kano <span class="u">#1 · 11,2% — exemplarisch model</span></div>
+          <div class="node b-merge"><span class="chip c-merge">merge</span> Wandelen <span class="u">listicle #1 + pijler #28 &rarr; één wandelhub</span></div>
+          <div class="node b-improve"><span class="chip c-improve">improve</span> Fietsen/MTB <span class="u">MTB sterk · fietsen-hub #7 optillen · NL overindexeert</span></div>
+          <div class="node b-add"><span class="chip c-add">add</span> Origineel/bijzonder overnachten <span class="u">#18 &rarr; top-5 · enige winbare verblijf-SERP</span></div>
+          <div class="node b-keep"><span class="chip c-keep">keep</span> Zwemmen · kastelen · brouwerijen · boomhutten · wellness · campings <span class="u">duurzaamheid landt hier</span></div>
+        </div>
+        <div class="node b-add"><span class="chip c-add">add</span> <b>Belgische Ardennen</b> (niveau-1-entiteit) <span class="u">NL-entree · eigen SERP+PAA · <b>review</b>: pagina vs on-page-entiteit</span></div>
+      </div>
+
+      <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Toeristische routes</b> <span class="u">/toeristische-routes — niche-inspiratie · interne links naar plaats/activiteit</span></div>
+
+      <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Praktische informatie</b> <span class="u">/praktische-informatie — planning + service</span></div>
+      <div class="kids">
+        <div class="node b-keep"><span class="chip c-keep">keep</span> Agenda · Kaart (7&ndash;22% CTR) · Weer · Brochures · Toeristeninfo · Groepsreizen</div>
+        <div class="node b-improve"><span class="chip c-improve">improve</span> Ardennen kennen geen grenzen (toegankelijkheid) <span class="u">Access-i expliciet · disambigueer Vlaamse Ardennen</span></div>
+        <div class="node b-improve"><span class="chip c-improve">improve</span> Overnachten <span class="u">inspireren &rarr; doorverwijzen (Elloha/partner)</span></div>
+        <div class="node b-remove"><span class="chip c-remove">remove</span> Duurzaam toerisme (als rubriek) <span class="u">lege SERP &rarr; transversaal dragen</span></div>
+      </div>
+
+      <div class="node b-dnt"><span class="chip c-dnt">do not target</span> <b>Verblijf-/boekingsvragen</b> <span class="u">vakantiehuis · vakantiepark · weekendje weg = OTA-terrein · support via inspiratie + partner</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px"><h4>NL/FR-compositie — waar de talen verschillen (binnen dezelfde knopen)</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Knoop</th><th>NL-accent</th><th>FR-accent</th><th>Structureel verschil?</th></tr></thead>
+      <tbody>
+        <tr><td>Streekhub</td><td>&#8220;Belgische Ardennen&#8221; voorop; afstand vanuit NL</td><td>disambiguatie massief vs dept&nbsp;08; &#8220;3 pays&#8221;</td><td>Nee — compositie</td></tr>
+        <tr><td>Belgische Ardennen</td><td>volwaardige entree, in NL-nav</td><td>lichte sectie/redirect (&#8220;Ardenne belge&#8221;)</td><td><span class="chip c-review">review</span> pagina vs sectie</td></tr>
+        <tr><td>Plaatsen</td><td>&#8220;belgië&#8221;-situering (durbuy belgië 29×)</td><td>patrimoine-nadruk, geen situering</td><td>Nee — compositie</td></tr>
+        <tr><td>Fietsen</td><td>groter publiek (NL&gt;VL), knooppunten</td><td>velo #3, behouden</td><td>Nee — compositie</td></tr>
+        <tr><td>FR-hoofdterm &#8220;ardennes&#8221;</td><td>n.v.t. (NL kent de tweedeling niet)</td><td>do-not-target + disambiguatie</td><td>Nee — entiteit-resolutie</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin:0" class="note">Geen enkel SERP-signaal rechtvaardigt een <b>tweede, taal-specifieke boom</b>. Alle verschillen zijn compositie of entiteit-resolutie binnen één boom.</p>
+  </div>
+</div></section>
+
+<!-- ============================================================= 6. ONZEKER -->
+<section id="onzeker"><div class="wrap">
+  <h2>6 · Onzekerheden &amp; onvoldoende bewijs — expliciet, niet ingevuld</h2>
+  <p class="lead">Canon-regel&nbsp;8: geen bewijs = geen verzonnen zekerheid. Elke beslissing hieronder is bewust
+     <b>review_needed</b> gelaten; een mens (klant of consultant) moet ze sluiten vóór uitvoering.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Open punt</th><th>Wat wél gegrond is</th><th>Wat ontbreekt / te beslissen</th></tr></thead>
+    <tbody>
+      <tr><td><b>Belgische Ardennen: pagina vs entiteit-sectie</b></td><td>De <i>vraag</i> is hard gegrond (eigen SERP+PAA, VA #3, 8.100 NL, 20× NL&gt;VL)</td><td>Of dit een zelfstandige canonieke pagina wordt of een sterke on-page-entiteit + hubsectie. Aanbeveling: pagina met NL-compositie — <b>klant bevestigt</b>.</td></tr>
+      <tr><td><b>Refonte vs upgrade</b></td><td>Onze paginabeslissingen zijn structuur-onafhankelijk en projecteren op beide bomen (4-pijler of 6-rubriek)</td><td>Businessbeslissing van de klant: volledige rebuild (Yuri&amp;Neil 6&nbsp;rubrieken) of structurele upgrade van de huidige 4&nbsp;pijlers. Bepaalt de migratie/redirect-strategie.</td></tr>
+      <tr><td><b>Boekingsmodel (Elloha vs partner-redirect)</b></td><td>De verblijf-SERP&#8217;s zijn OTA-terrein (do-not-target); inspiratie-vóór-boeking is winbaar</td><td>Of place-/inspiratiepagina&#8217;s doorlinken naar Elloha of naar partner-OTA&#8217;s. Bepaalt de CTA en de Shortbreaker-route. Open in de intake.</td></tr>
+      <tr><td><b>FR-performance (GSC)</b></td><td>FR-paginabeslissingen rusten op live SERP-positie + intentie (randonnée #2, vélo #3, ardennes #7)</td><td>Deze ronde is de GSC-meting uitsluitend <span class="mono">/nl/</span> (livrable a). FR-CTR/impressies niet meegemeten &rarr; FR-CTR-prioritering is nog niet cijfergegrond.</td></tr>
+      <tr><td><b>Vlaamse Ardennen &amp; dept-08 disambiguatie (uitvoering)</b></td><td>De entiteit-verwarring is in beide talen aangetoond in de SERP</td><td>De concrete schema-/NAP-/naamgevingsconfiguratie (welke labels, welke sameAs/about) — uit te werken met de klant; het is klant-/site-data, geen generieke code.</td></tr>
+      <tr><td><b>Volledige URL-inventaris / weespagina&#8217;s</b></td><td>Live nav + GSC-rankingpagina&#8217;s tonen de dubbele plaats-thuizen en slug-varianten</td><td>Geen exhaustieve crawl in deze ronde. Een volledige Screaming-Frog-crawl vóór de refonte om álle dubbele URL&#8217;s, redirects en weespagina&#8217;s te vangen.</td></tr>
+      <tr><td><b><code>week-end ardennes</code> (FR) volume</b></td><td>Intentie gegrond (getaway, Belgisch); VA #16</td><td>DFS gaf geen volumecijfer terug — grootte-orde onbekend, niet geschat.</td></tr>
+      <tr><td><b>Positie-volatiliteit Dinant</b></td><td>Live SERP toont VA #1 organisch; GSC 90d-gemiddelde was pos&nbsp;4,8</td><td>Geen tegenstrijdigheid voor de aanbeveling (CTR/schema geldt sowieso), wél een reden om &#8220;#1&#8221; niet als eindstatus te lezen (regel&nbsp;6).</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card bad"><p style="margin:0"><b>Wat dit document bewust NIET doet:</b> geen nieuwe keyword-boom, geen volledige IA verzonnen om het
+     outputschema te vullen, geen tweede taalboom zonder SERP-bewijs, en geen boekings-/OTA-landingpagina&#8217;s waar de
+     bestemming structureel niet kan winnen. Waar het bewijs stopt, stopt de zekerheid.</p></div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>Verantwoording.</b> Live nav-crawl van <span class="mono">visitardenne.com/nl</span> en <span class="mono">/fr</span> (25/08/2026).
+     SERP-bewijs: 27 live Google-SERP&#8217;s (livrable-fundament, 24/08) + 2 verse SERP&#8217;s (<code>dinant</code>, <code>wandelen ardennen</code>, 25/08)
+     via <span class="mono">dataforseo_serp_results</span>. GSC-performance: 90&nbsp;dagen tot 10/08/2026, uitsluitend <span class="mono">/nl/</span>-pagina&#8217;s (livrable&nbsp;a).
+     FR-arborescentie: &#8220;Arbo&nbsp;-&nbsp;VisitArdenne&#8221; (Yuri&amp;Neil, sept.&nbsp;2025). Waar een cijfer ontbreekt: &#8220;—&#8221;; er is niets geschat.
+     Bewijs (observatie) en paginabeslissing (interpretatie) zijn overal gescheiden gehouden.</p>
+  <p>Sherlock · Digital Growth Intelligence · VisitArdenne deel&nbsp;2 (livrables b·c·d) · 25 augustus 2026</p>
+</div></footer>
+</body></html>
