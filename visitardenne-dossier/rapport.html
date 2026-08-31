@@ -1,496 +1,679 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>VisitArdenne — Rapport marché néerlandophone | Sherlock SEO</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>VisitArdenne — Rapport de restitution · marché néerlandophone | Sherlock SEO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/room.css">
 <style>
-:root{
-  --purple:#662483; --green:#6BB869; --white:#fff;
-  --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
-  --green-tint:rgba(107,184,105,.12); --green-row:rgba(107,184,105,.22); --purple-tint:rgba(102,36,131,.08);
-  --font-head:"Raleway",system-ui,-apple-system,sans-serif;
-  --font-body:"Open Sans",system-ui,-apple-system,sans-serif;
-  --maxw:940px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font-body);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.22;margin:0}
-a{color:var(--purple)}
-
-/* ---------- cover ---------- */
-.cover{position:relative;background:var(--purple);color:#fff;overflow:hidden;padding:56px 0 60px}
+/* ---- report-local additions on top of room.css ---- */
+.cover{position:relative;background:var(--purple);color:#fff;overflow:hidden;padding:54px 0 58px}
 .cover::after{content:"";position:absolute;right:-70px;bottom:-90px;width:340px;height:340px;background:var(--green);opacity:.22;transform:rotate(28deg)}
-.cover svg.net{position:absolute;top:-10px;right:18px;width:230px;height:180px;opacity:.5}
 .cover .wrap{position:relative;z-index:2}
-.brandbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:44px}
+.brandbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:40px}
 .wordmark{font-family:var(--font-head);font-weight:700;font-size:19px;letter-spacing:.02em;line-height:1.1}
 .wordmark small{display:block;font-weight:600;font-size:9.5px;letter-spacing:.19em;opacity:.85;margin-top:4px}
-.cover h1{font-size:40px;max-width:19ch}
+.cover h1{font-size:38px;max-width:20ch}
 .cover h1 em{font-style:normal;color:#C9E7C7}
-.cover .sub{font-family:var(--font-head);font-weight:300;font-size:19px;margin-top:14px;max-width:52ch;opacity:.95}
-.metaline{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;opacity:.92}
+.cover .sub{font-family:var(--font-head);font-weight:300;font-size:19px;margin-top:14px;max-width:56ch;opacity:.95}
+.metaline{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;opacity:.92}
 .metaline b{font-weight:600}
+@media(max-width:720px){.cover h1{font-size:28px}}
 
-/* ---------- language toggle ---------- */
-.langbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.langbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
-.tocmini{font-size:12.5px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
-.tocmini a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
-.tocmini a:hover{color:var(--purple);border-bottom-color:var(--green)}
-.langbtns{display:flex;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex:0 0 auto}
-.langbtns button{font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;padding:7px 15px;border:0;background:#fff;color:var(--muted);cursor:pointer}
-.langbtns button[aria-pressed="true"]{background:var(--purple);color:#fff}
+/* chapter TOC */
+.toc{columns:2;column-gap:36px;margin-top:18px;font-size:14.5px;max-width:80ch}
+.toc li{margin-bottom:8px;break-inside:avoid}
+.toc a{text-decoration:none;border-bottom:1px solid var(--green)}
+.toc .n{font-family:var(--font-head);font-weight:700;color:var(--purple);margin-right:6px}
+@media(max-width:700px){.toc{columns:1}}
 
-/* ---------- sections ---------- */
-section{padding:52px 0;border-bottom:1px solid var(--line)}
-section:last-of-type{border-bottom:0}
-.eyebrow{font-family:var(--font-head);font-weight:700;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple);margin-bottom:11px}
-section h2{font-size:29px;max-width:24ch}
-section h2 em{font-style:normal;color:var(--purple)}
-.lead{font-size:18px;color:#444;margin-top:15px;max-width:70ch}
-p{max-width:72ch}
+/* provenance source chips */
+.src{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:3px;text-transform:uppercase;vertical-align:middle;white-space:nowrap}
+.src-fr{color:var(--muted);background:var(--surface);border:1px solid var(--line)}
+.src-nl{color:var(--purple);background:var(--purple-tint);border:1px solid rgba(102,36,131,.25)}
 
-/* ---------- stat strip ---------- */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
-.stat{background:#fff;padding:18px 17px}
-.stat .v{font-family:var(--font-head);font-weight:700;font-size:26px;color:var(--purple);line-height:1.1}
-.stat .l{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.4}
+/* traveler quotes */
+.voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
+.voice{border:1px solid var(--line);border-top:4px solid var(--green);background:#fff;padding:16px 18px}
+.voice .ph{font-family:var(--font-head);font-weight:700;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.voice q{font-family:var(--font-head);font-weight:600;font-size:16.5px;color:var(--purple);quotes:"«\00a0" "\00a0»"}
+.voice p{font-size:13.5px;color:var(--muted);margin:8px 0 0}
 
-/* ---------- finding cards ---------- */
-.finding{border:1px solid var(--line);border-left:4px solid var(--purple);background:#fff;padding:22px 24px;margin-top:22px}
-.finding.win{border-left-color:var(--green)}
-.finding h3{font-size:19.5px;margin-bottom:9px}
-.tag{display:inline-block;font-family:var(--font-head);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);background:var(--purple-tint);padding:3px 9px;border-radius:3px;margin-bottom:10px}
-.finding.win .tag{color:#3d7a3b;background:var(--green-tint)}
-.evi{margin-top:14px;padding-top:13px;border-top:1px dashed var(--line);font-size:14px;color:var(--muted)}
+/* supersession note */
+.supersede{border-left:4px solid var(--amber);background:var(--amber-tint);padding:15px 19px;margin-top:20px}
+.supersede h4{font-size:14.5px;margin-bottom:5px;color:var(--amber)}
+.supersede p{margin:0;font-size:14.5px;max-width:72ch}
+
+/* competitor verdict 4-block */
+.verdict{border:1px solid var(--line);background:#fff;margin-top:20px}
+.verdict .vh{background:var(--purple-tint);padding:12px 18px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.verdict .vh h3{font-size:17.5px}
+.verdict .vh .who{font-size:12.5px;color:var(--muted)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.vcell{padding:13px 18px;border-top:1px solid var(--line);font-size:14px}
+.vcell:nth-child(odd){border-right:1px solid var(--line)}
+.vcell b.k{display:block;font-family:var(--font-head);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:4px}
+@media(max-width:640px){.vgrid{grid-template-columns:1fr}.vcell:nth-child(odd){border-right:0}}
+
+/* seasonality bar chart */
+.season{display:flex;align-items:flex-end;gap:4px;height:150px;margin-top:22px;border-bottom:2px solid var(--line);padding:0 2px}
+.season .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0}
+.season .bar i{display:block;background:var(--green);border-radius:2px 2px 0 0}
+.season .bar.y26 i{background:var(--purple)}
+.season-lbl{display:flex;gap:4px;font-size:9.5px;color:var(--muted);margin-top:5px;padding:0 2px}
+.season-lbl span{flex:1;text-align:center;white-space:nowrap;overflow:hidden}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+
+/* roadmap NVL */
+.nvl{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:22px}
+.nvl .ph-col{border:1px solid var(--line);border-top:4px solid var(--purple);background:#fff;padding:16px 18px}
+.nvl .ph-col.now{border-top-color:var(--green)}
+.nvl h3{font-size:15px;margin-bottom:3px}
+.nvl .when{font-size:11.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-head);font-weight:700;margin-bottom:9px}
+.nvl ul{margin:0;padding-left:17px;font-size:14px}
+.nvl li{margin-bottom:7px}
+
+/* decisions */
+.decis{counter-reset:d;margin-top:22px;padding:0;list-style:none}
+.decis li{counter-increment:d;position:relative;padding:14px 16px 14px 54px;margin-bottom:12px;border:1px solid var(--line);border-left:4px solid var(--purple);background:#fff;max-width:none}
+.decis li::before{content:counter(d);position:absolute;left:12px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--purple);color:#fff;font-family:var(--font-head);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.decis h4{font-size:15.5px;margin-bottom:4px}
+.decis p{margin:0;font-size:14px;color:#444;max-width:76ch}
+.decis .after{font-size:13px;color:var(--muted);margin-top:5px}
+
+section h2{max-width:30ch}
+.evi{margin-top:13px;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:var(--muted)}
 .evi b{color:var(--ink);font-weight:600}
-
-/* ---------- tables ---------- */
-.tablewrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line)}
-table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
-thead{background:var(--purple)}
-thead th{color:#fff;font-family:var(--font-head);font-weight:600;text-align:left;padding:11px 13px;font-size:12.5px;letter-spacing:.02em;white-space:nowrap}
-td{padding:10px 13px;border-top:1px solid var(--line);vertical-align:top}
-tbody tr:nth-child(even){background:#FAFAFB}
-td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-tbody tr.hl,tbody tr.hl:nth-child(even){background:var(--green-row)}
-tbody tr.hl td:first-child{box-shadow:inset 4px 0 0 var(--green)}
-.cap{font-size:12.5px;color:var(--muted);margin-top:9px}
-
-/* ---------- callout / steps ---------- */
-.callout{border-left:4px solid var(--green);background:var(--surface);padding:18px 22px;margin-top:24px}
-.callout.warn{border-left-color:var(--purple)}
-.callout h4{font-size:16px;margin-bottom:7px}
-.callout p{margin:0;font-size:15px;max-width:68ch}
-.steps{counter-reset:s;margin-top:26px;padding:0;list-style:none}
-.steps li{counter-increment:s;position:relative;padding:0 0 0 52px;margin-bottom:24px}
-.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--purple);color:#fff;font-family:var(--font-head);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
-.steps h4{font-size:17.5px;margin-bottom:5px}
-.steps .meta{font-size:13px;color:var(--muted);margin-top:6px}
-.steps .meta b{color:var(--ink);font-weight:600}
-
-/* ---------- done / todo ---------- */
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
-.col h4{font-size:16px;margin-bottom:12px;padding-bottom:9px;border-bottom:2px solid var(--line)}
-.col.done h4{border-bottom-color:var(--green)}
-.col.todo h4{border-bottom-color:var(--purple)}
-.col ul{margin:0;padding-left:19px}
-.col li{margin-bottom:9px;font-size:15px}
-@media(max-width:720px){.cols{grid-template-columns:1fr}.cover h1{font-size:30px}section h2{font-size:24px}}
-
-/* ---------- footer ---------- */
-footer{background:var(--surface);padding:34px 0;font-size:13.5px;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-footer b{color:var(--purple);font-family:var(--font-head)}
-.lang-nl{display:none}
-html[data-lang="nl"] .lang-fr{display:none}
-html[data-lang="nl"] .lang-nl{display:revert}
-html[data-lang="nl"] td.lang-fr,html[data-lang="nl"] th.lang-fr{display:none}
-@media print{.langbar{display:none}section{page-break-inside:avoid}}
+@media print{.roomnav{position:static}section{page-break-inside:avoid}}
 </style>
 </head>
-<body><div style="background:#662483;color:#fff;font-family:'Raleway',system-ui,sans-serif;font-size:13px;padding:8px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:9999">
-<span style="font-weight:700">Sherlock SEO · VisitArdenne — <span style="opacity:.8">Rapport exécutif</span></span>
-<a href="index.html" style="color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #6BB869">← Dossier / Sommaire</a></div>
+<body>
+<nav class="roomnav"><div class="wrap">
+  <a class="brand" href="index.html">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></a>
+  <a class="nl" href="index.html"><span class="lang-fr">Sommaire</span><span class="lang-nl">Overzicht</span></a>
+  <a class="nl" href="rapport.html" aria-current="page"><span class="lang-fr">Rapport</span><span class="lang-nl">Rapport</span></a>
+  <a class="nl" href="nieuw-onderzoek.html"><span class="lang-fr">Étude NL</span><span class="lang-nl">NL-onderzoek</span></a>
+  <a class="nl" href="a-audit.html"><span class="lang-fr">Validation FR</span><span class="lang-nl">FR-validatie</span></a>
+  <a class="nl" href="e-restitutie.html"><span class="lang-fr">Décisions</span><span class="lang-nl">Beslissingen</span></a>
+  <a class="nl" href="f-entitymap.html"><span class="lang-fr">Carte</span><span class="lang-nl">Kaart</span></a>
+  <div class="langbtns" role="group" aria-label="Taal"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="nl" aria-pressed="false">NL</button></div>
+</div></nav>
 
-<header class="cover">
-  <svg class="net" viewBox="0 0 240 190" fill="none" aria-hidden="true">
-    <g stroke="#6BB869" stroke-width="1" opacity=".85">
-      <path d="M18 150 L72 96 L140 122 L196 58 L228 96"/>
-      <path d="M72 96 L60 30 L140 122"/>
-      <path d="M60 30 L152 16 L196 58"/>
-      <path d="M18 150 L100 176 L140 122"/>
-    </g>
-    <g fill="#6BB869">
-      <circle cx="18" cy="150" r="3.4"/><circle cx="72" cy="96" r="3.4"/><circle cx="140" cy="122" r="3.4"/>
-      <circle cx="196" cy="58" r="3.4"/><circle cx="60" cy="30" r="3.4"/><circle cx="152" cy="16" r="3.4"/>
-      <circle cx="100" cy="176" r="3.4"/><circle cx="228" cy="96" r="3.4"/>
-    </g>
-  </svg>
-  <div class="wrap">
-    <div class="brandbar">
-      <div class="wordmark">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></div>
-      <div style="font-size:12.5px;text-align:right;opacity:.9">
-        <span class="lang-fr">Offre 2026/855<br>Août 2026</span>
-        <span class="lang-nl">Opdracht 2026/855<br>Augustus 2026</span>
-      </div>
-    </div>
-
-    <span class="lang-fr">
-      <h1>Deux tiers de votre trafic viennent déjà du <em>marché néerlandophone</em>.</h1>
-      <p class="sub">Ce qu'il faut changer sur visitardenne.com pour le capter — sans reconstruire le site.</p>
-    </span>
-    <span class="lang-nl">
-      <h1>Twee derde van uw verkeer komt al uit de <em>Nederlandstalige markt</em>.</h1>
-      <p class="sub">Wat er op visitardenne.com moet veranderen om dat te verzilveren — zonder de site te herbouwen.</p>
-    </span>
-
-    <div class="metaline">
-      <span class="lang-fr"><b>Pour</b> GEIE Destination Ardenne · Danièlle Gevaerts</span>
-      <span class="lang-nl"><b>Voor</b> GEIE Destination Ardenne · Danièlle Gevaerts</span>
-      <span class="lang-fr"><b>Portefeuille</b> Interreg VI – Ardenne Transition Durable</span>
-      <span class="lang-nl"><b>Portefeuille</b> Interreg VI – Ardenne Transition Durable</span>
-      <span class="lang-fr"><b>Par</b> Sherlock SEO Agency · Jef Van Gool</span>
-      <span class="lang-nl"><b>Door</b> Sherlock SEO Agency · Jef Van Gool</span>
+<header class="cover"><div class="wrap">
+  <div class="brandbar">
+    <div class="wordmark">Sherlock SEO<small>DIGITAL GROWTH INTELLIGENCE</small></div>
+    <div style="font-size:12.5px;text-align:right;opacity:.9">
+      <span class="lang-fr">Offre 2026/855 · Rapport de restitution<br>Août 2026</span>
+      <span class="lang-nl">Opdracht 2026/855 · Restitutierapport<br>Augustus 2026</span>
     </div>
   </div>
-</header>
+  <span class="lang-fr">
+    <h1>La structure tient. <em>L'ambition doit grandir.</em></h1>
+    <p class="sub">Le week-end se décide avant que le voyageur tape «&nbsp;Ardennen&nbsp;» — et sur ce moment-là, VisitArdenne est aujourd'hui presque invisible. Ce rapport réunit les deux phases de l'étude néerlandophone en une seule ligne de décision&nbsp;: ce que le marché demande, où vous en êtes, et ce qu'il faut faire, dans quel ordre.</p>
+  </span>
+  <span class="lang-nl">
+    <h1>De structuur houdt stand. <em>De ambitie moet groter.</em></h1>
+    <p class="sub">Het weekend wordt gekozen vóórdat de reiziger «&nbsp;Ardennen&nbsp;» intikt — en op dat moment is VisitArdenne vandaag vrijwel onzichtbaar. Dit rapport brengt de twee fasen van het Nederlandstalige onderzoek samen tot één beslislijn: wat de markt vraagt, waar u staat, en wat er moet gebeuren, in welke volgorde.</p>
+  </span>
+  <div class="metaline">
+    <span class="lang-fr"><b>Pour</b> GEIE Destination Ardenne · Danièlle Gevaerts</span>
+    <span class="lang-nl"><b>Voor</b> GEIE Destination Ardenne · Danièlle Gevaerts</span>
+    <span class="lang-fr"><b>Portefeuille</b> Interreg VI – Ardenne Transition Durable, activité 2.5</span>
+    <span class="lang-nl"><b>Portefeuille</b> Interreg VI – Ardenne Transition Durable, activiteit 2.5</span>
+    <span class="lang-fr"><b>Par</b> Sherlock SEO Agency · Jef Van Gool</span>
+    <span class="lang-nl"><b>Door</b> Sherlock SEO Agency · Jef Van Gool</span>
+  </div>
+</div></header>
 
-<nav class="langbar">
-  <div class="wrap">
-    <div class="tocmini">
-      <a href="#scope"><span class="lang-fr">Périmètre</span><span class="lang-nl">Scope</span></a>
-      <a href="#findings"><span class="lang-fr">Constats</span><span class="lang-nl">Bevindingen</span></a>
-      <a href="#priorities"><span class="lang-fr">Priorités</span><span class="lang-nl">Prioriteiten</span></a>
-      <a href="#next"><span class="lang-fr">Prochaines étapes</span><span class="lang-nl">Volgende stappen</span></a>
-      <a href="#status"><span class="lang-fr">Fait / recommandé</span><span class="lang-nl">Gedaan / aanbevolen</span></a>
-      <a href="#evidence"><span class="lang-fr">Annexe</span><span class="lang-nl">Bijlage</span></a>
+<!-- ================= TOC ================= -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Dix chapitres — le fil du dossier</span><span class="lang-nl">Tien hoofdstukken — de rode draad van het dossier</span></div>
+  <p class="lead"><span class="lang-fr">Ce rapport est la colonne vertébrale narrative&nbsp;; les livrables A–F sont ses annexes de preuve. Chaque chapitre ouvre sur une question, répond avec une mesure, et se termine par ce que cela signifie pour VisitArdenne.</span><span class="lang-nl">Dit rapport is de verhaallijn; de livrables A–F zijn de bewijsannexen. Elk hoofdstuk opent met een vraag, antwoordt met een meting, en sluit af met wat dat voor VisitArdenne betekent.</span></p>
+  <ol class="toc">
+    <li><span class="n">01</span><a href="#h1"><span class="lang-fr">Pourquoi le marché néerlandophone&nbsp;?</span><span class="lang-nl">Waarom de Nederlandstalige markt?</span></a></li>
+    <li><span class="n">02</span><a href="#h2"><span class="lang-fr">Où en est visitardenne.com/nl aujourd'hui&nbsp;?</span><span class="lang-nl">Waar staat visitardenne.com/nl vandaag?</span></a></li>
+    <li><span class="n">03</span><a href="#h3"><span class="lang-fr">Comment le voyageur néerlandophone cherche-t-il&nbsp;?</span><span class="lang-nl">Hoe zoekt de Nederlandstalige reiziger?</span></a></li>
+    <li><span class="n">04</span><a href="#h4"><span class="lang-fr">Que servent Google et les moteurs de réponse&nbsp;?</span><span class="lang-nl">Wat serveren Google en de antwoordmachines?</span></a></li>
+    <li><span class="n">05</span><a href="#h5"><span class="lang-fr">Qui possède ce marché aujourd'hui&nbsp;?</span><span class="lang-nl">Wie bezit deze markt vandaag?</span></a></li>
+    <li><span class="n">06</span><a href="#h6"><span class="lang-fr">Qu'est-ce qui fuit sur le site actuel&nbsp;?</span><span class="lang-nl">Waar lekt de huidige site?</span></a></li>
+    <li><span class="n">07</span><a href="#h7"><span class="lang-fr">La structure doit-elle changer&nbsp;?</span><span class="lang-nl">Moet de structuur veranderen?</span></a></li>
+    <li><span class="n">08</span><a href="#h8"><span class="lang-fr">Quel contenu, et quand&nbsp;?</span><span class="lang-nl">Welke content, en wanneer?</span></a></li>
+    <li><span class="n">09</span><a href="#h9"><span class="lang-fr">La feuille de route&nbsp;: MAINTENANT / ENSUITE / PLUS TARD</span><span class="lang-nl">De routekaart: NU / VOLGENDE / LATER</span></a></li>
+    <li><span class="n">10</span><a href="#h10"><span class="lang-fr">Comment saurons-nous que cela marche — et vos décisions</span><span class="lang-nl">Hoe weten we dat het werkt — en uw beslissingen</span></a></li>
+  </ol>
+</div></section>
+
+<!-- ================= H1 ================= -->
+<section id="h1"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 01</span><span class="lang-nl">Hoofdstuk 01</span></div>
+  <span class="lang-fr"><h2>Pourquoi le marché néerlandophone — et pourquoi <em>maintenant</em>&nbsp;?</h2>
+    <p class="lead">L'étude française de Yuri &amp; Neil (août–octobre 2025) se terminait sur une question ouverte, en toutes lettres&nbsp;: «&nbsp;Audit sémantique en NL&nbsp;?&nbsp;». Ce dossier est la réponse.</p>
+    <p>L'étude française a prouvé que la méthode fonctionne&nbsp;: 1.908 termes, 1,2&nbsp;million de recherches mensuelles cartographiées, 616 mots-clés en top&nbsp;3 <span class="src src-fr">FR-studie 2025</span>. Mais elle mesurait uniquement le marché francophone. Or les néerlandophones — Flandre et Pays-Bas — sont les premiers marchés d'origine proches de la destination, et personne n'avait encore cartographié leur demande.</p>
+    <p>Nous l'avons fait en deux phases, qui racontent <b>une seule histoire</b>&nbsp;:</p>
+    <p><b>Phase 1 (août 2026)</b> — «&nbsp;que dit la connaissance française sur le marché néerlandophone&nbsp;?&nbsp;»&nbsp;: les 1.908 termes de l'étude française ont été transposés <i>par le sens</i> — pas mot à mot — vers 1.406 termes néerlandais uniques, mesurés séparément pour la Flandre et les Pays-Bas, et confrontés à la réalité Search Console de /nl. Résultat&nbsp;: les Pays-Bas ne sont pas un marché secondaire, et 170 gains rapides dorment dans vos pages existantes.</p>
+    <p><b>Phase 2 (29–30 août 2026)</b> — «&nbsp;que demande le marché néerlandophone que la lunette française ne pouvait pas voir&nbsp;?&nbsp;»&nbsp;: une découverte indépendante, à partir de 16 catégories de besoins et jamais d'un nom de lieu. Résultat&nbsp;: l'avant-question manquée (inspiration, week-end, séjour insolite), le vrai concurrent (l'ANWB et les plateformes, pas une autre destination) et le paysage des réponses générées par l'IA.</p>
+    <p>Là où la phase 2 corrige une conclusion de la phase 1, le texte le dit explicitement — vous ne trouverez nulle part deux verdicts qui cohabitent en silence.</p></span>
+  <span class="lang-nl"><h2>Waarom de Nederlandstalige markt — en waarom <em>nu</em>?</h2>
+    <p class="lead">De Franse studie van Yuri &amp; Neil (augustus–oktober 2025) eindigde met een open vraag, letterlijk op de laatste slide: «&nbsp;Audit sémantique en NL&nbsp;?&nbsp;». Dit dossier is het antwoord.</p>
+    <p>De Franse studie bewees dat de methode werkt: 1.908 termen, 1,2&nbsp;miljoen maandelijkse zoekopdrachten in kaart, 616 zoekwoorden in de top&nbsp;3 <span class="src src-fr">FR-studie 2025</span>. Maar ze mat uitsluitend de Franstalige markt. Terwijl de Nederlandstaligen — Vlaanderen en Nederland — de grootste nabije herkomstmarkten van de bestemming zijn, en niemand hun vraag ooit in kaart bracht.</p>
+    <p>Wij deden dat in twee fasen, die <b>één verhaal</b> vertellen:</p>
+    <p><b>Fase 1 (augustus 2026)</b> — "wat zegt de Franse kennis over de Nederlandstalige markt?": de 1.908 termen van de Franse studie zijn <i>naar betekenis</i> — niet woord voor woord — omgezet in 1.406 unieke Nederlandse termen, apart gemeten voor Vlaanderen en Nederland, en naast de Search Console-werkelijkheid van /nl gelegd. Resultaat: Nederland is geen bijmarkt, en er liggen 170 quick wins in uw bestaande pagina's.</p>
+    <p><b>Fase 2 (29–30 augustus 2026)</b> — "wat vraagt de Nederlandstalige markt dat de Franse bril niet kon zien?": een onafhankelijke ontdekking vanuit 16 behoeftecategorieën, nooit vertrekkend van een plaatsnaam. Resultaat: de gemiste voorvraag (inspiratie, weekend, bijzonder verblijf), de echte concurrent (ANWB en de platformen, niet een andere bestemming) en het landschap van AI-gegenereerde antwoorden.</p>
+    <p>Waar fase 2 een fase-1-conclusie inhaalt, zegt de tekst dat expliciet — nergens staan twee oordelen stilzwijgend naast elkaar.</p></span>
+
+  <div class="callout">
+    <h4><span class="lang-fr">Comment lire les étiquettes de provenance</span><span class="lang-nl">Hoe u de herkomstlabels leest</span></h4>
+    <p><span class="lang-fr">Chaque affirmation matérielle de ce dossier porte l'une de deux étiquettes&nbsp;: <span class="src src-fr">FR-studie 2025</span> — une conclusion de l'étude Yuri&nbsp;&amp;&nbsp;Neil, que nous citons mais que nous n'avons pas produite&nbsp;; <span class="src src-nl">NL-onderzoek 2026</span> — notre propre recherche indépendante (phases 1 et 2), avec source et date sous chaque tableau. À l'intérieur de nos propres résultats, nous distinguons encore l'<span class="prov p-obs">observé</span>, le <span class="prov p-der">calculé</span>, l'<span class="prov p-inf">indice</span> et le <span class="prov p-jud">jugement</span> — pour que vous sachiez toujours sur quoi repose une phrase.</span>
+    <span class="lang-nl">Elke materiële bewering in dit dossier draagt één van twee labels: <span class="src src-fr">FR-studie 2025</span> — een conclusie van de studie van Yuri&nbsp;&amp;&nbsp;Neil, die wij citeren maar niet zelf hebben gemaakt; <span class="src src-nl">NL-onderzoek 2026</span> — ons eigen onafhankelijke onderzoek (fase 1 en 2), met bron en datum onder elke tabel. Binnen onze eigen resultaten onderscheiden we verder <span class="prov p-obs">waargenomen</span>, <span class="prov p-der">berekend</span>, <span class="prov p-inf">aanwijzing</span> en <span class="prov p-jud">advies</span> — zodat u altijd weet waar een zin op steunt.</span></p>
+  </div>
+</div></section>
+
+<!-- ================= H2 ================= -->
+<section id="h2"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 02</span><span class="lang-nl">Hoofdstuk 02</span></div>
+  <span class="lang-fr"><h2>Où en est visitardenne.com/nl <em>aujourd'hui</em>&nbsp;?</h2>
+    <p class="lead">Le point de départ est double&nbsp;: meilleur qu'il n'y paraît — et plus urgent qu'il n'y paraît.</p>
+    <p>D'abord la bonne nouvelle. Sur les douze derniers mois, <b>66&nbsp;% des clics organiques du domaine viennent déjà de Belgique et des Pays-Bas réunis</b> (579.154 des 877.093 clics attribués à un pays). Et le marché néerlandais réagit mieux que tous les autres&nbsp;: le meilleur taux de clic (2,56&nbsp;% contre 2,03&nbsp;% en Belgique et 2,05&nbsp;% en France) et la meilleure position moyenne (8,1). L'audience néerlandophone n'est pas à conquérir&nbsp;: elle est déjà là, et elle répond.</p></span>
+  <span class="lang-nl"><h2>Waar staat visitardenne.com/nl <em>vandaag</em>?</h2>
+    <p class="lead">Het vertrekpunt is dubbel: beter dan het lijkt — én urgenter dan het lijkt.</p>
+    <p>Eerst het goede nieuws. Over de afgelopen twaalf maanden komt <b>66&nbsp;% van de organische zoek-klíkken van het domein al uit België en Nederland samen</b> (579.154 van de 877.093 kliks die aan een land zijn toegewezen). En de Nederlandse markt reageert beter dan alle andere: de hoogste doorklikratio (2,56&nbsp;% tegenover 2,03&nbsp;% in België en 2,05&nbsp;% in Frankrijk) en de beste gemiddelde positie (8,1). Het Nederlandstalige publiek hoeft niet veroverd te worden: het is er al, en het reageert.</p></span>
+
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th><span class="lang-fr">Marché</span><span class="lang-nl">Markt</span></th>
+      <th class="num"><span class="lang-fr">Clics</span><span class="lang-nl">Kliks</span></th>
+      <th class="num"><span class="lang-fr">Part</span><span class="lang-nl">Aandeel</span></th>
+      <th class="num">CTR</th>
+      <th class="num"><span class="lang-fr">Position moy.</span><span class="lang-nl">Gem. positie</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="lang-fr">Belgique</span><span class="lang-nl">België</span></td><td class="num">405.092</td><td class="num">46,2&nbsp;%</td><td class="num">2,03&nbsp;%</td><td class="num">8,5</td></tr>
+      <tr class="win"><td><b><span class="lang-fr">Pays-Bas</span><span class="lang-nl">Nederland</span></b></td><td class="num"><b>174.062</b></td><td class="num"><b>19,8&nbsp;%</b></td><td class="num"><b>2,56&nbsp;%</b></td><td class="num"><b>8,1</b></td></tr>
+      <tr><td><span class="lang-fr">France</span><span class="lang-nl">Frankrijk</span></td><td class="num">167.633</td><td class="num">19,1&nbsp;%</td><td class="num">2,05&nbsp;%</td><td class="num">8,8</td></tr>
+      <tr><td><span class="lang-fr">Allemagne</span><span class="lang-nl">Duitsland</span></td><td class="num">83.293</td><td class="num">9,5&nbsp;%</td><td class="num">2,26&nbsp;%</td><td class="num">8,2</td></tr>
+      <tr><td>Luxembourg</td><td class="num">19.547</td><td class="num">2,2&nbsp;%</td><td class="num">1,88&nbsp;%</td><td class="num">8,2</td></tr>
+    </tbody>
+  </table></div>
+  <p class="cap"><span class="lang-fr">Google Search Console, 28/08/2025 – 26/08/2026, propriété domaine · parts calculées sur les 877.093 clics attribués à un pays · <span class="src src-nl">NL-onderzoek 2026</span>. Distinct&nbsp;: les pages du chemin <code>/nl/</code> portent 22,7&nbsp;% des clics du domaine — c'est une autre mesure (clics par page servie, pas par pays d'origine)&nbsp;; les deux chiffres coexistent, définis différemment.</span>
+  <span class="lang-nl">Google Search Console, 28/08/2025 – 26/08/2026, domeinproperty · aandelen berekend op de 877.093 kliks met landtoewijzing · <span class="src src-nl">NL-onderzoek 2026</span>. Iets anders: de pagina's onder het pad <code>/nl/</code> dragen 22,7&nbsp;% van de domeinkliks — dat is een andere meting (kliks per geserveerde pagina, niet per herkomstland); beide cijfers bestaan naast elkaar, verschillend gedefinieerd.</span></p>
+
+  <span class="lang-fr"><h3 style="margin-top:36px;font-size:19px">Puis la mauvaise nouvelle&nbsp;: la courbe descend</h3>
+    <p style="margin-top:10px">Nous avons mesuré les clics des pages néerlandaises mois par mois, sur seize mois. Deux choses sautent aux yeux. Un&nbsp;: la demande est fortement saisonnière — le pic de juillet–août (≈35.000 clics/mois en 2025) fait 3,7&nbsp;fois le creux de février (9.552), avec un rebond net en décembre porté par les marchés de Noël (+27,5&nbsp;% par rapport à novembre). Deux&nbsp;: <b>chaque mois comparable de 2026 est 25 à 37&nbsp;% en dessous du même mois de 2025</b> — mai −25&nbsp;%, juin −37&nbsp;%, juillet −30&nbsp;%. Août 2026 est également en retrait (mois encore partiel dans la mesure).</p></span>
+  <span class="lang-nl"><h3 style="margin-top:36px;font-size:19px">Dan het slechte nieuws: de curve daalt</h3>
+    <p style="margin-top:10px">We hebben de kliks van de Nederlandstalige pagina's maand per maand gemeten, over zestien maanden. Twee dingen springen eruit. Eén: de vraag is sterk seizoensgebonden — de piek van juli–augustus (≈35.000 kliks/maand in 2025) is 3,7&nbsp;keer het dal van februari (9.552), met een duidelijke opleving in december dankzij de kerstmarkten (+27,5&nbsp;% tegenover november). Twee: <b>elke vergelijkbare maand van 2026 ligt 25 tot 37&nbsp;% onder dezelfde maand van 2025</b> — mei −25&nbsp;%, juni −37&nbsp;%, juli −30&nbsp;%. Ook augustus 2026 ligt lager (nog onvolledige maand in de meting).</p></span>
+
+  <div class="season" aria-hidden="true">
+    <div class="bar"><i style="height:65%"></i></div>
+    <div class="bar"><i style="height:63%"></i></div>
+    <div class="bar"><i style="height:100%"></i></div>
+    <div class="bar"><i style="height:100%"></i></div>
+    <div class="bar"><i style="height:50%"></i></div>
+    <div class="bar"><i style="height:51%"></i></div>
+    <div class="bar"><i style="height:46%"></i></div>
+    <div class="bar"><i style="height:58%"></i></div>
+    <div class="bar y26"><i style="height:33%"></i></div>
+    <div class="bar y26"><i style="height:27%"></i></div>
+    <div class="bar y26"><i style="height:32%"></i></div>
+    <div class="bar y26"><i style="height:48%"></i></div>
+    <div class="bar y26"><i style="height:48%"></i></div>
+    <div class="bar y26"><i style="height:40%"></i></div>
+    <div class="bar y26"><i style="height:69%"></i></div>
+    <div class="bar y26"><i style="height:60%"></i></div>
+  </div>
+  <div class="season-lbl">
+    <span>05/25</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>01/26</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span>
+  </div>
+  <div class="legend"><span><i style="background:var(--green)"></i>2025</span><span><i style="background:var(--purple)"></i>2026</span></div>
+  <p class="cap"><span class="lang-fr">Clics mensuels des pages <code>/nl/</code>, Google Search Console, mai 2025 – août 2026 (extraction 31/08/2026)&nbsp;; hauteur relative au pic d'août 2025 (35.545) · <span class="prov p-obs">observé</span> <span class="src src-nl">NL-onderzoek 2026</span>.</span>
+  <span class="lang-nl">Maandelijkse kliks van de <code>/nl/</code>-pagina's, Google Search Console, mei 2025 – augustus 2026 (opgehaald 31/08/2026); hoogte relatief t.o.v. de piek van augustus 2025 (35.545) · <span class="prov p-obs">waargenomen</span> <span class="src src-nl">NL-onderzoek 2026</span>.</span></p>
+
+  <div class="callout warn">
+    <h4><span class="lang-fr">Ce que cela signifie</span><span class="lang-nl">Wat dit betekent</span></h4>
+    <p><span class="lang-fr">Le modèle actuel — être trouvé quand le voyageur nomme déjà un lieu — <b>perd du terrain, mois après mois</b>. La baisse est un fait mesuré&nbsp;; sa cause ne l'est pas encore. Deux évolutions y contribuent très probablement <span class="prov p-inf">indice</span>&nbsp;: les réponses générées par l'IA absorbent une partie des clics avant qu'ils n'atteignent un site (chapitre&nbsp;04), et l'empreinte actuelle du site — étroite, concentrée sur les noms de lieux — n'offre aucun relais de croissance quand cette couche s'érode. C'est exactement pourquoi la couche d'avant-question du chapitre&nbsp;03 n'est pas un luxe&nbsp;: c'est le terrain de remplacement.</span>
+    <span class="lang-nl">Het huidige model — gevonden worden wanneer de reiziger al een plaats noemt — <b>verliest terrein, maand na maand</b>. De daling is een gemeten feit; de oorzaak is dat nog niet. Twee evoluties dragen er zeer waarschijnlijk aan bij <span class="prov p-inf">aanwijzing</span>: AI-gegenereerde antwoorden vangen een deel van de kliks af vóór ze een site bereiken (hoofdstuk&nbsp;04), en de huidige voetafdruk van de site — smal, geconcentreerd op plaatsnamen — biedt geen groeireserve wanneer die laag erodeert. Precies daarom is de voorvraag-laag uit hoofdstuk&nbsp;03 geen luxe: het is het vervangende terrein.</span></p>
+  </div>
+</div></section>
+
+<!-- ================= H3 ================= -->
+<section id="h3"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 03</span><span class="lang-nl">Hoofdstuk 03</span></div>
+  <span class="lang-fr"><h2>Comment le voyageur néerlandophone cherche-t-il un séjour en Ardenne&nbsp;?</h2>
+    <p class="lead">C'est le cœur du dossier&nbsp;: la carte indépendante du marché néerlandophone — construite comme si l'étude française et le site actuel n'existaient pas.</p>
+    <p>Nous sommes partis de 16 catégories de besoins («&nbsp;week-end à deux&nbsp;», «&nbsp;marcher dans la nature&nbsp;», «&nbsp;dormir insolite&nbsp;»…) — jamais d'un nom de lieu — et nous avons laissé la découverte s'étendre jusqu'à saturation. Puis nous avons trié&nbsp;: chaque terme est retenu ou écarté avec un motif consigné, et nous avons fusionné les variantes proches d'une même question (ordre des mots, pluriels, orthographes) pour ne pas compter deux fois la même demande.</p></span>
+  <span class="lang-nl"><h2>Hoe zoekt de Nederlandstalige reiziger een verblijf in de Ardennen?</h2>
+    <p class="lead">Dit is het hart van het dossier: de onafhankelijke kaart van de Nederlandstalige markt — gebouwd alsof de Franse studie en de huidige site niet bestonden.</p>
+    <p>We vertrokken van 16 behoeftecategorieën ("weekendje met z'n tweeën", "wandelen in de natuur", "bijzonder slapen"…) — nooit van een plaatsnaam — en lieten de ontdekking uitdijen tot verzadiging. Daarna is gesorteerd: elke term is weerhouden of uitgesloten mét vastgelegde reden, en we hebben nauwe varianten van dezelfde zoekvraag samengevoegd (woordvolgorde, meervouden, spellingen) om dezelfde vraag niet dubbel te tellen.</p></span>
+
+  <div class="stats">
+    <div class="stat"><div class="v">24.201</div><div class="l"><span class="lang-fr">termes NL examinés (8.462 retenus dans l'univers, 1.731 écartés avec motif, 14.008 micro-termes sous le seuil)</span><span class="lang-nl">onderzochte NL-termen (8.462 in het universum, 1.731 gemotiveerd uitgesloten, 14.008 micro-termen onder de drempel)</span></div></div>
+    <div class="stat"><div class="v">2.329</div><div class="l"><span class="lang-fr">termes atteignables (demande cœur + inspiration) — ≈1.600 questions distinctes après fusion des variantes</span><span class="lang-nl">bereikbare termen (kern- + inspiratievraag) — ≈1.600 onderscheiden vragen na samenvoegen van varianten</span></div></div>
+    <div class="stat"><div class="v">≈2,6&nbsp;M</div><div class="l"><span class="lang-fr">recherches/mois atteignables&nbsp;: ≈0,9&nbsp;M Flandre + ≈1,75&nbsp;M Pays-Bas (somme brute avant fusion&nbsp;: 3,3&nbsp;M)</span><span class="lang-nl">bereikbare zoekopdrachten/mnd: ≈0,9&nbsp;M Vlaanderen + ≈1,75&nbsp;M Nederland (ruwe som vóór samenvoeging: 3,3&nbsp;M)</span></div></div>
+    <div class="stat"><div class="v">95 / 2.329</div><div class="l"><span class="lang-fr">termes atteignables où VisitArdenne apparaît aujourd'hui (4&nbsp;%)</span><span class="lang-nl">bereikbare termen waarop VisitArdenne vandaag verschijnt (4&nbsp;%)</span></div></div>
+    <div class="stat"><div class="v">99&nbsp;%</div><div class="l"><span class="lang-fr">du volume atteignable absent de l'étude dérivée du français (30 termes sur 2.329 se recoupent)</span><span class="lang-nl">van het bereikbare volume afwezig in de FR-afgeleide studie (30 van de 2.329 termen overlappen)</span></div></div>
+  </div>
+  <p class="cap"><span class="lang-fr">Volumes Google Ads mesurés par région — Région flamande (mesure régionale Google Ads) et Pays-Bas séparément — 29/08/2026 · positions&nbsp;: classements DataForSEO Labs + échantillon de pages de résultats testées en direct, août 2026 · <span class="src src-nl">NL-onderzoek 2026</span>. Méthode complète, exclusions motivées et données téléchargeables dans l'<a href="nieuw-onderzoek.html">étude de marché NL</a>.</span>
+  <span class="lang-nl">Google Ads-volumes per regio gemeten — Vlaams Gewest (regiometing Google Ads) en Nederland apart — 29/08/2026 · posities: DataForSEO Labs-rankings + steekproef live geteste zoekresultaten, augustus 2026 · <span class="src src-nl">NL-onderzoek 2026</span>. Volledige methode, gemotiveerde uitsluitingen en downloadbare data in het <a href="nieuw-onderzoek.html">NL-marktonderzoek</a>.</span></p>
+
+  <div class="callout">
+    <h4><span class="lang-fr">Ce que cela signifie</span><span class="lang-nl">Wat dit betekent</span></h4>
+    <p><span class="lang-fr">Le marché néerlandophone atteignable est du même ordre de grandeur que tout le marché français cartographié en 2025 (1,2&nbsp;M/mois <span class="src src-fr">FR-studie 2025</span>) — <b>multiplié par deux</b>. Et il est presque entièrement nouveau&nbsp;: 99&nbsp;% de ce volume n'apparaissait pas dans l'approche dérivée du français, parce que le néerlandophone formule son besoin avant de nommer une destination. VisitArdenne n'est visible que sur 4&nbsp;% de ces termes&nbsp;: le terrain est ouvert, mais il ne le restera pas.</span>
+    <span class="lang-nl">De bereikbare Nederlandstalige markt is van dezelfde orde als de volledige Franse markt uit 2025 (1,2&nbsp;M/mnd <span class="src src-fr">FR-studie 2025</span>) — <b>maal twee</b>. En hij is bijna volledig nieuw: 99&nbsp;% van dit volume kwam niet voor in de FR-afgeleide benadering, omdat de Nederlandstalige zijn behoefte formuleert vóór hij een bestemming noemt. VisitArdenne is op amper 4&nbsp;% van deze termen zichtbaar: het terrein ligt open, maar dat blijft niet zo.</span></p>
+  </div>
+
+  <span class="lang-fr"><h3 style="margin-top:38px;font-size:19px">Trois moments, trois voix</h3>
+    <p style="margin-top:10px">Le même voyageur passe par trois moments — et la phase la plus riche est celle où l'Ardenne n'est pas encore nommée&nbsp;:</p></span>
+  <span class="lang-nl"><h3 style="margin-top:38px;font-size:19px">Drie momenten, drie stemmen</h3>
+    <p style="margin-top:10px">Dezelfde reiziger doorloopt drie momenten — en de rijkste fase is die waarin de Ardennen nog niet genoemd wordt:</p></span>
+  <div class="voices">
+    <div class="voice">
+      <div class="ph"><span class="lang-fr">Inspiration</span><span class="lang-nl">Inspiratie</span></div>
+      <q><span class="lang-fr">L'Ardenne n'est pas encore sur mon radar</span><span class="lang-nl">De Ardennen staan nog niet op mijn radar</span></q>
+      <p><span class="lang-fr">«&nbsp;weekendje weg&nbsp;», «&nbsp;bijzonder overnachten&nbsp;», «&nbsp;er even tussenuit&nbsp;» — le besoin est formulé, la destination pas encore. C'est ici que vivent les plus gros volumes, et qu'aujourd'hui d'autres répondent.</span><span class="lang-nl">"weekendje weg", "bijzonder overnachten", "er even tussenuit" — de behoefte is geformuleerd, de bestemming nog niet. Hier zitten de grootste volumes, en vandaag antwoorden anderen.</span></p>
     </div>
-    <div class="langbtns" role="group" aria-label="Language">
-      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" data-lang="nl" aria-pressed="false">NL</button>
+    <div class="voice">
+      <div class="ph"><span class="lang-fr">Orientation</span><span class="lang-nl">Oriëntatie</span></div>
+      <q><span class="lang-fr">J'explore l'Ardenne</span><span class="lang-nl">Ik verken de Ardennen</span></q>
+      <p><span class="lang-fr">«&nbsp;wat te doen in de ardennen&nbsp;», «&nbsp;mooiste wandelingen ardennen&nbsp;», «&nbsp;belgische ardennen&nbsp;» — la destination est nommée, le programme se construit. VisitArdenne y joue déjà, souvent bien.</span><span class="lang-nl">"wat te doen in de ardennen", "mooiste wandelingen ardennen", "belgische ardennen" — de bestemming is genoemd, het programma krijgt vorm. Hier speelt VisitArdenne al mee, vaak goed.</span></p>
+    </div>
+    <div class="voice">
+      <div class="ph"><span class="lang-fr">Décision</span><span class="lang-nl">Beslissing</span></div>
+      <q><span class="lang-fr">J'y vais — je cherche du concret</span><span class="lang-nl">Ik ga — ik zoek concrete info</span></q>
+      <p><span class="lang-fr">«&nbsp;kerstmarkt durbuy 2025&nbsp;», «&nbsp;restaurant dinant&nbsp;», «&nbsp;kajakken ardennen&nbsp;» — dates, adresses, réservations. Fort taux de clic quand la page répond précisément&nbsp;; c'est la force actuelle du site.</span><span class="lang-nl">"kerstmarkt durbuy 2025", "restaurant dinant", "kajakken ardennen" — data, adressen, reserveringen. Hoge doorklik wanneer de pagina precies antwoordt; dit is de huidige kracht van de site.</span></p>
     </div>
   </div>
-</nav>
+  <p class="cap"><span class="lang-fr">Classement des 2.329 termes atteignables par phase, dérivé des formulations et des pages de résultats · <span class="prov p-der">calculé</span> <span class="src src-nl">NL-onderzoek 2026</span>. Le cadre en trois phases reprend volontairement celui de l'étude française <span class="src src-fr">FR-studie 2025</span>, pour que les deux cartes restent comparables.</span>
+  <span class="lang-nl">Indeling van de 2.329 bereikbare termen per fase, afgeleid uit formulering en zoekresultaten · <span class="prov p-der">berekend</span> <span class="src src-nl">NL-onderzoek 2026</span>. Het driefasenkader volgt bewust dat van de Franse studie <span class="src src-fr">FR-studie 2025</span>, zodat beide kaarten vergelijkbaar blijven.</span></p>
 
-<!-- ============ 1. SCOPE ============ -->
-<section id="scope">
-  <div class="wrap">
-    <div class="eyebrow"><span class="lang-fr">01 — Ce que nous avons analysé</span><span class="lang-nl">01 — Wat we hebben geanalyseerd</span></div>
+  <span class="lang-fr"><h3 style="margin-top:38px;font-size:19px">Ce que la phase 1 avait déjà établi — et qui tient toujours</h3>
+    <p style="margin-top:10px">La transposition par le sens de l'étude française (l'étude revendique 1.908 termes&nbsp;; nous en avons transposé 1.907 vers 1.406 termes néerlandais uniques, 32 sans équivalent utilisable, 992 avec volume mesuré) avait déjà livré trois vérités structurantes&nbsp;:</p></span>
+  <span class="lang-nl"><h3 style="margin-top:38px;font-size:19px">Wat fase 1 al vaststelde — en wat overeind blijft</h3>
+    <p style="margin-top:10px">De betekenis-transpositie van de Franse studie (de studie telt 1.908 termen; wij transponeerden er 1.907 naar 1.406 unieke Nederlandse termen, 32 zonder bruikbaar equivalent, 992 met gemeten volume) leverde al drie structurerende waarheden:</p></span>
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th><span class="lang-fr">Constat phase 1</span><span class="lang-nl">Vaststelling fase 1</span></th>
+      <th><span class="lang-fr">Mesure</span><span class="lang-nl">Meting</span></th>
+      <th><span class="lang-fr">Conséquence</span><span class="lang-nl">Gevolg</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="lang-fr">Les Pays-Bas ne sont pas un marché secondaire</span><span class="lang-nl">Nederland is geen bijmarkt</span></td><td><span class="lang-fr">519.460 rech./mois aux Pays-Bas contre 440.260 en Flandre, sur le jeu transposé</span><span class="lang-nl">519.460 zoekopdr./mnd in Nederland tegenover 440.260 in Vlaanderen, op de getransponeerde set</span></td><td><span class="lang-fr">Mesurer et servir les deux marchés séparément, toujours</span><span class="lang-nl">Beide markten altijd apart meten en bedienen</span></td></tr>
+      <tr><td><span class="lang-fr">Le Néerlandais ajoute «&nbsp;België&nbsp;» au lieu&nbsp;; le Flamand connaît les villages</span><span class="lang-nl">De Nederlander voegt "België" toe aan de plaats; de Vlaming kent de dorpen</span></td><td><span class="lang-fr">«&nbsp;belgische ardennen&nbsp;»&nbsp;: 8.100/mois aux Pays-Bas, 20&nbsp;fois le volume flamand</span><span class="lang-nl">"belgische ardennen": 8.100/mnd in Nederland, 20&nbsp;keer het Vlaamse volume</span></td><td><span class="lang-fr">«&nbsp;Belgische Ardennen&nbsp;» mérite le statut d'entrée de premier niveau</span><span class="lang-nl">"Belgische Ardennen" verdient de status van toegang op het hoogste niveau</span></td></tr>
+      <tr><td><span class="lang-fr">170 gains rapides dorment dans l'existant</span><span class="lang-nl">170 quick wins liggen in het bestaande</span></td><td><span class="lang-fr">170 termes en position 4–15 où un travail de page suffit</span><span class="lang-nl">170 termen op positie 4–15 waar paginawerk volstaat</span></td><td><span class="lang-fr">Premier chantier de la feuille de route (chapitre&nbsp;09)</span><span class="lang-nl">Eerste werf van de routekaart (hoofdstuk&nbsp;09)</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="cap"><span class="lang-fr">Phase 1&nbsp;: Google Ads via DataForSEO, 11/08/2026, Région flamande mesurée séparément · Search Console 90&nbsp;jours (jusqu'au 10/08/2026), pages /nl · <span class="src src-nl">NL-onderzoek 2026</span> — détail dans la <a href="a-audit.html">validation de phase 1 (A)</a>.</span>
+  <span class="lang-nl">Fase 1: Google Ads via DataForSEO, 11/08/2026, Vlaams Gewest apart gemeten · Search Console 90&nbsp;dagen (t.e.m. 10/08/2026), /nl-pagina's · <span class="src src-nl">NL-onderzoek 2026</span> — detail in de <a href="a-audit.html">fase-1-validatie (A)</a>.</span></p>
+</div></section>
 
-    <span class="lang-fr">
-      <h2>Le marché néerlandophone de l'Ardenne, mesuré — <em>pas estimé</em>.</h2>
-      <p class="lead">Nous avons cartographié la demande néerlandophone (Flandre et Pays-Bas) autour de la destination, puis confronté cette carte à ce que visitardenne.com obtient réellement dans Google aujourd'hui.</p>
-      <p>L'analyse combine vos données propriétaires — Google Search Console, 12 mois — avec un univers de recherche construit à partir de données de marché, puis structuré en entités (lieux, activités, expériences, thématiques) et en intentions de recherche réelles. Aucune conclusion de ce rapport ne repose sur une estimation&nbsp;: chaque constat renvoie à une mesure datée.</p>
-    </span>
-    <span class="lang-nl">
-      <h2>De Nederlandstalige markt voor de Ardennen, <em>gemeten</em> — niet geschat.</h2>
-      <p class="lead">We brachten de Nederlandstalige vraag (Vlaanderen en Nederland) rond de bestemming in kaart, en legden die kaart naast wat visitardenne.com vandaag daadwerkelijk in Google haalt.</p>
-      <p>De analyse combineert uw eigen data — Google Search Console, 12 maanden — met een zoekuniversum uit marktdata, gestructureerd in entiteiten (plaatsen, activiteiten, belevenissen, thema's) en in échte zoekintenties. Geen enkele conclusie in dit rapport rust op een schatting: elke bevinding verwijst naar een gedateerde meting.</p>
-    </span>
+<!-- ================= H4 ================= -->
+<section id="h4"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 04</span><span class="lang-nl">Hoofdstuk 04</span></div>
+  <span class="lang-fr"><h2>Que servent Google — et les <em>moteurs de réponse</em>&nbsp;?</h2>
+    <p class="lead">Le volume dit ce que les gens veulent. La page de résultats dit ce que Google — et de plus en plus l'IA — leur sert. C'est la couche que l'étude française n'avait pas.</p>
+    <p>Nous avons testé en direct un échantillon de pages de résultats néerlandophones sur l'univers cible, et lu ce qui s'y affiche réellement&nbsp;: cartes locales, questions fréquentes, vidéos — et réponses générées par l'IA.</p>
+    <p>Deux observations dominent. D'abord, <b>40 à 50&nbsp;% des pages de résultats testées portent déjà une réponse générée par l'IA</b> (AI Overview)&nbsp;: la réponse s'affiche au-dessus des liens, et une partie des voyageurs n'ira jamais plus bas. Ensuite, nous avons recueilli <b>250 questions réelles</b> que Google affiche sur ces recherches («&nbsp;Wat is het mooiste dorp van de Ardennen?&nbsp;», «&nbsp;Waar kan je kajakken in de Ardennen?&nbsp;»…) — chacune est une occasion concrète d'être <i>la</i> réponse citée.</p></span>
+  <span class="lang-nl"><h2>Wat serveren Google — en de <em>antwoordmachines</em>?</h2>
+    <p class="lead">Volume zegt wat mensen willen. De resultatenpagina zegt wat Google — en steeds vaker de AI — hen serveert. Dit is de laag die de Franse studie niet had.</p>
+    <p>We hebben een steekproef Nederlandstalige zoekresultaten op het doeluniversum live getest, en gelezen wat daar werkelijk verschijnt: lokale kaarten, veelgestelde vragen, video's — en AI-gegenereerde antwoorden.</p>
+    <p>Twee waarnemingen springen eruit. Ten eerste: <b>40 à 50&nbsp;% van de geteste zoekresultaten draagt al een AI-gegenereerd antwoord</b> (AI Overview): het antwoord staat bóven de links, en een deel van de reizigers scrolt daar nooit voorbij. Ten tweede verzamelden we <b>250 echte vragen</b> die Google bij deze zoekopdrachten toont ("Wat is het mooiste dorp van de Ardennen?", "Waar kan je kajakken in de Ardennen?"…) — elk daarvan is een concrete kans om <i>hét</i> geciteerde antwoord te zijn.</p></span>
 
-    <div class="stats">
-      <div class="stat"><div class="v">889.922</div><div class="l"><span class="lang-fr">clics organiques<br>(12 mois, tout le domaine)</span><span class="lang-nl">organische kliks<br>(12 maanden, hele domein)</span></div></div>
-      <div class="stat"><div class="v">45,3 M</div><div class="l"><span class="lang-fr">impressions<br>sur la même période</span><span class="lang-nl">vertoningen<br>zelfde periode</span></div></div>
-      <div class="stat"><div class="v">66 %</div><div class="l"><span class="lang-fr">des clics viennent<br>de Belgique + Pays-Bas</span><span class="lang-nl">van de kliks komt<br>uit België + Nederland</span></div></div>
-      <div class="stat"><div class="v">13.520</div><div class="l"><span class="lang-fr">mots-clés retenus<br>(sur 47.233 collectés)</span><span class="lang-nl">weerhouden zoekwoorden<br>(op 47.233 verzameld)</span></div></div>
-      <div class="stat"><div class="v">658</div><div class="l"><span class="lang-fr">entités thématiques<br>actives</span><span class="lang-nl">actieve thema-entiteiten</span></div></div>
-      <div class="stat"><div class="v">469</div><div class="l"><span class="lang-fr">pages NL analysées<br>une par une</span><span class="lang-nl">NL-pagina's<br>één voor één bekeken</span></div></div>
-    </div>
-    <p class="cap"><span class="lang-fr">Sources&nbsp;: Google Search Console (28/08/2025 – 26/08/2026, propriété domaine) et plateforme Sherlock (mesure du 28/08/2026). Le périmètre «&nbsp;pages NL&nbsp;» couvre les pages <code>/nl/</code> ayant reçu au moins un clic.</span><span class="lang-nl">Bronnen: Google Search Console (28/08/2025 – 26/08/2026, domeinproperty) en het Sherlock-platform (meting 28/08/2026). De scope "NL-pagina's" omvat <code>/nl/</code>-pagina's met minstens één klik.</span></p>
+  <div class="callout warn">
+    <h4><span class="lang-fr">Ce que cela signifie</span><span class="lang-nl">Wat dit betekent</span></h4>
+    <p><span class="lang-fr">La question n'est plus seulement «&nbsp;à quelle position sommes-nous&nbsp;?&nbsp;» mais «&nbsp;<b>sommes-nous la source que la réponse cite&nbsp;?</b>&nbsp;». Les pages qui gagnent ce statut sont celles qui répondent explicitement, avec une structure claire et une identité déclarée (chapitre&nbsp;06, déclaration d'entité). Rapproché de la baisse mesurée au chapitre&nbsp;02, cela pointe dans une même direction <span class="prov p-inf">indice</span>&nbsp;: le trafic de demain se gagne dans la couche réponse, pas seulement dans le classement. Nous le formulons comme un indice, pas comme une cause prouvée — le plan de mesure du chapitre&nbsp;10 est là pour trancher.</span>
+    <span class="lang-nl">De vraag is niet langer alleen "op welke positie staan we?" maar "<b>zijn wij de bron die het antwoord citeert?</b>". De pagina's die dat statuut winnen, zijn de pagina's die expliciet antwoorden, met een heldere structuur en een gedeclareerde identiteit (hoofdstuk&nbsp;06, entiteitsdeclaratie). Naast de gemeten daling uit hoofdstuk&nbsp;02 gelegd, wijst dit in dezelfde richting <span class="prov p-inf">aanwijzing</span>: het verkeer van morgen wordt gewonnen in de antwoordlaag, niet alleen in de ranglijst. We formuleren dit als aanwijzing, niet als bewezen oorzaak — het meetplan van hoofdstuk&nbsp;10 moet dat uitwijzen.</span></p>
+  </div>
+  <p class="cap"><span class="lang-fr">Échantillon de pages de résultats néerlandophones testées en direct, août 2026 · 250 questions collectées depuis les blocs «&nbsp;autres questions posées&nbsp;» · <span class="prov p-obs">observé</span> <span class="src src-nl">NL-onderzoek 2026</span>. La proportion de réponses IA est donnée en fourchette (40–50&nbsp;%) parce que la précision au pourcent près ne serait pas honnête sur un échantillon.</span>
+  <span class="lang-nl">Steekproef live geteste Nederlandstalige zoekresultaten, augustus 2026 · 250 vragen verzameld uit de "mensen vragen ook"-blokken · <span class="prov p-obs">waargenomen</span> <span class="src src-nl">NL-onderzoek 2026</span>. Het aandeel AI-antwoorden geven we als bandbreedte (40–50&nbsp;%) omdat precisie tot op het procent niet eerlijk zou zijn op een steekproef.</span></p>
+</div></section>
 
-    <div class="callout">
-      <h4><span class="lang-fr">Le point de départ est meilleur qu'il n'y paraît</span><span class="lang-nl">Het vertrekpunt is beter dan het lijkt</span></h4>
-      <p><span class="lang-fr">Le marché néerlandais affiche le <b>meilleur taux de clic de tous vos marchés</b> (2,56&nbsp;% contre 2,03&nbsp;% en Belgique et 2,05&nbsp;% en France) et la meilleure position moyenne (8,1). L'audience néerlandophone ne doit pas être conquise&nbsp;: elle est déjà là, et elle réagit mieux que les autres. Il s'agit de mieux la servir.</span>
-      <span class="lang-nl">De Nederlandse markt heeft de <b>hoogste doorklikratio van al uw markten</b> (2,56&nbsp;% tegenover 2,03&nbsp;% in België en 2,05&nbsp;% in Frankrijk) en de beste gemiddelde positie (8,1). Het Nederlandstalige publiek moet niet veroverd worden: het is er al, en het reageert beter dan de rest. Het gaat erom het beter te bedienen.</span></p>
+<!-- ================= H5 ================= -->
+<section id="h5"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 05</span><span class="lang-nl">Hoofdstuk 05</span></div>
+  <span class="lang-fr"><h2>Qui possède ce marché <em>aujourd'hui</em>&nbsp;?</h2>
+    <p class="lead">Sur le marché générique néerlandophone, votre adversaire n'est pas une autre destination. C'est un club d'éditeurs et de plateformes — et il faut les connaître un par un, parce que la réponse n'est pas la même pour chacun.</p>
+    <p>Pour chaque adversaire&nbsp;: sa <b>position</b> sur le marché mesuré, ce qu'il fait en <b>contenu</b>, ce que cela lui rapporte en <b>visibilité</b>, et la <b>comparaison</b> honnête — où il est imbattable, et où VisitArdenne peut gagner.</p></span>
+  <span class="lang-nl"><h2>Wie bezit deze markt <em>vandaag</em>?</h2>
+    <p class="lead">Op de generieke Nederlandstalige markt is uw tegenspeler geen andere bestemming. Het is een club van uitgevers en platformen — en die moet u één voor één kennen, want het antwoord verschilt per speler.</p>
+    <p>Per tegenspeler: zijn <b>positie</b> op de gemeten markt, wat hij doet qua <b>inhoud</b>, wat dat oplevert aan <b>verkeer/zichtbaarheid</b>, en de eerlijke <b>vergelijking</b> — waar hij onklopbaar is, en waar VisitArdenne kan winnen.</p></span>
+
+  <!-- Verdict 1: ANWB -->
+  <div class="verdict">
+    <div class="vh"><h3>ANWB</h3><div class="who"><span class="lang-fr">l'autorité généraliste — le vrai adversaire générique</span><span class="lang-nl">de generalistische autoriteit — de echte generieke tegenspeler</span></div></div>
+    <div class="vgrid">
+      <div class="vcell"><b class="k"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></b><span class="lang-fr">Présente dans <b>114 des pages de résultats testées</b> — plus souvent que n'importe quelle destination, la vôtre comprise.</span><span class="lang-nl">Aanwezig in <b>114 van de geteste zoekresultaten</b> — vaker dan welke bestemming ook, de uwe incluis.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Contenu</span><span class="lang-nl">Inhoud</span></b><span class="lang-fr">Guides rédactionnels transversaux&nbsp;: itinéraires, inspiration, pratique — sur toutes les destinations à la fois, jamais en profondeur sur une seule.</span><span class="lang-nl">Transversale redactionele gidsen: routes, inspiratie, praktisch — over alle bestemmingen tegelijk, nooit diep op één.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Visibilité</span><span class="lang-nl">Verkeer</span></b><span class="lang-fr">L'un des scores de visibilité les plus élevés de notre échantillon — porté par la confiance de marque et la largeur du catalogue.</span><span class="lang-nl">Een van de hoogste zichtbaarheidsscores in onze steekproef — gedragen door merkvertrouwen en de breedte van het aanbod.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Comparaison</span><span class="lang-nl">Vergelijking</span></b><span class="lang-fr">Imbattable en largeur. Battable en profondeur&nbsp;: sur «&nbsp;l'Ardenne précisément&nbsp;», l'expertise du territoire — la vôtre — peut produire la meilleure page. C'est le seul terrain où jouer contre l'ANWB.</span><span class="lang-nl">Onklopbaar in de breedte. Klopbaar in de diepte: op "precies de Ardennen" kan territoriumexpertise — de uwe — de beste pagina maken. Dat is het enige terrein om tegen de ANWB te spelen.</span></div>
     </div>
   </div>
-</section>
 
-<!-- ============ 2. FINDINGS ============ -->
-<section id="findings">
-  <div class="wrap">
-    <div class="eyebrow"><span class="lang-fr">02 — Ce que nous avons trouvé</span><span class="lang-nl">02 — Wat we hebben gevonden</span></div>
-    <span class="lang-fr"><h2>Quatre constats, chacun adossé à une <em>mesure</em>.</h2>
-      <p class="lead">Nous séparons partout ce que la donnée montre de ce que nous en concluons. Une nouvelle mesure peut corriger une conclusion&nbsp;; elle ne change pas l'observation.</p></span>
-    <span class="lang-nl"><h2>Vier bevindingen, elk gedragen door een <em>meting</em>.</h2>
-      <p class="lead">We scheiden overal wat de data toont van wat wij eruit concluderen. Een nieuwe meting kan een conclusie bijsturen; ze verandert de waarneming niet.</p></span>
-
-    <div class="finding win">
-      <span class="tag"><span class="lang-fr">Constat 1 · gain le plus rapide</span><span class="lang-nl">Bevinding 1 · snelste winst</span></span>
-      <span class="lang-fr"><h3>Vous êtes visible, mais le clic s'échappe</h3>
-        <p>Trois pages néerlandaises à forte visibilité obtiennent nettement moins de clics que ce que leur position devrait leur rapporter. Elles sont bien classées et vues des centaines de milliers de fois — mais le titre, l'extrait et la mise en avant ne convertissent pas l'impression en visite.</p></span>
-      <span class="lang-nl"><h3>U bent zichtbaar, maar de klik lekt weg</h3>
-        <p>Drie Nederlandstalige pagina's met hoge zichtbaarheid halen duidelijk minder kliks dan hun positie zou moeten opleveren. Ze staan goed geklasseerd en worden honderdduizenden keren gezien — maar titel, snippet en presentatie zetten die vertoning niet om in een bezoek.</p></span>
-      <div class="tablewrap">
-        <table>
-          <thead><tr>
-            <th><span class="lang-fr">Page</span><span class="lang-nl">Pagina</span></th>
-            <th class="num"><span class="lang-fr">Impressions</span><span class="lang-nl">Vertoningen</span></th>
-            <th class="num"><span class="lang-fr">CTR actuel</span><span class="lang-nl">Huidige CTR</span></th>
-            <th class="num"><span class="lang-fr">CTR attendu</span><span class="lang-nl">Verwachte CTR</span></th>
-            <th class="num"><span class="lang-fr">Clics perdus</span><span class="lang-nl">Gemiste kliks</span></th>
-          </tr></thead>
-          <tbody>
-            <tr><td>Grotten van Han</td><td class="num">135.943</td><td class="num">0,68&nbsp;%</td><td class="num">3,87&nbsp;%</td><td class="num"><b>4.328</b></td></tr>
-            <tr><td>Dagje Charleville-Mézières</td><td class="num">106.866</td><td class="num">1,41&nbsp;%</td><td class="num">5,37&nbsp;%</td><td class="num"><b>4.235</b></td></tr>
-            <tr><td>Bezoek Kasteel Sedan</td><td class="num">75.596</td><td class="num">0,80&nbsp;%</td><td class="num">4,27&nbsp;%</td><td class="num"><b>2.623</b></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="evi"><span class="lang-fr"><b>Donnée</b> — Search Console, 12 mois. Le «&nbsp;CTR attendu&nbsp;» est le taux de clic normalement observé à cette position moyenne. <b>Conclusion</b> — l'écart représente <b>≈ 11.200 visites par an</b> déjà gagnées en visibilité mais perdues au moment du clic. C'est le gain le moins cher du dossier&nbsp;: il ne demande ni page neuve, ni refonte.</span>
-      <span class="lang-nl"><b>Data</b> — Search Console, 12 maanden. De "verwachte CTR" is de doorklikratio die op die gemiddelde positie normaal wordt gehaald. <b>Conclusie</b> — het verschil is <b>≈ 11.200 bezoeken per jaar</b> die al in zichtbaarheid gewonnen zijn maar op het klikmoment verloren gaan. Dit is de goedkoopste winst in het dossier: geen nieuwe pagina, geen refonte.</span></div>
-    </div>
-
-    <div class="finding">
-      <span class="tag"><span class="lang-fr">Constat 2 · structurel</span><span class="lang-nl">Bevinding 2 · structureel</span></span>
-      <span class="lang-fr"><h3>Des recherches néerlandophones aboutissent sur vos pages allemandes ou anglaises</h3>
-        <p>Sur des requêtes à très gros volume, la page que Google retient pour visitardenne.com n'est pas la page néerlandaise mais la version allemande, anglaise ou française. Le visiteur arrive dans la mauvaise langue — ou ne clique pas.</p></span>
-      <span class="lang-nl"><h3>Nederlandstalige zoekopdrachten komen uit op uw Duitse of Engelse pagina's</h3>
-        <p>Bij zoekopdrachten met zeer hoog volume is de pagina die Google voor visitardenne.com kiest niet de Nederlandstalige, maar de Duitse, Engelse of Franse versie. De bezoeker komt in de verkeerde taal terecht — of klikt niet.</p></span>
-      <div class="tablewrap">
-        <table>
-          <thead><tr>
-            <th><span class="lang-fr">Requête</span><span class="lang-nl">Zoekopdracht</span></th>
-            <th class="num"><span class="lang-fr">Volume</span><span class="lang-nl">Volume</span></th>
-            <th class="num"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></th>
-            <th class="num"><span class="lang-fr">Clics</span><span class="lang-nl">Kliks</span></th>
-            <th><span class="lang-fr">Page servie</span><span class="lang-nl">Geserveerde pagina</span></th>
-          </tr></thead>
-          <tbody>
-            <tr><td>durbuy</td><td class="num">90.500</td><td class="num">7,6</td><td class="num">1.381</td><td><code>/de/</code></td></tr>
-            <tr><td>la roche ardennen</td><td class="num">40.500</td><td class="num">5,2</td><td class="num">49</td><td><code>/en/</code></td></tr>
-            <tr><td>namur</td><td class="num">135.000</td><td class="num">9,9</td><td class="num">215</td><td><code>/en/</code></td></tr>
-            <tr><td>bouillon</td><td class="num">40.500</td><td class="num">11,2</td><td class="num">88</td><td><code>/de/</code></td></tr>
-            <tr><td>ciney</td><td class="num">40.500</td><td class="num">6,6</td><td class="num">244</td><td><code>/de/</code></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="evi"><span class="lang-fr"><b>Donnée</b> — 10 requêtes de ce type identifiées&nbsp;; les 5 plus significatives ci-dessus. <b>Conclusion</b> — «&nbsp;la roche <i>ardennen</i>&nbsp;» est une requête néerlandaise servie par une page anglaise&nbsp;: soit la page NL équivalente n'existe pas, soit elle n'est pas assez clairement déclarée comme la version néerlandaise. C'est un problème de déclaration et de maillage, pas de contenu.</span>
-      <span class="lang-nl"><b>Data</b> — 10 zoekopdrachten van dit type gevonden; hierboven de 5 meest sprekende. <b>Conclusie</b> — "la roche <i>ardennen</i>" is een Nederlandstalige zoekopdracht die door een Engelse pagina wordt bediend: ofwel bestaat de NL-tegenhanger niet, ofwel is ze niet duidelijk genoeg als Nederlandstalige versie gedeclareerd. Dit is een declaratie- en linkprobleem, geen contentprobleem.</span></div>
-    </div>
-
-    <div class="finding">
-      <span class="tag"><span class="lang-fr">Constat 3 · fondation</span><span class="lang-nl">Bevinding 3 · fundament</span></span>
-      <span class="lang-fr"><h3>La destination n'est pas encore clairement déclarée aux moteurs</h3>
-        <p>Sur les quatre couches qui déterminent si un moteur «&nbsp;comprend&nbsp;» une entité, l'Ardenne obtient <b>3,4 / 10</b> en moyenne sur 658 entités. La couche la plus faible, et de loin, est la <b>déclaration</b> — qui/quoi est cette destination — à <b>1,0 / 10</b>.</p></span>
-      <span class="lang-nl"><h3>De bestemming is nog niet duidelijk gedeclareerd aan de zoekmachines</h3>
-        <p>Op de vier lagen die bepalen of een zoekmachine een entiteit "begrijpt", scoort de Ardennen gemiddeld <b>3,4 / 10</b> over 658 entiteiten. De zwakste laag is met afstand de <b>declaratie</b> — wie/wat is deze bestemming — met <b>1,0 / 10</b>.</p></span>
-      <div class="tablewrap">
-        <table>
-          <thead><tr>
-            <th><span class="lang-fr">Couche</span><span class="lang-nl">Laag</span></th>
-            <th><span class="lang-fr">Question à laquelle elle répond</span><span class="lang-nl">Vraag die ze beantwoordt</span></th>
-            <th class="num">Score</th>
-          </tr></thead>
-          <tbody>
-            <tr style="background:var(--purple-tint)"><td><b><span class="lang-fr">Déclaration</span><span class="lang-nl">Declaratie</span></b></td><td><span class="lang-fr">Qui/quoi est l'Ardenne&nbsp;?</span><span class="lang-nl">Wie/wat is de Ardennen?</span></td><td class="num"><b>1,0</b></td></tr>
-            <tr><td><span class="lang-fr">Attributs</span><span class="lang-nl">Attributen</span></td><td><span class="lang-fr">Quelles propriétés la définissent&nbsp;?</span><span class="lang-nl">Welke eigenschappen definiëren haar?</span></td><td class="num">4,4</td></tr>
-            <tr><td><span class="lang-fr">Relations</span><span class="lang-nl">Relaties</span></td><td><span class="lang-fr">À quoi est-elle reliée&nbsp;?</span><span class="lang-nl">Waaraan is ze verbonden?</span></td><td class="num">3,5</td></tr>
-            <tr><td><span class="lang-fr">Contexte</span><span class="lang-nl">Context</span></td><td><span class="lang-fr">Quand est-elle la bonne réponse&nbsp;?</span><span class="lang-nl">Wanneer is ze het juiste antwoord?</span></td><td class="num">4,7</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="evi"><span class="lang-fr"><b>Donnée</b> — score calculé sur les 658 entités actives. <b>Conclusion</b> — c'est cohérent avec le constat 2&nbsp;: quand la déclaration est faible, le moteur choisit lui-même quelle page servir, et il se trompe de langue. Renforcer la déclaration (nommage constant, données structurées, liens internes) fait remonter l'ensemble — c'est un travail de fondation, pas de volume.</span>
-      <span class="lang-nl"><b>Data</b> — score berekend over de 658 actieve entiteiten. <b>Conclusie</b> — dit sluit aan op bevinding 2: als de declaratie zwak is, kiest de zoekmachine zelf welke pagina ze toont, en kiest ze de verkeerde taal. De declaratie versterken (consistente naamgeving, gestructureerde data, interne links) tilt het geheel op — dat is fundamentwerk, geen volumewerk.</span></div>
-    </div>
-
-    <div class="finding">
-      <span class="tag"><span class="lang-fr">Constat 4 · cadrage</span><span class="lang-nl">Bevinding 4 · afbakening</span></span>
-      <span class="lang-fr"><h3>La demande non captée est surtout une demande de location — ce n'est pas votre bataille</h3>
-        <p>Nous avons isolé les thématiques à forte demande sur lesquelles le site n'a pas de page néerlandaise dédiée. <b>Près de la moitié de ce volume</b> (719.000 recherches sur 1,49 million) concerne la location et la réservation&nbsp;: gîtes, chalets, maisons de vacances, campings.</p></span>
-      <span class="lang-nl"><h3>De niet-gecapteerde vraag is vooral verhuurvraag — en dat is uw strijd niet</h3>
-        <p>We isoleerden de thema's met veel vraag waarvoor de site geen eigen Nederlandstalige pagina heeft. <b>Bijna de helft van dat volume</b> (719.000 zoekopdrachten op 1,49 miljoen) gaat over huren en boeken: gîtes, chalets, vakantiehuizen, campings.</p></span>
-      <div class="evi"><span class="lang-fr"><b>Donnée</b> — 39 thématiques sans page NL dédiée, dont 17 relèvent de la location/réservation. <b>Conclusion</b> — sur ces requêtes, une destination ne bat pas les plateformes de réservation, et ce n'est pas son rôle&nbsp;: vous orientez vers vos partenaires. Le volume réellement à vous se trouve ailleurs — séjour en famille, randonnée autour d'une ville, week-end, châteaux, bien-être. C'est là qu'une page vous appartient.</span>
-      <span class="lang-nl"><b>Data</b> — 39 thema's zonder eigen NL-pagina, waarvan er 17 over huren/boeken gaan. <b>Conclusie</b> — op die zoekopdrachten wint een bestemming het niet van de boekingsplatformen, en dat is haar rol ook niet: u verwijst door naar uw partners. Het volume dat écht van u is, zit elders — gezinsverblijf, wandelen rond een plaats, weekend, kastelen, wellness. Dáár verdient u een pagina.</span></div>
+  <!-- Verdict 2: weekend platforms -->
+  <div class="verdict">
+    <div class="vh"><h3>weekendjeweg.nl · voordeeluitjes.nl</h3><div class="who"><span class="lang-fr">les plateformes du week-end — propriétaires de l'avant-question</span><span class="lang-nl">de weekendplatformen — eigenaars van de voorvraag</span></div></div>
+    <div class="vgrid">
+      <div class="vcell"><b class="k"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></b><span class="lang-fr">weekendjeweg.nl est n°1 sur «&nbsp;weekendje weg&nbsp;» (74.000 rech./mois aux Pays-Bas) et possède même une page Ardennes dédiée, n°1 sur «&nbsp;ardennen weekendje weg&nbsp;». VisitArdenne&nbsp;: absente.</span><span class="lang-nl">weekendjeweg.nl staat nr.&nbsp;1 op "weekendje weg" (74.000 zoekopdr./mnd in Nederland) en heeft zelfs een eigen Ardennen-pagina, nr.&nbsp;1 op "ardennen weekendje weg". VisitArdenne: afwezig.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Contenu</span><span class="lang-nl">Inhoud</span></b><span class="lang-fr">Des pages d'offres&nbsp;: arrangements, last-minutes, bons cadeaux. Efficace commercialement, mais aucun récit de destination — le week-end y est un produit, pas une envie.</span><span class="lang-nl">Aanbodpagina's: arrangementen, last-minutes, cadeaubonnen. Commercieel efficiënt, maar zonder bestemmingsverhaal — het weekend is er een product, geen verlangen.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Visibilité</span><span class="lang-nl">Verkeer</span></b><span class="lang-fr">Les deux plus hauts scores de visibilité de tout notre échantillon — le moment «&nbsp;je veux partir un week-end&nbsp;» leur appartient aujourd'hui.</span><span class="lang-nl">De twee hoogste zichtbaarheidsscores van onze hele steekproef — het moment "ik wil er een weekend tussenuit" is vandaag van hen.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Comparaison</span><span class="lang-nl">Vergelijking</span></b><span class="lang-fr">Ne pas attaquer «&nbsp;weekendje weg&nbsp;» frontalement. Le segment gagnable est la tranche destination&nbsp;: «&nbsp;weekendje weg belgië / ardennen&nbsp;» (6.600 Flandre / 74.000 Pays-Bas sur le groupe fusionné, ≈81.000 au total) — avec une page d'inspiration que ces plateformes ne peuvent pas écrire.</span><span class="lang-nl">Val "weekendje weg" niet frontaal aan. Het winbare segment is de bestemmingsschijf: "weekendje weg belgië / ardennen" (6.600 Vlaanderen / 74.000 Nederland op de samengevoegde groep, ≈81.000 totaal) — met een inspiratiepagina die deze platformen niet kúnnen schrijven.</span></div>
     </div>
   </div>
-</section>
 
-<!-- ============ 3. PRIORITIES ============ -->
-<section id="priorities">
-  <div class="wrap">
-    <div class="eyebrow"><span class="lang-fr">03 — Ce qui compte, et pourquoi</span><span class="lang-nl">03 — Wat telt, en waarom</span></div>
-    <span class="lang-fr"><h2>Garder l'arborescence. <em>Recomposer les pages.</em></h2>
-      <p class="lead">Votre arborescence actuelle est saine et maintenable. Le marché néerlandophone ne demande pas un second site&nbsp;: il demande que les pages existantes soient composées et reliées selon la façon dont un néerlandophone cherche.</p></span>
-    <span class="lang-nl"><h2>Behoud de boomstructuur. <em>Herschik de pagina's.</em></h2>
-      <p class="lead">Uw huidige structuur is gezond en onderhoudbaar. De Nederlandstalige markt vraagt geen tweede site: ze vraagt dat de bestaande pagina's worden opgebouwd en gelinkt zoals een Nederlandstalige zoekt.</p></span>
-
-    <div class="callout warn">
-      <h4><span class="lang-fr">Ce que nous ne recommandons pas</span><span class="lang-nl">Wat we niet aanbevelen</span></h4>
-      <p><span class="lang-fr">Ni traduction de l'arborescence française, ni arborescence néerlandaise séparée. La première ignore une demande différente&nbsp;; la seconde vous laisse deux sites à maintenir pour un seul budget. La différence NL↔FR se règle dans la composition des pages et le maillage interne, pas dans la structure.</span>
-      <span class="lang-nl">Geen vertaling van de Franse boom, en ook geen aparte Nederlandstalige boom. Het eerste negeert een andere vraag; het tweede laat u twee sites onderhouden op één budget. Het NL↔FR-verschil los je op in de pagina-opbouw en de interne links, niet in de structuur.</span></p>
-    </div>
-
-    <ol class="steps">
-      <li>
-        <span class="lang-fr"><h4>Récupérer les clics déjà gagnés</h4>
-          <p>Retravailler titre, extrait et accroche des trois pages du constat 1, en répondant explicitement aux questions que Google affiche sur ces requêtes.</p>
-          <p class="meta"><b>Gain attendu</b> ≈ 11.200 visites/an · <b>Effort</b> 3 pages · <b>Délai</b> immédiat</p></span>
-        <span class="lang-nl"><h4>De al gewonnen kliks binnenhalen</h4>
-          <p>Titel, snippet en aanhef van de drie pagina's uit bevinding 1 herwerken, en expliciet de vragen beantwoorden die Google bij die zoekopdrachten toont.</p>
-          <p class="meta"><b>Verwachte winst</b> ≈ 11.200 bezoeken/jaar · <b>Inspanning</b> 3 pagina's · <b>Termijn</b> direct</p></span>
-      </li>
-      <li>
-        <span class="lang-fr"><h4>Faire servir la bonne langue</h4>
-          <p>Pour les lieux du constat 2, s'assurer que la page néerlandaise existe, qu'elle est déclarée comme telle et qu'elle est atteignable depuis les pages NL voisines.</p>
-          <p class="meta"><b>Gain attendu</b> visiteurs NL dans la bonne langue sur des requêtes à 40.000–135.000 recherches · <b>Effort</b> moyen</p></span>
-        <span class="lang-nl"><h4>De juiste taal laten serveren</h4>
-          <p>Voor de plaatsen uit bevinding 2 zorgen dat de Nederlandstalige pagina bestaat, als zodanig gedeclareerd is en bereikbaar is vanuit de omliggende NL-pagina's.</p>
-          <p class="meta"><b>Verwachte winst</b> NL-bezoekers in de juiste taal op zoekopdrachten van 40.000–135.000 · <b>Inspanning</b> gemiddeld</p></span>
-      </li>
-      <li>
-        <span class="lang-fr"><h4>Déclarer la destination</h4>
-          <p>Nommage constant de l'Ardenne et de ses lieux, données structurées, et liens internes qui relient chaque lieu à ses activités. C'est ce qui fait remonter la couche la plus faible (1,0/10).</p>
-          <p class="meta"><b>Gain attendu</b> fondation — conditionne la durabilité des deux priorités précédentes · <b>Effort</b> 3–4 semaines</p></span>
-        <span class="lang-nl"><h4>De bestemming declareren</h4>
-          <p>Consistente naamgeving van de Ardennen en haar plaatsen, gestructureerde data, en interne links die elke plaats aan haar activiteiten koppelen. Dit tilt de zwakste laag (1,0/10) op.</p>
-          <p class="meta"><b>Verwachte winst</b> fundament — bepaalt of de twee vorige prioriteiten standhouden · <b>Inspanning</b> 3–4 weken</p></span>
-      </li>
-      <li>
-        <span class="lang-fr"><h4>Choisir vos batailles</h4>
-          <p>Assumer la non-concurrence sur la location&nbsp;: renvoyer vers les partenaires, et investir la page là où la destination gagne — famille, randonnée, week-end, patrimoine.</p>
-          <p class="meta"><b>Gain attendu</b> budget éditorial concentré · <b>Effort</b> décision, pas production</p></span>
-        <span class="lang-nl"><h4>Kies uw slagvelden</h4>
-          <p>Bewust niet concurreren op verhuur: doorverwijzen naar de partners, en de pagina investeren waar de bestemming wél wint — gezin, wandelen, weekend, erfgoed.</p>
-          <p class="meta"><b>Verwachte winst</b> geconcentreerd redactiebudget · <b>Inspanning</b> beslissing, geen productie</p></span>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============ 4. NEXT ============ -->
-<section id="next">
-  <div class="wrap">
-    <div class="eyebrow"><span class="lang-fr">04 — Prochaines étapes</span><span class="lang-nl">04 — Volgende stappen</span></div>
-    <span class="lang-fr"><h2>Ce que nous proposons pour la <em>suite immédiate</em>.</h2>
-      <p class="lead">Ce rapport est la base de décision. L'étape suivante est une proposition de composition&nbsp;: pour les pages prioritaires, quelle demande néerlandophone chaque page porte, comment elle est construite et à quoi elle est reliée — accompagnée d'un aperçu visuel.</p>
-      <p>Nous suggérons une visioconférence courte pour valider les quatre priorités ci-dessus avant de figer la proposition de composition. Cela nous permet d'ajuster avant la livraison définitive, et vous donne la matière nécessaire pour votre appel d'offres.</p></span>
-    <span class="lang-nl"><h2>Wat we voorstellen voor de <em>onmiddellijke vervolgstap</em>.</h2>
-      <p class="lead">Dit rapport is de beslisbasis. De volgende stap is een compositievoorstel: voor de prioritaire pagina's, welke Nederlandstalige vraag elke pagina draagt, hoe ze is opgebouwd en waaraan ze gelinkt is — met een visuele preview.</p>
-      <p>We stellen een korte videocall voor om de vier prioriteiten hierboven te valideren vóór we het compositievoorstel vastleggen. Zo kunnen we bijsturen vóór de definitieve oplevering, en heeft u het materiaal dat u nodig heeft voor uw aanbesteding.</p></span>
-  </div>
-</section>
-
-<!-- ============ 5. STATUS ============ -->
-<section id="status">
-  <div class="wrap">
-    <div class="eyebrow"><span class="lang-fr">05 — Fait / recommandé</span><span class="lang-nl">05 — Gedaan / aanbevolen</span></div>
-    <span class="lang-fr"><h2>Où nous en sommes, <em>sans ambiguïté</em>.</h2></span>
-    <span class="lang-nl"><h2>Waar we staan, <em>zonder dubbelzinnigheid</em>.</h2></span>
-    <div class="cols">
-      <div class="col done">
-        <h4><span class="lang-fr">✓ Réalisé par Sherlock</span><span class="lang-nl">✓ Door Sherlock uitgevoerd</span></h4>
-        <ul>
-          <li><span class="lang-fr">Univers de recherche néerlandophone construit et filtré (47.233 → 13.520 mots-clés)</span><span class="lang-nl">Nederlandstalig zoekuniversum gebouwd en gefilterd (47.233 → 13.520 zoekwoorden)</span></li>
-          <li><span class="lang-fr">Graphe d'entités de la destination — 658 entités actives, structurées en pôles et clusters</span><span class="lang-nl">Entiteitengraaf van de bestemming — 658 actieve entiteiten, gestructureerd in hubs en clusters</span></li>
-          <li><span class="lang-fr">Connexion Search Console et Analytics&nbsp;; 12 mois de données propriétaires intégrées</span><span class="lang-nl">Search Console en Analytics gekoppeld; 12 maanden eigen data geïntegreerd</span></li>
-          <li><span class="lang-fr">Audit page par page des 469 pages NL avec trafic</span><span class="lang-nl">Pagina-per-pagina-audit van de 469 NL-pagina's met verkeer</span></li>
-          <li><span class="lang-fr">Cartographie des intentions de recherche réelles (663 intentions, 25 décrites en détail)</span><span class="lang-nl">Kartering van de échte zoekintenties (663 intenties, 25 in detail beschreven)</span></li>
-          <li><span class="lang-fr">Benchmark concurrentiel et Entity Universe Map</span><span class="lang-nl">Concurrentiebenchmark en Entity Universe Map</span></li>
-        </ul>
-      </div>
-      <div class="col todo">
-        <h4><span class="lang-fr">→ Recommandé, à décider</span><span class="lang-nl">→ Aanbevolen, te beslissen</span></h4>
-        <ul>
-          <li><span class="lang-fr">Proposition de composition pour les pages prioritaires <b>(livraison suivante)</b></span><span class="lang-nl">Compositievoorstel voor de prioritaire pagina's <b>(volgende oplevering)</b></span></li>
-          <li><span class="lang-fr">Réécriture des titres/extraits des 3 pages du constat 1</span><span class="lang-nl">Herschrijven van titels/snippets van de 3 pagina's uit bevinding 1</span></li>
-          <li><span class="lang-fr">Correction de la langue servie sur les lieux du constat 2</span><span class="lang-nl">Correctie van de geserveerde taal op de plaatsen uit bevinding 2</span></li>
-          <li><span class="lang-fr">Données structurées et maillage interne (couche déclaration)</span><span class="lang-nl">Gestructureerde data en interne links (declaratielaag)</span></li>
-          <li><span class="lang-fr">Décision de cadrage sur la location&nbsp;: renvoi partenaires</span><span class="lang-nl">Afbakeningsbeslissing over verhuur: doorverwijzing naar partners</span></li>
-        </ul>
-      </div>
+  <!-- Verdict 3: stay-genre platforms -->
+  <div class="verdict">
+    <div class="vh"><h3>natuurhuisje.nl · bijzonderplekje.nl</h3><div class="who"><span class="lang-fr">les plateformes du séjour-genre — inventeurs d'une catégorie</span><span class="lang-nl">de verblijfsgenre-platformen — uitvinders van een categorie</span></div></div>
+    <div class="vgrid">
+      <div class="vcell"><b class="k"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></b><span class="lang-fr">natuurhuisje.nl est n°1 sur son propre nom de genre — «&nbsp;natuurhuisje&nbsp;», 12.100 Flandre / 90.500 Pays-Bas — et bijzonderplekje.nl domine «&nbsp;bijzonder overnachten&nbsp;». Le genre entier pèse ≈103.000 rech./mois.</span><span class="lang-nl">natuurhuisje.nl staat nr.&nbsp;1 op zijn eigen genrenaam — "natuurhuisje", 12.100 Vlaanderen / 90.500 Nederland — en bijzonderplekje.nl domineert "bijzonder overnachten". Het hele genre weegt ≈103.000 zoekopdr./mnd.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Contenu</span><span class="lang-nl">Inhoud</span></b><span class="lang-fr">Inspiration + réservation dans le même geste&nbsp;: photos, filtres («&nbsp;avec jacuzzi&nbsp;», «&nbsp;dans les arbres&nbsp;»), disponibilités. Le rêve et la transaction sur une seule page.</span><span class="lang-nl">Inspiratie + boeking in één beweging: foto's, filters ("met jacuzzi", "in de bomen"), beschikbaarheid. De droom en de transactie op één pagina.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Visibilité</span><span class="lang-nl">Verkeer</span></b><span class="lang-fr">Très visibles sur tout le champ «&nbsp;dormir autrement&nbsp;» — précisément le terrain où le site tire déjà ses meilleures pages («&nbsp;boomhut ardennen&nbsp;»&nbsp;: 6,8&nbsp;% de clic, position 4,4).</span><span class="lang-nl">Zeer zichtbaar op het hele veld "anders slapen" — precies het terrein waar de site nu al zijn beste pagina's heeft ("boomhut ardennen": 6,8&nbsp;% doorklik, positie 4,4).</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Comparaison</span><span class="lang-nl">Vergelijking</span></b><span class="lang-fr">Ne pas concurrencer la réservation — la canaliser&nbsp;: un hub «&nbsp;séjour insolite en Ardenne&nbsp;» qui inspire par le territoire, puis renvoie vers les partenaires. La destination raconte&nbsp;; la plateforme encaisse&nbsp;; les deux y gagnent.</span><span class="lang-nl">Beconcurreer de boeking niet — kanaliseer ze: een hub "bijzonder overnachten in de Ardennen" die inspireert vanuit het territorium en dan doorverwijst naar de partners. De bestemming vertelt; het platform incasseert; beiden winnen.</span></div>
     </div>
   </div>
-</section>
 
-<!-- ============ 6. EVIDENCE ============ -->
-<section id="evidence">
-  <div class="wrap">
-    <div class="eyebrow"><span class="lang-fr">06 — Annexe</span><span class="lang-nl">06 — Bijlage</span></div>
-    <span class="lang-fr"><h2>Éléments de preuve <em>et méthode</em>.</h2></span>
-    <span class="lang-nl"><h2>Bewijsstukken <em>en methode</em>.</h2></span>
-
-    <h3 style="margin-top:26px;font-size:18px"><span class="lang-fr">Répartition du trafic par marché (12 mois)</span><span class="lang-nl">Verkeersverdeling per markt (12 maanden)</span></h3>
-    <div class="tablewrap">
-      <table>
-        <thead><tr>
-          <th><span class="lang-fr">Marché</span><span class="lang-nl">Markt</span></th>
-          <th class="num"><span class="lang-fr">Clics</span><span class="lang-nl">Kliks</span></th>
-          <th class="num"><span class="lang-fr">Part</span><span class="lang-nl">Aandeel</span></th>
-          <th class="num">CTR</th>
-          <th class="num"><span class="lang-fr">Position moy.</span><span class="lang-nl">Gem. positie</span></th>
-        </tr></thead>
-        <tbody>
-          <tr><td><span class="lang-fr">Belgique</span><span class="lang-nl">België</span></td><td class="num">405.092</td><td class="num">46,2&nbsp;%</td><td class="num">2,03&nbsp;%</td><td class="num">8,5</td></tr>
-          <tr class="hl"><td><b><span class="lang-fr">Pays-Bas</span><span class="lang-nl">Nederland</span></b></td><td class="num"><b>174.062</b></td><td class="num"><b>19,8&nbsp;%</b></td><td class="num"><b>2,56&nbsp;%</b></td><td class="num"><b>8,1</b></td></tr>
-          <tr><td><span class="lang-fr">France</span><span class="lang-nl">Frankrijk</span></td><td class="num">167.633</td><td class="num">19,1&nbsp;%</td><td class="num">2,05&nbsp;%</td><td class="num">8,8</td></tr>
-          <tr><td><span class="lang-fr">Allemagne</span><span class="lang-nl">Duitsland</span></td><td class="num">83.293</td><td class="num">9,5&nbsp;%</td><td class="num">2,26&nbsp;%</td><td class="num">8,2</td></tr>
-          <tr><td>Luxembourg</td><td class="num">19.547</td><td class="num">2,2&nbsp;%</td><td class="num">1,88&nbsp;%</td><td class="num">8,2</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="cap"><span class="lang-fr">Search Console, 28/08/2025 – 26/08/2026. Les parts sont calculées sur les 877.093 clics attribués à un pays. La ligne verte&nbsp;: le meilleur CTR et la meilleure position de tous vos marchés.</span><span class="lang-nl">Search Console, 28/08/2025 – 26/08/2026. Aandelen berekend op de 877.093 kliks die aan een land toegewezen zijn. De groene rij: de beste CTR en de beste positie van al uw markten.</span></p>
-
-    <h3 style="margin-top:34px;font-size:18px"><span class="lang-fr">Paysage concurrentiel néerlandophone</span><span class="lang-nl">Nederlandstalig concurrentielandschap</span></h3>
-    <div class="tablewrap">
-      <table>
-        <thead><tr>
-          <th><span class="lang-fr">Acteur</span><span class="lang-nl">Speler</span></th>
-          <th><span class="lang-fr">Type</span><span class="lang-nl">Type</span></th>
-          <th><span class="lang-fr">Ce que cela implique</span><span class="lang-nl">Wat dat betekent</span></th>
-        </tr></thead>
-        <tbody>
-          <tr><td>visitwallonia.be</td><td><span class="lang-fr">Destination</span><span class="lang-nl">Bestemming</span></td><td><span class="lang-fr">Concurrent direct sur l'orientation et l'inspiration</span><span class="lang-nl">Directe concurrent op oriëntatie en inspiratie</span></td></tr>
-          <tr><td>ardennen.nl</td><td><span class="lang-fr">Destination</span><span class="lang-nl">Bestemming</span></td><td><span class="lang-fr">Concurrent direct, positionné sur le marché néerlandais</span><span class="lang-nl">Directe concurrent, gepositioneerd op de Nederlandse markt</span></td></tr>
-          <tr><td>ardennes-etape.be</td><td><span class="lang-fr">Location</span><span class="lang-nl">Verhuur</span></td><td><span class="lang-fr">Non concurrent&nbsp;: partenaire de renvoi naturel</span><span class="lang-nl">Geen concurrent: natuurlijke doorverwijspartner</span></td></tr>
-          <tr><td>ardenneresidences.com</td><td><span class="lang-fr">Location</span><span class="lang-nl">Verhuur</span></td><td><span class="lang-fr">Non concurrent&nbsp;: partenaire de renvoi naturel</span><span class="lang-nl">Geen concurrent: natuurlijke doorverwijspartner</span></td></tr>
-          <tr><td>tripadvisor.be</td><td><span class="lang-fr">Agrégateur</span><span class="lang-nl">Aggregator</span></td><td><span class="lang-fr">Présent partout&nbsp;; se bat sur les avis, pas sur l'expertise de destination</span><span class="lang-nl">Overal aanwezig; vecht op reviews, niet op bestemmingsexpertise</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="cap"><span class="lang-fr">Sélection à partir des domaines mesurés en concurrence sur vos intentions de recherche, dédoublonnés et classés par rôle.</span><span class="lang-nl">Selectie uit de domeinen die gemeten in concurrentie staan op uw zoekintenties, ontdubbeld en per rol geordend.</span></p>
-
-    <div class="callout warn" style="margin-top:34px">
-      <h4><span class="lang-fr">Note de méthode — ce que nous avons écarté</span><span class="lang-nl">Methodenoot — wat we hebben weggelaten</span></h4>
-      <p><span class="lang-fr">Un univers de recherche construit automatiquement capte aussi des termes hors sujet. Nous avons écarté de l'analyse les marques de commerce de détail sans lien avec la destination (magasins de cycles flamands) ainsi que des attractions situées hors du territoire ardennais. Ces termes n'apparaissent donc dans aucun chiffre de ce rapport. Le détail complet reste disponible sur demande.</span>
-      <span class="lang-nl">Een automatisch opgebouwd zoekuniversum vangt ook termen op die er niet toe doen. We hebben retailmerken zonder band met de bestemming (Vlaamse fietswinkels) en attracties buiten het Ardense grondgebied uit de analyse gehaald. Die termen zitten dus in geen enkel cijfer van dit rapport. De volledige detaillijst blijft op aanvraag beschikbaar.</span></p>
+  <!-- Verdict 4: route platforms -->
+  <div class="verdict">
+    <div class="vh"><h3>wandel.nl · wandelknooppunt.be · reisroutes.be</h3><div class="who"><span class="lang-fr">les sites d'itinéraires — la couche pratique qui manque au site</span><span class="lang-nl">de routesites — de praktische laag die de site mist</span></div></div>
+    <div class="vgrid">
+      <div class="vcell"><b class="k"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></b><span class="lang-fr">wandelknooppunt.be est n°1 sur «&nbsp;wandelroutes&nbsp;» et «&nbsp;knooppunten wandelen&nbsp;»&nbsp;; le champ des nœuds pédestres et cyclables pèse à lui seul ≈59.000 rech./mois (fietsknooppunten&nbsp;: 40.500 Flandre / 18.100 Pays-Bas).</span><span class="lang-nl">wandelknooppunt.be staat nr.&nbsp;1 op "wandelroutes" en "knooppunten wandelen"; het veld van wandel- en fietsknooppunten weegt alleen al ≈59.000 zoekopdr./mnd (fietsknooppunten: 40.500 Vlaanderen / 18.100 Nederland).</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Contenu</span><span class="lang-nl">Inhoud</span></b><span class="lang-fr">Cartes, planificateurs, GPX, points de départ. Fonctionnel, peu narratif — l'outil sans le paysage.</span><span class="lang-nl">Kaarten, planners, GPX, startplaatsen. Functioneel, weinig verhalend — het gereedschap zonder het landschap.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Visibilité</span><span class="lang-nl">Verkeer</span></b><span class="lang-fr">Solides sur toutes les requêtes «&nbsp;outil&nbsp;»&nbsp;; le site actuel a du récit de randonnée mais aucune couche nœuds — le Flamand qui planifie en knooppunten ne peut pas rester chez vous.</span><span class="lang-nl">Sterk op alle "gereedschap"-zoekopdrachten; de huidige site heeft wandelverhaal maar geen knooppuntenlaag — de Vlaming die in knooppunten plant, kán niet bij u blijven.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Comparaison</span><span class="lang-nl">Vergelijking</span></b><span class="lang-fr">Le mariage gagnant est unique à la destination&nbsp;: itinéraire pratique (carte, GPX, point de départ) <i>plus</i> le récit du lieu et les adresses. Aucun site d'outil ne peut l'écrire&nbsp;; c'est la couche à ajouter aux pages existantes, pas un nouveau site.</span><span class="lang-nl">De winnende combinatie is uniek voor de bestemming: praktische route (kaart, GPX, startplaats) <i>plus</i> het verhaal van de plek en de adressen. Geen enkele toolsite kan dat schrijven; het is de laag die aan bestaande pagina's wordt toegevoegd, geen nieuwe site.</span></div>
     </div>
   </div>
-</section>
 
-<footer>
-  <div class="wrap">
-    <div><b>Sherlock SEO Agency</b><br>ga@sherlockseo.com · sherlockseo.com</div>
-    <div style="text-align:right">
-      <span class="lang-fr">VisitArdenne · marché néerlandophone · offre 2026/855<br>Mesures&nbsp;: Search Console 28/08/2025–26/08/2026 · plateforme 28/08/2026</span>
-      <span class="lang-nl">VisitArdenne · Nederlandstalige markt · opdracht 2026/855<br>Metingen: Search Console 28/08/2025–26/08/2026 · platform 28/08/2026</span>
+  <!-- Verdict 5: other DMOs -->
+  <div class="verdict">
+    <div class="vh"><h3>ardennen.nl · visitwallonia.be</h3><div class="who"><span class="lang-fr">les voisins de destination — rivaux sur le nommé, marginaux sur le générique</span><span class="lang-nl">de bestemmingsburen — rivalen op het genoemde, marginaal op het generieke</span></div></div>
+    <div class="vgrid">
+      <div class="vcell"><b class="k"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></b><span class="lang-fr">Sur les requêtes qui nomment l'Ardenne, ardennen.nl est redoutable&nbsp;: dans l'échantillon de phase 1 (20 pages de résultats), présent dans 12 avec une position moyenne de 1,7. Sur le grand marché générique de phase 2, son poids retombe loin derrière les plateformes.</span><span class="lang-nl">Op zoekopdrachten die de Ardennen noemen is ardennen.nl geducht: in de fase-1-steekproef (20 zoekresultaten) aanwezig in 12, met gemiddelde positie 1,7. Op de grote generieke markt van fase 2 valt zijn gewicht ver terug achter de platformen.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Contenu</span><span class="lang-nl">Inhoud</span></b><span class="lang-fr">ardennen.nl&nbsp;: profondeur éditoriale en néerlandais natif, écrite pour le voyageur néerlandais. visitwallonia.be/nl&nbsp;: institutionnel, large, moins incarné.</span><span class="lang-nl">ardennen.nl: redactionele diepgang in moedertaal-Nederlands, geschreven voor de Nederlandse reiziger. visitwallonia.be/nl: institutioneel, breed, minder doorleefd.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Visibilité</span><span class="lang-nl">Verkeer</span></b><span class="lang-fr">Visibles surtout là où la destination est déjà nommée — c'est-à-dire dans la couche qui, chapitre&nbsp;02, recule.</span><span class="lang-nl">Vooral zichtbaar waar de bestemming al genoemd is — dus in de laag die volgens hoofdstuk&nbsp;02 krimpt.</span></div>
+      <div class="vcell"><b class="k"><span class="lang-fr">Comparaison</span><span class="lang-nl">Vergelijking</span></b><span class="lang-fr">Le standard à égaler sur le marché nommé est la profondeur d'ardennen.nl — c'est l'exigence à inscrire au cahier des charges de la refonte. Mais la partie qui se joue en ce moment est ailleurs&nbsp;: sur l'avant-question, où aucun des deux voisins n'est fort non plus. Premier arrivé, premier servi.</span><span class="lang-nl">De standaard om te evenaren op de genoemde markt is de diepgang van ardennen.nl — dat is de eis voor het lastenboek van de refonte. Maar de wedstrijd van dit moment speelt elders: op de voorvraag, waar ook geen van beide buren sterk is. Wie eerst komt, eerst maalt.</span></div>
     </div>
   </div>
-</footer>
 
-<script>
-(function(){
-  var html=document.documentElement;
-  var btns=document.querySelectorAll('.langbtns button');
-  function set(l){
-    html.setAttribute('data-lang',l);
-    html.setAttribute('lang',l);
-    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===l));});
-    try{localStorage.setItem('va-report-lang',l);}catch(e){}
-  }
-  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.lang);});});
-  var saved=null;
-  try{saved=localStorage.getItem('va-report-lang');}catch(e){}
-  set(saved==='nl'?'nl':'fr');
-})();
-</script>
+  <p class="cap"><span class="lang-fr">Positions et pages observées dans les classements DataForSEO Labs (top&nbsp;1.000 par marché) et l'échantillon de pages de résultats testées en direct, août 2026 · volumes Google Ads 29/08/2026 · <span class="prov p-obs">observé</span> <span class="src src-nl">NL-onderzoek 2026</span>. Preuves URL par URL et graphiques de visibilité dans l'<a href="nieuw-onderzoek.html">étude NL</a>.</span>
+  <span class="lang-nl">Posities en pagina's waargenomen in DataForSEO Labs-rankings (top&nbsp;1.000 per markt) en de steekproef live geteste zoekresultaten, augustus 2026 · Google Ads-volumes 29/08/2026 · <span class="prov p-obs">waargenomen</span> <span class="src src-nl">NL-onderzoek 2026</span>. Bewijzen URL per URL en zichtbaarheidsgrafieken in het <a href="nieuw-onderzoek.html">NL-onderzoek</a>.</span></p>
+
+  <div class="supersede">
+    <h4><span class="lang-fr">Note de supersession — le paysage concurrentiel de phase 1</span><span class="lang-nl">Supersessienoot — het concurrentiebeeld van fase 1</span></h4>
+    <p><span class="lang-fr">La phase 1 concluait, sur un échantillon de 20 pages de résultats&nbsp;: «&nbsp;votre concurrent n'est pas l'Eifel, c'est un éditeur (ardennen.nl)&nbsp;». L'étude plus large de phase 2 <b>précise ce verdict sans l'annuler</b>&nbsp;: ardennen.nl reste le rival du marché <i>nommé</i>, mais sur le marché générique — dix fois plus grand — l'adversaire est l'ANWB et les plateformes nationales. Les deux phrases sont vraies&nbsp;; elles parlent de deux couches différentes du même marché.</span>
+    <span class="lang-nl">Fase 1 concludeerde, op een steekproef van 20 zoekresultaten: "uw concurrent is niet de Eifel, het is een uitgever (ardennen.nl)". Het bredere onderzoek van fase 2 <b>verfijnt dat oordeel zonder het te schrappen</b>: ardennen.nl blijft de rivaal op de <i>genoemde</i> markt, maar op de generieke markt — tien keer groter — heten de tegenspelers ANWB en de nationale platformen. Beide zinnen zijn waar; ze gaan over twee verschillende lagen van dezelfde markt.</span></p>
+  </div>
+</div></section>
+
+<!-- ================= H6 ================= -->
+<section id="h6"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 06</span><span class="lang-nl">Hoofdstuk 06</span></div>
+  <span class="lang-fr"><h2>Où le site actuel <em>fuit-il</em>&nbsp;?</h2>
+    <p class="lead">Avant de conquérir un nouveau marché, il faut cesser de perdre celui qu'on a. Quatre fuites, chacune mesurée.</p></span>
+  <span class="lang-nl"><h2>Waar <em>lekt</em> de huidige site?</h2>
+    <p class="lead">Vóór je een nieuwe markt verovert, moet je stoppen met verliezen wat je al hebt. Vier lekken, elk gemeten.</p></span>
+
+  <!-- leak 1 -->
+  <span class="lang-fr"><h3 style="margin-top:28px;font-size:19px">1 · Visible, mais le clic s'échappe</h3>
+    <p style="margin-top:8px">Le paradoxe du site en une image&nbsp;: sur «&nbsp;kerstmarkt ardennen&nbsp;», plus d'un chercheur sur deux clique (51&nbsp;% de taux de clic en position ≈3) — la page répond exactement à la question. Sur la page des Grottes de Han, vue 135.943&nbsp;fois, seuls 0,68&nbsp;% cliquent. La visibilité est acquise&nbsp;; la promesse affichée dans Google ne l'est pas.</p></span>
+  <span class="lang-nl"><h3 style="margin-top:28px;font-size:19px">1 · Zichtbaar, maar de klik lekt weg</h3>
+    <p style="margin-top:8px">De paradox van de site in één beeld: op "kerstmarkt ardennen" klikt méér dan één op twee zoekers (51&nbsp;% doorklik op positie ≈3) — de pagina beantwoordt exact de vraag. Op de pagina van de Grotten van Han, 135.943&nbsp;keer vertoond, klikt amper 0,68&nbsp;%. De zichtbaarheid is binnen; de belofte die in Google verschijnt niet.</p></span>
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th><span class="lang-fr">Page</span><span class="lang-nl">Pagina</span></th>
+      <th class="num"><span class="lang-fr">Impressions</span><span class="lang-nl">Vertoningen</span></th>
+      <th class="num"><span class="lang-fr">CTR actuel</span><span class="lang-nl">Huidige CTR</span></th>
+      <th class="num"><span class="lang-fr">CTR attendu</span><span class="lang-nl">Verwachte CTR</span></th>
+      <th class="num"><span class="lang-fr">Clics perdus/an</span><span class="lang-nl">Gemiste kliks/jaar</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Grotten van Han</td><td class="num">135.943</td><td class="num">0,68&nbsp;%</td><td class="num">3,87&nbsp;%</td><td class="num"><b>4.328</b></td></tr>
+      <tr><td>Dagje Charleville-Mézières</td><td class="num">106.866</td><td class="num">1,41&nbsp;%</td><td class="num">5,37&nbsp;%</td><td class="num"><b>4.235</b></td></tr>
+      <tr><td>Bezoek Kasteel Sedan</td><td class="num">75.596</td><td class="num">0,80&nbsp;%</td><td class="num">4,27&nbsp;%</td><td class="num"><b>2.623</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="cap"><span class="lang-fr">Search Console, 12 mois (28/08/2025 – 26/08/2026)&nbsp;; «&nbsp;CTR attendu&nbsp;» = taux de clic normalement observé à cette position moyenne&nbsp;; clics perdus = impressions × (attendu − actuel) · <span class="prov p-der">calculé</span> <span class="src src-nl">NL-onderzoek 2026</span>. Ensemble&nbsp;: <b>≈11.200 visites/an</b> déjà gagnées en visibilité, perdues au moment du clic. Les 16 pages prioritaires, avec recommandation par page&nbsp;: <a href="b-redactioneel.html">livrable B</a>.</span>
+  <span class="lang-nl">Search Console, 12 maanden (28/08/2025 – 26/08/2026); "verwachte CTR" = doorklik die op die gemiddelde positie normaal wordt gehaald; gemiste kliks = vertoningen × (verwacht − huidig) · <span class="prov p-der">berekend</span> <span class="src src-nl">NL-onderzoek 2026</span>. Samen: <b>≈11.200 bezoeken/jaar</b> die al in zichtbaarheid gewonnen zijn maar op het klikmoment verloren gaan. De 16 prioritaire pagina's, met aanbeveling per pagina: <a href="b-redactioneel.html">livrable B</a>.</span></p>
+
+  <!-- leak 2 -->
+  <span class="lang-fr"><h3 style="margin-top:34px;font-size:19px">2 · Des recherches néerlandaises servies en allemand ou en anglais</h3>
+    <p style="margin-top:8px">Sur des requêtes à très gros volume, la page que Google choisit pour visitardenne.com n'est pas la néerlandaise&nbsp;:</p></span>
+  <span class="lang-nl"><h3 style="margin-top:34px;font-size:19px">2 · Nederlandstalige zoekopdrachten bediend in het Duits of Engels</h3>
+    <p style="margin-top:8px">Op zoekopdrachten met zeer hoog volume is de pagina die Google voor visitardenne.com kiest niet de Nederlandstalige:</p></span>
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th><span class="lang-fr">Requête</span><span class="lang-nl">Zoekopdracht</span></th>
+      <th class="num">Volume</th>
+      <th class="num"><span class="lang-fr">Position</span><span class="lang-nl">Positie</span></th>
+      <th><span class="lang-fr">Page servie</span><span class="lang-nl">Geserveerde pagina</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td>durbuy</td><td class="num">90.500</td><td class="num">7,6</td><td><code>/de/</code></td></tr>
+      <tr><td>namur</td><td class="num">135.000</td><td class="num">9,9</td><td><code>/en/</code></td></tr>
+      <tr><td>la roche ardennen</td><td class="num">40.500</td><td class="num">5,2</td><td><code>/en/</code></td></tr>
+      <tr><td>bouillon</td><td class="num">40.500</td><td class="num">11,2</td><td><code>/de/</code></td></tr>
+      <tr><td>ciney</td><td class="num">40.500</td><td class="num">6,6</td><td><code>/de/</code></td></tr>
+    </tbody>
+  </table></div>
+  <p class="cap"><span class="lang-fr">Search Console, 12 mois&nbsp;; 10 requêtes de ce type identifiées, les 5 plus significatives ci-dessus · <span class="prov p-obs">observé</span> <span class="src src-nl">NL-onderzoek 2026</span>. «&nbsp;la roche <i>ardennen</i>&nbsp;» est une requête néerlandaise servie par une page anglaise&nbsp;: un problème de déclaration et de liens, pas de contenu.</span>
+  <span class="lang-nl">Search Console, 12 maanden; 10 zoekopdrachten van dit type gevonden, hierboven de 5 meest sprekende · <span class="prov p-obs">waargenomen</span> <span class="src src-nl">NL-onderzoek 2026</span>. "la roche <i>ardennen</i>" is een Nederlandse zoekopdracht die door een Engelse pagina wordt bediend: een declaratie- en linkprobleem, geen contentprobleem.</span></p>
+
+  <!-- leak 3 -->
+  <span class="lang-fr"><h3 style="margin-top:34px;font-size:19px">3 · La destination n'est pas clairement déclarée aux moteurs</h3>
+    <p style="margin-top:8px">Sur les quatre couches qui déterminent si un moteur «&nbsp;comprend&nbsp;» une entité, l'Ardenne obtient <b>3,4/10</b> en moyenne sur 658 entités analysées — et la couche <b>déclaration</b> («&nbsp;qui/quoi est cette destination&nbsp;?&nbsp;») tombe à <b>1,0/10</b>, contre 4,4 pour les attributs, 3,5 pour les relations et 4,7 pour le contexte.</p></span>
+  <span class="lang-nl"><h3 style="margin-top:34px;font-size:19px">3 · De bestemming is niet duidelijk gedeclareerd aan de zoekmachines</h3>
+    <p style="margin-top:8px">Op de vier lagen die bepalen of een zoekmachine een entiteit "begrijpt", scoort de Ardennen gemiddeld <b>3,4/10</b> over 658 geanalyseerde entiteiten — en de laag <b>declaratie</b> ("wie/wat is deze bestemming?") zakt naar <b>1,0/10</b>, tegenover 4,4 voor attributen, 3,5 voor relaties en 4,7 voor context.</p></span>
+  <div class="evi"><span class="lang-fr"><b>Donnée</b> — score sur les 658 entités actives, mesure du 28/08/2026 <span class="src src-nl">NL-onderzoek 2026</span>. <b>Conclusion</b> — cela explique la fuite n°2&nbsp;: quand la déclaration est faible, le moteur choisit lui-même la page à servir, et se trompe de langue. Et cela conditionne le chapitre&nbsp;04&nbsp;: une entité mal déclarée n'est pas citée par les réponses IA. La carte visuelle des 658 entités&nbsp;: <a href="f-entitymap.html">Entity Universe Map (F)</a>.</span>
+  <span class="lang-nl"><b>Data</b> — score over de 658 actieve entiteiten, meting 28/08/2026 <span class="src src-nl">NL-onderzoek 2026</span>. <b>Conclusie</b> — dit verklaart lek nr.&nbsp;2: als de declaratie zwak is, kiest de zoekmachine zelf welke pagina ze toont, en kiest ze de verkeerde taal. En het bepaalt hoofdstuk&nbsp;04: een slecht gedeclareerde entiteit wordt niet geciteerd door AI-antwoorden. De visuele kaart van de 658 entiteiten: <a href="f-entitymap.html">Entity Universe Map (F)</a>.</span></div>
+
+  <!-- leak 4 -->
+  <span class="lang-fr"><h3 style="margin-top:34px;font-size:19px">4 · Des pages qui se concurrencent entre elles</h3>
+    <p style="margin-top:8px">Sur «&nbsp;wandelen&nbsp;», VisitArdenne occupe la position n°1 avec une liste «&nbsp;top&nbsp;»… et la position n°28 avec sa page pilier — deux pages du même site qui se disputent la même question. Le même schéma se répète sur des pages de lieux en double. Chaque doublon divise le signal par deux.</p></span>
+  <span class="lang-nl"><h3 style="margin-top:34px;font-size:19px">4 · Pagina's die elkaar beconcurreren</h3>
+    <p style="margin-top:8px">Op "wandelen" staat VisitArdenne op positie nr.&nbsp;1 met een "top"-lijst… en op positie nr.&nbsp;28 met haar pijlerpagina — twee pagina's van dezelfde site vechten om dezelfde vraag. Hetzelfde patroon herhaalt zich bij dubbele plaatspagina's. Elk duplicaat halveert het signaal.</p></span>
+  <div class="evi"><span class="lang-fr"><b>Donnée</b> — positions live observées, août 2026 <span class="src src-nl">NL-onderzoek 2026</span>. <b>Conclusion</b> — fusionner vers l'URL gagnante (redirection définitive), une seule page par question. Décisions détaillées&nbsp;: <a href="c-structuur.html">livrable C</a>.</span>
+  <span class="lang-nl"><b>Data</b> — live waargenomen posities, augustus 2026 <span class="src src-nl">NL-onderzoek 2026</span>. <b>Conclusie</b> — samenvoegen naar de winnende URL (definitieve doorverwijzing), één pagina per vraag. Gedetailleerde beslissingen: <a href="c-structuur.html">livrable C</a>.</span></div>
+
+  <div class="callout">
+    <h4><span class="lang-fr">Ce que cela signifie</span><span class="lang-nl">Wat dit betekent</span></h4>
+    <p><span class="lang-fr">Les quatre fuites ont un point commun&nbsp;: <b>aucune ne demande une page nouvelle</b>. Réécrire trois promesses, servir la bonne langue, déclarer l'identité, fusionner les doublons — c'est du travail de précision sur l'existant, et c'est le chantier le moins cher du dossier. Il vient donc en premier dans la feuille de route.</span>
+    <span class="lang-nl">De vier lekken hebben één ding gemeen: <b>geen enkel vraagt een nieuwe pagina</b>. Drie beloftes herschrijven, de juiste taal serveren, de identiteit declareren, duplicaten samenvoegen — het is precisiewerk op het bestaande, en de goedkoopste werf van het dossier. Daarom komt hij eerst in de routekaart.</span></p>
+  </div>
+</div></section>
+
+<!-- ================= H7 ================= -->
+<section id="h7"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 07</span><span class="lang-nl">Hoofdstuk 07</span></div>
+  <span class="lang-fr"><h2>La structure du site doit-elle <em>changer</em>&nbsp;?</h2>
+    <p class="lead">Non. Et c'est une conclusion testée deux fois — pas une préférence.</p>
+    <p>Nous avons construit le graphe idéal du marché néerlandophone et l'avons confronté à l'arborescence actuelle&nbsp;: le tronc est partagé, la longue traîne diverge — exactement le profil qui plaide pour <b>un seul arbre, où la langue est une affaire de composition de page</b>, pas de structure. Ni traduction de l'arbre français, ni arbre néerlandais séparé&nbsp;: la première ignore une demande différente, le second vous laisse deux sites à entretenir pour un seul budget. L'étude indépendante de phase 2 a retesté cette conclusion contre le marché complet&nbsp;: <b>elle tient</b>.</p>
+    <p>Ce que la phase 2 change, c'est l'ambition&nbsp;: quatre portes d'entrée manquent à l'arbre, et deux joyaux du territoire sont invisibles.</p></span>
+  <span class="lang-nl"><h2>Moet de structuur van de site <em>veranderen</em>?</h2>
+    <p class="lead">Nee. En dat is een tweemaal geteste conclusie — geen voorkeur.</p>
+    <p>We bouwden het ideale graaf van de Nederlandstalige markt en legden het naast de huidige boomstructuur: de stam is gedeeld, de lange staart wijkt af — precies het profiel dat pleit voor <b>één boom, waar taal een zaak van pagina-compositie is</b>, niet van structuur. Geen vertaling van de Franse boom, en geen aparte Nederlandse boom: het eerste negeert een andere vraag, het tweede laat u twee sites onderhouden op één budget. Het onafhankelijke fase-2-onderzoek heeft deze conclusie opnieuw getoetst aan de volledige markt: <b>ze houdt stand</b>.</p>
+    <p>Wat fase 2 wél verandert, is de ambitie: vier toegangspoorten ontbreken aan de boom, en twee kroonjuwelen van het territorium zijn onzichtbaar.</p></span>
+
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th><span class="lang-fr">Porte d'entrée manquante</span><span class="lang-nl">Ontbrekende voordeur</span></th>
+      <th class="num"><span class="lang-fr">Demande/mois (Fl + P-B, fusionnée)</span><span class="lang-nl">Vraag/mnd (Vl + NL, samengevoegd)</span></th>
+      <th><span class="lang-fr">Qui la sert aujourd'hui</span><span class="lang-nl">Wie ze vandaag bedient</span></th>
+    </tr></thead>
+    <tbody>
+      <tr class="win"><td><span class="lang-fr">Inspiration week-end («&nbsp;weekendje weg …&nbsp;»)</span><span class="lang-nl">Weekend-inspiratie ("weekendje weg …")</span></td><td class="num">≈81.000</td><td>weekendjeweg.nl, voordeeluitjes.nl</td></tr>
+      <tr class="win"><td><span class="lang-fr">Séjour insolite / genre «&nbsp;natuurhuisje&nbsp;»</span><span class="lang-nl">Bijzonder overnachten / "natuurhuisje"-genre</span></td><td class="num">≈103.000</td><td>natuurhuisje.nl, bijzonderplekje.nl</td></tr>
+      <tr class="win"><td><span class="lang-fr">Couche nœuds (vélo + pédestre)</span><span class="lang-nl">Knooppuntenlaag (fiets + wandel)</span></td><td class="num">≈59.000</td><td>wandelknooppunt.be, wandel.nl</td></tr>
+      <tr class="win"><td><span class="lang-fr">Hub saisonnier marchés de Noël</span><span class="lang-nl">Seizoenshub kerstmarkten</span></td><td class="num">≈35.000</td><td><span class="lang-fr">reisroutes.be, presse — et vos propres pages «&nbsp;top&nbsp;», qui prouvent que vous savez gagner ici</span><span class="lang-nl">reisroutes.be, pers — en uw eigen "top"-pagina's, die bewijzen dat u hier kunt winnen</span></td></tr>
+      <tr><td><span class="lang-fr">À rendre visible&nbsp;: Spa-Francorchamps</span><span class="lang-nl">Zichtbaar te maken: Spa-Francorchamps</span></td><td class="num">≈30.000</td><td><span class="lang-fr">sites du circuit et billetteries — la destination est absente</span><span class="lang-nl">circuitsites en ticketverkopers — de bestemming is afwezig</span></td></tr>
+      <tr><td><span class="lang-fr">À rendre visible&nbsp;: Ardennes luxembourgeoises (Mullerthal, Vianden)</span><span class="lang-nl">Zichtbaar te maken: Luxemburgse Ardennen (Mullerthal, Vianden)</span></td><td class="num">≈27.000</td><td><span class="lang-fr">visitluxembourg et blogs — territoire GEIE, invisible sur votre site</span><span class="lang-nl">visitluxembourg en blogs — GEIE-territorium, onzichtbaar op uw site</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="cap"><span class="lang-fr">Volumes Google Ads 29/08/2026, variantes proches fusionnées&nbsp;; groupes détaillés (dont «&nbsp;weekendje weg&nbsp;»&nbsp;: 6.600 Flandre / 74.000 Pays-Bas) dans l'<a href="nieuw-onderzoek.html">étude NL</a> et la conclusion structurelle dans le <a href="c-structuur.html">livrable C</a> · <span class="src src-nl">NL-onderzoek 2026</span>.</span>
+  <span class="lang-nl">Google Ads-volumes 29/08/2026, nauwe varianten samengevoegd; gedetailleerde groepen (o.a. "weekendje weg": 6.600 Vlaanderen / 74.000 Nederland) in het <a href="nieuw-onderzoek.html">NL-onderzoek</a> en de structuurconclusie in <a href="c-structuur.html">livrable C</a> · <span class="src src-nl">NL-onderzoek 2026</span>.</span></p>
+
+  <div class="supersede">
+    <h4><span class="lang-fr">Note de supersession — «&nbsp;weekendje weg&nbsp;»</span><span class="lang-nl">Supersessienoot — "weekendje weg"</span></h4>
+    <p><span class="lang-fr">La phase 1 recommandait de <i>ne pas cibler</i> «&nbsp;weekendje weg&nbsp;», parce que la page de résultats du terme nu est entièrement occupée par les plateformes commerciales — ce constat reste vrai. <b>L'étude plus large de phase 2 change le verdict</b>, car elle a mesuré ce que la lunette du terme nu ne montrait pas&nbsp;: la tranche destination («&nbsp;weekendje weg belgië / ardennen&nbsp;») pèse ≈81.000 recherches/mois et sa page de résultats est gagnable par une destination. La recommandation devient donc&nbsp;: ne pas attaquer le terme nu, <b>construire la porte d'entrée week-end</b> sur la tranche destination.</span>
+    <span class="lang-nl">Fase 1 adviseerde "weekendje weg" <i>niet te targeten</i>, omdat het zoekresultaat van de kale term volledig door commerciële platformen wordt bezet — die vaststelling blijft waar. <b>Het bredere onderzoek van fase 2 verandert dit oordeel</b>, want het mat wat de bril van de kale term niet toonde: de bestemmingsschijf ("weekendje weg belgië / ardennen") weegt ≈81.000 zoekopdrachten/mnd en dat zoekresultaat is wél winbaar voor een bestemming. Het advies wordt dus: de kale term niet aanvallen, <b>de weekend-voordeur bouwen</b> op de bestemmingsschijf.</span></p>
+  </div>
+
+  <div class="supersede">
+    <h4><span class="lang-fr">Note de supersession — «&nbsp;la demande non captée est de la location&nbsp;»</span><span class="lang-nl">Supersessienoot — "de niet-gecapteerde vraag is verhuur"</span></h4>
+    <p><span class="lang-fr">Le premier rapport exécutif (phase 1) concluait&nbsp;: la demande non captée est surtout de la location — ce n'est pas votre bataille. La phase 2 <b>confirme la moitié partenaires et corrige la moitié ambition</b>&nbsp;: la demande de substitution (locations, parcs, réservation pure — 6.133 termes) reste hors bataille, à orienter vers les partenaires&nbsp;; mais au-dessus d'elle existe une couche cœur + inspiration de ≈2,6&nbsp;millions de recherches/mois qui, elle, <b>est</b> votre bataille — et n'était tout simplement pas visible depuis la carte dérivée du français.</span>
+    <span class="lang-nl">Het eerste executive rapport (fase 1) concludeerde: de niet-gecapteerde vraag is vooral verhuur — niet uw strijd. Fase 2 <b>bevestigt de partnerhelft en corrigeert de ambitiehelft</b>: de substituutvraag (verhuur, parken, pure boeking — 6.133 termen) blijft buiten de strijd en gaat naar de partners; maar daarboven ligt een kern- + inspiratielaag van ≈2,6&nbsp;miljoen zoekopdrachten/mnd die wél uw strijd is — en die vanaf de FR-afgeleide kaart simpelweg niet zichtbaar was.</span></p>
+  </div>
+</div></section>
+
+<!-- ================= H8 ================= -->
+<section id="h8"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 08</span><span class="lang-nl">Hoofdstuk 08</span></div>
+  <span class="lang-fr"><h2>Quel contenu, et <em>quand</em>&nbsp;?</h2>
+    <p class="lead">La demande ardennaise a une saison — et une page publiée le mois du pic arrive trop tard.</p>
+    <p>La courbe du chapitre&nbsp;02 fixe la règle de production&nbsp;: entre publication et pleine visibilité, comptez environ trois mois. Donc&nbsp;: publier en janvier pour le printemps, en avril pour le pic d'été, en juillet pour l'automne — et <b>en septembre au plus tard pour les marchés de Noël</b>, dont le rebond de décembre est mesuré (+27,5&nbsp;% de clics par rapport à novembre). Le creux de février n'est pas une morte-saison éditoriale&nbsp;: c'est l'atelier où se fabrique l'été.</p>
+    <p>Sur le fond&nbsp;: nous avons examiné <b>plus de 2.700 opportunités de contenu</b> sous l'architecture validée, et nous en priorisons <b>20</b> — chacune avec ses mots-clés, son volume, sa difficulté et sa saison de publication. Les quatre nouvelles portes d'entrée du chapitre&nbsp;07 y occupent les premières places, le hub marchés de Noël en tête de calendrier.</p></span>
+  <span class="lang-nl"><h2>Welke content, en <em>wanneer</em>?</h2>
+    <p class="lead">De Ardense vraag heeft een seizoen — en een pagina die in de piekmaand verschijnt, komt te laat.</p>
+    <p>De curve uit hoofdstuk&nbsp;02 bepaalt de productieregel: tussen publicatie en volle zichtbaarheid zit ongeveer drie maanden. Dus: publiceren in januari voor de lente, in april voor de zomerpiek, in juli voor de herfst — en <b>uiterlijk in september voor de kerstmarkten</b>, waarvan de decemberopleving gemeten is (+27,5&nbsp;% kliks tegenover november). Het dal van februari is geen redactionele dode maand: het is het atelier waar de zomer wordt gemaakt.</p>
+    <p>Inhoudelijk: we onderzochten <b>ruim 2.700 content-kansen</b> onder de gevalideerde architectuur, en prioriteren er <b>20</b> — elk met zoekwoorden, volume, moeilijkheid en publicatieseizoen. De vier nieuwe voordeuren uit hoofdstuk&nbsp;07 staan bovenaan, de kerstmarkten-hub voorop in de kalender.</p></span>
+
+  <div class="callout">
+    <h4><span class="lang-fr">Ce que cela signifie</span><span class="lang-nl">Wat dit betekent</span></h4>
+    <p><span class="lang-fr">Le calendrier n'est pas un détail d'exécution&nbsp;: il <b>ordonne la feuille de route</b>. Si le hub marchés de Noël doit être en ligne en septembre, c'est la première construction neuve — avant même les chantiers plus gros. Le plan complet, la courbe saisonnière et la liste priorisée&nbsp;: <a href="d-contentplan.html">livrable D</a>&nbsp;; un exemple concret de page recomposée&nbsp;: <a href="preview-durbuy.html">aperçu Durbuy</a>.</span>
+    <span class="lang-nl">De kalender is geen uitvoeringsdetail: hij <b>ordent de routekaart</b>. Als de kerstmarkten-hub in september online moet, is dat de eerste nieuwbouw — nog vóór de grotere werven. Het volledige plan, de seizoenscurve en de geprioriteerde lijst: <a href="d-contentplan.html">livrable D</a>; een concreet voorbeeld van een herschikte pagina: <a href="preview-durbuy.html">preview Durbuy</a>.</span></p>
+  </div>
+  <p class="cap"><span class="lang-fr">Saisonnalité&nbsp;: Search Console, clics mensuels /nl, mai 2025 – août 2026 (extraction 31/08/2026) · plan de contenu sous l'architecture validée, août 2026 · <span class="src src-nl">NL-onderzoek 2026</span>.</span>
+  <span class="lang-nl">Seizoenscurve: Search Console, maandelijkse /nl-kliks, mei 2025 – augustus 2026 (opgehaald 31/08/2026) · contentplan onder de gevalideerde architectuur, augustus 2026 · <span class="src src-nl">NL-onderzoek 2026</span>.</span></p>
+</div></section>
+
+<!-- ================= H9 ================= -->
+<section id="h9"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 09</span><span class="lang-nl">Hoofdstuk 09</span></div>
+  <span class="lang-fr"><h2>La feuille de route&nbsp;: <em>MAINTENANT / ENSUITE / PLUS TARD</em></h2>
+    <p class="lead">Tout ce qui précède se range en trois horizons. La version résumée ci-dessous&nbsp;; la feuille de route complète — avec effort, propriétaire, effet attendu et dépendances par ligne — est dans le <a href="e-restitutie.html">livrable E</a>.</p></span>
+  <span class="lang-nl"><h2>De routekaart: <em>NU / VOLGENDE / LATER</em></h2>
+    <p class="lead">Alles wat voorafgaat, valt in drie horizonnen. Hieronder de samenvatting; de volledige routekaart — met inspanning, eigenaar, verwacht effect en afhankelijkheden per regel — staat in <a href="e-restitutie.html">livrable E</a>.</p></span>
+
+  <div class="nvl">
+    <div class="ph-col now">
+      <div class="when"><span class="lang-fr">Maintenant · 0–3 mois</span><span class="lang-nl">Nu · 0–3 maanden</span></div>
+      <h3><span class="lang-fr">Colmater et prendre l'avance saisonnière</span><span class="lang-nl">Dichten en het seizoen vóór zijn</span></h3>
+      <ul>
+        <li><span class="lang-fr">Les 3 pages du chapitre&nbsp;06 (≈11.200 clics/an) + démarrage des 170 gains rapides</span><span class="lang-nl">De 3 pagina's uit hoofdstuk&nbsp;06 (≈11.200 kliks/jaar) + start van de 170 quick wins</span></li>
+        <li><span class="lang-fr">Servir la bonne langue sur les 10 requêtes mal servies</span><span class="lang-nl">De juiste taal serveren op de 10 fout bediende zoekopdrachten</span></li>
+        <li><span class="lang-fr">Hub marchés de Noël en ligne avant fin septembre</span><span class="lang-nl">Kerstmarkten-hub online vóór eind september</span></li>
+      </ul>
+    </div>
+    <div class="ph-col">
+      <div class="when"><span class="lang-fr">Ensuite · 3–9 mois</span><span class="lang-nl">Volgende · 3–9 maanden</span></div>
+      <h3><span class="lang-fr">Fonder et ouvrir les portes</span><span class="lang-nl">Funderen en de voordeuren openen</span></h3>
+      <ul>
+        <li><span class="lang-fr">Déclaration d'entité (nommage, données structurées, liens internes) + fusions des doublons</span><span class="lang-nl">Entiteitsdeclaratie (naamgeving, gestructureerde data, interne links) + samenvoegen van duplicaten</span></li>
+        <li><span class="lang-fr">Portes d'entrée&nbsp;: inspiration week-end, séjour insolite, couche nœuds</span><span class="lang-nl">Voordeuren: weekend-inspiratie, bijzonder overnachten, knooppuntenlaag</span></li>
+        <li><span class="lang-fr">«&nbsp;Belgische Ardennen&nbsp;» comme entrée de premier niveau</span><span class="lang-nl">"Belgische Ardennen" als toegang op het hoogste niveau</span></li>
+      </ul>
+    </div>
+    <div class="ph-col">
+      <div class="when"><span class="lang-fr">Plus tard · 9 mois et +</span><span class="lang-nl">Later · 9 maanden en verder</span></div>
+      <h3><span class="lang-fr">Devenir la réponse</span><span class="lang-nl">Hét antwoord worden</span></h3>
+      <ul>
+        <li><span class="lang-fr">Couche réponse&nbsp;: les 250 questions collectées, travaillées page par page pour la citation IA</span><span class="lang-nl">Antwoordlaag: de 250 verzamelde vragen, pagina per pagina bewerkt voor AI-citatie</span></li>
+        <li><span class="lang-fr">Rendre visibles Spa-Francorchamps et les Ardennes luxembourgeoises</span><span class="lang-nl">Spa-Francorchamps en de Luxemburgse Ardennen zichtbaar maken</span></li>
+        <li><span class="lang-fr">Étendre la couverture des ≈1.600 questions du marché atteignable</span><span class="lang-nl">De dekking van de ≈1.600 vragen van de bereikbare markt uitbreiden</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="cap"><span class="lang-fr">Les recommandations tiennent que vous upgradiez l'arbre actuel ou que vous passiez à la refonte (Yuri &amp; Neil, sept. 2025)&nbsp;: elles portent sur la composition et les liens, pas sur la structure — voir <a href="e-restitutie.html">E</a> pour la projection sur les deux scénarios · <span class="prov p-jud">recommandation</span>.</span>
+  <span class="lang-nl">De aanbevelingen houden stand of u nu de huidige boom upgradet of naar de refonte gaat (Yuri &amp; Neil, sept. 2025): ze gaan over compositie en links, niet over structuur — zie <a href="e-restitutie.html">E</a> voor de projectie op beide scenario's · <span class="prov p-jud">advies</span>.</span></p>
+</div></section>
+
+<!-- ================= H10 ================= -->
+<section id="h10"><div class="wrap">
+  <div class="eyebrow"><span class="lang-fr">Chapitre 10</span><span class="lang-nl">Hoofdstuk 10</span></div>
+  <span class="lang-fr"><h2>Comment saurons-nous que cela <em>marche</em>&nbsp;?</h2>
+    <p class="lead">Un plan sans tableau de bord est une promesse. Voici les indicateurs, leur ligne de départ mesurée en août 2026, et le rythme de lecture.</p></span>
+  <span class="lang-nl"><h2>Hoe weten we dat het <em>werkt</em>?</h2>
+    <p class="lead">Een plan zonder scorebord is een belofte. Dit zijn de indicatoren, hun gemeten startlijn van augustus 2026, en het leesritme.</p></span>
+
+  <div class="tablewrap"><table>
+    <thead><tr>
+      <th><span class="lang-fr">Phase</span><span class="lang-nl">Fase</span></th>
+      <th><span class="lang-fr">Indicateur</span><span class="lang-nl">Indicator</span></th>
+      <th><span class="lang-fr">Ligne de départ (août 2026)</span><span class="lang-nl">Startlijn (augustus 2026)</span></th>
+      <th><span class="lang-fr">Direction attendue</span><span class="lang-nl">Verwachte richting</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="lang-fr">Maintenant</span><span class="lang-nl">Nu</span></td><td><span class="lang-fr">Clics /nl hors marque, par mois (comparés au même mois de l'année précédente)</span><span class="lang-nl">Niet-merk-kliks /nl per maand (vergeleken met dezelfde maand vorig jaar)</span></td><td><span class="lang-fr">en recul de 25–37&nbsp;% par mois comparable</span><span class="lang-nl">25–37&nbsp;% lager per vergelijkbare maand</span></td><td><span class="lang-fr">d'abord stabiliser, puis inverser</span><span class="lang-nl">eerst stabiliseren, dan keren</span></td></tr>
+      <tr><td><span class="lang-fr">Maintenant</span><span class="lang-nl">Nu</span></td><td><span class="lang-fr">Taux de clic des 3 pages prioritaires</span><span class="lang-nl">Doorklik van de 3 prioriteitspagina's</span></td><td>0,68&nbsp;% · 1,41&nbsp;% · 0,80&nbsp;%</td><td><span class="lang-fr">vers le taux attendu à leur position (3,9–5,4&nbsp;%)</span><span class="lang-nl">naar de verwachte ratio op hun positie (3,9–5,4&nbsp;%)</span></td></tr>
+      <tr><td><span class="lang-fr">Ensuite</span><span class="lang-nl">Volgende</span></td><td><span class="lang-fr">Positions top-3 sur les 10 groupes de demande manqués</span><span class="lang-nl">Top-3-posities op de 10 gemiste vraaggroepen</span></td><td>0 / 10</td><td><span class="lang-fr">une porte d'entrée après l'autre</span><span class="lang-nl">voordeur per voordeur</span></td></tr>
+      <tr><td><span class="lang-fr">Ensuite</span><span class="lang-nl">Volgende</span></td><td><span class="lang-fr">Part des 2.329 termes atteignables où VisitArdenne apparaît</span><span class="lang-nl">Aandeel van de 2.329 bereikbare termen waarop VisitArdenne verschijnt</span></td><td>95 (4&nbsp;%)</td><td><span class="lang-fr">croissance trimestre après trimestre</span><span class="lang-nl">groei kwartaal na kwartaal</span></td></tr>
+      <tr><td><span class="lang-fr">Plus tard</span><span class="lang-nl">Later</span></td><td><span class="lang-fr">Présence de visitardenne.com dans les réponses IA de l'échantillon retesté</span><span class="lang-nl">Aanwezigheid van visitardenne.com in de AI-antwoorden van de herteste steekproef</span></td><td><span class="lang-fr">quasi nulle&nbsp;; 40–50&nbsp;% des résultats testés portent une réponse IA</span><span class="lang-nl">vrijwel nul; 40–50&nbsp;% van de geteste resultaten draagt een AI-antwoord</span></td><td><span class="lang-fr">être cité sur les questions du territoire</span><span class="lang-nl">geciteerd worden op de territoriumvragen</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="cap"><span class="lang-fr">Mesure&nbsp;: Search Console + Analytics déjà connectés&nbsp;; positions et pages de résultats retestées sur le même univers&nbsp;; <b>lecture trimestrielle</b>, avec le même échantillon pour que les chiffres restent comparables. Détail du plan de mesure dans le <a href="e-restitutie.html">livrable E</a> · <span class="src src-nl">NL-onderzoek 2026</span>.</span>
+  <span class="lang-nl">Meting: Search Console + Analytics zijn al gekoppeld; posities en zoekresultaten worden hertest op hetzelfde universum; <b>kwartaallezing</b>, met dezelfde steekproef zodat de cijfers vergelijkbaar blijven. Detail van het meetplan in <a href="e-restitutie.html">livrable E</a> · <span class="src src-nl">NL-onderzoek 2026</span>.</span></p>
+
+  <span class="lang-fr"><h3 style="margin-top:40px;font-size:20px">Les décisions que nous vous demandons</h3>
+    <p style="margin-top:8px">Cinq décisions, pas davantage. Chacune dit pourquoi maintenant, et ce qui se passe après votre oui.</p></span>
+  <span class="lang-nl"><h3 style="margin-top:40px;font-size:20px">De beslissingen die wij u vragen</h3>
+    <p style="margin-top:8px">Vijf beslissingen, niet meer. Elk zegt waarom nu, en wat er gebeurt na uw ja.</p></span>
+  <ol class="decis">
+    <li>
+      <span class="lang-fr"><h4>Choisir&nbsp;: upgrade ou refonte — l'arbre unique confirmé</h4>
+      <p><b>Pourquoi maintenant</b> — la conclusion «&nbsp;un seul arbre, la langue comme composition&nbsp;» a été testée deux fois et conditionne tout le reste&nbsp;; le choix upgrade/refonte décide du cadre budgétaire, et l'appel d'offres doit porter cette conclusion.</p>
+      <p class="after"><b>Après votre oui</b> — la proposition de composition page par page est figée et versée au cahier des charges.</p></span>
+      <span class="lang-nl"><h4>Kiezen: upgrade of refonte — met één boom bevestigd</h4>
+      <p><b>Waarom nu</b> — de conclusie «&nbsp;één boom, taal als compositie&nbsp;» is tweemaal getoetst en draagt al de rest; de keuze upgrade/refonte bepaalt het budgetkader, en de aanbesteding moet die conclusie meenemen.</p>
+      <p class="after"><b>Na uw ja</b> — het compositievoorstel per pagina wordt vastgelegd en gaat het lastenboek in.</p></span>
+    </li>
+    <li>
+      <span class="lang-fr"><h4>Lancer le sprint des gains rapides</h4>
+      <p><b>Pourquoi maintenant</b> — ≈11.200 clics/an sur trois pages et 170 gains rapides n'attendent aucune décision structurelle&nbsp;; chaque mois d'attente est un mois perdu sur une courbe qui descend.</p>
+      <p class="after"><b>Après votre oui</b> — réécritures livrées par lots, effet lisible dans Search Console dès le trimestre suivant.</p></span>
+      <span class="lang-nl"><h4>De quick-win-sprint starten</h4>
+      <p><b>Waarom nu</b> — ≈11.200 kliks/jaar op drie pagina's en 170 quick wins wachten op geen enkele structuurbeslissing; elke maand uitstel is een verloren maand op een dalende curve.</p>
+      <p class="after"><b>Na uw ja</b> — herschrijvingen in batches opgeleverd, effect afleesbaar in Search Console vanaf het volgende kwartaal.</p></span>
+    </li>
+    <li>
+      <span class="lang-fr"><h4>Approuver les quatre portes d'entrée — Noël en premier</h4>
+      <p><b>Pourquoi maintenant</b> — le hub marchés de Noël doit être en ligne en septembre pour exister en décembre&nbsp;; les trois autres suivent le calendrier saisonnier.</p>
+      <p class="after"><b>Après votre oui</b> — brief et maquette du hub Noël sous quinzaine, puis week-end, séjour insolite et nœuds dans l'ordre du calendrier.</p></span>
+      <span class="lang-nl"><h4>De vier voordeuren goedkeuren — kerst eerst</h4>
+      <p><b>Waarom nu</b> — de kerstmarkten-hub moet in september online om in december te bestaan; de drie andere volgen de seizoenskalender.</p>
+      <p class="after"><b>Na uw ja</b> — brief en opzet van de kersthub binnen twee weken, daarna weekend, bijzonder overnachten en knooppunten in kalendervolgorde.</p></span>
+    </li>
+    <li>
+      <span class="lang-fr"><h4>Acter le rôle partenaires sur la location/réservation</h4>
+      <p><b>Pourquoi maintenant</b> — cela libère le budget éditorial des 6.133 termes de substitution et clarifie le message envoyé à vos partenaires-hébergeurs.</p>
+      <p class="after"><b>Après votre oui</b> — les pages concernées orientent explicitement vers les partenaires&nbsp;; aucune production sur ce terrain.</p></span>
+      <span class="lang-nl"><h4>De partnerrol op verhuur/boeking bekrachtigen</h4>
+      <p><b>Waarom nu</b> — dit bevrijdt het redactiebudget van de 6.133 substituuttermen en maakt de boodschap aan uw logiespartners helder.</p>
+      <p class="after"><b>Na uw ja</b> — de betrokken pagina's verwijzen expliciet door naar de partners; geen productie op dat terrein.</p></span>
+    </li>
+    <li>
+      <span class="lang-fr"><h4>Adopter le plan de mesure et le rythme trimestriel</h4>
+      <p><b>Pourquoi maintenant</b> — la ligne de départ est mesurée&nbsp;; sans rendez-vous trimestriel fixé, elle se périme et la baisse du chapitre&nbsp;02 reste sans vigie.</p>
+      <p class="after"><b>Après votre oui</b> — premier point trimestriel planifié, mêmes indicateurs, même échantillon, comparaison honnête.</p></span>
+      <span class="lang-nl"><h4>Het meetplan en het kwartaalritme vastleggen</h4>
+      <p><b>Waarom nu</b> — de startlijn is gemeten; zonder vast kwartaalmoment veroudert ze en blijft de daling uit hoofdstuk&nbsp;02 zonder wachter.</p>
+      <p class="after"><b>Na uw ja</b> — eerste kwartaalmoment ingepland, zelfde indicatoren, zelfde steekproef, eerlijke vergelijking.</p></span>
+    </li>
+  </ol>
+
+  <div class="callout warn" style="margin-top:30px">
+    <h4><span class="lang-fr">Note de méthode — ce que nous avons écarté, et ce que nous n'affirmons pas</span><span class="lang-nl">Methodenoot — wat we hebben uitgesloten, en wat we niet beweren</span></h4>
+    <p><span class="lang-fr">Un univers de recherche construit automatiquement capte aussi du bruit&nbsp;: 1.731 termes ont été écartés avec motif consigné (géographie hors territoire, navigation de marque, commerce de détail sans lien avec la destination, autres langues), et 14.008 micro-termes sous le seuil de volume sont conservés mais non jugés. Les volumes sont mesurés séparément pour la Région flamande (mesure régionale Google Ads) et les Pays-Bas. Là où un chiffre n'est pas mesuré, ce rapport le dit — «&nbsp;non mesuré&nbsp;» — plutôt que de l'inventer&nbsp;; là où une précision serait fausse, nous donnons une fourchette. Le détail complet, terme par terme, est téléchargeable depuis l'<a href="nieuw-onderzoek.html">étude NL</a>.</span>
+    <span class="lang-nl">Een automatisch opgebouwd zoekuniversum vangt ook ruis: 1.731 termen zijn uitgesloten mét vastgelegde reden (geografie buiten het territorium, merknavigatie, detailhandel zonder band met de bestemming, andere talen), en 14.008 micro-termen onder de volumedrempel zijn bewaard maar niet beoordeeld. Volumes zijn apart gemeten voor het Vlaams Gewest (regiometing Google Ads) en Nederland. Waar een cijfer niet gemeten is, zegt dit rapport dat — "niet gemeten" — in plaats van het te verzinnen; waar precisie vals zou zijn, geven we een bandbreedte. Het volledige detail, term per term, is downloadbaar vanuit het <a href="nieuw-onderzoek.html">NL-onderzoek</a>.</span></p>
+  </div>
+
+  <p style="margin-top:26px"><span class="lang-fr">La réunion de restitution en visioconférence — prévue à l'offre — parcourt ces cinq décisions. Ce dossier <b>est</b> le support de présentation&nbsp;; les annexes A–F portent la preuve, page par page.</span>
+  <span class="lang-nl">De restitutievergadering per video — voorzien in de offerte — loopt deze vijf beslissingen door. Dit dossier <b>is</b> de presentatie; de annexen A–F dragen het bewijs, pagina per pagina.</span></p>
+</div></section>
+
+<footer class="room"><div class="wrap">
+  <div><b>Sherlock SEO Agency</b> · ga@sherlockseo.com · sherlockseo.com<br><a href="index.html"><span class="lang-fr">← Retour au sommaire du dossier</span><span class="lang-nl">← Terug naar het dossieroverzicht</span></a></div>
+  <div style="text-align:right"><span class="lang-fr">VisitArdenne · rapport de restitution · offre 2026/855<br>GEIE Destination Ardenne · Danièlle Gevaerts · Interreg VI – Ardenne Transition Durable, activité 2.5<br>Mesures&nbsp;: Search Console 28/08/2025–26/08/2026 et extraction mensuelle 31/08/2026 · Google Ads 11 &amp; 29/08/2026 · résultats testés en direct, août 2026</span>
+  <span class="lang-nl">VisitArdenne · restitutierapport · opdracht 2026/855<br>GEIE Destination Ardenne · Danièlle Gevaerts · Interreg VI – Ardenne Transition Durable, activiteit 2.5<br>Metingen: Search Console 28/08/2025–26/08/2026 en maandextractie 31/08/2026 · Google Ads 11 &amp; 29/08/2026 · live geteste zoekresultaten, augustus 2026</span></div>
+</div></footer>
+
+<script src="assets/lang.js"></script>
 </body>
 </html>
