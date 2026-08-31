@@ -16,6 +16,7 @@
   var toggle = el('button', null, 'Strategie');
   toggle.id = 's-toggle';
   toggle.setAttribute('aria-pressed', 'false');
+  toggle.title = 'Consultant-onderbouwing (Sherlock) — waarom elke pagina zo is voorgesteld. Geen onderdeel van de voorgestelde bezoekerservaring.';
   document.body.appendChild(toggle);
 
   var panel = el('aside');
