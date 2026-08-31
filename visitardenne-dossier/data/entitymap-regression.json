@@ -1,0 +1,75 @@
+{
+ "purpose": "Client-facing entity surfaces mogen deze klassen nooit als (doel)entiteit renderen. VA-voorbeelden + abstracte fixtures.",
+ "invariants": [
+  "entity-surface rendert uitsluitend topics.excluded=false (gekwalificeerde projectie)",
+  "keyword-string/clusterlabels zijn zoekvraag-bewijs, geen entiteit (KEYWORD != TOPIC != NEED != ENTITY)",
+  "afgekapte/gemergde labels (bv. 40-char truncatie) mogen nooit als topicnaam persisteren",
+  "substituut/concurrent-bewijs blijft beschikbaar in zijn eigen laag (keyword_data / dossier-substituten), verschijnt niet als doel-entiteit",
+  "handmatige client-side blacklists (EXCL-sets) in artefacten zijn verboden — curatie loopt via relevance_adjust/exclude_topics"
+ ],
+ "va_examples": {
+  "geographic_leakage": [
+   "Antwerpen",
+   "Brugge",
+   "Diksmuide",
+   "Blankenberge",
+   "Mechelen",
+   "Dendermonde",
+   "Beveren",
+   "Aalst",
+   "Herentals",
+   "Sint-Pieters-Leeuw",
+   "Heusden-Zolder",
+   "Geraardsbergen",
+   "West-Vlaanderen",
+   "Zuid-Limburg"
+  ],
+  "local_business_leakage": [
+   "Fietsen De Geus",
+   "Fietsen Mintjens",
+   "Fietsen Lauwers",
+   "Fietsen Loix",
+   "Fietsen De Zutter",
+   "Fietsen Verhelst BV"
+  ],
+  "substitute_territory": [
+   "Belgische Kust",
+   "Zeeland",
+   "Fietsen door de Bomen",
+   "Nederland"
+  ],
+  "search_demand_not_entity": [
+   "Vakantiehuis Ardennen Met Hond",
+   "Te Huur Chalets Ardennen",
+   "Weekend Weg Ardennen",
+   "Last Minute Ardennen",
+   "Huurhuis Ardennen",
+   "Camping Ardennen Aan Rivier",
+   "Vakantiehuisjes Ardennen 10 Personen",
+   "Gîte Ardennes",
+   "Chalet Ardennes Belges"
+  ],
+  "malformed_merged_label": [
+   "Ardennen Belgische kust Limburg West-Vla",
+   "Bouillon Dinant Durbuy La Roche-en-Ardenne Ma"
+  ],
+  "off_market_generic": [
+   "fietsenmaker",
+   "pedalen",
+   "vouwfiets",
+   "stadsfiets"
+  ],
+  "language_normalization": [
+   "Limburgs"
+  ],
+  "miskill_regression": [
+   "La Roche-en-Ardenne moet WEL renderen (kernentiteit, eerder onterecht uitgesloten)"
+  ]
+ },
+ "abstract_fixtures": {
+  "geographic_leakage": "stad buiten site-territorium met eigen wikidata-id, kept door embedding-nabijheid",
+  "local_business_leakage": "lokale-SERP-bedrijfsnaam '<Activiteit> <Achternaam>' met money-vlag",
+  "search_demand_not_entity": "Title-Case keywordstring met commerciele modifier (huren/te huur/met X/last minute/N personen)",
+  "malformed_merged_label": "topicnaam exact op kolomlimiet afgekapt of >3 samengevoegde entiteitsnamen"
+ }
+}
