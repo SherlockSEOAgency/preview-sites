@@ -1,141 +1,588 @@
 {
-  "meta": {
-    "client": "VisitArdenne (GEIE Destination Ardenne)",
-    "strategy_baseline": "va-dossier-frozen-v1 (commit e25d5f35d) — docs/client-artifacts/VisitArdenne/dossier/",
-    "dossier_url": "https://visitardenne-dossier.preview.sherlockseo.com/",
-    "design_baseline": "https://www.visitardenne.com/nl/ — tokens uit theme_laetis/css/styles.css (#c28209 / #161616 / #f7f7f7 / #41823e / Parisine Std Clair) + logo.svg + eigen beeldmateriaal",
-    "generated": "2026-08-31",
-    "principle": "Eén boom, taal = compositie. Vier pijlers blijven; vier nieuwe voordeuren ín de bestaande structuur. Geen topic→page: elke pagina draagt een expliciete beslissing uit de vaste woordenschat (keep/improve/merge/split/add/remove/support/do-not-target)."
-  },
-  "canonical_vs_consultant": {
-    "canonical_in_dossier": [
-      "IA-beslistabel + 8-beslissingen-vocabulaire (detail-ia-composition §2)",
-      "Compositiebrief per bestaande kernpagina: streekhub, Belgische Ardennen, Dinant, Durbuy, plaatsmodel, wandelhub, kajak, fietsen, origineel overnachten, do-not-target verblijf (§3)",
-      "Interne-linkmodel + drie bezoekersroutes (§4)",
-      "Durbuy vóór→na-compositie (preview-durbuy.html)",
-      "Top-20 prioriteiten + seizoenskalender (d-contentplan)",
-      "NU/VOLGENDE/LATER + meetplan (e-restitutie)"
-    ],
-    "canonical_in_product": [
-      "GSC/GA4-koppeling site ce63fafe (Destination Ardenne)",
-      "Audit-dimensiescores D1–D9 (strategy_findings, 30/08)",
-      "compose_page_plan (31/08, live SERP): kerstmarkt ardennen · weekendje weg ardennen · fietsknooppunten ardennen — SERP-vorm, PAA-vragen, concurrent-scorecards, winbaarheid 10/10, sectieskeletten",
-      "Business-model in site-ontologie: DMO verkoopt niet zelf; conversie = gekwalificeerde doorklik naar partner"
-    ],
-    "consultant_synthesized": [
-      "URL-keuze voor de 4 nieuwe voordeuren (conventie van de bestaande boom gevolgd)",
-      "Kerstmarkthub = upgrade van de bestáánde winnende top-10-URL (positie 1–3 verdedigen), geen nieuwe URL + redirect",
-      "Alle publieksteksten (NL-redactie), curatie van beelden uit het eigen VA-beeldarchief",
-      "Preview-scope: kleinste samenhangende subset die de strategie toont",
-      "Herbruikbare linkblok-rollen afgeleid uit het dossier-linkmodel"
-    ],
-    "product_gaps_found": [
-      "Topics-graaf VA is vervuild (naam/slug-mismatch, 'buurt' als money-topic) — niet bruikbaar als paginabeslissingsbron",
-      "Geen canonieke opslag voor paginabeslissingen/IA/URL-tree: get_url_proposals en get_pages geven 'site not found'; strategy_findings kent alleen site-brede uitspraken",
-      "compose_page_plan intent-laag dumpt honderden vervuilde persisted intents ('zemst', 'diksmuide') en zegt 'intentie onbekend'",
-      "Compositieplannen worden niet gepersisteerd — elk plan is een losse tool-call zonder DB-thuis"
-    ]
-  },
-  "url_tree": [
-    {"url": "/nl/", "action": "improve", "page": "index.html", "parent": null, "redirect": null},
-    {"url": "/nl/belevenissen-ardennen", "action": "keep", "page": null, "parent": "/nl/", "redirect": null},
-    {"url": "/nl/het-beste-van-de-ardennen", "action": "keep", "page": null, "parent": "/nl/", "redirect": null},
-    {"url": "/nl/het-beste-van-de-ardennen/hoogtepunten/durbuy", "action": "improve+merge (één plaatstemplate)", "page": "durbuy.html", "parent": "/nl/het-beste-van-de-ardennen", "redirect": "steden-en-dorpen-varianten 301 → plaatstemplate"},
-    {"url": "/nl/het-beste-van-de-ardennen/ontdek-onze-top-10s/top-10-kerstmarkten-de-ardennen", "action": "improve → seizoenshub (winnende URL behouden)", "page": "kerstmarkten.html", "parent": "/nl/het-beste-van-de-ardennen", "redirect": "geen — top-3-positie verdedigen op bestaande URL"},
-    {"url": "/nl/het-beste-van-de-ardennen/weekendje-weg-ardennen", "action": "add (voordeur 1)", "page": "weekendje-weg.html", "parent": "/nl/het-beste-van-de-ardennen", "redirect": null},
-    {"url": "/nl/het-beste-van-de-ardennen/bijzonder-overnachten", "action": "add (voordeur 2)", "page": "bijzonder-overnachten.html", "parent": "/nl/het-beste-van-de-ardennen", "redirect": "top-boomhutten-ardennen wordt kind van deze hub (URL blijft)"},
-    {"url": "/nl/het-beste-van-de-ardennen/fietsen/fietsknooppunten-ardennen", "action": "add (voordeur 3, kind van fietsen-hub)", "page": "fietsknooppunten.html", "parent": "/nl/het-beste-van-de-ardennen/fietsen", "redirect": null},
-    {"url": "/nl/toeristische-routes", "action": "keep", "page": null, "parent": "/nl/", "redirect": null},
-    {"url": "/nl/praktische-informatie", "action": "keep", "page": null, "parent": "/nl/", "redirect": null},
-    {"url": "/nl/praktische-informatie/duurzaam-toerisme-ardennen", "action": "remove als rubriek — transversaal op productpagina's", "page": null, "parent": "/nl/praktische-informatie", "redirect": "301 → relevante productpagina's/hub"},
-    {"url": "(vakantiehuis/vakantiepark-SERPs)", "action": "do not target — partner-doorverwijzing", "page": null, "parent": null, "redirect": null}
+ "meta": {
+  "client": "VisitArdenne (GEIE Destination Ardenne)",
+  "strategy_baseline": "va-dossier-frozen-v1 (commit e25d5f35d) — docs/client-artifacts/VisitArdenne/dossier/",
+  "dossier_url": "https://visitardenne-dossier.preview.sherlockseo.com/",
+  "design_baseline": "https://www.visitardenne.com/nl/ — tokens uit theme_laetis/css/styles.css (#c28209 / #161616 / #f7f7f7 / #41823e / Parisine Std Clair) + logo.svg + eigen beeldmateriaal",
+  "generated": "2026-08-31",
+  "principle": "Eén boom, taal = compositie. Vier pijlers blijven; vier nieuwe voordeuren ín de bestaande structuur. Geen topic→page: elke pagina draagt een expliciete beslissing uit de vaste woordenschat (keep/improve/merge/split/add/remove/support/do-not-target). NUANCE (31/08): 'de spine blijft' betekent níet 'IA ongewijzigd' — de vier pijlers blijven, maar daarbinnen veranderen we gericht: vier nieuwe toegangspoorten, twee samenvoegingen (plaatsmodel + wandelen) en één rubriek weg (duurzaam toerisme).",
+  "preview_build_set_v2": "17 pagina's (31/08): 7 uit v1 + 4 pijlerpagina's + Dinant + Grotten van Han (plaatstemplates, vóór→na) + wandelhub (merge) + kajak (keep-model) + Belgische Ardennen (add) + top-boomhutten (hub-kind). Alle build-set-bestemmingen linken intern; live-links alleen voor bewust out-of-scope, gemarkeerd 'Huidige site'."
+ },
+ "canonical_vs_consultant": {
+  "canonical_in_dossier": [
+   "IA-beslistabel + 8-beslissingen-vocabulaire (detail-ia-composition §2)",
+   "Compositiebrief per bestaande kernpagina: streekhub, Belgische Ardennen, Dinant, Durbuy, plaatsmodel, wandelhub, kajak, fietsen, origineel overnachten, do-not-target verblijf (§3)",
+   "Interne-linkmodel + drie bezoekersroutes (§4)",
+   "Durbuy vóór→na-compositie (preview-durbuy.html)",
+   "Top-20 prioriteiten + seizoenskalender (d-contentplan)",
+   "NU/VOLGENDE/LATER + meetplan (e-restitutie)"
   ],
-  "link_blocks": [
-    {"role": "in-de-buurt", "relation": "plaats ↔ naburige plaatsen (2–3)", "appears_on": "elke plaatspagina", "why_visitor": "volgende stop plannen zonder terug naar de zoekmachine", "why_search": "entiteit-nabijheid; verdeelt linkkracht van hoge-impressie-pagina's"},
-    {"role": "wat-te-doen", "relation": "plaats → activiteiten in de buurt (1–2)", "appears_on": "plaatspagina's", "why_visitor": "van 'waar' naar 'wat' — de echte trip-vraag", "why_search": "dossier-regel: elke plaats linkt verplicht naar activiteit; activiteithubs zijn VA's sterkste pagina's"},
-    {"role": "overnachten-inspiratie", "relation": "plaats/hub → bijzonder overnachten → partner", "appears_on": "plaats + inspiratiepagina's", "why_visitor": "verblijf kiezen; boeken bij de partner", "why_search": "DMO wint inspiratie-SERP, niet de boeking — doorklik = conversie"},
-    {"role": "plan-je-weekend", "relation": "seizoen/inspiratie → plaatsen + activiteiten", "appears_on": "voordeur-hubs", "why_visitor": "van inspiratie naar concreet plan", "why_search": "Shortbreaker-route uit het dossier-linkmodel"},
-    {"role": "breadcrumb-streekhub", "relation": "elke pagina → streekhub/pijler", "appears_on": "alle", "why_visitor": "oriëntatie", "why_search": "boomstructuur expliciet; 'Belgische Ardennen' als NL-entree versterkt"}
+  "canonical_in_product": [
+   "GSC/GA4-koppeling site ce63fafe (Destination Ardenne)",
+   "Audit-dimensiescores D1–D9 (strategy_findings, 30/08)",
+   "compose_page_plan (31/08, live SERP): kerstmarkt ardennen · weekendje weg ardennen · fietsknooppunten ardennen — SERP-vorm, PAA-vragen, concurrent-scorecards, winbaarheid 10/10, sectieskeletten",
+   "Business-model in site-ontologie: DMO verkoopt niet zelf; conversie = gekwalificeerde doorklik naar partner"
   ],
-  "pages": {
-    "index": {
-      "title": "Homepage — strategische ingang",
-      "decision": "improve",
-      "role": "Streekhub-ingang: oriëntatie + verdeling naar plaatsen, activiteiten en de vier nieuwe voordeuren. Geen boeking-CTA op hubniveau.",
-      "need": "Oriëntatie: 'wat is de Ardennen, wat kan ik er doen' — NL-markt situeert het land ('Belgische Ardennen', 8.100/mnd NL = 20× Vlaanderen).",
-      "visibility": "VA #3 op 'ardennen' (uitgever ardennen.nl #2 ervoor). bezienswaardigheden ardennen: 9,1% CTR pos 4,7.",
-      "evidence": ["SERP ardennen (nl, BE): Wikipedia · ardennen.nl #2 · VA #3 · VISITWallonia — concurrent is een uitgever, in te halen met redactionele diepte (dossier §3 streekhub)", "Nulmeting: /nl-kliks ≈200.800/jaar, −25…−37% JoJ elke maand (e-restitutie meetplan)"],
-      "entities": ["Ardennen (BE/FR/LUX)", "Belgische Ardennen", "Dinant", "Durbuy", "La Roche", "Grotten van Han", "wandelen", "kajakken", "fietsen"],
-      "linkrole": "Verdeler: → plaatsen, → activiteithubs, → 4 voordeuren. Interne links IN vanaf alle pagina's (breadcrumb).",
-      "measurement": "Niet-merkgebonden /nl-kliks JoJ: daling stoppen (≥0%) binnen twee kwartalen na uitvoering.",
-      "provenance": "Dossier detail-ia-composition §3 (streekhub-brief, canoniek) · homepage-headline en beelden van de live site (design-baseline) · sectiekeuze consultant"
-    },
-    "durbuy": {
-      "title": "Durbuy — plaatstemplate",
-      "decision": "improve + merge",
-      "role": "Plaatspagina volgens het ene plaatstemplate (merge-beslissing: één thuis voor plaatsen). Grootste doorklik-gat van de site — herschikken, niet herbouwen.",
-      "need": "Plaats + 'wat te doen' (Adventure Valley is de echte trekker); NL-variant 'durbuy belgië' (29× NL). 90.500/mnd BE · 33.100 Vlaanderen.",
-      "visibility": "110.655 vertoningen / 0,90% CTR / pos 8,4 (GSC 90d). Live #6; ardennen.nl en Adventure Valley erboven.",
-      "evidence": ["Adventure Valley = #2 organisch én in Google's top-sights voor 'durbuy' — de huidige pagina linkt het niet (waargenomen, live SERP)", "4 PAA-vragen onbeantwoord op de huidige pagina (waargenomen)", "SERP zwaar bezet (knowledge graph, top-sights, video, PAA) — doel = winbare slice, niet positie 1 (oordeel)"],
-      "entities": ["Durbuy", "Adventure Valley", "Parc des Topiaires", "labyrint Barvaux", "Wéris (megalieten)", "Ourthe"],
-      "linkrole": "UIT: Adventure Valley · wandelen · kajak Ourthe · La Roche · bijzonder overnachten · streekhub. IN: streekhub · Belgische Ardennen · top-10's.",
-      "measurement": "CTR op 'durbuy' richting verwachte curve + PAA-verschijning — niet de positie.",
-      "provenance": "Dossier preview-durbuy.html (vóór→na, canoniek) + detail-ia-composition §3 Durbuy-brief (canoniek). Publiekstekst: consultant-redactie; praktisch-antwoorden zonder bron (marktdag) bewust opengelaten voor VA-redactie."
-    },
-    "kerstmarkten": {
-      "title": "Kerstmarkten in de Ardennen — seizoenshub (voordeur 4)",
-      "decision": "improve → hub (NU-fase, deadline september)",
-      "role": "Seizoenshub die de bestaande winnende top-10-pagina verbreedt: 35k zoekopdrachten/mnd bundelen, top-3-posities verdedigen en verbreden.",
-      "need": "kerstmarkt ardennen 8.100 Vl. / 27.100 NL · kerstmarkt belgië 5.200/7.600 — piek nov–dec; december +27,5% vs november (GSC, 16 mnd).",
-      "visibility": "VA al positie 1–3 op '…ardennen'-varianten; 'kerstmarkt ardennen' 926 kliks/jaar pos 3,2 (GSC).",
-      "evidence": ["compose_page_plan 'kerstmarkt ardennen' (31/08, live): SERP = PAA(18) + AI Overview + local pack + video; winbaar 10/10; concurrent-consensus-secties = Namen, Maredsous, Luik, Charleville — exact de markten van VA's eigen top-10-pagina", "PAA: 'Is er kerstmarkt in Durbuy?' — VA's eigen pagina: 'Durbuy, de meest magische' (bron: live site)", "Verwacht effect NU-fase: ≈2.000–6.000 kliks/jaar extra (aannames benoemd, e-restitutie)"],
-      "entities": ["kerstmarkt", "Luik (de grootste)", "Namen", "Durbuy", "Dinant", "Maredsous", "Charleville-Mézières", "Eupen (de oudste)"],
-      "linkrole": "Seizoenshub → plaatsen (winterbezoek) + bijzonder overnachten (knus) + weekendje weg (winter). IN: home seizoensblok.",
-      "measurement": "Kliks kerstcluster dec 2026 vs dec 2025 (JoJ-groei); nulmeting dec 2025.",
-      "provenance": "Beslissing + kalender: dossier e-restitutie (canoniek). Compositie: compose_page_plan (product, 31/08) + bestaande VA top-10-kerstmarkten-pagina (feitenbasis markten). Redactie: consultant."
-    },
-    "weekendje-weg": {
-      "title": "Weekendje weg in de Ardennen — inspiratiehub (voordeur 1)",
-      "decision": "add",
-      "role": "Weekend-inspiratiehub: de inspiratie-voorvraag ('weekendje weg in belgië/ardennen') die een bestemming wél kan winnen — de generieke verhuur-vraag blijft do-not-target.",
-      "need": "81k zoekopdrachten/mnd (Vlaanderen + Nederland, ontdubbeld; 6.600 Vl. / 74.000 NL). Grootste bereikbare volume waar VA afwezig is; weekendjeweg.nl bezit het resultaat.",
-      "visibility": "VA afwezig op de kernvraag (0 → voordeur).",
-      "evidence": ["Supersessienoot dossier C: fase-2-marktonderzoek keert het eerdere do-not-target-oordeel voor 'weekendje weg' om — inspiratie-voorvraag vs verhuur-vraag (canoniek)", "compose_page_plan 'weekendje weg ardennen' (31/08): PAA o.a. 'leuke weekendjes voor twee', 'wat doen in 3 dagen', 'mooiste plek'; concurrent natuurhuisje.be #3 met 877 woorden; winbaar 10/10", "Verwacht effect: ≈4.500–15.000 kliks/jaar (aannames benoemd, e-restitutie)"],
-      "entities": ["weekendje weg", "Belgische Ardennen", "Durbuy", "Dinant", "La Roche", "bijzonder overnachten", "wandelen", "kajak"],
-      "linkrole": "Shortbreaker-route: inspiratie → plaats(en) + activiteiten → bijzonder overnachten → partner. IN: home voordeur-blok.",
-      "measurement": "Dekking voordeur (pagina online + zichtbaar op kernbucket) → 4/4; kliks op weekend-cluster per kwartaal.",
-      "provenance": "Beslissing: dossier C-supersessienoot + e-restitutie (canoniek). Compositie: compose_page_plan (product) — sectiekeuze en redactie consultant. Productie gepland in het winterdal (kalender D)."
-    },
-    "bijzonder-overnachten": {
-      "title": "Bijzonder overnachten — inspiratiehub (voordeur 2)",
-      "decision": "add",
-      "role": "De enige verblijf-SERP die een DMO kan winnen: inhoud-gedreven inspiratie (boomhut, cabane, insolite) → doorverwijzen naar de accommodatie/partner. Duurzaamheid transversaal zichtbaar.",
-      "need": "origineel overnachten + natuurhuisje-genre: 103k zoekopdr./mnd (12.100 Vl. / 90.500 NL). Grootste inspiratievraag van de markt.",
-      "visibility": "VA #18 op 'bijzonder overnachten ardennen'; kind 'boomhut ardennen' presteert al: 2.549 impr / 6,5% / pos 2,5.",
-      "evidence": ["SERP 'bijzonder overnachten ardennen': origineelovernachten · Vipio · Nutchel · VA #18 — inhoud-SERP, geen kale OTA-lijst (dossier §3, canoniek)", "Contrast do-not-target: 'vakantiehuis ardennen' top-10 = 100% OTA/verhuur — daar wint een bestemming niet (canoniek)", "Verwacht effect: ≈5.000–18.000 kliks/jaar (aannames benoemd, e-restitutie)"],
-      "entities": ["boomhut", "boshut", "cabane", "glamping", "kota", "duurzaam (transversaal, nooit als rubriek)"],
-      "linkrole": "Hub → boomhutten-top-10 (bestaand kind) + plaatsen + weekendje weg. CTA: doorklik naar accommodatie/partner (inspireren, dan doorverwijzen).",
-      "measurement": "Positie #18 → top-5 op de kernbucket; uitgaande partnerkliks (GA4) = geleverde waarde aan het territorium.",
-      "provenance": "Dossier §3 'origineel/bijzonder overnachten'-brief (canoniek). Beelden: VA's eigen cabane/boomhut-archief. Accommodatienamen bewust generiek gehouden waar het dossier geen namen draagt — invulling VA-redactie + partners."
-    },
-    "fietsknooppunten": {
-      "title": "Fietsen via knooppunten — routelaag (voordeur 3)",
-      "decision": "add (kind van de fietsen-hub)",
-      "role": "Knooppuntenlaag fiets: de mechaniek uitleggen + naar routes en plaatsen verdelen. Til de fiets-hub naar het winnende listicle-model; NL-markt overindexeert op fietsen.",
-      "need": "fietsknooppunten 40.500 Vl. / 18.100 NL (grootste Vlaamse volume van de gemiste markt) + knooppunten wandelen 21.000/3.900 als wandel-tegenhanger.",
-      "visibility": "VA afwezig op de knooppunt-vraag; 'fietsen ardennen' VA #7; MTB-listicle wél sterk (pos 2,6 / 12–16% CTR).",
-      "evidence": ["compose_page_plan 'fietsknooppunten ardennen' (31/08): concurrenten dun (fietsknooppunt.be 408 woorden, visitwallonia 643) — winbaar 10/10; PAA o.a. 'Waar zijn de fietsknooppunten in Wallonië?', 'gratis fietsrouteplanner?'; sectie 'Hoe werkt het?' is table stakes", "Fietsen neigt Nederland (9.060 vs 4.420), wandelen neigt Vlaanderen — twee thema's, twee prioritaire markten (dossier C, canoniek)", "Verwacht effect: ≈3.000–10.000 kliks/jaar (e-restitutie)"],
-      "entities": ["fietsknooppunten", "knooppuntennetwerk", "Vennbahn", "Ourthe", "Semois", "mountainbike", "GPX"],
-      "linkrole": "Activiteithub-regel: → routes/plekken → terug naar plaatsen (Durbuy, La Roche). Wandel-tegenhanger gelinkt. IN: home + fietsen-pijler.",
-      "measurement": "Zichtbaarheid op knooppunt-bucket (nu 0) + GPX-downloads/uitgaande routekliks; publiceren vóór het fietsseizoen (jan–feb → maart).",
-      "provenance": "Beslissing: dossier e-restitutie voordeur 3 (canoniek). Compositie: compose_page_plan (product). Routebeschrijvingen bewust op netwerk-niveau — concrete knooppuntroutes invullen met routepartners (kaarten/GPX), zoals het dossier voorschrijft."
-    },
-    "verantwoording": {
-      "title": "Verantwoording — site blueprint",
-      "decision": "consultant-document",
-      "role": "Het blueprint zelf: IA, URL-tree, beslissingen, linkmodel, canoniek-vs-consultant, meetplan.",
-      "need": "—", "visibility": "—", "evidence": [], "entities": [], "linkrole": "—", "measurement": "—",
-      "provenance": "Dit document."
-    }
+  "consultant_synthesized": [
+   "URL-keuze voor de 4 nieuwe voordeuren (conventie van de bestaande boom gevolgd)",
+   "Kerstmarkthub = upgrade van de bestáánde winnende top-10-URL (positie 1–3 verdedigen), geen nieuwe URL + redirect",
+   "Alle publieksteksten (NL-redactie), curatie van beelden uit het eigen VA-beeldarchief",
+   "Preview-scope: kleinste samenhangende subset die de strategie toont",
+   "Herbruikbare linkblok-rollen afgeleid uit het dossier-linkmodel"
+  ],
+  "product_gaps_found": [
+   "Topics-graaf VA is vervuild (naam/slug-mismatch, 'buurt' als money-topic) — niet bruikbaar als paginabeslissingsbron",
+   "Geen canonieke opslag voor paginabeslissingen/IA/URL-tree: get_url_proposals en get_pages geven 'site not found'; strategy_findings kent alleen site-brede uitspraken",
+   "compose_page_plan intent-laag dumpt honderden vervuilde persisted intents ('zemst', 'diksmuide') en zegt 'intentie onbekend'",
+   "Compositieplannen worden niet gepersisteerd — elk plan is een losse tool-call zonder DB-thuis"
+  ]
+ },
+ "url_tree": [
+  {
+   "url": "/nl/",
+   "action": "improve",
+   "page": "index.html",
+   "parent": null,
+   "redirect": null
+  },
+  {
+   "url": "/nl/belevenissen-ardennen",
+   "action": "keep/improve",
+   "page": "belevenissen.html",
+   "parent": "/nl/",
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen",
+   "action": "keep",
+   "page": "het-beste-van-de-ardennen.html",
+   "parent": "/nl/",
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/hoogtepunten/durbuy",
+   "action": "improve+merge (één plaatstemplate)",
+   "page": "durbuy.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": "steden-en-dorpen-varianten 301 → plaatstemplate"
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/ontdek-onze-top-10s/top-10-kerstmarkten-de-ardennen",
+   "action": "improve → seizoenshub (winnende URL behouden)",
+   "page": "kerstmarkten.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": "geen — top-3-positie verdedigen op bestaande URL"
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/weekendje-weg-ardennen",
+   "action": "add (voordeur 1)",
+   "page": "weekendje-weg.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/bijzonder-overnachten",
+   "action": "add (voordeur 2)",
+   "page": "bijzonder-overnachten.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": "top-boomhutten-ardennen wordt kind van deze hub (URL blijft)"
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/fietsen/fietsknooppunten-ardennen",
+   "action": "add (voordeur 3, kind van fietsen-hub)",
+   "page": "fietsknooppunten.html",
+   "parent": "/nl/het-beste-van-de-ardennen/fietsen",
+   "redirect": null
+  },
+  {
+   "url": "/nl/toeristische-routes",
+   "action": "keep",
+   "page": "toeristische-routes.html",
+   "parent": "/nl/",
+   "redirect": null
+  },
+  {
+   "url": "/nl/praktische-informatie",
+   "action": "keep",
+   "page": "praktische-informatie.html",
+   "parent": "/nl/",
+   "redirect": null
+  },
+  {
+   "url": "/nl/praktische-informatie/duurzaam-toerisme-ardennen",
+   "action": "remove als rubriek — transversaal op productpagina's",
+   "page": null,
+   "parent": "/nl/praktische-informatie",
+   "redirect": "301 → relevante productpagina's/hub"
+  },
+  {
+   "url": "(vakantiehuis/vakantiepark-SERPs)",
+   "action": "do not target — partner-doorverwijzing",
+   "page": null,
+   "parent": null,
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/hoogtepunten/dinant",
+   "action": "keep/improve (plaatstemplate)",
+   "page": "dinant.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/hoogtepunten/grotten-van-han",
+   "action": "improve (NU-quick-win)",
+   "page": "grotten-van-han.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/ontdek-onze-top-10s/mooiste-wandelingen-ardennen",
+   "action": "merge → wandelhub (winnende URL)",
+   "page": "wandelen.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": "wandelen-pijler 301-canoniek naar deze URL"
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/ontdek-onze-top-10s/kajak-kano-ardennen",
+   "action": "keep (exemplarisch)",
+   "page": "kajak.html",
+   "parent": "/nl/het-beste-van-de-ardennen",
+   "redirect": null
+  },
+  {
+   "url": "/nl/belgische-ardennen",
+   "action": "add (niveau-1-entiteit; review pagina vs sectie)",
+   "page": "belgische-ardennen.html",
+   "parent": "/nl/",
+   "redirect": null
+  },
+  {
+   "url": "/nl/het-beste-van-de-ardennen/ontdek-onze-top-10s/top-boomhutten-ardennen",
+   "action": "keep — wordt kind van bijzonder-overnachten",
+   "page": "boomhutten.html",
+   "parent": ".../bijzonder-overnachten",
+   "redirect": null
   }
+ ],
+ "link_blocks": [
+  {
+   "role": "in-de-buurt",
+   "relation": "plaats ↔ naburige plaatsen (2–3)",
+   "appears_on": "elke plaatspagina",
+   "why_visitor": "volgende stop plannen zonder terug naar de zoekmachine",
+   "why_search": "entiteit-nabijheid; verdeelt linkkracht van hoge-impressie-pagina's"
+  },
+  {
+   "role": "wat-te-doen",
+   "relation": "plaats → activiteiten in de buurt (1–2)",
+   "appears_on": "plaatspagina's",
+   "why_visitor": "van 'waar' naar 'wat' — de echte trip-vraag",
+   "why_search": "dossier-regel: elke plaats linkt verplicht naar activiteit; activiteithubs zijn VA's sterkste pagina's"
+  },
+  {
+   "role": "overnachten-inspiratie",
+   "relation": "plaats/hub → bijzonder overnachten → partner",
+   "appears_on": "plaats + inspiratiepagina's",
+   "why_visitor": "verblijf kiezen; boeken bij de partner",
+   "why_search": "DMO wint inspiratie-SERP, niet de boeking — doorklik = conversie"
+  },
+  {
+   "role": "plan-je-weekend",
+   "relation": "seizoen/inspiratie → plaatsen + activiteiten",
+   "appears_on": "voordeur-hubs",
+   "why_visitor": "van inspiratie naar concreet plan",
+   "why_search": "Shortbreaker-route uit het dossier-linkmodel"
+  },
+  {
+   "role": "breadcrumb-streekhub",
+   "relation": "elke pagina → streekhub/pijler",
+   "appears_on": "alle",
+   "why_visitor": "oriëntatie",
+   "why_search": "boomstructuur expliciet; 'Belgische Ardennen' als NL-entree versterkt"
+  }
+ ],
+ "pages": {
+  "index": {
+   "title": "Homepage — strategische ingang",
+   "decision": "improve",
+   "role": "Streekhub-ingang: oriëntatie + verdeling naar plaatsen, activiteiten en de vier nieuwe voordeuren. Geen boeking-CTA op hubniveau.",
+   "need": "Oriëntatie: 'wat is de Ardennen, wat kan ik er doen' — NL-markt situeert het land ('Belgische Ardennen', 8.100/mnd NL = 20× Vlaanderen).",
+   "visibility": "VA #3 op 'ardennen' (uitgever ardennen.nl #2 ervoor). bezienswaardigheden ardennen: 9,1% CTR pos 4,7.",
+   "evidence": [
+    "SERP ardennen (nl, BE): Wikipedia · ardennen.nl #2 · VA #3 · VISITWallonia — concurrent is een uitgever, in te halen met redactionele diepte (dossier §3 streekhub)",
+    "Nulmeting: /nl-kliks ≈200.800/jaar, −25…−37% JoJ elke maand (e-restitutie meetplan)"
+   ],
+   "entities": [
+    "Ardennen (BE/FR/LUX)",
+    "Belgische Ardennen",
+    "Dinant",
+    "Durbuy",
+    "La Roche",
+    "Grotten van Han",
+    "wandelen",
+    "kajakken",
+    "fietsen"
+   ],
+   "linkrole": "Verdeler: → plaatsen, → activiteithubs, → 4 voordeuren. Interne links IN vanaf alle pagina's (breadcrumb).",
+   "measurement": "Niet-merkgebonden /nl-kliks JoJ: daling stoppen (≥0%) binnen twee kwartalen na uitvoering.",
+   "provenance": "Dossier detail-ia-composition §3 (streekhub-brief, canoniek) · homepage-headline en beelden van de live site (design-baseline) · sectiekeuze consultant"
+  },
+  "durbuy": {
+   "title": "Durbuy — plaatstemplate",
+   "decision": "improve + merge",
+   "role": "Plaatspagina volgens het ene plaatstemplate (merge-beslissing: één thuis voor plaatsen). Grootste doorklik-gat van de site — herschikken, niet herbouwen.",
+   "need": "Plaats + 'wat te doen' (Adventure Valley is de echte trekker); NL-variant 'durbuy belgië' (29× NL). 90.500/mnd BE · 33.100 Vlaanderen.",
+   "visibility": "110.655 vertoningen / 0,90% CTR / pos 8,4 (GSC 90d). Live #6; ardennen.nl en Adventure Valley erboven.",
+   "evidence": [
+    "Adventure Valley = #2 organisch én in Google's top-sights voor 'durbuy' — de huidige pagina linkt het niet (waargenomen, live SERP)",
+    "4 PAA-vragen onbeantwoord op de huidige pagina (waargenomen)",
+    "SERP zwaar bezet (knowledge graph, top-sights, video, PAA) — doel = winbare slice, niet positie 1 (oordeel)"
+   ],
+   "entities": [
+    "Durbuy",
+    "Adventure Valley",
+    "Parc des Topiaires",
+    "labyrint Barvaux",
+    "Wéris (megalieten)",
+    "Ourthe"
+   ],
+   "linkrole": "UIT: Adventure Valley · wandelen · kajak Ourthe · La Roche · bijzonder overnachten · streekhub. IN: streekhub · Belgische Ardennen · top-10's.",
+   "measurement": "CTR op 'durbuy' richting verwachte curve + PAA-verschijning — niet de positie.",
+   "provenance": "Dossier preview-durbuy.html (vóór→na, canoniek) + detail-ia-composition §3 Durbuy-brief (canoniek). Publiekstekst: consultant-redactie; praktisch-antwoorden zonder bron (marktdag) bewust opengelaten voor VA-redactie."
+  },
+  "kerstmarkten": {
+   "title": "Kerstmarkten in de Ardennen — seizoenshub (voordeur 4)",
+   "decision": "improve → hub (NU-fase, deadline september)",
+   "role": "Seizoenshub die de bestaande winnende top-10-pagina verbreedt: 35k zoekopdrachten/mnd bundelen, top-3-posities verdedigen en verbreden.",
+   "need": "kerstmarkt ardennen 8.100 Vl. / 27.100 NL · kerstmarkt belgië 5.200/7.600 — piek nov–dec; december +27,5% vs november (GSC, 16 mnd).",
+   "visibility": "VA al positie 1–3 op '…ardennen'-varianten; 'kerstmarkt ardennen' 926 kliks/jaar pos 3,2 (GSC).",
+   "evidence": [
+    "compose_page_plan 'kerstmarkt ardennen' (31/08, live): SERP = PAA(18) + AI Overview + local pack + video; winbaar 10/10; concurrent-consensus-secties = Namen, Maredsous, Luik, Charleville — exact de markten van VA's eigen top-10-pagina",
+    "PAA: 'Is er kerstmarkt in Durbuy?' — VA's eigen pagina: 'Durbuy, de meest magische' (bron: live site)",
+    "Verwacht effect NU-fase: ≈2.000–6.000 kliks/jaar extra (aannames benoemd, e-restitutie)"
+   ],
+   "entities": [
+    "kerstmarkt",
+    "Luik (de grootste)",
+    "Namen",
+    "Durbuy",
+    "Dinant",
+    "Maredsous",
+    "Charleville-Mézières",
+    "Eupen (de oudste)"
+   ],
+   "linkrole": "Seizoenshub → plaatsen (winterbezoek) + bijzonder overnachten (knus) + weekendje weg (winter). IN: home seizoensblok.",
+   "measurement": "Kliks kerstcluster dec 2026 vs dec 2025 (JoJ-groei); nulmeting dec 2025.",
+   "provenance": "Beslissing + kalender: dossier e-restitutie (canoniek). Compositie: compose_page_plan (product, 31/08) + bestaande VA top-10-kerstmarkten-pagina (feitenbasis markten). Redactie: consultant."
+  },
+  "weekendje-weg": {
+   "title": "Weekendje weg in de Ardennen — inspiratiehub (voordeur 1)",
+   "decision": "add",
+   "role": "Weekend-inspiratiehub: de inspiratie-voorvraag ('weekendje weg in belgië/ardennen') die een bestemming wél kan winnen — de generieke verhuur-vraag blijft do-not-target.",
+   "need": "81k zoekopdrachten/mnd (Vlaanderen + Nederland, ontdubbeld; 6.600 Vl. / 74.000 NL). Grootste bereikbare volume waar VA afwezig is; weekendjeweg.nl bezit het resultaat.",
+   "visibility": "VA afwezig op de kernvraag (0 → voordeur).",
+   "evidence": [
+    "Supersessienoot dossier C: fase-2-marktonderzoek keert het eerdere do-not-target-oordeel voor 'weekendje weg' om — inspiratie-voorvraag vs verhuur-vraag (canoniek)",
+    "compose_page_plan 'weekendje weg ardennen' (31/08): PAA o.a. 'leuke weekendjes voor twee', 'wat doen in 3 dagen', 'mooiste plek'; concurrent natuurhuisje.be #3 met 877 woorden; winbaar 10/10",
+    "Verwacht effect: ≈4.500–15.000 kliks/jaar (aannames benoemd, e-restitutie)"
+   ],
+   "entities": [
+    "weekendje weg",
+    "Belgische Ardennen",
+    "Durbuy",
+    "Dinant",
+    "La Roche",
+    "bijzonder overnachten",
+    "wandelen",
+    "kajak"
+   ],
+   "linkrole": "Shortbreaker-route: inspiratie → plaats(en) + activiteiten → bijzonder overnachten → partner. IN: home voordeur-blok.",
+   "measurement": "Dekking voordeur (pagina online + zichtbaar op kernbucket) → 4/4; kliks op weekend-cluster per kwartaal.",
+   "provenance": "Beslissing: dossier C-supersessienoot + e-restitutie (canoniek). Compositie: compose_page_plan (product) — sectiekeuze en redactie consultant. Productie gepland in het winterdal (kalender D)."
+  },
+  "bijzonder-overnachten": {
+   "title": "Bijzonder overnachten — inspiratiehub (voordeur 2)",
+   "decision": "add",
+   "role": "De enige verblijf-SERP die een DMO kan winnen: inhoud-gedreven inspiratie (boomhut, cabane, insolite) → doorverwijzen naar de accommodatie/partner. Duurzaamheid transversaal zichtbaar.",
+   "need": "origineel overnachten + natuurhuisje-genre: 103k zoekopdr./mnd (12.100 Vl. / 90.500 NL). Grootste inspiratievraag van de markt.",
+   "visibility": "VA #18 op 'bijzonder overnachten ardennen'; kind 'boomhut ardennen' presteert al: 2.549 impr / 6,5% / pos 2,5.",
+   "evidence": [
+    "SERP 'bijzonder overnachten ardennen': origineelovernachten · Vipio · Nutchel · VA #18 — inhoud-SERP, geen kale OTA-lijst (dossier §3, canoniek)",
+    "Contrast do-not-target: 'vakantiehuis ardennen' top-10 = 100% OTA/verhuur — daar wint een bestemming niet (canoniek)",
+    "Verwacht effect: ≈5.000–18.000 kliks/jaar (aannames benoemd, e-restitutie)"
+   ],
+   "entities": [
+    "boomhut",
+    "boshut",
+    "cabane",
+    "glamping",
+    "kota",
+    "duurzaam (transversaal, nooit als rubriek)"
+   ],
+   "linkrole": "Hub → boomhutten-top-10 (bestaand kind) + plaatsen + weekendje weg. CTA: doorklik naar accommodatie/partner (inspireren, dan doorverwijzen).",
+   "measurement": "Positie #18 → top-5 op de kernbucket; uitgaande partnerkliks (GA4) = geleverde waarde aan het territorium.",
+   "provenance": "Dossier §3 'origineel/bijzonder overnachten'-brief (canoniek). Beelden: VA's eigen cabane/boomhut-archief. Accommodatienamen bewust generiek gehouden waar het dossier geen namen draagt — invulling VA-redactie + partners."
+  },
+  "fietsknooppunten": {
+   "title": "Fietsen via knooppunten — routelaag (voordeur 3)",
+   "decision": "add (kind van de fietsen-hub)",
+   "role": "Knooppuntenlaag fiets: de mechaniek uitleggen + naar routes en plaatsen verdelen. Til de fiets-hub naar het winnende listicle-model; NL-markt overindexeert op fietsen.",
+   "need": "fietsknooppunten 40.500 Vl. / 18.100 NL (grootste Vlaamse volume van de gemiste markt) + knooppunten wandelen 21.000/3.900 als wandel-tegenhanger.",
+   "visibility": "VA afwezig op de knooppunt-vraag; 'fietsen ardennen' VA #7; MTB-listicle wél sterk (pos 2,6 / 12–16% CTR).",
+   "evidence": [
+    "compose_page_plan 'fietsknooppunten ardennen' (31/08): concurrenten dun (fietsknooppunt.be 408 woorden, visitwallonia 643) — winbaar 10/10; PAA o.a. 'Waar zijn de fietsknooppunten in Wallonië?', 'gratis fietsrouteplanner?'; sectie 'Hoe werkt het?' is table stakes",
+    "Fietsen neigt Nederland (9.060 vs 4.420), wandelen neigt Vlaanderen — twee thema's, twee prioritaire markten (dossier C, canoniek)",
+    "Verwacht effect: ≈3.000–10.000 kliks/jaar (e-restitutie)"
+   ],
+   "entities": [
+    "fietsknooppunten",
+    "knooppuntennetwerk",
+    "Vennbahn",
+    "Ourthe",
+    "Semois",
+    "mountainbike",
+    "GPX"
+   ],
+   "linkrole": "Activiteithub-regel: → routes/plekken → terug naar plaatsen (Durbuy, La Roche). Wandel-tegenhanger gelinkt. IN: home + fietsen-pijler.",
+   "measurement": "Zichtbaarheid op knooppunt-bucket (nu 0) + GPX-downloads/uitgaande routekliks; publiceren vóór het fietsseizoen (jan–feb → maart).",
+   "provenance": "Beslissing: dossier e-restitutie voordeur 3 (canoniek). Compositie: compose_page_plan (product). Routebeschrijvingen bewust op netwerk-niveau — concrete knooppuntroutes invullen met routepartners (kaarten/GPX), zoals het dossier voorschrijft."
+  },
+  "verantwoording": {
+   "title": "Verantwoording — site blueprint",
+   "decision": "consultant-document",
+   "role": "Het blueprint zelf: IA, URL-tree, beslissingen, linkmodel, canoniek-vs-consultant, meetplan.",
+   "need": "—",
+   "visibility": "—",
+   "evidence": [],
+   "entities": [],
+   "linkrole": "—",
+   "measurement": "—",
+   "provenance": "Dit document."
+  },
+  "belevenissen": {
+   "title": "Belevenissen — inspiratiepijler",
+   "decision": "keep / improve",
+   "role": "Inspiratie/redactioneel: ambassadeurs-content per thema (Natuur, Familie, Outdoor, Gastronomie, Camper, Slow). Draagt duurzaamheid transversaal — nooit als rubriek.",
+   "need": "Inspiratiefase ('De Ardennen staan nog niet op mijn radar') — Explorers-profiel.",
+   "visibility": "Bestaande pijler; mapt op het intentiecluster 'inspiratie' (dossier C).",
+   "evidence": [
+    "De 4 pijlers mappen schoon op de 4 SERP-intentieclusters — geen structuurwijziging nodig (dossier C, waargenomen)",
+    "Duurzaamheidsvraag (~130k/mnd ATD-termen) loopt via producten, niet via het woord 'duurzaam' — lege SERP (dossier §3)"
+   ],
+   "entities": [
+    "natuur",
+    "familie",
+    "outdoor",
+    "gastronomie",
+    "camper",
+    "slow toerisme"
+   ],
+   "linkrole": "Inspiratie → activiteithubs + weekend. Thema-detail buiten preview-scope (live-links, gemarkeerd).",
+   "measurement": "Ondersteunend: doorstroom naar plaats-/activiteitpagina's (GA4).",
+   "provenance": "Dossier §1 (huidige IA, keep) + §3 duurzaamheid-transversaal (canoniek). Sectiekeuze consultant; thema's = bestaande site."
+  },
+  "het-beste": {
+   "title": "Het beste van de Ardennen — pijler",
+   "decision": "keep",
+   "role": "De verdeler van VA's zichtbaarheid: hoogtepunten (één plaatsmodel), top-10's (de motor: CTR 6–29%), activiteithubs en de vier voordeuren.",
+   "need": "Oriëntatie: plaats + activiteit — het intentiecluster waar VA vandaag al rankt.",
+   "visibility": "De best presterende tak van de site; de /ontdek-onze-top-10s/-familie domineert het klikvolume.",
+   "evidence": [
+    "Listicles presteren stelselmatig het best: kajak #1 (11,2%), wandelen-listicle #1 (14–29%), activiteiten 13,6% (GSC, dossier §3)",
+    "Merge-beslissing: twee plaats-'thuizen' (/hoogtepunten/ + /steden-en-dorpen/) → één plaatstemplate (dossier §2)"
+   ],
+   "entities": [
+    "hoogtepunten",
+    "top-10's",
+    "Durbuy",
+    "Dinant",
+    "Grotten van Han",
+    "wandelen",
+    "kajak",
+    "fietsen"
+   ],
+   "linkrole": "Pijler → plaatsen → activiteiten → voordeuren; breadcrumb-thuis voor alle plaatspagina's.",
+   "measurement": "Kliks op de pijler-familie, JoJ.",
+   "provenance": "Dossier §1/§2 (canoniek). Compositie consultant."
+  },
+  "routes": {
+   "title": "Toeristische routes — pijler",
+   "decision": "keep",
+   "role": "Niche-inspiratie: zes themaroutes, elk gelinkt aan plaatsen/activiteiten in plaats van als eilandjes.",
+   "need": "Route-intentie (het derde SERP-intentiecluster).",
+   "visibility": "Bestaande pijler, behouden.",
+   "evidence": [
+    "Dossier §3: 'Toeristische routes (Fortenroute, Bierroute, Abdijen, Rimbaud-Verlaine, Legenden, Knooppunten) — niche-inspiratie, behouden met interne links naar plaatsen/activiteiten' (canoniek)"
+   ],
+   "entities": [
+    "Fortenroute",
+    "Bierroute",
+    "Abdijenroute",
+    "Rimbaud-Verlaine",
+    "Legendenroute",
+    "knooppuntennetwerk"
+   ],
+   "linkrole": "Route → plaats + activiteit; knooppuntennetwerk linkt naar de nieuwe knooppuntenlaag.",
+   "measurement": "Ondersteunend.",
+   "provenance": "Dossier §3 (canoniek); routenamen = live site."
+  },
+  "praktisch": {
+   "title": "Praktische informatie — pijler",
+   "decision": "keep (met 1 remove)",
+   "role": "Planning + servicelaag. De rubriek 'Duurzaam toerisme' vervalt hier (lege SERP) — het thema verhuist transversaal naar productpagina's. Toegankelijkheid ('Ardennen kennen geen grenzen') = improve + Access-i-disambiguatie.",
+   "need": "Planning-intentie (het vierde SERP-intentiecluster).",
+   "visibility": "Kaart-pagina presteert sterk (pos 2,6–3,0, 7–22% CTR — keep).",
+   "evidence": [
+    "'duurzaam toerisme ardennen' = lege SERP in BE én NL → remove als rubriek, transversaal dragen (dossier §2, waargenomen)",
+    "Toegankelijkheid: VA #14, verward met Vlaamse Ardennen — improve via Access-i-label + schema (dossier §3)"
+   ],
+   "entities": [
+    "agenda",
+    "kaart",
+    "weer & seizoenen",
+    "brochures",
+    "toegankelijkheid / Access-i"
+   ],
+   "linkrole": "Service → seizoen (kerst) + inspiratie; servicedetails buiten scope (live-links).",
+   "measurement": "Ondersteunend; toegankelijkheid: positie op de inclusie-bucket.",
+   "provenance": "Dossier §2/§3 (canoniek)."
+  },
+  "dinant": {
+   "title": "Dinant — plaatstemplate #2",
+   "decision": "keep / improve",
+   "role": "Bewijst dat het plaatstemplate generaliseert: zelfde blokvolgorde als Durbuy (hero+1-zin intro → top-5 → wat te doen → praktisch/PAA → overnachten → in de buurt).",
+   "need": "Plaats/bezienswaardigheid: 'wat te zien/doen in Dinant'; NL-variant 'dinant belgie'. 27.100/mnd beide markten.",
+   "visibility": "94.662 impr / 2.618 kliks / 2,77% CTR / pos 4,8 (GSC 90d). Live #1 organisch, onder een stapel SERP-features.",
+   "evidence": [
+    "Hefboom = presentatie/CTR, niet positie: VA staat al #1 maar onder knowledge graph, top-sights, PAA en video (dossier §3, waargenomen)",
+    "PAA: 'Is Dinant een leuke plaats?' — beantwoord op de pagina voor de klik (dossier §3)",
+    "Beste huidige NL-pagina (7.497 kliks/jaar) — verstevigen vóór de zomer (contentplan #9)"
+   ],
+   "entities": [
+    "Dinant",
+    "citadel (408 treden)",
+    "Adolphe Sax / Maison de Monsieur Sax",
+    "Maas",
+    "couque",
+    "Leffe",
+    "kasteel Walzin"
+   ],
+   "linkrole": "UIT: kajak Lesse · Grotten van Han · wandelen · bijzonder overnachten · streekhub. IN: streekhub · Belgische Ardennen · het-beste.",
+   "measurement": "CTR op 'dinant' richting verwachte curve + PAA-verschijning.",
+   "provenance": "Dossier §3 Dinant-brief (canoniek). Feiten (citadel, Sax, couques): live VA-pagina. Marktdag bewust opengelaten voor VA-redactie."
+  },
+  "grotten-van-han": {
+   "title": "Grotten van Han — plaatstemplate #3",
+   "decision": "improve (NU-quick-win)",
+   "role": "Quick-win-pagina uit de NU-sprint: grootste attractie-doorklikgat; zelfde plaatstemplate, attractie-variant (TouristAttraction).",
+   "need": "Attractie-intentie: grot + domein + dierenpark.",
+   "visibility": "86.763 impr / 0,56% CTR / pos 5,8 (GSC 90d) — hoge vertoningen, vrijwel geen klik.",
+   "evidence": [
+    "Een van de drie klik-quick-wins uit de NU-fase: ≈8.000–11.200 kliks/jaar terug te winnen over de drie pagina's samen (e-restitutie, afgeleid)",
+    "Hoge impressies + <1% CTR op attractiepagina's = het doorklik-gat leeft hier, niet op de listicles (dossier §3, waargenomen)"
+   ],
+   "entities": [
+    "Grotten van Han",
+    "Lesse",
+    "kalksteenmassief van Boine",
+    "dierenpark (250 ha)",
+    "Speleo Parcours",
+    "Famenne-Ardenne Geopark (UNESCO)",
+    "Cocoon Village",
+    "Tree Tents"
+   ],
+   "linkrole": "UIT: Dinant · kajak · wandelen · bijzonder overnachten. IN: streekhub · het-beste · Dinant.",
+   "measurement": "CTR op de Han-bucket richting verwachte curve (nu 0,56%).",
+   "provenance": "Beslissing: dossier §3 + e-restitutie NU (canoniek). Feiten: live VA-pagina (Domein-tekst). Openingstijden/tickets: VA-redactie."
+  },
+  "wandelen": {
+   "title": "Wandelhub — merge",
+   "decision": "merge",
+   "role": "De merge-beslissing zichtbaar: listicle (#1) en pijler (#28) worden één canonieke wandelhub op de winnende URL; per gebied én per profiel (de long-tail: kinderen, meerdaags).",
+   "need": "Wandelen = VA's sterkste activiteit; wandelroutes 6.600 Vl. / 27.100 NL; wandelen neigt Vlaanderen (14.290 vs 9.430).",
+   "visibility": "Listicle: 'wandelen ardennen' 14,12% CTR pos 1,8; 'wandelingen ardennen' 29,6% pos 1,4. Pijler: #28, verwaarloosbaar.",
+   "evidence": [
+    "Klassiek kannibalisatiepatroon: VA #1 én #28 op dezelfde term, beide visitardenne.com (live SERP 25/08, waargenomen)",
+    "Winnende (listicle-)URL behouden; pijler 301-canoniek erin op (dossier §3, oordeel)"
+   ],
+   "entities": [
+    "wandelen",
+    "Hoge Venen",
+    "Saint-Hubert",
+    "Anlier",
+    "Natuurpark Our / Vianden",
+    "knooppunten wandelen"
+   ],
+   "linkrole": "Activiteithub → gebieden → plaatsen; per-profiel-kinderen naar bestaand kind (live). Wandel-knooppunten ↔ fietsknooppunten.",
+   "measurement": "Eén signaal i.p.v. twee: posities stabieler, gemeten per kwartaal (geen beloofd cijfer).",
+   "provenance": "Dossier §3 wandelhub-brief (canoniek). Gebieds-/profielindeling uit de brief; copy consultant."
+  },
+  "kajak": {
+   "title": "Kajak-hub — het exemplarische model",
+   "decision": "keep",
+   "role": "Bewijst dat Sherlock wéét wanneer je níets verandert: één pagina vangt de hele woordvariatie (kajak/kano/kayak) — alleen seizoensactualisatie.",
+   "need": "Activiteit: gezin vs sportief; local pack aanwezig in de SERP.",
+   "visibility": "12.218 impr / 1.369 kliks / 11,2% CTR / pos 3,5 — #1 op de kernterm.",
+   "evidence": [
+    "'Dit is het model waar plaats- en wandelpagina's naartoe moeten. Niet aanraken aan structuur.' (dossier §3, canoniek)"
+   ],
+   "entities": [
+    "kajak",
+    "Lesse",
+    "Ourthe",
+    "Semois",
+    "kasteel Walzin",
+    "Dinant",
+    "Durbuy"
+   ],
+   "linkrole": "Activiteit → plaatsen (Dinant, Durbuy) → verblijf; IN vanaf alle plaatspagina's.",
+   "measurement": "Behoud: positie + CTR stabiel houden; seizoensactualisatie vóór de lente.",
+   "provenance": "Dossier §3 (canoniek). Rivierkarakteristieken: live site + dossier."
+  },
+  "belgische-ardennen": {
+   "title": "Belgische Ardennen — niveau-1-entiteit",
+   "decision": "add (review: pagina vs sectie — aanbeveling pagina)",
+   "role": "De NL-entree op naam: één canonieke pagina met NL-compositie op de voorgrond, die verdeelt naar plaatsen en activiteiten en alle plaatspagina's versterkt via het linkmesh.",
+   "need": "Situerende oriëntatie: de Nederlander voegt 'belgische' toe om het gebied te plaatsen. 8.100/mnd NL vs 390 Vlaanderen = 20× NL-gedreven.",
+   "visibility": "VA #3 op de term; eigen SERP met featured snippet + eigen PAA-blok.",
+   "evidence": [
+    "Google onderhoudt een eigen SERP + PAA voor 'belgische ardennen', los van de kale 'ardennen' (dossier §3, waargenomen)",
+    "Open punt uit het dossier: pagina vs on-page-entiteit — aanbeveling: pagina, klant bevestigt (dossier §6)",
+    "'2 u van Utrecht' als NL-accent komt uit de streekhub-brief (dossier §3)"
+   ],
+   "entities": [
+    "Belgische Ardennen",
+    "Wallonië",
+    "Ourthe",
+    "Lesse",
+    "Semois",
+    "Maas"
+   ],
+   "linkrole": "NL-entree → plaatsen + activiteiten + voordeuren; IN vanaf home en alle plaatspagina's ('terug naar de streek').",
+   "measurement": "Positie ~12 vandaag → pagina 1 haalbaar (contentplan #17).",
+   "provenance": "Dossier §3-brief + §6 review-punt (canoniek). Copy consultant."
+  },
+  "boomhutten": {
+   "title": "Top-boomhutten — hub-kind",
+   "decision": "keep / improve (herschikt onder de hub)",
+   "role": "Bewijst de hub→kind-hiërarchie: het bestaande, presterende kind verhuist logisch onder de nieuwe hub Bijzonder overnachten (URL blijft).",
+   "need": "'boomhut ardennen' 2.780 Vl. / 5.910 NL; piek sep→winter (knus).",
+   "visibility": "2.549 impr / 6,5% CTR / pos 2,5 — bestaand kind presteert al (998 kliks/jaar).",
+   "evidence": [
+    "'Deels aanwezig via top-boomhutten; geen sterke overkoepelende hub' — de hub is de add, het kind blijft (dossier §3)",
+    "Adressen (Cabanes du Vichaux, kota Crêtes, Bois Dormant, Malaquise) = bestaande VA-pagina, niet verzonnen"
+   ],
+   "entities": [
+    "boomhut",
+    "cabane",
+    "kota",
+    "Semoy/Tournavaux",
+    "Spa"
+   ],
+   "linkrole": "Kind → hub (breadcrumb) → weekend/plaatsen; volledige top op de huidige site als bron gelinkt.",
+   "measurement": "Behoud pos 2,5 + doorstroom naar de hub.",
+   "provenance": "Dossier §3 (canoniek) + live VA top-16-pagina (feiten/adressen). Curatie consultant."
+  }
+ }
 }
