@@ -29,7 +29,10 @@ padding:7px 13px;font:600 12px/1 var(--fb);color:#cbd5e1;background:transparent;
 .topnav{display:flex;align-items:center;gap:16px;max-width:1080px;margin:0 auto;
 padding:12px 24px;flex-wrap:wrap;}
 .topnav .logo{font-family:var(--fh);font-weight:800;font-size:20px;color:var(--primary);
-text-decoration:none;}
+text-decoration:none;display:inline-flex;align-items:center;}
+.topnav .logo-img{max-height:40px;width:auto;max-width:200px;object-fit:contain;}
+.hero.hero-split{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;}
+@media(max-width:760px){.hero.hero-split{grid-template-columns:1fr;}}
 .navwrap{flex:1;min-width:0;}
 .navlinks{display:flex;gap:18px;overflow-x:auto;padding-bottom:2px;
 scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
@@ -41,6 +44,23 @@ white-space:nowrap;}
 .blk.faq .faq-item{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:8px 0;}
 .blk.faq summary{cursor:pointer;font-weight:600;color:var(--primary);}
 .blk.faq .faq-a{margin-top:8px;color:var(--mut);}
+/* page-type sections */
+.blk.section p{max-width:68ch;}
+.blk.section .ticks{margin-top:12px;}
+.blk.proof-callout{background:var(--soft);border-left:4px solid var(--accent);
+border-radius:0 12px 12px 0;padding:20px 24px;}
+.steps{list-style:none;counter-reset:s;padding:0;display:grid;gap:14px;margin-top:12px;}
+.steps li{display:flex;gap:14px;align-items:flex-start;}
+.steps .step-n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);
+color:var(--primary);font-weight:800;display:flex;align-items:center;justify-content:center;
+font-size:14px;}
+.prov-wrap{display:block;margin:2px 0 8px;}
+.prov{display:inline-block;font-size:11px;letter-spacing:.03em;text-transform:uppercase;
+color:var(--mut);background:#eef2ff;border-radius:6px;padding:2px 8px;}
+/* hero image (media-aware) */
+.hero-media img,.page-media img{width:100%;max-width:100%;border-radius:16px;
+display:block;object-fit:cover;max-height:380px;}
+.page-head .page-media{margin-top:18px;}
 .btn{display:inline-block;text-decoration:none;border-radius:10px;padding:11px 18px;
 font-weight:700;font-size:14px;}
 .btn-primary{background:var(--accent);color:var(--primary);}
@@ -97,9 +117,9 @@ color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-botto
 </head>
 <body>
 <div data-sb="strategy" class="preview-banner">◈ <strong>Sherlock strategie-preview</strong> — praktijkstefadams.be · audit run #332 · <em>voorgestelde site; schakel naar Site voor de klant-weergave</em></div>
-<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><div class="navlinks"><a href="/manuele-therapie/">Manuele therapie</a><a href="/dry-needling/">Dry needling</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/aanbod/">Sportkinesitherapie</a><a href="/specialisaties/">Classes</a></div></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
+<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><div class="navlinks"><a href="/bikefit/">Bikefit - Sport Kinesitherapie</a><a href="/coaching/">Coaching &amp; Testing</a><a href="/loopanalyse/">Bikefit - Sport Kinesitherapie</a><a href="/manuele-therapie/">Manuele therapie</a><a href="/dry-needling/">Dry needling</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a></div></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
 <main><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-warn'>🟠 IMPROVE</span><div class='an-tx'>Dunne pagina (0 woorden) — uitbreiden met expliciete intent en interne links.</div><div class='an-ev'>bron: live pagina /kinesitherapie</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>Aanbod</div><h1>Kinesitherapie</h1><p class='lede'></p></header><section data-sb="site" class="blk cta"><a class="btn btn-primary btn-lg" href="tel:+32494236570">Bel +32 494 23 65 70</a></section></main>
-<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/manuele-therapie/">Manuele therapie</a><a href="/dry-needling/">Dry needling</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/aanbod/">Sportkinesitherapie</a><a href="/specialisaties/">Classes</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
+<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/bikefit/">Bikefit - Sport Kinesitherapie</a><a href="/coaching/">Coaching &amp; Testing</a><a href="/loopanalyse/">Bikefit - Sport Kinesitherapie</a><a href="/manuele-therapie/">Manuele therapie</a><a href="/dry-needling/">Dry needling</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
 <script id="sherlock-toggle-js">
 (function(){
   window.sherlockSetMode=function(mode){
