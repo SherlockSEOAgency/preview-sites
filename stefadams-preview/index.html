@@ -28,26 +28,60 @@ padding:7px 13px;font:600 12px/1 var(--fb);color:#cbd5e1;background:transparent;
 #sherlock-mode-toggle button.active{color:var(--primary);background:var(--accent);}
 /* nav */
 .topnav{display:flex;align-items:center;gap:16px;max-width:1080px;margin:0 auto;
-padding:12px 24px;flex-wrap:wrap;}
-.topnav .logo{font-family:var(--fh);font-weight:800;font-size:20px;color:var(--primary);
+padding:12px 24px;padding-right:150px;}
+.topnav .logo{flex:none;font-family:var(--fh);font-weight:800;font-size:20px;color:var(--primary);
 text-decoration:none;display:inline-flex;align-items:center;}
 .topnav .logo-img{max-height:40px;width:auto;max-width:200px;object-fit:contain;}
 .hero.hero-split{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;}
 @media(max-width:760px){.hero.hero-split{grid-template-columns:1fr;}}
-.navwrap{flex:1;min-width:0;}
-.navlinks{display:flex;gap:18px;overflow-x:auto;padding-bottom:2px;
-scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
+/* nav capacity rule: links share one flexible, shrinkable track and WRAP within it
+   rather than overflowing; the CTA is pinned (flex:none) so nav can never slide
+   under or clip it. */
+.navwrap{flex:1 1 auto;min-width:0;}
+.navmenu{display:contents;}
+.navburger{display:none;}
+.navmenu summary::-webkit-details-marker{display:none;}
+.navmenu summary::marker{content:"";}
+.navlinks{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;}
 .navlinks a{text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;
 white-space:nowrap;}
 .navlinks a.on{color:var(--accent);}
-/* fixed toggle needs headroom so it never overlaps the CTA */
-.topnav{padding-right:150px;}
+.navcta{flex:none;}
+/* mobile: a JS-free hamburger so the nav never stacks over the CTA/toggle */
+@media(max-width:760px){
+  .topnav{padding-right:120px;gap:10px;flex-wrap:nowrap;}
+  .navmenu{display:block;position:relative;flex:none;}
+  .navburger{display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:42px;height:38px;padding:9px;cursor:pointer;list-style:none;
+    border:1px solid var(--line);border-radius:10px;background:#fff;}
+  .navburger span{display:block;width:22px;height:2px;background:var(--primary);border-radius:2px;}
+  .navlinks{display:none;}
+  .navmenu[open] .navlinks{display:flex;flex-direction:column;gap:2px;position:absolute;
+    top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:10px 14px;min-width:210px;box-shadow:0 10px 34px rgba(0,0,0,.14);z-index:60;}
+  .navmenu[open] .navlinks a{padding:8px 4px;font-size:15px;}
+  .navcta{display:none;}  /* the hero carries the primary contact CTA on mobile */
+}
 .blk.faq .faq-item{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:8px 0;}
 .blk.faq summary{cursor:pointer;font-weight:600;color:var(--primary);}
 .blk.faq .faq-a{margin-top:8px;color:var(--mut);}
-/* page-type sections */
+/* page-type sections — each type its own treatment + a role kicker for rhythm */
 .blk.section p{max-width:68ch;}
 .blk.section .ticks{margin-top:12px;}
+.sec-kick{text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;font-weight:800;
+color:var(--accent);margin-bottom:6px;}
+.sec-lead{font-size:clamp(17px,2.2vw,20px);color:var(--ink);max-width:70ch;font-weight:500;}
+.benefits{list-style:none;padding:0;margin:14px 0 0;display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 22px;}
+.benefits li{position:relative;padding-left:28px;}
+.benefits li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:800;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px;}
+.who-card{border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:12px;
+padding:16px 18px;background:var(--soft);}
+/* rhythm: alternate a soft band instead of a hard rule under every section */
+.blk.section.st-what_is,.blk.section.st-benefits{border-bottom:none;}
+.blk.section.st-who_for{background:var(--soft);border-bottom:none;
+padding-left:24px;padding-right:24px;border-radius:16px;}
 .blk.proof-callout{background:var(--soft);border-left:4px solid var(--accent);
 border-radius:0 12px 12px 0;padding:20px 24px;}
 .steps{list-style:none;counter-reset:s;padding:0;display:grid;gap:14px;margin-top:12px;}
@@ -59,9 +93,25 @@ font-size:14px;}
 .btn-outline{background:transparent;border:2px solid var(--line);color:var(--primary);
 margin-left:10px;}
 .hp.trust{padding:16px 0;}
-.trust-bar{display:flex;flex-wrap:wrap;gap:10px;}
-.trust-chip{background:var(--soft);border:1px solid var(--line);border-radius:999px;
-padding:8px 16px;font-weight:600;font-size:14px;color:var(--primary);}
+/* trust factors — rendered BY evidence type, not one generic pill */
+.trust-factors{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;}
+.tf{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:12px;
+border:1px solid var(--line);background:var(--soft);font-weight:600;font-size:14px;color:var(--primary);}
+.tf-ic{font-size:15px;line-height:1;}
+/* certification: solid accent badge */
+.tf-certification{background:color-mix(in srgb,var(--accent) 14%,#fff);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
+.tf-certification .tf-ic{color:var(--accent);}
+/* compliance: neutral, authoritative */
+.tf-compliance{background:#fff;border-color:var(--primary);}
+.tf-compliance .tf-ic{color:var(--primary);}
+/* review: warm */
+.tf-review .tf-ic{color:#f59e0b;}
+/* stat: a real big-number card, never a pill */
+.tf-stat{flex-direction:column;align-items:flex-start;gap:2px;padding:14px 20px;
+border-left:4px solid var(--accent);background:var(--soft);}
+.tf-stat .tf-n{font-family:var(--fh);font-size:clamp(24px,3vw,34px);font-weight:800;
+color:var(--accent);line-height:1;}
+.tf-stat .tf-l{font-size:13px;color:var(--mut);font-weight:600;max-width:22ch;}
 .statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;
 text-align:center;}
 .stat-n{font-family:var(--fh);font-size:clamp(30px,4vw,46px);font-weight:800;color:var(--accent);line-height:1;}
@@ -118,8 +168,9 @@ font-weight:700;font-size:14px;}
 .preview-banner{background:var(--primary);color:#e2e8f0;font-size:13px;text-align:center;
 padding:9px 16px;}
 .preview-banner strong{color:#fff;}
-/* hero */
-.hero h1{max-width:16ch;}
+/* hero — long Dutch compounds (asbestverwijderingsbedrijf) must break, never clip */
+.hero h1{max-width:18ch;overflow-wrap:break-word;word-break:break-word;hyphens:auto;}
+.page-head h1,.hero h1{overflow-wrap:break-word;hyphens:auto;}
 .hero-eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;
 font-weight:700;color:var(--accent);}
 .hero-sub,.lede{font-size:18px;color:var(--mut);max-width:60ch;}
@@ -166,9 +217,9 @@ color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-botto
 </head>
 <body>
 <div data-sb="strategy" class="preview-banner">◈ <strong>Sherlock strategie-preview</strong> — praktijkstefadams.be · audit run #332 · <em>voorgestelde site; schakel naar Site voor de klant-weergave</em></div>
-<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><div class="navlinks"><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
-<main><section data-sb="site" class="hero hero-split"><div class='hero-copy'><div class='hero-eyebrow'></div><h1>Powered by science. Built for endurance.</h1><p class='hero-sub'>Wetenschappelijk onderbouwde sportkinesitherapie en bikefitting in Scherpenheuvel — voor sporters die sneller herstellen en beter presteren.</p><div class='hero-actions'><a class="btn btn-primary btn-lg" href="tel:+32494236570">Afspraak maken</a><a class="btn btn-outline" href="#aanbod">Bekijk het aanbod</a></div></div><div class='hero-media'><img src='https://images.squarespace-cdn.com/content/v1/5fe34702c4bc8b4feb9dd097/2383866d-1f85-4fef-b1ef-0548b391c7ad/tempImageZOPcEz.jpg' alt='Praktijk Stef Adams' onerror="this.parentNode.style.display='none'"></div></section><section data-sb="strategy" class="story-lead"><div class='sl-head'>◈ Sherlock strategie</div><h2 class='sl-thesis'>Van een inhoudelijk gevulde maar onzichtbare praktijksite naar een herkenbare, meetbare expert-entiteit die sporters in Vlaams-Brabant op het juiste moment vindt</h2><div class='sl-cards'><div class='sl-card'><div class='sl-n'>9</div><div class='sl-l'>money-topics in kaart</div></div><div class='sl-card'><div class='sl-n'>2</div><div class='sl-l'>commerciële thema&#x27;s nog niet gedekt door pagina of sectie</div></div><div class='sl-card'><div class='sl-n'>6</div><div class='sl-l'>primaire diensten op de homepage</div></div><div class='sl-card'><div class='sl-n'>0.0/10</div><div class='sl-l'>zwakste dimensie: Meting &amp; Attributie</div></div></div><a class='sl-door' href='/overzicht/'>Lees de volledige strategie-briefing →</a></section><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ KEEP</span><div class='an-tx'>geen geverifieerd trust-signaal</div></aside><a id="aanbod"></a><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ WAAROM DEZE DIENSTEN</span><div class='an-tx'>6 primaire diensten uit de live navigatie; 4 overige via het aanbod-overzicht.</div></aside><section data-sb="site" class="services"><h2>Aanbod</h2><div class='svc-grid'><a class="svc-card" href="/sportkinesitherapie/"><h3>Sportkinesitherapie</h3><p>Een actieve en wetenschappelijk onderbouwde aanpak van jouw sportblessure — afgestemd op jouw sport en persoonlijke doelen.</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/bikefit/"><h3>Bikefit</h3><p>Fiets je vaak en merk je pijn of ongemakken tijdens het rijden? Een professionele bikefit helpt je om optimaal te presteren — of j</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/dry-needling/"><h3>Dry needling</h3><p>Een moderne, wetenschappelijk onderbouwde behandeltechniek gericht op spierpijn, stijfheid en spanning door myofasciale triggerpoi</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/blessure-preventie/"><h3>Blessure preventie</h3><p>Voorkomen is beter dan genezen — wij helpen je om blessures te voorkomen vóór ze ontstaan.</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/post-operatieve-revalidatie/"><h3>Post operatieve revalidatie</h3><p>Na een operatie wil je zo snel mogelijk opnieuw vrij kunnen bewegen. Bij Praktijk Stef Adams in Scherpenheuvel begeleiden we jou p</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/screening/"><h3>Screening</h3><p>Een grondige bewegingsanalyse die jouw houding, kracht, mobiliteit en blessurerisico&#x27;s volledig in kaart brengt — de basis van elk</p><span class="svc-go">Bekijk →</span></a></div><a class="btn btn-outline all-svc" href="/aanbod/">Bekijk alle diensten →</a></section><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ GENERATE</span><div class='an-tx'>audiences · bron: ONTOLOGY</div></aside><section data-sb="site" class="hp usp"><h2>Voor wie</h2><div class='usp-grid'><div class='usp-card'><h3>Sporters en recreanten</h3><p></p></div></div></section><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ RECOMPOSE</span><div class='an-tx'>usp_row · bron: ONTOLOGY|LIVE_SITE</div></aside><section data-sb="site" class="hp usp"><h2>Waarom Praktijk Stef Adams</h2><div class='usp-grid'><div class='usp-card'><h3>Wetenschappelijk onderbouwd</h3><p>Elke behandeling — van dry needling tot manuele therapie — is gebaseerd op actuele wetenschappelijke inzichten.</p></div><div class='usp-card'><h3>Gericht op jouw sport</h3><p>Sportkinesitherapie, bikefit en loopanalyse zijn afgestemd op de specifieke eisen van jouw discipline.</p></div><div class='usp-card'><h3>Van revalidatie tot preventie</h3><p>Of je nu herstelt van een operatie of blessures wil voorkomen: het aanbod begeleidt je door elke fase.</p></div><div class='usp-card'><h3>Centraal gelegen in Vlaams-Brabant</h3><p>Vlot bereikbaar vanuit Diest, Aarschot, Tienen en omgeving — praktijk gevestigd in Scherpenheuvel.</p></div></div></section><section data-sb="site" class="hp location"><h2>Waar u ons vindt</h2><p class='lede'>Scherpenheuvel</p><p class='areas'>Werkgebied: Scherpenheuvel, Diest, Aarschot, Tienen, Vlaams-Brabant</p></section></main>
-<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
+<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><details class="navmenu" data-sb="site" id="sherlock-navmenu"><summary class="navburger" aria-label="Menu"><span></span><span></span><span></span></summary><div class="navlinks"><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div></details></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
+<main><section data-sb="site" class="hero hero-split"><div class='hero-copy'><div class='hero-eyebrow'></div><h1>Powered by science. Built for endurance.</h1><p class='hero-sub'>Wetenschappelijk onderbouwde sportkinesitherapie en bikefitting in Scherpenheuvel — voor sporters die sneller herstellen en beter presteren.</p><div class='hero-actions'><a class="btn btn-primary btn-lg" href="tel:+32494236570">Afspraak maken</a><a class="btn btn-outline" href="#aanbod">Bekijk het aanbod</a></div></div><div class='hero-media'><img src='https://images.squarespace-cdn.com/content/v1/5fe34702c4bc8b4feb9dd097/2383866d-1f85-4fef-b1ef-0548b391c7ad/tempImageZOPcEz.jpg' alt='Praktijk Stef Adams' onerror="this.parentNode.style.display='none'"></div></section><section data-sb="strategy" class="story-lead"><div class='sl-head'>◈ Sherlock strategie</div><h2 class='sl-thesis'>Van een inhoudelijk gevulde maar onzichtbare praktijksite naar een herkenbare, meetbare expert-entiteit die sporters in Vlaams-Brabant op het juiste moment vindt</h2><div class='sl-cards'><div class='sl-card'><div class='sl-n'>9</div><div class='sl-l'>money-topics in kaart</div></div><div class='sl-card'><div class='sl-n'>2</div><div class='sl-l'>commerciële thema&#x27;s nog niet gedekt door pagina of sectie</div></div><div class='sl-card'><div class='sl-n'>6</div><div class='sl-l'>primaire diensten op de homepage</div></div><div class='sl-card'><div class='sl-n'>0.0/10</div><div class='sl-l'>zwakste dimensie: Meting &amp; Attributie</div></div></div><a class='sl-door' href='/overzicht/'>Lees de volledige strategie-briefing →</a></section><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ WAAROM DEZE SECTIE</span><div class='an-tx'>Bewijs staat boven de vouw: het neemt twijfel weg vóórdat de bezoeker verder leest — precies de dingen die een concurrent niet kan claimen.</div><div class='an-ev'>bron: ontology|live site</div></aside><a id="aanbod"></a><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ WAAROM DEZE DIENSTEN</span><div class='an-tx'>6 primaire diensten uit de live navigatie; 4 overige via het aanbod-overzicht.</div></aside><section data-sb="site" class="services"><h2>Aanbod</h2><div class='svc-grid'><a class="svc-card" href="/sportkinesitherapie/"><h3>Sportkinesitherapie</h3><p>Een actieve en wetenschappelijk onderbouwde aanpak van jouw sportblessure — afgestemd op jouw sport en persoonlijke doelen.</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/bikefit/"><h3>Bikefit</h3><p>Fiets je vaak en merk je pijn of ongemakken tijdens het rijden? Een professionele bikefit helpt je om optimaal te presteren — of j</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/dry-needling/"><h3>Dry needling</h3><p>Een moderne, wetenschappelijk onderbouwde behandeltechniek gericht op spierpijn, stijfheid en spanning door myofasciale triggerpoi</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/blessure-preventie/"><h3>Blessure preventie</h3><p>Voorkomen is beter dan genezen — wij helpen je om blessures te voorkomen vóór ze ontstaan.</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/post-operatieve-revalidatie/"><h3>Post operatieve revalidatie</h3><p>Na een operatie wil je zo snel mogelijk opnieuw vrij kunnen bewegen. Bij Praktijk Stef Adams in Scherpenheuvel begeleiden we jou p</p><span class="svc-go">Bekijk →</span></a><a class="svc-card" href="/screening/"><h3>Screening</h3><p>Een grondige bewegingsanalyse die jouw houding, kracht, mobiliteit en blessurerisico&#x27;s volledig in kaart brengt — de basis van elk</p><span class="svc-go">Bekijk →</span></a></div><a class="btn btn-outline all-svc" href="/aanbod/">Bekijk alle diensten →</a></section><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ WAAROM DEZE SECTIE</span><div class='an-tx'>Verschillende kopers, verschillende ingangen — elk segment herkent zich, in plaats van iedereen in één adem aan te spreken.</div><div class='an-ev'>bron: ontologie</div></aside><section data-sb="site" class="hp usp"><h2>Voor wie</h2><div class='usp-grid'><div class='usp-card'><h3>Sporters en recreanten</h3><p></p></div></div></section><aside data-sb="strategy" class="annotation"><span class='an-tag an-neutral'>◈ WAAROM DEZE SECTIE</span><div class='an-tx'>Differentiatie: waarom Praktijk Stef Adams en niet een alternatief — de redenen die de keuze kantelen, kort en scanbaar.</div><div class='an-ev'>bron: ontology|live site</div></aside><section data-sb="site" class="hp usp"><h2>Waarom Praktijk Stef Adams</h2><div class='usp-grid'><div class='usp-card'><h3>Wetenschappelijk onderbouwd</h3><p>Elke behandeling — van dry needling tot manuele therapie — is gebaseerd op actuele wetenschappelijke inzichten.</p></div><div class='usp-card'><h3>Gericht op jouw sport</h3><p>Sportkinesitherapie, bikefit en loopanalyse zijn afgestemd op de specifieke eisen van jouw discipline.</p></div><div class='usp-card'><h3>Van revalidatie tot preventie</h3><p>Of je nu herstelt van een operatie of blessures wil voorkomen: het aanbod begeleidt je door elke fase.</p></div><div class='usp-card'><h3>Centraal gelegen in Vlaams-Brabant</h3><p>Vlot bereikbaar vanuit Diest, Aarschot, Tienen en omgeving — praktijk gevestigd in Scherpenheuvel.</p></div></div></section><section data-sb="site" class="hp location"><h2>Waar u ons vindt</h2><p class='lede'>Scherpenheuvel</p><p class='areas'>Werkgebied: Scherpenheuvel, Diest, Aarschot, Tienen, Vlaams-Brabant</p></section></main>
+<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
 <script id="sherlock-toggle-js">
 (function(){
   window.sherlockSetMode=function(mode){

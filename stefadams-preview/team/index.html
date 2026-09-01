@@ -28,26 +28,60 @@ padding:7px 13px;font:600 12px/1 var(--fb);color:#cbd5e1;background:transparent;
 #sherlock-mode-toggle button.active{color:var(--primary);background:var(--accent);}
 /* nav */
 .topnav{display:flex;align-items:center;gap:16px;max-width:1080px;margin:0 auto;
-padding:12px 24px;flex-wrap:wrap;}
-.topnav .logo{font-family:var(--fh);font-weight:800;font-size:20px;color:var(--primary);
+padding:12px 24px;padding-right:150px;}
+.topnav .logo{flex:none;font-family:var(--fh);font-weight:800;font-size:20px;color:var(--primary);
 text-decoration:none;display:inline-flex;align-items:center;}
 .topnav .logo-img{max-height:40px;width:auto;max-width:200px;object-fit:contain;}
 .hero.hero-split{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;}
 @media(max-width:760px){.hero.hero-split{grid-template-columns:1fr;}}
-.navwrap{flex:1;min-width:0;}
-.navlinks{display:flex;gap:18px;overflow-x:auto;padding-bottom:2px;
-scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
+/* nav capacity rule: links share one flexible, shrinkable track and WRAP within it
+   rather than overflowing; the CTA is pinned (flex:none) so nav can never slide
+   under or clip it. */
+.navwrap{flex:1 1 auto;min-width:0;}
+.navmenu{display:contents;}
+.navburger{display:none;}
+.navmenu summary::-webkit-details-marker{display:none;}
+.navmenu summary::marker{content:"";}
+.navlinks{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;}
 .navlinks a{text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;
 white-space:nowrap;}
 .navlinks a.on{color:var(--accent);}
-/* fixed toggle needs headroom so it never overlaps the CTA */
-.topnav{padding-right:150px;}
+.navcta{flex:none;}
+/* mobile: a JS-free hamburger so the nav never stacks over the CTA/toggle */
+@media(max-width:760px){
+  .topnav{padding-right:120px;gap:10px;flex-wrap:nowrap;}
+  .navmenu{display:block;position:relative;flex:none;}
+  .navburger{display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:42px;height:38px;padding:9px;cursor:pointer;list-style:none;
+    border:1px solid var(--line);border-radius:10px;background:#fff;}
+  .navburger span{display:block;width:22px;height:2px;background:var(--primary);border-radius:2px;}
+  .navlinks{display:none;}
+  .navmenu[open] .navlinks{display:flex;flex-direction:column;gap:2px;position:absolute;
+    top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:10px 14px;min-width:210px;box-shadow:0 10px 34px rgba(0,0,0,.14);z-index:60;}
+  .navmenu[open] .navlinks a{padding:8px 4px;font-size:15px;}
+  .navcta{display:none;}  /* the hero carries the primary contact CTA on mobile */
+}
 .blk.faq .faq-item{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:8px 0;}
 .blk.faq summary{cursor:pointer;font-weight:600;color:var(--primary);}
 .blk.faq .faq-a{margin-top:8px;color:var(--mut);}
-/* page-type sections */
+/* page-type sections — each type its own treatment + a role kicker for rhythm */
 .blk.section p{max-width:68ch;}
 .blk.section .ticks{margin-top:12px;}
+.sec-kick{text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;font-weight:800;
+color:var(--accent);margin-bottom:6px;}
+.sec-lead{font-size:clamp(17px,2.2vw,20px);color:var(--ink);max-width:70ch;font-weight:500;}
+.benefits{list-style:none;padding:0;margin:14px 0 0;display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 22px;}
+.benefits li{position:relative;padding-left:28px;}
+.benefits li:before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:800;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px;}
+.who-card{border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:12px;
+padding:16px 18px;background:var(--soft);}
+/* rhythm: alternate a soft band instead of a hard rule under every section */
+.blk.section.st-what_is,.blk.section.st-benefits{border-bottom:none;}
+.blk.section.st-who_for{background:var(--soft);border-bottom:none;
+padding-left:24px;padding-right:24px;border-radius:16px;}
 .blk.proof-callout{background:var(--soft);border-left:4px solid var(--accent);
 border-radius:0 12px 12px 0;padding:20px 24px;}
 .steps{list-style:none;counter-reset:s;padding:0;display:grid;gap:14px;margin-top:12px;}
@@ -59,9 +93,25 @@ font-size:14px;}
 .btn-outline{background:transparent;border:2px solid var(--line);color:var(--primary);
 margin-left:10px;}
 .hp.trust{padding:16px 0;}
-.trust-bar{display:flex;flex-wrap:wrap;gap:10px;}
-.trust-chip{background:var(--soft);border:1px solid var(--line);border-radius:999px;
-padding:8px 16px;font-weight:600;font-size:14px;color:var(--primary);}
+/* trust factors — rendered BY evidence type, not one generic pill */
+.trust-factors{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;}
+.tf{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:12px;
+border:1px solid var(--line);background:var(--soft);font-weight:600;font-size:14px;color:var(--primary);}
+.tf-ic{font-size:15px;line-height:1;}
+/* certification: solid accent badge */
+.tf-certification{background:color-mix(in srgb,var(--accent) 14%,#fff);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));}
+.tf-certification .tf-ic{color:var(--accent);}
+/* compliance: neutral, authoritative */
+.tf-compliance{background:#fff;border-color:var(--primary);}
+.tf-compliance .tf-ic{color:var(--primary);}
+/* review: warm */
+.tf-review .tf-ic{color:#f59e0b;}
+/* stat: a real big-number card, never a pill */
+.tf-stat{flex-direction:column;align-items:flex-start;gap:2px;padding:14px 20px;
+border-left:4px solid var(--accent);background:var(--soft);}
+.tf-stat .tf-n{font-family:var(--fh);font-size:clamp(24px,3vw,34px);font-weight:800;
+color:var(--accent);line-height:1;}
+.tf-stat .tf-l{font-size:13px;color:var(--mut);font-weight:600;max-width:22ch;}
 .statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;
 text-align:center;}
 .stat-n{font-family:var(--fh);font-size:clamp(30px,4vw,46px);font-weight:800;color:var(--accent);line-height:1;}
@@ -118,8 +168,9 @@ font-weight:700;font-size:14px;}
 .preview-banner{background:var(--primary);color:#e2e8f0;font-size:13px;text-align:center;
 padding:9px 16px;}
 .preview-banner strong{color:#fff;}
-/* hero */
-.hero h1{max-width:16ch;}
+/* hero — long Dutch compounds (asbestverwijderingsbedrijf) must break, never clip */
+.hero h1{max-width:18ch;overflow-wrap:break-word;word-break:break-word;hyphens:auto;}
+.page-head h1,.hero h1{overflow-wrap:break-word;hyphens:auto;}
 .hero-eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;
 font-weight:700;color:var(--accent);}
 .hero-sub,.lede{font-size:18px;color:var(--mut);max-width:60ch;}
@@ -166,10 +217,10 @@ color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-botto
 </head>
 <body>
 <div data-sb="strategy" class="preview-banner">◈ <strong>Sherlock strategie-preview</strong> — praktijkstefadams.be · audit run #332 · <em>voorgestelde site; schakel naar Site voor de klant-weergave</em></div>
-<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><div class="navlinks"><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
-<main><aside data-sb="strategy" class="page-lens"><span class='pl-tag'>◈ Sherlock</span><span class='pl-why'>Entiteit-declaratie: wie, team en beleid — versterkt vertrouwen, autoriteit en de merk-entiteit (geen zoekintentie-target).</span><div class='pl-chips'><span class='pl-chip'><b>Demand / rankings:</b> geen GSC-property gekoppeld — vraag/posities niet meetbaar</span><span class='pl-chip'><b>Ontbrekend bewijs:</b> REVIEW, TESTIMONIAL, VERIFIED_CREDENTIAL, CASE</span></div><a class='pl-more' href='/overzicht/'>volledige strategie →</a></aside><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-good'>🟢 KEEP</span><div class='an-tx'>Bestaande pagina — 358 woorden live content, behouden en hergebruikt.</div><div class='an-ev'>bron: live pagina /team</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>About</div><h1>Team</h1><p class='lede'>Twee gepassioneerde sportkinesitherapeuten met een actieve aanpak en een achtergrond als sporter.</p></header><section data-sb="site" class="blk section st-team"><h2>Stef Adams</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: klant-copy</span></span><p>Ik ben Stef Adams en ik ben altijd al gepassioneerd geweest door sport en het menselijk lichaam. Vanaf mijn 12 jaar maakte ik deel uit van het nationale team karate. Zelf ben ik 8 keer Belgisch kampioen geweest, heb verschillende internationale podia behaald en heb ik meerdere EK en WK wedstrijden gevochten.</p><p>Tijdens mijn studies als kinesitherapeut ben ik begonnen met het spelen van rugby, deze sport heb ik stop moeten zetten door blessures. Daarna is mijn liefde voor de fiets ontstaan.</p><p>Door mijn achtergrond als sporter wil ik de patiënt altijd op een zo actief mogelijke manier benaderen. Beweging staat daarom centraal. Mijn doel als therapeut is om de patiënt/atleet terug naar zijn oorspronkelijk of hoger niveau te brengen.</p><ul class='ticks'><li>Master in de revalidatiewetenschappen en kinesitherapie, optie sportrevalidatie (KU Leuven, 2015–2019)</li><li>Post-graduaat manuele therapie (KU Leuven, 2019–2020)</li><li>Exos power &amp; performance specialist level 1 (Londen, 2019)</li><li>Dry needling Trigger BV (2020–2023)</li><li>Complex Core level 1, 2 &amp; 3 (Leuven, 2017)</li><li>Sport taping, NAQI (2016)</li><li>Bikefitting (Leuven, 2020–2021)</li></ul></section><section data-sb="site" class="blk section st-team"><h2>Wout Braes</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: klant-copy</span></span><p>Ik ben Wout Braes! Beweging heeft altijd centraal gestaan in mijn leven. Als kind was ik actief in het wielrennen en voetbal, en ook tijdens mijn studententijd in Leuven bleef de passie voor sport nooit ver weg. Vandaag vind je me vaak terug op de fiets, aan het lopen of — met wisselend succes — in het zwembad.</p><p>Naast mijn werk in de praktijk volg ik momenteel een postgraduaat Manuele Therapie aan de UGent en ben ik actief als verzorger bij het wielerteam Baloise Glowi Lions. Je komt me dus geregeld tegen langs het parcours of in de modder van het veldrijden.</p><p>Ik geloof sterk in bewegen als sleutel tot herstel en preventie. Mijn aanpak is actief, persoonlijk en gebaseerd op de nieuwste wetenschappelijke inzichten. Of je nu een fanatieke sporter bent, recreatief beweegt of net start met sporten: samen werken we stap voor stap aan een duurzaam herstel, met aandacht voor zelfstandigheid en betrokkenheid.</p><ul class='ticks'><li>Master in de revalidatiewetenschappen en kinesitherapie, optie sportrevalidatie (KU Leuven, 2021–2025)</li><li>Post-graduaat manuele therapie (i.o. UGent)</li><li>Dry needling (i.o. Trigger)</li></ul></section><section data-sb="site" class="blk section st-values"><h2>Onze aanpak</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: herordend</span></span><p>Beweging staat centraal in alles wat we doen. Beide therapeuten benaderen de patiënt op een zo actief mogelijke manier, gebaseerd op de nieuwste wetenschappelijke inzichten.</p><p>Het doel is steeds hetzelfde: de patiënt of atleet terugbrengen naar zijn oorspronkelijk of hoger niveau — met aandacht voor zelfstandigheid en persoonlijke betrokkenheid.</p></section><section data-sb="site" class="blk section st-contact_details"><h2>Contact</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: klant-copy</span></span><p>📞 +32 494 23 65 70
+<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><details class="navmenu" data-sb="site" id="sherlock-navmenu"><summary class="navburger" aria-label="Menu"><span></span><span></span><span></span></summary><div class="navlinks"><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div></details></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
+<main><aside data-sb="strategy" class="page-lens"><span class='pl-tag'>◈ Sherlock</span><span class='pl-why'>Entiteit-declaratie: wie, team en beleid — versterkt vertrouwen, autoriteit en de merk-entiteit (geen zoekintentie-target).</span><div class='pl-chips'><span class='pl-chip'><b>Demand / rankings:</b> geen GSC-property gekoppeld — vraag/posities niet meetbaar</span><span class='pl-chip'><b>Ontbrekend bewijs:</b> REVIEW, TESTIMONIAL, VERIFIED_CREDENTIAL, CASE</span></div><a class='pl-more' href='/overzicht/'>volledige strategie →</a></aside><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-good'>🟢 KEEP</span><div class='an-tx'>Bestaande pagina — 358 woorden live content, behouden en hergebruikt.</div><div class='an-ev'>bron: live pagina /team</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>About</div><h1>Team</h1><p class='lede'>Twee gepassioneerde sportkinesitherapeuten met een actieve aanpak en een achtergrond als sporter.</p></header><section data-sb="site" class="blk section st-team"><h2>Stef Adams</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: klant-copy</span></span><p>Ik ben Stef Adams en ik ben altijd al gepassioneerd geweest door sport en het menselijk lichaam. Vanaf mijn 12 jaar maakte ik deel uit van het nationale team karate. Zelf ben ik 8 keer Belgisch kampioen geweest, heb verschillende internationale podia behaald en heb ik meerdere EK en WK wedstrijden gevochten.</p><p>Tijdens mijn studies als kinesitherapeut ben ik begonnen met het spelen van rugby, deze sport heb ik stop moeten zetten door blessures. Daarna is mijn liefde voor de fiets ontstaan.</p><p>Door mijn achtergrond als sporter wil ik de patiënt altijd op een zo actief mogelijke manier benaderen. Beweging staat daarom centraal. Mijn doel als therapeut is om de patiënt/atleet terug naar zijn oorspronkelijk of hoger niveau te brengen.</p><ul class='ticks'><li>Master in de revalidatiewetenschappen en kinesitherapie, optie sportrevalidatie (KU Leuven, 2015–2019)</li><li>Post-graduaat manuele therapie (KU Leuven, 2019–2020)</li><li>Exos power &amp; performance specialist level 1 (Londen, 2019)</li><li>Dry needling Trigger BV (2020–2023)</li><li>Complex Core level 1, 2 &amp; 3 (Leuven, 2017)</li><li>Sport taping, NAQI (2016)</li><li>Bikefitting (Leuven, 2020–2021)</li></ul></section><section data-sb="site" class="blk section st-team"><h2>Wout Braes</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: klant-copy</span></span><p>Ik ben Wout Braes! Beweging heeft altijd centraal gestaan in mijn leven. Als kind was ik actief in het wielrennen en voetbal, en ook tijdens mijn studententijd in Leuven bleef de passie voor sport nooit ver weg. Vandaag vind je me vaak terug op de fiets, aan het lopen of — met wisselend succes — in het zwembad.</p><p>Naast mijn werk in de praktijk volg ik momenteel een postgraduaat Manuele Therapie aan de UGent en ben ik actief als verzorger bij het wielerteam Baloise Glowi Lions. Je komt me dus geregeld tegen langs het parcours of in de modder van het veldrijden.</p><p>Ik geloof sterk in bewegen als sleutel tot herstel en preventie. Mijn aanpak is actief, persoonlijk en gebaseerd op de nieuwste wetenschappelijke inzichten. Of je nu een fanatieke sporter bent, recreatief beweegt of net start met sporten: samen werken we stap voor stap aan een duurzaam herstel, met aandacht voor zelfstandigheid en betrokkenheid.</p><ul class='ticks'><li>Master in de revalidatiewetenschappen en kinesitherapie, optie sportrevalidatie (KU Leuven, 2021–2025)</li><li>Post-graduaat manuele therapie (i.o. UGent)</li><li>Dry needling (i.o. Trigger)</li></ul></section><section data-sb="site" class="blk section st-values"><h2>Onze aanpak</h2><span data-sb="strategy" class="prov-wrap"><span class='prov'>bron: herordend</span></span><p>Beweging staat centraal in alles wat we doen. Beide therapeuten benaderen de patiënt op een zo actief mogelijke manier, gebaseerd op de nieuwste wetenschappelijke inzichten.</p><p>Het doel is steeds hetzelfde: de patiënt of atleet terugbrengen naar zijn oorspronkelijk of hoger niveau — met aandacht voor zelfstandigheid en persoonlijke betrokkenheid.</p></section><section data-sb="site" class="blk section st-contact_details"><div class='sec-kick'>Contact</div><h2>Contact</h2><aside data-sb="strategy" class="annotation sec-why"><span class='an-tag an-neutral'>◈ WAAROM DEZE SECTIE</span><div class='an-tx'>Conversie- en NAP-blok: contact opnemen zo laagdrempelig mogelijk, plus lokale entiteit-signalen.</div><div class='an-ev'>bron: klant-copy</div></aside><p>📞 +32 494 23 65 70
 ✉️ info@praktijkstefadams.be</p></section><section data-sb="site" class="blk cta"><a class="btn btn-primary btn-lg" href="tel:+32494236570">Bel +32 494 23 65 70</a></section></main>
-<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve revalidatie</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
+<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
 <script id="sherlock-toggle-js">
 (function(){
   window.sherlockSetMode=function(mode){
