@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Over ons — Asbitech</title>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+<style>
+:root{--primary:#17140f;--accent:#ec643d;--ink:#1a1a1a;--bg:#ffffff;
+--fh:"Sofia Sans", system-ui, sans-serif;--fb:system-ui, -apple-system, "Segoe UI", sans-serif;--mut:#64748b;--line:#e2e8f0;--soft:#f8fafc;}
+*{box-sizing:border-box;}
+body{margin:0;font-family:var(--fb);color:var(--ink);background:var(--bg);line-height:1.6;}
+h1,h2,h3{font-family:var(--fh);line-height:1.1;color:var(--primary);}
+h1{font-size:clamp(34px,5vw,58px);margin:.2em 0;}
+h2{font-size:clamp(24px,3vw,34px);}
+a{color:var(--primary);}
+main{max-width:1080px;margin:0 auto;padding:0 24px;}
+section,header.page-head{padding:34px 0;border-bottom:1px solid var(--line);}
+/* toggle contract */
+body.site-mode [data-sb="strategy"]{display:none !important;}
+#sherlock-mode-toggle{display:inline-flex;gap:2px;padding:3px;background:var(--primary);
+border-radius:999px;}
+#sherlock-mode-toggle button{appearance:none;cursor:pointer;border:0;border-radius:999px;
+padding:7px 13px;font:600 12px/1 var(--fb);color:#cbd5e1;background:transparent;}
+#sherlock-mode-toggle button.active{color:var(--primary);background:var(--accent);}
+/* nav */
+.topnav{display:flex;align-items:center;gap:16px;max-width:1080px;margin:0 auto;
+padding:12px 24px;flex-wrap:wrap;}
+.topnav .logo{font-family:var(--fh);font-weight:800;font-size:20px;color:var(--primary);
+text-decoration:none;}
+.navwrap{flex:1;}
+.navlinks{display:flex;gap:18px;flex-wrap:wrap;}
+.navlinks a{text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;}
+.navlinks a.on{color:var(--accent);}
+.btn{display:inline-block;text-decoration:none;border-radius:10px;padding:11px 18px;
+font-weight:700;font-size:14px;}
+.btn-primary{background:var(--accent);color:var(--primary);}
+.btn-lg{padding:14px 24px;font-size:16px;}
+/* preview banner (strategy) */
+.preview-banner{background:var(--primary);color:#e2e8f0;font-size:13px;text-align:center;
+padding:9px 16px;}
+.preview-banner strong{color:#fff;}
+/* hero */
+.hero h1{max-width:16ch;}
+.hero-eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;
+font-weight:700;color:var(--accent);}
+.hero-sub,.lede{font-size:18px;color:var(--mut);max-width:60ch;}
+.hero-actions{margin-top:18px;}
+/* services grid */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;
+margin-top:8px;}
+.svc-card{display:block;border:1px solid var(--line);border-radius:14px;padding:20px;
+text-decoration:none;color:inherit;background:var(--soft);transition:.15s;}
+.svc-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.svc-card h3{margin:0 0 6px;}
+.svc-card p{color:var(--mut);font-size:14px;margin:0 0 10px;}
+.svc-go{color:var(--accent);font-weight:700;font-size:14px;}
+/* lists / proof / kpis */
+.ticks{list-style:none;padding:0;display:grid;gap:8px;}
+.ticks li{padding-left:26px;position:relative;}
+.ticks li:before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800;}
+.proofbar{list-style:none;display:flex;gap:26px;flex-wrap:wrap;padding:0;margin:0;
+color:var(--mut);font-weight:600;font-size:14px;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;}
+.kpi-n{font-family:var(--fh);font-size:32px;color:var(--accent);font-weight:800;}
+.kpi-l{font-size:13px;color:var(--mut);}
+/* strategy annotations */
+.an-stack{display:grid;gap:10px;padding:18px 0;}
+.annotation{border-left:3px solid var(--accent);background:#f0f9ff;border-radius:0 10px 10px 0;
+padding:12px 16px;}
+.an-tag{display:inline-block;font-weight:800;font-size:11px;letter-spacing:.04em;
+text-transform:uppercase;color:var(--primary);}
+.an-good .an-tag,.an-tag.an-good{color:#047857;}
+.an-warn .an-tag,.an-tag.an-warn{color:#b45309;}
+.an-tx{margin-top:4px;}
+.an-ev{margin-top:6px;font-size:13px;color:var(--mut);font-style:italic;}
+.strategy-panel{background:#f0f9ff;border:1px solid #bae6fd;border-radius:16px;
+padding:22px;margin-top:22px;}
+.sp-h{margin-top:0;}
+/* footer */
+.sitefoot{max-width:1080px;margin:0 auto;padding:34px 24px;display:grid;gap:10px;
+color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-bottom:0;}
+.foot-brand{font-family:var(--fh);font-weight:800;font-size:18px;color:var(--primary);}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap;}
+.foot-links a{color:var(--ink);text-decoration:none;}
+@media print{#sherlock-mode-toggle{display:none;}}
+</style>
+</head>
+<body>
+<div data-sb="strategy" class="preview-banner">◈ <strong>Sherlock strategie-preview</strong> — asbitech.eu · audit run #330 · <em>voorgestelde site; schakel naar Site voor de klant-weergave</em></div>
+<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Asbitech</span></a><div data-sb="site" class="navwrap"><div class="navlinks"><a href="/asbestregelgeving-2026-wijzigingen-2025/">Asbestregelgeving 2026 en wijzigingen met 2025 - Asbitech</a><a href="/kosten/">Prijs asbest verwijderen:alle kosten en prijzen in 2025</a><a href="/leidingisolatie/">Asbest leidingisolatie:Herkennen, risico&#x27;s en veilig verwijderen</a><a href="/overzicht-van-de-premies-voor-asbestverwijdering/">Overzicht van de premies voor asbestverwijdering - Asbitech</a><a href="/premies/">Asbest verwijderen:premie nodig?Alle premies &amp; subsidies in Vlaanderen</a><a href="/prijs-asbest-laten-verwijderen/">Wat kost het om asbest te laten verwijderen? - Asbitech</a><a href="/professionals/">Asbest verwijderenvoor bedrijven:veilig en professioneel</a></div></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32 (0) 472 06 02 46">Bel +32 (0) 472 06 02 46</a></div></nav>
+<main><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-good'>🟢 KEEP</span><div class='an-tx'>Bestaande about-pagina, behouden.</div><div class='an-ev'>bron: /over-ons/</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>About</div><h1>Over ons</h1><p class='lede'>Over ons Over Asbitech Asbitech is in 2013 opgericht en is gespecialiseerd in het verwijderen en saneren van alle soorten asbest. Met tientallen jaren ervaring in zowel de civiele </p></header><section data-sb="site" class="blk prose"><p>Over ons Over Asbitech Asbitech is in 2013 opgericht en is gespecialiseerd in het verwijderen en saneren van alle soorten asbest. Met tientallen jaren ervaring in zowel de civiele bouw als petrochemie, beschikt Asbitech over de nodige expertise om elke asbestsanering tot een goed einde te brengen. Vooral het demonteren van niet-hechtgebonden asbest is onze specialiteit.</p><p>We hechten het grootste belang aan het welzijn en de veiligheid van onze werknemers en beschikken dan ook over alle nodige certificaten die de veiligheid garanderen. We werken continu aan het verbeteren van onze werkwijze, klantenaanpak en veiligheidsvoorwaarden om zo toe te werken naar een asbestvrije samenleving. Waarom kiezen voor onze services Met tientallen jaren ervaring in zowel de civiele bouw als petrochemie, beschikt Asbitech over de nodige expertise om elke asbestsanering tot een goed einde te brengen.</p><p>Vooral het demonteren van niet-hechtgebonden asbest is onze specialiteit. 2500 ton asbest gesaneerd 1200 tevreden klanten 2000 asbestvrije werven Ons hardwerkend Team Jochen Bessems Zaakvoerder Czernia Projectleider Beleidsverklaring Onze activiteiten in demontage en asbestverwijding moeten ons aan zetten om elke dag te streven naar excellentie.</p><p>In onze uitvoering staat het welzijn van onze medewerkers en opdrachtgevers centraal. Asbitech zal er alles aan doen om elke schade te voorkomen op het gebied van milieu, gezondheid en veiligheid. Op deze manier werken wij naar een volledige tevredenheid van onze klanten, medewerkers, leveranciers en maatschappij. In het streven naar continu te verbeteren staat kwaliteit hoog in het vaandel van Asbitech, daarom moet er steeds voldaan worden aan de eisen en verwachtingen van de betrokken partijen (opdrachtgever, overheid en personeel) De manier waarom Asbitech opdracht zal uitvoeren dient ten allen tijde te voldoen aan de geldende regels, wetgeving, veiligheid en met respect voor milieu.</p><p>Iedereen binnen Asbitech staat in voor zijn eigen veiligheid en dient te waken over de veiligheid van anderen. Het melden van gevaarlijke situaties en het corrigeren van deze situaties wordt binnen ons bedrijf alleen maar aangemoedigd. Ik vertrouw erop dat iedereen binnen Asbitech zich er ononderbroken aan houdt om deze beleidsverklaring om te zetten naar de praktijk.</p></section><section data-sb="site" class="blk cta"><a class="btn btn-primary btn-lg" href="tel:+32 (0) 472 06 02 46">Bel +32 (0) 472 06 02 46</a></section></main>
+<footer data-sb="site" class="sitefoot"><div class='foot-brand'>Asbitech</div><div class='foot-links'><a href="/asbestregelgeving-2026-wijzigingen-2025/">Asbestregelgeving 2026 en wijzigingen met 2025 - Asbitech</a><a href="/kosten/">Prijs asbest verwijderen:alle kosten en prijzen in 2025</a><a href="/leidingisolatie/">Asbest leidingisolatie:Herkennen, risico&#x27;s en veilig verwijderen</a><a href="/overzicht-van-de-premies-voor-asbestverwijdering/">Overzicht van de premies voor asbestverwijdering - Asbitech</a><a href="/premies/">Asbest verwijderen:premie nodig?Alle premies &amp; subsidies in Vlaanderen</a><a href="/prijs-asbest-laten-verwijderen/">Wat kost het om asbest te laten verwijderen? - Asbitech</a><a href="/professionals/">Asbest verwijderenvoor bedrijven:veilig en professioneel</a></div><div class='foot-contact'>Willebroek · +32 (0) 472 06 02 46 · <a href="mailto:info@asbitech.eu">info@asbitech.eu</a></div></footer>
+<script id="sherlock-toggle-js">
+(function(){
+  window.sherlockSetMode=function(mode){
+    var site=mode==='site';
+    document.body.classList.toggle('site-mode',site);
+    var c=document.getElementById('sherlock-mode-toggle');
+    if(c){c.querySelectorAll('button').forEach(function(b){
+      b.classList.toggle('active',b.getAttribute('data-mode')===mode);});}
+    try{sessionStorage.setItem('sherlockMode',site?'site':'strategy');}catch(e){}
+  };
+  var s='strategy';try{s=sessionStorage.getItem('sherlockMode')||'strategy';}catch(e){}
+  window.sherlockSetMode(s==='site'?'site':'strategy');
+})();
+</script>
+</body>
+</html>
