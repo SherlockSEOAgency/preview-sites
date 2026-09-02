@@ -19,7 +19,11 @@ a{color:var(--primary);}
 main{max-width:1080px;margin:0 auto;padding:0 24px;}
 section,header.page-head{padding:34px 0;border-bottom:1px solid var(--line);}
 /* toggle contract */
+/* 3-state visibility: SITE=clean · STRATEGY=+reasoning · PERFORMANCE=+measured */
 body.site-mode [data-sb="strategy"]{display:none !important;}
+body.site-mode [data-sb="performance"]{display:none !important;}
+body:not(.perf-mode) [data-sb="performance"]{display:none !important;}
+body.perf-mode [data-sb="strategy"]{display:none !important;}
 #sherlock-mode-toggle{position:fixed;top:12px;right:14px;z-index:2147483000;
 display:inline-flex;gap:2px;padding:3px;background:var(--primary);border-radius:999px;
 box-shadow:0 6px 22px rgba(0,0,0,.28);}
@@ -220,6 +224,32 @@ text-transform:uppercase;color:#6d28d9;}
 .annotation.generic{border-left-color:#cbd5e1;background:#f8fafc;}
 .an-tag.an-generic{color:#64748b;}
 .an-generic-note{margin-top:6px;font-size:11.5px;color:#94a3b8;font-style:italic;}
+/* PERFORMANCE overlay — the real measured baseline (or an honest empty state) */
+.perf{border:1px solid #bae6fd;background:#f0f9ff;border-radius:16px;padding:20px 22px;margin:14px 0 8px;}
+.perf-nobaseline{border-style:dashed;background:#f8fafc;}
+.perf-head{font-weight:800;color:#0369a1;font-size:15px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.perf-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+color:#0369a1;background:#e0f2fe;border-radius:999px;padding:2px 10px;}
+.perf-lineage{margin-top:6px;font-size:13.5px;color:#334155;}
+.perf-msg{margin-top:8px;font-size:14px;color:#475569;}
+.perf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px;}
+.perf-src{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px;}
+.perf-empty{background:#f8fafc;}
+.perf-src-h{font-weight:800;color:var(--ink);font-size:13px;display:flex;align-items:center;gap:8px;}
+.perf-state{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+border-radius:999px;padding:2px 8px;}
+.s-observed{background:#dcfce7;color:#166534;}
+.s-stale{background:#fef9c3;color:#854d0e;}
+.s-no_data{background:#f1f5f9;color:#64748b;}
+.s-not_connected{background:#f1f5f9;color:#64748b;}
+.s-not_yet_measured{background:#ede9fe;color:#6d28d9;}
+.s-not_applicable{background:#f1f5f9;color:#94a3b8;}
+.perf-metrics{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;}
+.pm-n{font-family:var(--fh);font-size:20px;font-weight:800;color:#0369a1;line-height:1;}
+.pm-l{font-size:11px;color:var(--mut);margin-top:2px;}
+.perf-tq{margin-top:10px;font-size:12.5px;color:#475569;}
+.perf-fresh{margin-top:8px;font-size:11px;color:#94a3b8;font-style:italic;}
+.perf-msg{font-size:13.5px;color:#64748b;}
 .strategy-panel{background:#f0f9ff;border:1px solid #bae6fd;border-radius:16px;
 padding:22px;margin-top:22px;}
 .sp-h{margin-top:0;}
@@ -234,8 +264,8 @@ color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-botto
 </head>
 <body>
 <div data-sb="strategy" class="preview-banner">◈ <strong>Sherlock strategie-preview</strong> — asbitech.eu · audit run #330 · <em>voorgestelde site; schakel naar Site voor de klant-weergave</em></div>
-<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Asbitech</span></a><div data-sb="site" class="navwrap"><details class="navmenu" data-sb="site" id="sherlock-navmenu"><summary class="navburger" aria-label="Menu"><span></span><span></span><span></span></summary><div class="navlinks"><a href="/sanering/">Sanering</a><a href="/premies/">Premies</a><a href="/professionals/">Professionals</a><a href="/realisaties/" class="on">Realisaties</a><a href="/prijs-asbest-laten-verwijderen/">Asbest verwijderen</a><a href="/over-ons/">Over ons</a><a href="/contact/">Contact</a></div></details></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site →</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32(0)472060246">Bel +32 (0) 472 06 02 46</a></div></nav>
-<main><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-good'>🟢 KEEP</span><div class='an-tx'>Bestaande pagina — 593 woorden live content, behouden en hergebruikt.</div><div class='an-ev'>bron: live pagina /realisaties</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>Aanbod</div><h1>Realisaties</h1><p class='lede'>Enkele van onze gerealiseerde projecten</p><div class='page-media'><img src='https://asbitech.eu/wp-content/uploads/2025/06/WhatsApp-Image-2022-01-26-at-13.10.06-1-1.webp' alt='Realisaties' loading='lazy' onerror="this.parentNode.style.display='none'"></div></header><section data-sb="site" class="blk section proof-callout"><div class='sec-kick'>Bewijs</div><h2>Afgeronde projecten</h2><aside data-sb="strategy" class="annotation sec-why generic"><span class='an-tag an-generic'>◈ ALGEMEEN PRINCIPE</span><div class='an-tx'>Bewijs vlak bij de claim overtuigt meer dan nog een argument van onszelf — daarom staat het naast de commerciële belofte, niet los onderaan.</div><div class='an-generic-note'>algemeen UX/SEO-principe — geen data-afgeleide aanbeveling</div><details class='an-ev-d'><summary>bron</summary><span>bron: klant-copy</span></details></aside><p><strong>Sanering van het Unizo kantoorgebouw in Kortrijk (juli 2025 &amp; januari 2026)</strong>
+<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Asbitech</span></a><div data-sb="site" class="navwrap"><details class="navmenu" data-sb="site" id="sherlock-navmenu"><summary class="navburger" aria-label="Menu"><span></span><span></span><span></span></summary><div class="navlinks"><a href="/sanering/">Sanering</a><a href="/premies/">Premies</a><a href="/professionals/">Professionals</a><a href="/realisaties/" class="on">Realisaties</a><a href="/prijs-asbest-laten-verwijderen/">Asbest verwijderen</a><a href="/over-ons/">Over ons</a><a href="/contact/">Contact</a></div></details></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site</button><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="performance" onclick="sherlockSetMode('performance')">Prestatie</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32(0)472060246">Bel +32 (0) 472 06 02 46</a></div></nav>
+<main><aside data-sb="performance" class="perf"><div class='perf-head'>◈ Prestatie — huidige surface <span class='perf-tag'>baseline · KEEP</span></div><div class='perf-lineage'>De cijfers hieronder zijn de gemeten prestatie van de <b>bestaande</b> URL. Dit is de baseline; ‘na’ ontstaat pas na publicatie.</div><div class='perf-grid'><div class='perf-src'><div class='perf-src-h'>GSC <span class='perf-state s-observed'>gemeten</span></div><div class='perf-metrics'><div class='pm'><div class='pm-n'>0</div><div class='pm-l'>clicks</div></div><div class='pm'><div class='pm-n'>1</div><div class='pm-l'>impressies</div></div><div class='pm'><div class='pm-n'>0.0%</div><div class='pm-l'>CTR</div></div><div class='pm'><div class='pm-n'>pos 10.0</div><div class='pm-l'>gem. positie</div></div></div><div class='perf-tq'>Top queries: kielparktoren (0, pos 10.0)</div><div class='perf-fresh'>data t/m 2026-08-12</div></div><div class='perf-src'><div class='perf-src-h'>GA4 <span class='perf-state s-observed'>gemeten</span></div><div class='perf-metrics'><div class='pm'><div class='pm-n'>4</div><div class='pm-l'>sessies</div></div><div class='pm'><div class='pm-n'>2</div><div class='pm-l'>engaged</div></div><div class='pm'><div class='pm-n'>50.0%</div><div class='pm-l'>engagement</div></div><div class='pm'><div class='pm-n'>0</div><div class='pm-l'>conversies</div></div></div><div class='perf-fresh'>data t/m 2026-08-29</div></div><div class='perf-src perf-empty'><div class='perf-src-h'>Ads <span class='perf-state s-not_connected'>niet gekoppeld</span></div><div class='perf-msg'>Ads-prestatie per landingspagina is een live-rapport (account-view), niet uit de opgeslagen read-modellen — hier niet ingeladen.</div></div></div></aside><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-good'>🟢 KEEP</span><div class='an-tx'>Bestaande pagina — 593 woorden live content, behouden en hergebruikt.</div><div class='an-ev'>bron: live pagina /realisaties</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>Aanbod</div><h1>Realisaties</h1><p class='lede'>Enkele van onze gerealiseerde projecten</p><div class='page-media'><img src='https://asbitech.eu/wp-content/uploads/2025/06/WhatsApp-Image-2022-01-26-at-13.10.06-1-1.webp' alt='Realisaties' loading='lazy' onerror="this.parentNode.style.display='none'"></div></header><section data-sb="site" class="blk section proof-callout"><div class='sec-kick'>Bewijs</div><h2>Afgeronde projecten</h2><aside data-sb="strategy" class="annotation sec-why generic"><span class='an-tag an-generic'>◈ ALGEMEEN PRINCIPE</span><div class='an-tx'>Bewijs vlak bij de claim overtuigt meer dan nog een argument van onszelf — daarom staat het naast de commerciële belofte, niet los onderaan.</div><div class='an-generic-note'>algemeen UX/SEO-principe — geen data-afgeleide aanbeveling</div><details class='an-ev-d'><summary>bron</summary><span>bron: klant-copy</span></details></aside><p><strong>Sanering van het Unizo kantoorgebouw in Kortrijk (juli 2025 &amp; januari 2026)</strong>
 Asbitech werkte de afgelopen 4 weken met 2 ploegen aan het kantoorgebouw van Unizo in Kortrijk. Asbitech is momenteel in opdracht van PIC Renodecor bezig met het saneren van asbest in het voormalig woonzorgcentrum Sint-Clara in Brugge. Naast enkele eenvoudige handelingen zoals het verwijderen van kitten werden ook complexere werken uitgevoerd.</p><p><strong>Appartementsgebouw Elslopark Evergem (december 2025)</strong>
 Bij het Elslopark in Evergem nam Asbitech de veilige verwijdering van 300 lopende meter leiding voor zijn rekening, op de 10de verdieping van een appartementsgebouw. Het volledige traject werd uitgevoerd.</p><p><strong>Kielparktoren Wilrijk (december 2025)</strong>
 In de Kielparktoren in Wilrijk verwijderde Asbitech maar liefst 2.000 m² zwarte lijm en vinyltegels met asbesthoudende componenten. Verspreid over 18 verdiepingen werd elke vloer zorgvuldig aangepakt.</p><p><strong>Brug in Deurne (oktober 2025)</strong>
@@ -246,16 +276,18 @@ info@asbitech.eu</p></section><section data-sb="site" class="blk cta"><a class="
 <footer data-sb="site" class="sitefoot"><div class='foot-brand'>Asbitech</div><div class='foot-links'><a href="/sanering/">Sanering</a><a href="/premies/">Premies</a><a href="/professionals/">Professionals</a><a href="/realisaties/">Realisaties</a><a href="/prijs-asbest-laten-verwijderen/">Asbest verwijderen</a><a href="/over-ons/">Over ons</a><a href="/contact/">Contact</a></div><div class='foot-contact'>+32 (0) 472 06 02 46 · <a href="mailto:info@asbitech.eu">info@asbitech.eu</a></div></footer>
 <script id="sherlock-toggle-js">
 (function(){
+  var MODES={site:1,strategy:1,performance:1};
   window.sherlockSetMode=function(mode){
-    var site=mode==='site';
-    document.body.classList.toggle('site-mode',site);
+    if(!MODES[mode])mode='strategy';
+    document.body.classList.toggle('site-mode',mode==='site');
+    document.body.classList.toggle('perf-mode',mode==='performance');
     var c=document.getElementById('sherlock-mode-toggle');
     if(c){c.querySelectorAll('button').forEach(function(b){
       b.classList.toggle('active',b.getAttribute('data-mode')===mode);});}
-    try{sessionStorage.setItem('sherlockMode',site?'site':'strategy');}catch(e){}
+    try{sessionStorage.setItem('sherlockMode',mode);}catch(e){}
   };
   var s='strategy';try{s=sessionStorage.getItem('sherlockMode')||'strategy';}catch(e){}
-  window.sherlockSetMode(s==='site'?'site':'strategy');
+  window.sherlockSetMode(s);
 })();
 </script>
 </body>
