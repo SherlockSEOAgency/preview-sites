@@ -20,7 +20,7 @@
    "platform": "Sherlock strategy_findings + url_architecture_proposals (site ce63fafe-0631-47b7-a252-1a5747a3966b)",
    "adopted_findings": {
     "64": "one architecture, language = composition",
-    "276": "clarification 07/09: one tree ≠ identical pages; pages/composition/copy per language and market",
+    "276": "clarification 05/09: one tree ≠ identical pages; pages/composition/copy per language and market",
     "65": "merge wandel + plaatstemplate",
     "66": "improve plaatspagina's",
     "67": "add voordeur 1 weekendje-weg",
