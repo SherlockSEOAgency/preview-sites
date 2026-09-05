@@ -5,8 +5,38 @@
   "dossier_url": "https://visitardenne-dossier.preview.sherlockseo.com/",
   "design_baseline": "https://www.visitardenne.com/nl/ — tokens uit theme_laetis/css/styles.css (#c28209 / #161616 / #f7f7f7 / #41823e / Parisine Std Clair) + logo.svg + eigen beeldmateriaal",
   "generated": "2026-08-31",
-  "principle": "Eén boom, taal = compositie. Vier pijlers blijven; vier nieuwe voordeuren ín de bestaande structuur. Geen topic→page: elke pagina draagt een expliciete beslissing uit de vaste woordenschat (keep/improve/merge/split/add/remove/support/do-not-target). NUANCE (31/08): 'de spine blijft' betekent níet 'IA ongewijzigd' — de vier pijlers blijven, maar daarbinnen veranderen we gericht: vier nieuwe toegangspoorten, twee samenvoegingen (plaatsmodel + wandelen) en één rubriek weg (duurzaam toerisme).",
-  "preview_build_set_v2": "17 pagina's (31/08): 7 uit v1 + 4 pijlerpagina's + Dinant + Grotten van Han (plaatstemplates, vóór→na) + wandelhub (merge) + kajak (keep-model) + Belgische Ardennen (add) + top-boomhutten (hub-kind). Alle build-set-bestemmingen linken intern; live-links alleen voor bewust out-of-scope, gemarkeerd 'Huidige site'."
+  "principle": "Eén boom, taal = compositie. Vier pijlers blijven; vier nieuwe voordeuren ín de bestaande structuur. Geen topic→page: elke pagina draagt een expliciete beslissing uit de vaste woordenschat (keep/improve/merge/split/add/remove/support/do-not-target). NUANCE (31/08): 'de spine blijft' betekent níet 'IA ongewijzigd' — de vier pijlers blijven, maar daarbinnen veranderen we gericht: vier nieuwe toegangspoorten, twee samenvoegingen (plaatsmodel + wandelen) en één rubriek weg (duurzaam toerisme). VERDUIDELIJKING (07/09): één architectuur ≠ identieke pagina's per taal/markt. Taal en markt bepalen de compositie op drie niveaus — structuur (één boom), pagina's (een taal krijgt de pagina's die haar markt vraagt; de vier NL-voordeuren en 'Belgische Ardennen' hebben geen FR-tegenhanger) en compositie/copy (per taal én per markt: Vlaanderen plaats+doen, Nederland ontdekken/weekend/'+België'). Geen aparte NL-site; niets dubbel onderhouden.",
+  "preview_build_set_v2": "17 pagina's (31/08): 7 uit v1 + 4 pijlerpagina's + Dinant + Grotten van Han (plaatstemplates, vóór→na) + wandelhub (merge) + kajak (keep-model) + Belgische Ardennen (add) + top-boomhutten (hub-kind). Alle build-set-bestemmingen linken intern; live-links alleen voor bewust out-of-scope, gemarkeerd 'Huidige site'.",
+  "updated": "2026-09-07",
+  "language_market_matrix": "verantwoording.html#taal-markt — projectie van bestaand dossier-bewijs per pagina × (Vlaanderen, Nederland, FR); OPEN waar het bewijs stopt",
+  "open_decisions_2026_09_08": [
+   "Belgische Ardennen: eigen pagina of sectie op de streekhub (preview toont de paginavariant als voorstel)",
+   "Spa-Francorchamps zichtbaar maken: tegenstrijdig bewijs (juni niet geselecteerd wegens slow-tourism-positionering; augustus ~30k/mnd gemeten) — beslissing bestemming",
+   "Luxemburgse Ardennen zichtbaar maken: ~27k/mnd — scope/positionering te bevestigen",
+   "Doel en nulmeting: doel is een keuze van de bestemming; het dossier levert de nulmeting",
+   "Upgrade vs refonte (aanbesteding), uitvoerder kerstmarkten-hub, verhuur bij partners bevestigen, bezoekersprofielen bevestigen"
+  ],
+  "lineage": {
+   "platform": "Sherlock strategy_findings + url_architecture_proposals (site ce63fafe-0631-47b7-a252-1a5747a3966b)",
+   "adopted_findings": {
+    "64": "one architecture, language = composition",
+    "276": "clarification 07/09: one tree ≠ identical pages; pages/composition/copy per language and market",
+    "65": "merge wandel + plaatstemplate",
+    "66": "improve plaatspagina's",
+    "67": "add voordeur 1 weekendje-weg",
+    "68": "add voordeur 2 bijzonder-overnachten",
+    "69": "add voordeur 3 fietsknooppunten",
+    "70": "kerstmarkten hub on existing URL",
+    "71": "remove duurzaam rubriek; do-not-target verhuur",
+    "72": "linkweefsel"
+   },
+   "open_findings": {
+    "277": "Spa-Francorchamps — OPEN, conflicting evidence",
+    "278": "Luxemburgse Ardennen — OPEN, scope",
+    "279": "Belgische Ardennen — OPEN, page vs section"
+   },
+   "materialisation": "proposal 120 (adopted 2026-09-02): 3 planned pages, 4 improve, 1 merge→redirect, 1 remove→deprecated, kerstmarkt add_section"
+  }
  },
  "canonical_vs_consultant": {
   "canonical_in_dossier": [
