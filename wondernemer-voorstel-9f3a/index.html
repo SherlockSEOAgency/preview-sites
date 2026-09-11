@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voor Inge — Wondernemer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700;800&family=Open+Sans:wght@400;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sherlock-purple:#662483; --sherlock-green:#6BB869; --sherlock-white:#FFFFFF;
+  --ink:#2E2E2E; --muted:#6B6B6B; --line:#E4E4E7; --surface:#F5F5F6;
+  --green-tint:rgba(107,184,105,.12); --purple-tint:rgba(102,36,131,.08);
+  --font-head:"Raleway",system-ui,sans-serif; --font-body:"Open Sans",system-ui,sans-serif;
+  /* Wondernemer richting (alleen binnen de mockup) */
+  --w-ground:#F6F1E8; --w-ink:#26221C; --w-accent:#0E5C55; --w-accent2:#D98B4A; --w-serif:"Fraunces",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-body);line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;background:var(--sherlock-white)}
+section{padding:64px 56px}
+@media(max-width:640px){section{padding:44px 24px}}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:800;color:var(--ink);line-height:1.15;letter-spacing:-.01em;margin:0 0 .5em}
+h2{font-size:30px;margin-bottom:.35em}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 1.05em}
+.accent{color:var(--sherlock-purple)}
+.accent-green{color:var(--sherlock-green)}
+.eyebrow{font-family:var(--font-head);font-weight:800;color:var(--sherlock-purple);text-transform:uppercase;letter-spacing:.14em;font-size:12px;margin:0 0 14px}
+.lead{font-size:20px;color:#3d3d3d}
+.muted{color:var(--muted)}
+strong{font-weight:700}
+
+/* Cover */
+.cover{position:relative;background:var(--sherlock-purple);color:#fff;overflow:hidden;padding:76px 56px 84px}
+.cover::after{content:"";position:absolute;right:-80px;bottom:-80px;width:340px;height:340px;
+  background:conic-gradient(from 200deg, rgba(107,184,105,.0), rgba(107,184,105,.35), rgba(107,184,105,0));border-radius:50%;filter:blur(6px)}
+.cover .wordmark{font-family:var(--font-head);font-weight:800;letter-spacing:.02em;font-size:15px}
+.cover .wordmark span{font-weight:300;display:block;font-size:9.5px;letter-spacing:.34em;opacity:.8;margin-top:2px}
+.cover h1{color:#fff;font-size:46px;line-height:1.08;margin:34px 0 18px;max-width:660px;position:relative;z-index:2}
+.cover h1 em{font-style:normal;color:var(--sherlock-green)}
+.cover .sub{font-size:19px;max-width:560px;color:rgba(255,255,255,.9);position:relative;z-index:2}
+.cover .foryou{margin-top:30px;font-size:14px;color:rgba(255,255,255,.72);position:relative;z-index:2}
+
+/* callouts / cards */
+.callout{border-left:4px solid var(--sherlock-purple);background:var(--surface);padding:20px 24px;border-radius:0 8px 8px 0;margin:24px 0}
+.callout.green{border-left-color:var(--sherlock-green)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:26px 0}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:12px;padding:24px}
+.card.wens{background:var(--green-tint);border-color:transparent}
+.card.watis{background:var(--purple-tint);border-color:transparent}
+.card h3{margin-top:0;display:flex;align-items:center;gap:8px}
+.tag{display:inline-block;font-family:var(--font-head);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.tag.g{background:var(--sherlock-green);color:#fff}
+.tag.p{background:var(--sherlock-purple);color:#fff}
+.card ul{margin:.4em 0 0;padding-left:18px}
+.card li{margin:.3em 0}
+
+/* the gap band */
+.gapband{background:#1c1720;color:#fff;border-radius:14px;padding:30px 30px 26px;margin:28px 0 6px;text-align:center}
+.gapband .k{font-family:var(--font-head);font-weight:800;color:var(--sherlock-green);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.gapband p{color:rgba(255,255,255,.92);font-size:18px;max-width:640px;margin:12px auto 0}
+.gapband p em{color:var(--sherlock-green);font-style:normal;font-weight:700}
+
+/* stat row */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0 8px}
+@media(max-width:640px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--surface);border-radius:12px;padding:22px 20px}
+.stat .n{font-family:var(--font-head);font-weight:800;font-size:38px;color:var(--sherlock-purple);line-height:1}
+.stat .l{font-size:13.5px;color:var(--muted);margin-top:8px}
+.src{font-size:12px;color:var(--muted);font-style:italic;margin-top:6px}
+
+/* table */
+table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14.5px}
+thead{background:var(--sherlock-purple);color:#fff}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line)}
+th{font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.02em}
+td .pos{font-weight:700;color:#b4342e}
+tbody tr:nth-child(even){background:#fafafa}
+caption{caption-side:bottom;text-align:left;font-size:12px;color:var(--muted);font-style:italic;padding-top:10px}
+
+/* Wondernemer mockup */
+.mockframe{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:26px 0 10px;box-shadow:0 20px 50px -30px rgba(0,0,0,.4)}
+.mockbar{background:#eceae6;padding:9px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid #ddd8ce}
+.dot{width:10px;height:10px;border-radius:50%;background:#c9c3b6}
+.mockurl{margin-left:10px;font-size:12px;color:#8a8474;font-family:var(--font-body)}
+.mock{background:var(--w-ground);color:var(--w-ink);padding:52px 48px 56px;position:relative}
+@media(max-width:640px){.mock{padding:36px 24px}}
+.mock .wlogo{font-family:var(--w-serif);font-weight:600;font-size:19px;letter-spacing:.01em;color:var(--w-ink);display:flex;justify-content:space-between;align-items:center}
+.mock .wnav{font-family:var(--font-body);font-size:13px;color:#6c6656;display:flex;gap:20px}
+@media(max-width:640px){.mock .wnav{display:none}}
+.mock .weyebrow{font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:11.5px;color:var(--w-accent);margin:52px 0 18px}
+.mock h2.whero{font-family:var(--w-serif);font-weight:500;font-size:52px;line-height:1.05;letter-spacing:-.015em;color:var(--w-ink);margin:0 0 20px;max-width:640px}
+@media(max-width:640px){.mock h2.whero{font-size:34px}}
+.mock h2.whero em{font-style:italic;color:var(--w-accent)}
+.mock .wsub{font-family:var(--font-body);font-size:18px;color:#4b463b;max-width:500px;margin:0 0 30px}
+.mock .wcta{display:inline-block;background:var(--w-accent);color:#fff;font-family:var(--font-body);font-weight:700;font-size:15px;padding:14px 26px;border-radius:999px;text-decoration:none}
+.mock .wcta.ghost{background:transparent;color:var(--w-accent);border:1.5px solid var(--w-accent);margin-left:12px}
+.mock .wproof{margin-top:40px;font-family:var(--font-body);font-size:13px;color:#8a8474;border-top:1px solid #e0dacd;padding-top:16px}
+.mock .wblob{position:absolute;right:-60px;top:40px;width:260px;height:260px;border-radius:47% 53% 62% 38% / 42% 47% 53% 58%;
+  background:radial-gradient(circle at 35% 30%, rgba(217,139,74,.35), rgba(14,92,85,.28));filter:blur(2px);opacity:.9}
+@media(max-width:640px){.mock .wblob{display:none}}
+.mocknote{font-size:13.5px;color:var(--muted);font-style:italic}
+
+/* offer */
+.price{display:flex;align-items:baseline;gap:14px;margin:8px 0 4px}
+.price .amt{font-family:var(--font-head);font-weight:800;font-size:52px;color:var(--sherlock-purple);line-height:1}
+.price .per{font-size:15px;color:var(--muted)}
+.chain{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+.step{font-family:var(--font-head);font-weight:700;font-size:13px;padding:9px 14px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.step.inge{background:var(--green-tint);border-color:transparent;color:#2c6a2a}
+.step.arrow{border:none;background:none;color:var(--muted);padding:9px 2px}
+.incl{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:20px 0}
+@media(max-width:640px){.incl{grid-template-columns:1fr}}
+.incl div{padding-left:26px;position:relative;font-size:15px}
+.incl div::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;background:var(--sherlock-green)}
+.kmo{background:var(--surface);border-radius:12px;padding:24px;margin-top:26px;border:1px solid var(--line)}
+.kmo h3{margin-top:0;color:var(--sherlock-purple)}
+
+footer{background:var(--sherlock-purple);color:#fff;padding:34px 56px;font-size:13px}
+footer .wm{font-family:var(--font-head);font-weight:800;letter-spacing:.02em}
+footer .wm span{display:block;font-weight:300;font-size:9px;letter-spacing:.34em;opacity:.75;margin-top:2px}
+footer a{color:var(--sherlock-green);text-decoration:none}
+.disc{font-size:12px;color:var(--muted);font-style:italic;padding:22px 56px;background:#fff;border-top:1px solid var(--line)}
+@media(max-width:640px){footer,.disc{padding-left:24px;padding-right:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="wordmark">Sherlock SEO<span>Digital Growth Intelligence</span></div>
+    <h1>Dit ben jij niet.<br><em>En dat kost je de juiste ja's.</em></h1>
+    <p class="sub">Wat jij bént, en wat Google en AI van jou laten zien, zijn twee verschillende mensen geworden. Hier is het verschil — in jouw eigen cijfers — en wat Wondernemer eraan doet.</p>
+    <p class="foryou">Voor Inge Ketels · Bureau Stroom → Wondernemer · een eerste voorstel van Jef</p>
+  </section>
+
+  <!-- 1. DE KLOOF -->
+  <section>
+    <p class="eyebrow">01 · De kloof</p>
+    <h2>Je bent één van de meest herkende coaches van je generatie. <span class="accent">Zoekmachines weten dat niet.</span></h2>
+    <p class="lead">Je hebt 2500+ mensen begeleid, je stond in Jobat, Knack en Bloovi, en wie met je werkt, blijft. Dat is een merk. Maar een merk leeft op twee plekken: in de hoofden van mensen, én in de laag waar vandaag gekozen wordt — Google en AI. Op die tweede plek klopt het beeld niet meer.</p>
+
+    <div class="grid2">
+      <div class="card wens">
+        <h3><span class="tag g">Wens</span> Wie je zégt te zijn</h3>
+        <p style="margin:.4em 0 .6em;font-size:15px">In je eigen woorden op bureaustroom.be:</p>
+        <ul>
+          <li>Premium business coach in Genk</li>
+          <li>Voor ervaren ondernemers: "meer verdienen in minder tijd, met meer vervulling"</li>
+          <li>"Verkopen vanuit je essentie" · sterk leiderschap · vervuld ondernemen</li>
+          <li>20 jaar expertise, 2500+ mensen, pers in Jobat &amp; Knack</li>
+        </ul>
+      </div>
+      <div class="card watis">
+        <h3><span class="tag p">Wat is</span> Wie de machine ziet</h3>
+        <p style="margin:.4em 0 .6em;font-size:15px">Wat Google &amp; AI van bureaustroom.be teruggeven:</p>
+        <ul>
+          <li>21 zoekwoorden in totaal — <strong>geen enkel op pagina 1, 2 of 3</strong></li>
+          <li>Gevonden voor théórie-blogs: "kernkwadranten", "imposter syndroom", zelfs "healy"</li>
+          <li>Niets voor "business coach", "premium coaching" of "vervuld ondernemen"</li>
+          <li>Geschat ~23 bezoekers per maand uit organisch zoeken</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gapband">
+      <div class="k">De kloof</div>
+      <p>Jij zegt: <em>premium businesscoach die expertise omzet in een bedrijf dat loopt.</em> De machine zegt: <em>een oud blog over de kernkwadranten-theorie, ergens op pagina 6.</em> Die twee raken elkaar nergens. Wie in Genk een premium coach zoekt, komt jou niet tegen — en AI kent je niet als het antwoord.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">0</div><div class="l">van je 21 zoekwoorden staat op pagina 1–3 van Google</div></div>
+      <div class="stat"><div class="n">44–88</div><div class="l">de posities waarop je gevonden wordt — buiten beeld voor bijna iedereen</div></div>
+      <div class="stat"><div class="n">~23</div><div class="l">geschatte organische bezoekers per maand</div></div>
+    </div>
+    <p class="src">Bron: DataForSEO, domeinoverzicht bureaustroom.be, Google België (Nederlands), ranking-data bijgewerkt aug. 2026. Startpagina en over-pagina gelezen op 12/09/2026.</p>
+
+    <table>
+      <caption>Waarvoor je vandaag écht gevonden wordt (top van je 21 zoekwoorden). Geen ervan gaat over wat je verkoopt.</caption>
+      <thead><tr><th>Zoekwoord</th><th>Maandvolume</th><th>Jouw positie</th><th>Waar het over gaat</th></tr></thead>
+      <tbody>
+        <tr><td>kernkwadranten</td><td>880</td><td><span class="pos">68</span></td><td>psychologie-theorie (Ofman)</td></tr>
+        <tr><td>imposter syndroom</td><td>2.900</td><td><span class="pos">81</span></td><td>algemeen begrip</td></tr>
+        <tr><td>feedback</td><td>3.600</td><td><span class="pos">55</span></td><td>generieke term</td></tr>
+        <tr><td>kernkwadranten ofman</td><td>720</td><td><span class="pos">70</span></td><td>iemand anders' model</td></tr>
+        <tr><td>healy</td><td>480</td><td><span class="pos">46</span></td><td>een apparaat — niet jouw vak</td></tr>
+        <tr><td>loopbaanbegeleiding cheques</td><td>260</td><td><span class="pos">64</span></td><td>administratie, niet jouw premium-aanbod</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout green">
+      <p style="margin:0"><strong>Het goede nieuws zit ín dit beeld.</strong> Dit is geen tekort aan inhoud — jouw substantie is er, en ze is sterk. Het is dat die substantie nooit in de laag terecht is gekomen waar mensen vandaag kiezen. Dat is precies het soort probleem dat op te lossen valt.</p>
+    </div>
+  </section>
+
+  <!-- 2. WONDERNEMER -->
+  <section style="background:var(--surface)">
+    <p class="eyebrow">02 · Waar Wondernemer hoort te staan</p>
+    <h2>Een nieuw merk is je kans om het <span class="accent">meteen juist te zetten</span>.</h2>
+    <p class="lead">Bureau Stroom draagt vijftien jaar aan losse pagina's, oude thema's en verspreide signalen mee. Wondernemer begint schoon. Dat is het moment om te bepalen — vóór de eerste pagina live gaat — wie je bent voor de machine én voor de mens.</p>
+
+    <div class="callout">
+      <p style="margin:0;font-size:18px"><strong>Wondernemer — voor de ervaren expert die klaar is met volume najagen: maak van twintig jaar vakmanschap een high-end bedrijf dat loopt op jouw voorwaarden. Gevonden om wie je écht bent, gekozen om je diepgang, verkocht vanuit je essentie.</strong></p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Voor wie</h3>
+        <p style="margin:0;font-size:15px">Ondernemers en professionals met 10–20+ jaar expertise die goed zijn in hun vak, maar vastzitten in drukte, twijfel en prijsconcurrentie. Ze willen geen grotere agenda — ze willen betere ja's.</p>
+      </div>
+      <div class="card">
+        <h3>De job die je oplost</h3>
+        <p style="margin:0;font-size:15px">Diepe expertise omzetten in een premium, vervullend bedrijf dat gevonden én gekozen wordt — zonder hustle, zonder jezelf wegcijferen. Van "hard werken en toch onzichtbaar" naar "wonderlijk ondernemen".</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:12px">Hoe het nieuwe merk de kloof dicht</h3>
+    <p>Eén samenhangend geheel — naam, domein, positionering, pagina's en inhoud die allemaal hetzelfde zeggen. Zo wordt wat je bedoelt en wat Google en AI teruggeven eindelijk hetzelfde. Niet omdat we trucs uithalen, maar omdat het merk vanaf de eerste steen als één duidelijke entiteit gebouwd wordt: dít is Wondernemer, dít doet ze, dít is voor wie.</p>
+  </section>
+
+  <!-- 3. DESIGN RICHTING -->
+  <section>
+    <p class="eyebrow">03 · Een eerste design-richting</p>
+    <h2>Een idee om samen op door te bouwen — <span class="accent-green">jij bent de designer</span>.</h2>
+    <p class="lead">Dit is uitdrukkelijk een eerste richting, geen af ontwerp. Jij bepaalt de vormtaal — jij bent daar sterker in dan wie ook. Wat wij toevoegen is de strategie eronder: de positionering, de woorden en de structuur die jouw design laten renderen bij mens én machine. Zie dit als een startpunt voor het gesprek.</p>
+
+    <div class="mockframe">
+      <div class="mockbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mockurl">wondernemer.be</span></div>
+      <div class="mock">
+        <div class="wblob"></div>
+        <div class="wlogo">Wondernemer<span class="wnav"><span>Aanpak</span><span>Voor wie</span><span>Verhalen</span><span>Contact</span></span></div>
+        <div class="weyebrow">Businesscoaching vanuit je kern</div>
+        <h2 class="whero">Onderneem <em>wonderlijk.</em><br>Meer verdienen, minder ruis.</h2>
+        <p class="wsub">Voor de ervaren expert die van vakmanschap een bedrijf wil maken dat loopt — gevonden om wie je écht bent, gekozen om je diepgang.</p>
+        <a href="#" class="wcta">Plan je kennismaking</a><a href="#" class="wcta ghost">Ontdek de aanpak</a>
+        <div class="wproof">2500+ ondernemers begeleid · te gast in Jobat, Knack &amp; Bloovi · 20 jaar expertise</div>
+      </div>
+    </div>
+    <p class="mocknote">Warme grond, één rustig signatuur-accent, een serif met karakter voor de kop en een heldere sans voor de tekst — kalmte en autoriteit tegelijk, een echo van "stroom" maar volwassener. Kleur, beeld en typografie zijn van jou; dit toont alleen de toon. Dit kunnen we samen veel verder brengen.</p>
+  </section>
+
+  <!-- 4. HET AANBOD -->
+  <section style="background:var(--surface)">
+    <p class="eyebrow">04 · Het aanbod</p>
+    <h2>Wondernemer, van positionering tot live en gemeten.</h2>
+    <div class="price"><span class="amt">€15.000</span><span class="per">voor de volledige oplevering</span></div>
+    <p class="lead">Eén prijs voor de hele keten. Jij doet het visuele design — dat is jouw kracht. Sherlock doet al de rest, tot en met een live site die meet of ze werkt.</p>
+
+    <div class="chain">
+      <span class="step">Positionering &amp; strategie</span><span class="step arrow">→</span>
+      <span class="step">IA &amp; pagina-keuzes</span><span class="step arrow">→</span>
+      <span class="step">Content &amp; copy</span><span class="step arrow">→</span>
+      <span class="step inge">Jouw design</span><span class="step arrow">→</span>
+      <span class="step">Watson-build</span><span class="step arrow">→</span>
+      <span class="step">Live</span><span class="step arrow">→</span>
+      <span class="step">Meten</span>
+    </div>
+
+    <div class="incl">
+      <div>Merkpositionering die klopt bij mens én AI</div>
+      <div>Informatie-architectuur en pagina-plan</div>
+      <div>Alle teksten, in jouw stem geschreven</div>
+      <div>Technische bouw en livegang (Watson)</div>
+      <div>Vindbaarheid ingebouwd, niet achteraf geplakt</div>
+      <div>Meting: zien of het werkt, en bijsturen</div>
+    </div>
+
+    <div class="kmo">
+      <h3>KMO-portefeuille — een deel kan gesubsidieerd worden</h3>
+      <p style="margin:0 0 .6em">Je stuurde me zelf het stappenplan. De KMO-portefeuille vergoedt voor een kmo een deel van advies- en opleidingskosten via een geregistreerde dienstverlener. Voor het strategie- en adviesdeel van dit traject is dat een reële route om je eigen inbreng te verlagen.</p>
+      <p style="margin:0" class="muted">Eén ding eerlijk: we bevestigen eerst welk deel van de oplevering onder een erkende dienstverlenersregistratie valt vóór we een bedrag beloven. We claimen niets wat we nog niet hebben nagekeken — dat zoeken we samen uit.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wm">Sherlock SEO<span>Digital Growth Intelligence</span></div>
+    <p style="margin:14px 0 0">Word gevonden, word gekozen, boek resultaat. · <a href="https://sherlockseo.com">sherlockseo.com</a></p>
+    <p style="margin:6px 0 0;opacity:.7">Een eerste voorstel voor Inge Ketels — Wondernemer. Vertrouwelijk.</p>
+  </footer>
+  <div class="disc">
+    Cijfers: DataForSEO, domeinoverzicht &amp; ranked keywords bureaustroom.be, Google België (Nederlands), ranking-data bijgewerkt aug. 2026; startpagina en over-pagina gelezen 12/09/2026. Volledig btw-nummer, definitief domein en de KMO-portefeuille-erkenning worden vóór ondertekening bevestigd.
+  </div>
+</div>
+</body>
+</html>
