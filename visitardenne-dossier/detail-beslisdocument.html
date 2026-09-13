@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="nl"><head><meta charset="utf-8">
+<html lang="fr" data-lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>VisitArdenne — deel 2 · Beslisdocument</title>
+<title>VisitArdenne — partie 2 · Document de décision</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -169,7 +169,8 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .blk.tiles{background:var(--va-soft)}
 .blk.thin{opacity:.62}
 .blk.new{border:1.5px dashed var(--green);background:#f2faf1}
-.blk.new .bt::after{content:" NIEUW";color:var(--green);font-size:.6rem;font-weight:800;letter-spacing:.05em}
+.blk.new .bt::after{content:" NOUVEAU";color:var(--green);font-size:.6rem;font-weight:800;letter-spacing:.05em}
+html[data-lang="nl"] .blk.new .bt::after{content:" NIEUW"}
 .blk.moved{border-color:var(--purple);border-width:1.5px}
 .blk .tagr{position:absolute;top:8px;right:10px;font-size:.58rem;font-weight:800;font-family:var(--font-head);
   padding:1px 6px;border-radius:99px;letter-spacing:.03em}
@@ -227,46 +228,98 @@ footer .fbrand{font-family:var(--font-head);font-weight:800;font-size:1rem;color
 footer .fbrand .q{color:var(--green)}
 .note{font-size:.82rem;color:var(--muted)}
 .hl{background:var(--green-tint);padding:0 3px;border-radius:3px}
+/* bilingual — same pattern as assets/room.css */
+.lang-nl{display:none}
+html[data-lang="nl"] .lang-fr{display:none}
+html[data-lang="nl"] .lang-nl{display:revert}
+html[data-lang="nl"] td.lang-fr,html[data-lang="nl"] th.lang-fr{display:none}
+.langbtns{display:flex;gap:0;border:1px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden;flex:0 0 auto}
+.langbtns button{font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.05em;padding:5px 12px;border:0;background:transparent;color:#fff;cursor:pointer;opacity:.7}
+.langbtns button[aria-pressed="true"]{background:#fff;color:var(--purple);opacity:1}
 </style></head><body>
 <nav style="background:#1d1433;color:#fff;font-family:system-ui,sans-serif;font-size:13.5px;padding:10px 22px;display:flex;gap:22px;flex-wrap:wrap;align-items:center">
 <span style="font-weight:700;letter-spacing:.06em">SHERLOCK SEO</span>
-<a href="index.html" style="color:#c9e7c7;text-decoration:none">Overzicht</a>
-<a href="samenvatting.html" style="color:#c9e7c7;text-decoration:none">Samenvatting</a>
+<a href="index.html" style="color:#c9e7c7;text-decoration:none"><span class="lang-fr">Sommaire</span><span class="lang-nl">Overzicht</span></a>
+<a href="samenvatting.html" style="color:#c9e7c7;text-decoration:none"><span class="lang-fr">Synthèse</span><span class="lang-nl">Samenvatting</span></a>
 <a href="rapport.html" style="color:#c9e7c7;text-decoration:none">Rapport</a>
-<a href="e-restitutie.html" style="color:#c9e7c7;text-decoration:none">E · Routekaart</a>
-<span style="margin-left:auto;color:#9a8fc0">Detaildocument</span>
+<a href="e-restitutie.html" style="color:#c9e7c7;text-decoration:none">E · <span class="lang-fr">Feuille de route</span><span class="lang-nl">Routekaart</span></a>
+<span style="margin-left:auto;color:#9a8fc0"><span class="lang-fr">Document de détail</span><span class="lang-nl">Detaildocument</span></span>
 </nav>
 <div style="background:#662483;color:#fff;font-family:'Raleway',system-ui,sans-serif;font-size:13px;padding:8px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:9999">
-<span style="font-weight:700">Sherlock SEO · VisitArdenne — <span style="opacity:.8">Beslisdocument (livrable e)</span></span>
-<a href="index.html" style="color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #6BB869">← Dossier / Sommaire</a></div>
+<span style="font-weight:700">Sherlock SEO · VisitArdenne — <span style="opacity:.8"><span class="lang-fr">Document de décision (livrable e)</span><span class="lang-nl">Beslisdocument (livrable e)</span></span></span>
+<span style="display:flex;gap:14px;align-items:center"><div class="langbtns" role="group" aria-label="Taal"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="nl" aria-pressed="false">NL</button></div>
+<a href="index.html" style="color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #6BB869">← Dossier / Sommaire</a></span></div>
 
 <!-- =============================== COVER =============================== -->
 <header class="cover"><div class="wrap">
   <div class="brandline">Sherlock <span class="q">SEO</span></div>
   <div class="brandsub">Digital Growth Intelligence</div>
-  <span class="kicker">VisitArdenne · deel 2 · beslisdocument · opdracht 2026/855</span>
-  <h1>Eén Ardennen-bestemming, <span class="g">scherper verteld</span> — geen tweede site.</h1>
+  <span class="kicker"><span class="lang-fr">VisitArdenne · partie 2 · document de décision · mission 2026/855</span><span class="lang-nl">VisitArdenne · deel 2 · beslisdocument · opdracht 2026/855</span></span>
+  <span class="lang-fr"><h1>Une seule destination Ardenne, <span class="g">racontée plus nettement</span> — pas de second site.</h1>
+  <p class="sub">Ceci est le document de décision. L'avis figure en haut&nbsp;; en dessous, il s'approfondit couche
+     par couche jusqu'à la preuve complète. Vous pouvez vous arrêter à chaque profondeur. Chaque recommandation sépare
+     visiblement <b>ce que nous savons des données</b> de <b>ce que nous proposons en conséquence</b> et de
+     <b>ce que vous devez décider en tant qu'entreprise</b>.</p></span>
+  <span class="lang-nl"><h1>Eén Ardennen-bestemming, <span class="g">scherper verteld</span> — geen tweede site.</h1>
   <p class="sub">Dit is het beslisdocument. Bovenaan staat het advies; daaronder verdiept het zich laag
      per laag tot het volledige bewijs. U kunt op elke diepte stoppen. Elke aanbeveling scheidt
      zichtbaar <b>wat we uit de data weten</b> van <b>wat we daarom voorstellen</b> en van
-     <b>wat u als bedrijf moet beslissen</b>.</p>
+     <b>wat u als bedrijf moet beslissen</b>.</p></span>
 </div></header>
 
 <nav class="toc"><ol>
-  <li><a href="#conclusie">Conclusie</a></li>
-  <li><a href="#waarnemingen">Waarnemingen</a></li>
-  <li><a href="#ia">Canonieke IA</a></li>
-  <li><a href="#previews">Pagina-previews</a></li>
-  <li><a href="#lens">Vier beslissingen</a></li>
-  <li><a href="#prioriteiten">Prioriteiten</a></li>
-  <li><a href="#klant">Uw beslissingen</a></li>
-  <li><a href="#evidence">Volledig bewijs</a></li>
+  <li><a href="#conclusie"><span class="lang-fr">Conclusion</span><span class="lang-nl">Conclusie</span></a></li>
+  <li><a href="#waarnemingen"><span class="lang-fr">Observations</span><span class="lang-nl">Waarnemingen</span></a></li>
+  <li><a href="#ia"><span class="lang-fr">IA canonique</span><span class="lang-nl">Canonieke IA</span></a></li>
+  <li><a href="#previews"><span class="lang-fr">Aperçus de pages</span><span class="lang-nl">Pagina-previews</span></a></li>
+  <li><a href="#lens"><span class="lang-fr">Quatre décisions</span><span class="lang-nl">Vier beslissingen</span></a></li>
+  <li><a href="#prioriteiten"><span class="lang-fr">Priorités</span><span class="lang-nl">Prioriteiten</span></a></li>
+  <li><a href="#klant"><span class="lang-fr">Vos décisions</span><span class="lang-nl">Uw beslissingen</span></a></li>
+  <li><a href="#evidence"><span class="lang-fr">Preuve complète</span><span class="lang-nl">Volledig bewijs</span></a></li>
 </ol></nav>
 
 <!-- =============================== 1 · CONCLUSIE =============================== -->
 <section id="conclusie"><div class="wrap">
-  <div class="eyebrow">01 — De conclusie</div>
-  <h2>Behoud de bestemming. Herschik de <span class="accent">compositie</span>.</h2>
+  <div class="eyebrow"><span class="lang-fr">01 — La conclusion</span><span class="lang-nl">01 — De conclusie</span></div>
+  <span class="lang-fr"><h2>Gardez la destination. Réorganisez la <span class="accent">composition</span>.</h2>
+
+  <div class="verdict">
+    <h3>L'avis en un paragraphe</h3>
+    <p style="margin-bottom:0">Les 27 résultats de recherche live montrent que le public néerlandophone et le public francophone
+       cherchent pour l'essentiel <b>les mêmes quatre besoins</b> — inspiration, lieu, activité, planification —
+       et que VisitArdenne les gagne déjà en grande partie. D'où l'avis&nbsp;: <strong>une seule architecture
+       d'information canonique</strong>, où <strong>la langue est une composition (autre accent, titres,
+       sections, liens internes)</strong> et non un second arbre, et où les différences français-néerlandais
+       se résolvent par <strong>entity resolution</strong> (nommage, schema, contexte) plutôt que par
+       une structure NL séparée. Sur la preuve actuelle, il n'y a <strong>aucune raison pour un arbre
+       NL séparé</strong>. Le gain est dans le clic, la présentation et le parcours interne — pas dans «&nbsp;ranker plus haut&nbsp;».</p>
+  </div>
+
+  <div class="decisions">
+    <div class="dcard"><div class="n">Décision 1</div>
+      <h4>Un seul arbre, langue = composition</h4>
+      <p>Les quatre piliers actuels restent&nbsp;; pas de site NL séparé. La langue et le marché déterminent la composition&nbsp;: quelles pages une langue nécessite (les quatre portes d'entrée NL et «&nbsp;Belgische Ardennen&nbsp;» n'ont pas d'équivalent FR), quels blocs et quelle mise en page, quelle copy par marché. Un seul arbre ne signifie pas des pages identiques.</p></div>
+    <div class="dcard"><div class="n">Décision 2</div>
+      <h4>Combler l'écart de clic</h4>
+      <p>Sur les pages lieux (Durbuy, Grotten van Han), VisitArdenne est visible mais le clic s'échappe. C'est là que se trouve le plus grand gain.</p></div>
+    <div class="dcard"><div class="n">Décision 3</div>
+      <h4>Dédoublonner ce qui se concurrence</h4>
+      <p>Deux pages randonnée et deux «&nbsp;domiciles&nbsp;» pour les lieux se combattent. Fusionnez en un seul signal fort.</p></div>
+    <div class="dcard g"><div class="n">Décision 4</div>
+      <h4>Choisissez vos marchés consciemment</h4>
+      <p>Sur les requêtes de location et de réservation, une destination ne gagne pas — là, vous renvoyez. «&nbsp;Belgische Ardennen&nbsp;» est l'accès NL.</p></div>
+  </div>
+
+  <div class="conf-legend">
+    <span class="lbl">Dans tout le document, vous lisez trois signaux séparément&nbsp;:</span>
+    <span class="conf data">Données — ce que nous savons</span>
+    <span class="conf voorstel">Proposition — ce que nous proposons en conséquence</span>
+    <span class="conf klant">Décision client — ce que vous décidez</span>
+  </div>
+  <p class="note">Une observation forte n'est pas encore une décision forte. La preuve (volume, SERP, Search Console)
+     et la conclusion (la décision de page) restent partout séparées, afin qu'une nouvelle mesure puisse corriger une
+     conclusion antérieure — c'est exactement ce qui s'est passé entre la partie 1 et maintenant (voir §8).</p></span>
+  <span class="lang-nl"><h2>Behoud de bestemming. Herschik de <span class="accent">compositie</span>.</h2>
 
   <div class="verdict">
     <h3>Het advies in één alinea</h3>
@@ -303,13 +356,72 @@ footer .fbrand .q{color:var(--green)}
   </div>
   <p class="note">Een sterke waarneming is nog geen sterke beslissing. Bewijs (volume, SERP, Search Console)
      en conclusie (de paginabeslissing) blijven overal gescheiden, zodat een nieuwe meting een eerdere
-     conclusie kan bijsturen — dat is precies wat tussen deel-1 en nu gebeurd is (zie §8).</p>
+     conclusie kan bijsturen — dat is precies wat tussen deel-1 en nu gebeurd is (zie §8).</p></span>
 </div></section>
 
 <!-- =============================== 2 · WAARNEMINGEN =============================== -->
 <section id="waarnemingen"><div class="wrap">
-  <div class="eyebrow">02 — De waarnemingen die alles sturen</div>
-  <h2>Zeven dingen die de <span class="accent">zoekresultaten</span> laten zien</h2>
+  <div class="eyebrow"><span class="lang-fr">02 — Les observations qui pilotent tout</span><span class="lang-nl">02 — De waarnemingen die alles sturen</span></div>
+  <span class="lang-fr"><h2>Sept choses que montrent les <span class="accent">résultats de recherche</span></h2>
+  <p class="lead">Chaque point ci-dessous est une <b>observation</b>, séparée de l'interprétation qui la suit.
+     L'interprétation peut changer si une meilleure preuve arrive&nbsp;; l'observation est fixée au jour de la mesure.</p>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">1 · VisitArdenne gagne l'inspiration, l'activité et le lieu — et est absente de chaque requête de réservation</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v">VA est #1 sur <code>wandelen ardennen</code>, #1 sur <code>kajakken ardennen</code>, #1 sur <code>dinant</code>, #3–4 sur le terme principal <code>ardennen</code>, #2 sur <code>randonnée ardennes</code>. Sur <code>vakantiehuis</code>, <code>vakantiepark</code> et <code>weekendje weg</code>, VA n'apparaît <b>nulle part</b>.</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">Le rôle d'un DMO de destination est juste&nbsp;: gagner sur l'orientation/l'activité/le lieu, pas sur l'inventaire de location. Cela détermine où nous investissons (composition) et où nous renvoyons délibérément.</div></div>
+    </div>
+  </div>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">2 · Les pages lieux à fortes impressions portent l'écart de clic</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v">Durbuy&nbsp;: 110.655 impressions / <b>0,90% CTR</b> / position 8,4. Grotten van Han&nbsp;: 86.763 impr / <b>0,56%</b>. Face aux listicles&nbsp;: kayak 11,2%, listicle randonnée 14–29%, activités 13,6%.</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">La visibilité est là&nbsp;; le clic s'échappe. Mais (§7) une partie de cet écart est la SERP elle-même — knowledge graph, top-sights, vidéo, PAA prennent de la place. La part gagnable est la composition&nbsp;: répondre aux PAA, relier la locomotive (Adventure Valley), titre/snippet. Pas&nbsp;: «&nbsp;réécrire parce que le CTR est bas&nbsp;».</div></div>
+    </div>
+  </div>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">3 · Deux pages VisitArdenne se disputent «&nbsp;wandelen&nbsp;»</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v">Sur <code>wandelen ardennen</code>, le listicle top-10 est <b>#1</b> et un pilier randonnée séparé est <b>#28</b> — tous deux visitardenne.com.</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">Cannibalisation classique&nbsp;: le signal et la force de lien se fragmentent. L'intervention est la fusion (merge) — mais pas à l'aveugle&nbsp;: l'URL gagnante reste, le pilier y est absorbé canoniquement.</div></div>
+    </div>
+  </div>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">4 · Les lieux ont deux «&nbsp;domiciles&nbsp;» sur le site</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v">Les pages lieux vivent sous <span class="mono">/hoogtepunten/…</span> et sous <span class="mono">/top-bestemmingen/steden-en-dorpen/…</span>&nbsp;; La Roche apparaît sous deux variantes de slug (<code>la-roche-ardenne</code> / <code>la-roche-en-ardenne</code>).</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">La même classe d'entité sur deux chemins dilue le signal. Un seul template de lieu + URL cohérente. (Crawl complet recommandé avant exécution — voir §7 décisions client.)</div></div>
+    </div>
+  </div>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">5 · «&nbsp;Tourisme durable&nbsp;» a un marché de recherche vide</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v"><code>duurzaam toerisme ardennen</code> a donné une <b>SERP vide en Belgique et aux Pays-Bas</b>. La demande sous-jacente (~130k/mois) passe par les produits&nbsp;: boshut, boomhut, brasserie, nœuds de randonnée.</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">Portez la durabilité <b>en transversal</b> sur les pages produits, pas comme rubrique de navigation. SERP vide = preuve que ce n'est pas une entrée de recherche — pas que le thème doit quitter le site.</div></div>
+    </div>
+  </div>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">6 · Les pages lieux portent l'écart de CTR — les listicles sont le moteur</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v">La famille <code>/ontdek-onze-top-10s/</code> domine le volume de clics de VA avec 6–29% de CTR&nbsp;; les pages attractions sont sous 1%. Même site, comportement opposé.</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">Le template gagnant existe déjà sur le site. Le travail de composition = porter le modèle listicle (curation, liens internes, schema, réponses PAA) vers les pages lieux.</div></div>
+    </div>
+  </div>
+
+  <div class="obs">
+    <div class="top"><span class="conf data">Données</span><span class="t">7 · «&nbsp;Ardennes&nbsp;» (FR) est confondu, côté entité, avec le département français 08</span></div>
+    <div class="b">
+      <div class="row"><div class="k">Observation</div><div class="v">SERP <code>ardennes</code> (fr)&nbsp;: Wikipedia «&nbsp;Ardennes (département)&nbsp;» #1, cd08.fr (conseil départemental) #10–11, PAA «&nbsp;code postal / région / numéro&nbsp;». En NL, sur les termes généraux, apparaissent les <b>Vlaamse Ardennen</b> (autre territoire).</div></div>
+      <div class="row"><div class="k">Interprétation</div><div class="v">Google mélange deux sens. C'est un <b>problème de résolution d'entité</b>, pas une raison pour un second arbre&nbsp;: résolvez-le par le nommage («&nbsp;Ardenne belge / transfrontalière&nbsp;»), le schema et les relations internes.</div></div>
+    </div>
+  </div></span>
+  <span class="lang-nl"><h2>Zeven dingen die de <span class="accent">zoekresultaten</span> laten zien</h2>
   <p class="lead">Elk hieronder is een <b>waarneming</b>, gescheiden van de interpretatie die eronder staat.
      De interpretatie kan veranderen als er beter bewijs komt; de waarneming staat vast op de dag van meten.</p>
 
@@ -367,13 +479,76 @@ footer .fbrand .q{color:var(--green)}
       <div class="row"><div class="k">Waarneming</div><div class="v">SERP <code>ardennes</code> (fr): Wikipedia "Ardennes (département)" #1, cd08.fr (conseil départemental) #10–11, PAA "code postal / région / numéro". In het NL duikt bij algemene termen de <b>Vlaamse Ardennen</b> (ander gebied) op.</div></div>
       <div class="row"><div class="k">Interpretatie</div><div class="v">Google mengt twee betekenissen. Dat is een <b>entity-resolutieprobleem</b>, geen reden voor een tweede boom: los het op met naamgeving ("Ardenne belge / transfrontalière"), schema en interne relaties.</div></div>
     </div>
-  </div>
+  </div></span>
 </div></section>
 
 <!-- =============================== 3 · CANONIEKE IA =============================== -->
 <section id="ia"><div class="wrap">
-  <div class="eyebrow">03 — De voorgestelde canonieke informatiearchitectuur</div>
-  <h2>Eén boom, elke knoop met een <span class="accent">beslissing</span> en een zekerheid</h2>
+  <div class="eyebrow"><span class="lang-fr">03 — L'architecture d'information canonique proposée</span><span class="lang-nl">03 — De voorgestelde canonieke informatiearchitectuur</span></div>
+  <span class="lang-fr"><h2>Un seul arbre, chaque nœud avec une <span class="accent">décision</span> et une certitude</h2>
+  <p class="lead">La plupart des décisions sont <b>keep</b> ou <b>improve</b>&nbsp;: la structure est en grande partie juste,
+     le gain est dans la composition, le dédoublonnage et les liens internes — pas dans la reconstruction. Chaque ligne porte une
+     décision de page, une raison d'une ligne et un niveau de certitude.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Décision</th><th>Sur quoi</th><th>Raison (court)</th><th>Preuve clé</th><th>Certitude</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip c-keep">keep</span></td><td>4 piliers de niveau 1 · listicles top-10 · hub kayak/canoë · routes touristiques</td><td>Correspondent proprement aux quatre vrais clusters d'intention&nbsp;; les listicles performent excellemment</td><td>kayak #1 (11,2%) · listicle randonnée #1 (14–29%) · activités 13,6%</td><td><span class="conf voorstel">Proposition</span></td></tr>
+      <tr class="win"><td><span class="chip c-improve">improve</span></td><td>Pages lieux (Dinant, Durbuy, Grotten van Han, La Roche) · hub régional · vélo · accessibilité</td><td>Visibles mais faible clic → titre/snippet, schema, réponses PAA, liens internes</td><td>Durbuy 0,90% CTR · Grotten van Han 0,56% · hub battu par l'éditeur ardennen.nl</td><td><span class="conf voorstel">Proposition</span></td></tr>
+      <tr><td><span class="chip c-merge">merge</span></td><td>(a) deux pages randonnée → un seul hub &nbsp; (b) deux «&nbsp;domiciles&nbsp;» de lieux → un seul modèle de lieu</td><td>Concurrence interne / fragmentation du signal et de la force de lien</td><td>wandelen&nbsp;: VA #1 et #28 · lieux sur deux chemins + variantes de slug</td><td><span class="conf voorstel">Proposition</span></td></tr>
+      <tr><td><span class="chip c-add">add</span></td><td>(a) <b>Belgische Ardennen</b> comme entité &nbsp; (b) <b>origineel overnachten</b> comme page d'inspiration</td><td>(a) SERP propre + PAA propre, mot d'accès NL &nbsp; (b) seule SERP «&nbsp;séjour&nbsp;» gagnable</td><td>belgische ardennen VA #4, 20× NL&gt;VL · bijzonder overnachten VA #18</td><td><span class="conf klant">Client (a)</span></td></tr>
+      <tr><td><span class="chip c-remove">remove</span></td><td>«&nbsp;Tourisme durable&nbsp;» comme rubrique de navigation</td><td>Pas d'entrée de recherche&nbsp;; porter en transversal sur les pages produits</td><td>SERP vide en BE et NL</td><td><span class="conf voorstel">Proposition</span></td></tr>
+      <tr><td><span class="chip c-dnt">do not target</span></td><td><code>vakantiehuis</code> · <code>vakantiepark</code> · <code>weekendje weg</code></td><td>Terrain 100% OTA/location&nbsp;; une destination ne gagne pas ici avec une page de réservation</td><td>top-10 = Belvilla, Center Parcs, Weekendesk… VA absente</td><td><span class="conf data">Données + Proposition</span></td></tr>
+      <tr><td><span class="chip c-support">support</span></td><td>Durabilité (transversal) · l'étape de réservation (partenaires) · longue traîne séjour FR</td><td>Ajouter de la valeur sans page d'atterrissage concurrente</td><td>Demande ATD via les produits · séjour = redirection partenaire</td><td><span class="conf voorstel">Proposition</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card good"><p style="margin:0"><b>Divergence linguistique&nbsp;: aucune, structurellement.</b> Un seul arbre sert les deux marchés.
+     Le seul endroit où NL et FR diffèrent réellement (<code>ardennes</code> FR = département 08 vs région&nbsp;;
+     <code>Vlaamse Ardennen</code> en NL) relève de l'<b>entity resolution</b> — à résoudre par le nommage, le schema,
+     le contexte et les relations internes, pas par un second arbre.</p></div>
+
+  <details class="deep">
+    <summary>L'arbre complet, avec décision de page par nœud</summary>
+    <div class="dc">
+      <div class="tree">
+        <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Ardennen (hub régional / homepage)</b> <span class="u">improve&nbsp;: éditorial ≥ ardennen.nl · FR&nbsp;: désambiguïser le département 08</span></div>
+        <div class="kids">
+          <div class="node b-improve"><span class="chip c-improve">improve</span> <b>Belevenissen in de Ardennen</b> <span class="u">inspiration/blog · porte la durabilité en transversal</span></div>
+          <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Het beste van de Ardennen</b> <span class="u">lieu + activité</span></div>
+          <div class="kids">
+            <div class="node b-merge"><span class="chip c-merge">merge</span> <b>Modèle de lieu</b> <span class="u">unifier /hoogtepunten/ + /steden-en-dorpen/ → un seul template + URL cohérente</span></div>
+            <div class="kids">
+              <div class="node b-improve"><span class="chip c-improve">improve</span> Dinant <span class="u">2,77% / pos 4,8 · live #1 · répondre aux PAA</span></div>
+              <div class="node b-improve"><span class="chip c-improve">improve</span> Durbuy <span class="u">0,90% / pos 8,4 · plus grand écart de CTR · relier Adventure Valley</span></div>
+              <div class="node b-improve"><span class="chip c-improve">improve</span> Grotten van Han · La Roche · Watervallen Coo · Bouillon <span class="u">même template + schema</span></div>
+            </div>
+            <div class="node b-keep"><span class="chip c-keep">keep</span> <b>Ontdek onze top-10's</b> <span class="u">le moteur&nbsp;: CTR 6–29% · improve = saison + schema + liens internes</span></div>
+            <div class="kids">
+              <div class="node b-keep"><span class="chip c-keep">keep</span> Kayak/canoë <span class="u">#1 · 11,2% — modèle exemplaire</span></div>
+              <div class="node b-merge"><span class="chip c-merge">merge</span> Randonnée <span class="u">listicle #1 + pilier #28 → un seul hub randonnée</span></div>
+              <div class="node b-improve"><span class="chip c-improve">improve</span> Vélo/VTT <span class="u">VTT fort · relever le hub vélo #7</span></div>
+              <div class="node b-add"><span class="chip c-add">add</span> Origineel overnachten <span class="u">#18 → top-5 · seule SERP séjour gagnable</span></div>
+              <div class="node b-keep"><span class="chip c-keep">keep</span> Baignade · châteaux · brasseries · cabanes dans les arbres · wellness <span class="u">la durabilité atterrit ici</span></div>
+            </div>
+            <div class="node b-add"><span class="chip c-add">add</span> <b>Belgische Ardennen</b> <span class="u">entrée NL · SERP+PAA propres · <b>décision client&nbsp;:</b> page vs entité on-page</span></div>
+          </div>
+          <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Toeristische routes</b> <span class="u">inspiration de niche · liens internes vers lieu/activité</span></div>
+          <div class="node lvl1 b-keep"><span class="chip c-keep">keep</span> <b>Praktische informatie</b> <span class="u">planification + service</span></div>
+          <div class="kids">
+            <div class="node b-keep"><span class="chip c-keep">keep</span> Agenda · Carte (7–22% CTR) · Météo · Brochures · Voyages de groupe</div>
+            <div class="node b-improve"><span class="chip c-improve">improve</span> Ardennen kennen geen grenzen (accessibilité) <span class="u">Access-i explicite · désambiguïser Vlaamse Ardennen</span></div>
+            <div class="node b-remove"><span class="chip c-remove">remove</span> Tourisme durable (comme rubrique) <span class="u">SERP vide → porter en transversal</span></div>
+          </div>
+          <div class="node b-dnt"><span class="chip c-dnt">do not target</span> <b>Requêtes séjour/réservation</b> <span class="u">terrain OTA · support via inspiration + partenaire</span></div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:12px"><b>Indépendant de la structure.</b> Ces décisions projettent aussi bien sur
+        l'arbre actuel à 4 piliers (upgrade) que sur l'arbre proposé à 6 rubriques (refonte, Yuri &amp; Neil sept. 2025).
+        Lequel des deux, c'est votre décision (§7) — les décisions de page n'en changent pas.</p>
+    </div>
+  </details></span>
+  <span class="lang-nl"><h2>Eén boom, elke knoop met een <span class="accent">beslissing</span> en een zekerheid</h2>
   <p class="lead">De meeste beslissingen zijn <b>keep</b> of <b>improve</b>: de structuur klopt grotendeels,
      de winst zit in compositie, ontdubbeling en interne links — niet in herbouw. Elke rij draagt een
      paginabeslissing, een reden van één regel, en een zekerheidsniveau.</p>
@@ -435,13 +610,141 @@ footer .fbrand .q{color:var(--green)}
         huidige 4-pijler-boom (upgrade) als op de voorgestelde 6-rubriek-boom (refonte, Yuri &amp; Neil sept. 2025).
         Welke van beide het wordt, is uw beslissing (§7) — de paginabeslissingen veranderen er niet door.</p>
     </div>
-  </details>
+  </details></span>
 </div></section>
 
 <!-- =============================== 4 · PAGINA-PREVIEWS =============================== -->
 <section id="previews"><div class="wrap">
-  <div class="eyebrow">04 — Visuele pagina-previews · vóór &rarr; ná</div>
-  <h2>Wat "compositie herschikken" concreet <span class="accent">betekent</span></h2>
+  <div class="eyebrow"><span class="lang-fr">04 — Aperçus visuels de pages · avant &rarr; après</span><span class="lang-nl">04 — Visuele pagina-previews · vóór &rarr; ná</span></div>
+  <span class="lang-fr"><h2>Ce que «&nbsp;réorganiser la composition&nbsp;» <span class="accent">signifie</span> concrètement</h2>
+  <p class="lead">Trois vraies pages VisitArdenne, à gauche telles qu'elles sont construites <b>aujourd'hui</b> (observées sur
+     le site live, 25/08/2026), à droite l'ordre de blocs <b>proposé</b>. Les annotations numérotées expliquent
+     <b>pourquoi</b> chaque bloc se déplace, apparaît ou est affûté — avec la preuve. La structure
+     ne change pas&nbsp;; l'ordre et le contenu des blocs, si.</p>
+  <div class="conf-legend">
+    <span class="lbl">Dans les aperçus&nbsp;:</span>
+    <span class="miniflag">bloc</span> <span class="note">= bloc de contenu sur la page ·</span>
+    <span class="conf data" style="background:var(--green-tint);color:#2c7a3c">nouveau / revalorisé</span>
+    <span class="conf voorstel">déplacé</span>
+  </div>
+
+  <!-- ===== MOCKUP A · DESTINATION HUB (FR) ===== -->
+  <div class="mockwrap">
+    <div class="mockhead"><span class="chip c-keep">keep</span><span class="chip c-improve">improve</span>
+      <span class="t">A · Hub de destination — «&nbsp;Hoogtepunten&nbsp;»</span>
+      <span class="u">/nl/het-beste-van-de-ardennen/hoogtepunten</span></div>
+    <p class="note" style="margin:2px 0 0">Aujourd'hui&nbsp;: 334 mots, seulement un H1 et une grille alphabétique de ~22 lieux —
+       pas d'orientation, pas de carte, pas de renvoi vers les hubs d'activités. L'éditeur <b>ardennen.nl</b> se place
+       avec plus de contenu au-dessus de VA (#2 vs #3–4). Un éditeur se rattrape avec du contenu.</p>
+    <div class="ba">
+      <div class="col before"><div class="lab">Avant — live aujourd'hui <span class="meta">334 mots · 0× H2</span></div>
+        <div class="page">
+          <div class="blk hero"><div class="bt">H1 · «&nbsp;Hoogtepunten&nbsp;»</div><div class="bd">pas de texte d'intro, pas de situation</div></div>
+          <div class="blk tiles"><div class="bt">Grille de tuiles · ~22 lieux</div><div class="bd">Spa · Han · Dinant · Durbuy · La Roche · Bouillon · Coo · Orval · Sedan · Vianden … alphabétique, non ordonné</div></div>
+          <div class="blk thin"><div class="bt">— pas de carte / situation —</div></div>
+          <div class="blk thin"><div class="bt">— pas de «&nbsp;que sont les Ardennes (belges)&nbsp;» —</div></div>
+          <div class="blk thin"><div class="bt">— pas de liens vers randonnée / kayak / vélo —</div></div>
+          <div class="blk"><div class="bt">Utilitaires en pied</div><div class="bd">Comment s'y rendre · Agenda · FAQ · Météo</div></div>
+        </div>
+      </div>
+      <div class="col after"><div class="lab">Après — proposition <span class="meta">hub d'orientation</span></div>
+        <div class="page">
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">Hero + intro d'entité</div><div class="bd">«&nbsp;Que sont les Ardennes&nbsp;?&nbsp;» — profondeur éditoriale ≥ ardennen.nl · <b>NL&nbsp;:</b> «&nbsp;Belgische Ardennen&nbsp;» en avant · <b>FR&nbsp;:</b> délimitation massif vs département 08</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Carte / situation</div><div class="bd">où c'est, 3 pays, accessibilité depuis NL</div></div>
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">Top lieux (curatés)</div><div class="bd">Dinant · Durbuy · La Roche · Han — pas de liste alphabétique, mais les locomotives en avant → template de lieu</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Top activités</div><div class="bd">liens internes vers les hubs <b>gagnants</b>&nbsp;: randonnée · kayak · vélo</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Saison / quand visiter</div><div class="bd">relie aux pages fortes «&nbsp;Carte / Météo &amp; saisons&nbsp;»</div></div>
+          <div class="blk"><div class="bt">Texte SEO approfondi + CTA</div><div class="bd">«&nbsp;Choisis ton lieu&nbsp;» ou «&nbsp;Choisis ton activité&nbsp;» — <i>pas</i> de CTA de réservation au niveau du hub</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="annot">
+      <div class="a"><div class="num">1</div><div class="why"><b>L'intro d'entité remplace le H1 nu.</b> Le hub concurrence un portail de contenu (ardennen.nl #2). Google récompense ici le contenu d'orientation, pas un index de tuiles.<span class="tie">Preuve&nbsp;: SERP <code>ardennen</code> nl — ardennen.nl #2 au-dessus de VA #3&nbsp;; page actuelle = 334 mots.</span></div></div>
+      <div class="a addn"><div class="num">2</div><div class="why"><b>Ajouter une carte.</b> «&nbsp;Où sont les Ardennes belges&nbsp;» est la première question du visiteur NL qui doit situer le territoire.<span class="tie">Preuve&nbsp;: PAA sur <code>belgische ardennen</code> — «&nbsp;Wat zijn de Belgische Ardennen?&nbsp;», «&nbsp;leukste dorpen&nbsp;».</span></div></div>
+      <div class="a"><div class="num">3</div><div class="why"><b>Top lieux curatés au lieu d'une liste alphabétique.</b> Les locomotives (Dinant, Durbuy) en tête dirigent le visiteur vers les pages qui ont besoin de force de lien.<span class="tie">Lien&nbsp;: le modèle de maillage interne — le hub distribue vers lieu + activité.</span></div></div>
+      <div class="a addn"><div class="num">4</div><div class="why"><b>Liens vers les hubs d'activités.</b> Randonnée/kayak/vélo sont les pages les plus fortes de VA (#1–#3)&nbsp;; le hub ne leur transmet aujourd'hui aucune force de lien.<span class="tie">Preuve&nbsp;: kayak #1/11,2% · listicle randonnée #1 — déconnectés du hub aujourd'hui.</span></div></div>
+    </div>
+  </div>
+
+  <!-- ===== MOCKUP B · PLACE PAGE DURBUY (FR) ===== -->
+  <div class="mockwrap">
+    <div class="mockhead"><span class="chip c-improve">improve</span>
+      <span class="t">B · Page lieu — Durbuy</span>
+      <span class="u">/nl/het-beste-van-de-ardennen/hoogtepunten/durbuy</span></div>
+    <p class="note" style="margin:2px 0 0">Le plus grand écart de clic du site&nbsp;: 110.655 impressions, <b>0,90% CTR</b>. Aujourd'hui&nbsp;: 864 mots,
+       un seul H2 («&nbsp;Durbuy: heerlijk dwalen&nbsp;»), sous-tuiles + galerie photo + contact. <b>Adventure Valley n'est pas lié</b> —
+       alors que c'est la locomotive (#2 organique et dans les top-sights de Google). La page ne répond à aucune des quatre questions PAA.</p>
+    <div class="ba">
+      <div class="col before"><div class="lab">Avant — live aujourd'hui <span class="meta">864 mots · 1× H2</span></div>
+        <div class="page">
+          <div class="blk hero"><div class="bt">Hero panorama + H1 «&nbsp;Durbuy&nbsp;»</div></div>
+          <div class="blk"><div class="bt">Intro «&nbsp;Durbuy: heerlijk dwalen&nbsp;»</div><div class="bd">court texte d'ambiance</div></div>
+          <div class="blk tiles"><div class="bt">Sous-tuiles</div><div class="bd">Musée · Campings · Dormir · Restaurants</div></div>
+          <div class="blk"><div class="bt">Galerie photo</div><div class="bd">topiaires · chocolat · labyrinthe · mégalithes</div></div>
+          <div class="blk"><div class="bt">«&nbsp;Plus d'informations&nbsp;» — contact</div><div class="bd">adresse · e-mail de l'office du tourisme</div></div>
+          <div class="blk"><div class="bt">À proximité</div><div class="bd">Rocroi · Liège · Grotten van Han</div></div>
+          <div class="blk thin"><div class="bt">— Adventure Valley non lié —</div></div>
+          <div class="blk thin"><div class="bt">— PAA sans réponse (marché · plus petite ville · que faire) —</div></div>
+        </div>
+      </div>
+      <div class="col after"><div class="lab">Après — proposition <span class="meta">template de lieu</span></div>
+        <div class="page">
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">Hero + intro d'une phrase pour le snippet</div><div class="bd">«&nbsp;Durbuy — la plus petite ville du monde, dans les Ardennes belges&nbsp;» → remplit le snippet / la question de connaissance</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Top 5 des sites à voir</div><div class="bd"><b>Adventure Valley en tête</b> · vieille ville · Parc des Topiaires · labyrinthe · panorama</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Que faire ce week-end / à proximité</div><div class="bd">kayak Ourthe · randonnée · Adventure Valley — répond à «&nbsp;que faire&nbsp;»</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Pratique — répond aux PAA</div><div class="bd">jour de marché · «&nbsp;plus petite ville du monde&nbsp;?&nbsp;» · parking → espace PAA/snippet</div></div>
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">Dormir (inspiration → partenaire)</div><div class="bd">renvoyer, ne pas réserver soi-même</div></div>
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">À proximité + retour au hub</div><div class="bd">La Roche · Han · hub régional · Belgische Ardennen (fil d'Ariane)</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="annot">
+      <div class="a addn"><div class="num">1</div><div class="why"><b>Top 5 des sites avec Adventure Valley.</b> Adventure Valley est #2 organique et figure dans les top-sights de Google pour <code>durbuy</code> — la page ne le lie pas aujourd'hui. C'est la correspondance d'intention la plus directe.<span class="tie">Preuve&nbsp;: SERP live <code>durbuy</code> — top_sights + adventure-valley.be #2&nbsp;; la page VA n'a pas de lien.</span></div></div>
+      <div class="a addn"><div class="num">2</div><div class="why"><b>Bloc pratique qui répond aux PAA.</b> «&nbsp;Quand est le marché&nbsp;?&nbsp;», «&nbsp;Durbuy est-elle la plus petite ville du monde&nbsp;?&nbsp;», «&nbsp;Que faire ce week-end&nbsp;?&nbsp;» — répondre sur la page gagne l'espace PAA/snippet.<span class="tie">Preuve&nbsp;: 4 questions PAA live sur la SERP&nbsp;; la page en répond 0.</span></div></div>
+      <div class="a"><div class="num">3</div><div class="why"><b>Honnête sur le plafond (garde-fou §7).</b> La SERP est lourdement occupée (knowledge graph, top-sights, vidéo, images, PAA). Une partie des 0,90% est structurelle, pas compositionnelle. Objectif = la part gagnable (features + snippet), pas «&nbsp;position 1&nbsp;».<span class="tie">Plan de mesure&nbsp;: CTR sur la requête <code>durbuy</code> + apparition en PAA — pas la position.</span></div></div>
+      <div class="a"><div class="num">4</div><div class="why"><b>Même template que tous les lieux.</b> Dinant, Han, La Roche reçoivent le même ordre de blocs → schema cohérent (TouristDestination/Attraction) et liens internes.<span class="tie">Lien&nbsp;: la décision «&nbsp;merge&nbsp;» — un seul modèle de lieu au lieu de deux domiciles.</span></div></div>
+    </div>
+  </div>
+
+  <!-- ===== MOCKUP C · ACTIVITY PAGE WANDELEN (FR) ===== -->
+  <div class="mockwrap">
+    <div class="mockhead"><span class="chip c-merge">merge</span><span class="chip c-improve">improve</span>
+      <span class="t">C · Page activité — Randonnée</span>
+      <span class="u">/nl/…/ontdek-onze-top-10s/mooiste-wandelingen-ardennen</span></div>
+    <p class="note" style="margin:2px 0 0">Le listicle gagne (#1, 14–29% CTR) — mais un pilier randonnée séparé
+       (<span class="mono">/het-beste-van-de-ardennen/wandelingen</span>) est #28 sur le même terme et fragmente le signal.
+       Fusionnez en un seul hub randonnée canonique sur l'URL gagnante&nbsp;; approfondissez avec carte/GPX et réponses PAA.</p>
+    <div class="ba">
+      <div class="col before"><div class="lab">Avant — live aujourd'hui <span class="meta">2 pages concurrentes</span></div>
+        <div class="page">
+          <div class="blk hero"><div class="bt">Listicle · H1 «&nbsp;De mooiste wandelingen&nbsp;»</div><div class="bd">#1 · 14–29% CTR — le gagnant</div></div>
+          <div class="blk"><div class="bt">Intro (363 mots)</div></div>
+          <div class="blk tiles"><div class="bt">Tuiles de sous-catégories</div><div class="bd">Plusieurs jours · Excursions d'un jour · &lt;10 km · Accessible</div></div>
+          <div class="blk"><div class="bt">Lien croisé vacances à la ferme</div></div>
+          <div class="blk" style="border-color:var(--d-remove);border-width:1.5px"><div class="tagr rm">concurrence</div><div class="bt">Pilier randonnée séparé</div><div class="bd"><span class="mono">/…/wandelingen</span> · #28 · même requête</div></div>
+          <div class="blk thin"><div class="bt">— pas de carte / GPX —</div></div>
+          <div class="blk thin"><div class="bt">— PAA sans réponse —</div></div>
+        </div>
+      </div>
+      <div class="col after"><div class="lab">Après — proposition <span class="meta">un seul hub randonnée</span></div>
+        <div class="page">
+          <div class="blk"><div class="bt">Hero + intro (lentille slow tourism)</div><div class="bd">colle à la mission&nbsp;: «&nbsp;itinéraires sous-estimés&nbsp;»</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Top itinéraires avec carte / GPX</div><div class="bd">itinéraires concrets, téléchargeables</div></div>
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">Par profil</div><div class="bd">famille · chien · plusieurs jours · &lt;10 km · accessible</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Par territoire</div><div class="bd">La Roche · Semois · Saint-Hubert → relie aux lieux</div></div>
+          <div class="blk new"><div class="tagr up">nouveau</div><div class="bt">Pratique — répond aux PAA + sécurité</div></div>
+          <div class="blk moved"><div class="tagr mv">déplacé</div><div class="bt">Liens internes</div><div class="bd">kayak · lieux · nœuds · origineel overnachten</div></div>
+          <div class="blk new"><div class="tagr up">merge</div><div class="bt">Pilier 301 → canonique ici</div><div class="bd">la page #28 est absorbée dans l'URL gagnante</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="annot">
+      <div class="a"><div class="num">1</div><div class="why"><b>Fusionner, pas à l'aveugle.</b> L'URL du listicle gagnant reste&nbsp;; le pilier (#28) y est absorbé en 301 canonique. La cannibalisation disparaît sans risquer la position #1.<span class="tie">Preuve&nbsp;: SERP live <code>wandelen ardennen</code> — VA #1 (listicle) et #28 (pilier), tous deux visitardenne.com.</span></div></div>
+      <div class="a addn"><div class="num">2</div><div class="why"><b>Ajouter carte/GPX et «&nbsp;par territoire&nbsp;».</b> Approfondit le gagnant vers des itinéraires concrets et relie la randonnée aux lieux (La Roche, Semois) — renforce les deux.<span class="tie">Lien&nbsp;: modèle de maillage interne — activité ↔ lieu.</span></div></div>
+      <div class="a"><div class="num">3</div><div class="why"><b>C'est le modèle exemplaire.</b> Le kayak (#1, 11,2%) montre ce que fait une page d'activité forte et bien liée. La randonnée et les pages lieux doivent aller vers cela.<span class="tie">Plan de mesure&nbsp;: conserver #1 + CTR&nbsp;; suivre le clic hub → randonnée → lieu.</span></div></div>
+    </div>
+  </div></span>
+  <span class="lang-nl"><h2>Wat "compositie herschikken" concreet <span class="accent">betekent</span></h2>
   <p class="lead">Drie echte VisitArdenne-pagina's, links zoals ze <b>vandaag</b> zijn opgebouwd (waargenomen op
      de live site, 25/08/2026), rechts de <b>voorgestelde</b> blok-volgorde. De genummerde toelichting legt uit
      <b>waarom</b> elk blok verschuift, verschijnt of wordt aangescherpt — met het bewijs erbij. De structuur
@@ -568,13 +871,114 @@ footer .fbrand .q{color:var(--green)}
       <div class="a addn"><div class="num">2</div><div class="why"><b>Kaart/GPX en "per gebied" toevoegen.</b> Verdiept de winnaar naar concrete routes en koppelt wandelen aan de plaatsen (La Roche, Semois) — versterkt beide.<span class="tie">Tie: interne-linkmodel — activiteit ↔ plaats.</span></div></div>
       <div class="a"><div class="num">3</div><div class="why"><b>Dit is het exemplarische model.</b> Kajak (#1, 11,2%) toont wat één sterke, goed gelinkte activiteitpagina doet. Wandelen en de plaats-pagina's moeten hier naartoe.<span class="tie">Meetplan: behoud #1 + CTR; volg de doorklik van hub → wandelen → plaats.</span></div></div>
     </div>
-  </div>
+  </div></span>
 </div></section>
 
 <!-- =============================== 5 · §6-§8 LENS =============================== -->
 <section id="lens"><div class="wrap">
-  <div class="eyebrow">05 — Vier beslissingen door de strengere lens</div>
-  <h2>Van intentie naar interventie — de <span class="accent">volledige keten</span></h2>
+  <div class="eyebrow"><span class="lang-fr">05 — Quatre décisions par la lentille stricte</span><span class="lang-nl">05 — Vier beslissingen door de strengere lens</span></div>
+  <span class="lang-fr"><h2>De l'intention à l'intervention — la <span class="accent">chaîne complète</span></h2>
+  <p class="lead">Pour quatre décisions de référence, nous montrons tout le raisonnement&nbsp;: <b>cluster d'intention → composition SERP →
+     chance de clic → représentation VA actuelle → action proposée</b>, avec la fiche de décision (observation →
+     interprétation → opportunité → intervention → certitude → preuve nécessaire → plan de mesure). La composition SERP a été
+     récupérée fraîchement (live, 25/08/2026), pour que «&nbsp;beaucoup de volume&nbsp;» ne se lise jamais comme «&nbsp;beaucoup d'opportunité&nbsp;».</p>
+
+  <!-- REC DURBUY (FR) -->
+  <div class="rec">
+    <div class="h"><span class="chip c-improve">improve</span><span class="t">Durbuy</span><span class="kw">place-intent · 90.500/mois</span><span class="conf voorstel">Proposition — certitude moyenne</span></div>
+    <div class="chain">
+      <div class="step"><b>cluster d'intention</b>lieu «&nbsp;Durbuy&nbsp;»</div><div class="arr">→</div>
+      <div class="step"><b>composition SERP</b>KG · top-sights · vidéo · images · PAA</div><div class="arr">→</div>
+      <div class="step"><b>chance de clic</b>comprimée</div><div class="arr">→</div>
+      <div class="step"><b>VA aujourd'hui</b>#4 organique · page mince</div><div class="arr">→</div>
+      <div class="step"><b>action</b>improve (part gagnable)</div>
+    </div>
+    <div class="body">
+      <dl>
+        <dt>Observation</dt><dd>SERP live&nbsp;: knowledge graph + carrousel top-sights + image-pack + vidéo + PAA au-dessus/à côté de 28 résultats organiques. Chips d'affinage&nbsp;: Centre, Sites à voir, Météo, Restaurant, Plus petite ville. VA #4 organique. GSC&nbsp;: 0,90% CTR à la pos 8,4.</dd>
+        <dt>Interprétation</dt><dd>Une grande partie des 90.500/mois est navigationnelle/zéro clic, absorbée par le knowledge graph et la pile de features. La chance de clic organique est <b>structurellement comprimée</b> — le faible CTR n'est donc pas entièrement un problème de composition.</dd>
+        <dt>Opportunité</dt><dd>La part <i>gagnable</i>&nbsp;: répondre aux questions PAA (marché, plus petite ville, que faire), relier Adventure Valley (#2 organique + dans les top-sights), affûter titre/snippet. Pas&nbsp;: forcer la position.</dd>
+        <dt class="strong">Intervention</dt><dd><span class="chip c-improve">improve</span> Template de lieu avec top 5 (Adventure Valley en tête), un bloc pratique qui répond aux PAA, intro orientée snippet.</dd>
+        <dt>Certitude</dt><dd><b>Preuve&nbsp;:</b> haute (SERP + GSC mesurés). <b>Décision&nbsp;:</b> moyenne — la composition aide, mais le plafond est, à cause des features SERP, plus bas que le volume brut ne le suggère.</dd>
+        <dt>Preuve nécessaire</dt><dd>Crawl complet pour capter les variantes de sous-pages&nbsp;; éventuellement un modèle de clic sur les SERP occupées par des features pour calibrer le plafond de CTR réaliste.</dd>
+        <dt>Plan de mesure</dt><dd>CTR sur la requête <code>durbuy</code> + apparition en PAA/top-sights — <b>pas</b> la position organique.</dd>
+      </dl>
+      <div class="guard"><b>Garde-fou de raisonnement&nbsp;:</b> «&nbsp;CTR bas&nbsp;» prouve une <i>opportunité</i>, pas que la composition de page en est la <i>cause</i>. Lire d'abord la composition SERP (étapes 1–6 du §7), et seulement ensuite adapter le snippet.</div>
+    </div>
+  </div>
+
+  <!-- REC VAKANTIEHUIS (FR) -->
+  <div class="rec">
+    <div class="h"><span class="chip c-dnt">do not target</span><span class="chip c-support">support</span><span class="t">vakantiehuis ardennen</span><span class="kw">booking-intent · 8.100/mois</span><span class="conf data">Données + Proposition — certitude haute</span></div>
+    <div class="chain">
+      <div class="step"><b>cluster d'intention</b>location/réservation</div><div class="arr">→</div>
+      <div class="step"><b>composition SERP</b>100% OTA organique · PAA</div><div class="arr">→</div>
+      <div class="step"><b>adéquation type de résultat</b>~nulle pour un DMO</div><div class="arr">→</div>
+      <div class="step"><b>VA aujourd'hui</b>absente</div><div class="arr">→</div>
+      <div class="step"><b>action</b>do_not_target + support</div>
+    </div>
+    <div class="body">
+      <dl>
+        <dt>Observation</dt><dd>SERP live&nbsp;: top organique = ardennes-etape, Belvilla, Ardennenplezier, Ardenne Résidences, Center Parcs, Floreal, Novasol, Villaluxe. Chips d'affinage&nbsp;: «&nbsp;met zwembad, met hond, goedkoop, kopen, 2 personen, particulier&nbsp;». PAA entièrement orientées réservation. <i>Aucun</i> DMO dans le top.</dd>
+        <dt>Interprétation</dt><dd>Forte demande, mais la SERP est une place de marché locative. Le type de résultat que Google récompense (inventaire réservable avec filtres) est quelque chose qu'une destination n'est pas et ne doit pas devenir.</dd>
+        <dt>Opportunité</dt><dd>Pas sur ce terme. Mais sur la <b>variante inspiration avant la réservation</b>&nbsp;: <code>bijzonder overnachten</code> (VA #18) est une SERP de contenu qu'un DMO peut gagner.</dd>
+        <dt class="strong">Intervention</dt><dd><span class="chip c-dnt">do not target</span> comme page classique/de réservation&nbsp;; <span class="chip c-support">support</span> via «&nbsp;origineel overnachten&nbsp;» + renvoi vers partenaire/Elloha.</dd>
+        <dt>Certitude</dt><dd><b>Preuve&nbsp;:</b> haute. <b>Décision&nbsp;:</b> haute — l'inadéquation du type de résultat est sans ambiguïté.</dd>
+        <dt>Preuve nécessaire</dt><dd>Aucune preuve supplémentaire pour le «&nbsp;ne pas cibler&nbsp;». Mais&nbsp;: le modèle de réservation choisi (redirection partenaire vs Elloha) — c'est une décision client (§7).</dd>
+        <dt>Plan de mesure</dt><dd>Mesurer la page d'inspiration («&nbsp;bijzonder overnachten&nbsp;» #18 → top-5) et le clic vers le partenaire — pas une position sur <code>vakantiehuis</code>.</dd>
+      </dl>
+      <div class="guard"><b>Garde-fou de raisonnement&nbsp;:</b> «&nbsp;8.100 recherches&nbsp;» est un volume, pas une opportunité. Une SERP 100% OTA ne laisse à une destination aucun espace de clic organique — le volume ne peut ici mener à une page d'atterrissage (§7, règle 5).</div>
+    </div>
+  </div>
+
+  <!-- REC KAJAKKEN (FR) -->
+  <div class="rec">
+    <div class="h"><span class="chip c-keep">keep</span><span class="chip c-improve">improve</span><span class="t">kajakken ardennen</span><span class="kw">activity-intent · 1.600/mois</span><span class="conf voorstel">Proposition — certitude haute</span></div>
+    <div class="chain">
+      <div class="step"><b>cluster d'intention</b>activité (kajak/kano/kayak)</div><div class="arr">→</div>
+      <div class="step"><b>composition SERP</b>local pack + organique + PAA</div><div class="arr">→</div>
+      <div class="step"><b>chance de clic</b>saine pour la couche inspiration</div><div class="arr">→</div>
+      <div class="step"><b>VA aujourd'hui</b>#1 · 11,2% CTR</div><div class="arr">→</div>
+      <div class="step"><b>action</b>keep/improve</div>
+    </div>
+    <div class="body">
+      <dl>
+        <dt>Observation</dt><dd>SERP live&nbsp;: local pack (opérateurs) + comparateurs + organique + PAA. VA <b>#1 organique</b>, au-dessus des opérateurs (Adventure Valley, Recréalle, Kayak Christophe). Chips d'affinage&nbsp;: Waterpeil, Met overnachting, Ourthe, Lesse, Met kinderen. Une seule page VA capte kajak/kano/kayak/kanoën.</dd>
+        <dt>Interprétation</dt><dd>Intention d'activité claire avec un type de contenu adapté&nbsp;: la couche «&nbsp;lequel/où/comment&nbsp;» appartient à VA, la couche opérateurs réservable est dans le local pack (GBP) — VA n'a pas à l'être. Forte adéquation SERP actuelle.</dd>
+        <dt>Opportunité</dt><dd>Conserver et approfondir&nbsp;: répondre aux PAA (peut-on faire du kayak&nbsp;? combien ça coûte&nbsp;? avec des enfants&nbsp;? niveau d'eau/sécurité) et relier aux opérateurs + lieux (Dinant/La Roche/Bouillon).</dd>
+        <dt class="strong">Intervention</dt><dd><span class="chip c-keep">keep</span> structure intacte&nbsp;; <span class="chip c-improve">improve</span> = saison/actualisation + réponses PAA + liens internes. <b>C'est le modèle que les pages lieux et randonnée doivent copier.</b></dd>
+        <dt>Certitude</dt><dd><b>Preuve&nbsp;:</b> haute. <b>Décision&nbsp;:</b> haute — ne pas toucher à ce qui marche.</dd>
+        <dt>Preuve nécessaire</dt><dd>Aucune&nbsp;; la position + le CTR sont sans ambiguïté.</dd>
+        <dt>Plan de mesure</dt><dd>Conserver #1 + CTR&nbsp;; suivre le clic vers opérateurs/lieux et l'apparition en PAA.</dd>
+      </dl>
+      <div class="guard"><b>Garde-fou de raisonnement&nbsp;:</b> un local pack dans la SERP ne signifie pas «&nbsp;construire une page de réservation&nbsp;» — la couche transactionnelle appartient à GBP/aux opérateurs&nbsp;; VA gagne la couche inspiration/orientation et doit la conserver.</div>
+    </div>
+  </div>
+
+  <!-- REC BELGISCHE ARDENNEN (FR) -->
+  <div class="rec">
+    <div class="h"><span class="chip c-review">review_needed</span><span class="t">Belgische Ardennen</span><span class="kw">orientation-intent · 20× NL&gt;VL</span><span class="conf klant">Décision client — certitude basse</span></div>
+    <div class="chain">
+      <div class="step"><b>cluster d'intention</b>orientation «&nbsp;endroits/villages sympas&nbsp;»</div><div class="arr">→</div>
+      <div class="step"><b>composition SERP</b>KG + local pack + PAA + images</div><div class="arr">→</div>
+      <div class="step"><b>chevauchement SERP hub régional</b>élevé</div><div class="arr">→</div>
+      <div class="step"><b>VA aujourd'hui</b>#4 · avec l'URL du hub</div><div class="arr">→</div>
+      <div class="step"><b>action</b>review_needed</div>
+    </div>
+    <div class="body">
+      <dl>
+        <dt>Observation</dt><dd>SERP live&nbsp;: <b>knowledge graph propre + bloc PAA propre</b> («&nbsp;Wat zijn de Belgische Ardennen?&nbsp;», «&nbsp;leukste dorpen&nbsp;», «&nbsp;leuke uitstapjes&nbsp;»), plus local pack + images. VA est #4 — <b>avec précisément l'URL du hub régional</b> (<span class="mono">/het-beste-van-de-ardennen/hoogtepunten</span>). Wikipedia, ardennen.nl, VISITWallonia reviennent, comme sur la SERP nue <code>ardennen</code>.</dd>
+        <dt>Interprétation</dt><dd>Google entretient une <b>entité séparée</b> (KG+PAA propres) — cela fonde solidement la <i>demande</i>. Mais l'intention (orientation/«&nbsp;endroits sympas&nbsp;») et l'URL gagnante <b>chevauchent fortement le hub régional</b>. Cela plaide plutôt pour une entité on-page forte + section de hub + désambiguïsation que pour une branche séparée.</dd>
+        <dt>Opportunité</dt><dd>Le terme est <i>l'</i>accès NL au territoire (20× plus de volume NL que flamand). Le gain est de rendre cette entité explicite&nbsp;; qu'il faille pour cela une page autonome n'est pas décidé.</dd>
+        <dt class="strong">Intervention</dt><dd><span class="chip c-review">review_needed</span> — <b>pas d'<code>add</code> définitif.</b> Recommandation&nbsp;: une seule page/section canonique avec composition NL au premier plan&nbsp;; le choix <i>page autonome</i> vs <i>entité on-page + section de hub</i> est une décision client.</dd>
+        <dt>Certitude</dt><dd><b>Preuve&nbsp;:</b> haute (KG+PAA propres mesurés). <b>Décision&nbsp;:</b> basse — le chevauchement SERP avec le hub régional ne prouve pas «&nbsp;page séparée&nbsp;».</dd>
+        <dt>Preuve nécessaire</dt><dd>Netteté du cluster d'intention&nbsp;: le besoin utilisateur sur <code>belgische ardennen</code> diffère-t-il réellement de <code>ardennen</code>&nbsp;? Les données actuelles disent&nbsp;: en grande partie le même besoin, autre formulation.</dd>
+        <dt>Plan de mesure</dt><dd>En cas d'entité on-page&nbsp;: suivre l'URL du hub sur les deux termes. En cas de page séparée&nbsp;: mesurer si elle cannibalise le hub (le risque que la review doit exclure).</dd>
+      </dl>
+      <div class="guard"><b>Garde-fou de raisonnement&nbsp;:</b> une SERP+PAA propre prouve une <i>entité</i>, pas automatiquement une <i>page séparée</i>. Parce que VA ranke déjà ici avec l'URL du hub régional et que l'intention se chevauche, ceci reste délibérément <code>review_needed</code> jusqu'à ce que la séparation d'intention soit nette (canon §8).</div>
+    </div>
+  </div></span>
+  <span class="lang-nl"><h2>Van intentie naar interventie — de <span class="accent">volledige keten</span></h2>
   <p class="lead">Voor vier ijk-beslissingen tonen we de hele redenering: <b>intentiecluster → SERP-compositie →
      klik-kans → huidige VA-representatie → voorgestelde actie</b>, met het beslisrecord (waarneming →
      interpretatie → kans → interventie → zekerheid → benodigd bewijs → meetplan). SERP-compositie is vers
@@ -674,13 +1078,42 @@ footer .fbrand .q{color:var(--green)}
       </dl>
       <div class="guard"><b>Redeneer-guard:</b> een eigen SERP+PAA bewijst een <i>entiteit</i>, niet automatisch een <i>aparte pagina</i>. Omdat VA hier al met de streekhub-URL rankt en de intentie overlapt, blijft dit bewust <code>review_needed</code> tot de intent-scheiding scherp is (canon §8).</div>
     </div>
-  </div>
+  </div></span>
 </div></section>
 
 <!-- =============================== 6 · PRIORITEITEN =============================== -->
 <section id="prioriteiten"><div class="wrap">
-  <div class="eyebrow">06 — Prioriteiten, gekoppeld aan het bedrijfsdoel</div>
-  <h2>Waar zichtbaarheid al bestaat, telt <span class="accent">doorklik en route</span> — niet "hoger ranken"</h2>
+  <div class="eyebrow"><span class="lang-fr">06 — Priorités, liées à l'objectif d'entreprise</span><span class="lang-nl">06 — Prioriteiten, gekoppeld aan het bedrijfsdoel</span></div>
+  <span class="lang-fr"><h2>Là où la visibilité existe déjà, ce qui compte est <span class="accent">le clic et le parcours</span> — pas «&nbsp;ranker plus haut&nbsp;»</h2>
+  <p class="lead">Séquencé sur effort vs résultat. Chaque piste porte l'objectif d'entreprise qu'elle vise&nbsp;:
+     clic (CTR), parcours utilisateur ou conversion/renvoi. «&nbsp;Ranker plus haut&nbsp;» n'est délibérément pas un objectif par défaut&nbsp;:
+     sur la plupart des pages de référence, VisitArdenne est déjà en tête.</p>
+
+  <div class="prio p1"><div class="rank">1</div><div class="pb">
+    <div class="pt">Combler l'écart de clic sur les pages lieux <span class="goal">objectif · CTR</span></div>
+    <p>Durbuy (0,90%), Grotten van Han (0,56%), La Roche, Coo → template de lieu avec top 5, réponses PAA, lien Adventure Valley, titre/schema. Plus grande visibilité × plus grand écart = plus grand gain absolu, sans une seule page nouvelle.</p>
+  </div></div>
+
+  <div class="prio p2"><div class="rank">2</div><div class="pb">
+    <div class="pt">Dédoublonner la randonnée et le modèle de lieu <span class="goal">objectif · signal + parcours</span></div>
+    <p>Fusionner le pilier randonnée (#28) dans le listicle gagnant&nbsp;; unifier les deux «&nbsp;domiciles&nbsp;» de lieux en un seul template + URL cohérente. Met fin à la concurrence interne&nbsp;; concentre la force de lien vers les pages lieux de la priorité 1.</p>
+  </div></div>
+
+  <div class="prio p3"><div class="rank">3</div><div class="pb">
+    <div class="pt">Renforcer le hub de destination face à l'éditeur <span class="goal">objectif · parcours</span></div>
+    <p>Profondeur éditoriale ≥ ardennen.nl, carte, top lieux curatés, liens vers les hubs d'activités. Le hub devient le distributeur qui envoie force de lien et visiteurs vers lieu + activité.</p>
+  </div></div>
+
+  <div class="prio p4"><div class="rank">4</div><div class="pb">
+    <div class="pt">Construire la page inspiration-avant-réservation <span class="goal">objectif · conversion/renvoi</span></div>
+    <p>«&nbsp;Origineel overnachten&nbsp;» de #18 au top-5&nbsp;: la seule SERP séjour qu'un DMO peut gagner. Inspirer, puis renvoyer vers le partenaire — boucler le parcours Shortbreaker.</p>
+  </div></div>
+
+  <div class="prio p5"><div class="rank">5</div><div class="pb">
+    <div class="pt">Entity resolution + durabilité en transversal <span class="goal">objectif · pertinence</span></div>
+    <p>Désambiguïser «&nbsp;Ardenne belge&nbsp;» vs département 08 et «&nbsp;Vlaamse Ardennen&nbsp;» (nommage, schema, relations internes). Porter la durabilité sur les pages produits&nbsp;; retirer la rubrique à SERP vide. Long terme, faible risque.</p>
+  </div></div></span>
+  <span class="lang-nl"><h2>Waar zichtbaarheid al bestaat, telt <span class="accent">doorklik en route</span> — niet "hoger ranken"</h2>
   <p class="lead">Gesequenceerd op effort vs resultaat. Elk spoor draagt het bedrijfsdoel waarop het mikt:
      doorklik (CTR), gebruikersroute of conversie/verwijzing. "Hoger ranken" is bewust géén standaarddoel:
      op de meeste ijk-pagina's staat VisitArdenne al bovenaan.</p>
@@ -708,13 +1141,36 @@ footer .fbrand .q{color:var(--green)}
   <div class="prio p5"><div class="rank">5</div><div class="pb">
     <div class="pt">Entity resolution + duurzaamheid transversaal <span class="goal">doel · relevantie</span></div>
     <p>Disambigueer "Ardenne belge" vs département 08 en "Vlaamse Ardennen" (naamgeving, schema, interne relaties). Draag duurzaamheid op de productpagina's; verwijder de rubriek met lege SERP. Langlopend, laag risico.</p>
-  </div></div>
+  </div></div></span>
 </div></section>
 
 <!-- =============================== 7 · KLANTBESLISSINGEN =============================== -->
 <section id="klant"><div class="wrap">
-  <div class="eyebrow">07 — Wat u als bedrijf moet sluiten</div>
-  <h2>Vijf <span class="accent">klantbeslissingen</span> — bewust niet door ons ingevuld</h2>
+  <div class="eyebrow"><span class="lang-fr">07 — Ce que vous devez trancher en tant qu'entreprise</span><span class="lang-nl">07 — Wat u als bedrijf moet sluiten</span></div>
+  <span class="lang-fr"><h2>Cinq <span class="accent">décisions client</span> — délibérément non remplies par nous</h2>
+  <p class="lead">Pas de preuve = pas de certitude inventée. Ces points nécessitent une décision humaine, commerciale ou
+     stratégique&nbsp;; nous livrons ce qui est fondé et marquons ce que vous décidez.</p>
+
+  <div class="card warn"><p style="margin:0"><b>La plus grande décision d'abord&nbsp;:</b> <span class="conf klant">Refonte vs upgrade.</span>
+     Une reconstruction complète en 6 rubriques (Yuri &amp; Neil, sept. 2025) ou un upgrade structurel des
+     4 piliers actuels&nbsp;? Nos décisions de page valent dans les deux scénarios — mais votre choix détermine la stratégie de migration/redirection
+     et le délai. <b>C'est la décision qui cadre le reste.</b></p></div>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Point ouvert</th><th>Ce qui est fondé (données)</th><th>Ce que vous décidez</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Refonte vs upgrade</b></td><td>Les décisions de page sont indépendantes de la structure&nbsp;; elles projettent sur 4 piliers et 6 rubriques</td><td>Reconstruction complète ou upgrade. Détermine migration, redirections, planning.</td></tr>
+      <tr><td><b>2 · «&nbsp;Belgische Ardennen&nbsp;»&nbsp;: page ou entité on-page</b></td><td>SERP + KG + PAA propres&nbsp;; VA #4 avec l'URL du hub régional&nbsp;; l'intention chevauche fortement le hub&nbsp;; 20× NL&gt;VL</td><td>Page canonique autonome ou entité on-page forte + section de hub. Recommandation&nbsp;: commencer on-page&nbsp;; scinder seulement si un besoin distinct est prouvé.</td></tr>
+      <tr><td><b>3 · Modèle de réservation</b></td><td>Les SERP séjour sont terrain OTA (do-not-target)&nbsp;; l'inspiration-avant-réservation est gagnable</td><td>Les pages d'inspiration renvoient-elles vers Elloha ou vers les OTA partenaires&nbsp;? Détermine le CTA et le parcours Shortbreaker.</td></tr>
+      <tr><td><b>4 · Priorisation CTR FR</b></td><td>Les décisions FR reposent sur la position SERP live + l'intention (randonnée #2, vélo #3)</td><td>La mesure GSC de ce tour était exclusivement <span class="mono">/nl/</span>. CTR/impressions FR ne sont pas encore chiffrés — mesurer avant de prioriser le FR.</td></tr>
+      <tr><td><b>5 · Configuration de désambiguïsation</b></td><td>La confusion d'entité (dept 08 · Vlaamse Ardennen) est démontrée dans les deux langues</td><td>Quels libellés, quels <code>sameAs</code>/<code>about</code>, quel NAP — ce sont des données client/site, à élaborer avec vous&nbsp;; pas de code générique.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card bad"><p style="margin:0"><b>Ce que ce document ne fait délibérément PAS&nbsp;:</b> pas de nouvel arbre de mots-clés, pas de second
+     arbre linguistique sans preuve SERP, pas d'IA complète inventée pour remplir un schéma, et pas de pages OTA/de réservation
+     là où la destination ne peut structurellement pas gagner. <b>Là où la preuve s'arrête, la certitude s'arrête.</b></p></div></span>
+  <span class="lang-nl"><h2>Vijf <span class="accent">klantbeslissingen</span> — bewust niet door ons ingevuld</h2>
   <p class="lead">Geen bewijs = geen verzonnen zekerheid. Deze punten hebben een menselijke, commerciële of
      strategische beslissing nodig; wij leveren wat gegrond is en markeren wat u beslist.</p>
 
@@ -736,13 +1192,32 @@ footer .fbrand .q{color:var(--green)}
 
   <div class="card bad"><p style="margin:0"><b>Wat dit document bewust NIET doet:</b> geen nieuwe keyword-boom, geen tweede
      taalboom zonder SERP-bewijs, geen volledige IA verzonnen om een schema te vullen, en geen OTA-/boekingspagina's
-     waar de bestemming structureel niet kan winnen. <b>Waar het bewijs stopt, stopt de zekerheid.</b></p></div>
+     waar de bestemming structureel niet kan winnen. <b>Waar het bewijs stopt, stopt de zekerheid.</b></p></div></span>
 </div></section>
 
 <!-- =============================== 8 · VOLLEDIG BEWIJS =============================== -->
 <section id="evidence"><div class="wrap">
-  <div class="eyebrow">08 — De diepste laag · volledig bewijs</div>
-  <h2>Alles hierboven staat op <span class="accent">gemeten bewijs</span></h2>
+  <div class="eyebrow"><span class="lang-fr">08 — La couche la plus profonde · preuve complète</span><span class="lang-nl">08 — De diepste laag · volledig bewijs</span></div>
+  <span class="lang-fr"><h2>Tout ce qui précède repose sur une <span class="accent">preuve mesurée</span></h2>
+  <p class="lead">Ce document de décision est la couche supérieure. En dessous se trouvent deux documents de preuve complets avec les
+     27 résultats de recherche live, les 14 fiches de page et les chiffres Search Console. Qui veut descendre jusqu'à la
+     preuve brute les ouvre ici.</p>
+
+  <a class="evlink" href="serp-grounded-analysis.html">
+    <div class="ic">🔎</div>
+    <div><div class="et">Analyse de recherche fondée sur les SERP — 27 SERP live</div>
+      <div class="ed">Par terme de recherche, les résultats Google live (NL-Belgique, NL-Pays-Bas, FR-Belgique), l'intention dérivée, la position VA et qui possède la SERP. Le fondement de chaque observation du §2.</div></div>
+  </a>
+  <a class="evlink" href="deel2-ia-composition-proposal.html">
+    <div class="ic">🗂️</div>
+    <div><div class="et">Proposition IA &amp; composition — 14 fiches de page + modèle de maillage interne</div>
+      <div class="ed">Par page canonique, la fiche complète (entité, URL, décision, composition NL/FR, sections, liens internes, performance GSC, preuve SERP), le modèle de maillage interne avec les trois parcours de visiteurs, et l'aperçu de l'arbre.</div></div>
+  </a>
+
+  <div class="card"><p style="margin:0"><b>Composition SERP fraîche pour le §5.</b> Les quatre décisions de référence (Durbuy, vakantiehuis,
+     kajakken, Belgische Ardennen) sont enrichies de features SERP live (types d'éléments, PAA, local pack, knowledge graph,
+     chips d'affinage) récupérées le 25/08/2026 — pour que la chance de clic découle de la composition SERP et non du volume.</p></div></span>
+  <span class="lang-nl"><h2>Alles hierboven staat op <span class="accent">gemeten bewijs</span></h2>
   <p class="lead">Dit beslisdocument is de bovenlaag. Daaronder liggen twee volledige bewijsdocumenten met alle
      27 live zoekresultaten, de 14 pagina-records en de Search-Console-cijfers. Wie wil doorklikken tot op het
      ruwe bewijs, opent ze hier.</p>
@@ -760,17 +1235,24 @@ footer .fbrand .q{color:var(--green)}
 
   <div class="card"><p style="margin:0"><b>Verse SERP-compositie voor §5.</b> De vier ijk-beslissingen (Durbuy, vakantiehuis,
      kajakken, Belgische Ardennen) zijn verrijkt met live SERP-features (item-types, PAA, local pack, knowledge graph,
-     verfijn-chips) opgehaald op 25/08/2026 — zodat de klik-kans uit de SERP-samenstelling volgt en niet uit het volume.</p></div>
+     verfijn-chips) opgehaald op 25/08/2026 — zodat de klik-kans uit de SERP-samenstelling volgt en niet uit het volume.</p></div></span>
 </div></section>
 
 <footer><div class="wrap">
   <div class="fbrand">Sherlock <span class="q">SEO</span></div>
   <p style="margin:4px 0 14px;font-family:var(--font-head);font-weight:700;letter-spacing:.18em;font-size:.6rem;text-transform:uppercase">Digital Growth Intelligence</p>
-  <p><b>Verantwoording.</b> Live nav-crawl van <span class="mono">visitardenne.com/nl</span> (25/08/2026).
+  <span class="lang-fr"><p><b>Sources.</b> Crawl de navigation live de <span class="mono">visitardenne.com/nl</span> (25/08/2026).
+     Preuve SERP&nbsp;: 27 SERP Google live (24/08) + compositions de features fraîches pour 4 termes de référence (25/08) via
+     <span class="mono">dataforseo_serp_results</span>. Performance GSC&nbsp;: 90 jours jusqu'au 10/08/2026, exclusivement
+     les pages <span class="mono">/nl/</span>. Là où un chiffre manque&nbsp;: aucune estimation. Preuve (observation) et
+     décision de page (interprétation) sont partout tenues séparées, conformément au canon page-decision &amp; composition (§6–§8).</p>
+  <p style="margin-top:14px"><b>VisitArdenne</b> · GEIE Destination Ardenne · mission 2026/855 · partie 2 (livrables b · c · d) · 25 août 2026 · <span class="mono">sherlockseo.com</span></p></span>
+  <span class="lang-nl"><p><b>Verantwoording.</b> Live nav-crawl van <span class="mono">visitardenne.com/nl</span> (25/08/2026).
      SERP-bewijs: 27 live Google-SERP's (24/08) + verse feature-composities voor 4 ijk-termen (25/08) via
      <span class="mono">dataforseo_serp_results</span>. GSC-performance: 90 dagen tot 10/08/2026, uitsluitend
      <span class="mono">/nl/</span>-pagina's. Waar een cijfer ontbreekt: geen schatting. Bewijs (waarneming) en
      paginabeslissing (interpretatie) zijn overal gescheiden gehouden, conform de page-decision &amp; composition canon (§6–§8).</p>
-  <p style="margin-top:14px"><b>VisitArdenne</b> · GEIE Destination Ardenne · opdracht 2026/855 · deel 2 (livrables b · c · d) · 25 augustus 2026 · <span class="mono">sherlockseo.com</span></p>
+  <p style="margin-top:14px"><b>VisitArdenne</b> · GEIE Destination Ardenne · opdracht 2026/855 · deel 2 (livrables b · c · d) · 25 augustus 2026 · <span class="mono">sherlockseo.com</span></p></span>
 </div></footer>
+<script src="assets/lang.js"></script>
 </body></html>
