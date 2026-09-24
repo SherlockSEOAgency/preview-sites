@@ -3,6 +3,9 @@
 //   NODE_PATH=<path>/node_modules node tools/capture.mjs https://bovenyvo.be/ bovenyvo
 // Writes src/static/assets/img/<name>-desktop-<YYYY-MM-DD>.jpg and <name>-mobile-<YYYY-MM-DD>.jpg.
 // The capture date is part of the file name so every caption can state it. Nothing is edited or retouched.
+// Optional crop heights keep a site's own floating widgets (review chips, chat bubbles) out of the frame:
+//   CLIP_DESKTOP=820 CLIP_MOBILE=752 node tools/capture.mjs ...   (CSS px from the top of the first screen)
+// A crop only removes the bottom of the first screen; it never alters what is shown.
 import { createRequire } from 'node:module';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,7 +31,8 @@ for (const s of shots) {
   await page.evaluate(() => document.fonts && document.fonts.ready).catch(() => {});
   await page.waitForTimeout(3000);
   const file = resolve(out, `${name}-${s.tag}-${day}.jpg`);
-  await page.screenshot({ path: file, type: 'jpeg', quality: 80 });
+  const clipH = Number(process.env[s.tag === 'desktop' ? 'CLIP_DESKTOP' : 'CLIP_MOBILE']) || 0;
+  await page.screenshot({ path: file, type: 'jpeg', quality: 80, ...(clipH ? { clip: { x: 0, y: 0, width: s.viewport.width, height: clipH } } : {}) });
   console.log(`${s.tag}: HTTP ${res && res.status()} ${page.url()} -> ${file}`);
   await ctx.close();
 }

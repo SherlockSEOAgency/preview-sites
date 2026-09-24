@@ -87,7 +87,7 @@ function context(l, c) {
     },
     cta: () => ({ href: link('contact').href, label: common.cta }),
     terminus: (o = {}) => C.terminus({ id: `t-${c.replace(/\W/g, '')}`, cta: { href: link('contact').href, label: common.cta }, person: common.terminus.person, ...common.terminus, ...o }),
-    powered: () => C.poweredBy(common.powered),
+    rtb: () => C.reasonToBelieve(common.rtb),
   };
 }
 

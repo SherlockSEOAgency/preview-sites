@@ -13,9 +13,9 @@ export default {
     text: 'Dites-nous où en est votre entreprise et où vous voulez aller. Vous recevez notre première analyse de votre plus grande opportunité commerciale.',
     person: { name: 'Jef Van Gool', role: 'Fondateur. Il mène le premier entretien.', alt: 'Jef Van Gool, fondateur de Sherlock' },
   },
-  powered: {
-    label: 'Powered by Sherlock',
-    text: 'Notre propre plateforme réunit données de marché, recherches, publicité, contenu, site et mesure. Ainsi, une décision SEO ne part pas d’une liste de mots-clés isolée, ni une campagne d’une autre image de votre client. Nos consultants s’en servent pour décider plus vite et mieux.',
+  rtb: {
+    label: 'Notre propre couche d’intelligence',
+    text: 'Cet endroit unique, c’est notre propre plateforme. Elle réunit données de marché, comportements de recherche, publicité, contenu, site et mesure : une décision SEO ne part pas d’une liste de mots-clés isolée, et vos campagnes partent de la même image de votre client que votre site. Nos consultants s’en servent pour décider plus vite et mieux.',
   },
   footer: {
     tagline: 'Agence SEO et de croissance pour les PME établies en Belgique.',

@@ -8,16 +8,16 @@ export default (x) => {
     title: 'Werken met Sherlock: marketing uitbesteden aan één partner | Sherlock SEO Agency',
     description: 'Start met één concrete groeivraag en groei verder met één partner. Eerst je bedrijf, dan de opdracht, daarna samen bijsturen. Bespreek je groeivraag.',
     main: `
-<section class="hero" aria-labelledby="h1">
+<section class="hero hero-line" aria-labelledby="h1">
   <div class="wrap">
     <p class="eyebrow">Werken met Sherlock</p>
     <h1 id="h1">Start met één vraag. <span class="accent s">Groei met één partner.</span></h1>
-    <p class="lead">Je komt met iets concreets: een nieuwe website, campagnes die te weinig opleveren, een plafond in je groei. We pakken die vraag aan vanuit je bedrijf, niet vanuit één kanaal. Werkt het, dan blijven we als groeipartner.</p>
+    <p class="lead">Je komt met iets concreets: een nieuwe website, campagnes die te weinig opleveren, een plafond in je groei. We pakken die vraag aan vanuit je bedrijf, niet vanuit één kanaal. Werkt het, dan ga je met ons verder als groeipartner.</p>
     <div class="actions">
       <a class="btn btn-primary" href="${x.href('contact')}">${x.common.cta}</a>
       <a class="btn btn-secondary" href="${x.href('case.boven-yvo')}">Bekijk een case</a>
     </div>
-    ${C.ladderLine({ start: 'JE VRAAG', first: 'OPDRACHT', second: 'GROEIPARTNER', loop: 'bijsturen',
+    ${C.ladderLine({ start: 'Je vraag', first: 'Opdracht', firstSub: 'met een eindpunt dat je vooraf kent', second: 'Groeipartner', secondSub: 'doorlopend, samen bijgestuurd', loop: 'bijsturen', loopLong: 'en dan bijsturen',
       summary: 'Je vraag wordt eerst één opdracht met een vast eindpunt. Daarna kan het een doorlopend partnership worden dat we samen bijsturen.' })}
   </div>
 </section>
@@ -40,53 +40,34 @@ export default (x) => {
   <section class="station" aria-labelledby="h-start">
     <p class="eyebrow">De start</p>
     <h2 id="h-start">Eerst je bedrijf, dan de opdracht.</h2>
-    <ol class="steps">
-      <li><span class="st-name">Een gesprek van 30 minuten</span><span class="st-text">Je vertelt waar je bedrijf staat en waar je naartoe wil. Vrijblijvend.</span></li>
-      <li><span class="st-name">Onze eerste lezing</span><span class="st-text">Waar je grootste commerciële kans zit, en wat eerst moet.</span></li>
-      <li><span class="st-name">Een voorstel</span><span class="st-text">Wat we doen, wanneer het af is en wat het kost.</span></li>
-    </ol>
+    <p class="lead" style="margin-top:18px">Het begint met een gesprek van 30 minuten over waar je bedrijf staat en waar je naartoe wil. Daarna krijg je onze eerste inschatting van je grootste commerciële kans, en een voorstel: wat we doen, wanneer je resultaat ziet en wat het kost.</p>
+    <div class="actions" style="margin-top:28px"><a class="btn btn-primary" href="${x.href('contact')}">${x.common.cta}</a></div>
   </section>
 
   <section class="station" aria-labelledby="h-partner" data-offer-rung="groeipartner" data-offer-key="${offers.groeipartner.join(' ')}">
     <p class="eyebrow">Het partnership</p>
     <h2 id="h-partner">Daarna: één partner.</h2>
     <p class="lead" style="margin-top:18px">Als groeipartner nemen we de verantwoordelijkheid voor prioriteren, uitvoeren en bijleren. Eén plan, dat we samen bijsturen.</p>
-    <p style="margin:34px 0 0;font:700 16px var(--head)">Bij elke bijsturing zie je:</p>
+    <p style="margin:34px 0 0;font:700 16px var(--head)">In elk overleg zie je:</p>
     <ul class="seen">
       <li>wat we begrepen</li>
       <li>wat we beslisten</li>
       <li>wat we opleverden</li>
       <li>wat er veranderde</li>
-      <li>wat we maten <span>in aanvragen, niet in omzet: die koppeling zit in je eigen verkoop</span></li>
+      <li>wat we maten</li>
       <li>wat we als volgende stap voorstellen</li>
     </ul>
-    ${C.quote({ text: 'Sherlock SEO Agency bestaat uit een team dat met je meedenkt en op een unieke manier je business-opportuniteiten blootlegt en ontplooit.', name: 'Emiel Denis', company: 'Saniswitch' })}
   </section>
 
   <section class="station st-green" aria-labelledby="h-bewijs">
     <p class="eyebrow">Bewijs</p>
     <h2 id="h-bewijs">Bewijs per stap.</h2>
-    <div class="rungs">
-      <article class="rung" data-offer-rung="opdracht">
-        <p class="r-kind">Eén opdracht met een eindpunt</p>
-        <h3>Meertalige marketplace, België</h3>
-        <p>Een platform in vier talen maakte zijn eigen duplicaten aan. We herbouwden de meertalige URL-architectuur, tot en met de tests.</p>
-        ${C.figures([
-          { from: '4.261', to: '0', label: "dubbele URL's tussen talen", source: 'Screaming Frog, crawl voor en na' },
-          { from: '14.704', to: '247', label: 'interne redirects', source: 'Screaming Frog, crawl voor en na' },
-        ], 'figures-2')}
-        ${x.go('case.marketplace', 'Lees de case')}
-      </article>
-      <article class="rung" data-offer-rung="groeipartner">
-        <p class="r-kind">Eén partner, stap voor stap</p>
-        <h3>Boven Yvo, alu ramen en deuren</h3>
-        <p>Eerst alle conversies meten, dan advertenties, SEO en content, en pas daarna een nieuwe website.</p>
-        ${C.figures([
-          { from: '291', to: '644', label: 'websitebezoeken', source: 'Search Console, juni 2019 vs. juni 2020' },
-          { value: '+170%', label: 'conversies', source: 'Alle conversies, Google Analytics, zelfde periode' },
-        ], 'figures-2')}
-        ${x.go('case.boven-yvo', 'Lees de case')}
-      </article>
+    <div class="proof-pair">
+      ${C.quote({ text: 'Sherlock SEO Agency bestaat uit een team dat met je meedenkt en op een unieke manier je business-opportuniteiten blootlegt en ontplooit.', name: 'Emiel Denis', company: 'Saniswitch' })}
+      <nav class="continue" aria-label="Cases">
+        <a href="${x.href('case.marketplace')}" data-offer-rung="opdracht"><small>Opdracht · meertalige marketplace</small><span>Per taal één pagina die Google toont, in plaats van duplicaten die elkaar beconcurreren.${C.ARROW}</span></a>
+        <a href="${x.href('case.boven-yvo')}" data-offer-rung="groeipartner"><small>Groeipartner · Boven Yvo</small><span>Eerst meten, dan advertenties, SEO en content, en pas daarna een nieuwe website.${C.ARROW}</span></a>
+      </nav>
     </div>
   </section>
 
@@ -97,6 +78,7 @@ export default (x) => {
       <div><dt>Wat kost het?</dt><dd>Een groeipartnership is een vast bedrag per maand, geen uurtje-factuurtje. Een opdracht krijgt een eigen prijs in het voorstel.</dd></div>
       <div><dt>Garanderen jullie resultaten?</dt><dd>Nee. Posities en rendement garanderen we niet: die hangen ook af van je markt en je aanbod.</dd></div>
       <div><dt>Moeten we alles bij jullie onderbrengen?</dt><dd>Nee. Je eigen team of andere partners kunnen delen blijven doen. Wij zorgen dat alles van hetzelfde plan vertrekt.</dd></div>
+      <div><dt>Wat meten jullie precies?</dt><dd>Aanvragen: formulieren, telefoontjes, offertevragen. Hoeveel omzet daaruit volgt, zie je in je eigen verkoop.</dd></div>
       <div><dt>En AI-zoekmachines?</dt><dd>We kijken hoe Google én AI-assistenten je bedrijf vandaag samenvatten, als deel van je digitale aanwezigheid. Resultaten beloven we daar niet.</dd></div>
     </dl>
   </section>
@@ -105,7 +87,6 @@ export default (x) => {
 </div>
 
 ${x.terminus({ heading: 'Welke vraag leg je <span class="t-accent">op tafel?</span>', text: '' })}
-${x.powered()}
 `,
   };
 };

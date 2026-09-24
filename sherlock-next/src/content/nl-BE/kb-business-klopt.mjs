@@ -1,5 +1,6 @@
 // /nl/academie/waarom-seo-pas-werkt-als-je-business-klopt/ : knowledge, Academy section "Voor je kiest".
-// Source: the published blog post (sherlockseo.com, WP 5123, 28 March 2025). Edited by cutting only:
+// Source: the published blog post (sherlockseo.com, WP 5123, 28 March 2025). Edited by cutting, plus five truth fixes
+// (round 1 review: no unsourced claims, no promise outside the offer; see the section comments). Cut:
 // removed the prospect story with an unsourced amount, the unsourced percentages, the story about buying links,
 // the "positie #8" story and the emoji offer block (it promised an AI-generated strategy).
 // The piece ends by attaching to the commercial surface: one case, the way we work, the conversation.
@@ -21,35 +22,34 @@ export default (x) => {
 
 <article class="article" aria-labelledby="h1">
   <div class="wrap article-grid">
-    <div class="body">
+    <div class="body rail rail-article">
       <p class="pull">“SEO werkt, maar alleen als je bedrijf ook werkt.”</p>
 
       <h2>SEO faalt vaak – maar niet omdat het niet werkt</h2>
-      <p>Veel ondernemers vragen zich af of SEO wel de moeite waard is. Misschien heb je het zelf ervaren: je investeert in zoekmachineoptimalisatie, maar de resultaten blijven uit. Al snel ontstaat de gedachte dat SEO niet werkt of zelfs onzin zou zijn. In onze 10+ jaar praktijkervaring hebben we echter keer op keer gezien dat SEO wél werkt – maar alleen als de randvoorwaarden kloppen. SEO faalt vaak niet door SEO zelf, maar doordat het te vroeg of op de verkeerde manier wordt ingezet.</p>
-      <p>Stel je voor: je website staat technisch als een huis en je staat op positie #1 in Google voor een belangrijk zoekwoord, maar toch komen er geen klanten uit. Hoe kan dat? Simpel: als je business niet klopt – denk aan je product, dienst, product-market fit of klantbeleving – dan kan SEO geen wonderen verrichten.</p>
-      <p>SEO is geen magisch trucje dat een slecht businessmodel, het ontbreken van een goede marketingstrategie of een middelmatig product succesvol maakt. Wat SEO wél kan doen, is een goed werkende business opschalen en zichtbaar maken voor de juiste doelgroep.</p>
+      <p>Je investeert in zoekmachineoptimalisatie, maar de resultaten blijven uit. SEO faalt vaak niet door SEO zelf, maar doordat het te vroeg of op de verkeerde manier wordt ingezet.</p>
+      <p>Je website staat technisch als een huis en je staat op positie #1 in Google voor een belangrijk zoekwoord, maar toch komen er geen klanten uit. Als je business niet klopt – denk aan je product, je dienst of je klantbeleving – dan kan SEO geen wonderen verrichten. Wat SEO wél kan doen, is een goed werkende business opschalen en zichtbaar maken voor de juiste doelgroep.</p>
 
       <h2>Zichtbaarheid is geen garantie voor verkoop</h2>
-      <p>Online zichtbaarheid is belangrijk, maar zichtbaarheid alleen is geen garantie voor verkoop. Bovenaan in Google staan betekent dat je gevonden wordt – maar wat gebeurt er ná de klik? Als de bezoeker op je site komt en niet meteen de waarde ziet, of afdruipt door een slechte gebruikerservaring, heb je niets aan die hoge ranking.</p>
-      <p>Een hoge positie levert verkeer op, maar verkeer is niet hetzelfde als conversie. Zo hebben we gezien dat een landingspagina met een hoge doorklikratio (CTR) alsnog teleurstellende resultaten gaf, omdat de pagina zelf niet overtuigde. Zichtbaarheid trekt aandacht, maar alleen de juiste boodschap en een aantrekkelijk aanbod converteren die aandacht naar actie.</p>
+      <p>Bovenaan in Google staan betekent dat je gevonden wordt – maar wat gebeurt er ná de klik? Als de bezoeker op je site niet meteen de waarde ziet, of afdruipt door een slechte gebruikerservaring, heb je niets aan die hoge ranking.</p>
+      <p>Zo hebben we gezien dat een landingspagina met een hoge doorklikratio (CTR) alsnog teleurstellende resultaten gaf, omdat de pagina zelf niet overtuigde. Zichtbaarheid trekt aandacht; alleen de juiste boodschap en een aantrekkelijk aanbod zetten die aandacht om in actie.</p>
 
       <h2>Verhalen uit de praktijk: waarom business eerst, dan pas SEO</h2>
       <ul class="practice">
-        <li><h3>De klant die Ads uitzette na UX-video’s</h3><p>Kliks waren er genoeg, maar conversies bleven uit. Na het zien van schermopnames begreep hij waarom: verwarring, slechte UX en onduidelijke info. Enkel en alleen door dit inzicht spaarde hij enorm veel budget uit, en dat kon geïnvesteerd worden in de optimalisatie van de website.</p></li>
-        <li><h3>Een artikel dat zijn belofte inloste</h3><p>Voor een lokale vakman schreven we een helder en aantrekkelijk artikel. Het artikel bevatte goede foto’s en informatie die het specialisme van de vakman onderstreepte. Dit zorgde voor topposities in de zoekmachine. Toen we de klant vroegen of het ook iets opleverde, bevestigde hij dit. De content loste de belofte in.</p></li>
+        <li><h3>De klant die Ads uitzette na UX-video’s</h3><p>Kliks waren er genoeg, maar conversies bleven uit. Na het zien van schermopnames begreep hij waarom: verwarring, slechte UX en onduidelijke info. Dat inzicht bespaarde hem advertentiebudget, dat naar de website ging.</p></li>
+        <li><h3>Een artikel dat zijn belofte inloste</h3><p>Voor een lokale vakman schreven we een helder en aantrekkelijk artikel. Het artikel bevatte goede foto’s en informatie die het specialisme van de vakman onderstreepte. Toen we de klant vroegen of het ook iets opleverde, bevestigde hij dit.</p></li>
       </ul>
 
       <h2>Wat werkt wél: eerst de basis, dan pas SEO</h2>
       <h3>Strategische intake: begrijp de businesscontext</h3>
-      <p>Wij starten elk traject met een strategische intake. Wat verkoop je? Wie zijn je klanten? Wat zijn je doelen? Vanuit dat begrip bouwen we een datagedreven strategie die werkt.</p>
-      <h3>Check je product-market fit</h3>
-      <p>Zonder marktfit heeft SEO geen zin. We analyseren of je aanbod aansluit op de vraag in de markt. Geen product dat mensen écht willen? Dan richten we ons eerst daarop.</p>
+      <p>Wij starten elk traject met een strategische intake. Wat verkoop je? Wie zijn je klanten? Wat zijn je doelen? Vanuit dat begrip bouwen we een datagedreven strategie.</p>
+      <h3>Past je aanbod bij de vraag?</h3>
+      <p>We kijken of je aanbod aansluit op de vraag in de markt. Sluit het niet aan, dan zeggen we dat eerst, vóór we in SEO investeren.</p>
       <h3>Verbeter UX, copy &amp; positionering</h3>
-      <p>SEO trekt mensen aan. UX en copy overtuigen ze. We optimaliseren sitestructuur, laadsnelheid, overtuigende teksten en branding. Pas dan haal je rendement uit je SEO.</p>
+      <p>SEO trekt mensen aan. UX en copy overtuigen ze. We werken aan sitestructuur, laadsnelheid, teksten en branding.</p>
       <h3>Sterke branding</h3>
       <p>Mensen klikken op merken die ze kennen of vertrouwen. Een sterk merk betekent hogere CTR’s en betere conversies. Branding versterkt SEO – en andersom.</p>
       <h3>SEO als versterking van je totale marketingstrategie</h3>
-      <p>SEO werkt niet in een silo. Wij verbinden SEO met al je marketingkanalen. Content voor SEO gebruiken we ook in e-mails, campagnes en socials. Zoekgedrag gebruiken we als input voor je aanbod en positionering. SEO versterkt je volledige business.</p>
+      <p>SEO werkt niet in een silo. Content voor SEO voedt ook je campagnes, en zoekgedrag is input voor je aanbod en je positionering.</p>
 
       <h2>Dus, eerst je business op orde, dan SEO</h2>
       <p>Wil je dat SEO écht rendeert? Werk eerst aan:</p>
@@ -71,7 +71,7 @@ export default (x) => {
   </div>
 </article>
 
-${x.terminus({ heading: 'Waar staat <span class="t-accent">jouw bedrijf</span> vandaag?', text: 'Een gesprek van 30 minuten, vrijblijvend. Daarna krijg je onze eerste lezing van je grootste commerciële kans.' })}
+${x.terminus({ heading: 'Waar staat <span class="t-accent">jouw bedrijf</span> vandaag?', text: 'Een gesprek van 30 minuten, vrijblijvend. Daarna krijg je onze eerste inschatting van je grootste commerciële kans.' })}
 `,
   };
 };

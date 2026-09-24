@@ -94,73 +94,102 @@ export function footer({ homeHref, logoAlt, tagline, cols, base, langs }) {
 
 /* ---------------- the line devices ---------------- */
 
-// Home hero: the method as one line. Business first (the logo's lens), then market and presence,
-// and only then the channels, drawn smaller and lighter.
-export function methodLine({ stations, channels, summary }) {
-  const [s0, s1, s2] = stations;
-  const ys = [16, 40, 64, 88, 112];
-  const fanX = 846;
-  const branches = channels.map((c, i) => `<path class="dv-tick" d="M${fanX} 64 C ${fanX + 34} 64, ${fanX + 44} ${ys[i]}, ${fanX + 84} ${ys[i]} H ${fanX + 104}"/><circle class="dv-dot" cx="${fanX + 104}" cy="${ys[i]}" r="2.5"/><text class="dv-channel" x="${fanX + 116}" y="${ys[i] + 4.5}">${esc(c)}</text>`).join('');
-  const h = `<svg class="dv-h" viewBox="0 0 1120 132" role="presentation" aria-hidden="true" focusable="false">
-    <defs><linearGradient id="dvh" gradientUnits="userSpaceOnUse" x1="24" y1="0" x2="${fanX}" y2="0"><stop offset="0" stop-color="#662483"/><stop offset=".55" stop-color="#8a4f9f"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
-    <path class="dv-draw" pathLength="1" d="M38 64 H ${fanX}" stroke="url(#dvh)" stroke-width="2" fill="none"/>
-    <circle cx="24" cy="64" r="13" fill="#fff" stroke="#662483" stroke-width="3"/><circle cx="24" cy="64" r="7" fill="#6BB869"/>
-    <circle cx="340" cy="64" r="7" fill="#fff" stroke="#7a3a93" stroke-width="2"/>
-    <circle cx="620" cy="64" r="7" fill="#fff" stroke="#8c77a4" stroke-width="2"/>
-    <text class="dv-station" x="11" y="104">${esc(s0)}</text>
-    <text class="dv-station" x="340" y="104" text-anchor="middle">${esc(s1)}</text>
-    <text class="dv-station" x="620" y="104" text-anchor="middle">${esc(s2)}</text>
-    <g class="dv-late"><circle cx="${fanX}" cy="64" r="5" fill="#6BB869"/>${branches}</g>
-  </svg>`;
-  const vys = [208, 232, 256, 280, 304];
-  const vBranches = channels.map((c, i) => `<path class="dv-tick" d="M20 190 C 20 ${vys[i] - 8}, 30 ${vys[i]}, 52 ${vys[i]} H 66"/><circle class="dv-dot" cx="66" cy="${vys[i]}" r="2.5"/><text class="dv-channel" x="78" y="${vys[i] + 4.5}">${esc(c)}</text>`).join('');
-  const v = `<svg class="dv-v" viewBox="0 0 340 316" role="presentation" aria-hidden="true" focusable="false">
-    <defs><linearGradient id="dvv" gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="190"><stop offset="0" stop-color="#662483"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
-    <path class="dv-draw" pathLength="1" d="M20 33 V 190" stroke="url(#dvv)" stroke-width="2" fill="none"/>
-    <circle cx="20" cy="20" r="13" fill="#fff" stroke="#662483" stroke-width="3"/><circle cx="20" cy="20" r="7" fill="#6BB869"/>
-    <circle cx="20" cy="84" r="7" fill="#fff" stroke="#7a3a93" stroke-width="2"/>
-    <circle cx="20" cy="140" r="7" fill="#fff" stroke="#8c77a4" stroke-width="2"/>
-    <text class="dv-station" x="48" y="24.5">${esc(s0)}</text>
-    <text class="dv-station" x="48" y="88.5">${esc(s1)}</text>
-    <text class="dv-station" x="48" y="144.5">${esc(s2)}</text>
-    <g class="dv-late"><circle cx="20" cy="190" r="5" fill="#6BB869"/>${vBranches}</g>
-  </svg>`;
-  return `<figure class="device" aria-label="${esc(summary)}">${h}${v}<figcaption class="visually-hidden">${esc(summary)}</figcaption></figure>`;
-}
-
-// Werken hero: one bounded question first (a segment with a known finish), then one partner (the line keeps going).
-export function ladderLine({ start, first, firstSub, second, secondSub, loop, summary }) {
-  const h = `<svg class="dv-h ladder" viewBox="0 0 1120 120" role="presentation" aria-hidden="true" focusable="false">
-    <defs><linearGradient id="lgh" gradientUnits="userSpaceOnUse" x1="24" y1="0" x2="1090" y2="0"><stop offset="0" stop-color="#662483"/><stop offset=".5" stop-color="#8a4f9f"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
-    <path class="dv-draw" pathLength="1" d="M38 56 H 1060" stroke="url(#lgh)" stroke-width="2" fill="none"/>
-    <circle cx="24" cy="56" r="13" fill="#fff" stroke="#662483" stroke-width="3"/><circle cx="24" cy="56" r="7" fill="#6BB869"/>
-    <text class="l-name" x="11" y="96">${esc(start)}</text>
-    <path d="M300 40 V 72 M560 40 V 72" stroke="#2E2E2E" stroke-width="2"/>
-    <text class="l-name" x="430" y="30" text-anchor="middle">${esc(first)}</text>
-    <text class="l-sub" x="430" y="96" text-anchor="middle">${esc(firstSub)}</text>
+// Home hero: the whole system as one line. It starts at the client's business (the logo's lens), runs through
+// strategy, creation and technology, fans out into the channels at execution, gathers again in measurement,
+// and a dashed return brings it back to strategy (continu bijsturen). The same stations as the systemLine below.
+export function methodLine({ stations, channels, loop, loopLong, summary }) {
+  const Y = 70;
+  const xs = [40, 232, 424, 616, 808];
+  const meting = 1082;
+  const fanX = 856;
+  const cys = [34, 58, 82, 106];
+  const strokes = ['#662483', '#7a3a93', '#8a4f9f', '#8c77a4', '#7ea08a'];
+  const branches = channels.map((c, i) => {
+    const y = cys[i];
+    const tx = fanX + 60;
+    const rx = Math.round(tx + c.length * 7.1 + 10);
+    return `<path class="dv-tick" d="M${fanX} ${Y} C ${fanX + 30} ${Y}, ${fanX + 30} ${y}, ${fanX + 52} ${y}"/><text class="dv-channel" x="${tx}" y="${y + 4.5}">${esc(c)}</text><path class="dv-tick" d="M${rx} ${y} H 1016 C 1046 ${y}, 1046 ${Y}, ${meting - 14} ${Y}"/>`;
+  }).join('');
+  const nodes = xs.slice(1).map((x, i) => `<circle cx="${x}" cy="${Y}" r="8" fill="#fff" stroke="${strokes[i + 1]}" stroke-width="2.5"/>`).join('');
+  const labels = stations.map((s, i) => `<text class="dv-station" x="${i < 5 ? xs[i] : meting}" y="${Y + 56}" text-anchor="middle">${esc(s)}</text>`).join('');
+  const lx = Math.round((xs[1] + meting) / 2);
+  const h = `<svg class="dv-h" viewBox="0 0 1120 140" role="presentation" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="dvh" gradientUnits="userSpaceOnUse" x1="40" y1="0" x2="${fanX}" y2="0"><stop offset="0" stop-color="#662483"/><stop offset=".6" stop-color="#8a4f9f"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
+    <path class="dv-draw" pathLength="1" d="M60 ${Y} H ${fanX}" stroke="url(#dvh)" stroke-width="3" fill="none"/>
+    <circle cx="${xs[0]}" cy="${Y}" r="20" fill="#fff" stroke="#662483" stroke-width="4"/><circle cx="${xs[0]}" cy="${Y}" r="10" fill="#6BB869"/>
+    ${nodes}
+    ${labels}
     <g class="dv-late">
-      <circle cx="560" cy="56" r="6" fill="#fff" stroke="#8a4f9f" stroke-width="2"/>
-      <text class="l-name" x="830" y="30" text-anchor="middle">${esc(second)}</text>
-      <text class="l-sub" x="830" y="96" text-anchor="middle">${esc(secondSub)}</text>
-      <path d="M1060 56 c 0 -22 -20 -30 -40 -30 h -60" stroke="#BDBDC4" stroke-width="1.25" stroke-dasharray="4 5" fill="none"/>
-      <path d="M966 20 l -8 6 8 6" stroke="#BDBDC4" stroke-width="1.25" fill="none"/>
-      <text class="l-sub" x="1044" y="96" text-anchor="middle">${esc(loop)}</text>
-      <circle cx="1060" cy="56" r="7" fill="#6BB869"/>
+      ${branches}
+      <circle cx="${meting}" cy="${Y}" r="11" fill="#6BB869"/>
+      <path class="dv-loop" d="M${meting} ${Y - 16} V 26 Q ${meting} 12 ${meting - 14} 12 H ${xs[1] + 14} Q ${xs[1]} 12 ${xs[1]} 26 V ${Y - 24}"/>
+      <path class="dv-loop-head" d="M${xs[1] - 6} ${Y - 25} L ${xs[1]} ${Y - 16} L ${xs[1] + 6} ${Y - 25} Z"/>
+      <rect x="${lx - 52}" y="2" width="104" height="20" fill="#fff"/>
+      <text class="dv-channel" x="${lx}" y="16.5" text-anchor="middle">${esc(loop)}</text>
     </g>
   </svg>`;
-  const v = `<svg class="dv-v ladder" viewBox="0 0 340 300" role="presentation" aria-hidden="true" focusable="false">
-    <defs><linearGradient id="lgv" gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="270"><stop offset="0" stop-color="#662483"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
-    <path class="dv-draw" pathLength="1" d="M20 33 V 270" stroke="url(#lgv)" stroke-width="2" fill="none"/>
-    <circle cx="20" cy="20" r="13" fill="#fff" stroke="#662483" stroke-width="3"/><circle cx="20" cy="20" r="7" fill="#6BB869"/>
-    <text class="l-name" x="48" y="24.5">${esc(start)}</text>
-    <path d="M6 70 H 34 M6 150 H 34" stroke="#2E2E2E" stroke-width="2"/>
-    <text class="l-name" x="48" y="104">${esc(first)}</text>
-    <text class="l-sub" x="48" y="124">${esc(firstSub)}</text>
+  // Mobile: the same line, vertical. The spine sits on the page rail's x (see .dv-v in site.css) and runs on
+  // past measurement into the page, so hero and sections are one continuous line.
+  const vy = [22, 80, 130, 180, 230];
+  const vc = [262, 288, 314, 340];
+  const vMeting = 380;
+  const vBranches = channels.map((c, i) => `<path class="dv-tick" d="M7 ${vc[i] - 16} C 7 ${vc[i] - 4}, 16 ${vc[i]}, 30 ${vc[i]} H 36"/><circle class="dv-dot" cx="36" cy="${vc[i]}" r="2.5"/><text class="dv-channel" x="46" y="${vc[i] + 4.5}">${esc(c)}</text>`).join('');
+  const vNodes = vy.slice(1).map((y, i) => `<circle cx="7" cy="${y}" r="7" fill="#fff" stroke="${strokes[i + 1]}" stroke-width="2.5"/>`).join('');
+  const vLabels = stations.slice(0, 5).map((s, i) => `<text class="dv-station" x="40" y="${vy[i] + 6}">${esc(s)}</text>`).join('');
+  const v = `<svg class="dv-v" viewBox="0 0 340 420" width="340" height="420" role="presentation" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="dvv" gradientUnits="userSpaceOnUse" x1="0" y1="22" x2="0" y2="${vMeting}"><stop offset="0" stop-color="#662483"/><stop offset=".55" stop-color="#8a4f9f"/><stop offset="1" stop-color="#6BB869"/></linearGradient>
+    <linearGradient id="dvv2" gradientUnits="userSpaceOnUse" x1="0" y1="${vMeting}" x2="0" y2="420"><stop offset="0" stop-color="#6BB869"/><stop offset="1" stop-color="#662483"/></linearGradient></defs>
+    <path class="dv-draw" pathLength="1" d="M7 36 V ${vMeting}" stroke="url(#dvv)" stroke-width="3" fill="none"/>
+    <path d="M7 ${vMeting} V 420" stroke="url(#dvv2)" stroke-width="2" fill="none"/>
+    <circle cx="7" cy="22" r="14" fill="#fff" stroke="#662483" stroke-width="3.5"/><circle cx="7" cy="22" r="7" fill="#6BB869"/>
+    ${vNodes}
+    ${vLabels}
+    <g class="dv-late">${vBranches}<circle cx="7" cy="${vMeting}" r="9" fill="#6BB869"/>
+      <text class="dv-station" x="40" y="${vMeting + 6}">${esc(stations[5])}<tspan class="dv-channel" dx="10">${esc(loopLong)}</tspan></text></g>
+  </svg>`;
+  return `<figure class="device device-method" aria-label="${esc(summary)}">${h}${v}<figcaption class="visually-hidden">${esc(summary)}</figcaption></figure>`;
+}
+
+// Werken hero: one bounded question first (a span with a known end), then one partner (the line keeps going and
+// loops back). Same station style as the home line; all labels on one side, spans drawn as brackets under the line.
+export function ladderLine({ start, first, firstSub, second, secondSub, loop, loopLong, summary }) {
+  const Y = 58;
+  const h = `<svg class="dv-h ladder" viewBox="0 0 1120 150" role="presentation" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="lgh" gradientUnits="userSpaceOnUse" x1="40" y1="0" x2="1080" y2="0"><stop offset="0" stop-color="#662483"/><stop offset=".5" stop-color="#8a4f9f"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
+    <path class="dv-draw" pathLength="1" d="M60 ${Y} H 1070" stroke="url(#lgh)" stroke-width="3" fill="none"/>
+    <circle cx="40" cy="${Y}" r="20" fill="#fff" stroke="#662483" stroke-width="4"/><circle cx="40" cy="${Y}" r="10" fill="#6BB869"/>
+    <text class="dv-station" x="40" y="${Y + 56}" text-anchor="middle">${esc(start)}</text>
+    <path class="dv-span" d="M150 ${Y + 22} v 8 H 510 v -8"/>
+    <circle cx="530" cy="${Y}" r="8" fill="#fff" stroke="#8a4f9f" stroke-width="2.5"/>
+    <text class="dv-station" x="330" y="${Y + 60}" text-anchor="middle">${esc(first)}</text>
+    <text class="dv-channel" x="330" y="${Y + 82}" text-anchor="middle">${esc(firstSub)}</text>
     <g class="dv-late">
-      <text class="l-name" x="48" y="206">${esc(second)}</text>
-      <text class="l-sub" x="48" y="226">${esc(secondSub)}</text>
-      <circle cx="20" cy="270" r="7" fill="#6BB869"/>
-      <text class="l-sub" x="48" y="274.5">${esc(loop)}</text>
+      <path class="dv-span" d="M550 ${Y + 22} v 8 H 1082 v -8"/>
+      <text class="dv-station" x="816" y="${Y + 60}" text-anchor="middle">${esc(second)}</text>
+      <text class="dv-channel" x="816" y="${Y + 82}" text-anchor="middle">${esc(secondSub)}</text>
+      <circle cx="1082" cy="${Y}" r="11" fill="#6BB869"/>
+      <path class="dv-loop" d="M1082 ${Y - 16} V 24 Q 1082 10 1068 10 H 604 Q 590 10 590 24 V ${Y - 14}"/>
+      <path class="dv-loop-head" d="M584 ${Y - 15} L 590 ${Y - 6} L 596 ${Y - 15} Z"/>
+      <rect x="784" y="0" width="104" height="20" fill="#fff"/>
+      <text class="dv-channel" x="836" y="14.5" text-anchor="middle">${esc(loop)}</text>
+    </g>
+  </svg>`;
+  const v = `<svg class="dv-v ladder" viewBox="0 0 340 330" width="340" height="330" role="presentation" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="lgv" gradientUnits="userSpaceOnUse" x1="0" y1="22" x2="0" y2="300"><stop offset="0" stop-color="#662483"/><stop offset="1" stop-color="#6BB869"/></linearGradient></defs>
+    <path class="dv-draw" pathLength="1" d="M7 36 V 300" stroke="url(#lgv)" stroke-width="3" fill="none"/>
+    <path d="M7 300 V 330" stroke="#8a4f9f" stroke-width="2" fill="none"/>
+    <circle cx="7" cy="22" r="14" fill="#fff" stroke="#662483" stroke-width="3.5"/><circle cx="7" cy="22" r="7" fill="#6BB869"/>
+    <text class="dv-station" x="40" y="28">${esc(start)}</text>
+    <path class="dv-span" d="M28 66 h -6 V 146 h 6"/>
+    <text class="dv-station" x="40" y="100">${esc(first)}</text>
+    <text class="dv-channel" x="40" y="122">${esc(firstSub)}</text>
+    <circle cx="7" cy="162" r="7" fill="#fff" stroke="#8a4f9f" stroke-width="2.5"/>
+    <g class="dv-late">
+      <path class="dv-span" d="M28 180 h -6 V 262 h 6"/>
+      <text class="dv-station" x="40" y="214">${esc(second)}</text>
+      <text class="dv-channel" x="40" y="236">${esc(secondSub)}</text>
+      <circle cx="7" cy="300" r="9" fill="#6BB869"/>
+      <text class="dv-channel" x="40" y="304.5">${esc(loopLong)}</text>
     </g>
   </svg>`;
   return `<figure class="device" aria-label="${esc(summary)}">${h}${v}<figcaption class="visually-hidden">${esc(summary)}</figcaption></figure>`;
@@ -212,7 +241,7 @@ export function textLink(href, label, extra = '') {
   return `<a class="textlink" href="${href}"><span>${esc(label)}</span>${ARROW}</a>${extra}`;
 }
 
-/* ---------------- terminus + powered by ---------------- */
+/* ---------------- terminus + reason to believe ---------------- */
 
 export function terminus({ id, heading, text, cta, person }) {
   const who = person ? `<figure class="t-person"><img src="/assets/img/jef-van-gool.webp" alt="${esc(person.alt)}" width="584" height="500"><figcaption><b>${esc(person.name)}</b>${esc(person.role)}</figcaption></figure>` : '';
@@ -229,6 +258,7 @@ export function terminus({ id, heading, text, cta, person }) {
 </section>`;
 }
 
-export function poweredBy({ label, text }) {
-  return `<aside class="powered" aria-label="${esc(label)}"><div class="wrap"><span class="p-label">${LENS}${esc(label)}</span><p>${text}</p></div></aside>`;
+// The reason to believe (our own intelligence layer), shown once, inside the system it explains. Never a badge.
+export function reasonToBelieve({ label, text }) {
+  return `<div class="rtb"><span class="p-label">${LENS}${esc(label)}</span><p>${text}</p></div>`;
 }

@@ -1,23 +1,26 @@
 // /nl/ : entry. One message: van gevonden worden naar gezocht én gekozen worden (Positioning Lock v1).
+// One line on the whole page: the hero draws the system (the same stations as "Eén systeem"), the sections are its stations.
 export default (x) => {
   const { C } = x;
   return {
     title: 'Sherlock SEO Agency — van gevonden naar gezocht én gekozen worden',
-    description: "Sherlock is de SEO- en groei-agency voor gevestigde KMO's: strategie, website, vindbaarheid, Google Ads en meting als één geheel. Bespreek je groeivraag.",
+    description: "Sherlock is de SEO- en groei-agency voor gevestigde kmo's: strategie, website, vindbaarheid, Google Ads en meting als één geheel. Bespreek je groeivraag.",
     main: `
-<section class="hero" aria-labelledby="h1">
+<section class="hero hero-line" aria-labelledby="h1">
   <div class="wrap">
     <h1 id="h1">Van gevonden worden naar <span class="accent">gezocht én gekozen</span> worden.</h1>
-    <p class="lead">Voor gevestigde KMO's die willen groeien: één senior partner die je bedrijf begrijpt, bepaalt waar je grootste kans zit, en die het ook uitvoert.</p>
+    <p class="lead">Voor gevestigde kmo's die willen groeien: één senior partner die je bedrijf begrijpt, bepaalt wat eerst moet, en dat ook uitvoert.</p>
     <div class="actions">
       <a class="btn btn-primary" href="${x.href('contact')}">${x.common.cta}</a>
       <a class="btn btn-secondary" href="${x.href('werken')}">Bekijk hoe we werken</a>
     </div>
     <p class="note">Een eerste gesprek duurt 30 minuten en is vrijblijvend.</p>
     ${C.methodLine({
-      stations: ['JE BEDRIJF', 'JE MARKT', 'JE AANWEZIGHEID'],
-      channels: ['website', 'zoeken', 'advertenties', 'content', 'meting'],
-      summary: 'We beginnen bij je bedrijf, kijken dan naar je markt en je digitale aanwezigheid, en komen pas daarna bij de kanalen: website, zoeken, advertenties, content en meting.',
+      stations: ['Je bedrijf', 'Strategie', 'Creatie', 'Technologie', 'Uitvoering', 'Meting'],
+      channels: ['website', 'zoeken', 'advertenties', 'content'],
+      loop: 'bijsturen',
+      loopLong: 'en dan bijsturen',
+      summary: 'Eén lijn: we beginnen bij je bedrijf, dan strategie, creatie en technologie. Pas bij de uitvoering komen de kanalen: website, zoeken, advertenties en content. We meten wat verandert en sturen de strategie bij.',
     })}
   </div>
 </section>
@@ -28,8 +31,7 @@ export default (x) => {
   <section class="station" aria-labelledby="h-herkenning">
     <p class="eyebrow">Herkenning</p>
     <div class="section-intro">
-      <h2 id="h-herkenning"><span class="s">Je hebt waarschijnlijk geen marketingprobleem.</span> <span class="s">Je hebt een samenhangprobleem.</span></h2>
-      <p class="lead">Je bedrijf draait en je klanten weten waarom ze voor je kiezen. Online zie je daar te weinig van terug.</p>
+      <h2 id="h-herkenning">Je bedrijf is beter dan hoe je vandaag online overkomt.</h2>
     </div>
     <ul class="symptoms measure" style="margin-top:36px">
       <li>Je website vertelt niet scherp genoeg waarom iemand voor jullie moet kiezen.</li>
@@ -44,11 +46,11 @@ export default (x) => {
     <p class="eyebrow">Waar we beginnen</p>
     <h2 id="h-begin"><span class="s">We beginnen niet bij het kanaal.</span> <span class="s">We beginnen bij je bedrijf.</span></h2>
     <ul class="questions">
-      <li><span class="q-label"><i></i>Je bedrijf</span><p class="q-text">Wat verkoop je, aan wie, en waarom kiezen klanten voor jou? Waar zitten je marge en je bewijs?</p></li>
-      <li><span class="q-label"><i></i>Je markt</span><p class="q-text">Waar zit de vraag, wie concurreert met je, en waarvoor wil je gekend worden?</p></li>
-      <li><span class="q-label"><i></i>Je aanwezigheid</span><p class="q-text">Wat zien Google, AI-assistenten en mensen vandaag werkelijk van je?</p></li>
+      <li><span class="q-label">Je bedrijf</span><p class="q-text">Wat verkoop je, aan wie, en waarom kiezen klanten voor jou? Waar verdien je het meest, en wat kan je aantonen?</p></li>
+      <li><span class="q-label">Je markt</span><p class="q-text">Waar zit de vraag, wie concurreert met je, en waarvoor wil je gekend worden?</p></li>
+      <li><span class="q-label">Je aanwezigheid</span><p class="q-text">Wat zien Google, AI-assistenten en mensen vandaag werkelijk van je?</p></li>
     </ul>
-    <p class="close-line">Daaruit bepalen we wat er moet veranderen. En we voeren het ook uit.</p>
+    <p class="close-line">Daaruit bepalen we wat er eerst moet veranderen.</p>
   </section>
 
   <section class="station" aria-labelledby="h-systeem">
@@ -59,12 +61,13 @@ export default (x) => {
         { name: 'Je bedrijf', text: 'Het vertrekpunt van elke beslissing.' },
         { name: 'Strategie', text: 'We bepalen waar je grootste commerciële kans zit, en wat eerst moet.' },
         { name: 'Creatie', text: 'We vertalen wat je anders maakt naar een verhaal, een aanbod en een site die het tonen.' },
-        { name: 'Technologie', text: 'Eigen technologie houdt je bedrijf, je markt en je resultaten bij elkaar.' },
+        { name: 'Technologie', text: 'Wat we over je bedrijf, je markt en elke ingreep weten, zit op één plek.' },
         { name: 'Uitvoering', text: 'Website en content, SEO, Google Ads, conversie: wat we beslissen, voeren we ook uit.' },
         { name: 'Meting', text: 'We meten wat verandert in aanvragen, en sturen bij.' },
       ],
       loop: 'bijsturen',
     })}
+    ${x.rtb()}
     <div class="system-after"><p>Niet als losse diensten, maar als onderdelen van hetzelfde groeiplan.</p>${x.go('werken', 'Zo werken we samen')}</div>
   </section>
 
@@ -72,30 +75,23 @@ export default (x) => {
     <p class="eyebrow">Bewijs</p>
     <h2 id="h-bewijs">Wat dit oplevert.</h2>
     <div class="proof">
-      ${C.deviceFrame({ desktop: { src: '/assets/img/bovenyvo-desktop-2026-09-24.jpg', w: 1800, h: 1125 }, mobile: { src: '/assets/img/bovenyvo-mobile-2026-09-24.jpg', w: 780, h: 1688 },
+      ${C.deviceFrame({ desktop: { src: '/assets/img/bovenyvo-desktop-2026-09-24.jpg', w: 1800, h: 1025 }, mobile: { src: '/assets/img/bovenyvo-mobile-2026-09-24.jpg', w: 780, h: 1504 },
         alt: 'De startpagina van bovenyvo.be', domain: 'bovenyvo.be',
-        caption: 'bovenyvo.be, vastgelegd op 24 september 2026. De cijfers gaan over juni 2019 tegenover juni 2020.' })}
+        caption: 'bovenyvo.be op 24 september 2026, jaren na de cijfers in deze case (juni 2019 tegenover juni 2020).' })}
       <div class="proof-text">
         <p class="proof-meta">Case · Boven Yvo · groeipartner</p>
         <h3>Eerst meten. Dan groeien. Dan pas een nieuwe website.</h3>
-        <p>Alu ramen en deuren, vier vestigingen, twee merknamen, samenwerking vanaf 2017. De data van de eerste zoekcampagnes stuurde daarna zowel de advertenties als de SEO.</p>
+        <p>Alu ramen en deuren, vier vestigingen, twee merknamen, klant sinds 2017. De data van de eerste zoekcampagnes stuurde daarna zowel de advertenties als de SEO.</p>
         ${C.figures([
-          { from: '291', to: '644', label: 'websitebezoeken', source: 'Search Console, juni 2019 vs. juni 2020' },
-          { value: '+170%', label: 'conversies', source: 'Alle conversies, Google Analytics, zelfde periode' },
+          { value: '+170%', label: 'conversies', source: 'Alle conversies, Google Analytics, juni 2019 vs. juni 2020' },
+          { from: '291', to: '644', label: 'bezoeken via Google', source: 'Search Console, zelfde periode' },
         ], 'figures-2')}
         ${x.go('case.boven-yvo', 'Lees hoe dat liep')}
       </div>
     </div>
-    <div class="also">
-      <div><p class="proof-meta" style="margin-bottom:6px">Case · opdracht</p><b>Meertalige marketplace</b> <span class="muted">in België, vier talen</span></div>
-      <div>
-        <div class="also-figs">
-          <span class="num">4.261 ${C.smallArrow()} <b>0</b><small>dubbele URL's tussen talen</small></span>
-          <span class="num">14.704 ${C.smallArrow()} <b>247</b><small>interne redirects</small></span>
-        </div>
-        <p class="small" style="margin:6px 0 0">Screaming Frog, crawl voor en na.</p>
-      </div>
-      ${x.go('case.marketplace', 'Lees de case')}
+    <div class="voice">
+      ${C.quote({ text: 'Sherlock werkte een professioneel plan van aanpak uit voor zowel onze website als SEO/SEA. Ik kan het Sherlock team iedereen aanraden!', name: 'Manou Rottiers', company: 'Style at Home' })}
+      <p class="voice-more">${x.go('cases', 'Alle cases')}</p>
     </div>
     ${C.badges({ label: 'Partners', items: [
       { src: '/assets/img/badge-google-partners.webp', alt: 'Google Partners', w: 548, h: 152 },
@@ -108,7 +104,6 @@ export default (x) => {
 </div>
 
 ${x.terminus()}
-${x.powered()}
 `,
   };
 };

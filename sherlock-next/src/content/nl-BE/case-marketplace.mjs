@@ -5,7 +5,7 @@ export default (x) => {
   const { C } = x;
   return {
     title: "Case meertalige marketplace: 4.261 dubbele URL's naar 0 | Sherlock SEO Agency",
-    description: "Een meertalige marketplace in België: de URL-architectuur herbouwd. Dubbele URL's tussen talen 4.261 → 0, interne redirects 14.704 → 247 (Screaming Frog, crawl voor en na).",
+    description: "Een meertalige marketplace in België: de URL-architectuur herbouwd. Dubbele URL's tussen talen 4.261 → 0, interne redirects 14.704 → 247 (Screaming Frog, crawl voor en na de opdracht; case gepubliceerd juli 2026).",
     schemaType: 'Article',
     schema: { headline: "Van 4.261 dubbele URL's tussen talen naar nul", datePublished: '2026-07-03', dateModified: '2026-09-24', author: { '@id': `${x.model.site.origin}/#org` } },
     main: `
@@ -20,11 +20,11 @@ export default (x) => {
       <div><dt>Case gepubliceerd</dt><dd>Juli 2026</dd></div>
     </dl>
     ${C.figures([
-      { from: '14.704', to: '247', label: 'interne redirects', source: 'Screaming Frog, crawl voor en na de opdracht' },
-      { from: '835', to: '95', label: "kapotte pagina's (404)", source: 'Screaming Frog, crawl voor en na de opdracht' },
+      { from: '14.704', to: '247', label: 'interne redirects', source: 'Screaming Frog, crawl voor en na de opdracht; case gepubliceerd juli 2026' },
+      { from: '835', to: '95', label: "kapotte pagina's (404)", source: 'Screaming Frog, zelfde crawls' },
       { value: '5.554', label: 'unieke listings correct indexeerbaar, in vier talen', source: 'Screaming Frog, crawl na de opdracht' },
     ], 'figures-3')}
-    <p class="tech-note">Technische resultaten: ze tonen wat er in de site veranderde. De crawl-omvang halveerde, zodat Google zijn tijd besteedt aan pagina's die klanten kunnen opleveren.</p>
+    <p class="tech-note">Technische resultaten. De crawl-omvang halveerde, zodat Google zijn tijd besteedt aan pagina's die klanten kunnen opleveren.</p>
   </div>
 </section>
 
@@ -78,7 +78,7 @@ export default (x) => {
 </div>
 </div>
 
-${x.terminus({ heading: 'Een vraag met een <span class="t-accent">duidelijk eindpunt?</span>', text: 'Een opdracht begint met een gesprek van 30 minuten. In het voorstel staat wat we doen, wanneer het af is en wat het kost.' })}
+${x.terminus({ heading: 'Een vraag met een <span class="t-accent">duidelijk eindpunt?</span>', text: 'Een opdracht begint met een gesprek van 30 minuten. In het voorstel staat wat we doen, wanneer je resultaat ziet en wat het kost.' })}
 `,
   };
 };
