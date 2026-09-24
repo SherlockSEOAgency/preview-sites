@@ -16,12 +16,12 @@
     "home": {
       "role": "entry", "parent": null,
       "slug": { "nl-BE": "", "fr-BE": "", "en": "" },
-      "status": { "nl-BE": "built", "fr-BE": "built", "en": "planned" }
+      "status": { "nl-BE": "built", "fr-BE": "built", "en": "built" }
     },
     "werken": {
       "role": "commercial", "parent": "home", "nav": 1,
       "slug": { "nl-BE": "werken-met-sherlock", "fr-BE": "travailler-avec-sherlock", "en": "work-with-sherlock" },
-      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" },
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "built" },
       "offers": {
         "opdracht": ["website_conversion", "landing_page", "tracking_foundation", "paid_acquisition", "seo_growth"],
         "groeipartner": ["growth_guide", "growth_partner", "growth_lead", "growth_embedded"]
@@ -30,12 +30,12 @@
     "cases": {
       "role": "proof-hub", "parent": "home", "nav": 2,
       "slug": { "nl-BE": "cases", "fr-BE": "cas-clients", "en": "cases" },
-      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "built" }
     },
     "case.boven-yvo": {
       "role": "proof", "parent": "cases", "rung": "groeipartner",
       "slug": { "nl-BE": "cases/boven-yvo", "fr-BE": "cas-clients/boven-yvo", "en": "cases/boven-yvo" },
-      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "built" }
     },
     "case.marketplace": {
       "role": "proof", "parent": "cases", "rung": "opdracht",
@@ -49,13 +49,13 @@
     },
     "kb.business-klopt": {
       "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
-      "slug": { "nl-BE": "academie/waarom-seo-pas-werkt-als-je-business-klopt" },
-      "status": { "nl-BE": "built" }
+      "slug": { "nl-BE": "academie/waarom-seo-pas-werkt-als-je-business-klopt", "en": "academy/why-seo-only-works-when-your-business-does" },
+      "status": { "nl-BE": "built", "en": "built" }
     },
     "contact": {
       "role": "conversion", "parent": "home",
       "slug": { "nl-BE": "contact", "fr-BE": "contact", "en": "contact" },
-      "status": { "nl-BE": "built", "fr-BE": "built", "en": "planned" }
+      "status": { "nl-BE": "built", "fr-BE": "built", "en": "built" }
     }
   }
 }
