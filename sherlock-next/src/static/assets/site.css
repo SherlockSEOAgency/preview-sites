@@ -560,3 +560,14 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .who-mini img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--surface); flex: none; }
 @media (max-width: 1079px) { .contact-grid { grid-template-areas: "mini" "form" "who" "next"; gap: 28px; } }
 @media (min-width: 1080px) { .who-mini { display: none; } }
+
+/* ---------- academy hub: one index per moment ---------- */
+.kb-index { list-style: none; margin-top: 28px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.kb-index li { border-bottom: 1px solid var(--line); }
+.kb-index a { display: grid; gap: 6px; padding: 22px 0; text-decoration: none; color: var(--ink); }
+.kb-index a .kb-q { font: 700 clamp(1.0625rem, 1rem + .3vw, 1.3125rem)/1.35 var(--head); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.kb-index a .kb-q svg { width: 20px; height: 20px; color: var(--purple); flex: none; transition: transform .15s ease; }
+.kb-index a:hover .kb-q { color: var(--purple); }
+.kb-index a:hover .kb-q svg { transform: translateX(4px); }
+.kb-index a .kb-a { margin: 0; color: var(--muted); max-width: 38em; font-size: 15.5px; line-height: 1.6; }
+.kb-soon { margin-top: 18px; padding: 20px 22px; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted); font-size: 15px; line-height: 1.65; max-width: 44rem; }
