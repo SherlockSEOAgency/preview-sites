@@ -1,7 +1,6 @@
-// /nl/academie/ : knowledge hub. Three moments (architecture map §10): Voor je kiest (built, this file),
+// /nl/academie/ : knowledge hub. Three moments: Voor je kiest (built, this file),
 // Samenwerken and Vakkennis (their source pieces exist on the current site but are not moved over in this
-// slice — build-out order §18 step 4/5). Those two sections get one honest, grounded line each, no dead
-// links and no invented titles: what §10 says will land there, nothing more.
+// slice). Those two sections get one honest, grounded line each, no dead links and no invented titles.
 export default (x) => {
   const { C } = x;
   const pieces = [

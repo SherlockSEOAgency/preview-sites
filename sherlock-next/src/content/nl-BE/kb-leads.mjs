@@ -1,9 +1,8 @@
 // /nl/academie/manieren-om-online-leads-te-genereren/ : knowledge, Academy section "Voor je kiest".
 // Source: the published blog post (sherlockseo.com, WP 5271, 28 September 2025). Rewritten: the raw post lists
-// 7 generic channels (incl. lead magnets, social ads, retargeting) and a table of unpublished/on-hold case results
-// (Roofcover, Emiel's €600.000, Kartonnenmeubelen, Lederland, Board of Innovation — §7.1/§7.2, all dropped).
-// Narrowed to the four channels Sherlock names as deliverable today (offer_catalog, origin/master): seo_growth,
-// paid_acquisition, website_conversion/landing_page, content_authority.
+// 7 generic channels (incl. lead magnets, social ads, retargeting) and a table of unpublished/on-hold case
+// results — all dropped, none of those clients are named here. Narrowed to the channels Sherlock names as
+// deliverable today: SEO, paid search, website/landing pages, content.
 export default (x) => {
   const { C } = x;
   return {

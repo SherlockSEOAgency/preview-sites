@@ -3,7 +3,7 @@
 //
 // `cases` is data, not markup: each entry is { id, link, meta, heading, left, right }. `left` is whatever sits next
 // to the "Lees de case" link (figures or a short description), `right` is the other column (a screenshot frame or
-// figures). Build-out step 1 (ARCHITECTURE-MAP.md §18) adds published cases here as new entries in the same shape —
+// figures). A newly published case is added here as a new entry in the same shape —
 // the row markup and its CSS (.case-row, first/last-of-type borders) already scale to any number of rows.
 export default (x) => {
   const { C } = x;
@@ -29,7 +29,7 @@ export default (x) => {
         { from: '835', to: '95', label: "kapotte pagina's (404)", source: 'Screaming Frog, zelfde crawls' },
       ], 'figures-2 figures-stack'),
     },
-    // Volgend gepubliceerd bewijs (§17-1: na klant-toestemming en een GA4/GSC-cijfercheck) komt hier als een extra
+    // Het volgende gepubliceerde bewijs (na klant-toestemming en een cijfercheck) komt hier als een extra
     // item in dezelfde vorm — geen aparte layout, geen aparte CSS.
   ];
   const caseRow = (c) => `
@@ -57,7 +57,6 @@ export default (x) => {
 <div class="wrap">
   ${cases.map(caseRow).join('')}
 
-  ${C.quote({ text: 'Sherlock werkte een professioneel plan van aanpak uit voor zowel onze website als SEO/SEA. Ik kan het Sherlock team iedereen aanraden!', name: 'Manou Rottiers', company: 'Style at Home' })}
   ${C.badges({ label: 'Partners', items: [
     { src: '/assets/img/badge-google-partners.webp', alt: 'Google Partners', w: 548, h: 152 },
     { src: '/assets/img/badge-meta-business-partner.webp', alt: 'Meta Business Partner', w: 786, h: 267 },

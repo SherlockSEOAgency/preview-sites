@@ -63,8 +63,7 @@ export default (x) => {
     <p class="eyebrow">Bewijs</p>
     <h2 id="h-bewijs">Bewijs per stap.</h2>
     <div class="proof-pair">
-      ${C.quote({ text: 'Sherlock SEO Agency bestaat uit een team dat met je meedenkt en op een unieke manier je business-opportuniteiten blootlegt en ontplooit.', name: 'Emiel Denis', company: 'Saniswitch' })}
-      <nav class="continue" aria-label="Cases">
+      <nav class="continue" aria-label="Cases" style="grid-column:1/-1">
         <a href="${x.href('case.marketplace')}" data-offer-rung="opdracht"><small>Opdracht · meertalige marketplace</small><span>Per taal één pagina die Google toont, in plaats van duplicaten die elkaar beconcurreren.${C.ARROW}</span></a>
         <a href="${x.href('case.boven-yvo')}" data-offer-rung="groeipartner"><small>Groeipartner · Boven Yvo</small><span>Eerst meten, dan advertenties, SEO en content, en pas daarna een nieuwe website.${C.ARROW}</span></a>
       </nav>
