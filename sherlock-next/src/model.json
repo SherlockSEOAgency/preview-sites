@@ -45,11 +45,46 @@
     "academy": {
       "role": "knowledge-hub", "parent": "home", "nav": 3,
       "slug": { "nl-BE": "academie", "fr-BE": "academie", "en": "academy" },
-      "status": { "nl-BE": "planned", "fr-BE": "planned", "en": "planned" }
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
     },
     "kb.business-klopt": {
       "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
       "slug": { "nl-BE": "academie/waarom-seo-pas-werkt-als-je-business-klopt" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.samenwerking": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/hoe-verloopt-een-samenwerking-met-sherlock" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.audit": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/het-belang-van-een-strategische-online-marketing-audit" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.tracking": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/waarom-investeren-in-tracking-essentieel-is" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.opbrengen": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/hoe-laat-je-online-marketing-echt-opbrengen" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.leads": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/manieren-om-online-leads-te-genereren" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.positionering": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/de-kracht-van-positionering-en-branding" },
+      "status": { "nl-BE": "built" }
+    },
+    "kb.ideale-klant": {
+      "role": "knowledge", "parent": "academy", "section": "voor-je-kiest",
+      "slug": { "nl-BE": "academie/wie-is-jouw-ideale-klant" },
       "status": { "nl-BE": "built" }
     },
     "contact": {
