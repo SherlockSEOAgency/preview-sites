@@ -4,7 +4,7 @@ export default {
   skip: 'Naar de inhoud',
   menu: 'Menu',
   cta: 'Bespreek je groeivraag',
-  nav: { werken: 'Werken met Sherlock', cases: 'Cases', academy: 'Academie' },
+  nav: { werken: 'Werken met Sherlock', cases: 'Cases', academy: 'Academie', about: 'Over ons' },
   fallbackLabel: { 'fr-BE': '(in het Frans)', en: '(in het Engels)', 'nl-BE': '(in het Nederlands)' },
   switchFallbackTitle: 'deze pagina bestaat nog niet in het Nederlands',
   terminus: {
@@ -19,7 +19,7 @@ export default {
   footer: {
     tagline: "SEO- en groei-agency voor gevestigde kmo's in België.",
     cols: [
-      { title: 'Sherlock', items: [{ concept: 'werken', label: 'Werken met Sherlock' }, { concept: 'cases', label: 'Cases' }, { concept: 'contact', label: 'Contact' }] },
+      { title: 'Sherlock', items: [{ concept: 'werken', label: 'Werken met Sherlock' }, { concept: 'cases', label: 'Cases' }, { concept: 'about', label: 'Over ons' }, { concept: 'contact', label: 'Contact' }] },
       { title: 'Uit de Academie', items: [{ concept: 'kb.business-klopt', label: 'Waarom SEO pas werkt als je business klopt' }] },
       { title: 'Contact', items: [{ label: 'info@sherlockseo.com' }, { label: '+32 479 25 43 57' }] },
     ],

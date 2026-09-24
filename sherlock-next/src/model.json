@@ -56,6 +56,11 @@
       "role": "conversion", "parent": "home",
       "slug": { "nl-BE": "contact", "fr-BE": "contact", "en": "contact" },
       "status": { "nl-BE": "built", "fr-BE": "built", "en": "planned" }
+    },
+    "about": {
+      "role": "about", "parent": "home", "nav": 4,
+      "slug": { "nl-BE": "over-ons", "fr-BE": "a-propos", "en": "about" },
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
     }
   }
 }
