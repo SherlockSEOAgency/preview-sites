@@ -1,8 +1,7 @@
 // /nl/academie/het-belang-van-een-strategische-online-marketing-audit/ : knowledge, Academy section "Voor je kiest".
-// Source: the published blog post (sherlockseo.com, WP 5256, 28 September 2025). Rewritten: the raw post's three
-// "cases" are unpublished clients (Idé Coffee Systems, an anonymous gambling platform, a furniture franchise) and
-// carry unsourced claims ("#1 in Google.be", "beste maand ooit") — dropped in full; replaced with the one audit
-// result we can publish, the multilingual marketplace (§7.1, GREEN).
+// Source: the published blog post (sherlockseo.com, WP 5256, 28 September 2025). Rewritten: the raw post's
+// case examples are unpublished clients and carry unsourced claims ("#1 in Google.be", "beste maand ooit") —
+// dropped in full; replaced with the one audit result we can publish, the anonymised multilingual marketplace.
 export default (x) => {
   const { C } = x;
   return {

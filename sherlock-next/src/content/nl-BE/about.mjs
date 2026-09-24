@@ -1,12 +1,12 @@
-// /nl/over-ons/ : about + the proof layer that needs no client approval (build-out step 1, ARCHITECTURE-MAP.md §18).
-// Sources: team names/roles/quotes = the live team page (WP 2569, extracted 24/9/2026, arch/raw/2569.raw) — Jef,
-// Joan and Franny get a portrait (arch/assets); Dries, Dirk and Ronny are named without a portrait, same source.
-// Founding fact (2008) and the Seopoly mention = the live team page's own story text and CLAUDE.md's own
-// "Platform Siblings" description. Sortlist and Clutch links verified live on 24/9/2026 (browser, this session):
+// /nl/over-ons/ : about + the proof layer that needs no client approval.
+// Sources: team names/roles/quotes = the live team page (WP 2569, extracted 24/9/2026) — Jef,
+// Joan and Franny get a portrait; Dries, Dirk and Ronny are named without a portrait, same source.
+// Founding fact (2008) and the Seopoly mention = the live team page's own story text.
+// Sortlist and Clutch links verified live on 24/9/2026 (browser, this session):
 // https://www.sortlist.be/nl/agency/sherlock-seo-agency (4 reviews) and https://clutch.co/profile/sherlock-seo-agency
 // (2 reviews) both resolve to Sherlock SEO Agency's own profile. No score is quoted on the page: a live rating drifts,
 // so only the link is ours to state; the number stays on the page that owns it. No Google Business Profile link:
-// Maps sits behind a bot check we do not bypass (Agent Safety Rules), so it is not linked without a verified URL.
+// Maps sits behind a bot check we do not bypass, so it is not linked without a verified URL.
 export default (x) => {
   const { C } = x;
   return {

@@ -1,7 +1,7 @@
-// /nl/seo/ : capability page. Bounded-job entry: "seo audit" (DataForSEO BE, ~120/mo, §4 architecture map).
-// The audit is folded in as the first step of the assignment (§6), not a separate page in this wave.
-// Offer elements carry data-offer-key = keys of the Sherlock offer catalog (seo_growth, content_authority).
-// Proof: the marketplace case (§3: "Board of Innovation · marketplace"; only the marketplace case is published).
+// /nl/seo/ : capability page. Bounded-job entry: "seo audit" (DataForSEO BE, ~120/mo).
+// The audit is folded in as the first step of the assignment, not a separate page in this wave.
+// Proof: the anonymised marketplace case only — the client stays unnamed on that case page,
+// so it stays unnamed here too.
 export default (x) => {
   const { C } = x;
   return {

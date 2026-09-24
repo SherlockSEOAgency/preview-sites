@@ -1,8 +1,7 @@
 // /nl/academie/waarom-investeren-in-tracking-essentieel-is/ : knowledge, Academy section "Voor je kiest".
 // Source: the published blog post (sherlockseo.com, WP 5253, 28 September 2025). Rewritten: the raw post's proof
-// list mixes the one published, GREEN figure (Boven Yvo) with four unpublished or on-hold ones (Roofcover,
-// Kartonnenmeubelen, Saniswitch's €600.000 — §7.1/§7.2) — dropped, kept only Boven Yvo. Measurement is framed in
-// aanvragen throughout, never omzet (capability register: measurement_in_leads is LIMITED).
+// list mixes the one published figure (Boven Yvo) with several unpublished or on-hold client results — dropped,
+// kept only Boven Yvo. Measurement is framed in aanvragen throughout, never omzet.
 export default (x) => {
   const { C } = x;
   return {

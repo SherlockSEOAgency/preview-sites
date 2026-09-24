@@ -1,7 +1,6 @@
-// /nl/meten/ : capability page. Job trigger "campagne · meting" (§3/§4 architecture map: shared with cap.google-ads).
-// Offer elements carry data-offer-key = keys of the Sherlock offer catalog (tracking_foundation).
-// Reported in aanvragen, never in omzet (measurement_in_leads, offer_catalog.py).
-// Proof: Boven Yvo (§3: "tracking first").
+// /nl/meten/ : capability page. Job trigger "campagne · meting" (shared job with the Google Ads page).
+// Reported in aanvragen, never in omzet — measurement stays limited to that until it can be trusted further.
+// Proof: Boven Yvo ("tracking first").
 export default (x) => {
   const { C } = x;
   return {

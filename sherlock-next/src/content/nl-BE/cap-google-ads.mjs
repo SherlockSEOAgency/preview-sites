@@ -1,7 +1,6 @@
-// /nl/google-ads/ : capability page. Bounded-job entry: "google ads bureau" (DataForSEO BE, ~20/mo, §4 architecture map).
-// Offer elements carry data-offer-key = keys of the Sherlock offer catalog (paid_acquisition).
-// Ads spend stays a human decision (Golden Rule 9 / offer_catalog paid_acquisition exclusions): never claimed as automated.
-// Proof: Boven Yvo (§3: "tracking first" — the first search-campaign data drove both organic and paid).
+// /nl/google-ads/ : capability page. Bounded-job entry: "google ads bureau" (DataForSEO BE, ~20/mo).
+// Ads spend stays a human decision: never claimed as automated.
+// Proof: Boven Yvo ("tracking first" — the first search-campaign data drove both organic and paid).
 export default (x) => {
   const { C } = x;
   return {

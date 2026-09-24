@@ -1,8 +1,8 @@
 // /nl/academie/de-kracht-van-positionering-en-branding/ : knowledge, Academy section "Voor je kiest".
 // Source: the published blog post (sherlockseo.com, WP 5266, 28 September 2025). Rewritten: dropped "we zijn geen
-// klassiek SEO-bureau" and "geen pakketten, maar gefaseerde trajecten" (contradicts the priced plans in the offer
-// catalog, §17-7) and the self-description as "strategisch digitaal marketingbureau" (off the Lock's CATEGORY:
-// Agency). Reframed the closing around the site's own working line (Creatie station) instead of a generic pitch.
+// klassiek SEO-bureau" and "geen pakketten, maar gefaseerde trajecten" (contradicts the priced plans we do offer)
+// and the self-description as "strategisch digitaal marketingbureau" (Sherlock is an agency, not that).
+// Reframed the closing around the site's own working line (Creatie station) instead of a generic pitch.
 export default (x) => {
   const { C } = x;
   return {

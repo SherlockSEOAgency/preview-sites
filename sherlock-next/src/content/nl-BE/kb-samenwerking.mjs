@@ -1,9 +1,8 @@
 // /nl/academie/hoe-verloopt-een-samenwerking-met-sherlock/ : knowledge, Academy section "Voor je kiest".
 // Source: the published blog post (sherlockseo.com, WP 5252, 28 September 2025). Rewritten, not edited by cutting:
 // the raw post promises a 60-90 minute intake, which conflicts with the 30-minute first conversation the rest of
-// the site promises (flagged in the architecture map §19, "settle that before it goes into the journey") — resolved
-// here in favour of the site's own promise. Dropped: "geen standaardpakketten" (contradicts the priced plans in the
-// offer catalog, §17-7) and "we onderscheiden ons van 90% van onze concurrenten" (unsourced).
+// the site promises — resolved here in favour of the site's own promise. Dropped: "geen standaardpakketten"
+// (contradicts the priced plans we do offer) and "we onderscheiden ons van 90% van onze concurrenten" (unsourced).
 export default (x) => {
   const { C } = x;
   return {

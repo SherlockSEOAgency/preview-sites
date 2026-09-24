@@ -1,6 +1,5 @@
-// /nl/website/ : capability page. Bounded-job entry: "website laten maken" (DataForSEO BE, ~993/mo, §4 architecture map).
-// Offer elements carry data-offer-key = keys of the Sherlock offer catalog (website_conversion, landing_page).
-// No prices: the catalog has not decided them. Proof: Boven Yvo only (§3: "the site came last").
+// /nl/website/ : capability page. Bounded-job entry: "website laten maken" (DataForSEO BE, ~993/mo).
+// No prices here — not decided yet. Proof: Boven Yvo only ("the site came last").
 export default (x) => {
   const { C } = x;
   return {
