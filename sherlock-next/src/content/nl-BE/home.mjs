@@ -90,7 +90,6 @@ export default (x) => {
       </div>
     </div>
     <div class="voice">
-      ${C.quote({ text: 'Sherlock werkte een professioneel plan van aanpak uit voor zowel onze website als SEO/SEA. Ik kan het Sherlock team iedereen aanraden!', name: 'Manou Rottiers', company: 'Style at Home' })}
       <p class="voice-more">${x.go('cases', 'Alle cases')}</p>
     </div>
     ${C.badges({ label: 'Partners', items: [

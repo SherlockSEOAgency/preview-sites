@@ -1,8 +1,6 @@
 // /en/work-with-sherlock/ : commercial surface. Start with one question (mission), grow with one partner
-// (growth partner). Offer elements carry data-offer-key = keys of the Sherlock offer catalog: the catalog
-// decides what an offer is; this page only words it for the customer. No prices here (the catalog has not
-// decided them). No testimonial: the published quote (Emiel Denis, Saniswitch) exists in Dutch only and is
-// never translated (same rule as the other pages).
+// (growth partner). No prices here — not decided yet. No testimonial on this page: proof stays on the
+// case pages, and nothing here is translated from a quote that only exists in Dutch.
 export default (x) => {
   const { C } = x;
   const offers = x.model.concepts.werken.offers;
