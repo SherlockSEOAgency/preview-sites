@@ -27,6 +27,26 @@
         "groeipartner": ["growth_guide", "growth_partner", "growth_lead", "growth_embedded"]
       }
     },
+    "cap.website": {
+      "role": "commercial", "parent": "werken",
+      "slug": { "nl-BE": "website", "fr-BE": "site-web", "en": "website" },
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
+    },
+    "cap.seo": {
+      "role": "commercial", "parent": "werken",
+      "slug": { "nl-BE": "seo", "fr-BE": "seo", "en": "seo" },
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
+    },
+    "cap.google-ads": {
+      "role": "commercial", "parent": "werken",
+      "slug": { "nl-BE": "google-ads", "fr-BE": "google-ads", "en": "google-ads" },
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
+    },
+    "cap.meten": {
+      "role": "commercial", "parent": "werken",
+      "slug": { "nl-BE": "meten", "fr-BE": "mesure", "en": "measurement" },
+      "status": { "nl-BE": "built", "fr-BE": "planned", "en": "planned" }
+    },
     "cases": {
       "role": "proof-hub", "parent": "home", "nav": 2,
       "slug": { "nl-BE": "cases", "fr-BE": "cas-clients", "en": "cases" },
