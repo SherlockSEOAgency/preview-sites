@@ -1,0 +1,20 @@
+# Sherlock: marketing tools for your agents
+
+Sherlock is a Belgian marketing agency that runs on its own platform. We are opening parts of it to agents over MCP, and we want to know which tools you would actually use.
+
+## True today
+- One guarded MCP entrance: per-key tenant scope, read-only by default, and every tool is classified, so an unclassified tool is denied.
+- Relevance gating: keywords are judged on relevance to what the business actually sells, with a reason, never filtered on volume alone. Zero-volume money keywords are kept.
+Access is by invitation for now.
+
+## Candidate tools (not built yet, we are asking which you would use)
+1. "Why doesn't Google send me customers?": one call that checks local pack, money keywords, measurement and the site in one go.
+2. Money-keyword finder: which searches actually sell, including zero-volume ones.
+3. Competitor gap: which sites link to competitors but not to you.
+4. Ads waste check: spend on search terms that don't match what you sell.
+5. Page-or-not: should this topic get its own page, given what already ranks.
+
+## How to answer
+Reply in the thread where you found this link, or email agents@sherlockseo.com.
+
+Sherlock SEO Agency - https://sherlockseo.com

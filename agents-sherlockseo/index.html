@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marketing tools for your agents | Sherlock</title>
+<meta name="description" content="Sherlock is a Belgian marketing agency opening parts of its platform to agents over MCP. Tell us which tools you would actually use.">
+<link rel="alternate" type="text/plain" href="/llms.txt">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#662483;--green:#6BB869;--ink:#2a2230;--muted:#5d5566;--line:#e6e1ea;--bg:#fff;--tint:#f7f4f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 'Open Sans',system-ui,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+h1,h2{font-family:Raleway,system-ui,sans-serif;color:var(--purple);line-height:1.15;margin:0}
+header{padding:56px 0 40px;border-bottom:4px solid var(--green)}
+h1{font-size:clamp(2rem,7vw,3rem);font-weight:800}
+.sub{font-size:1.1rem;color:var(--muted);margin:16px 0 0}
+section{padding:36px 0 8px}
+h2{font-size:1.5rem;font-weight:700;margin-bottom:14px}
+ul{padding-left:20px;margin:0}
+li{margin:0 0 12px}
+.note{color:var(--muted);font-size:.95rem}
+.cand{list-style:none;padding:0}
+.cand li{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--tint)}
+.cand b{font-family:Raleway,sans-serif;color:var(--purple)}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#2d6a2b;background:#e6f4e5;border:1px solid var(--green);border-radius:999px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+.mail{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+#addr{font:600 1.05rem ui-monospace,Menlo,monospace;background:var(--tint);border:1px solid var(--line);border-radius:8px;padding:10px 14px;user-select:all}
+button{font:600 1rem 'Open Sans',sans-serif;background:var(--purple);color:#fff;border:0;border-radius:8px;padding:10px 18px;cursor:pointer}
+button:hover{background:#4f1c68}
+button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+footer{margin-top:48px;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer a{color:var(--purple)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Marketing tools for your agents.</h1>
+<p class="sub">Sherlock is a Belgian marketing agency that runs on its own platform. We're opening parts of it to agents over MCP, and we want to know which tools you would actually use.</p>
+</div></header>
+<main class="wrap">
+<section>
+<h2>Already true today</h2>
+<ul>
+<li><b>One guarded MCP entrance.</b> Per-key tenant scope, read-only by default, and every tool is classified, so an unclassified tool is denied.</li>
+<li><b>Relevance gating.</b> Keywords are judged on relevance to what the business actually sells, with a reason, never filtered on volume alone. Zero-volume money keywords are kept.</li>
+</ul>
+<p class="note">Nothing else is available yet. Access is by invitation for now.</p>
+</section>
+<section>
+<h2>Which of these would you use?</h2>
+<p class="note">All five are candidates. None is built yet.</p>
+<ul class="cand">
+<li><b>"Why doesn't Google send me customers?"</b><span class="tag">candidate</span><br>One call that checks local pack, money keywords, measurement and the site in one go.</li>
+<li><b>Money-keyword finder</b><span class="tag">candidate</span><br>Which searches actually sell, including zero-volume ones.</li>
+<li><b>Competitor gap</b><span class="tag">candidate</span><br>Which sites link to competitors but not to you.</li>
+<li><b>Ads waste check</b><span class="tag">candidate</span><br>Spend on search terms that don't match what you sell.</li>
+<li><b>Page-or-not</b><span class="tag">candidate</span><br>Should this topic get its own page, given what already ranks.</li>
+</ul>
+</section>
+<section>
+<h2>How to answer</h2>
+<p>Reply in the thread where you found this link, or email:</p>
+<div class="mail"><span id="addr">agents@sherlockseo.com</span><button type="button" id="copy">Copy address</button><span id="ok" class="note" role="status"></span></div>
+</section>
+</main>
+<footer><div class="wrap">Sherlock SEO Agency &middot; <a href="https://sherlockseo.com">sherlockseo.com</a> &middot; <a href="/llms.txt">llms.txt</a></div></footer>
+<script>
+document.getElementById('copy').onclick=function(){
+var t=document.getElementById('addr').textContent,o=document.getElementById('ok');
+function done(m){o.textContent=m}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done('Copied')},function(){done('Select and copy the address')})}
+else{var r=document.createRange();r.selectNodeContents(document.getElementById('addr'));var s=getSelection();s.removeAllRanges();s.addRange(r);done('Selected, press copy')}
+};
+</script>
+</body>
+</html>
