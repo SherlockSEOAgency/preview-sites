@@ -41,7 +41,7 @@ FOOTER = f'''<footer class="site">
         <p>SEO- en groei-agency voor gevestigde kmo's in België.</p></div>
       <div><h3>Sherlock</h3><ul><li><a href="/werken-met-sherlock/">Werken met Sherlock</a></li><li><a href="/cases/">Cases</a></li><li><a href="/over-ons/">Over ons</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h3>Uit de Academie</h3><ul><li><a href="/academie/waarom-seo-pas-werkt-als-je-business-klopt/">Waarom SEO pas werkt als je business klopt</a></li></ul></div>
-      <div><h3>Contact</h3><ul><li><a href="mailto:info@sherlockseo.com">info@sherlockseo.com</a></li><li><a href="tel:+32479254357">+32 479 25 43 57</a></li></ul></div>
+      <div><h3>Contact</h3><ul><li>info@sherlockseo.com</li><li>+32 479 25 43 57</li></ul></div>
     </div>
     <div class="fbase"><span>© 2026 Sherlock SEO Agency · <a href="/privacy/">Privacy</a></span><span>Preview: niet publiek, niet geïndexeerd</span></div>
   </div>
@@ -310,7 +310,7 @@ k += sec('''<div class="cgrid"><div>
 <p class="form-status" id="fs" role="status" tabindex="-1">Dit is een preview: het formulier verstuurt nog niets. Bel of mail ons rechtstreeks, de gegevens staan hiernaast.</p>
 </form></div>
 <aside><div class="who"><img src="/assets/img/jef-van-gool.webp" alt="" width="84" height="84"><div><b>Jef Van Gool</b>Oprichter. Hij voert je eerste gesprek.</div></div>
-<p class="direct">Liever meteen bellen of mailen?<br><b><a href="tel:+32479254357">+32 479 25 43 57</a></b><br><b><a href="mailto:info@sherlockseo.com">info@sherlockseo.com</a></b></p>
+<p class="direct">Liever meteen bellen of mailen?<br><b>+32 479 25 43 57</b><br><b>info@sherlockseo.com</b></p>
 <p class="direct">In het team ook Joan, web-analist, en Franny, Google Ads.</p></aside></div>''')
 pages['/contact/'] = page('/contact/', 'Bespreek je groeivraag | Sherlock SEO Agency',
   'Een gesprek van 30 minuten, vrijblijvend. Vertel waar je bedrijf staat en waar je naartoe wil; daarna krijg je onze eerste inschatting van je grootste commerciële kans.', k, cur='/contact/',
