@@ -86,3 +86,13 @@
 @media (max-width:900px){.wpd-scope .wpd-kosten-cijfers__in{grid-template-columns:1fr!important}}
 @media (max-width:781px){.sh-hero-foto,.wpd-scope .wpd-hero__missie{display:none!important}}
 .wpd-scope .sh-ctaband .sh-ctastrip p.sh-ctastrip__a a.sh-ctastrip__tel{color:#fff!important}
+
+/* v3 persuasion order (orchestrator 2026-10-07, WI #843 temporary route) */
+.sh-risk,.sh-method{background:var(--peach,#fff4ee);padding:40px 0}
+.sh-risk__next,.sh-method__cta{margin-top:18px;font-weight:600}
+.sh-quoteband{padding:8px 0 24px}
+.sh-quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+.sh-quote{margin:0;background:#fff;border-left:4px solid var(--o,#f28c28);border-radius:14px;padding:16px 18px;box-shadow:0 2px 0 #f1d3c5}
+.sh-quote p{margin:0 0 8px;font-style:italic;color:#333}
+.sh-quote cite{font-style:normal;font-weight:700;color:#444}
+.sh-quoteband .sh-quote{max-width:760px;margin:0 auto}
