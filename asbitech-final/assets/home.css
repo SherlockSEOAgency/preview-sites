@@ -1,0 +1,15 @@
+/* home-only overrides on top of the V2 theme CSS */
+.sh-tiles{padding-bottom:clamp(110px,12vw,150px)}
+.wpd-veiligheid__bus-beeld img{width:100%;height:clamp(420px,46vw,640px);object-fit:cover;object-position:30% 50%}
+.wpd-veiligheid h3,.wpd-veiligheid h3 *{color:#1b1b1b!important}
+.wpd-veiligheid .wp-block-button__link,.wpd-veiligheid .watson-btn--secondary a{color:#a8300c!important}
+.wpd-veiligheid__vlasbloempje-link a,.wpd-veiligheid__sint-clara-link a{color:#1b1b1b!important}
+.wpd-veiligheid p a{color:#1b1b1b!important;border-bottom-color:#1b1b1b}
+.wpd-veiligheid__intro{color:#1b1b1b}
+
+.wpd-scope .wpd-veiligheid__bus-beeld img{height:clamp(420px,46vw,660px);object-fit:cover;object-position:30% 50%;aspect-ratio:auto}
+.wpd-scope .wpd-team__kop{grid-column:1/-1;grid-row:1;align-self:start}
+.wpd-scope .wpd-team__titel{max-width:none;font-size:clamp(32px,4vw,48px)}
+.wpd-scope .wpd-team__tagline{max-width:52ch}
+.wpd-scope .wpd-team__portretten{grid-column:1/-1;grid-row:2;margin-block-end:0}
+.wpd-scope .wpd-team__in{padding-block:clamp(56px,7vw,100px)}
