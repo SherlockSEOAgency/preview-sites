@@ -61,7 +61,7 @@
    Brand fills stay; text on/with orange uses ink or the derived #C23C12 (same rule as the subpages) */
 .wpd-scope .wp-block-button.watson-btn--primary a.wp-block-button__link{color:#1b1b1b!important}
 .wpd-scope .wpd-hero__offerte-kop,.wpd-scope .wpd-hero__offerte-kop *{color:#1b1b1b!important}
-.wpd-scope .watson-btn--link .wp-block-button__link,.wpd-scope p:not(.sh-offerte__sub) a,.wpd-scope .watson-list__title{color:#C23C12!important}
+.wpd-scope .watson-btn--link .wp-block-button__link,.wpd-scope p:not(.sh-offerte__sub) a:not(.sh-btn),.wpd-scope .watson-list__title{color:#C23C12!important}
 .wpd-scope .wpd-over mark,.wpd-scope .wpd-faq mark,.wpd-scope .wpd-over p mark,.wpd-scope .wpd-over__over-label,.wpd-scope .wpd-faq h3,.wpd-scope .wpd-faq-nieuws h3 a,.wpd-scope .wpd-faq-nieuws mark{color:#C23C12!important}
 .wpd-scope .wpd-faq a,.wpd-scope .wpd-over a{color:#C23C12!important}
 .wpd-scope .wpd-veiligheid mark,.wpd-scope .wpd-veiligheid h2{color:#1b1b1b!important}
@@ -70,3 +70,19 @@
 .wpd-scope .watson-eyebrow:not(.wpd-veiligheid__bus-label):not(.wpd-veiligheid__kicker){color:#C23C12!important}
 .wpd-scope .wpd-veiligheid__kicker{color:#1b1b1b!important}
 .wpd-scope .watson-list__badge{color:#1b1b1b!important}
+/* ===== composition (home.md): hero proof = own crew on a real site (figure), calm background ===== */
+.wpd-scope .wpd-hero,.wpd-hero{background:#fff!important}
+.sh-hero-foto{margin:18px 0 6px;max-width:560px}
+.sh-hero-foto img{width:100%;aspect-ratio:1170/530;object-fit:cover;border-radius:18px}
+.sh-hero-foto figcaption{font-size:13.5px;color:#595959;margin-top:6px}.sh-hero-foto figcaption a{color:#C23C12}
+.wpd-scope .wpd-hero__missie a.sh-hero-call{background:#fff!important;color:#1b1b1b!important;box-shadow:inset 0 0 0 2px #1b1b1b}
+.wpd-scope .wpd-hero__missie a.sh-hero-call::after{content:none!important}
+.wpd-scope .wpd-kosten-cijfers__in{align-items:start}
+.wpd-scope .sh-intent h3,.wpd-scope .sh-auth h3{color:#333!important}
+.wpd-scope .wpd-hero__offerte-kaart{align-self:start!important}
+.wpd-scope .sh-authband,.sh-authband{padding-bottom:clamp(120px,14vw,230px)}
+.wpd-scope .wpd-kosten-cijfers__in{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;gap:clamp(28px,5vw,64px)!important;align-items:start!important}
+.wpd-scope .wpd-kosten-cijfers__in>*{grid-column:auto!important;grid-row:auto!important;margin:0!important;max-width:none!important}
+@media (max-width:900px){.wpd-scope .wpd-kosten-cijfers__in{grid-template-columns:1fr!important}}
+@media (max-width:781px){.sh-hero-foto,.wpd-scope .wpd-hero__missie{display:none!important}}
+.wpd-scope .sh-ctaband .sh-ctastrip p.sh-ctastrip__a a.sh-ctastrip__tel{color:#fff!important}
