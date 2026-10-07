@@ -193,28 +193,7 @@
    Dark Mode Support
    ======================================== */
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--neutral-50: #171717;
-		--neutral-100: #262626;
-		--neutral-200: #404040;
-		--neutral-300: #525252;
-		--neutral-400: #737373;
-		--neutral-500: #a3a3a3;
-		--neutral-600: #d4d4d4;
-		--neutral-700: #e5e5e5;
-		--neutral-800: #f5f5f5;
-		--neutral-900: #fafafa;
 
-		/* Adjust shadows for dark mode */
-		--shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-		--shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
-		--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-		--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-		--shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-		--shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-	}
-}
 
 /* ========================================
    Client Brand Override System — REMOVED
@@ -681,13 +660,7 @@ body {
    every site in dark mode swapped the client's brand colour for a green nobody
    chose — one client was rendering it in production on 2026-08-17. A dark-mode
    brand colour is still a brand decision and belongs in the client config. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bouw-gray-50: #212121;
-    --bouw-gray-100: #424242;
-    --bouw-gray-900: #FAFAFA;
-  }
-}
+
 
 /* ============================================
    LAYOUT CLASSES
@@ -3984,28 +3957,7 @@ body {
 }
 
 /* AUTO — no data-theme attribute: follow the OS preference. */
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]):not([data-theme="dark"]) {
-		--bouw-bg-color: var(--wm-dark-surface);
-		--bouw-surface: var(--wm-dark-surface);
-		--bouw-base: var(--wm-dark-surface);
-		--bouw-text-color: var(--wm-dark-ink);
-		--bouw-ink: var(--wm-dark-ink);
-		--bouw-contrast: var(--wm-dark-ink);
-		--surface-body: var(--wm-dark-surface);
-		--surface-card: var(--wm-dark-card);
-		--surface-section-alt: var(--wm-dark-surface-alt);
-		--ink-primary: var(--wm-dark-ink);
-		--ink-secondary: var(--wm-dark-ink-soft);
-		--ink-muted: var(--wm-dark-ink-soft);
-		--wm-hairline: var(--wm-dark-hairline);
-		color-scheme: dark;
-	}
-	:root:not([data-theme="light"]):not([data-theme="dark"]) body {
-		background-color: var(--wm-dark-surface);
-		color: var(--wm-dark-ink);
-	}
-}
+
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme="light"]):not([data-theme="dark"]) {
 		--bouw-bg-color: var(--wm-light-surface);
@@ -4113,13 +4065,7 @@ body {
 	color: var(--wm-accent);
 	border-color: var(--wm-accent);
 }
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]):not([data-theme="dark"]) .wp-block-button.is-style-outline > .wp-block-button__link,
-	:root:not([data-theme="light"]):not([data-theme="dark"]) .wp-block-button__link.is-style-outline {
-		color: var(--wm-accent);
-		border-color: var(--wm-accent);
-	}
-}
+
 .wp-block-button.is-style-outline > .wp-block-button__link:hover,
 .wp-block-button__link.is-style-outline:hover {
 	background-color: var(--wm-primary);
@@ -4148,11 +4094,7 @@ body {
 :root[data-theme="dark"] .bouw-btn--ghost {
 	color: var(--wm-dark-ink);
 }
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]):not([data-theme="dark"]) .bouw-btn--ghost {
-		color: var(--wm-dark-ink);
-	}
-}
+
 
 /* ================================================================
    3. OPTIONAL END-USER TOGGLE  (config-gated; markup added in PHP)
@@ -6302,7 +6244,7 @@ nav.wpd-header__main-nav .wp-block-navigation-item__content{white-space:nowrap}
 .wpd-hero__offerte-kaart{background:linear-gradient(180deg,#F8AF3A 0%,#EC643D 100%)!important;border-radius:24px!important;color:#1b1b1b}
 .wpd-hero__offerte-kaart :is(h2,h3){color:#fff!important}
 .wpd-hero__offerte-kaart .bouw-field-label,.wpd-offerte .bouw-field-label{color:#1b1b1b!important;font-weight:700}
-.wpd-hero__offerte-kaart :is(input,textarea),.wpd-offerte :is(input,textarea){background:rgba(255,255,255,.94)!important;border:1px solid #fff!important;border-radius:3px!important;padding:10px 14px!important;color:#1b1b1b!important}
+.wpd-hero__offerte-kaart :is(input,textarea),.wpd-offerte :is(input,textarea){background:transparent!important;border:1.5px solid #fff!important;border-radius:6px!important;padding:11px 14px!important;color:#1b1b1b!important}
 .wpd-hero__offerte-kaart .bouw-form-submit-btn,.wpd-offerte .bouw-form-submit-btn{background:#fff!important;color:#EC643D!important;border-radius:999px!important;font-weight:800;justify-content:center}
 .bouw-form-submit-btn{background:#EC643D;color:#2a2a2a;border-radius:999px;font-weight:800}
 /* links in brand style */
@@ -6316,7 +6258,7 @@ nav.wpd-header__main-nav .wp-block-navigation-item__content{white-space:nowrap}
 .wpd-alle-diensten__alle-diensten-tegels-item a::after{content:"";position:absolute;inset:0}
 .wpd-alle-diensten__alle-diensten-tegels-item:hover{background:#EC643D!important}
 /* veiligheid */
-.wpd-veiligheid__bus-label{color:#fff!important;background:rgba(255,255,255,.14)!important;border:1px solid #fff!important}
+.wpd-veiligheid__bus-label{color:#fff!important;background:transparent!important;border:1px solid #fff!important}
 .wpd-veiligheid__bus-label *{color:#fff!important}
 .wpd-veiligheid__erkenning-slot{border:2px dashed rgba(255,255,255,.9)!important;border-radius:24px}
 .wpd-veiligheid__erkenning-tag,.wpd-veiligheid__erkenning-slot :is(span){color:#fff!important}

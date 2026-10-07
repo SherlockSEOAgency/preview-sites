@@ -13,3 +13,60 @@
 .wpd-scope .wpd-team__tagline{max-width:52ch}
 .wpd-scope .wpd-team__portretten{grid-column:1/-1;grid-row:2;margin-block-end:0}
 .wpd-scope .wpd-team__in{padding-block:clamp(56px,7vw,100px)}
+
+/* ===== Jef review 7/10 (punt 2): hero USP's like live: one column, filled check badges */
+.wpd-scope .wpd-hero__checks{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;list-style:none;padding:0;margin:0}
+.wpd-scope .wpd-hero__checks li{position:relative;padding-left:34px;margin:0;color:#1b1b1b}
+.wpd-scope .wpd-hero__checks li::before{content:"";position:absolute;left:0;top:.2em;width:22px;height:22px;border-radius:50%;background:#EC643D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6 11.5l3.2 3.2L16 7.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;border:0;mask:none;-webkit-mask:none}
+.wpd-scope .wpd-hero__checks li::after{content:none}
+/* punt 4: photo next to "Asbest verwijderen" stays in view while the routes scroll (live behaviour) */
+@media (min-width:1101px){.wpd-scope .wpd-diensten__diensten-foto{position:sticky;top:130px;align-self:start}}
+
+/* ===== punt 6: Veiligheid band buttons + Specifiek block layout ===== */
+.wpd-veiligheid .wp-block-button__link{white-space:nowrap}
+.wpd-veiligheid__vlasbloempje-link a,.wpd-veiligheid__sint-clara-link a{display:inline-flex!important;align-items:center;gap:8px;white-space:nowrap;background:#fff!important;border-radius:999px!important;padding:9px 18px!important;line-height:1.2;color:#a8300c!important;border:0!important;width:auto}
+.wpd-scope .wpd-specifiek__in{grid-template-columns:repeat(12,minmax(0,1fr));row-gap:clamp(28px,3vw,44px)}
+.wpd-scope .wpd-specifiek__intro{grid-column:1/-1;grid-row:1;max-width:760px}
+.wpd-scope .wpd-specifiek__intro-heading{white-space:normal;margin:0}
+.wpd-scope .wpd-specifiek__intro-heading mark{white-space:nowrap}
+.wpd-scope .wpd-specifiek__intro-text{margin:14px 0 0;line-height:1.6;max-width:62ch}
+.wpd-scope .wpd-specifiek__case-daken{grid-column:1/span 7;grid-row:2;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "body";row-gap:18px;align-self:stretch}
+.wpd-scope .wpd-specifiek__daken-photo{grid-area:photo;margin:0}
+.wpd-scope .wpd-specifiek__daken-photo img{width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;object-position:50% 30%;border-radius:var(--r)}
+.wpd-scope .wpd-specifiek__daken-body{grid-area:body;align-self:start;justify-self:stretch;max-width:none;padding:0;position:static;background:none;display:grid;row-gap:10px}
+.wpd-scope .wpd-specifiek__daken-heading{margin:0;font-size:clamp(24px,2.6vw,32px)}
+.wpd-scope .wpd-specifiek__daken-text{margin:0;max-width:60ch}
+.wpd-scope .wpd-specifiek__rechterkolom{grid-column:8/span 5;grid-row:2;display:flex;flex-direction:column;justify-content:space-between;gap:28px;align-self:stretch}
+.wpd-scope .wpd-specifiek__case-platen,.wpd-scope .wpd-specifiek__case-isolatie{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:20px;align-items:start}
+.wpd-scope .wpd-specifiek__platen-photo img,.wpd-scope .wpd-specifiek__isolatie-photo img{width:100%;aspect-ratio:4/5;height:auto;object-fit:cover;border-radius:18px}
+.wpd-scope .wpd-specifiek__platen-photo,.wpd-scope .wpd-specifiek__isolatie-photo{margin:0}
+@media (max-width:1100px){
+ .wpd-scope .wpd-specifiek__case-daken,.wpd-scope .wpd-specifiek__rechterkolom{grid-column:1/-1;grid-row:auto}
+}
+/* ===== punt 8: team header ===== */
+.wpd-scope .wpd-team__kop{display:grid;row-gap:14px;width:100%;justify-self:stretch;max-width:none}
+.wpd-scope .wpd-team__titel{max-width:none;margin:0}
+.wpd-scope .wpd-team__titel mark{white-space:nowrap}
+.wpd-scope .wpd-team__tagline{max-width:52ch;margin:0;width:auto}
+/* ===== Jef review 7/10 round 2 ===== */
+/* punt 6: no staggered offsets above the small case photos (read as odd white space) */
+.wpd-scope .wpd-veiligheid__case-sint-clara,.wpd-scope .wpd-veiligheid__case-vlasbloempje{margin-top:8px!important}
+.wpd-scope .wpd-realisaties__overige{margin-top:0!important;align-self:start}
+/* specifiek: right column stacks from the top, left photo shorter so both columns balance */
+.wpd-scope .wpd-specifiek__daken-photo img{aspect-ratio:3/2}
+.wpd-scope .wpd-specifiek__rechterkolom{justify-content:flex-start;gap:40px;align-self:start}
+.wpd-scope .wpd-specifiek__platen-photo img,.wpd-scope .wpd-specifiek__isolatie-photo img{aspect-ratio:3/4}
+.wpd-scope .wpd-over__over-video-link,.wpd-scope .wpd-over__over-video-link *{color:#a8300c!important}
+/* ===== AA pass (punt 10 family): theme orange #EC643D on white is 3.25:1, white on amber 1.9:1.
+   Brand fills stay; text on/with orange uses ink or the derived #C23C12 (same rule as the subpages) */
+.wpd-scope .wp-block-button.watson-btn--primary a.wp-block-button__link{color:#1b1b1b!important}
+.wpd-scope .wpd-hero__offerte-kop,.wpd-scope .wpd-hero__offerte-kop *{color:#1b1b1b!important}
+.wpd-scope .watson-btn--link .wp-block-button__link,.wpd-scope p:not(.sh-offerte__sub) a,.wpd-scope .watson-list__title{color:#C23C12!important}
+.wpd-scope .wpd-over mark,.wpd-scope .wpd-faq mark,.wpd-scope .wpd-over p mark,.wpd-scope .wpd-over__over-label,.wpd-scope .wpd-faq h3,.wpd-scope .wpd-faq-nieuws h3 a,.wpd-scope .wpd-faq-nieuws mark{color:#C23C12!important}
+.wpd-scope .wpd-faq a,.wpd-scope .wpd-over a{color:#C23C12!important}
+.wpd-scope .wpd-veiligheid mark,.wpd-scope .wpd-veiligheid h2{color:#1b1b1b!important}
+.wpd-scope .wpd-veiligheid__bus-label{background:#1b1b1b!important;color:#fff!important;border-color:#1b1b1b!important}
+.wpd-scope [class*="wpd-kosten"] .watson-btn--link .wp-block-button__link{color:#fff!important}
+.wpd-scope .watson-eyebrow:not(.wpd-veiligheid__bus-label):not(.wpd-veiligheid__kicker){color:#C23C12!important}
+.wpd-scope .wpd-veiligheid__kicker{color:#1b1b1b!important}
+.wpd-scope .watson-list__badge{color:#1b1b1b!important}
