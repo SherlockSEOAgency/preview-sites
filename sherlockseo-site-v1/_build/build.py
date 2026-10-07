@@ -25,7 +25,7 @@ def header(cur):
     links = ''.join(f'<a href="{h}"{" aria-current=\"page\"" if cur==h else ""} data-evt="nav_click" data-label="{t}">{t}</a>' for h, t in NAV)
     return f'''<header class="site" id="hdr">
   <div class="wrap nav">
-    <a class="wordmark" href="/" aria-label="Sherlock SEO Agency, naar de startpagina">{LENS}Sherlock<span style="font-weight:600;color:var(--green-ink)">SEO</span></a>
+    <a class="wordmark" href="/">{LENS}Sherlock<span style="font-weight:600;color:var(--green-ink)">SEO</span></a>
     <div class="nav-right">
       <nav class="nav-links" id="nl" aria-label="Hoofdmenu">{links}<a href="/contact/" class="btn btn-primary nav-cta-d" data-evt="cta_click" data-loc="header">{CTA}</a></nav>
       <a href="/contact/" class="btn btn-primary nav-cta-m" data-evt="cta_click" data-loc="header-mobile">{CTA}</a>

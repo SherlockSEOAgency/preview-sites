@@ -495,3 +495,7 @@ footer.site{padding:clamp(40px,5vw,64px) 0}
 .preview-banner{font-size:.78rem}
 @media(max-width:560px){.preview-banner{font-size:.72rem;padding:.45rem .7rem}}
 @media(max-width:600px){.hero-cta .btn{white-space:normal}}
+
+:root{--green-ink:#376f2d}
+.fbase a,.fgrid a{text-decoration:underline;text-underline-offset:3px}
+.fbase{color:#b9b0c6}
