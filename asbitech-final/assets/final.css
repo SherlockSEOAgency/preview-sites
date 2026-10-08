@@ -429,3 +429,30 @@ details.sh-faq .sh-faq__a>*+*{margin-top:.8em}
 .sh-hero--sanering {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/asbestsanering-Blanden-onderbrug-expressweg3.webp') center center/cover no-repeat !important;
 }
+
+/* Calculator choice buttons */
+.sh-chip-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 14.5px;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 1.5px #f1d3c5;
+    line-height: 1.2;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+.sh-chip-btn:hover {
+    background: var(--a);
+}
+.sh-chip-btn.is-active {
+    background: var(--o);
+    color: #fff;
+    box-shadow: none;
+}
