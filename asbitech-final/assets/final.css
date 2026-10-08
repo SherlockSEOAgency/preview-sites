@@ -411,3 +411,6 @@ details.sh-faq .sh-faq__a>*+*{margin-top:.8em}
 .sh-quote p { margin: 0 0 12px; font-style: italic; color: #333; font-size: 1.05em; position: relative; z-index: 1; }
 .sh-quote cite { font-style: normal; font-weight: 700; color: #444; display: block; font-size: 0.9em; }
 .sh-vertrouwen { margin-bottom: 24px; }
+
+/* timeline: no inherited list checkmarks */
+.sh-timeline > li::before{content:none!important;background:none!important}

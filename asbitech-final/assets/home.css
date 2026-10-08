@@ -319,3 +319,5 @@
     justify-content: center;
     margin-top: 32px;
 }
+
+.sh-timeline > li::before{content:none!important;background:none!important}
