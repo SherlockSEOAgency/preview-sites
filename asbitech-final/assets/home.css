@@ -75,8 +75,7 @@
 .sh-hero-foto{margin:18px 0 6px;max-width:560px}
 .sh-hero-foto img{width:100%;aspect-ratio:1170/530;object-fit:cover;border-radius:18px}
 .sh-hero-foto figcaption{font-size:13.5px;color:#595959;margin-top:6px}.sh-hero-foto figcaption a{color:#C23C12}
-.wpd-scope .wpd-hero__missie a.sh-hero-call{background:#fff!important;color:#1b1b1b!important;box-shadow:inset 0 0 0 2px #1b1b1b}
-.wpd-scope .wpd-hero__missie a.sh-hero-call::after{content:none!important}
+/* Hero button restored to brand color */
 .wpd-scope .wpd-kosten-cijfers__in{align-items:start}
 .wpd-scope .sh-intent h3,.wpd-scope .sh-auth h3{color:#333!important}
 .wpd-scope .wpd-hero__offerte-kaart{align-self:start!important}
@@ -156,13 +155,7 @@
 .wpd-scope .wpd-hero__intro {
     color: #fff !important;
 }
-.wpd-scope .wpd-hero__h1 mark {
-    color: #fff !important;
-}
-.wpd-scope .wpd-hero__offerte-kaart {
-    background: #fff !important;
-    color: #1b1b1b !important;
-}
+/* H1 mark and form colors restored */
 .wpd-scope .wpd-hero__klanten {
     background: rgba(255, 255, 255, 0.9) !important;
     border-radius: 12px;
@@ -174,6 +167,7 @@
     .wpd-scope .wpd-hero__offerte-kaart {
         position: sticky;
         top: 24px;
+        margin-bottom: 48px;
         align-self: start !important;
     }
 }
@@ -321,3 +315,48 @@
 }
 
 .sh-timeline > li::before{content:none!important;background:none!important}
+
+/* Vrije quote vormgeving */
+.sh-quoteband--free { padding-top: 48px; }
+.sh-quote-free {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 800px;
+}
+.sh-quote-free::before {
+    content: "“";
+    display: block;
+    font-size: 80px;
+    line-height: 1;
+    color: var(--o,#f28c28);
+    font-family: serif;
+    margin-bottom: -16px;
+}
+.sh-quote-free p {
+    font-style: italic;
+    font-size: 1.25em;
+    color: #333;
+    margin-bottom: 16px;
+}
+.sh-quote-free cite {
+    font-style: normal;
+    font-weight: bold;
+    color: #444;
+}
+
+
+/* Verwijder witte strook tussen secties */
+.sh-method { margin-bottom: 0 !important; padding-bottom: 40px !important; }
+.sh-authband { margin-top: 0 !important; padding-top: 40px !important; background: var(--peach,#fff4ee) !important; }
+
+
+/* Zelfde beeldbehandeling als diensten-foto (4/5 aspect ratio + border radius) */
+.wpd-scope .wpd-veiligheid__bus-beeld img,
+.wpd-scope .wpd-over__over-video-poster img,
+.wpd-scope .wpd-over__over-video-poster .video-embed {
+    aspect-ratio: 4/5 !important;
+    border-radius: 24px !important;
+    height: auto !important;
+    object-fit: cover !important;
+}
+
