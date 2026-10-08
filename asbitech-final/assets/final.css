@@ -478,3 +478,11 @@ details.sh-faq .sh-faq__a>*+*{margin-top:.8em}
 
 /* dark buttons keep white text inside scoped content (Jef 8/10) */
 a.sh-btn--dark,.wpd-scope a.sh-btn--dark,.sh-routes-simple a.sh-btn--dark{color:#fff!important}
+
+/* S3: Form in aside more compact to fit new file input */
+.sh-sticky .sh-field { margin-bottom: 0.75rem; }
+.sh-sticky .sh-field label { margin-bottom: 0.25rem; font-size: 0.85rem; }
+.sh-sticky .sh-field input, .sh-sticky .sh-field textarea { padding: 0.5rem; }
+.sh-sticky .sh-field textarea { height: 60px; }
+.sh-sticky .sh-help { font-size: 0.75rem; line-height: 1.2; margin-top: 0.25rem; }
+.sh-sticky .sh-upload input[type="file"] { font-size: 0.8rem; padding: 0.25rem 0; }
