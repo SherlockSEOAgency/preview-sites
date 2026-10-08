@@ -460,3 +460,18 @@ details.sh-faq .sh-faq__a>*+*{margin-top:.8em}
 .sh-hero--platen {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/werf-houten-dak.webp') center center/cover no-repeat !important;
 }
+
+.sh-hero--premies {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/werf-kielpark-wilrijk.webp') center center/cover no-repeat !important;
+}
+.sh-hero--vinyl {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/nieuws-vinyl.webp') center center/cover no-repeat !important;
+}
+.sh-hero--professionals {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/werf-unizo-kortrijk.webp') center center/cover no-repeat !important;
+}
+.sh-hero--realisaties {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/werf-elslopark.webp') center center/cover no-repeat !important;
+}
+.sh-2col { display: grid; gap: 32px; }
+@media (min-width: 768px) { .sh-2col { grid-template-columns: 1fr 1fr; align-items: start; } }
