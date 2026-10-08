@@ -475,3 +475,6 @@ details.sh-faq .sh-faq__a>*+*{margin-top:.8em}
 }
 .sh-2col { display: grid; gap: 32px; }
 @media (min-width: 768px) { .sh-2col { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+/* dark buttons keep white text inside scoped content (Jef 8/10) */
+a.sh-btn--dark,.wpd-scope a.sh-btn--dark,.sh-routes-simple a.sh-btn--dark{color:#fff!important}
