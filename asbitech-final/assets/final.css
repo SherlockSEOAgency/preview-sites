@@ -414,3 +414,18 @@ details.sh-faq .sh-faq__a>*+*{margin-top:.8em}
 
 /* timeline: no inherited list checkmarks */
 .sh-timeline > li::before{content:none!important;background:none!important}
+
+/* 2 columns */
+.sh-2col {
+    display: grid;
+    gap: 32px;
+}
+@media (min-width: 768px) {
+    .sh-2col {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.sh-hero--sanering {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/asbestsanering-Blanden-onderbrug-expressweg3.webp') center center/cover no-repeat !important;
+}
