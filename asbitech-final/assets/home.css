@@ -360,3 +360,6 @@
     object-fit: cover !important;
 }
 
+
+/* v3.2: sticky hero form keeps air above the logo bar */
+#hero{padding-bottom:56px!important}
