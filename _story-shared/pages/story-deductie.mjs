@@ -1,0 +1,81 @@
+// Direction B, "Deductie": Sherlock's character without the costume. No detectives, no case files, no magnifying
+// glass: the device is elimination, set in type. Big idea: it is rarely everything; we strike out what it is not
+// until we find the one thing that holds your growth back, then we fix that and measure it.
+export default ({ header, services, page }) => page({
+  title: 'Sherlock SEO Agency: we zoeken wat je groei tegenhoudt',
+  description: "Sherlock is de online groeipartner voor kmo's. We zoeken eerst wat je online groei echt tegenhoudt, pakken dat aan met SEO, Google Ads, website en meting, en tonen wat het oplevert.",
+  bodyClass: 'dir-b',
+  banner: 'B · Deductie',
+  main: `
+${header('Bespreek je groeivraag')}
+<main id="main">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <p class="kicker">Sherlock SEO<span class="dot">•</span>Online groeipartner voor kmo's</p>
+    <h1 id="h1" class="display">Het ligt zelden aan alles.<br><em>Meestal aan één ding.</em></h1>
+    <p class="lead" style="margin-top:28px">Als online marketing niets oplevert, wil iedereen alles tegelijk aanpakken. Wij zoeken eerst wat je groei echt tegenhoudt. Dat pakken we aan, en we tonen wat het oplevert.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#gesprek">Bespreek je groeivraag</a>
+      <span class="small">30 minuten, vrijblijvend</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-schrappen">
+  <div class="wrap">
+    <p class="kicker">Zo denken we</p>
+    <h2 id="h-schrappen" class="h2">We schrappen tot er <em>één antwoord</em> overblijft.</h2>
+    <ul class="suspects" aria-label="Een voorbeeld van hoe we redeneren">
+      <li class="no"><span class="q">Te weinig bezoekers?</span><span class="a">Nee, er komen er genoeg binnen.</span></li>
+      <li class="no"><span class="q">Slechte advertenties?</span><span class="a">Nee, er wordt geklikt.</span></li>
+      <li class="no"><span class="q">Een verouderde website?</span><span class="a">Nee, ze ziet er goed uit.</span></li>
+      <li class="yes"><span class="q">Je site zegt nergens <mark>waarom iemand voor jou moet kiezen.</mark></span><span class="a">Daar zit het.</span></li>
+    </ul>
+    <p class="small" style="margin-top:20px">Een voorbeeld van een redenering, geen echte klant. Bij jou kan het iets heel anders zijn. Daarom kijken we eerst.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-begin">
+  <div class="wrap">
+    <h2 id="h-begin" class="h2">Pas als we weten waar het lekt, <em>kiezen we het kanaal.</em></h2>
+    <ul class="three">
+      <li><b>Je bedrijf</b><p>Wat verkoop je, aan wie, en waarom kiezen je beste klanten voor jou?</p></li>
+      <li><b>Je markt</b><p>Waar zit de vraag, en wie staat er vandaag waar jij zou moeten staan?</p></li>
+      <li><b>Wat de buitenwereld ziet</b><p>Wat Google, AI-assistenten en mensen vandaag echt van je te zien krijgen.</p></li>
+    </ul>
+    <p class="lead" style="margin-top:44px">Klassiek vakwerk, met het gereedschap van nu. Alles wat we vinden, komt samen in ons eigen platform, zodat we sneller zien wat werkt en wat niet.</p>
+  </div>
+</section>
+
+<section class="sec sec-dark" id="bewijs" aria-labelledby="h-bewijs">
+  <div class="wrap grid-2">
+    <div>
+      <p class="kicker">Bewijs · meertalige marketplace</p>
+      <p class="big-fig" aria-hidden="true">4.261 <span class="arrow">→</span> 0</p>
+      <h2 id="h-bewijs" class="h2" style="font-size:clamp(1.5rem,1.1rem + 1.6vw,2.3rem);margin-top:18px">dubbele pagina's tussen talen. Het probleem zat in de machine, niet in de pagina's.</h2>
+    </div>
+    <div>
+      <div class="fig"><b>14.704 → 247</b><span>interne doorverwijzingen</span><small>Screaming Frog, crawl voor en na de opdracht. Case gepubliceerd juli 2026.</small></div>
+      <div class="fig"><b>835 → 95</b><span>kapotte pagina's</span><small>Zelfde crawls.</small></div>
+      <div class="fig"><b>+50%</b><span>nieuwe klanten via Google voor Style at Home <span class="tbc">te bevestigen</span></span><small>Periode en bron nog vast te leggen.</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec close" id="gesprek" aria-labelledby="h-gesprek">
+  <div class="wrap">
+    <p class="kicker">Jouw situatie</p>
+    <h2 id="h-gesprek" class="display" style="font-size:clamp(2.4rem,1.4rem + 4.4vw,5rem)">Waar zit het <em>bij jou?</em></h2>
+    <p class="lead" style="margin-top:24px">In 30 minuten schrappen we samen wat het niet is. Daarna krijg je onze eerste lezing van je grootste kans.</p>
+    <div style="margin-top:32px"><a class="btn btn-primary" href="#" data-inert>Bespreek je groeivraag</a></div>
+    <div class="who"><img src="/assets/img/jef.webp" alt="" width="72" height="72" loading="lazy"><p><b>Jef Van Gool</b><br><span class="muted">oprichter, voert je eerste gesprek</span></p></div>
+    <div class="badges" aria-label="Partners">
+      <img src="/assets/img/badge-google-partners.webp" alt="Google Partner" width="548" height="152" loading="lazy">
+      <img src="/assets/img/badge-meta-business-partner.webp" alt="Meta Business Partner" width="786" height="267" loading="lazy">
+      <img class="sq" src="/assets/img/badge-semrush-agency-partner.webp" alt="Semrush Agency Partner" width="158" height="158" loading="lazy">
+    </div>
+  </div>
+</section>
+${services('Wat we daarna aanpakken.')}
+</main>`,
+});

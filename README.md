@@ -19,3 +19,4 @@ Static HTML previews for Sherlock client presentations.
 - `eventonline/` -> eventonline.preview.sherlockseo.com
 
 - `asbitech-final/` -> asbitech-final.preview.sherlockseo.com (multi-page NL+FR, same-origin assets; formulieren inert)
+- `story-gesprek/`, `story-deductie/`, `story-babbelen/` -> `story-<name>.preview.sherlockseo.com`: three homepage story directions for sherlockseo.com (built from `_story-shared/` with `node _story-shared/build.mjs`; buttons inert).
