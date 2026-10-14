@@ -18,5 +18,5 @@ Static HTML previews for Sherlock client presentations.
 - `eventonline-deck/` -> eventonline-deck.preview.sherlockseo.com
 - `eventonline/` -> eventonline.preview.sherlockseo.com
 
-- `asbitech-final/` -> asbitech-final.preview.sherlockseo.com (multi-page NL+FR, same-origin assets; formulieren inert)
+- `asbitech-final/` -> asbitech-final.preview.sherlockseo.com (multi-page NL+FR, same-origin assets; formulieren inert) — doorverwezen (301) naar asbitech-watson.preview.sherlockseo.com sinds 14/10/2026; bronbestanden blijven
 - `story-gesprek/`, `story-deductie/`, `story-babbelen/` -> `story-<name>.preview.sherlockseo.com`: three homepage story directions for sherlockseo.com (built from `_story-shared/` with `node _story-shared/build.mjs`; buttons inert).
