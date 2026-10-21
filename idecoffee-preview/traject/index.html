@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Traject 6 maanden — Idé Coffee × Sherlock</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&display=swap">
+<style>
+:root{--teal:#1B716F;--teal-dark:#14514F;--teal-soft:#E3F0EF;--amber:#C87D3F;--amber-soft:#FBEFE3;--brown:#3D3429;--ink:#241F19;--cream:#F7F3EC;--sand:#EFE7D9;--line:#E1D8C8;--ok:#2E7D5B;--ok-soft:#E4F1EA;--white:#fff;--muted:#6E655A;--shadow:0 8px 30px rgba(36,31,25,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.5}
+.bar{background:var(--white);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.bar .brand{font-family:Georgia,"Times New Roman",serif;font-size:18px;color:var(--teal-dark);letter-spacing:.02em}
+.bar a{font-family:Raleway,Arial,sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 20px 72px;display:flex;flex-direction:column;gap:40px}
+h1,h3{font-family:Georgia,"Times New Roman",serif;margin:0;text-wrap:balance;color:var(--ink);font-weight:400}
+h1{font-size:clamp(30px,4.4vw,44px);line-height:1.1}
+h2{font-family:Raleway,Arial,sans-serif;margin:0;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+h3{font-size:21px}
+p{margin:0}
+.lead{font-size:17px;color:var(--brown);max-width:62ch}
+.meta{font-size:13px;color:var(--muted)}
+.note{font-size:14px;color:var(--muted);max-width:70ch}
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:820px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.num{font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1;font-variant-numeric:tabular-nums;color:var(--teal-dark)}
+.num.warm{color:var(--amber)}
+.num.ok{color:var(--ok)}
+.lbl{font-size:14px;font-weight:600;color:var(--ink)}
+.src{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;font-family:Raleway,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--teal-soft);color:var(--teal-dark);align-self:flex-start}
+.tag.warm{background:var(--amber-soft);color:var(--amber)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.grey{background:var(--sand);color:var(--muted)}
+.phase{border-top:5px solid var(--teal)}
+.phase.p2{border-top-color:var(--amber)}
+.phase.p3{border-top-color:var(--line)}
+ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.gate{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:14px}
+.gate b{color:var(--teal)}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-family:Raleway,Arial,sans-serif;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media (max-width:820px){.rail{grid-template-columns:1fr}}
+.rail div{border-top:4px solid var(--line);padding-top:8px;font-family:Raleway,Arial,sans-serif;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700}
+.rail div.on{border-top-color:var(--teal);color:var(--teal-dark)}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.bar-row .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.track{width:100%;height:12px;background:var(--sand);border-radius:6px;overflow:hidden}
+.fill{height:100%;background:var(--teal);border-radius:6px}
+.fill.warm{background:var(--amber)}
+.val{font-variant-numeric:tabular-nums;font-weight:600}
+.section{display:flex;flex-direction:column;gap:14px}
+.foot{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="bar"><span class="brand">IDÉ Coffee Systems × Sherlock</span><a href="/">← Voorgestelde website</a></div>
+<div class="wrap">
+
+  <header style="display:flex;flex-direction:column;gap:14px">
+    <div class="meta">Traject · 22 oktober 2026 · voor Tim en Charlotte</div>
+    <h1>Zes maanden: eerst zeker weten, dan de website, dan groeien</h1>
+    <p class="lead">Jullie vroegen een traject waarin wij veel voor jullie kunnen doen, te beginnen met de website. Dit is het, in drie fasen, onderbouwd met jullie eigen cijfers. Elke fase heeft een meetbaar resultaat en wordt apart afgesproken. Niets loopt automatisch door.</p>
+    <div class="rail"><div class="on">Fase 1 · Fundament · maand 1–2</div><div>Fase 2 · Website en aanvragen · maand 2–4</div><div>Fase 3 · Groeien op bewijs · maand 4–6</div></div>
+  </header>
+
+  <section class="section">
+    <h2>Waar jullie vandaan komen</h2>
+    <div class="grid g3">
+      <div class="card"><span class="num">667.000</span><span class="lbl">keer getoond in Google, 9.261 klikken, gemiddelde positie 21</span><span class="src">Search Console · 18 okt 2025 – 18 okt 2026</span></div>
+      <div class="card"><span class="num">6.500</span><span class="lbl">klikken op vragen over koffiemachines; de andere 2.750 op jullie merknaam</span><span class="src">Search Console · zelfde periode</span></div>
+      <div class="card"><span class="num">336</span><span class="lbl">aanvragen via de site, gemiddeld 28 per maand, piek van 66 in april</span><span class="src">GA4 · zelfde periode · 9.534 bezoeken</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Waar jullie vandaag staan</h2>
+    <div class="grid g4">
+      <div class="card"><span class="num">21</span><span class="lbl">aanvragen via de website, uit 583 bezoeken</span><span class="src">GA4 · 21 sep – 21 okt 2026</span></div>
+      <div class="card"><span class="num">1</span><span class="lbl">aanvraag toegeschreven aan Google Ads</span><span class="src">Google Ads · 536 euro uitgegeven · zelfde periode</span></div>
+      <div class="card"><span class="num">6</span><span class="lbl">bezoeken uit ChatGPT en Perplexity, met 1 aanvraag</span><span class="src">GA4 · zelfde periode</span></div>
+      <div class="card"><span class="num warm">0</span><span class="lbl">aanvragen die vandaag tot bij de offerte te volgen zijn</span><span class="src">meting · stand 21 okt 2026</span></div>
+    </div>
+    <div class="card" style="gap:14px">
+      <h3>De pagina's die geld moeten opbrengen worden gezien, maar niet aangeklikt</h3>
+      <div class="bars">
+        <div class="bar-row"><div class="top"><span>koffiemachine voor bedrijven (NL) · positie 31</span><span class="val">11 / 8.525</span></div><div class="track"><div class="fill" style="width:0.4%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>machine à café professionnelle (FR) · positie 15</span><span class="val">18 / 4.629</span></div><div class="track"><div class="fill" style="width:1.2%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>koffiemachine huren (NL) · positie 11</span><span class="val">15 / 2.391</span></div><div class="track"><div class="fill" style="width:1.9%"></div></div></div>
+        <div class="bar-row"><div class="top"><span>wat een top-5-positie doet</span><span class="val">5–8 %</span></div><div class="track"><div class="fill warm" style="width:6.5%"></div></div></div>
+      </div>
+      <p class="note">Klikken tegenover vertoningen per pagina, laatste 28 dagen uit Search Console. Samen 15.545 vertoningen, 44 klikken. Op positie 1 tot 5 klikt 5 tot 8 procent; vandaag is dat 0,3 procent. Het verschil is geen bezoekers die niet bestaan, maar bezoekers die naar een concurrent gaan.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Hoe groot de markt is tegenover jullie bereik</h2>
+    <div class="grid g3">
+      <div class="card"><span class="num">1.360</span><span class="lbl">zoekopdrachten per maand op tien kooptermen, Nederlands en Frans</span><span class="src">zoekdata België · okt 2026 · professionele koffiemachine, koffiemachine bedrijf, machine à café professionnelle, koffiemachine huren, …</span></div>
+      <div class="card"><span class="num">1.562</span><span class="lbl">relevante zoekvragen waarop jullie site al getoond wordt, 42.000 vertoningen</span><span class="src">Sherlock-analyse op Search Console · voor 59 % is nog niet beslist welke pagina ze beantwoordt</span></div>
+      <div class="card"><span class="num">64 %</span><span class="lbl">van de keren dat jullie advertentie kon verschijnen, verscheen ze ook</span><span class="src">Google Ads · laatste 30 dagen · een vijfde verloren aan budget</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Wat er mogelijk is en wat daarvoor nodig is</h2>
+    <p class="note">Projectie op basis van jullie eigen aanvraagratio van 3,5 procent (336 aanvragen op 9.534 bezoeken). Dit zijn aannames, geen beloftes; ze worden elke maand tegen de echte cijfers gelegd.</p>
+    <div class="grid g3">
+      <div class="card"><span class="tag">website en vindbaarheid</span><span class="num ok">+27 tot +43</span><span class="lbl">aanvragen per maand als de drie geldpagina's naar de top 5 gaan</span><span class="src">nodig: nieuwe pagina's per zoekvraag, in NL en FR, met offerte-aanvraag als doel · 5–8 % klikken op 15.500 vertoningen × 3,5 %</span></div>
+      <div class="card"><span class="tag warm">google ads</span><span class="num ok">+8 tot +12</span><span class="lbl">aanvragen per maand uit advertenties die op echte aanvragen sturen</span><span class="src">nodig: conversies opgeschoond, Odoo-koppeling, 2.000 tot 2.500 euro mediabudget per maand bij volledige vertoning</span></div>
+      <div class="card"><span class="tag ok">na zes maanden</span><span class="num ok">55 tot 80</span><span class="lbl">aanvragen per maand, tegenover 21 tot 28 vandaag</span><span class="src">en per aanvraag bekend wat ze kost en of ze offerte en klant wordt</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>De drie fasen</h2>
+    <div class="grid g3">
+      <div class="card phase">
+        <span class="tag">Fase 1 · maand 1–2</span>
+        <h3>Fundament: elke aanvraag telt echt</h3>
+        <ul>
+          <li>Aanvraag, offerte en klant uit Odoo terug naar Google en Analytics.</li>
+          <li>Advertenties sturen alleen nog op echte aanvragen, met echte waarde.</li>
+          <li>Meting hersteld en toekomstvast (server-side).</li>
+          <li>Plan voor de nieuwe website op basis van wat mensen en agents zoeken.</li>
+        </ul>
+        <div class="gate"><b>Klaar als</b> elke aanvraag te volgen is tot offerte en jullie weten wat een goede aanvraag kost.</div>
+      </div>
+      <div class="card phase p2">
+        <span class="tag warm">Fase 2 · maand 2–4</span>
+        <h3>Website en aanvragen</h3>
+        <ul>
+          <li>Nieuwe website, gebouwd vanuit het plan van fase 1, klaar voor bezoekers én agents.</li>
+          <li>Google Ads opnieuw opgebouwd op wat werkt, binnen een vast maandbudget.</li>
+          <li>Herbenadering van bezoekers alleen op segmenten die aanvragen opleveren.</li>
+        </ul>
+        <div class="gate"><b>Klaar als</b> de kost per goede aanvraag onder de drempel zit die we in fase 1 samen vastleggen.</div>
+      </div>
+      <div class="card phase p3">
+        <span class="tag grey">Fase 3 · maand 4–6</span>
+        <h3>Groeien op bewijs</h3>
+        <ul>
+          <li>LinkedIn-campagnes en gerichte outreach naar bedrijven.</li>
+          <li>Video op de kanalen die aanvragen brengen.</li>
+          <li>Zichtbaarheid en PR waar fase 2 dat rechtvaardigt.</li>
+        </ul>
+        <div class="gate"><b>Pas starten</b> met wat fase 1 en 2 aantoonbaar verdienen. Opties, geen belofte.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid g2">
+    <div class="card" style="gap:14px">
+      <h2>De eerste dertig dagen</h2>
+      <ol class="steps">
+        <li><span><b>Meting herstellen.</b> Server-side tagging en Analytics weer volledig, met de juiste toestemming.</span></li>
+        <li><span><b>Advertenties opschonen.</b> Alleen echte aanvragen tellen, oude campagnes opgeruimd.</span></li>
+        <li><span><b>Odoo koppelen.</b> Offerte en klant terug naar de bron van de aanvraag.</span></li>
+        <li><span><b>Websiteplan.</b> Welke pagina's, voor welke vraag, in welke volgorde.</span></li>
+        <li><span><b>Eén overzicht.</b> Jullie zien op één plek wat er gebeurt en wat het oplevert.</span></li>
+      </ol>
+    </div>
+    <div class="card" style="gap:14px">
+      <h2>Agents komen al bij jullie langs</h2>
+      <p>ChatGPT en Perplexity stuurden deze maand bezoekers naar jullie site, en één daarvan deed een aanvraag. Een website die agents begrijpen en kunnen gebruiken, wordt in fase 2 standaard meegebouwd:</p>
+      <ul>
+        <li>Leesbaar voor agents: gestructureerde gegevens en een duidelijke sitemap.</li>
+        <li>Bruikbaar voor agents: aanvraag en offerte via een route die een agent kan afwerken.</li>
+        <li>Verbonden: beschikbaarheid en prijzen uit Odoo, niet uit losse tekst.</li>
+        <li>Veilig: toestemming en grenzen voor wat een agent mag doen.</li>
+      </ul>
+      <span class="tag ok">in fase 2 inbegrepen</span>
+    </div>
+  </section>
+
+  <section class="card" style="gap:12px">
+    <h2>Wat wij van jullie nodig hebben</h2>
+    <div class="grid g3">
+      <div><b>Toegang tot Odoo</b><br><span class="meta">om offertes en klanten te koppelen aan aanvragen</span></div>
+      <div><b>Eén beslisser</b><br><span class="meta">voor budget en goedkeuringen, met een vaste maandelijkse afstemming</span></div>
+      <div><b>Een maandbudget</b><br><span class="meta">media en werk apart, per fase vastgelegd</span></div>
+    </div>
+  </section>
+
+  <p class="foot">Fase 1 heeft een vaste prijs en vaste looptijd. Fase 2 en 3 worden pas afgesproken als de vorige fase haar resultaat heeft gehaald. Alle cijfers komen uit jullie eigen Google Ads, Google Search Console en Google Analytics (perioden vermeld bij elk cijfer); de projecties zijn aannames en staan als zodanig gemarkeerd.</p>
+
+</div>
+</body>
+</html>
