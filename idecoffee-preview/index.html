@@ -174,6 +174,42 @@
   .cmode-hint{background:#241F19;color:#ffd9a8;text-align:center;font-size:12.5px;padding:8px;font-weight:600}
   body.strategy .cmode-hint{display:none}
 
+
+  /* ---------- 22/10 uitbreiding: calculator, vergelijktabel, bewijs per segment, FR ---------- */
+  .calc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-top:24px}
+  .calc .tabs{display:flex;border-bottom:1px solid var(--line);background:#faf7f1}
+  .calc .tabs button{flex:1;border:none;background:transparent;padding:14px 10px;font:inherit;font-weight:700;font-size:14px;color:#5b5347;cursor:pointer;border-bottom:3px solid transparent}
+  .calc .tabs button.on{color:var(--teal-dark);border-bottom-color:var(--teal);background:#fff}
+  .calc .view{display:none;padding:24px}.calc .view.on{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:760px){.calc .view.on{grid-template-columns:1fr}}
+  .calc label{display:block;font-size:12px;font-weight:700;color:var(--brown);margin:10px 0 4px}
+  .calc input,.calc select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:14px;background:#fff}
+  .calc .out{background:var(--sand);border-radius:12px;padding:20px}
+  .calc .out .big{font-family:Georgia,serif;font-size:38px;color:var(--amber-dark);font-weight:700;line-height:1}
+  .calc .out .big small{font-size:14px;color:var(--brown);font-weight:600}
+  .calc .out ul{list-style:none;padding:0;margin:12px 0 0}.calc .out li{padding:6px 0;border-top:1px dashed var(--line);font-size:14px;display:flex;justify-content:space-between;gap:10px}
+  .calc .mail{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:end;border-top:1px solid var(--line);padding-top:16px}
+  .calc .mail div{flex:1;min-width:220px}
+  .calc .note{grid-column:1/-1;font-size:12px;color:#8a7f72}
+  table.cmp{width:100%;border-collapse:collapse;margin-top:24px;background:#fff;border-radius:var(--radius);overflow:hidden;font-size:14.5px}
+  table.cmp th,table.cmp td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  table.cmp th{background:var(--sand);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--brown)}
+  table.cmp td:first-child{font-weight:700;color:var(--brown);white-space:nowrap}
+  table.cmp .yes{color:var(--ok);font-weight:800}.cmp .no{color:var(--no);font-weight:800}
+  .tw{overflow-x:auto}
+  .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:24px}
+  @media(max-width:960px){.proof{grid-template-columns:1fr 1fr}}@media(max-width:560px){.proof{grid-template-columns:1fr}}
+  .proof .p{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:8px}
+  .proof .p .seg{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+  .proof .p h3{font-size:17px;margin:0}
+  .proof .p .q{font-style:italic;color:#5b5347;font-size:14.5px;border-left:3px solid var(--sand);padding-left:12px}
+  .proof .p .q.ph{border-left-color:var(--amber);color:var(--amber-dark);font-style:normal;font-size:13px}
+  .proof .p .fact{margin-top:auto;font-size:13px;color:var(--brown)}
+  .proof .p .fact b{font-family:Georgia,serif;font-size:22px;color:var(--teal-dark);display:block}
+  .nav .links a.lang{font-size:12.5px;border:1px solid var(--line)}
+  .nav .links a.lang.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .regio{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .regio span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600}
   .page{display:none}.page.active{display:block}
 </style>
 </head>
@@ -202,9 +238,10 @@
     <nav class="links">
       <a data-go="home">Home</a>
       <a data-go="bedrijven">Voor bedrijven</a>
-      <a data-go="huren">Huren</a>
-      <a data-go="leasen">Leasen</a>
+      <a data-go="leasen">Leasen &amp; huren</a>
+      <a data-go="abonnement">Koffie-abonnement</a>
       <a data-go="offerte">Offerte</a>
+      <a data-go="fr" class="lang">FR</a>
     </nav>
     <span class="phone">&#9742; +32 2 243 03 09</span>
     <a class="btn btn-primary" style="padding:9px 16px" data-go="offerte">Gratis proefplaatsing</a>
@@ -269,9 +306,41 @@
     <div class="eyebrow">Kies je formule</div>
     <h2>Huren, leasen of abonnement?</h2>
     <div class="cards">
-      <div class="card"><h3>Huren</h3><p>Vaste maandprijs, opzegbaar, onderhoud &amp; vervangtoestel inbegrepen.</p><div class="who" data-go="huren" style="cursor:pointer">&#8594; Koffiemachine huren</div></div>
-      <div class="card featured"><span class="tag">Meest gekozen</span><h3>Abonnement &mdash; alles in</h3><p>Machine + koffie + service in &eacute;&eacute;n maandbedrag vanaf &euro;35.</p><div class="who" data-go="bedrijven" style="cursor:pointer">&#8594; Voor bedrijven</div></div>
+      <div class="card"><h3>Huren</h3><p>Vaste maandprijs, opzegbaar, onderhoud &amp; vervangtoestel inbegrepen.</p><div class="who" data-go="leasen" style="cursor:pointer">&#8594; Koffiemachine leasen of huren</div></div>
+      <div class="card featured"><span class="tag">Meest gekozen</span><h3>Abonnement &mdash; alles in</h3><p>Machine + koffie + service in &eacute;&eacute;n maandbedrag vanaf &euro;35.</p><div class="who" data-go="abonnement" style="cursor:pointer">&#8594; Koffie-abonnement</div></div>
       <div class="card"><h3>Leasen</h3><p>Spreid de kost, fiscaal interessant (btw-aftrek, afschrijving).</p><div class="who" data-go="leasen" style="cursor:pointer">&#8594; Koffiemachine leasen</div></div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="eyebrow">Bewijs per klantgroep</div>
+    <h2>Vier soorten bedrijven, vier redenen om voor Id&eacute; te kiezen</h2>
+    <div class="proof">
+      <div class="p"><span class="seg">Enterprise &middot; meerdere vestigingen</span><h3>&Eacute;&eacute;n contract, elke locatie bediend</h3>
+        <div class="q ph">Klantquote &amp; logo aan te leveren door Id&eacute; (multi-site klant: aantal vestigingen, kopjes per dag).</div>
+        <div class="fact"><b>24u</b>eigen technische dienst op elke locatie &middot; &eacute;&eacute;n factuur</div></div>
+      <div class="p"><span class="seg">Kmo &amp; kantoor</span><h3>Vaste maandprijs, geen gedoe</h3>
+        <div class="q ph">Klantquote &amp; logo aan te leveren door Id&eacute; (kantoor van 10 tot 50 medewerkers).</div>
+        <div class="fact"><b>&euro;35</b>per maand, alles inbegrepen &middot; 1 week gratis proberen</div></div>
+      <div class="p"><span class="seg">Advocaten &amp; vrije beroepen</span><h3>Koffie als visitekaartje</h3>
+        <div class="q ph">Klantquote &amp; logo aan te leveren door Id&eacute; (kantoor met ontvangstruimte, Jura of espresso).</div>
+        <div class="fact"><b>Jura</b>designmachines met bonen, premium melanges</div></div>
+      <div class="p"><span class="seg">Scholen &amp; zorg</span><h3>Betaalbaar, duurzaam, veilig voor velen</h3>
+        <div class="q ph">Klantquote &amp; logo aan te leveren door Id&eacute; (school, woonzorgcentrum of ziekenhuis).</div>
+        <div class="fact"><b>-60%</b>CO&#8322; met SecondLife refurbished &middot; Fairtrade</div></div>
+    </div>
+    <p style="margin-top:18px;font-size:14px;color:#5b5347">4,8&#9733; op 74 Google-reviews &middot; 1.000+ bedrijven met een koffie-abonnement &middot; 22 jaar ervaring</p>
+    <div class="anno">
+      <div class="ah"><span class="ttl">Bewijs per segment (homepage)</span><span class="pd ADD">ADD</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC)</span></div>
+      <div class="agrid">
+        <div class="af"><span class="k">Doelgroep</span><span class="v">De vier segmenten uit het dossier; de bezoeker herkent zichzelf in &eacute;&eacute;n kaart.</span></div>
+        <div class="af"><span class="k">Zoekintentie</span><span class="v">Segmentvraag is meetbaar: <i>koffiemachine voor kleine bedrijven</i> 125 impr, <i>kantoor</i> 93, <i>kantine</i> 36, <i>ziekenhuis</i> 35 (GSC 90d).</span></div>
+        <div class="af"><span class="k">Positionering</span><span class="v">Per segment een ander zwaartepunt: schaal &middot; prijs &middot; prestige &middot; ethiek.</span></div>
+        <div class="af"><span class="k">Bewijs</span><span class="v"><span class="pill cl">client-supplied</span> 4,8/74 reviews, 1.000+ abonnees, 22 jaar, SecondLife -60% CO&#8322;. <span class="pill hy">hypothese</span> de quotes zelf ontbreken nog: oranje placeholders, nooit verzonnen.</span></div>
+        <div class="af wide"><span class="k">Rationale</span><span class="v">Echte testimonials per klantgroep maken de segmentatie zichtbaar zonder vier aparte landers; video pas als er echte beelden zijn.</span></div>
+        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf middel">Middel</span> &mdash; tot de quotes er zijn</span></div>
+        <div class="ceoq"><b>Vraag aan Id&eacute;:</b> per segment &eacute;&eacute;n klant die met naam, logo en &eacute;&eacute;n zin wil getuigen (eventueel op video).</div>
+      </div>
     </div>
   </div></section>
 
@@ -335,8 +404,8 @@
     <div class="eyebrow">Stap 1 &middot; Kies je formule</div>
     <h2>Huren, leasen of abonnement?</h2>
     <div class="cards">
-      <div class="card"><h3>Koffiemachine huren</h3><p>Vaste maandprijs, geen aankoop, opzegbaar. Onderhoud, vervangtoestel &amp; service inbegrepen.</p><div class="who" data-go="huren" style="cursor:pointer">&#8594; /koffiemachine-huren</div></div>
-      <div class="card featured"><span class="tag">Meest gekozen</span><h3>Abonnement &mdash; alles in</h3><p>Machine + koffie + onderhoud + technische dienst in &eacute;&eacute;n maandbedrag vanaf &euro;35.</p><div class="who">&#8594; /koffiemachine-abonnement</div></div>
+      <div class="card"><h3>Koffiemachine huren</h3><p>Vaste maandprijs, geen aankoop, opzegbaar. Onderhoud, vervangtoestel &amp; service inbegrepen.</p><div class="who" data-go="leasen" style="cursor:pointer">&#8594; /koffiemachine-leasen (huren inbegrepen)</div></div>
+      <div class="card featured"><span class="tag">Meest gekozen</span><h3>Abonnement &mdash; alles in</h3><p>Machine + koffie + onderhoud + technische dienst in &eacute;&eacute;n maandbedrag vanaf &euro;35.</p><div class="who" data-go="abonnement" style="cursor:pointer">&#8594; /koffie-abonnement</div></div>
       <div class="card"><h3>Koffiemachine leasen</h3><p>Spreid de kost over beheersbare termijnen, fiscaal interessant.</p><div class="who" data-go="leasen" style="cursor:pointer">&#8594; /koffiemachine-leasen</div></div>
     </div>
     <div class="anno">
@@ -443,6 +512,65 @@
     </div>
   </div></section>
 
+  <section class="block" id="calc"><div class="wrap">
+    <div class="eyebrow">Reken het zelf uit</div>
+    <h2>Wat kost koffie op kantoor, en welke formule past?</h2>
+    <p style="max-width:62ch;color:#5b5347">Drie korte berekeningen. Vul je situatie in en krijg meteen een richtprijs; laat je e-mail achter en we sturen de berekening met een voorstel op maat.</p>
+    <div class="calc">
+      <div class="tabs">
+        <button class="on" data-tab="c1">1 &middot; Kost per kopje</button>
+        <button data-tab="c2">2 &middot; Huren, leasen of kopen?</button>
+        <button data-tab="c3">3 &middot; Duurzaamheidswinst</button>
+      </div>
+      <div class="view on" id="c1">
+        <div>
+          <label>Aantal koffiedrinkers</label><input type="number" value="15" min="1">
+          <label>Kopjes per persoon per dag</label><select><option>2</option><option selected>3</option><option>4</option></select>
+          <label>Soort koffie</label><select><option selected>Bonen (volautomaat)</option><option>Gemalen (filter / thermoskan)</option><option>Instant</option></select>
+        </div>
+        <div class="out"><div style="font-size:13px;font-weight:700;color:var(--brown)">Richtprijs, alles inbegrepen</div>
+          <div class="big">&euro;0,28<small> per kopje</small></div>
+          <ul><li><span>Machine, onderhoud, techniek</span><b>&euro;45 /mnd</b></li><li><span>Koffie (&plusmn;900 kopjes/mnd)</span><b>&euro;205 /mnd</b></li><li><span>Totaal per maand</span><b>&euro;250</b></li><li><span>Vergelijk: koffiebar buiten de deur</span><b>&euro;2,80 /kopje</b></li></ul></div>
+      </div>
+      <div class="view" id="c2">
+        <div>
+          <label>Kopjes per dag (hele organisatie)</label><input type="number" value="45" min="1">
+          <label>Hoe lang blijft de situatie stabiel?</label><select><option>Minder dan 2 jaar</option><option selected>2 tot 5 jaar</option><option>Meer dan 5 jaar</option></select>
+          <label>Wil je zelf onderhoud doen?</label><select><option selected>Nee, volledig ontzorgd</option><option>Ja, we hebben iemand</option></select>
+        </div>
+        <div class="out"><div style="font-size:13px;font-weight:700;color:var(--brown)">Ons advies bij deze invoer</div>
+          <div class="big">Huren<small> of all-in abonnement</small></div>
+          <ul><li><span>Huren / abonnement</span><b>vanaf &euro;35 /mnd</b></li><li><span>Leasen (2 tot 5 jaar)</span><b>&plusmn; &euro;30 /mnd + onderhoud</b></li><li><span>Kopen</span><b>&euro;1.200 tot 3.500 + onderhoud</b></li><li><span>Kopen loont pas</span><b>&lt; 20 kopjes/dag, &gt; 5 jaar</b></li></ul></div>
+      </div>
+      <div class="view" id="c3">
+        <div>
+          <label>Huidige oplossing</label><select><option selected>Cups of pads</option><option>Instant</option><option>Bonen</option></select>
+          <label>Kopjes per dag</label><input type="number" value="45" min="1">
+          <label>Machine</label><select><option>Nieuw</option><option selected>SecondLife (refurbished)</option></select>
+        </div>
+        <div class="out"><div style="font-size:13px;font-weight:700;color:var(--brown)">Wat je bespaart per jaar</div>
+          <div class="big">&plusmn;11.000<small> cups minder afval</small></div>
+          <ul><li><span>CO&#8322; per machine (SecondLife)</span><b>-60%</b></li><li><span>Koffie</span><b>Fairtrade, eerlijk inkomen voor de boer</b></li><li><span>Koffiedik</span><b>compost of hergebruik</b></li></ul></div>
+      </div>
+      <div class="view on" style="padding-top:0">
+        <div class="mail"><div><label>Stuur mij de berekening</label><input type="email" placeholder="naam@bedrijf.be"></div><div style="flex:0"><a class="btn btn-primary" style="white-space:nowrap">Stuur de berekening &#8594;</a></div></div>
+        <div class="note">Voorbeeldwaarden. De echte rekenregels (prijs per formule, verbruik per machine) komen uit het aanbod van Id&eacute;; de aanvraag landt als lead in Odoo met segment en volume.</div>
+      </div>
+    </div>
+    <div class="anno">
+      <div class="ah"><span class="ttl">Calculator als lead-aas (3 views)</span><span class="pd ADD">ADD</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC/DFS)</span></div>
+      <div class="agrid">
+        <div class="af"><span class="k">Doelgroep</span><span class="v">Beslisser die eerst wil weten wat het kost; office manager die intern moet verantwoorden.</span></div>
+        <div class="af"><span class="k">Zoekintentie</span><span class="v">De kostvraag bestaat: <i>koffiemachine kantoor prijs</i>, <i>koffiezetapparaat onderhoud kosten</i>, <i>total cost of ownership</i>; de SERP voor &ldquo;koffiemachine kantoor&rdquo; verwacht een FAQ-structuur.</span></div>
+        <div class="af"><span class="k">Positionering</span><span class="v">Transparantie als wig: concurrenten tonen geen prijs per kopje; Id&eacute; wel.</span></div>
+        <div class="af"><span class="k">Bewijs</span><span class="v"><span class="pill ob">observed</span> 3,6% van de bezoekers vult vandaag een formulier in (GA4 sep&ndash;okt); een berekening vraagt minder dan een offerte. <span class="pill hy">hypothese</span> rekenwaarden zijn voorbeelden.</span></div>
+        <div class="af wide"><span class="k">Rationale</span><span class="v">Kwalificeert de lead (segment, volume, horizon) v&oacute;&oacute;r het gesprek en voedt de offline conversie in Odoo. Drie views = drie koopmotieven: kost, formule, duurzaamheid.</span></div>
+        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf middel">Middel</span> &mdash; werkt pas met echte prijsregels</span></div>
+        <div class="ceoq"><b>Vraag aan Id&eacute;:</b> prijs per formule en verbruik per machine aanleveren, dan rekent dit echt.</div>
+      </div>
+    </div>
+  </div></section>
+
   <section class="block" style="background:var(--sand)"><div class="wrap">
     <div class="eyebrow" style="text-align:center">Veelgestelde vragen</div>
     <h2 style="text-align:center;margin-bottom:24px">Alles over koffiemachines voor bedrijven</h2>
@@ -467,86 +595,207 @@
   </div></section>
 </div>
 
-<!-- ==================================================== HUREN ==================================================== -->
-<div class="page" id="page-huren">
+<!-- ==================================================== LEASEN & HUREN (samengevoegd, 22/10) ==================================================== -->
+<div class="page" id="page-leasen">
   <section class="hero"><div class="wrap"><div class="hero-grid">
     <div>
-      <div class="eyebrow" style="color:#bfe6e4">Formule &middot; huren</div>
-      <h1>Koffiemachine huren</h1>
-      <p class="lead">Zorgeloos verse koffie vanaf <b>&euro;35/maand</b> &mdash; geen aankoop, opzegbaar, en onderhoud, vervangtoestel &amp; eigen technische dienst inbegrepen. Ideaal om flexibel te starten.</p>
-      <div class="cta-row"><a class="btn btn-primary" data-go="offerte">Vraag je huurformule aan &#8594;</a><a class="btn btn-white" data-go="leasen">Liever leasen?</a></div>
+      <div class="eyebrow" style="color:#bfe6e4">Formule &middot; leasen of huren</div>
+      <h1>Koffiemachine leasen of huren voor je bedrijf</h1>
+      <p class="lead">Geen aankoop, geen zorgen. Je betaalt een vast maandbedrag vanaf <b>&euro;35</b>, met onderhoud, vervangtoestel en onze eigen technische dienst inbegrepen. Leasen (2&ndash;5 jaar, fiscaal interessant) of huren (flexibel, opzegbaar): wij rekenen beide voor je uit.</p>
+      <div class="cta-row"><a class="btn btn-primary" data-go="offerte">Vraag je voorstel aan &#8594;</a><a class="btn btn-white" href="#cmp">Vergelijk de formules</a></div>
     </div>
-    <div class="hero-card"><h3>Huren vanaf</h3><div class="price">&euro;35<small> /maand &middot; alles-in</small></div>
-      <ul class="checklist"><li>Geen investering, geen CAPEX</li><li>Onderhoud &amp; vervangtoestel inbegrepen</li><li>Eigen technische dienst binnen 24u</li><li>Opzegbaar &middot; altijd op maat</li></ul></div>
+    <div class="hero-card"><h3>Leasen of huren vanaf</h3><div class="price">&euro;35<small> /maand &middot; alles-in</small></div>
+      <ul class="checklist"><li>Geen investering, geen kapitaal vast</li><li>Onderhoud, filter &amp; vervangtoestel inbegrepen</li><li>Eigen technische dienst binnen 24u</li><li>Wissel van machine of koop ze over tijdens het contract</li></ul></div>
   </div></div></section>
+  <div class="trust"><div class="wrap">
+    <div class="item"><b>22</b><span>jaar ervaring</span></div>
+    <div class="item"><b>24u</b><span>eigen technische dienst</span></div>
+    <div class="item"><b>1 week</b><span>gratis proefplaatsing</span></div>
+    <div class="item"><b>100%</b><span>blijvende garantie</span></div>
+    <div class="item"><b>NL / FR</b><span>heel Belgi&euml;</span></div>
+  </div></div>
 
-  <section class="block"><div class="wrap">
-    <div class="eyebrow">Waarom huren</div>
-    <h2>Huren of kopen?</h2>
-    <div class="compare">
-      <div class="col kopen"><h3>Zelf kopen</h3><ul><li>Zelf verantwoordelijk voor onderhoud</li><li>Bij defect: wachten op reparatie</li><li>Na garantie betaal je reparaties zelf</li></ul></div>
-      <div class="col huren"><h3>Huren bij Id&eacute;</h3><ul><li>Vaste maandprijs vanaf &euro;35, alles-in</li><li>Altijd een vervangtoestel</li><li>100% blijvende garantie</li></ul><a class="btn btn-primary" style="margin-top:16px" data-go="offerte">Gratis proefplaatsing &#8594;</a></div>
-    </div>
+  <section class="block" id="cmp"><div class="wrap">
+    <div class="eyebrow">De vergelijking</div>
+    <h2>Huren, leasen, kopen of SecondLife?</h2>
+    <div class="tw"><table class="cmp">
+      <tr><th></th><th>Huren</th><th>Leasen</th><th>Kopen</th><th>SecondLife</th></tr>
+      <tr><td>Wat het is</td><td>Vast maandbedrag, opzegbaar</td><td>Vaste looptijd van 2 tot 5 jaar</td><td>Eenmalige aankoop</td><td>Refurbished machine huren, lagere prijs</td></tr>
+      <tr><td>Vanaf</td><td>&euro;35 /maand</td><td>&plusmn; &euro;30 /maand</td><td>&euro;1.200 tot &euro;3.500</td><td>lager dan huren</td></tr>
+      <tr><td>Onderhoud &amp; herstelling</td><td><span class="yes">&#10003;</span> inbegrepen</td><td><span class="yes">&#10003;</span> inbegrepen</td><td><span class="no">&#10007;</span> zelf betalen na garantie</td><td><span class="yes">&#10003;</span> inbegrepen</td></tr>
+      <tr><td>Vervangtoestel bij defect</td><td><span class="yes">&#10003;</span></td><td><span class="yes">&#10003;</span></td><td><span class="no">&#10007;</span></td><td><span class="yes">&#10003;</span></td></tr>
+      <tr><td>Fiscaal</td><td>Volledig aftrekbare kost</td><td>Aftrekbaar, btw-aftrek, gespreid</td><td>Afschrijven over meerdere jaren</td><td>Volledig aftrekbare kost</td></tr>
+      <tr><td>Past bij</td><td>Kantoren die flexibel willen blijven</td><td>Stabiele teams, cashflow spreiden</td><td>Minder dan 20 kopjes per dag, 5+ jaar stabiel</td><td>Wie betaalbaar &eacute;n duurzaam wil</td></tr>
+    </table></div>
+    <div class="tipbox">&#128161; <b>Vuistregel van onze adviseurs:</b> kopen loont alleen onder 20 kopjes per dag, bij een stabiele situatie van minstens vijf jaar en als iemand het onderhoud echt opvolgt. Alle andere gevallen: huren of leasen.</div>
     <div class="anno">
-      <div class="ah"><span class="ttl">Pagina: koffiemachine huren</span><span class="pd IMPROVE">IMPROVE</span><span class="pd MERGE">MERGE-check</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC)</span></div>
+      <div class="ah"><span class="ttl">Pagina: koffiemachine leasen (huren samengevoegd)</span><span class="pd MERGE">MERGE</span><span class="pd IMPROVE">IMPROVE</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC/DFS)</span></div>
       <div class="agrid">
-        <div class="af"><span class="k">Doelgroep</span><span class="v">KMO/office &mdash; huur i.p.v. koop, geen CAPEX.</span></div>
-        <div class="af"><span class="k">Zoekintentie</span><span class="v">Transactioneel &mdash; recurring B2B-huur.</span></div>
-        <div class="af"><span class="k">Positionering</span><span class="v">Pijler A &mdash; recurring, alles-in, vervangtoestel.</span></div>
-        <div class="af"><span class="k">Bewijs / vraag</span><span class="v"><span class="pill ob">observed</span> <i>koffiemachine huren</i> pos 10,3 (13 clicks &mdash; enige non-brand term nabij pagina 1); vol 170, CPC &euro;17,77.</span></div>
-        <div class="af wide"><span class="k">Rationale</span><span class="v">Risico op kannibalisatie met <code>/koffiezetapparaat-huren</code> (korte-termijn/event, pos 9,2 op &ldquo;1 dag&rdquo;). Differenti&euml;ren (B2B-recurring vs event) of <b>MERGE</b>.</span></div>
-        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf hoog">Hoog</span> (merge: middel)</span></div>
+        <div class="af"><span class="k">Doelgroep</span><span class="v">Beslisser die de kost wil spreiden of geen kapitaal wil vastzetten; fiscaal gedreven kmo.</span></div>
+        <div class="af"><span class="k">Zoekintentie</span><span class="v">Transactioneel. <i>koffiemachine huren</i> 110/mnd (CPC &euro;9,92), <i>leasen</i> 40/mnd (CPC &euro;11,71), <i>huren bedrijf</i> 20/mnd (DFS Belgi&euml;, 12 mnd).</span></div>
+        <div class="af"><span class="k">Positionering</span><span class="v">Pijler A met de vergelijking als wig: Id&eacute; toont de hele keuze, inclusief wanneer kopen beter is.</span></div>
+        <div class="af"><span class="k">Bewijs / vraag</span><span class="v"><span class="pill ob">observed</span> Search Console landt de leasen-queries nu op <code>/nl/koffiemachine-huren</code> (415 impr, 0 clicks), <code>/onze-merken/jura</code> (284) en <code>/formules/huren-of-kopen</code> (273): drie pagina's, geen eigenaar. Huren-pagina 46k impr/jaar op positie 17.</span></div>
+        <div class="af wide"><span class="k">Rationale</span><span class="v"><b>MERGE</b>: huren en leasen zijn &eacute;&eacute;n vraagfamilie in Google's ogen (zelfde landingspagina's). &Eacute;&eacute;n pagina die beide termen in titel en H1 draagt, met de vergelijktabel uit <code>/formules/huren-of-kopen</code> erin; <code>/koffiemachine-huren</code> wordt een 301. &ldquo;koffiemachine abonnement&rdquo; (10/mnd) is een sectie hieronder, geen pagina.</span></div>
+        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf hoog">Hoog</span></span></div>
+        <div class="ceoq"><b>Vraag aan Id&eacute;:</b> klopt het fiscale verschil tussen huur en lease zoals hier beschreven, en welke looptijden bieden jullie bij lease?</div>
       </div>
     </div>
   </div></section>
 
   <section class="block" style="background:var(--sand)"><div class="wrap">
-    <div class="eyebrow">Wat zit erin</div>
-    <h2>Alles inbegrepen, elke maand</h2>
-    <ul class="service-list">
-      <li><span class="ic">&#128295;</span><b>Eigen technische dienst</b><span>Binnen 24u ter plaatse &mdash; geen uitbestede callcenters.</span></li>
-      <li><span class="ic">&#128260;</span><b>Vervangtoestel</b><span>Altijd koffie, ook bij een defect.</span></li>
-      <li><span class="ic">&#127793;</span><b>Duurzame koffie</b><span>Fairtrade Original, huismerk Id&eacute;, lokale branderij.</span></li>
-      <li><span class="ic">&#9749;</span><b>Gratis koffie-tasting</b><span>Proef 4 koffies, met of zonder onze account manager.</span></li>
-    </ul>
+    <div class="eyebrow">Alles-in</div>
+    <h2>Koffiemachine-abonnement: machine, koffie en service in &eacute;&eacute;n bedrag</h2>
+    <div class="split">
+      <div><p>Wil je er helemaal niet meer naar omkijken? Met het NOWoriz-abonnement krijg je een of meerdere machines, automatische koffieleveringen, technisch onderhoud en onze eigen dienst voor &eacute;&eacute;n vast maandbedrag. Je account manager kiest samen met jou de machine die bij je verbruik past.</p>
+        <a class="btn btn-ghost" data-go="abonnement">Alles over het koffie-abonnement &#8594;</a></div>
+      <ul class="service-list">
+        <li><span class="ic">&#9749;</span><b>Machine op maat van je verbruik</b><span>Van Jura E6 (tot 15 kopjes per dag) tot Rheavendors BL (60 en meer).</span></li>
+        <li><span class="ic">&#128230;</span><b>Automatische leveringen</b><span>Bonen of capsules, afgestemd op je verbruik, op elke vestiging.</span></li>
+        <li><span class="ic">&#128295;</span><b>Onderhoud en techniek</b><span>Eigen dienst, binnen 24u ter plaatse, jaarlijks nieuwe waterfilter.</span></li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="eyebrow" style="text-align:center">Veelgestelde vragen</div>
+    <h2 style="text-align:center;margin-bottom:24px">Over leasen en huren</h2>
+    <div class="faq">
+      <details class="qa" open><summary>Wat is het verschil tussen een koffiemachine huren en leasen?</summary><div class="a">Huren is een vast maandbedrag zonder lange verbintenis: je kunt opzeggen, van machine wisselen of de machine overkopen tijdens het contract. Leasen loopt over een vaste termijn van twee tot vijf jaar met een lager maandbedrag; de kost is fiscaal gespreid. Onderhoud, vervangtoestel en technische dienst zitten in beide formules.</div></details>
+      <details class="qa"><summary>Kan ik een koffiemachine afschrijven of de btw aftrekken?</summary><div class="a">Bij huur en lease is het maandbedrag een beroepskost; de btw is in de regel aftrekbaar. Bij aankoop schrijf je de machine af over meerdere jaren. Je boekhouder bevestigt wat in jouw situatie het interessantst is; wij leveren de cijfers.</div></details>
+      <details class="qa"><summary>Wanneer is kopen toch beter?</summary><div class="a">Bij minder dan 20 kopjes per dag, een situatie die minstens vijf jaar stabiel blijft en iemand die het onderhoud echt opvolgt. In alle andere gevallen betaal je met huren of leasen minder over de looptijd, zonder risico.</div></details>
+      <details class="qa"><summary>Kan ik eerst proberen?</summary><div class="a">Ja. We plaatsen een machine een week gratis op kantoor en je proeft vier koffies, zonder verplichting.</div></details>
+    </div>
   </div></section>
 </div>
 
-<!-- ==================================================== LEASEN ==================================================== -->
-<div class="page" id="page-leasen">
+<!-- ==================================================== KOFFIE-ABONNEMENT (koffielevering) ==================================================== -->
+<div class="page" id="page-abonnement">
   <section class="hero"><div class="wrap"><div class="hero-grid">
     <div>
-      <div class="eyebrow" style="color:#bfe6e4">Formule &middot; leasen</div>
-      <h1>Koffiemachine leasen</h1>
-      <p class="lead">Spreid de kost over beheersbare termijnen en geniet fiscale voordelen: <b>btw-aftrek</b> en <b>afschrijving</b>. Voor wie liever leaset dan huurt of koopt &mdash; met dezelfde ontzorging en eigen technische dienst.</p>
-      <div class="cta-row"><a class="btn btn-primary" data-go="offerte">Vraag je lease-formule aan &#8594;</a><a class="btn btn-white" data-go="huren">Vergelijk met huren</a></div>
+      <div class="eyebrow" style="color:#bfe6e4">Koffie-abonnement &middot; levering op kantoor</div>
+      <h1>Nooit meer zonder koffie op het werk</h1>
+      <p class="lead">Elke maand verse koffiebonen of capsules geleverd op kantoor en op al je vestigingen, afgestemd op je verbruik en smaak. Geen voorraad bijhouden, geen collega die vergat te bestellen. Flexibel aanpassen of pauzeren.</p>
+      <div class="cta-row"><a class="btn btn-primary" data-go="offerte">Stel mijn abonnement samen &#8594;</a><a class="btn btn-white" data-go="leasen">Ook een machine nodig?</a></div>
     </div>
-    <div class="hero-card"><h3>Leasen</h3><div class="price">Fiscaal<small> interessant</small></div>
-      <ul class="checklist"><li>Btw-aftrek &amp; afschrijving</li><li>Kost gespreid, cashflow-vriendelijk</li><li>Onderhoud &amp; service inbegrepen</li><li>Lease vs huur vs koop &mdash; wij adviseren</li></ul></div>
+    <div class="hero-card"><h3>Wat je krijgt</h3>
+      <ul class="checklist" style="margin-top:4px"><li>Altijd verse bonen of capsules, geleverd</li><li>Levering op meerdere bedrijfslocaties</li><li>Kwaliteitsmerken &eacute;n eigen melanges</li><li>Fairtrade, met eerlijk inkomen voor de boer</li><li>Aanpassen of pauzeren wanneer je wil</li></ul></div>
   </div></div></section>
+  <div class="trust"><div class="wrap">
+    <div class="item"><b>1.000+</b><span>bedrijven met abonnement</span></div>
+    <div class="item"><b>22</b><span>jaar ervaring</span></div>
+    <div class="item"><b>Fairtrade</b><span>Original &amp; eigen branderij</span></div>
+    <div class="item"><b>Maandelijks</b><span>op maat geleverd</span></div>
+  </div></div>
 
   <section class="block"><div class="wrap">
-    <div class="eyebrow">Lease, huur of koop</div>
-    <h2>Welke formule is fiscaal het interessantst?</h2>
+    <div class="eyebrow">Herkenbaar?</div>
+    <h2>Drie situaties die je met een abonnement nooit meer meemaakt</h2>
     <div class="cards">
-      <div class="card"><h3>Leasen</h3><p>Kost gespreid over termijnen. Fiscaal: afschrijving + btw-aftrek. Voor wie investering wil spreiden.</p></div>
-      <div class="card featured"><span class="tag">Meest gekozen</span><h3>Huren / abonnement</h3><p>Volledig operationele kost, alles-in vanaf &euro;35/maand. Maximale ontzorging, geen restwaarde-risico.</p></div>
-      <div class="card"><h3>Kopen</h3><p>Eenmalige aanschaf. Zinvol bij zeer laag verbruik &mdash; maar onderhoud en risico voor eigen rekening.</p></div>
+      <div class="card"><h3>De koffie is op</h3><p>Je collega bestelde niet bij. Met een abonnement komt de levering vanzelf, op basis van je echte verbruik.</p></div>
+      <div class="card featured"><span class="tag">Meest gehoord</span><h3>Elke keer een andere smaak</h3><p>Wij stellen de levering samen volgens jouw smaakvoorkeur en houden die vast: dezelfde kwaliteit, elke maand.</p></div>
+      <div class="card"><h3>Vijf vestigingen, vijf bestellingen</h3><p>&Eacute;&eacute;n abonnement, levering op elke locatie, &eacute;&eacute;n factuur.</p></div>
     </div>
+  </div></section>
+
+  <section class="block" style="background:var(--sand)"><div class="wrap">
+    <div class="eyebrow">Kies je koffie</div>
+    <h2>Bonen, gemalen, capsules of instant</h2>
+    <div class="types">
+      <div class="type"><div class="ic">&#127793;</div><h3>Fairtrade Original &amp; huismerk Id&eacute;</h3><p>Onze eigen melanges, duurzaam ingekocht en lokaal gebrand.</p></div>
+      <div class="type"><div class="ic">&#9749;</div><h3>Kwaliteitsmerken</h3><p>Lavazza, Illy en meer, voor wie een vast merk wil.</p></div>
+      <div class="type"><div class="ic">&#128230;</div><h3>Capsules (Lavazza Blue)</h3><p>Voor kleinere teams en vergaderzalen, zonder afstelwerk.</p></div>
+      <div class="type"><div class="ic">&#9889;</div><h3>Instant</h3><p>Voor magazijn, werf of wachtruimte waar snelheid telt.</p></div>
+    </div>
+    <div class="regio"><span>Asse</span><span>Brussel</span><span>Antwerpen</span><span>Gent</span><span>Leuven</span><span>Mechelen</span><span>heel Belgi&euml;</span></div>
     <div class="anno">
-      <div class="ah"><span class="ttl">Pagina: koffiemachine leasen</span><span class="pd ADD">ADD</span><span class="pd SECTION">of SECTION</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC)</span></div>
+      <div class="ah"><span class="ttl">Pagina: koffie-abonnement (koffielevering)</span><span class="pd IMPROVE">IMPROVE</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC/DFS)</span></div>
       <div class="agrid">
-        <div class="af"><span class="k">Doelgroep</span><span class="v">KMO/vrije beroepen die spreiden willen; fiscaal gedreven.</span></div>
-        <div class="af"><span class="k">Zoekintentie</span><span class="v">Transactioneel + fiscaal (btw/afschrijving).</span></div>
-        <div class="af"><span class="k">Positionering</span><span class="v">Pijler A + fiscaal argument (lease vs huur vs koop).</span></div>
-        <div class="af"><span class="k">Bewijs / vraag</span><span class="v"><span class="pill ob">observed</span> <i>koffiemachine leasen</i> pos <b>46,2</b> &mdash; money-topic <b>zonder dedicated pagina</b>. PAA: &ldquo;kan ik een koffiemachine afschrijven?&rdquo;</span></div>
-        <div class="af wide"><span class="k">Rationale</span><span class="v"><b>ADD</b> een lease/fiscaal-pagina &mdash; of een sterke <b>SECTION</b> in voor-bedrijven/formules &mdash; n&aacute; een kannibalisatie-check met huren.</span></div>
-        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf middel">Middel</span> &mdash; gate eerst</span></div>
-        <div class="ceoq"><b>CEO-vraag:</b> Bevestig de lease-condities (btw/afschrijving) zodat het fiscaal argument klopt.</div>
+        <div class="af"><span class="k">Doelgroep</span><span class="v">Office manager die koffie bestelt; bedrijven met een eigen machine die alleen levering willen.</span></div>
+        <div class="af"><span class="k">Zoekintentie</span><span class="v">14 gemeten queries in de familie <i>koffie abonnement</i>: met machine, zakelijk, belgi&euml;, gent, antwerpen, kantoor, flexibel, eerlijke koffie.</span></div>
+        <div class="af"><span class="k">Positionering</span><span class="v">Coffee as a service: levering zonder voorraadzorg; Fairtrade als belofte; regio als vertrouwen.</span></div>
+        <div class="af"><span class="k">Bewijs / vraag</span><span class="v"><span class="pill ob">observed</span> <code>/nl/koffie-abonnement</code> krijgt 470 impr maar 1 click (90d); de vraag lekt naar <code>/formules/secondlife</code> en <code>/formules/noworiz</code>. <span class="pill cl">client-supplied</span> 1.000+ abonnees, 22 jaar.</span></div>
+        <div class="af wide"><span class="k">Rationale</span><span class="v">Eigen pagina blijft, los van machine-leasen: andere koper (levering) en andere SERP (kennisbank/tool). Regio-termen (Gent, Antwerpen) krijgen een regioblok, geen aparte pagina's. &ldquo;koffie abonnement met machine&rdquo; linkt naar de leasen-pagina.</span></div>
+        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf hoog">Hoog</span></span></div>
       </div>
     </div>
   </div></section>
+
+  <section class="ctaband"><div class="wrap">
+    <h2>Proef eerst, kies daarna.</h2>
+    <p>Gratis koffie-tasting op kantoor: vier koffies, met of zonder onze account manager erbij.</p>
+    <a class="btn btn-white" data-go="offerte">Plan een gratis tasting &#8594;</a>
+  </div></section>
 </div>
+
+<!-- ==================================================== FR &middot; MACHINE À CAFÉ PROFESSIONNELLE ==================================================== -->
+<div class="page" id="page-fr">
+  <section class="hero"><div class="wrap"><div class="hero-grid">
+    <div>
+      <div class="eyebrow" style="color:#bfe6e4">Entreprises &middot; location, leasing ou achat &middot; 22 ans</div>
+      <h1>Machine &agrave; caf&eacute; professionnelle pour votre entreprise</h1>
+      <p class="lead">Louez ou achetez la machine adapt&eacute;e &agrave; votre consommation, &agrave; partir de <b>30 &euro; par mois</b>, entretien et service technique inclus. Nos account managers font l'analyse sur place et vous proposez la machine qui r&eacute;pond &agrave; tous vos besoins.</p>
+      <div class="cta-row"><a class="btn btn-primary" data-go="offerte">Devis gratuit &#8594;</a><a class="btn btn-white" href="#frm">Comparer location et achat</a></div>
+    </div>
+    <div class="hero-card"><h3>&Agrave; partir de</h3><div class="price">30 &euro;<small> /mois &middot; tout compris</small></div>
+      <ul class="checklist"><li>Pas d'investissement, facture trimestrielle</li><li>Installation et entretien gratuits</li><li>Service technique interne sous 24h</li><li>Machine de remplacement garantie</li></ul></div>
+  </div></div></section>
+  <div class="trust"><div class="wrap">
+    <div class="item"><b>22</b><span>ans d'exp&eacute;rience</span></div>
+    <div class="item"><b>4,8&#9733;</b><span>74 avis Google</span></div>
+    <div class="item"><b>24h</b><span>service technique interne</span></div>
+    <div class="item"><b>1 semaine</b><span>d'essai gratuit</span></div>
+    <div class="item"><b>Fairtrade</b><span>caf&eacute; durable</span></div>
+  </div></div>
+
+  <section class="block"><div class="wrap">
+    <div class="eyebrow">Notre offre</div>
+    <h2>Quelle machine pour combien de caf&eacute;s par jour ?</h2>
+    <div class="machines">
+      <div class="machine"><div class="ph"><img src="https://www.idecoffee.be/application/files/1217/8066/4850/jura_w8.png" alt="Jura W8 Dark Inox"></div><div class="body"><span class="cat">Grains &middot; jusqu'&agrave; 25 caf&eacute;s/jour</span><h4>Jura W8 Dark Inox</h4><p style="font-size:14px;color:#5b5347;margin:0">Jura E6 (15 caf&eacute;s/jour) &agrave; partir de 30 &euro; par mois</p><a class="lnk" href="https://www.idecoffee.be/fr/machine-cafe-professionnelle/nos-marques/jura" target="_blank" rel="noopener">D&eacute;couvrir &#8594;</a></div></div>
+      <div class="machine"><div class="ph"><img src="https://www.idecoffee.be/application/files/8017/8066/5030/Technicup_Office.png" alt="Technicup Office C"></div><div class="body"><span class="cat">Grains &middot; jusqu'&agrave; 40/50 caf&eacute;s/jour</span><h4>Technicup Office C</h4><p style="font-size:14px;color:#5b5347;margin:0">&Agrave; partir de 35 &euro; par mois</p><a class="lnk" href="https://www.idecoffee.be/fr/machine-cafe-professionnelle" target="_blank" rel="noopener">D&eacute;couvrir &#8594;</a></div></div>
+      <div class="machine"><div class="ph"><img src="https://www.idecoffee.be/application/files/1817/8066/5877/Rhea_BL_EC.png" alt="Rheavendors BL EC"></div><div class="body"><span class="cat">Grains &middot; jusqu'&agrave; 60 caf&eacute;s/jour</span><h4>Rheavendors BL EC</h4><p style="font-size:14px;color:#5b5347;margin:0">&Agrave; partir de 75 &euro; par mois</p><a class="lnk" href="https://www.idecoffee.be/fr/machine-cafe-professionnelle" target="_blank" rel="noopener">D&eacute;couvrir &#8594;</a></div></div>
+    </div>
+    <div class="tipbox">&#128161; <b>R&egrave;gle simple :</b> un bureau de 10 personnes boit 30 &agrave; 50 tasses par jour. Comptez vos buveurs de caf&eacute;, nous dimensionnons la machine.</div>
+  </div></section>
+
+  <section class="block" id="frm" style="background:var(--sand)"><div class="wrap">
+    <div class="eyebrow">Location, leasing ou achat</div>
+    <h2>Quelle formule pour votre situation ?</h2>
+    <div class="compare">
+      <div class="col huren"><h3>Location ou leasing chez Id&eacute;</h3><ul><li>Pas d'investissement, facture trimestrielle</li><li>Pas de frais d'installation</li><li>Changer de machine ou l'acheter en cours de contrat</li><li>Machine toujours en parfait &eacute;tat, remplac&eacute;e si n&eacute;cessaire</li><li>Filtre adoucisseur remplac&eacute; chaque ann&eacute;e</li></ul><a class="btn btn-primary" style="margin-top:16px" data-go="offerte">Demander un devis &#8594;</a></div>
+      <div class="col kopen"><h3>Acheter : seulement si&hellip;</h3><ul><li>Moins de 20 tasses par jour</li><li>Situation stable pendant au moins 5 ans</li><li>Personnel attentif &agrave; l'entretien</li><li>Fid&eacute;lit&eacute; &agrave; une seule marque de caf&eacute;</li></ul></div>
+    </div>
+    <div class="anno">
+      <div class="ah"><span class="ttl">Page FR : machine &agrave; caf&eacute; professionnelle</span><span class="pd IMPROVE">IMPROVE</span><span class="origin cb">consultant-bridged</span><span class="origin pg">bewijs: platform (GSC/DFS)</span></div>
+      <div class="agrid">
+        <div class="af"><span class="k">Doelgroep</span><span class="v">Franstalige bedrijven (Brussel, Walloni&euml;): gestionnaire de bureau, dirigeant de PME.</span></div>
+        <div class="af"><span class="k">Zoekintentie</span><span class="v">Transactioneel. <i>machine &agrave; caf&eacute; professionnelle</i> 390/mnd (CPC &euro;5,66), <i>location machine &agrave; caf&eacute; entreprise</i> 50/mnd (CPC &euro;34), <i>machine &agrave; caf&eacute; bureau</i> 40/mnd.</span></div>
+        <div class="af"><span class="k">Positionering</span><span class="v">Zelfde pijler A in het Frans: tout compris, service interne 24h, essai gratuit.</span></div>
+        <div class="af"><span class="k">Bewijs / vraag</span><span class="v"><span class="pill ob">observed</span> <code>/fr/machine-cafe-professionnelle</code> is de grootste money page van de site: 86.000 vertoningen per jaar, 400 klikken, positie 18; familie van 48 queries. <i>location machine &agrave; caf&eacute; entreprise</i>: 968 impr, 0 clicks, geen eigenaar.</span></div>
+        <div class="af wide"><span class="k">Rationale</span><span class="v">De Franstalige markt is groter dan de Nederlandstalige voor deze termen en wordt vandaag het slechtst bediend. Prijs per machine (al op de live site) naar boven, formulevergelijking uit <code>/fr/formules/louer-acheter</code> erin, devis als enige CTA. Dezelfde opbouw als de NL-pagina, geen vertaling van de NL-copy.</span></div>
+        <div class="af"><span class="k">Confidence</span><span class="v"><span class="conf hoog">Hoog</span></span></div>
+        <div class="ceoq"><b>Vraag aan Id&eacute;:</b> wie volgt Franstalige aanvragen op, en gelden dezelfde prijzen in Walloni&euml;?</div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="eyebrow" style="text-align:center">Questions fr&eacute;quentes</div>
+    <h2 style="text-align:center;margin-bottom:24px">Machine &agrave; caf&eacute; en entreprise</h2>
+    <div class="faq">
+      <details class="qa" open><summary>Combien co&ucirc;te une machine &agrave; caf&eacute; professionnelle en location ?</summary><div class="a">&Agrave; partir de 30 &euro; par mois pour une Jura E6 (jusqu'&agrave; 15 caf&eacute;s par jour), 35 &euro; pour une Technicup Office C (40 &agrave; 50 caf&eacute;s) et 75 &euro; pour une Rheavendors BL EC (60 caf&eacute;s et plus). Entretien, service technique et machine de remplacement compris.</div></details>
+      <details class="qa"><summary>Vaut-il mieux louer ou acheter ?</summary><div class="a">Louer dans la plupart des cas : pas d'investissement, entretien compris, machine remplac&eacute;e si n&eacute;cessaire. Acheter n'a de sens qu'en dessous de 20 tasses par jour, avec une situation stable sur cinq ans et du personnel attentif &agrave; l'entretien.</div></details>
+      <details class="qa"><summary>Livrez-vous &agrave; Bruxelles et en Wallonie ?</summary><div class="a">Oui. Depuis Asse, nos techniciens et account managers couvrent toute la Belgique, en fran&ccedil;ais et en n&eacute;erlandais.</div></details>
+    </div>
+  </div></section>
+
+  <section class="ctaband"><div class="wrap">
+    <h2>Testez une semaine gratuitement. D&eacute;cidez ensuite.</h2>
+    <p>Nous installons une machine dans vos bureaux et vous go&ucirc;tez quatre caf&eacute;s, sans engagement.</p>
+    <a class="btn btn-white" data-go="offerte">Demander mon essai gratuit &#8594;</a>
+  </div></section>
+</div>
+
 
 <!-- ==================================================== OFFERTE / CONTACT ==================================================== -->
 <div class="page" id="page-offerte">
@@ -602,7 +851,7 @@
 
 <footer><div class="wrap">
   <div><b>IDÉ Coffee Systems</b><br>Z.5 Mollem 410, 1730 Asse<br>&#9742; +32 2 243 03 09 &middot; info@idecoffee.be<br>BE 0479.330.349</div>
-  <div><b>Formules</b><br>Huren &middot; Leasen &middot; Abonnement<br>Machines &middot; Koffie &middot; Onderhoud</div>
+  <div><b>Formules</b><br>Leasen &amp; huren &middot; Koffie-abonnement &middot; SecondLife<br>Machines &middot; Koffie &middot; Onderhoud &middot; FR</div>
   <div><b>Machines</b><br>Bonen &middot; Gemalen &middot; Instant<br>Jura &middot; Technicup &middot; Rheavendors &middot; Bravilor</div>
   <div><b>Duurzaam</b><br>Fairtrade koffie<br>Doel 2030: dé duurzame koffiepartner van Belgi&euml;</div>
 </div>
@@ -613,7 +862,7 @@
 (function(){
   var body=document.body;
   // page nav
-  var pages={home:'page-home',bedrijven:'page-bedrijven',huren:'page-huren',leasen:'page-leasen',offerte:'page-offerte'};
+  var pages={home:'page-home',bedrijven:'page-bedrijven',huren:'page-leasen',leasen:'page-leasen',abonnement:'page-abonnement',fr:'page-fr',offerte:'page-offerte'};
   var links=document.querySelectorAll('.nav .links a');
   function go(key){
     var id=pages[key]; if(!id) return;
@@ -632,6 +881,11 @@
   tg.addEventListener('click',flip);
   tg.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
   document.addEventListener('keydown',function(e){if((e.key==='s'||e.key==='S')&&!/input|textarea/i.test(e.target.tagName))flip();});
+  // calculator tabs (presentation only)
+  document.querySelectorAll('.calc .tabs button').forEach(function(b){b.addEventListener('click',function(){
+    var c=b.closest('.calc'); c.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b);});
+    c.querySelectorAll('.view[id]').forEach(function(v){v.classList.toggle('on',v.id===b.getAttribute('data-tab'));});
+  });});
   // restore
   try{var m=localStorage.getItem('ide_mode'); if(m==='1') setMode(true);}catch(e){}
 })();
