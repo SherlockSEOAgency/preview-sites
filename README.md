@@ -20,3 +20,4 @@ Static HTML previews for Sherlock client presentations.
 
 - `asbitech-final/` -> asbitech-final.preview.sherlockseo.com (multi-page NL+FR, same-origin assets; formulieren inert) — doorverwezen (301) naar asbitech-watson.preview.sherlockseo.com sinds 14/10/2026; bronbestanden blijven
 - `story-gesprek/`, `story-deductie/`, `story-babbelen/` -> `story-<name>.preview.sherlockseo.com`: three homepage story directions for sherlockseo.com (built from `_story-shared/` with `node _story-shared/build.mjs`; buttons inert).
+- `styleathome-demo/` -> styleathome-demo.preview.sherlockseo.com (Style at Home: .eu-portaal + .be-landensite + /snelheid/; statisch, noindex, geen trackers; echte teksten/beelden van styleathome.be/.eu/.es per 5/11/2026)
