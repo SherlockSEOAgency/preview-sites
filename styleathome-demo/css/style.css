@@ -14,8 +14,8 @@
  --h1:50px;--h2:40px;--h3:30px;
 }
 @media(max-width:767px){:root{--fs-body:14px;--lh-body:22px;--h1:30px;--h2:25px;--h3:22px}}
-@font-face{font-family:Oswald;font-weight:500;font-display:swap;src:url(/fonts/oswald-500.woff2) format("woff2")}
-@font-face{font-family:"Open Sans";font-weight:400 700;font-display:swap;src:url(/fonts/opensans.woff2) format("woff2")}
+@font-face{font-family:Oswald;font-weight:500;font-display:swap;src:url(/fonts/oswald-500.5e619e5c.woff2) format("woff2")}
+@font-face{font-family:"Open Sans";font-weight:400 700;font-display:swap;src:url(/fonts/opensans.441af0de.woff2) format("woff2")}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;font:400 var(--fs-body)/var(--lh-body) "Open Sans",system-ui,sans-serif;color:var(--ink);background:#fff}
