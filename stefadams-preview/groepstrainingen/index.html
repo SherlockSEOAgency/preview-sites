@@ -260,12 +260,24 @@ color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-botto
 .foot-brand{font-family:var(--fh);font-weight:800;font-size:18px;color:var(--primary);}
 .foot-links{display:flex;gap:16px;flex-wrap:wrap;}
 .foot-links a{color:var(--ink);text-decoration:none;}
-@media print{#sherlock-mode-toggle{display:none;}}
+#sherlock-dossier-btn{border-left:1px solid rgba(255,255,255,.25) !important;border-radius:0 999px 999px 0 !important;}
+#sherlock-overlay{position:fixed;top:0;right:0;bottom:0;width:380px;max-width:100vw;z-index:2147482999;
+background:#fff;color:#0f172a;box-shadow:-8px 0 30px rgba(0,0,0,.2);overflow:auto;padding:64px 18px 24px;
+font:14px/1.5 system-ui,sans-serif;}
+#sherlock-overlay[hidden]{display:none;}
+#sherlock-overlay h3{font:800 13px/1.2 system-ui;text-transform:uppercase;letter-spacing:.05em;color:#0369a1;margin:22px 0 8px;}
+#sherlock-overlay .d-item{border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;margin:0 0 8px;}
+#sherlock-overlay .d-note{color:#64748b;font-size:12.5px;}
+#sherlock-overlay textarea{width:100%;min-height:64px;margin:8px 0;font:inherit;padding:8px;border:1px solid #cbd5e1;border-radius:8px;}
+#sherlock-overlay button.d-go,#sherlock-overlay input{font:inherit;padding:7px 12px;border-radius:8px;border:1px solid #cbd5e1;}
+#sherlock-overlay button.d-go{background:#0369a1;color:#fff;border-color:#0369a1;cursor:pointer;}
+@media(max-width:600px){#sherlock-overlay{width:100vw;top:auto;height:75vh;border-radius:16px 16px 0 0;padding-top:20px;}}
+@media print{#sherlock-mode-toggle,#sherlock-overlay{display:none;}}
 </style>
 </head>
 <body>
 <div data-sb="strategy" class="preview-banner">◈ <strong>Sherlock strategie-preview</strong> — praktijkstefadams.be · audit run #332 · <em>voorgestelde site; schakel naar Site voor de klant-weergave</em></div>
-<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><details class="navmenu" data-sb="site" id="sherlock-navmenu"><summary class="navburger" aria-label="Menu"><span></span><span></span><span></span></summary><div class="navlinks"><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div></details></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site</button><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="performance" onclick="sherlockSetMode('performance')">Prestatie</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
+<nav class="topnav"><a data-sb="site" class="logo"><span class="brandmark">Praktijk Stef Adams</span></a><div data-sb="site" class="navwrap"><details class="navmenu" data-sb="site" id="sherlock-navmenu"><summary class="navburger" aria-label="Menu"><span></span><span></span><span></span></summary><div class="navlinks"><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div></details></div><div data-sb="chrome" class="mode-toggle" id="sherlock-mode-toggle" role="group" aria-label="Preview mode"><button type="button" data-mode="site" onclick="sherlockSetMode('site')">Site</button><button type="button" data-mode="strategy" class="active" onclick="sherlockSetMode('strategy')">◈ Strategie</button><button type="button" data-mode="performance" onclick="sherlockSetMode('performance')">Prestatie</button><button type="button" id="sherlock-dossier-btn" onclick="sherlockToggleDossier()">◈ Dossier</button></div><div data-sb="site" class="navcta"><a class="btn btn-primary" href="tel:+32494236570">Bel +32 494 23 65 70</a></div></nav>
 <main><aside data-sb="strategy" class="page-lens"><span class='pl-tag'>◈ Sherlock — pagina-strategie</span><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ SERP-FORMAT</span><div class='dc-decision'>De pagina volgt het formaat dat deze SERP domineert: service-pagina met LocalBusiness schema.</div><div class='dc-effect'><b>Verwacht effect:</b> Het formaat matchen dat Google al beloont, verlaagt de drempel om te ranken.</div><details class='dc-evi'><summary>bewijs</summary><span>SERP-dominant format</span></details></aside><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ INTERNE-LINK ROL</span><div class='dc-decision'>Als hub bundelt deze pagina interne links: 8 inkomend, 71 uitgaand naar aangrenzende topics.</div><div class='dc-effect'><b>Verwacht effect:</b> De linkstructuur concentreert autoriteit op de money-pagina&#x27;s en maakt de topische samenhang leesbaar voor zoekmachines.</div><details class='dc-evi'><summary>bewijs</summary><span>topic-graph: hub, in 8 / uit 71</span></details></aside><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ ENTITEIT / GEO</span><div class='dc-decision'>De pagina is verankerd aan de entiteit Sport (Wikidata Q349); de SERP toont een lokaal pakket — lokale NAP-/entiteit-signalen wegen zwaar.</div><div class='dc-effect'><b>Verwacht effect:</b> Entiteit-verankering en lokale signalen verhogen de kans op vermelding in kennisgrafiek, lokaal pakket en AI-overzichten.</div><details class='dc-evi'><summary>bewijs</summary><span>Wikidata Q349 · SERP-feature: lokaal pakket</span></details></aside><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ KANS-SCORE</span><div class='dc-decision'>Deze SERP scoort 10.0/10 op bereikbaarheid: de rankende concurrenten zijn kwetsbaar genoeg om in te breken.</div><div class='dc-effect'><b>Verwacht effect:</b> Prioriteer pagina&#x27;s met een hoge bereikbaarheid — daar levert werk het snelst zichtbaarheid op.</div><details class='dc-evi'><summary>bewijs</summary><span>SERP-reality: opportunity_score</span></details></aside><a class='pl-more' href='/overzicht/'>volledige strategie →</a></aside><aside data-sb="performance" class="perf"><div class='perf-head'>◈ Prestatie — huidige surface <span class='perf-tag'>baseline · IMPROVE</span></div><div class='perf-lineage'>De cijfers hieronder zijn de gemeten prestatie van de <b>bestaande</b> URL. Dit is de baseline; ‘na’ ontstaat pas na publicatie.</div><div class='perf-grid'><div class='perf-src perf-empty'><div class='perf-src-h'>GSC <span class='perf-state s-not_connected'>niet gekoppeld</span></div><div class='perf-msg'>Deze bron is niet gekoppeld voor deze site.</div></div><div class='perf-src perf-empty'><div class='perf-src-h'>GA4 <span class='perf-state s-not_connected'>niet gekoppeld</span></div><div class='perf-msg'>Deze bron is niet gekoppeld voor deze site.</div></div><div class='perf-src perf-empty'><div class='perf-src-h'>Ads <span class='perf-state s-not_connected'>niet gekoppeld</span></div><div class='perf-msg'>Geen Google Ads-account gekoppeld.</div></div></div></aside><div data-sb="strategy" class="an-stack"><aside data-sb="strategy" class="annotation"><span class='an-tag an-warn'>🟠 IMPROVE</span><div class='an-tx'>Dunne pagina (164 woorden) — uitbreiden met expliciete intent en interne links.</div><div class='an-ev'>bron: live pagina /groepstrainingen</div></aside></div><header data-sb="site" class="page-head"><div class='page-eyebrow'>Aanbod</div><h1>Groepstrainingen</h1><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ PRIMAIRE INTENTIE</span><div class='dc-decision'>Deze H1 maakt &#x27;Sport&#x27; de primaire informatieve taak van de pagina; secundaire onderwerpen komen pas ná dat de kerntaak beantwoord is.</div><div class='dc-effect'><b>Verwacht effect:</b> Eén heldere taak versterkt de topic-autoriteit van de pagina.</div><details class='dc-evi'><summary>bewijs</summary><span>strategische rol: supporting commercial · hub in de topic-graph</span></details></aside><p class='lede'>Groepstrainingen Groepstrainingen Build &amp; Sweat High intensity circuit training voor kracht &amp; conditie Woensdag 19u40 - 20u30 + vrijdag 12u10 - 13u00 6-10 personen per groep 8 weken cyclus €150 per cyclus 1x/week €270 per cyclus 2x/week Cor</p><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ ANSWER-FIRST</span><div class='dc-decision'>De intro voert direct de gekozen hoek uit — “Actiegericht: maak het makkelijk om contact op te nemen of te bestellen. SERP toont vooral service content.” — en beantwoordt de zoektaak vóór verdere uitleg.</div><div class='dc-effect'><b>Verwacht effect:</b> Een answer-first opening verhoogt de kans op een featured snippet en directe beantwoording.</div><details class='dc-evi'><summary>bewijs</summary><span>intent-hoek (SERP-gegrond)</span></details></aside></header><section data-sb="site" class="blk prose"><p>Groepstrainingen Groepstrainingen Build &amp; Sweat High intensity circuit training voor kracht &amp; conditie Woensdag 19u40 - 20u30 + vrijdag 12u10 - 13u00 6-10 personen per groep 8 weken cyclus €150 per cyclus 1x/week €270 per cyclus 2x/week Core Stability Ontwikkel controle, houding en vermijd blessures Maandag 19u40 - 20u30 6-10 personen per groep 8 weken cyclus €150 per cyclus 1x/week Kracht voor fietsers Verbeter kracht, stabiliteit &amp; pedaal efficiëntie maandag 18u30 - 19u30 + vrijdag 17u00 - 18u00 4-6 personen per groep 8 weken cyclus €199 per cyclus 1x/week €360 per cyclus 2x/week Kracht voor lopers Loop sterker, efficiënter en blessurevrij Woensdag 18u30 - 19u30 + vrijdag 17u00 - 18u00 4-6personen per groep 8 weken cyclus €199 per cyclus 1x/week €360 per cyclus 2x/week Start 2 Lift Leer alle fundamentele beweging in krachttraining Woensdag 18u30 - 19u30 + vrijdag 16u00 - 17u00 3-6personen per groep 4 weken cyclus €99 per cyclus 1x/week Schrijf je hier in</p></section><section data-sb="site" class="blk cta"><aside data-sb="strategy" class="decision"><span class='dc-role'>◈ CONVERSIE / DMMM</span><div class='dc-decision'>De CTA mapt op de koopintentie: de bezoeker wil nú kiezen/aanvragen. Voorgestelde actie: direct.</div><div class='dc-effect'><b>Verwacht effect:</b> Conversie — afspraak, offerte of contact — de call-to-action past bij waar de bezoeker in de reis staat.</div><details class='dc-evi'><summary>bewijs</summary><span>STDC-fase: DO</span></details></aside><a class="btn btn-primary btn-lg" href="tel:+32494236570">Bel +32 494 23 65 70</a></section></main>
 <footer data-sb="site" class="sitefoot"><div class='foot-brand'>Praktijk Stef Adams</div><div class='foot-links'><a href="/sportkinesitherapie/">Sportkinesitherapie</a><a href="/bikefit/">Bikefit</a><a href="/dry-needling/">Dry needling</a><a href="/blessure-preventie/">Blessure preventie</a><a href="/post-operatieve-revalidatie/">Post operatieve</a><a href="/screening/">Screening</a><a href="/coaching/">Coaching</a></div><div class='foot-contact'>+32 494 23 65 70 · <a href="mailto:info@praktijkstefadams.be">info@praktijkstefadams.be</a></div></footer>
 <script id="sherlock-toggle-js">
@@ -276,12 +288,141 @@ color:var(--mut);font-size:14px;border-top:2px solid var(--primary);border-botto
     document.body.classList.toggle('site-mode',mode==='site');
     document.body.classList.toggle('perf-mode',mode==='performance');
     var c=document.getElementById('sherlock-mode-toggle');
-    if(c){c.querySelectorAll('button').forEach(function(b){
+    if(c){c.querySelectorAll('button[data-mode]').forEach(function(b){
       b.classList.toggle('active',b.getAttribute('data-mode')===mode);});}
     try{sessionStorage.setItem('sherlockMode',mode);}catch(e){}
+    try{if(location.hash!=='#dossier')history.replaceState(null,'','#'+mode);}catch(e){}
   };
+  // Deep link (#strategy | #performance | #site) beats the remembered mode.
+  var h=(location.hash||'').slice(1);
   var s='strategy';try{s=sessionStorage.getItem('sherlockMode')||'strategy';}catch(e){}
-  window.sherlockSetMode(s);
+  window.sherlockSetMode(MODES[h]?h:s);
+  window.addEventListener('hashchange',function(){var m=(location.hash||'').slice(1);if(MODES[m])window.sherlockSetMode(m);});
+})();
+</script><aside data-sb="chrome" class="dossier" id="sherlock-overlay" hidden data-site="site_praktijkstefadams-be" data-slug="groepstrainingen" data-api="https://mcp-audit-platform-production.up.railway.app" aria-label="Dossier"></aside><script id="sherlock-overlay-js">/* Sherlock dossier overlay. The overlay PROJECTS the client door; it never computes:
+   every number/label is rendered as the server sent it. No framework, no innerHTML with data.
+   Mount: <aside id="sherlock-overlay" data-site data-slug data-api>. Token: pasted once by the client,
+   kept in memory + sessionStorage, sent ONLY as the X-Share-Token header (never in a URL).
+   Variant switch: ?v=hero:b,faq:a sets data-variant="b" on [data-sb-section="hero"] (mechanism only). */
+(function () {
+  var root = document.getElementById('sherlock-overlay');
+  if (!root) return;
+  var site = root.getAttribute('data-site'), slug = root.getAttribute('data-slug') || '';
+  var api = root.getAttribute('data-api') || '', KEY = 'sherlockDossierToken:' + site, token = '';
+  try { token = sessionStorage.getItem(KEY) || ''; } catch (e) {}
+
+  try {
+    (new URLSearchParams(location.search).get('v') || '').split(',').forEach(function (pair) {
+      var kv = pair.split(':'); if (kv.length !== 2 || !kv[0]) return;
+      document.querySelectorAll('[data-sb-section="' + kv[0].replace(/"/g, '') + '"]').forEach(function (el) {
+        el.setAttribute('data-variant', kv[1]);
+      });
+    });
+  } catch (e) {}
+
+  function el(tag, text, cls) { var n = document.createElement(tag); if (text != null) n.textContent = text; if (cls) n.className = cls; return n; }
+  function clear() { while (root.firstChild) root.removeChild(root.firstChild); }
+  function head(t) { return el('h3', t); }
+  function note(t) { return el('div', t, 'd-note'); }
+  function fail(why) { clear(); root.appendChild(head('Dossier')); root.appendChild(note('Dossier niet bereikbaar vanaf deze host: ' + why)); }
+  function req(path, opts) {
+    opts = opts || {}; opts.headers = Object.assign({ 'X-Share-Token': token }, opts.headers || {});
+    opts.credentials = 'omit'; opts.referrerPolicy = 'no-referrer'; opts.cache = 'no-store';
+    return fetch(api + path, opts);
+  }
+
+  function askToken(msg) {
+    clear(); root.appendChild(head('Dossier'));
+    root.appendChild(note(msg || 'Plak de dossiercode die u van ons kreeg.'));
+    var inp = el('input'); inp.type = 'password'; inp.autocomplete = 'off'; inp.setAttribute('aria-label', 'Dossiercode');
+    var go = el('button', 'Openen', 'd-go');
+    go.onclick = function () {
+      token = inp.value.trim(); if (!token) return;
+      try { sessionStorage.setItem(KEY, token); } catch (e) {}
+      load();
+    };
+    root.appendChild(inp); root.appendChild(go);
+  }
+
+  function section(title, items, empty) {
+    root.appendChild(head(title));
+    if (!items.length) { root.appendChild(note(empty)); return; }
+    items.forEach(function (n) { root.appendChild(n); });
+  }
+
+  function questions(list) {
+    return list.map(function (q) {
+      var box = el('div', null, 'd-item');
+      box.appendChild(el('b', q.question));
+      if (q.why_it_matters) box.appendChild(note(q.why_it_matters));
+      var ta = el('textarea'); ta.setAttribute('aria-label', 'Uw antwoord');
+      var go = el('button', 'Beantwoorden', 'd-go'), msg = note('');
+      go.onclick = function () {
+        if (!ta.value.trim()) return;
+        go.disabled = true;
+        req('/api/client-view-public/' + encodeURIComponent(site) + '/clarifications/' + q.id + '/answer', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answer: ta.value })
+        }).then(function (r) {
+          if (r.ok) { msg.textContent = 'Bedankt, uw antwoord is binnen.'; setTimeout(load, 800); return; }
+          return r.json().catch(function () { return {}; }).then(function (b) { go.disabled = false; msg.textContent = b.detail || ('Mislukt (' + r.status + ')'); });
+        }).catch(function (e) { go.disabled = false; msg.textContent = 'Niet verzonden: ' + e.message; });
+      };
+      box.appendChild(ta); box.appendChild(go); box.appendChild(msg);
+      return box;
+    });
+  }
+
+  function goals(sp) {
+    var res = sp.resultaat || {}, out = [];
+    if (res.goal) out.push(el('div', res.goal, 'd-item'));
+    (res.kpis || []).forEach(function (k) {
+      var b = el('div', null, 'd-item');
+      b.appendChild(el('b', k.name));
+      b.appendChild(el('div', k.measured ? String(k.value) + (k.target != null ? ' (doel ' + k.target + ')' : '') : (k.reason_if_not || 'nog niet gemeten')));
+      if (k.source) b.appendChild(note(k.source));
+      out.push(b);
+    });
+    return out;
+  }
+
+  function work(sp) {
+    var rows = [];
+    (sp.nu || []).forEach(function (x) { rows.push({ k: 'bezig', t: x.wat, d: x.status, p: x.page_slug }); });
+    if (sp.volgende && sp.volgende.wat) rows.push({ k: 'volgende', t: sp.volgende.wat, d: sp.volgende.wanneer, p: sp.volgende.page_slug });
+    (sp.gedaan || []).slice(0, 5).forEach(function (x) { rows.push({ k: 'gedaan', t: x.wat, d: x.datum, p: x.page_slug }); });
+    var here = rows.filter(function (r) { return r.p && r.p === slug; });
+    var bound = here.length > 0, shown = bound ? here : rows;
+    var out = shown.map(function (r) {
+      var b = el('div', null, 'd-item'); b.appendChild(el('b', r.t));
+      b.appendChild(note(r.k + (r.d ? ' · ' + r.d : ''))); return b;
+    });
+    if (!bound && rows.length) out.unshift(note('Nog niet aan deze pagina gekoppeld: dit is het hele project.'));
+    return out;
+  }
+
+  function load() {
+    if (!token) { askToken(); return; }
+    clear(); root.appendChild(note('Laden...'));
+    req('/api/client-view-public/' + encodeURIComponent(site)).then(function (r) {
+      if (r.status === 401) { token = ''; try { sessionStorage.removeItem(KEY); } catch (e) {} askToken('Deze dossiercode is niet (meer) geldig.'); return; }
+      if (!r.ok) { fail('server antwoordde ' + r.status); return; }
+      return r.json().then(function (d) {
+        var sp = d.status_projection || {};
+        clear(); root.appendChild(head('Dossier'));
+        section('Wacht op u', questions(d.clarifications || []), 'Geen open vragen.');
+        section('Doelen en meting', goals(sp), 'Nog geen doelen vastgelegd.');
+        section('Wie werkt hieraan', work(sp), 'Nog niets gepland.');
+      });
+    }).catch(function (e) { fail((e && e.message) || 'netwerk of CORS'); });
+  }
+
+  window.sherlockToggleDossier = function (force) {
+    var open = typeof force === 'boolean' ? force : root.hasAttribute('hidden');
+    if (open) { root.removeAttribute('hidden'); try { history.replaceState(null, '', '#dossier'); } catch (e) {} load(); }
+    else { root.setAttribute('hidden', ''); try { history.replaceState(null, '', '#' + (sessionStorage.getItem('sherlockMode') || 'strategy')); } catch (e) {} }
+  };
+  if (location.hash === '#dossier') window.sherlockToggleDossier(true);
+  window.addEventListener('hashchange', function () { if (location.hash === '#dossier') window.sherlockToggleDossier(true); });
 })();
 </script>
 </body>
