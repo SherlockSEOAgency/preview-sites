@@ -144,6 +144,7 @@ function k(n){return n>=1e6?('€ '+(n/1e6).toFixed(2).replace('.',',')+' mln'):
 function $(id){return document.getElementById(id)}
 var C,S={waarde:300000,staat:'verwaarloosd',werken:{},pakket:null,lasten:{lening:true,energie:true,verzekering:true}};
 
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function num(v){return typeof v==='number'&&isFinite(v)&&v>=0?v:null}
 function applyOverrides(cfg,o){
  // Uit een #cfg-link komen alleen getallen; labels, foto's en structuur blijven uit config.json.
@@ -165,7 +166,7 @@ function build(){
  var st=$('states');st.innerHTML='';
  Object.keys(C.staten).forEach(function(key){var s=C.staten[key];
   var b=document.createElement('button');b.type='button';b.className='state';b.dataset.k=key;
-  b.innerHTML='<img src="'+s.foto+'" alt="" width="400" height="266" loading="lazy">'+(s.illustratie?'<small>illustratie</small>':'')+'<span>'+s.label+'</span>';
+  b.innerHTML='<img src="'+esc(s.foto)+'" alt="" width="400" height="266" loading="lazy">'+(s.illustratie?'<small>illustratie</small>':'')+'<span>'+esc(s.label)+'</span>';
   b.onclick=function(){setState(key)};st.appendChild(b)});
  var cs=$('costs');cs.innerHTML='';
  Object.keys(C.maandlasten).forEach(function(key){var m=C.maandlasten[key];
@@ -190,7 +191,7 @@ function tiles(){
  sel.onchange=function(){S.pakket=sel.value;render()};d.appendChild(sel);t.appendChild(d);
  Object.keys(C.werken).forEach(function(key){var w=C.werken[key];
   var b=document.createElement('button');b.type='button';b.className='tile';b.setAttribute('aria-pressed',!!S.werken[key]);
-  b.innerHTML='<svg viewBox="0 0 24 24">'+ICON[key]+'</svg><b>'+w.label+'</b><em>± '+k(werkKost(key))+'</em>';
+  b.innerHTML='<svg viewBox="0 0 24 24">'+ICON[key]+'</svg><b>'+esc(w.label)+'</b><em>± '+k(werkKost(key))+'</em>';
   b.onclick=function(){S.werken[key]=!S.werken[key];render()};t.appendChild(b)});
 }
 function render(){
@@ -199,7 +200,7 @@ function render(){
  tiles();
  $('s-maand').hidden=!s.pakket;
  document.querySelectorAll('.chipc').forEach(function(b){var key=b.dataset.k;b.setAttribute('aria-pressed',!!S.lasten[key]);
-  b.innerHTML=C.maandlasten[key].label+'<i>± '+eur.format(Math.round(maandKost(key)/10)*10)+'/mnd</i>'});
+  b.innerHTML=esc(C.maandlasten[key].label)+'<i>± '+eur.format(Math.round(maandKost(key)/10)*10)+'/mnd</i>'});
  var mid=(s.meerwaarde_min+s.meerwaarde_max)/2;
  var inv=0,mnd=0;
  if(s.pakket){var pk=S.pakket||autoPakket();inv=C.pakketten[pk].prijs_excl*(1+C.btw);
