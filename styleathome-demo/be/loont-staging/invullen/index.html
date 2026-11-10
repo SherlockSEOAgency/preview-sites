@@ -36,7 +36,7 @@
  <fieldset><legend>1. Hoeveel meer brengt een ingerichte woning op?</legend>
   <p class="hint">Per type woning: hoeveel procent hoger is de verkoopprijs na jullie styling, voorzichtig en gunstig? Vul in wat je uit je dossiers ziet.</p>
   <div class="scroll"><table id="t-staten"><thead><tr><th>Type woning</th><th>Voorzichtig %</th><th>Gunstig %</th></tr></thead><tbody></tbody></table></div>
-  <p class="hint" style="margin-top:12px">Hoeveel maanden sneller verkoopt een ingerichte woning gemiddeld? <input type="number" step="0.5" min="0" id="i-mnd" style="display:inline-block;width:90px"></p>
+  <p class="hint" style="margin-top:12px">Hoeveel maanden sneller verkoopt een ingerichte woning gemiddeld? <input type="number" step="0.5" min="0" id="i-mnd" aria-label="Maanden sneller verkocht" style="display:inline-block;width:90px"></p>
  </fieldset>
 
  <fieldset><legend>2. Wat kosten de werken gemiddeld?</legend>
@@ -60,7 +60,7 @@
  </fieldset>
 
  <fieldset><legend>6. Wat ging niet door, en waarom?</legend>
-  <textarea id="i-niet" placeholder="Bv. makelaar vond het niet nodig, eigenaar woonde er nog, te duur voor de prijsklasse..."></textarea>
+  <textarea id="i-niet" aria-label="Wat ging niet door, en waarom" placeholder="Bv. makelaar vond het niet nodig, eigenaar woonde er nog, te duur voor de prijsklasse..."></textarea>
  </fieldset>
 
  <fieldset><legend>7. Foto's van voor jullie styling</legend>
@@ -78,40 +78,43 @@
 </main>
 <script>
 (function(){
-var KEY='sah-calc-invul-v1',C,D;
+var KEY='sah-calc-invul-v2',C,D,O;
 function $(i){return document.getElementById(i)}
 function inp(type,val,on,attrs){var e=document.createElement(type==='textarea'?'textarea':'input');if(type!=='textarea')e.type=type;e.value=val==null?'':val;e.addEventListener('input',function(){on(e.value);save()});if(attrs)for(var a in attrs)e.setAttribute(a,attrs[a]);return e}
 function row(tb,cells){var tr=document.createElement('tr');cells.forEach(function(c){var td=document.createElement('td');if(typeof c==='string')td.textContent=c;else td.appendChild(c);tr.appendChild(td)});tb.appendChild(tr);return tr}
 function n(v){var x=parseFloat(String(v).replace(',','.'));return isFinite(x)?x:0}
 function load(){var s=null;try{s=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
- fetch('../config.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(cfg){
-  C=(s&&s.config)||cfg;D=(s&&s.dossier)||{kost:{},dossiers:[],niet:''};build()})}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({config:C,dossier:D}));$('saved').textContent='Bewaard in je browser'}catch(e){$('saved').textContent=''}link()}
+ O=(s&&s.o)||{staten:{},werken:{},lasten:{}};D=(s&&s.dossier)||{kost:{},dossiers:[],niet:''};
+ fetch('../config.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(cfg){C=cfg;build()})
+ .catch(function(){$('f').insertAdjacentHTML('beforebegin','<p class="lead"><b>De gegevens konden niet laden. Probeer de pagina opnieuw.</b></p>')})}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({o:O,dossier:D}));$('saved').textContent='Bewaard in je browser'}catch(e){$('saved').textContent=''}link()}
 function b64(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
-function link(){$('b-view').href='../#cfg='+b64(C)}
+function link(){$('b-view').href='../#cfg='+b64(O)}
+function pick(v,d){return v===undefined||v===null?d:v}
 function build(){
  var tb=document.querySelector('#t-staten tbody');tb.innerHTML='';
- Object.keys(C.staten).forEach(function(k){var s=C.staten[k];
-  row(tb,[s.label,inp('number',Math.round(s.meerwaarde_min*1000)/10,function(v){s.meerwaarde_min=n(v)/100},{step:'0.5',min:'0'}),inp('number',Math.round(s.meerwaarde_max*1000)/10,function(v){s.meerwaarde_max=n(v)/100},{step:'0.5',min:'0'})])});
- $('i-mnd').value=C.maanden_sneller;$('i-mnd').oninput=function(){C.maanden_sneller=n(this.value);save()};
+ Object.keys(C.staten).forEach(function(k){var s=C.staten[k],o=O.staten[k]=O.staten[k]||{};
+  row(tb,[s.label,inp('number',Math.round(pick(o.min,s.meerwaarde_min)*1000)/10,function(v){o.min=n(v)/100},{step:'0.5',min:'0','aria-label':s.label+': voorzichtig %'}),
+   inp('number',Math.round(pick(o.max,s.meerwaarde_max)*1000)/10,function(v){o.max=n(v)/100},{step:'0.5',min:'0','aria-label':s.label+': gunstig %'})])});
+ $('i-mnd').value=pick(O.mnd,C.maanden_sneller);$('i-mnd').oninput=function(){O.mnd=n(this.value);save()};
  tb=document.querySelector('#t-werken tbody');tb.innerHTML='';
- Object.keys(C.werken).forEach(function(k){var w=C.werken[k];row(tb,[w.label,inp('number',w.kost,function(v){w.kost=n(v)},{step:'50',min:'0'})])});
+ Object.keys(C.werken).forEach(function(k){var w=C.werken[k];row(tb,[w.label,inp('number',pick(O.werken[k],w.kost),function(v){O.werken[k]=n(v)},{step:'50',min:'0','aria-label':w.label+': gemiddelde kost in euro'})])});
  tb=document.querySelector('#t-lasten tbody');tb.innerHTML='';
  Object.keys(C.maandlasten).forEach(function(k){var m=C.maandlasten[k];
-  if(m.type==='rente')row(tb,[m.label+' (rente % per jaar op '+Math.round(m.aandeel_van_waarde*100)+'% van de waarde)',inp('number',Math.round(m.rente_per_jaar*1000)/10,function(v){m.rente_per_jaar=n(v)/100},{step:'0.1',min:'0'})]);
-  else row(tb,[m.label,inp('number',m.per_maand,function(v){m.per_maand=n(v)},{step:'10',min:'0'})])});
+  if(m.type==='rente')row(tb,[m.label+' (rente % per jaar op '+Math.round(m.aandeel_van_waarde*100)+'% van de waarde)',inp('number',Math.round(pick(O.lasten[k],m.rente_per_jaar)*1000)/10,function(v){O.lasten[k]=n(v)/100},{step:'0.1',min:'0','aria-label':m.label+': rente % per jaar'})]);
+  else row(tb,[m.label,inp('number',pick(O.lasten[k],m.per_maand),function(v){O.lasten[k]=n(v)},{step:'10',min:'0','aria-label':m.label+': euro per maand'})])});
  tb=document.querySelector('#t-kost tbody');tb.innerHTML='';
- Object.keys(C.pakketten).forEach(function(k){D.kost[k]=D.kost[k]||{};var o=D.kost[k];
-  row(tb,[C.pakketten[k].naam+' (verkoop € '+C.pakketten[k].prijs_excl+' excl. btw)',inp('number',o.kost,function(v){o.kost=n(v)},{step:'10',min:'0'}),inp('number',o.uren,function(v){o.uren=n(v)},{step:'0.5',min:'0'})])});
+ Object.keys(C.pakketten).forEach(function(k){D.kost[k]=D.kost[k]||{};var o=D.kost[k],nm=C.pakketten[k].naam;
+  row(tb,[nm+' (verkoop € '+C.pakketten[k].prijs_excl+' excl. btw)',inp('number',o.kost,function(v){o.kost=n(v)},{step:'10',min:'0','aria-label':nm+': jouw kost in euro'}),inp('number',o.uren,function(v){o.uren=n(v)},{step:'0.5',min:'0','aria-label':nm+': uren voorbereiding'})])});
  dossiers();$('i-niet').value=D.niet||'';$('i-niet').oninput=function(){D.niet=this.value;save()};link();
 }
 var F=[['gemeente','text'],['type','select',['Leeg, gedateerd of vuil','Leeg en netjes','Gemeubeld, oud of vol','Nieuwbouw / modelwoning']],['prijs','number'],['pakket','select',['Combi','Comfort','Luxe','Ander']],['extras','text'],['klant','select',['Particulier','Makelaar','Ontwikkelaar']],['dagen','number'],['gezakt','select',['Nee','Ja']]];
 function dossiers(){var tb=document.querySelector('#t-dos tbody');tb.innerHTML='';
- D.dossiers.forEach(function(d,i){var cells=F.map(function(f){if(f[1]==='select'){var s=document.createElement('select');f[2].forEach(function(o){var op=document.createElement('option');op.textContent=o;if(d[f[0]]===o)op.selected=true;s.appendChild(op)});if(!d[f[0]])d[f[0]]=f[2][0];s.onchange=function(){d[f[0]]=s.value;save()};return s}
-  return inp(f[1],d[f[0]],function(v){d[f[0]]=f[1]==='number'?n(v):v})});
+ D.dossiers.forEach(function(d,i){var cells=F.map(function(f){if(f[1]==='select'){var s=document.createElement('select');s.setAttribute('aria-label','Dossier '+(i+1)+': '+f[0]);f[2].forEach(function(o){var op=document.createElement('option');op.textContent=o;if(d[f[0]]===o)op.selected=true;s.appendChild(op)});if(!d[f[0]])d[f[0]]=f[2][0];s.onchange=function(){d[f[0]]=s.value;save()};return s}
+  return inp(f[1],d[f[0]],function(v){d[f[0]]=f[1]==='number'?n(v):v},{'aria-label':'Dossier '+(i+1)+': '+f[0]})});
   var x=document.createElement('button');x.type='button';x.className='x';x.textContent='×';x.setAttribute('aria-label','Verwijder dossier');x.onclick=function(){D.dossiers.splice(i,1);dossiers();save()};cells.push(x);row(tb,cells)})}
 $('b-add').onclick=function(){D.dossiers.push({});dossiers();save()};
-function payload(){return JSON.stringify({bron:'styleathome-demo/be/loont-staging/invullen',datum:new Date().toISOString().slice(0,10),config:C,dossier:D},null,1)}
+function payload(){return JSON.stringify({bron:'styleathome-demo/be/loont-staging/invullen',datum:new Date().toISOString().slice(0,10),config_versie:C&&C.versie,cijfers:O,dossier:D},null,1)}
 $('b-dl').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([payload()],{type:'application/json'}));a.download='style-at-home-calculator-cijfers.json';a.click()};
 $('b-send').onclick=function(){var body='Dag Sherlock,%0D%0A%0D%0AHier zijn mijn cijfers voor de calculator.%0D%0A%0D%0A'+encodeURIComponent(payload());
  if(body.length>1800){$('b-dl').click();body='Dag Sherlock,%0D%0A%0D%0AMijn cijfers zitten in de bijlage (style-at-home-calculator-cijfers.json, net gedownload). Sleep het bestand in deze mail.'}

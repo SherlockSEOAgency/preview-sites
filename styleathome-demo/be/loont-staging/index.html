@@ -144,12 +144,22 @@ function k(n){return n>=1e6?('€ '+(n/1e6).toFixed(2).replace('.',',')+' mln'):
 function $(id){return document.getElementById(id)}
 var C,S={waarde:300000,staat:'verwaarloosd',werken:{},pakket:null,lasten:{lening:true,energie:true,verzekering:true}};
 
+function num(v){return typeof v==='number'&&isFinite(v)&&v>=0?v:null}
+function applyOverrides(cfg,o){
+ // Uit een #cfg-link komen alleen getallen; labels, foto's en structuur blijven uit config.json.
+ if(!o||typeof o!=='object')return false;
+ Object.keys(cfg.staten).forEach(function(k){var x=o.staten&&o.staten[k];if(!x)return;
+  if(num(x.min)!==null)cfg.staten[k].meerwaarde_min=x.min;if(num(x.max)!==null)cfg.staten[k].meerwaarde_max=x.max});
+ Object.keys(cfg.werken).forEach(function(k){var v=o.werken&&num(o.werken[k]);if(v!==null&&v!==undefined)cfg.werken[k].kost=v});
+ Object.keys(cfg.maandlasten).forEach(function(k){var v=o.lasten&&num(o.lasten[k]);if(v===null||v===undefined)return;
+  if(cfg.maandlasten[k].type==='rente')cfg.maandlasten[k].rente_per_jaar=v;else cfg.maandlasten[k].per_maand=v});
+ if(num(o.mnd)!==null)cfg.maanden_sneller=o.mnd;return true}
 function load(){
- fetch('config.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(cfg){
+ fetch('config.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(cfg){
   var h=location.hash.match(/cfg=([^&]+)/);
-  if(h){try{cfg=JSON.parse(decodeURIComponent(escape(atob(h[1].replace(/-/g,'+').replace(/_/g,'/')))));$('flag').textContent='Voorbeeld met jouw cijfers'}catch(e){}}
+  if(h){try{if(applyOverrides(cfg,JSON.parse(decodeURIComponent(escape(atob(h[1].replace(/-/g,'+').replace(/_/g,'/')))))))$('flag').textContent='Voorbeeld met jouw cijfers'}catch(e){}}
   C=cfg;build();setState(S.staat);
- });
+ }).catch(function(){$('result').innerHTML='<p class="note">De calculator kon niet laden. Probeer de pagina opnieuw.</p>'});
 }
 function build(){
  var st=$('states');st.innerHTML='';
