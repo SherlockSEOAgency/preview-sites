@@ -1,0 +1,31 @@
+{
+  "versie": "2026-11-10",
+  "status": "voorlopig: cijfers te bevestigen door Style at Home",
+  "btw": 0.21,
+  "pakketten": {
+    "combi":   {"naam": "Combi",   "prijs_excl": 1795, "tot_waarde": 350000, "uitleg": "Kartonnen meubelen, decoratie en een echte eettafel"},
+    "comfort": {"naam": "Comfort", "prijs_excl": 3495, "tot_waarde": 700000, "uitleg": "Echte meubelen voor woon-, eet- en slaapkamer"},
+    "luxe":    {"naam": "Luxe",    "prijs_excl": 4995, "tot_waarde": null,   "uitleg": "Luxe meubelen en design voor een grote woning"}
+  },
+  "staten": {
+    "verwaarloosd": {"label": "Leeg, maar gedateerd of vuil", "foto": "/img/staat-verwaarloosd.758fc842.webp", "illustratie": true, "meerwaarde_min": 0.06, "meerwaarde_max": 0.12, "werken": ["poets", "schilder"], "pakket": true},
+    "leeg":         {"label": "Leeg en netjes",               "foto": "/img/staat-leeg.ee0034c4.webp",         "illustratie": true, "meerwaarde_min": 0.04, "meerwaarde_max": 0.08, "werken": [], "pakket": true},
+    "vol":          {"label": "Gemeubeld, maar oud of te vol", "foto": "/img/staat-vol.cadeda6b.webp",         "illustratie": true, "meerwaarde_min": 0.05, "meerwaarde_max": 0.10, "werken": ["weghalen", "poets"], "pakket": true},
+    "mooi":         {"label": "Gemeubeld en mooi ingericht",  "foto": "/img/real-comfort.1b7db898.webp",       "illustratie": false, "meerwaarde_min": 0, "meerwaarde_max": 0, "werken": [], "pakket": false}
+  },
+  "werken": {
+    "weghalen":   {"label": "Meubelen weghalen", "kost": 900,  "schaalt": true},
+    "poets":      {"label": "Poetsploeg en ramen", "kost": 450, "schaalt": true},
+    "schilder":   {"label": "Schilder: muren fris", "kost": 2500, "schaalt": true},
+    "elektricien":{"label": "Lampen en kleine herstellingen", "kost": 600, "schaalt": false},
+    "tuin":       {"label": "Tuin en oprit opkuisen", "kost": 400, "schaalt": false}
+  },
+  "schaal_referentie_waarde": 300000,
+  "maandlasten": {
+    "lening":     {"label": "Lening of overbruggingskrediet", "type": "rente", "aandeel_van_waarde": 0.8, "rente_per_jaar": 0.04},
+    "energie":    {"label": "Energie en water", "type": "vast", "per_maand": 150},
+    "verzekering":{"label": "Verzekering", "type": "vast", "per_maand": 40},
+    "onderhoud":  {"label": "Onderhoud, tuin, poetsen", "type": "vast", "per_maand": 60}
+  },
+  "maanden_sneller": 2
+}
