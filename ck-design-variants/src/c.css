@@ -1,0 +1,56 @@
+
+/* C · Warm: round shapes, airy rhythm, light serif headings, peach highlights, pull quotes, soft colour */
+.v-c{--shadow:0 18px 48px rgba(90,60,40,.14)}
+.v-c h1,.v-c h2,.v-c h3{font-weight:400;letter-spacing:-.01em}
+.v-c h1 .h1pre{font-family:var(--f-body);font-weight:600;color:var(--c-accent)}
+.v-c .site-head{position:sticky;top:10px;margin:10px 12px 0;border:0;border-radius:999px;background:#fff;box-shadow:0 8px 28px rgba(90,60,40,.14)}
+.v-c .head__in{padding-inline:8px}
+.v-c .brand{padding-left:12px}
+.v-c .head__call{border-radius:999px}
+.v-c .menu__panel{border-radius:24px}
+.v-c .btn{padding-inline:28px}
+.v-c .hero{background:var(--c-base)}
+.v-c .hero--overlap .hero__grid{position:relative}
+.v-c .hero--overlap .hero__fig{order:1}
+.v-c .hero--overlap .hero__fig img{aspect-ratio:1/1;border-radius:inherit}
+.v-c .hero--overlap .hero__fig{border-radius:var(--watson-shape-r);box-shadow:var(--shadow)}
+.v-c .hero--overlap .hero__text{order:2;background:#fff;border-radius:var(--watson-shape-r);box-shadow:var(--shadow);padding:clamp(24px,4vw,52px);position:relative;z-index:2;margin-top:-56px}
+@media (min-width:900px){
+ .v-c .hero--overlap .hero__grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+ .v-c .hero--overlap .hero__text{order:1;margin-top:0;margin-right:-96px}
+ .v-c .hero--overlap .hero__fig{order:2;margin-left:96px}
+}
+.v-c .watson-eyebrow{letter-spacing:.1em;color:var(--c-accent)}
+.v-c .watson-lockup-rule{width:44px;height:6px;border-radius:6px;background:var(--c-accent)}
+.v-c .stats-band{background:var(--bouw-dir-surface-alt)}
+.v-c .stats li{background:#fff;border-radius:28px;padding:20px 22px;box-shadow:0 8px 24px rgba(90,60,40,.08)}
+.v-c .stats strong{font-weight:500;color:var(--c-primary)}
+.v-c .fig{border-radius:28px;box-shadow:0 10px 30px rgba(90,60,40,.12)}
+.v-c .watson-section .project__pair .fig{border-radius:22px;box-shadow:none}
+.v-c .watson-section .project__pair .fig img{border-radius:22px}
+.v-c .project,.v-c .card,.v-c .review,.v-c .compare{text-align:left}
+.v-c .project{background:#fff;padding:12px 12px 22px;border-radius:36px;box-shadow:0 10px 30px rgba(90,60,40,.1)}
+.v-c .project h3,.v-c .project p{padding-inline:10px}
+.v-c .card{background:#fff;border-radius:36px;padding:0 0 22px;box-shadow:0 10px 30px rgba(90,60,40,.1);overflow:hidden}
+.v-c .card .fig{border-radius:0;box-shadow:none}
+.v-c .watson-section .card .fig,.v-c .watson-section .card img{border-radius:0}
+.v-c .card h3,.v-c .card p,.v-c .card .card__go{padding-inline:22px}
+.v-c .grid.watson-gesture--broken-grid{padding-bottom:clamp(16px,3vw,48px)}
+.v-c .pull{font-family:var(--f-head);font-style:italic;font-weight:400;font-size:clamp(1.25rem,1.3vw + .95rem,1.75rem);line-height:1.25;color:var(--c-primary);position:relative;padding-top:.9em}
+.v-c .pull::before{content:"“";position:absolute;top:-.12em;left:-.02em;font-size:3.4em;line-height:1;color:var(--c-accent);opacity:.55}
+.v-c .watson-gesture--overlap>.watson-section__inner{background:#fff;box-shadow:var(--shadow);border-radius:var(--watson-shape-r)}
+.v-c .price__amt{font-weight:500}
+.v-c .prices li{background:#fff;border-radius:32px;padding:24px;box-shadow:0 10px 30px rgba(90,60,40,.08)}
+.v-c .pricing-sec{background:var(--c-base)}
+.v-c .steps li{background:#fff;border-radius:28px;padding:20px;box-shadow:0 8px 24px rgba(90,60,40,.08)}
+.v-c .review{background:#fff;border-radius:32px;box-shadow:0 8px 24px rgba(90,60,40,.08)}
+.v-c .compare{background:#fff;border-radius:32px;padding:14px 22px 10px;box-shadow:0 8px 24px rgba(90,60,40,.08)}
+.v-c .compare .fig{margin:-14px -22px 0;border-radius:32px 32px 0 0;box-shadow:none}
+.v-c .form{border:0;border-radius:32px;box-shadow:var(--shadow)}
+.v-c .form input,.v-c .form select{border-radius:16px}
+.v-c .faq details{border:0;background:#fff;border-radius:24px;padding:18px 22px;margin-bottom:10px;box-shadow:0 6px 18px rgba(90,60,40,.07)}
+.v-c .faq details:last-child{border:0}
+.v-c .hl,.v-c mark.hl{background:linear-gradient(transparent 55%,var(--c-hl) 55%)}
+.v-c .points li::before{border-radius:50%}
+.v-c .watson-eyebrow{font-weight:700}
+.v-c .stats strong{font-size:clamp(1.3rem,2.2vw + .6rem,2.4rem);overflow-wrap:normal}

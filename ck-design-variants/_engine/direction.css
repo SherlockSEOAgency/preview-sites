@@ -1,0 +1,181 @@
+/**
+ * Design-direction layer — gestures, section rhythm, shape, emphasis.
+ *
+ * Sherlock OS emits page markup with these classes (watson-section,
+ * watson-shape-*, watson-surface--alt, watson-gesture--*, watson-eyebrow, …)
+ * and pushes direction tokens that the config pipeline emits as
+ * --bouw-dir-<key> (config/default-config.php bouw_direction_css_vars()).
+ *
+ * RULES (watson-design-tokens):
+ *  - Reads tokens, never defines them. Nothing is set on :root here.
+ *  - Every --bouw-dir-* read carries a fallback, so a site that was pushed no
+ *    direction renders sensibly and unchanged elsewhere.
+ *  - Never touches --color-primary / --color-accent; it only READS them.
+ *  - Additive: every selector is keyed on a watson-* class that no existing
+ *    template emits, so non-Sherlock content is unaffected.
+ *  - Mobile first: overlap / broken-grid are neutralised below 782px and
+ *    nothing may cause horizontal scroll at 375px.
+ */
+
+/* ── Section rhythm ─────────────────────────────────── */
+.watson-section {
+  padding-block: var(--bouw-dir-section-breathe, clamp(64px, 8vw, 112px));
+  position: relative;
+}
+.watson-section--hero {
+  padding-block: calc(var(--bouw-dir-section-breathe, clamp(64px, 8vw, 112px)) * 1.15);
+}
+.watson-surface--alt {
+  background-color: var(--bouw-dir-surface-alt, var(--surface-section-alt, transparent));
+}
+
+/* ── Shape (corner language) ────────────────────────── */
+.watson-shape-sharp { --watson-shape-r: 0; }
+.watson-shape-soft  { --watson-shape-r: var(--bouw-dir-radius, 8px); }
+.watson-shape-round { --watson-shape-r: calc(var(--bouw-dir-radius, 8px) * 3); }
+:is(.watson-shape-sharp, .watson-shape-soft, .watson-shape-round) :is(img, figure, .wp-block-image, .wp-block-group.has-background, .wp-block-button__link, .wp-block-cover) {
+  border-radius: var(--watson-shape-r);
+}
+
+/* ── Typographic direction ──────────────────────────── */
+.watson-section :is(h1, h2, h3) {
+  font-weight: var(--bouw-dir-heading-weight, inherit);
+  text-transform: var(--bouw-dir-heading-transform, inherit);
+}
+
+.watson-eyebrow {
+  display: block;
+  margin-block-end: 0.75em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary, var(--bouw-brand-unset));
+}
+
+/* ── Gestures ───────────────────────────────────────── */
+.watson-gesture--bleed {
+  /* Full-bleed past the content column. overflow-x:clip on the guard below
+     stops the 100vw scrollbar-width overshoot becoming horizontal scroll. */
+  margin-inline: calc(50% - 50vw);
+  max-width: 100vw;
+  width: 100vw;
+}
+:is(.wp-site-blocks, body):has(.watson-gesture--bleed) {
+  overflow-x: clip;
+}
+
+.watson-gesture--overlap {
+  position: relative;
+  z-index: 1;
+  margin-block-start: calc(var(--bouw-dir-section-breathe, 80px) * -0.6);
+}
+.watson-gesture--overlap > :is(.wp-block-group, .wp-block-column, figure, div):first-child {
+  background: var(--surface-card, var(--surface-body, transparent));
+  box-shadow: 0 12px 40px color-mix(in srgb, currentColor 14%, transparent);
+  border-radius: var(--watson-shape-r, var(--bouw-dir-radius, 0));
+}
+
+.watson-gesture--implicit-frame {
+  position: relative;
+  isolation: isolate;
+}
+.watson-gesture--implicit-frame::before,
+.watson-gesture--implicit-frame::after {
+  content: "";
+  position: absolute;
+  width: clamp(28px, 6vw, 56px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  z-index: -1;
+  border: 2px solid color-mix(in srgb, var(--color-primary, var(--bouw-brand-unset)) 50%, transparent);
+}
+.watson-gesture--implicit-frame::before {
+  inset-block-start: calc(-1 * clamp(8px, 2vw, 20px));
+  inset-inline-start: calc(-1 * clamp(8px, 2vw, 20px));
+  border-inline-end: 0;
+  border-block-end: 0;
+}
+.watson-gesture--implicit-frame::after {
+  inset-block-end: calc(-1 * clamp(8px, 2vw, 20px));
+  inset-inline-end: calc(-1 * clamp(8px, 2vw, 20px));
+  border-inline-start: 0;
+  border-block-start: 0;
+}
+
+.watson-gesture--line,
+.watson-spine {
+  position: relative;
+  padding-inline-start: clamp(16px, 3vw, 32px);
+  border-inline-start: 2px solid color-mix(in srgb, var(--color-primary, var(--bouw-brand-unset)) 60%, transparent);
+}
+
+.watson-gesture--broken-grid > * {
+  min-width: 0;
+}
+.watson-gesture--lockup > :is(h1, h2, h3, .watson-eyebrow) {
+  margin-block-end: 0.35em;
+}
+.watson-lockup-rule {
+  display: block;
+  width: clamp(40px, 8vw, 72px);
+  height: 3px;
+  margin-block: 0.75em 1em;
+  border: 0;
+  background: var(--color-primary, var(--bouw-brand-unset));
+}
+
+/* ── Emphasis: oversized numerals ───────────────────── */
+.watson-emphasis--oversized-numeral {
+  counter-reset: watson-numeral;
+}
+.watson-emphasis--oversized-numeral > * {
+  counter-increment: watson-numeral;
+  position: relative;
+}
+.watson-emphasis--oversized-numeral > *::before {
+  content: counter(watson-numeral, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: var(--bouw-dir-heading-weight, 700);
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-primary, var(--bouw-brand-unset)) 35%, transparent);
+  margin-block-end: 0.15em;
+}
+
+/* ── Desktop-only compositions ──────────────────────── */
+@media (min-width: 782px) {
+  .watson-gesture--broken-grid > :nth-child(even) {
+    transform: translateY(clamp(16px, 3vw, 48px));
+  }
+  .watson-gesture--broken-grid > :nth-child(odd):not(:first-child) {
+    margin-inline-start: clamp(0px, 2vw, 32px);
+  }
+}
+
+/* ── Mobile: neutralise anything that can break layout ─ */
+@media (max-width: 781px) {
+  .watson-gesture--overlap {
+    margin-block-start: 0;
+  }
+  .watson-gesture--overlap > :is(.wp-block-group, .wp-block-column, figure, div):first-child {
+    box-shadow: none;
+  }
+  .watson-gesture--broken-grid > * {
+    transform: none;
+    margin-inline-start: 0;
+  }
+  .watson-gesture--implicit-frame::before,
+  .watson-gesture--implicit-frame::after {
+    /* keep brackets inside the 16px gutter at 375px */
+    inset-inline-start: auto;
+    inset-inline-end: auto;
+  }
+  .watson-gesture--implicit-frame::before { inset-inline-start: 0; inset-block-start: -8px; }
+  .watson-gesture--implicit-frame::after  { inset-inline-end: 0;  inset-block-end: -8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watson-gesture--broken-grid > * { transform: none; }
+}

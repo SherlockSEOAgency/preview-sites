@@ -1,0 +1,294 @@
+/**
+ * DESIGN TOKENS — Universal Constants & Fallbacks
+ * ================================================
+ * This file provides:
+ *   1. FALLBACK values for tokens that PHP generates (--font-heading, --color-primary, etc.)
+ *      PHP inline <style id="bouw-design-tokens"> outputs the REAL values at priority 1.
+ *      These fallbacks only kick in if PHP output is missing.
+ *   2. UNIVERSAL CONSTANTS that don't change per mood (warm shadows, motion, glass, spacing scale).
+ *   3. DERIVED COMPONENT TOKENS that combine primitives.
+ *
+ * Architecture:
+ *   <style id="bouw-design-tokens">  → PHP-generated :root vars (--bouw-* + --font-* + --color-*)
+ *   css/design-tokens.css            → THIS FILE: universal constants + fallbacks
+ *   css/mood-vakman.css              → Editorial context class (.bouw-editorial) only
+ *   css/critical.css                 → Base HTML elements, consumes tokens
+ *   css/wp-blocks.css                → WordPress FSE overrides
+ *   css/blocks/bouw-blocks.css       → Block components
+ *
+ * RULES FOR AGENTS:
+ * - NEVER hardcode colors, shadows, radii, transitions in component CSS
+ * - ALWAYS use var(--token-name)
+ * - Mood-specific values (fonts, colors, backgrounds, radius) come from PHP pipeline
+ * - If you need a new token → add it HERE or in bouw_generate_css_variables()
+ * - Check config/moods/*.php and config/clients/*.php for mood/client values
+ *
+ * @package BouwDesignSystem
+ * @version 4.0.0 — Aligned with PHP mood pipeline
+ */
+
+:root {
+
+  /* ============================================
+     PHP-GENERATED TOKENS — NOT set here.
+     These are output by bouw_generate_css_variables() in
+     <style id="bouw-design-tokens"> (inline, priority 1):
+       --font-heading, --font-body, --weight-heading, --weight-body
+       --color-primary, --color-primary-light, --color-primary-dark
+       --color-accent, --color-accent-hover
+       --ink-primary, --ink-secondary, --ink-inverse, --ink-link, --ink-link-hover
+       --surface-body, --surface-card, --surface-section-alt
+       --radius-xs, --radius-sm, --radius-md, --radius-lg
+       --card-radius, --btn-radius
+       --shadow-sm, --shadow-md, --shadow-lg, --shadow-xl (mood-dependent)
+       --motion-duration, --hover-lift
+       --section-breathe, --card-padding
+
+     If PHP emits nothing for a BRAND token (colour or typeface), that means
+     the client declared none. Consume it as
+       font-family: var(--font-heading, var(--bouw-brand-unset-font));
+       background:  var(--cta-primary,  var(--bouw-brand-unset));
+     so the absence is visible. NEVER give a brand token a literal fallback and
+     NEVER declare one at :root in a stylesheet — this file loads after the
+     inline block, so a ':root' default overwrites the client's value instead of
+     backing it up. tests/brand-tokens-test.php enforces both.
+     ============================================ */
+
+  /* Only non-PHP tokens that need CSS-level defaults */
+  --font-editorial:   "DM Serif Display", Georgia, serif;
+  --font-mono:        "JetBrains Mono", "Fira Code", monospace;
+
+  /* ============================================
+     DISPLAY-HEADING AXES (B2B archetype)
+     PHP bouw_generate_css_variables() emits the real values (from the client
+     config's typography.display) at :root in <style id="bouw-design-tokens">.
+     They are NOT given a :root default HERE: this file loads AFTER that inline
+     block, so an equal-specificity default would CLOBBER the PHP value. The
+     fallback lives at the consumption site instead —
+     e.g. critical.css: `font-weight: var(--font-heading-weight, 700)`.
+     ============================================ */
+
+  /* ============================================
+     MODE-AWARE SURFACE / INK FALLBACKS
+     theme-modes.css flips these per mode at higher specificity
+     (:root[data-theme]); these :root defaults only apply if the mode
+     layer is absent, so a token-driven block never renders unresolved.
+     ============================================ */
+  --surface-body:         #ffffff;
+  --surface-card:         #ffffff;
+  --surface-section-alt:  #f5f4f7;
+  --ink-primary:          #1b1a1f;
+  --ink-muted:            #55535e;
+  --wm-hairline:          rgba(20, 18, 28, 0.12);
+  --wm-paper:             #f5f4f7;
+  --wm-paper-ink:         #16151a;
+  --weight-heading-light: 500;
+  --weight-body-medium: 500;
+  --weight-body-bold: 600;
+  --color-success:    #2e7d32;
+  --color-warning:    #ed6c02;
+  --color-error:      #c62828;
+  --ink-tertiary:     #8a9bb0;
+  --surface-elevated: #ffffff;
+  --surface-section-warm: #f9f6f2;
+  --surface-overlay:  rgba(255, 255, 255, 0.85);
+  /* --surface-header / --surface-header-dark once held hard-coded blue literals:
+     one client's brand colours sitting in the platform's token file as
+     everybody's default. (They had zero consumers, so the only thing they could
+     ever do was become somebody else's header.) A header surface follows the
+     brand, so it derives from it. */
+  --surface-header:      var(--color-primary, var(--bouw-brand-unset));
+  --surface-header-dark: color-mix(in srgb, var(--color-primary, var(--bouw-brand-unset)) 80%, black);
+  --radius-full:      9999px;
+
+  /* ============================================
+     UNIVERSAL: WARM SHADOWS (never rgba(0,0,0))
+     Always brown-tinted for premium warmth.
+     These are NOT in the PHP pipeline — CSS-only.
+     ============================================ */
+  --shadow-xs:   0 1px 2px rgba(60, 42, 20, 0.06);
+  --shadow-sm:   0 1px 3px rgba(60, 42, 20, 0.08),
+                 0 4px 8px rgba(60, 42, 20, 0.04);
+  --shadow-md:   0 2px 4px rgba(60, 42, 20, 0.08),
+                 0 8px 20px rgba(60, 42, 20, 0.06);
+  --shadow-lg:   0 4px 6px rgba(60, 42, 20, 0.06),
+                 0 16px 40px rgba(60, 42, 20, 0.10);
+  --shadow-xl:   0 8px 12px rgba(60, 42, 20, 0.06),
+                 0 24px 56px rgba(60, 42, 20, 0.14);
+  --shadow-hover:0 4px 8px rgba(60, 42, 20, 0.08),
+                 0 12px 28px rgba(60, 42, 20, 0.12);
+  --shadow-inset-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  /* ============================================
+     UNIVERSAL: GLASS MORPHISM TOOLKIT
+     ============================================ */
+  --glass-bg:         rgba(255, 255, 255, 0.75);
+  --glass-bg-heavy:   rgba(255, 255, 255, 0.90);
+  --glass-blur:       12px;
+  --glass-blur-heavy: 20px;
+  --glass-border:     1px solid rgba(255, 255, 255, 0.3);
+
+  /* ============================================
+     UNIVERSAL: TYPOGRAPHY SCALE (fluid)
+     ============================================ */
+  --text-xs:      0.75rem;
+  --text-sm:      0.875rem;
+  --text-base:    1rem;
+  --text-md:      1.125rem;
+  --text-lg:      1.5rem;
+  --text-xl:      clamp(1.75rem, 3vw, 2.25rem);
+  --text-2xl:     clamp(2rem, 4vw, 3rem);
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+
+  /* Line height */
+  --leading-tight:    1.15;
+  --leading-snug:     1.3;
+  --leading-normal:   1.6;
+  --leading-relaxed:  1.75;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-caps:    0.12em;
+
+  /* ============================================
+     UNIVERSAL: MOTION (Material 3 inspired)
+     ============================================ */
+  --motion-duration:      300ms;
+  --motion-duration-fast: 150ms;
+  --motion-duration-slow: 500ms;
+  --ease-standard:    cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate:  cubic-bezier(0, 0, 0, 1);
+  --ease-accelerate:  cubic-bezier(0.3, 0, 1, 1);
+  --transition-base:  var(--motion-duration) var(--ease-standard);
+  --transition-fast:  var(--motion-duration-fast) var(--ease-standard);
+  --transition-slow:  var(--motion-duration-slow) var(--ease-decelerate);
+  --hover-lift:       translateY(-2px);
+  --hover-press:      scale(0.98);
+
+  /* ============================================
+     UNIVERSAL: LAYOUT
+     ============================================ */
+  --layout-content: 1200px;
+  --layout-narrow:  720px;
+  --layout-wide:    1400px;
+  --layout-gutter:  clamp(1rem, 4vw, 2.5rem);
+  --col-major:      62%;
+  --col-minor:      38%;
+
+  /* ============================================
+     UNIVERSAL: WHITESPACE SCALE
+     ============================================ */
+  --space-2xs:    0.25rem;
+  --space-xs:     0.5rem;
+  --space-sm:     0.75rem;
+  --space-md:     1rem;
+  --space-lg:     1.5rem;
+  --space-xl:     2.5rem;
+  --space-2xl:    4rem;
+  --space-3xl:    6rem;
+  --section-breathe:  clamp(4rem, 8vw, 7rem);
+  --section-normal:   clamp(3rem, 5vw, 4.5rem);
+  --section-compact:  clamp(1.5rem, 3vw, 2.5rem);
+  --heading-gap:      1.25rem;
+  --card-gap:         clamp(0.75rem, 2vw, 1.25rem);
+
+  /* ============================================
+     COMPONENT TOKENS (derived from primitives)
+     ============================================ */
+  --input-height:       44px;
+  --input-padding:      0.625rem 0.875rem;
+  --input-radius:       var(--radius-sm);
+  --input-border:       1px solid rgba(60, 42, 20, 0.15);
+  --input-border-focus: 2px solid var(--color-primary);
+  --input-bg:           var(--surface-card);
+
+  --btn-padding:        0.625rem 1.25rem;
+  --btn-padding-lg:     0.75rem 1.75rem;
+  --btn-font-weight:    var(--weight-body-bold);
+  --btn-transition:     background var(--transition-base),
+                        transform var(--transition-fast),
+                        box-shadow var(--transition-base);
+
+  --card-padding:       var(--space-lg);
+  --card-bg:            var(--surface-card);
+  --card-border:        1px solid rgba(60, 42, 20, 0.06);
+  --card-shadow:        var(--shadow-sm);
+  --card-shadow-hover:  var(--shadow-hover);
+
+  --tag-radius:     var(--radius-xs);
+  --tag-padding:    0.2rem 0.6rem;
+  --tag-font-size:  var(--text-xs);
+
+  --z-base:      1;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-toast:     500;
+
+  /* ============================================
+     SEMANTIC TOKENS — state + rating colours
+     (Fallbacks; real values come from PHP pipeline)
+     ============================================ */
+  --color-rating-star:  #f59e0b;
+
+  /* ============================================
+     INVERSE SURFACE TOKENS — content on dark/primary backgrounds
+     Consumed by components rendered on colored sections, hero
+     overlays, footer, and primary CTAs. Never hardcode rgba/hex
+     in components — use these tokens instead.
+     ============================================ */
+  --ink-inverse-muted:     rgba(255, 255, 255, 0.85); /* body text on dark bg */
+  --ink-inverse-subtle:    rgba(255, 255, 255, 0.6);  /* footnotes/captions on dark bg */
+  --border-inverse:        rgba(255, 255, 255, 0.1);  /* dividers/separators on dark bg */
+  --border-inverse-strong: rgba(255, 255, 255, 0.3);  /* visible borders/outlines on dark bg */
+  --divider-subtle:        rgba(60, 42, 20, 0.08);    /* light warm divider line between sections */
+
+  /* ============================================
+     UI SURFACE TOKENS — tints, disabled states, borders
+     Primary tints derived from --color-primary blue family.
+     Border grays are neutral (not warm-tinted) — used for
+     standard HTML inputs and checkboxes.
+     ============================================ */
+  --surface-primary-tint:       #e9f2ff; /* light primary tint — tab bg, card hover */
+  --surface-primary-tint-hover: #d4e5ff; /* darker primary tint — hover on tinted bg */
+  --surface-input-disabled:     #e5e7eb; /* disabled / readonly input background */
+  --bouw-border-light:          #d1d5db; /* default input/field border (neutral gray) */
+  --bouw-border-muted:          #9ca3af; /* muted border — checkboxes, sub-fields */
+
+  /* ============================================
+     LEGACY ALIASES (for blocks using old names)
+     ============================================ */
+  --bouw-color-primary:       var(--color-primary);
+  --bouw-color-accent:        var(--color-accent);
+  --bouw-color-base:          var(--surface-card);
+  --bouw-color-contrast:      var(--ink-primary);
+  --bouw-color-surface:       var(--surface-section-alt);
+  --bouw-color-surface-warm:  var(--surface-section-warm);
+  --bouw-color-muted:         var(--ink-secondary);
+
+  /* Shorthand aliases used directly in block CSS */
+  --bouw-base:         var(--surface-card, #ffffff);
+  --bouw-contrast:     var(--ink-primary, #1a1a2e);
+  --bouw-error:        var(--color-error, #dc2626);
+  --bouw-success:      var(--color-success, #16a34a);
+  --bouw-warning:      var(--color-warning, #f59e0b);
+  --bouw-rating-star:  var(--color-rating-star, #f59e0b);
+  --bouw-card-bg:             var(--card-bg);
+  --bouw-card-border:         var(--card-border);
+  --bouw-card-shadow:         var(--card-shadow);
+  --bouw-card-radius:         var(--card-radius);
+  --bouw-font-family-heading: var(--font-heading);
+  --bouw-font-family-body:    var(--font-body);
+  --bouw-section-gap:         var(--section-normal);
+  --bouw-heading-gap:         var(--heading-gap);
+  --bouw-card-gap:            var(--card-gap);
+  --bouw-transition-fast:     var(--transition-fast);
+  --bouw-transition-base:     var(--transition-base);
+  --bouw-transition-slow:     var(--transition-slow);
+  --bouw-layout-content-width:var(--layout-content);
+  --bouw-responsive-gutter:   var(--layout-gutter);
+  --bouw-input-radius:        var(--input-radius);
+}

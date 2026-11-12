@@ -1,0 +1,33 @@
+<!doctype html><html lang="nl-BE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>CK Service in vier ontwerprichtingen</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#10151f;background:#f3f4f6}
+header,main{width:min(1320px,calc(100% - 32px));margin-inline:auto}
+header{padding:32px 0 20px}h1{font-size:clamp(1.6rem,3vw + .8rem,2.6rem);line-height:1.1;margin:0 0 .4em}
+header p{max-width:70ch;color:#4b5563;margin:0}
+.grid{display:grid;gap:20px;grid-template-columns:1fr;padding-bottom:64px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:#fff;border:1px solid #d9dde3;display:flex;flex-direction:column;min-width:0}
+.thumb{position:relative;overflow:hidden;background:#e5e7eb;aspect-ratio:16/10;border-bottom:1px solid #d9dde3}
+.thumb iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
+.thumb a{position:absolute;inset:0;z-index:2}
+.meta{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px}
+.meta h2{margin:0;font-size:1.25rem}.meta h2 b{display:inline-grid;place-items:center;width:1.9em;height:1.9em;background:#10151f;color:#fff;margin-right:.5em;font-size:.9rem}
+.meta p{margin:0;color:#4b5563}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.links a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #10151f;color:#10151f;text-decoration:none;font-weight:600;font-size:.92rem}
+.links a:first-child{background:#10151f;color:#fff}
+</style></head><body>
+<header><h1>CK Service in vier ontwerprichtingen</h1>
+<p>Dezelfde inhoud en dezelfde foto’s; alleen de ontwerprichting verschilt. Elke richting komt uit Sherlock zelf (vier presets, elk een vaste reeks keuzes voor vorm, ritme, koppen, beeld en gebaren). Klik een richting open voor de hele pagina en de dienstpagina.</p></header>
+<main><div class="grid">
+<article class="card"><div class="thumb" data-src="https://ck-design-a.preview.sherlockseo.com/"><a href="https://ck-design-a.preview.sherlockseo.com/" aria-label="Open richting A"></a></div><div class="meta"><h2><b>A</b>Vakman</h2><p>Zacht afgerond, warm papier, documentaire foto’s, kaarten die over elkaar vallen.</p><div class="links"><a href="https://ck-design-a.preview.sherlockseo.com/">Open A</a><a href="https://ck-design-a.preview.sherlockseo.com/van-bad-naar-douche/">Dienstpagina</a></div></div></article>
+<article class="card"><div class="thumb" data-src="https://ck-design-b.preview.sherlockseo.com/"><a href="https://ck-design-b.preview.sherlockseo.com/" aria-label="Open richting B"></a></div><div class="meta"><h2><b>B</b>Professioneel</h2><p>Hoekig, neutraal, dunne lijnen, serif-koppen, redactioneel beeld.</p><div class="links"><a href="https://ck-design-b.preview.sherlockseo.com/">Open B</a><a href="https://ck-design-b.preview.sherlockseo.com/van-bad-naar-douche/">Dienstpagina</a></div></div></article>
+<article class="card"><div class="thumb" data-src="https://ck-design-c.preview.sherlockseo.com/"><a href="https://ck-design-c.preview.sherlockseo.com/" aria-label="Open richting C"></a></div><div class="meta"><h2><b>C</b>Warm</h2><p>Rond en luchtig, zachte kleuren, lichte koppen, citaten en markeringen.</p><div class="links"><a href="https://ck-design-c.preview.sherlockseo.com/">Open C</a><a href="https://ck-design-c.preview.sherlockseo.com/van-bad-naar-douche/">Dienstpagina</a></div></div></article>
+<article class="card"><div class="thumb" data-src="https://ck-design-d.preview.sherlockseo.com/"><a href="https://ck-design-d.preview.sherlockseo.com/" aria-label="Open richting D"></a></div><div class="meta"><h2><b>D</b>Modern</h2><p>Hoekig, koel, zware koppen, donkere banden, producten op tegels.</p><div class="links"><a href="https://ck-design-d.preview.sherlockseo.com/">Open D</a><a href="https://ck-design-d.preview.sherlockseo.com/van-bad-naar-douche/">Dienstpagina</a></div></div></article>
+</div></main>
+<script>
+function fit(){document.querySelectorAll('.thumb').forEach(function(t){var f=t.querySelector('iframe');if(!f){f=document.createElement('iframe');f.src=t.dataset.src;f.loading='lazy';f.title='Voorbeeld';f.setAttribute('tabindex','-1');t.insertBefore(f,t.firstChild)}
+var s=t.clientWidth/1280;f.style.transform='scale('+s+')';t.style.height=(800*s)+'px';t.style.aspectRatio='auto'})}
+addEventListener('resize',fit);addEventListener('load',fit);fit();
+</script></body></html>

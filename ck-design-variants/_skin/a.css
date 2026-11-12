@@ -1,0 +1,59 @@
+:root {
+  --bouw-dir-radius: 10px;
+  --bouw-dir-section-breathe: clamp(64px, 8vw, 112px);
+  --bouw-dir-heading-scale: 1.0;
+  --bouw-dir-heading-weight: 700;
+  --bouw-dir-heading-transform: none;
+  --bouw-dir-surface-alt: #F6F2EC;
+  --bouw-dir-accent-usage: signal;
+  --bouw-dir-emphasis-slot: accent;
+  --c-primary:#2F5597; --c-accent:#B8560F; --c-cta:#B8560F; --c-cta-ink:#fff;
+  --c-ink:#2A241E; --c-mute:#6B6258; --c-base:#FFFFFF; --c-band:#2F5597;
+  --c-line:rgba(42,36,30,.14); --c-hl:#F3D9B8; --f-head:'Oswald', 'Arial Narrow', sans-serif; --f-body:'Montserrat', system-ui, sans-serif;
+  --img-filter:sepia(.10) saturate(1.06) contrast(1.02); --track:0;
+  --hero-min:560px; --hero-dim:0.4;
+  --surface-card:#FFFFFF; --color-primary:#2F5597;
+}
+
+/* A · Vakman (craft): soft shapes, warm paper, documentary photos, overlapping cards, Oswald */
+.v-a{--shadow:0 14px 36px rgba(60,42,20,.16)}
+.v-a h1,.v-a h2{text-transform:none}
+.v-a .site-head{background:#fffdf9}
+.v-a .head__call{border-radius:10px}
+.v-a .brand img{height:46px}
+/* hero: full-bleed documentary photo, flat 40% dim, text on top */
+.v-a .hero--bg{background:#2a241e;color:#fff;position:relative}
+.v-a .hero--bg .hero__fig{position:absolute;inset:0;z-index:0;border-radius:0}
+.v-a .hero--bg .hero__fig img{aspect-ratio:auto;object-position:50% 22%;filter:var(--img-filter);width:68%;margin-left:auto;height:100%}
+@media (max-width:899px){.v-a .hero--bg .hero__fig img{width:100%}}
+.v-a .hero--bg .hero__fig::after{content:"";position:absolute;inset:0;background:rgba(30,20,10,var(--hero-dim))}
+.v-a .hero--bg .hero__grid{grid-template-columns:minmax(0,640px)}
+.v-a .hero--bg h1,.v-a .hero--bg .lead{color:#fff}
+.v-a .hero--bg .h1pre{color:#ffd9a8}
+.v-a .hero--bg .watson-eyebrow{color:#ffd9a8}
+.v-a .hero--bg .lead{color:rgba(255,255,255,.92)}
+.v-a .hero--bg .btn--ghost{color:#fff}
+.v-a .hero h1{font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.02}
+.v-a .hero h1 .h1pre{text-transform:none;font-size:.42em;letter-spacing:.02em}
+.v-a .stats-band{background:var(--bouw-dir-surface-alt)}
+.v-a .stats strong{font-family:var(--f-head);text-transform:uppercase}
+.v-a .watson-lockup-rule{width:64px;height:4px;border-radius:4px;background:var(--c-accent)}
+/* overlap narratives: elevated paper cards pulled over the previous band */
+.v-a .watson-gesture--overlap{background:transparent}
+.v-a .watson-gesture--overlap>.watson-section__inner{box-shadow:var(--shadow);background:#fffdf9}
+.v-a .fig{border-radius:var(--watson-shape-r);box-shadow:0 8px 24px rgba(60,42,20,.12)}
+.v-a .card{background:#fff;border-radius:var(--watson-shape-r);padding:0 0 18px;box-shadow:0 6px 20px rgba(60,42,20,.1);overflow:hidden}
+.v-a .card h3,.v-a .card p,.v-a .card .card__go{padding-inline:18px}
+.v-a .card .fig{border-radius:0;box-shadow:none}
+.v-a .project .fig{box-shadow:none}
+.v-a .grid.watson-gesture--broken-grid{padding-bottom:clamp(20px,3.4vw,52px)}
+.v-a .project{background:#fff;padding:12px 12px 18px;border-radius:var(--watson-shape-r);box-shadow:0 6px 20px rgba(60,42,20,.1)}
+.v-a .watson-emphasis--oversized-numeral.grid>*::before{font-family:var(--f-head);color:color-mix(in srgb,var(--c-accent) 55%,transparent)}
+.v-a .pricing-sec .prices li{background:#fff;border-left:5px solid var(--c-accent);padding:18px 20px;border-radius:0 var(--watson-shape-r) var(--watson-shape-r) 0;box-shadow:0 6px 20px rgba(60,42,20,.08)}
+.v-a .pricing-sec{background:var(--c-base)}
+.v-a .form{border-radius:var(--watson-shape-r);box-shadow:var(--shadow);border:0}
+.v-a .review{border-radius:var(--watson-shape-r);background:#fff;box-shadow:0 6px 20px rgba(60,42,20,.08)}
+.v-a .steps li{background:#fff;padding:16px;border-radius:var(--watson-shape-r);box-shadow:0 6px 20px rgba(60,42,20,.08)}
+.v-a .steps.watson-emphasis--oversized-numeral>*::before{color:color-mix(in srgb,var(--c-accent) 60%,transparent);font-size:3.2rem}
+.v-a .compare{background:#fff;padding:12px 16px 8px;border-radius:var(--watson-shape-r);box-shadow:0 6px 20px rgba(60,42,20,.08)}
+.v-a .compare .fig{margin:-12px -16px 0;border-radius:var(--watson-shape-r) var(--watson-shape-r) 0 0;box-shadow:none}

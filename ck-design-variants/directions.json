@@ -1,0 +1,503 @@
+{
+ "a": {
+  "mood": "craft",
+  "tokens": {
+   "radius": "10px",
+   "section_breathe": "clamp(64px, 8vw, 112px)",
+   "heading_scale": "1.0",
+   "heading_weight": "700",
+   "heading_transform": "none",
+   "surface_alt": "#F6F2EC",
+   "accent_usage": "signal",
+   "emphasis_slot": "accent"
+  },
+  "hero": {
+   "min_height": 560,
+   "dim_ratio": 40,
+   "display_font_size": "x-large"
+  },
+  "axes": {
+   "shape": "soft",
+   "density": "balanced",
+   "type_voice": {
+    "display_scale": "confident",
+    "heading_case": "sentence",
+    "heading_weight": "bold"
+   },
+   "colour": {
+    "temperature": "warm",
+    "accent_usage": "signal",
+    "surface_rhythm": "alternating",
+    "emphasis_slot": "accent"
+   },
+   "imagery": "documentary",
+   "emphasis": [
+    "eyebrow",
+    "oversized_numeral"
+   ]
+  },
+  "sections_home": [
+   {
+    "role": "hero",
+    "gesture": "bleed",
+    "surface": "base",
+    "media": "hero_background",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "statement",
+    "gesture": "lockup",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "overlap",
+    "surface": "base",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "proof",
+    "gesture": "broken_grid",
+    "surface": "alt",
+    "media": "realisatie",
+    "emphasis": [
+     "eyebrow",
+     "oversized_numeral"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "overlap",
+    "surface": "base",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "features",
+    "gesture": "broken_grid",
+    "surface": "alt",
+    "media": "realisatie",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "pricing",
+    "gesture": "none",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "narrative",
+    "gesture": "overlap",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "faq",
+    "gesture": "none",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "cta",
+    "gesture": "lockup",
+    "surface": "alt",
+    "media": "none",
+    "emphasis": []
+   }
+  ]
+ },
+ "b": {
+  "mood": "professional",
+  "tokens": {
+   "radius": "2px",
+   "section_breathe": "clamp(64px, 8vw, 112px)",
+   "heading_scale": "1.0",
+   "heading_weight": "700",
+   "heading_transform": "none",
+   "surface_alt": "#F5F5F6",
+   "accent_usage": "sparing",
+   "emphasis_slot": "primary"
+  },
+  "hero": {
+   "min_height": 560,
+   "dim_ratio": 30,
+   "display_font_size": "x-large"
+  },
+  "axes": {
+   "shape": "sharp",
+   "density": "balanced",
+   "type_voice": {
+    "display_scale": "confident",
+    "heading_case": "sentence",
+    "heading_weight": "bold"
+   },
+   "colour": {
+    "temperature": "neutral",
+    "accent_usage": "sparing",
+    "surface_rhythm": "alternating",
+    "emphasis_slot": "primary"
+   },
+   "imagery": "editorial",
+   "emphasis": [
+    "eyebrow",
+    "rule"
+   ]
+  },
+  "sections_home": [
+   {
+    "role": "hero",
+    "gesture": "implicit_frame",
+    "surface": "base",
+    "media": "hero_background",
+    "emphasis": [
+     "eyebrow",
+     "rule"
+    ]
+   },
+   {
+    "role": "statement",
+    "gesture": "lockup",
+    "surface": "alt",
+    "media": "portrait",
+    "emphasis": [
+     "eyebrow",
+     "rule"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "implicit_frame",
+    "surface": "base",
+    "media": "portrait",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "proof",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "realisatie",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "implicit_frame",
+    "surface": "base",
+    "media": "portrait",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "features",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "pricing",
+    "gesture": "none",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "narrative",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "portrait",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "faq",
+    "gesture": "none",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "cta",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "none",
+    "emphasis": [
+     "rule"
+    ]
+   }
+  ]
+ },
+ "c": {
+  "mood": "warm",
+  "tokens": {
+   "radius": "20px",
+   "section_breathe": "clamp(96px, 12vw, 160px)",
+   "heading_scale": "1.0",
+   "heading_weight": "400",
+   "heading_transform": "none",
+   "surface_alt": "#F6F2EC",
+   "accent_usage": "signal",
+   "emphasis_slot": "accent"
+  },
+  "hero": {
+   "min_height": 680,
+   "dim_ratio": 40,
+   "display_font_size": "x-large"
+  },
+  "axes": {
+   "shape": "round",
+   "density": "airy",
+   "type_voice": {
+    "display_scale": "confident",
+    "heading_case": "sentence",
+    "heading_weight": "regular"
+   },
+   "colour": {
+    "temperature": "warm",
+    "accent_usage": "signal",
+    "surface_rhythm": "alternating",
+    "emphasis_slot": "accent"
+   },
+   "imagery": "documentary",
+   "emphasis": [
+    "pull_quote",
+    "highlight_phrase"
+   ]
+  },
+  "sections_home": [
+   {
+    "role": "hero",
+    "gesture": "overlap",
+    "surface": "base",
+    "media": "hero_background",
+    "emphasis": [
+     "highlight_phrase"
+    ]
+   },
+   {
+    "role": "statement",
+    "gesture": "lockup",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "highlight_phrase"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "overlap",
+    "surface": "base",
+    "media": "detail",
+    "emphasis": [
+     "pull_quote"
+    ]
+   },
+   {
+    "role": "proof",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "realisatie",
+    "emphasis": [
+     "pull_quote"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "overlap",
+    "surface": "base",
+    "media": "detail",
+    "emphasis": [
+     "pull_quote"
+    ]
+   },
+   {
+    "role": "features",
+    "gesture": "broken_grid",
+    "surface": "alt",
+    "media": "realisatie",
+    "emphasis": []
+   },
+   {
+    "role": "pricing",
+    "gesture": "none",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "narrative",
+    "gesture": "overlap",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "pull_quote"
+    ]
+   },
+   {
+    "role": "faq",
+    "gesture": "none",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "cta",
+    "gesture": "lockup",
+    "surface": "alt",
+    "media": "none",
+    "emphasis": []
+   }
+  ]
+ },
+ "d": {
+  "mood": "modern",
+  "tokens": {
+   "radius": "2px",
+   "section_breathe": "clamp(64px, 8vw, 112px)",
+   "heading_scale": "1.25",
+   "heading_weight": "800",
+   "heading_transform": "none",
+   "surface_alt": "#F4F6F8",
+   "accent_usage": "signal",
+   "emphasis_slot": "accent"
+  },
+  "hero": {
+   "min_height": 560,
+   "dim_ratio": 20,
+   "display_font_size": "xx-large"
+  },
+  "axes": {
+   "shape": "sharp",
+   "density": "balanced",
+   "type_voice": {
+    "display_scale": "dramatic",
+    "heading_case": "sentence",
+    "heading_weight": "heavy"
+   },
+   "colour": {
+    "temperature": "cool",
+    "accent_usage": "signal",
+    "surface_rhythm": "banded",
+    "emphasis_slot": "accent"
+   },
+   "imagery": "product",
+   "emphasis": [
+    "eyebrow",
+    "highlight_phrase"
+   ]
+  },
+  "sections_home": [
+   {
+    "role": "hero",
+    "gesture": "lockup",
+    "surface": "base",
+    "media": "product",
+    "emphasis": [
+     "eyebrow",
+     "highlight_phrase"
+    ]
+   },
+   {
+    "role": "statement",
+    "gesture": "none",
+    "surface": "brand",
+    "media": "product",
+    "emphasis": [
+     "eyebrow",
+     "highlight_phrase"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "proof",
+    "gesture": "broken_grid",
+    "surface": "base",
+    "media": "realisatie",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "narrative",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "features",
+    "gesture": "broken_grid",
+    "surface": "base",
+    "media": "product",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "pricing",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "narrative",
+    "gesture": "none",
+    "surface": "base",
+    "media": "detail",
+    "emphasis": [
+     "eyebrow"
+    ]
+   },
+   {
+    "role": "faq",
+    "gesture": "none",
+    "surface": "alt",
+    "media": "none",
+    "emphasis": []
+   },
+   {
+    "role": "cta",
+    "gesture": "lockup",
+    "surface": "base",
+    "media": "none",
+    "emphasis": []
+   }
+  ]
+ }
+}
