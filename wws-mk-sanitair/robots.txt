@@ -1,0 +1,8 @@
+# Sherlock preview host - never indexed, never used for AI training.
+# Search engines may fetch pages only to read the noindex header.
+User-agent: Googlebot
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Disallow: /
