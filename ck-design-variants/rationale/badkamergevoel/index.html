@@ -148,6 +148,25 @@ a{color:inherit}
   .cta .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:0 56px;align-items:end}
   .cta .foot{grid-column:1/-1}
 }
+
+.hero-couple{text-align:left;padding:22px 0 10px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:center}
+.hero-couple .mast{text-align:center}
+.hero-couple .lede,.hero-couple .hero-sub{text-align:center}
+.hero-sub{max-width:46ch;margin:8px auto 0;font-size:18px;line-height:1.5}
+.hero-photo{margin:0;position:relative;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(20,42,82,.18)}
+.hero-photo img{display:block;width:100%;aspect-ratio:4/3.3;object-fit:cover;object-position:50% 12%}
+.hero-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(180deg,rgba(20,42,82,0),rgba(20,42,82,.82));color:#fff;font-weight:700;font-size:17px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media (max-width:899px){ .hero-photo{order:-1} }
+@media (min-width:900px){
+ .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px}
+ .hero-couple .mast,.hero-couple .lede,.hero-couple .hero-sub{text-align:left}
+ .hero-couple .mast{font-size:clamp(44px,6vw,84px);letter-spacing:.3em;margin-right:0}
+ .hero-couple .mast-rule{margin:14px 0 0}
+ .hero-couple .hero-sub{margin-left:0}
+ .hero-couple .legend{justify-content:flex-start}
+ .hero-photo img{aspect-ratio:1/1.02}
+}
 </style>
 </head>
 <body>
@@ -164,16 +183,23 @@ a{color:inherit}
 
 <main id="top">
 
-<section class="mast-wrap" aria-labelledby="h-feel">
-  <div class="wrap">
-    <h1 id="h-feel" class="mast" aria-label="Badkamergevoel">Badkamer<br>gevoel</h1>
-    <div class="mast-rule" aria-hidden="true"></div>
-    <p class="lede">Voel u niet oud in uw eigen badkamer!</p>
-    <div class="legend" aria-label="Legende van de reeks">
-      <span class="tag is">Wat het vaak is</span>
-      <span class="tag no">Wat het zeker niet mag zijn</span>
-      <span class="tag yes">Wat het moet zijn</span>
+<section class="mast-wrap hero-couple" aria-labelledby="h-feel">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1 id="h-feel" class="mast" aria-label="Badkamergevoel">Badkamer<br>gevoel</h1>
+      <div class="mast-rule" aria-hidden="true"></div>
+      <p class="lede">Voel u niet oud in uw eigen badkamer!</p>
+      <p class="hero-sub">Vervang in één dag die gevaarlijke badkuip door een veilige en comfortabele cabine of inloopdouche.</p>
+      <div class="legend" aria-label="Legende van de reeks">
+        <span class="tag is">Wat het vaak is</span>
+        <span class="tag no">Wat het zeker niet mag zijn</span>
+        <span class="tag yes">Wat het moet zijn</span>
+      </div>
     </div>
+    <figure class="hero-photo">
+      <img src="../img/kit-014.jpg" alt="Een lachend ouder koppel in badjas in hun inloopdouche met regendouche" width="998" height="999" fetchpriority="high">
+      <figcaption><span class="tag yes">Zo moet het</span> Zo duurt jong nog een leven lang!</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -191,11 +217,7 @@ a{color:inherit}
       <img src="../img/kit-001.jpg" alt="Een vrouw in badjas staat alleen en ontspannen in een ruime inloopdouche" loading="lazy" width="1024" height="1024">
       <div class="cap"><span class="tag yes">Zo moet het</span><span class="kind">Alleen thuis</span><span class="line">Gewoon instappen.</span><p>Geen sprong over de rand. Ook als er niemand in de buurt is.</p></div>
     </article>
-    <article class="card who">
-      <img src="../img/kit-014.jpg" alt="Een lachend ouder koppel in badjas in hun inloopdouche" loading="lazy" width="998" height="999">
-      <div class="cap"><span class="tag yes">Zo moet het</span><span class="kind">Met z'n tweeën</span><span class="line">Zo duurt jong nog een leven lang!</span></div>
-    </article>
-    <article class="card who">
+        <article class="card who">
       <img src="../img/kit-020.jpg" alt="Een man in badjas glimlacht in zijn nieuwe douche" loading="lazy" width="1169" height="1169">
       <div class="cap"><span class="tag yes">Zo moet het</span><span class="line">Niet oud. Wel slim!</span></div>
     </article>
