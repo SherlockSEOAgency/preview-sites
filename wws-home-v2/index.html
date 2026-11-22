@@ -116,6 +116,7 @@ h2.display{font-size:clamp(32px,4.2vw,56px);max-width:16em}
 .incl ul{list-style:none;border-top:1px solid rgba(255,255,255,.2)}
 .incl li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.2);font:700 19px/1.4 var(--display)}
 .incl li::before{content:"✓";flex:0 0 26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:900 14px/26px var(--body);text-align:center}
+.incl li b{font-weight:inherit}
 .incl li span{display:block;font:400 15px/1.5 var(--body);opacity:.8;margin-top:2px}
 .more{margin-top:30px;font-size:16px;opacity:.9}
 .more a{font-weight:700;color:#fff}
@@ -239,7 +240,7 @@ html[data-layout=banner] .stage .yours,html[data-layout=banner] .stage .more-her
       <div class="stage"><span class="yours">Hier komt jouw logo of foto</span><svg class="watson-mark" viewBox="0 0 211 211" role="img" aria-label="Watson" data-wt-figure><rect width="211" height="211" fill="var(--mark-bg)"/><path fill="var(--accent2)" d="m 105.554,37.415923 c -44.1155,0 -82.8508,7.957 -105.554,19.892 0,1.291 0,2.258 0,3.011 0,0 0,0.43 0,1.183 0,0.752 0,1.72 0,3.011 22.7032,12.043 61.4385,19.892 105.554,19.892 44.115,0 82.85,-7.957 105.554,-19.892 v -3.011 -1.183 -3.011 c -22.704,-11.935 -61.547,-19.892 -105.554,-19.892 z"/><path fill="var(--accent2)" d="m 9.68383,43.974923 c 23.24117,-9.463 57.56497,-15.376 95.76217,-15.376 39.704,0 75.104,6.451 98.345,16.451 2.475,-0.538 4.842,-1.075 7.209,-1.613 v -130.86 H 0 c 0,0 0,102.473 0,129.462 3.12035,0.646 6.34829,1.291 9.68383,1.936 z"/><path fill="var(--accent2)" d="m 52.6155,138.27592 c 22.8191,0 41.3177,-18.486 41.3177,-41.289997 0,-22.804 -18.4986,-41.291 -41.3177,-41.291 -22.8191,0 -41.3177,18.487 -41.3177,41.291 0,22.803997 18.4986,41.289997 41.3177,41.289997 z"/><path fill="var(--accent)" d="m 52.6155,130.21092 c 18.3623,0 33.2478,-14.875 33.2478,-33.224997 0,-18.35 -14.8855,-33.226 -33.2478,-33.226 -18.3623,0 -33.2478,14.876 -33.2478,33.226 0,18.349997 14.8855,33.224997 33.2478,33.224997 z"/><path class="wt-eye wt-eye-r" fill="var(--accent2)" d="m 130.947,105.80292 c 0,0 28.621,-29.892997 54.767,1.398 0,0 -15.494,-7.097 -27.437,-7.097 -11.836,0 -27.33,5.699 -27.33,5.699 z"/><path class="wt-eye wt-eye-l" fill="var(--accent2)" d="m 25.2856,105.80292 c 0,0 28.6211,-29.892997 54.7675,1.398 0,0 -15.4942,-7.097 -27.4376,-7.097 -11.8358,0 -27.3299,5.699 -27.3299,5.699 z"/><path class="wt-tash" fill="var(--accent2)" d="m 105.554,151.17892 c -12.912,0 -23.349,10.43 -23.349,23.334 0,12.903 10.437,23.333 23.349,23.333 12.912,0 23.349,-10.43 23.349,-23.333 0,-12.796 -10.437,-23.334 -23.349,-23.334 z m 0,41.721 c -10.1144,0 -18.2919,-8.172 -18.2919,-18.28 0,-10.107 8.1775,-18.28 18.2919,-18.28 10.114,0 18.291,8.173 18.291,18.28 0,10.108 -8.285,18.28 -18.291,18.28 z"/><path fill="var(--accent2)" d="M 19.3677,99.888923 H 11.2978 V 212.57692 h 8.0699 z"/><path fill="var(--accent)" d="m 203.791,45.049923 c -23.241,-10 -58.641,-16.452 -98.345,-16.452 -38.3047,0 -72.6286,6.022 -95.76217,15.377 -3.33554,-0.645 -6.56348,-1.29 -9.68383,-1.936 v 15.269 c 22.7032,-12.043 61.4385,-19.892 105.554,-19.892 44.115,0 82.85,7.957 105.554,19.892 v -13.871 c -2.368,0.538 -4.842,1.075 -7.317,1.613 z"/><path fill="var(--accent2)" d="m 0,193.22192 19.3677,19.355 H 0 Z"/><path fill="var(--accent2)" d="m 211,193.22192 -19.368,19.355 H 211 Z"/><path class="wt-tash" fill="var(--accent2)" d="m 148.593,144.61992 c -8.07,2.581 -9.469,19.785 -4.411,12.688 6.671,-9.355 21.196,2.258 14.095,13.979 -5.057,8.387 -20.229,3.763 -24.963,-4.947 -3.013,-5.698 -7.532,-13.225 -15.064,-17.849 -0.107,-0.108 -0.322,-0.215 -0.538,-0.323 -1.721,-1.075 -3.766,-1.72 -6.025,-1.72 -2.367,0 -4.519,0.645 -6.241,1.828 -1.829,-1.183 -3.981,-1.828 -6.2405,-1.828 -2.4748,0 -4.8419,0.86 -6.7787,2.151 -7.3167,4.623 -11.7282,12.15 -14.7409,17.741 -4.6268,8.71 -19.7981,13.334 -24.9628,4.947 -7.2091,-11.828 7.4243,-23.334 14.0954,-13.979 5.0571,7.205 3.6583,-10 -4.4116,-12.688 -10.3294,-3.333 -30.6654,5.054 -26.6843,26.667 3.0127,16.236 18.0765,20.537 28.9439,20.537 13.8801,0 29.3743,-14.301 40.6725,-14.408 11.297,0 26.899,14.408 40.672,14.408 10.867,0 25.931,-4.301 28.944,-20.537 4.304,-21.506 -16.033,-30 -26.362,-26.667 z m -57.027,4.839 c -0.1076,0 -0.1076,0 0,0 -0.1076,0 -0.1076,0 0,0 z"/></svg><a class="more-hero" href="#wachtlijst">In je eigen site kan deze bovenkant volledig anders: eigen foto's, video, je eigen opbouw. Dat zit in je abonnement.</a></div>
 
       <div class="talk" data-watson-talk data-api="https://mcp-audit-platform-production.up.railway.app" data-greeting="Dag! Ik ben Watson, en dit is mijn website. Zeg me wat ik moet veranderen, en kijk wat er gebeurt.">
-        <div class="eyebrow">Dit is een demo die echt werkt</div>
+        <div class="eyebrow" data-slot="eyebrow" data-label="het kleine kopje">Dit is een demo die echt werkt</div>
         <h1 class="display" data-slot="hero_title" data-label="de grote titel">Praat met deze website. <em>Ze verandert terwijl je kijkt.</em></h1>
         <p class="lede" data-slot="hero_lede" data-label="de inleiding">Vraag een andere kleur, een ander lettertype of een nieuwe titel. Of klik op een tekst en zeg wat erin moet. Zo werkt het straks met jouw eigen website.</p>
         <div class="log" data-wt-log aria-live="polite"></div>
@@ -265,9 +266,9 @@ html[data-layout=banner] .stage .yours,html[data-layout=banner] .stage .more-her
       <div class="kicker">Hoe het werkt</div>
       <h2 class="display" data-slot="steps_title" data-label="de titel van ‘Hoe het werkt’">Van gesprek naar website, zonder technische kennis.</h2>
       <div class="steps">
-        <div class="step"><b>1</b><h3>Vertel</h3><p>Wat je doet, voor wie en waar. Watson stelt de vragen en schrijft de teksten.</p></div>
-        <div class="step"><b>2</b><h3>Bekijk en verander</h3><p>Je ziet je site meteen. Iets anders? Zeg het, zoals je hierboven net deed.</p></div>
-        <div class="step"><b>3</b><h3>Zet online</h3><p>Tevreden? Dan zetten we hem op je eigen domein. Wij houden hem draaiend.</p></div>
+        <div class="step"><b>1</b><h3 data-slot="step1_title" data-label="stap 1">Vertel</h3><p data-slot="step1_text" data-label="de tekst van stap 1">Wat je doet, voor wie en waar. Watson stelt de vragen en schrijft de teksten.</p></div>
+        <div class="step"><b>2</b><h3 data-slot="step2_title" data-label="stap 2">Bekijk en verander</h3><p data-slot="step2_text" data-label="de tekst van stap 2">Je ziet je site meteen. Iets anders? Zeg het, zoals je hierboven net deed.</p></div>
+        <div class="step"><b>3</b><h3 data-slot="step3_title" data-label="stap 3">Zet online</h3><p data-slot="step3_text" data-label="de tekst van stap 3">Tevreden? Dan zetten we hem op je eigen domein. Wij houden hem draaiend.</p></div>
       </div>
     </div>
   </section>
@@ -280,10 +281,10 @@ html[data-layout=banner] .stage .yours,html[data-layout=banner] .stage .more-her
       </div>
       <div>
         <ul>
-          <li><div>Je eigen domein<span>jouwzaak.be, gekoppeld en beveiligd.</span></div></li>
-          <li><div>Hosting en updates<span>Je hoeft nooit iets te installeren of bij te werken.</span></div></li>
-          <li><div>Goed op elke gsm<span>Je klanten zoeken je op hun telefoon. Daar is hij voor gebouwd.</span></div></li>
-          <li><div>Aanpassen door te praten<span>Nieuwe foto, ander uur, extra dienst: je vraagt het aan Watson.</span></div></li>
+          <li><div><b data-slot="incl1_title" data-label="punt 1 van wat inbegrepen is">Je eigen domein</b><span data-slot="incl1_text" data-label="de uitleg bij punt 1">jouwzaak.be, gekoppeld en beveiligd.</span></div></li>
+          <li><div><b data-slot="incl2_title" data-label="punt 2 van wat inbegrepen is">Hosting en updates</b><span data-slot="incl2_text" data-label="de uitleg bij punt 2">Je hoeft nooit iets te installeren of bij te werken.</span></div></li>
+          <li><div><b data-slot="incl3_title" data-label="punt 3 van wat inbegrepen is">Goed op elke gsm</b><span data-slot="incl3_text" data-label="de uitleg bij punt 3">Je klanten zoeken je op hun telefoon. Daar is hij voor gebouwd.</span></div></li>
+          <li><div><b data-slot="incl4_title" data-label="punt 4 van wat inbegrepen is">Aanpassen door te praten</b><span data-slot="incl4_text" data-label="de uitleg bij punt 4">Nieuwe foto, ander uur, extra dienst: je vraagt het aan Watson.</span></div></li>
         </ul>
         <p class="more"><strong>Meer nodig?</strong> Een webshop, extra talen of beter gevonden worden in Google: het team van Watson Web Studio doet het op maat. <a href="https://watsonwebstudio.com/contact/">Neem contact op</a></p>
       </div>
@@ -295,7 +296,7 @@ html[data-layout=banner] .stage .yours,html[data-layout=banner] .stage .more-her
       <div class="wl-copy">
         <div class="kicker">Wachtlijst</div>
         <h2 class="display" data-slot="wl_title" data-label="de titel van de wachtlijst">Wees er als eerste bij.</h2>
-        <p>Gratis en vrijblijvend. Je krijgt voorrang bij de opening en hoort de prijs als eerste. We mailen alleen over je website.</p>
+        <p data-slot="wl_text" data-label="de tekst bij de wachtlijst">Gratis en vrijblijvend. Je krijgt voorrang bij de opening en hoort de prijs als eerste. We mailen alleen over je website.</p>
       </div>
       <form id="wl" novalidate>
         <div class="two">
