@@ -167,6 +167,52 @@ footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);fo
   .two,.pref{grid-template-columns:1fr}
   .pref label{justify-content:flex-start;text-align:left;min-height:48px;padding:12px 14px}
 }
+/* WHOLE-PAGE DIRECTIONS (Watson sets html[data-style|layout|density|background]) */
+html[data-style=klassiek]{--display:"Lora",Georgia,serif;--body:"Open Sans",system-ui,sans-serif;--radius:6px;--card:8px}
+html[data-style=modern]{--display:"Space Grotesk",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--radius:12px;--card:16px}
+html[data-style=luxe]{--display:"Playfair Display",Georgia,serif;--body:"Lora",Georgia,serif;--radius:2px;--card:2px;--h1:clamp(38px,4.8vw,70px)}
+html[data-style=luxe] .display{font-weight:700;letter-spacing:-.01em}
+html[data-style=luxe] .eyebrow,html[data-style=luxe] .kicker{letter-spacing:.32em;font-weight:400}
+html[data-style=speels]{--display:"Fraunces",Georgia,serif;--body:"Nunito",system-ui,sans-serif;--radius:999px;--card:34px}
+html[data-style=speels] .stage .watson-mark{transform:rotate(-6deg)}
+html[data-style=stoer]{--display:"Bebas Neue",Impact,sans-serif;--body:"Inter",system-ui,sans-serif;--radius:0;--card:0;--h1:clamp(54px,8vw,124px)}
+html[data-style=stoer] .display,html[data-style=stoer] .step h3{font-weight:400;letter-spacing:.01em;text-transform:uppercase;line-height:.92}
+html[data-style=stoer] .m.w{font-weight:400;font-family:var(--body)}
+html[data-style=minimal]{--display:"Inter",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--radius:8px;--card:10px}
+html[data-style=minimal] .display{font-weight:700;letter-spacing:-.035em}
+html[data-style=minimal] .hero{background:none}
+
+html[data-layout=reverse] .hero-grid{grid-template-columns:1.15fr minmax(260px,.85fr)}
+html[data-layout=reverse] .stage{order:2}
+html[data-layout=center] .hero-grid{grid-template-columns:1fr;max-width:860px;margin:0 auto;text-align:center}
+html[data-layout=center] .stage .watson-mark{width:min(46vw,260px)}
+html[data-layout=center] .talk{--align:center}
+html[data-layout=center] .lede{margin-left:auto;margin-right:auto}
+html[data-layout=center] .chips{justify-content:center}
+html[data-layout=banner] .hero{position:relative;overflow:hidden}
+html[data-layout=banner] .hero-grid{grid-template-columns:1fr;max-width:820px}
+html[data-layout=banner] .stage{position:absolute;right:-6%;top:50%;transform:translateY(-50%);opacity:.16;pointer-events:none;z-index:0}
+html[data-layout=banner] .stage .watson-mark{width:min(78vw,760px)}
+html[data-layout=banner] .talk{position:relative;z-index:1}
+
+html[data-density=compact] section{padding:clamp(40px,5vw,64px) 0}
+html[data-density=compact] .hero{min-height:0}
+html[data-density=airy] section{padding:clamp(96px,13vw,190px) 0}
+
+html[data-background=plain] .hero{background:none}
+html[data-background=dots] body{background-image:radial-gradient(color-mix(in srgb,var(--accent2) 22%,transparent) 1.2px,transparent 1.3px);background-size:22px 22px}
+html[data-background=bold] .hero{background:var(--accent2);color:var(--on-accent2)}
+html[data-background=bold] .hero h1,html[data-background=bold] .hero .lede,html[data-background=bold] .under{color:var(--on-accent2)}
+html[data-background=bold] .hero .eyebrow,html[data-background=bold] .hero h1 em{color:var(--accent)}
+html[data-background=bold] .m.w{background:var(--panel);color:var(--ink)}
+html[data-background=bold] .m.w::before{border-right-color:var(--panel)}
+html[data-background=bold] .stage .watson-mark{filter:drop-shadow(0 0 0 transparent)}
+html[data-background=bold][data-layout=banner] .stage{opacity:.22;filter:brightness(2.2) saturate(.4)}
+@media (max-width:900px){
+  html[data-layout] .hero-grid{grid-template-columns:1fr}
+  html[data-layout=reverse] .stage{order:0}
+  html[data-background=bold] .m.w::before{border-right-color:transparent;border-bottom-color:var(--panel)}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -196,10 +242,10 @@ footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);fo
         </form>
         <div class="selbar" data-wt-sel>Je klikte op <b data-wt-selname></b><button type="button" data-wt-selclear aria-label="Selectie wissen">×</button></div>
         <div class="chips" data-wt-chips>
-          <button class="chip" type="button">Maak het donker</button>
+          <button class="chip" type="button">Maak er een stoere bouwfirma van</button>
+          <button class="chip" type="button">Maak het luxe en rustig, voor een kapsalon</button>
           <button class="chip" type="button">Geef Watson een rode hoed</button>
-          <button class="chip" type="button">Een sierlijker lettertype</button>
-          <button class="chip" type="button">Zet alles in het midden</button>
+          <button class="chip" type="button">Zet de wachtlijst bovenaan</button>
         </div>
         <div class="under"><span>Watson onthoudt je wijzigingen op dit toestel.</span><button type="button" data-wt-reset>Terug naar origineel</button><a href="#wachtlijst" data-text="cta">Ik wil dit voor mijn zaak</a></div>
       </div>
@@ -218,7 +264,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);fo
     </div>
   </section>
 
-  <section class="incl">
+  <section class="incl" id="incl">
     <div class="wrap incl-grid">
       <div>
         <div class="kicker">Inbegrepen</div>
