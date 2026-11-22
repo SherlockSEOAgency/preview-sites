@@ -16,7 +16,7 @@
 <meta name="description" content="CK Service uit Geel vervangt in één dag uw badkuip door een veilige, comfortabele cabine of inloopdouche. Gratis advies bij u thuis. Bel 0493 33 39 88.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600,100,0;1,9..144,600,100,1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@1,800&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#f7f1e6;
@@ -33,7 +33,9 @@
   --cold-ink:#3b4757;
   --star:#ffd23f; /* alleen voor reviewsterren */
   --sky:#dfe8ff;
-  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --display:"Fraunces",Georgia,serif;
+  --stamp:"Anton","Impact","Arial Narrow",sans-serif;
+  --hand:"Caveat","Comic Sans MS",cursive;
   --text:"Atkinson Hyperlegible",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -42,7 +44,8 @@ body{font-family:var(--text);font-size:19px;line-height:1.55;color:var(--ink);ba
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 .wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
-.display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:1;letter-spacing:.01em}
+.display{font-family:var(--display);font-weight:600;font-variation-settings:"SOFT" 100;line-height:1.02;letter-spacing:-.02em}
+.display em{font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--brand)}
 :focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .ico{width:26px;height:26px;flex:0 0 auto}
 
@@ -54,7 +57,7 @@ a{color:inherit}
 .mark .l2{display:flex;gap:2.1em;font-size:1.13em;margin-left:.2em}
 
 /* campagnestempel BADKAMERGEVOEL */
-.stamp{display:inline-block;font-family:var(--display);text-transform:uppercase;letter-spacing:.28em;color:#fff;background:var(--deep);padding:9px 10px 9px 16px;font-size:17px;line-height:1;border-radius:4px;transform:rotate(-3deg)}
+.stamp{display:inline-block;font-family:var(--stamp);text-transform:uppercase;letter-spacing:.28em;color:#fff;background:var(--deep);padding:9px 10px 9px 16px;font-size:17px;line-height:1;border-radius:4px;transform:rotate(-3deg)}
 
 /* knoppen */
 .call{display:flex;align-items:center;justify-content:center;gap:12px;min-height:64px;padding:14px 24px;border:0;border-radius:999px;background:var(--deep);color:#fff;font:700 24px/1.2 var(--text);text-decoration:none;cursor:pointer;box-shadow:0 6px 0 rgba(13,26,54,.25)}
@@ -75,9 +78,10 @@ a{color:inherit}
 .hero-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:65% 22%}
 .hero-photo .stamp{position:absolute;left:16px;bottom:18px;box-shadow:4px 4px 0 #fff}
 .hero-text{padding:24px 20px 40px}
-.hero h1{font-size:clamp(46px,12.5vw,84px);color:#fff;max-width:11ch}
+.hero h1{font-size:clamp(44px,11.5vw,78px);color:#fff;max-width:12ch}
+.hero h1 em{color:#ffe9b8;padding-bottom:.12em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 16' preserveAspectRatio='none'%3E%3Cpath d='M3 11 C30 4 70 3 117 8' stroke='%23ffe9b8' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") 0 100%/100% .22em no-repeat}
 .hero .promise{margin-top:20px;font-size:22px;line-height:1.45;color:#fff;max-width:30ch}
-.hero .promise mark{color:var(--deep);font-weight:700;background:linear-gradient(transparent 6%,#fff 6%,#fff 94%,transparent 94%);padding:0 .22em;margin:0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .promise mark{color:var(--deep);font-weight:700;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M4 12 C40 5 90 9 140 6 S190 8 196 11 L194 30 C150 36 100 31 60 35 S12 33 6 30 Z' fill='%23fff'/%3E%3C/svg%3E") center/100% 100% no-repeat;padding:.04em .34em .08em;margin:0 -.06em;display:inline-block;transform:rotate(-1.5deg);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .feats{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:19px;color:var(--sky)}
 .feats li{display:flex;align-items:center;gap:8px}
 .feats svg{width:20px;height:20px;flex:0 0 auto}
@@ -91,14 +95,14 @@ a{color:inherit}
 .pair .bad{background:var(--cold);padding:44px 20px 52px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .pair .bad figure{width:72%;max-width:340px;transform:rotate(-4deg);background:#fff;padding:8px 8px 8px;box-shadow:0 14px 30px -14px rgba(30,40,60,.45)}
 .pair .bad img{width:100%;aspect-ratio:1/1;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.95)}
-.pair .bad .q{margin-top:28px;font-family:var(--display);text-transform:uppercase;font-size:clamp(34px,9vw,52px);line-height:1;color:var(--cold-ink);max-width:13ch}
+.pair .bad .q{margin-top:28px;font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(32px,8.5vw,48px);line-height:1.05;letter-spacing:-.02em;color:var(--cold-ink);max-width:13ch}
 .pair .good{background:var(--cream);position:relative;padding:0 0 44px}
 .pair .good::before{content:"";position:absolute;left:50%;top:-1px;transform:translateX(-50%);border:22px solid transparent;border-top-color:var(--cold);border-bottom:0}
 .pair .good img{width:100%;aspect-ratio:1/1;object-fit:cover}
 .pair .good .txt{padding:26px 20px 0}
-.pair .good .a{font-family:var(--display);text-transform:uppercase;font-size:clamp(40px,11vw,64px);line-height:1;color:var(--deep);max-width:12ch}
+.pair .good .a{font-family:var(--display);font-weight:600;font-size:clamp(38px,10vw,60px);line-height:1.02;letter-spacing:-.02em;color:var(--deep);max-width:12ch}
 .pair .good p{margin-top:12px;font-size:20px;max-width:34ch}
-.pair .good .amount{display:block;margin-top:16px;font-family:var(--display);font-size:clamp(56px,15vw,96px);line-height:.95;color:var(--brand)}
+.pair .good .amount{display:block;margin-top:16px;font-family:var(--stamp);font-size:clamp(56px,15vw,96px);line-height:.95;color:var(--brand)}
 .pair .good .small{font-size:17px;color:var(--ink-soft);margin-top:8px}
 
 /* leef langer: één beeld, één titel */
@@ -117,20 +121,25 @@ a{color:inherit}
 .rx{background:var(--sky);padding:56px 0 60px}
 .rx h2{font-size:clamp(44px,11vw,84px);color:var(--deep);max-width:13ch}
 .rx-grid{display:grid;gap:0;margin-top:26px;align-items:center}
-.doc{position:relative;margin:0;border-radius:14px 14px 0 0;overflow:hidden;max-width:520px}
+.doc{position:relative;margin:0;border-radius:14px;overflow:hidden;max-width:520px}
 .doc img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 30%}
-.doc figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 8px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(13,26,54,.7))}
-.script{position:relative;background:#fff;color:var(--ink);padding:26px 22px 24px;max-width:520px;border-radius:0 0 14px 14px;box-shadow:0 18px 36px -18px rgba(28,60,140,.45);font-size:19px}
-.script .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid var(--sky);padding-bottom:10px}
-.script .who{font-weight:700;color:var(--deep);font-size:20px}
-.script .kind{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.script .rpx{margin-top:14px;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:30px;line-height:1;color:var(--deep)}
-.script .drug{margin-top:6px;font-size:24px;line-height:1.25;font-weight:700;color:var(--deep)}
-.script ul{list-style:none;margin-top:12px;display:grid;gap:8px}
-.script li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start}
-.script li svg{width:20px;height:20px;margin-top:4px;color:var(--brand)}
-.script .dose{margin-top:16px;padding-top:12px;border-top:1px dashed var(--cold-deep);font-size:18px}
-.script .sign{margin-top:14px;text-align:right;font-family:"Nunito",var(--text);font-style:italic;font-weight:800;font-size:26px;color:var(--mark-blue);transform:rotate(-4deg)}
+.doc figcaption{position:absolute;left:0;right:0;top:0;padding:8px 14px 22px;font-size:13px;color:#fff;background:linear-gradient(rgba(13,26,54,.7),transparent)}
+.script{position:relative;margin:-26px 10px 0;z-index:1;max-width:500px;padding:30px 24px 26px 30px;color:#1d3a8a;transform:rotate(-2deg);
+  background:repeating-linear-gradient(transparent 0 33px,rgba(74,114,208,.22) 33px 34px) 0 92px/100% calc(100% - 92px) no-repeat,#fffef6;
+  box-shadow:0 1px 0 rgba(0,0,0,.04),0 22px 34px -16px rgba(13,26,54,.5);border-radius:3px}
+.script::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:radial-gradient(circle at 7px 0,var(--sky) 5px,transparent 5.5px) 0 0/14px 10px repeat-x}
+.script .head{border-bottom:2px solid rgba(74,114,208,.35);padding-bottom:8px;font-family:var(--text)}
+.script .who{display:block;font-weight:700;font-size:18px;color:var(--ink)}
+.script .kind{display:block;font-size:14px;color:var(--ink-soft)}
+.script .rpx{margin-top:12px;font-family:Georgia,serif;font-style:italic;font-size:30px;line-height:1;color:var(--ink)}
+.script .hw{font-family:var(--hand);font-weight:500;font-size:27px;line-height:34px}
+.script .drug{font-weight:700;font-size:31px;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.script ul{list-style:none;margin-top:0}
+.script li::before{content:"– "}
+.script .dose{margin-top:0}
+.script .foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:6px}
+.script .sign{font-family:var(--hand);font-weight:700;font-size:38px;line-height:1;transform:rotate(-6deg);color:#183783}
+.script .mark{--s:104px;transform:rotate(8deg);opacity:.9;box-shadow:0 0 0 3px rgba(47,85,151,.45)}
 
 /* zo doen we dat */
 .how{padding:60px 0}
@@ -142,7 +151,7 @@ a{color:inherit}
 .claude .mark{position:absolute;right:12px;top:12px;--s:112px;transform:rotate(-6deg)}
 .steps{list-style:none;display:grid;gap:18px;counter-reset:s}
 .steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start}
-.steps li::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--deep);color:#fff;font-family:var(--display);font-size:30px}
+.steps li::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--deep);color:#fff;font-family:var(--stamp);font-size:30px}
 .steps h3{font-size:24px;line-height:1.25;color:var(--deep)}
 .steps p{margin-top:4px;font-size:19px}
 .plan{margin-top:30px}
@@ -154,7 +163,7 @@ a{color:inherit}
 .proof-grid{display:grid;gap:18px}
 .box{background:var(--paper);border-radius:12px;padding:24px 20px}
 .rating{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.rating .score{font-family:var(--display);font-size:72px;line-height:1;color:var(--deep)}
+.rating .score{font-family:var(--stamp);font-size:72px;line-height:1;color:var(--deep)}
 .rating .s{color:#a86f00;font-size:30px;letter-spacing:2px}
 .rating .meta{font-size:19px;color:var(--ink-soft)}
 .box.ph-l{background:transparent;border:3px dashed var(--brand);font-style:italic;font-size:20px;color:var(--ink)}
@@ -162,6 +171,7 @@ a{color:inherit}
 /* slot */
 .end{background:var(--deep);color:#fff;padding:60px 0 44px;text-align:center}
 .end h2{font-size:clamp(44px,11vw,92px);max-width:14ch;margin:0 auto}
+.end h2 em{color:#ffe9b8}
 .end .call{max-width:440px;margin:30px auto 0}
 .form{max-width:520px;margin:34px auto 0;background:var(--paper);color:var(--ink);border-radius:14px;padding:26px 22px;text-align:left}
 .form h3{font-size:24px;line-height:1.25;color:var(--deep)}
@@ -191,9 +201,8 @@ a{color:inherit}
   .pair .bad{padding:56px 40px}
   .pair .good .txt{padding:30px 40px 0}
   .rx-grid{grid-template-columns:1fr 1fr;max-width:1040px}
-  .doc{border-radius:14px 0 0 14px;max-width:none;height:100%}
-  .doc img{height:100%}
-  .script{border-radius:0 14px 14px 0;max-width:none;padding:34px 34px 30px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+  .doc{border-radius:14px}
+  .script{margin:40px 0 0 -48px;max-width:none;padding:34px 34px 28px 40px}
   .life img{aspect-ratio:auto;height:min(76vh,720px);min-height:520px;object-position:50% 22%}
   .life h2{left:max(40px,calc((100vw - 1200px)/2 + 40px));bottom:56px}
   .proof-grid{grid-template-columns:1fr 1fr}
@@ -237,7 +246,7 @@ a{color:inherit}
     <span class="stamp">Badkamergevoel</span>
   </figure>
   <div class="hero-text">
-    <h1 id="h1" class="display">Blijf langer jong in uw eigen badkamer.</h1>
+    <h1 id="h1" class="display">Blijf langer <em>jong</em> in uw eigen badkamer.</h1>
     <p class="promise"><mark>In één dag</mark> van een gevaarlijke badkuip naar een veilige inloopdouche of douchecabine.</p>
     <ul class="feats"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Lage instap</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Onderhoudsvriendelijk</li></ul>
     <a class="call light" href="tel:+32493333988"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>0493 33 39 88</a>
@@ -274,13 +283,13 @@ a{color:inherit}
         <img src="../img/dokter-ai.webp" alt="Dokter AI, een gegenereerde huisarts met naamkaartje, reikt een voorschrift aan" loading="lazy" width="1024" height="1024">
         <figcaption>Dokter AI is een gegenereerd personage, geen echte arts.</figcaption>
       </figure>
-      <div class="script">
-        <div class="head"><span class="who">Dokter AI</span><span class="kind">Voorschrift</span></div>
+      <div class="script" role="img" aria-label="Handgeschreven voorschrift van Dokter AI: inloopdouche van CK Service met lage instap, antislip vloer en handgreep, opklapbaar zitje, siliconenvrij en volledig in glas voor minder kalk, in één dag geplaatst, premie geregeld door CK Service. Gebruik: elke dag, om langer thuis te blijven wonen.">
+        <div class="head"><span class="who">Dokter AI · huisarts</span><span class="kind">Voorschrift</span></div>
         <p class="rpx">R/</p>
-        <p class="drug">Inloopdouche van CK Service</p>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Lage instap: geen sprong over de rand</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Antislip vloer en een handgreep</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Opklapbare zitstoel</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Siliconenvrij, volledig in glas: minder kalkaanslag</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>In één dag geplaatst</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Premieaanvraag: dat regelt CK Service</span></li></ul>
-        <p class="dose"><b>Gebruik:</b> elke dag. Om langer thuis te blijven wonen.</p>
-        <p class="sign">Dokter AI</p>
+        <p class="hw drug">Inloopdouche van CK Service</p>
+        <ul><li class="hw">lage instap: geen sprong over de rand</li><li class="hw">antislip vloer + handgreep</li><li class="hw">opklapbaar zitje</li><li class="hw">siliconenvrij, alles in glas: minder kalk</li><li class="hw">in één dag geplaatst</li><li class="hw">premie? regelt CK Service</li></ul>
+        <p class="hw dose">Elke dag gebruiken. Om langer thuis te blijven wonen.</p>
+        <div class="foot"><span class="mark" aria-hidden="true"><span class="one">1</span><span class="txt"><span class="l1">Veilig douchen</span><span class="l2"><span>in</span><span>dag</span></span></span></span><p class="sign">Dr. AI</p></div>
       </div>
     </div>
   </div>
@@ -344,7 +353,7 @@ a{color:inherit}
 
 <section class="end" id="contact" aria-labelledby="h-end">
   <div class="wrap">
-    <h2 id="h-end" class="display">Zo duurt jong nog een leven lang!</h2>
+    <h2 id="h-end" class="display">Zo duurt <em>jong</em> nog een leven lang!</h2>
     <a class="call light" href="tel:+32493333988"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>0493 33 39 88</a>
     <form class="form" data-mockup="true" onsubmit="return false" aria-labelledby="h-form">
       <h3 id="h-form">Liever teruggebeld? Laat uw gegevens achter.</h3>
@@ -370,7 +379,7 @@ a{color:inherit}
       <span><strong>CK Service</strong> · Geel</span>
       <span>Werkgebied: provincie Antwerpen, Limburg en Vlaams-Brabant</span>
     </div>
-    <a class="varlink" href="varianten.html">ontwerpvarianten</a>
+    <a class="varlink" href="varianten.html">ontwerpvarianten</a> <a class="varlink" href="vsl.html">VSL-storyboard</a>
   </div>
 </section>
 
