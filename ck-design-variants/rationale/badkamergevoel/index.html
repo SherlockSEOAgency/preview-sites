@@ -5,6 +5,7 @@
   AUDIENCE: 65-plussers die thuis wonen en hun kinderen (40-60) die zich zorgen maken. Grote letters (body 19-20px), korte zinnen, telefoonnummer altijd binnen duimbereik (vaste belbalk op gsm), warm en niet betuttelend.
   STORY: de reeks zet telkens een onveilig/verkeerd gevoel tegenover het goede gevoel. Op de pagina wordt elk ad-beeld een paar: het "slechte" beeld klein, koud, ontkleurd en scheef (het wankelt), het "goede" beeld groot, recht, in volle warme kleur. Het verschil lees je zonder één label. Vraag bij het koude beeld, uitspraak bij het warme — zoals in de ads.
   BADKAMERGEVOEL: bewust NIET de H1. Het is de campagnenaam die de ad als afzender draagt; de bezoeker zoekt geen woord maar een antwoord. De H1 kiest de "jong"-invalshoek van de klant ("Blijf langer jong in uw eigen badkamer."); de harde belofte "in één dag" staat er direct onder, gemarkeerd. Varianten: varianten.html. "Badkamergevoel" staat als herkenbare stempel op de openingsfoto (zelfde afzender als de ad = herkenning, "ik ben juist") en sluit de pagina af als signatuur — zo bouwt herhaling het merkwoord, zonder dat het de plaats van de boodschap inneemt.
+  VERHAALLIJN (ronde 4, één boodschap per scherm): verlangen (langer jong, in één dag) → het probleem (de hoge rand) → de ernst (bijna één op vier valt) → de oplossing als voorschrift (Dokter AI, open als AI-personage; inhoud = de echte productkenmerken uit de intake) → de beloning (terras: langer thuis leven) → het geld (premie: niet oud, wel slim) → hoe (Claude, drie stappen, afspraak) → bewijs → actie. Het oude scherm "geld door de afvoer / duurzaam en betaalbaar" is eruit: het zei hetzelfde als het premiescherm.
   CONTRAST: koud = grijsblauwe band, zwart-wit beeld, gekanteld, kleiner; warm = crèmekleurige band, volle kleur, recht, groter. Op gsm van boven (koud) naar onder (warm), op desktop van links naar rechts.
 -->
 <html lang="nl">
@@ -112,7 +113,24 @@ a{color:inherit}
 .fact-grid{display:grid;gap:22px;align-items:center}
 .fact .line{font-size:25px;line-height:1.35;font-weight:700;color:var(--deep);max-width:30ch}
 .fact .src{margin-top:8px;font-size:15px;color:var(--ink-soft)}
-.ph-s{border:2px dashed var(--cold-deep);border-radius:10px;padding:14px 16px;font-style:italic;font-size:15px;line-height:1.4;color:var(--ink-soft);max-width:420px}
+/* het voorschrift van Dokter AI */
+.rx{background:var(--sky);padding:56px 0 60px}
+.rx h2{font-size:clamp(44px,11vw,84px);color:var(--deep);max-width:13ch}
+.rx-grid{display:grid;gap:0;margin-top:26px;align-items:center}
+.doc{position:relative;margin:0;border-radius:14px 14px 0 0;overflow:hidden;max-width:520px}
+.doc img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 30%}
+.doc figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 8px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(13,26,54,.7))}
+.script{position:relative;background:#fff;color:var(--ink);padding:26px 22px 24px;max-width:520px;border-radius:0 0 14px 14px;box-shadow:0 18px 36px -18px rgba(28,60,140,.45);font-size:19px}
+.script .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid var(--sky);padding-bottom:10px}
+.script .who{font-weight:700;color:var(--deep);font-size:20px}
+.script .kind{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.script .rpx{margin-top:14px;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:30px;line-height:1;color:var(--deep)}
+.script .drug{margin-top:6px;font-size:24px;line-height:1.25;font-weight:700;color:var(--deep)}
+.script ul{list-style:none;margin-top:12px;display:grid;gap:8px}
+.script li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start}
+.script li svg{width:20px;height:20px;margin-top:4px;color:var(--brand)}
+.script .dose{margin-top:16px;padding-top:12px;border-top:1px dashed var(--cold-deep);font-size:18px}
+.script .sign{margin-top:14px;text-align:right;font-family:"Nunito",var(--text);font-style:italic;font-weight:800;font-size:26px;color:var(--mark-blue);transform:rotate(-4deg)}
 
 /* zo doen we dat */
 .how{padding:60px 0}
@@ -172,7 +190,10 @@ a{color:inherit}
   .hero-photo img{aspect-ratio:16/10}
   .pair .bad{padding:56px 40px}
   .pair .good .txt{padding:30px 40px 0}
-  .fact-grid{grid-template-columns:1.4fr 1fr}
+  .rx-grid{grid-template-columns:1fr 1fr;max-width:1040px}
+  .doc{border-radius:14px 0 0 14px;max-width:none;height:100%}
+  .doc img{height:100%}
+  .script{border-radius:0 14px 14px 0;max-width:none;padding:34px 34px 30px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
   .life img{aspect-ratio:auto;height:min(76vh,720px);min-height:520px;object-position:50% 22%}
   .life h2{left:max(40px,calc((100vw - 1200px)/2 + 40px));bottom:56px}
   .proof-grid{grid-template-columns:1fr 1fr}
@@ -224,8 +245,7 @@ a{color:inherit}
   </div>
 </section>
 
-<section aria-label="Van badkuip naar inloopdouche">
-  <div class="pair">
+<section class="pair" aria-label="De hoge badrand">
     <div class="bad">
       <figure><img src="../img/kit-017.jpg" alt="Blote voeten balanceren op de hoge, gladde rand van een badkuip" loading="lazy" width="1021" height="1023"></figure>
       <p class="q">Elke dag over die hoge rand?</p>
@@ -237,23 +257,42 @@ a{color:inherit}
         <p>Geen sprong over de rand. Ook als u alleen thuis bent.</p>
       </div>
     </div>
-  </div>
+</section>
 
-  <div class="pair">
-    <div class="bad">
-      <figure><img src="../img/kit-010.jpg" alt="Een briefje van 500 euro spoelt weg in een doucheputje" loading="lazy" width="990" height="989"></figure>
-      <p class="q">Geld door de afvoer?</p>
-    </div>
-    <div class="good">
-      <img src="../img/kit-003.jpg" alt="Een vrouw in badjas lacht in haar badkamer met inloopdouche" loading="lazy" width="1023" height="1025">
-      <div class="txt">
-        <p class="a">Duurzaam en betaalbaar.</p>
-        <p>Om langer thuis te blijven wonen.</p>
+<section class="fact" aria-label="Vallen bij 65-plussers">
+  <div class="wrap">
+    <p class="line">Bijna één op vier 65-plussers in België viel het afgelopen jaar.</p>
+    <p class="src">Bron: Sciensano, Gezondheidsenquête 2023-2024</p>
+  </div>
+</section>
+
+<section class="rx" aria-labelledby="h-rx">
+  <div class="wrap">
+    <h2 id="h-rx" class="display">Wat de dokter voorschrijft</h2>
+    <div class="rx-grid">
+      <figure class="doc">
+        <img src="../img/dokter-ai.webp" alt="Dokter AI, een gegenereerde huisarts met naamkaartje, reikt een voorschrift aan" loading="lazy" width="1024" height="1024">
+        <figcaption>Dokter AI is een gegenereerd personage, geen echte arts.</figcaption>
+      </figure>
+      <div class="script">
+        <div class="head"><span class="who">Dokter AI</span><span class="kind">Voorschrift</span></div>
+        <p class="rpx">R/</p>
+        <p class="drug">Inloopdouche van CK Service</p>
+        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Lage instap: geen sprong over de rand</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Antislip vloer en een handgreep</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Opklapbare zitstoel</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Siliconenvrij, volledig in glas: minder kalkaanslag</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>In één dag geplaatst</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Premieaanvraag: dat regelt CK Service</span></li></ul>
+        <p class="dose"><b>Gebruik:</b> elke dag. Om langer thuis te blijven wonen.</p>
+        <p class="sign">Dokter AI</p>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="pair">
+<figure class="life" aria-labelledby="h-life">
+  <img src="../img/terras-munthee.webp" alt="Een ouder koppel lacht samen op hun zonnige terras met een glas muntthee" loading="lazy" width="1264" height="848">
+  <h2 id="h-life" class="display">Leef langer, veilig thuis en comfortabel.</h2>
+  <figcaption>beeld ter illustratie</figcaption>
+</figure>
+
+<section class="pair" aria-label="De aanpassingspremie">
     <div class="bad">
       <figure><img src="../img/kit-006.jpg" alt="Een bootje gevouwen uit een briefje van 500 euro drijft naar een doucheputje" loading="lazy" width="846" height="846"></figure>
       <p class="q">Laat u uw premie wegdrijven?</p>
@@ -267,23 +306,6 @@ a{color:inherit}
         <p class="small">Er geldt een inkomensgrens.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<figure class="life" aria-labelledby="h-life">
-  <img src="../img/terras-munthee.webp" alt="Een ouder koppel lacht samen op hun zonnige terras met een glas muntthee" loading="lazy" width="1264" height="848">
-  <h2 id="h-life" class="display">Leef langer, veilig thuis en comfortabel.</h2>
-  <figcaption>beeld ter illustratie</figcaption>
-</figure>
-
-<section class="fact" aria-label="Vallen bij 65-plussers">
-  <div class="wrap fact-grid">
-    <div>
-      <p class="line">Bijna één op vier 65-plussers in België viel het afgelopen jaar.</p>
-      <p class="src">Bron: Sciensano, Gezondheidsenquête 2023-2024</p>
-    </div>
-    <p class="ph-s">[PLAATSHOUDER: uitspraak van een arts of geriater over vallen in de badkamer, met naam en functie — te zoeken]</p>
-  </div>
 </section>
 
 <section class="how" aria-labelledby="h-how">
