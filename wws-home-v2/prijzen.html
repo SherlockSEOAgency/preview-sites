@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prijzen — Watson Web Studio</title>
+<meta name="description" content="Een website voor je zaak vanaf €9 per maand. Gratis proberen, vaste prijs, maandelijks opzegbaar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg2:#f6f2f8;--ink:#1f1027;--soft:#4b3f52;--mute:#7a7080;--panel:#fff;--edge:#ddd3e2;--accent:#69b768;--on-accent:#000;--accent2:#662c82;--line:rgba(102,44,130,.14);--display:"Lato",system-ui,sans-serif;--body:"Open Sans",system-ui,sans-serif;--radius:999px;--card:22px;--max:1240px;--gut:clamp(16px,4vw,44px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.display{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font:700 16px/1 var(--display);text-decoration:none;padding:16px 26px;border-radius:var(--radius);border:0;cursor:pointer;transition:transform .15s}
+.btn-go{background:var(--accent);color:var(--on-accent)}
+.btn-go:hover{transform:translateY(-1px)}
+.btn-line{background:transparent;color:var(--accent2);border:2px solid var(--accent2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .watson-mark{width:44px;height:44px}
+.brand span{font:900 21px/1 var(--display);color:var(--accent);letter-spacing:-.01em}
+.brand span b{display:block;font-weight:700;font-size:13px;color:var(--accent2);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.bar .btn{padding:12px 20px;font-size:14px}
+.intro{padding:clamp(48px,7vw,96px) 0 clamp(28px,4vw,48px);background:radial-gradient(1000px 500px at 15% 20%,var(--bg2),transparent 70%)}
+.intro h1{font-size:clamp(36px,5vw,68px);max-width:14em}
+.intro h1 em{font-style:normal;color:var(--accent2)}
+.intro p{font-size:clamp(17px,1.4vw,20px);color:var(--soft);max-width:34em;margin-top:18px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:clamp(48px,7vw,96px)}
+.plan{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--edge);border-radius:var(--card);padding:30px 26px}
+.plan.pick{border:3px solid var(--accent2);box-shadow:0 30px 60px -40px rgba(102,44,130,.6)}
+.tag{position:absolute;top:-14px;left:26px;background:var(--accent2);color:#fff;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:var(--radius)}
+.plan h2{font:900 24px/1.2 var(--display)}
+.plan .for{color:var(--mute);font-size:15px;margin-top:4px;min-height:3em}
+.price{display:flex;align-items:baseline;gap:6px;margin:18px 0 4px}
+.price b{font:900 54px/1 var(--display);letter-spacing:-.03em}
+.price span{color:var(--soft);font-size:15px}
+.note{font-size:13px;color:var(--mute);min-height:1.6em}
+.plan ul{list-style:none;margin:20px 0 26px;flex:1}
+.plan li{display:flex;gap:12px;padding:8px 0;font-size:15px;color:var(--soft);border-top:1px solid var(--line)}
+.plan li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;background:var(--accent);color:#000;font:900 12px/22px var(--body);text-align:center;margin-top:2px}
+.plan .btn{width:100%}
+section{padding:clamp(48px,7vw,96px) 0}
+.alt{background:var(--bg2)}
+.kicker{font:700 13px/1 var(--display);text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:16px}
+h2.display{font-size:clamp(28px,3.6vw,46px);max-width:18em}
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+.extra{background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:20px}
+.extra b{display:block;font:900 18px/1.3 var(--display)}
+.extra span{display:block;color:var(--soft);font-size:15px;margin-top:4px}
+.extra em{display:block;font:700 20px/1 var(--display);font-style:normal;color:var(--accent2);margin-top:14px}
+.faq{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
+.faq h3{font:900 19px/1.3 var(--display);margin-bottom:8px}
+.faq p{color:var(--soft);font-size:15px}
+.grow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.grow p{color:var(--soft);max-width:36em;margin-top:12px}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--mute)}
+@media (max-width:900px){.plans,.faq{grid-template-columns:1fr}.plan .for{min-height:0}.plans{gap:28px}}
+@media (max-width:560px){body{font-size:16px}.brand span{font-size:17px}.brand span b{display:none}.brand .watson-mark{width:38px;height:38px}.bar .btn{padding:10px 14px;font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="Watson Web Studio"><svg class="watson-mark" viewBox="0 0 211 211"  aria-hidden="true"><rect width="211" height="211" fill="var(--mark-bg)"/><path fill="var(--accent2)" d="m 105.554,37.415923 c -44.1155,0 -82.8508,7.957 -105.554,19.892 0,1.291 0,2.258 0,3.011 0,0 0,0.43 0,1.183 0,0.752 0,1.72 0,3.011 22.7032,12.043 61.4385,19.892 105.554,19.892 44.115,0 82.85,-7.957 105.554,-19.892 v -3.011 -1.183 -3.011 c -22.704,-11.935 -61.547,-19.892 -105.554,-19.892 z"/><path fill="var(--accent2)" d="m 9.68383,43.974923 c 23.24117,-9.463 57.56497,-15.376 95.76217,-15.376 39.704,0 75.104,6.451 98.345,16.451 2.475,-0.538 4.842,-1.075 7.209,-1.613 v -130.86 H 0 c 0,0 0,102.473 0,129.462 3.12035,0.646 6.34829,1.291 9.68383,1.936 z"/><path fill="var(--accent2)" d="m 52.6155,138.27592 c 22.8191,0 41.3177,-18.486 41.3177,-41.289997 0,-22.804 -18.4986,-41.291 -41.3177,-41.291 -22.8191,0 -41.3177,18.487 -41.3177,41.291 0,22.803997 18.4986,41.289997 41.3177,41.289997 z"/><path fill="var(--accent)" d="m 52.6155,130.21092 c 18.3623,0 33.2478,-14.875 33.2478,-33.224997 0,-18.35 -14.8855,-33.226 -33.2478,-33.226 -18.3623,0 -33.2478,14.876 -33.2478,33.226 0,18.349997 14.8855,33.224997 33.2478,33.224997 z"/><path fill="var(--accent2)" d="m 130.947,105.80292 c 0,0 28.621,-29.892997 54.767,1.398 0,0 -15.494,-7.097 -27.437,-7.097 -11.836,0 -27.33,5.699 -27.33,5.699 z"/><path fill="var(--accent2)" d="m 25.2856,105.80292 c 0,0 28.6211,-29.892997 54.7675,1.398 0,0 -15.4942,-7.097 -27.4376,-7.097 -11.8358,0 -27.3299,5.699 -27.3299,5.699 z"/><path fill="var(--accent2)" d="m 105.554,151.17892 c -12.912,0 -23.349,10.43 -23.349,23.334 0,12.903 10.437,23.333 23.349,23.333 12.912,0 23.349,-10.43 23.349,-23.333 0,-12.796 -10.437,-23.334 -23.349,-23.334 z m 0,41.721 c -10.1144,0 -18.2919,-8.172 -18.2919,-18.28 0,-10.107 8.1775,-18.28 18.2919,-18.28 10.114,0 18.291,8.173 18.291,18.28 0,10.108 -8.285,18.28 -18.291,18.28 z"/><path fill="var(--accent2)" d="M 19.3677,99.888923 H 11.2978 V 212.57692 h 8.0699 z"/><path fill="var(--accent)" d="m 203.791,45.049923 c -23.241,-10 -58.641,-16.452 -98.345,-16.452 -38.3047,0 -72.6286,6.022 -95.76217,15.377 -3.33554,-0.645 -6.56348,-1.29 -9.68383,-1.936 v 15.269 c 22.7032,-12.043 61.4385,-19.892 105.554,-19.892 44.115,0 82.85,7.957 105.554,19.892 v -13.871 c -2.368,0.538 -4.842,1.075 -7.317,1.613 z"/><path fill="var(--accent2)" d="m 0,193.22192 19.3677,19.355 H 0 Z"/><path fill="var(--accent2)" d="m 211,193.22192 -19.368,19.355 H 211 Z"/><path fill="var(--accent2)" d="m 148.593,144.61992 c -8.07,2.581 -9.469,19.785 -4.411,12.688 6.671,-9.355 21.196,2.258 14.095,13.979 -5.057,8.387 -20.229,3.763 -24.963,-4.947 -3.013,-5.698 -7.532,-13.225 -15.064,-17.849 -0.107,-0.108 -0.322,-0.215 -0.538,-0.323 -1.721,-1.075 -3.766,-1.72 -6.025,-1.72 -2.367,0 -4.519,0.645 -6.241,1.828 -1.829,-1.183 -3.981,-1.828 -6.2405,-1.828 -2.4748,0 -4.8419,0.86 -6.7787,2.151 -7.3167,4.623 -11.7282,12.15 -14.7409,17.741 -4.6268,8.71 -19.7981,13.334 -24.9628,4.947 -7.2091,-11.828 7.4243,-23.334 14.0954,-13.979 5.0571,7.205 3.6583,-10 -4.4116,-12.688 -10.3294,-3.333 -30.6654,5.054 -26.6843,26.667 3.0127,16.236 18.0765,20.537 28.9439,20.537 13.8801,0 29.3743,-14.301 40.6725,-14.408 11.297,0 26.899,14.408 40.672,14.408 10.867,0 25.931,-4.301 28.944,-20.537 4.304,-21.506 -16.033,-30 -26.362,-26.667 z m -57.027,4.839 c -0.1076,0 -0.1076,0 0,0 -0.1076,0 -0.1076,0 0,0 z"/></svg><span>Watson Web Studio<b>Web design &amp; development</b></span></a>
+    <a class="btn btn-go" href="/">Begin gratis</a>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <div class="wrap">
+      <h1 class="display">Een website voor je zaak. <em>Vanaf €9 per maand.</em></h1>
+      <p>Watson bouwt je site uit een kort gesprek. Gratis proberen, daarna een vaste prijs: ook in het tweede jaar, zonder lokprijs die verdubbelt. Maandelijks opzegbaar.</p>
+    </div>
+  </div>
+
+  <div class="wrap plans">
+    <article class="plan">
+      <h2>Proberen</h2>
+      <p class="for">Kijk eerst wat Watson voor jouw zaak maakt.</p>
+      <div class="price"><b>€0</b></div>
+      <p class="note">Houden? Reserveer je site voor €1.</p>
+      <ul>
+        <li>Watson bouwt je site uit een gesprek</li>
+        <li>Aanpassen door te zeggen wat je wil</li>
+        <li>Bekijken op een Watson-adres</li>
+      </ul>
+      <a class="btn btn-line" href="/">Begin gratis</a>
+    </article>
+
+    <article class="plan">
+      <h2>Start</h2>
+      <p class="for">Je site online, op je eigen naam.</p>
+      <div class="price"><b>€9</b><span>per maand</span></div>
+      <p class="note">excl. btw</p>
+      <ul>
+        <li>Je eigen domein, inbegrepen zolang je klant bent</li>
+        <li>Geen Watson-badge op je site</li>
+        <li>Tot tien wijzigingen per maand via Watson</li>
+        <li>Hosting inbegrepen</li>
+      </ul>
+      <a class="btn btn-line" href="/">Kies Start</a>
+    </article>
+
+    <article class="plan pick">
+      <span class="tag">Aanbevolen</span>
+      <h2>Zaak</h2>
+      <p class="for">Voor wie klanten via de site wil binnenhalen.</p>
+      <div class="price"><b>€19</b><span>per maand</span></div>
+      <p class="note">excl. btw</p>
+      <ul>
+        <li>Alles uit Start</li>
+        <li>Wijzigen zonder maandlimiet</li>
+        <li>Contactformulier, aanvragen in je mailbox</li>
+        <li>Een mailbox op je eigen domein</li>
+        <li>Google-bedrijfsprofiel gekoppeld</li>
+        <li>Bezoekersstatistieken</li>
+      </ul>
+      <a class="btn btn-go" href="/">Kies Zaak</a>
+    </article>
+  </div>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="kicker">Extra's</p>
+      <h2 class="display">Alleen wat je nodig hebt, wanneer je het nodig hebt.</h2>
+      <div class="extras">
+        <div class="extra"><b>Extra mailbox</b><span>Nog een adres op je domein.</span><em>€2 / maand</em></div>
+        <div class="extra"><b>Extra taal</b><span>Watson vertaalt en houdt bij.</span><em>€5 / maand</em></div>
+        <div class="extra"><b>Webshop of boekingen</b><span>Verkopen of laten reserveren.</span><em>€10 / maand</em></div>
+        <div class="extra"><b>Logo</b><span>Gemaakt en op je site gezet.</span><em>€49 eenmalig</em></div>
+        <div class="extra"><b>Extra pagina</b><span>Voor een dienst, actie of campagne.</span><em>€29 eenmalig</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Goed om te weten</p>
+      <div class="faq">
+        <div><h3>Wat als ik stop?</h3><p>Je zegt maandelijks op. Je teksten en foto's blijven van jou, je neemt ze mee.</p></div>
+        <div><h3>Wat is een wijziging?</h3><p>Eén ding dat je Watson vraagt: een tekst, een foto, nieuwe openingsuren. In Zaak tel je niet.</p></div>
+        <div><h3>Waarom geen lokprijs?</h3><p>Veel aanbieders zijn het eerste jaar goedkoop en daarna dubbel zo duur. Bij ons betaal je elk jaar hetzelfde.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap grow">
+      <div>
+        <h2 class="display">Wil je dat je zaak echt groeit?</h2>
+        <p>Gevonden worden in Google, advertenties die renderen, metingen die kloppen: dat doen de specialisten van Sherlock voor je, op maat.</p>
+      </div>
+      <a class="btn btn-line" href="https://www.sherlockseo.com">Naar Sherlock</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Watson Web Studio is een merk van Sherlock SEO Agency. Alle prijzen excl. btw.</div></footer>
+</body>
+</html>
