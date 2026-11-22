@@ -58,8 +58,11 @@ h2.display{font-size:clamp(28px,3.6vw,46px);max-width:18em}
 .faq{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
 .faq h3{font:900 19px/1.3 var(--display);margin-bottom:8px}
 .faq p{color:var(--soft);font-size:15px}
-.grow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
-.grow p{color:var(--soft);max-width:36em;margin-top:12px}
+.soon-lede{color:var(--soft);max-width:36em;margin-top:16px}
+.soon{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:32px 0}
+.soon li{background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:20px}
+.soon b{display:block;font:900 18px/1.3 var(--display)}
+.soon span{display:block;color:var(--soft);font-size:15px;margin-top:4px}
 footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--mute)}
 @media (max-width:900px){.plans,.faq{grid-template-columns:1fr}.plan .for{min-height:0}.plans{gap:28px}}
 @media (max-width:560px){body{font-size:16px}.brand span{font-size:17px}.brand span b{display:none}.brand .watson-mark{width:38px;height:38px}.bar .btn{padding:10px 14px;font-size:13px}}
@@ -153,15 +156,20 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(
   </section>
 
   <section class="alt">
-    <div class="wrap grow">
-      <div>
-        <h2 class="display">Wil je dat je zaak echt groeit?</h2>
-        <p>Gevonden worden in Google, advertenties die renderen, metingen die kloppen: dat doen de specialisten van Sherlock voor je, op maat.</p>
-      </div>
-      <a class="btn btn-line" href="https://www.sherlockseo.com">Naar Sherlock</a>
+    <div class="wrap">
+      <p class="kicker">Binnenkort in Watson</p>
+      <h2 class="display">Je site is pas het begin.</h2>
+      <p class="soon-lede">Watson leert er voortdurend bij. Wat nu nog specialistenwerk is, doet hij straks gewoon voor je, op je eigen site. Je kiest het erbij wanneer je het nodig hebt.</p>
+      <ul class="soon">
+        <li><b>Gevonden worden in Google</b><span>Watson zoekt wat je klanten intypen en schrijft de pagina's die daarop antwoorden.</span></li>
+        <li><b>Advertenties</b><span>Een campagne opzetten en bijsturen, binnen het budget dat jij kiest.</span></li>
+        <li><b>Reviews</b><span>Klanten om een review vragen en je helpen antwoorden.</span></li>
+        <li><b>Zien wat werkt</b><span>Hoeveel aanvragen je site oplevert, in gewone taal.</span></li>
+      </ul>
+      <a class="btn btn-go" href="/#wachtlijst">Hou me op de hoogte</a>
     </div>
   </section>
 </main>
-<footer><div class="wrap">Watson Web Studio is een merk van Sherlock SEO Agency. Alle prijzen excl. btw.</div></footer>
+<footer><div class="wrap">Alle prijzen excl. btw.</div></footer>
 </body>
 </html>
