@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Watson Web Studio — Vertel over je zaak, je website staat klaar</title>
+<meta name="description" content="Praat met Watson over je zaak en zie je website verschijnen. Geen offerte, geen weken wachten. Schrijf je in voor de wachtlijst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0b; --ink:#f3f0ea; --soft:#c9c6c0; --mute:#8d8a85;
+  --green:#6BB869; --green-ink:#0b0b0b; --purple:#662483; --paper:#f3f0ea; --paper-ink:#151515;
+  --line:rgba(243,240,234,.14);
+  --display:"Raleway",system-ui,sans-serif; --body:"Open Sans",system-ui,sans-serif;
+  --max:1180px; --gut:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.display{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:800 15px/1 var(--display);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:16px 26px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn-go{background:var(--green);color:var(--green-ink)}
+.btn-go:hover{transform:translateY(-1px);background:#7cc97a}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(11,11,11,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.mark{font:900 18px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;text-decoration:none}
+.mark b{color:var(--green)}
+.bar .btn{padding:12px 18px;font-size:13px}
+
+/* hero */
+.hero{padding:clamp(48px,9vw,110px) 0 clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.tag{display:inline-block;font:700 12px/1 var(--display);text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:22px}
+.hero h1{font-size:clamp(36px,4.5vw,64px)}
+.hero h1 em{font-style:normal;color:var(--green)}
+.lede{font-size:clamp(18px,1.6vw,21px);color:var(--soft);max-width:30em;margin:26px 0 34px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.note{font-size:14px;color:var(--mute);margin-top:18px}
+
+/* demo: conversation → site */
+.demo{position:relative}
+.chat{display:flex;flex-direction:column;gap:10px;margin-bottom:-28px;position:relative;z-index:2;max-width:380px}
+.msg{padding:12px 16px;border-radius:18px;font-size:15px;line-height:1.45;opacity:0;transform:translateY(8px);animation:pop .5s ease forwards}
+.msg small{display:block;font:700 11px/1 var(--display);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;opacity:.75}
+.w{background:var(--purple);color:#fff;border-bottom-left-radius:6px;align-self:flex-start}
+.u{background:#1d1d1d;color:var(--ink);border-bottom-right-radius:6px;align-self:flex-end;max-width:88%}
+.m1{animation-delay:.3s}.m2{animation-delay:1.3s}.m3{animation-delay:2.4s}
+@keyframes pop{to{opacity:1;transform:none}}
+.browser{background:var(--paper);color:var(--paper-ink);border-radius:14px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06);margin-left:clamp(24px,6vw,72px)}
+.chrome{display:flex;gap:6px;align-items:center;padding:11px 14px;background:#e4e0d8}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#c4bfb5}
+.chrome span{margin-left:10px;font-size:12px;color:#6d6a64;background:#f3f0ea;border-radius:6px;padding:4px 10px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site{padding:22px 22px 26px}
+.b{opacity:0;animation:pop .6s ease forwards}
+.s-nav{display:flex;justify-content:space-between;align-items:center;font:800 12px/1 var(--display);text-transform:uppercase;animation-delay:3.2s}
+.s-nav em{font-style:normal;font:600 11px/1 var(--body);text-transform:none;background:#1f5f8b;color:#fff;padding:7px 11px;border-radius:99px}
+.s-hero{margin:18px 0 14px;height:128px;border-radius:10px;background:linear-gradient(135deg,#1f5f8b 0%,#3c8fb8 100%);display:flex;align-items:flex-end;padding:16px;color:#fff;font:900 20px/1.05 var(--display);text-transform:uppercase;animation-delay:3.6s}
+.s-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;animation-delay:4.1s}
+.s-row div{height:54px;border-radius:8px;background:#e4e0d8;padding:9px;font:700 11px/1.2 var(--body);color:#4a4844}
+.s-cta{margin-top:14px;height:38px;border-radius:99px;background:#1f5f8b;width:46%;animation-delay:4.6s;display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px/1 var(--body)}
+.example{position:absolute;right:10px;bottom:-26px;font-size:12px;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){.msg,.b{animation:none;opacity:1;transform:none}}
+
+/* steps */
+section{padding:clamp(64px,9vw,120px) 0}
+.kicker{font:700 12px/1 var(--display);text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:18px}
+h2.display{font-size:clamp(30px,4.2vw,54px);max-width:16em}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:54px;border-top:1px solid var(--line)}
+.step{padding:30px 28px 0 0}
+.step + .step{padding-left:28px;border-left:1px solid var(--line)}
+.step b{display:block;font:900 56px/1 var(--display);color:var(--purple);-webkit-text-stroke:1px #9a4dbb;margin-bottom:18px}
+.step h3{font:800 20px/1.2 var(--display);text-transform:uppercase;margin-bottom:10px}
+.step p{color:var(--soft)}
+
+/* included */
+.incl{background:var(--paper);color:var(--paper-ink)}
+.incl .kicker{color:var(--purple)}
+.incl-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.incl ul{list-style:none;border-top:1px solid rgba(0,0,0,.12)}
+.incl li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.12);font-size:18px}
+.incl li::before{content:"";flex:0 0 22px;height:22px;margin-top:3px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b0b' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.incl li span{color:#5a5752;display:block;font-size:15px;margin-top:2px}
+.more{margin-top:34px;padding:24px 26px;border-radius:14px;background:#e4e0d8;font-size:16px}
+.more a{font-weight:600}
+
+/* waitlist */
+.wl-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.wl-copy p{color:var(--soft);margin-top:22px;max-width:26em}
+.wl-copy ul{list-style:none;margin-top:28px}
+.wl-copy li{padding:10px 0;border-top:1px solid var(--line);color:var(--soft)}
+.wl-copy li strong{color:var(--ink)}
+form{background:#151515;border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3.4vw,38px)}
+.f{margin-bottom:18px}
+.f label,.f legend{display:block;font:600 14px/1.3 var(--body);margin-bottom:8px}
+.f label span,.f legend span{color:var(--mute);font-weight:400}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input[type=text],input[type=email],textarea,select{width:100%;font:400 16px/1.4 var(--body);color:var(--ink);background:#0b0b0b;border:1px solid #2c2c2c;border-radius:10px;padding:13px 14px}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(107,184,105,.25)}
+fieldset{border:0}
+.pref{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pref label{margin:0;display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:10px;border:1px solid #2c2c2c;border-radius:10px;cursor:pointer;font:600 14px/1.25 var(--body);background:#0b0b0b}
+.pref input{position:absolute;opacity:0;pointer-events:none}
+.pref input:checked + label{border-color:var(--green);background:rgba(107,184,105,.12);color:#fff}
+.pref input:focus-visible + label{outline:3px solid var(--green);outline-offset:2px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--soft);margin:6px 0 22px}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--green);flex:0 0 auto}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.err{color:#ff8f7a;font-size:13px;margin-top:6px;min-height:0}
+form .btn{width:100%;justify-content:center;padding:18px}
+.status{margin-top:16px;font-size:15px}
+.done{display:none;text-align:left}
+.done h3{font:900 30px/1.05 var(--display);text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.done p{color:var(--soft)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);font-size:14px}
+.foot{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
+
+/* mobile */
+@media (max-width:900px){
+  .hero-grid,.incl-grid,.wl-grid{grid-template-columns:1fr}
+  .demo{max-width:520px}
+  .steps{grid-template-columns:1fr;border-top:0}
+  .step,.step + .step{padding:26px 0;border-left:0;border-top:1px solid var(--line)}
+  .step b{font-size:44px;margin-bottom:12px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .bar .btn{padding:10px 14px;font-size:12px}
+  .hide-s{display:none}
+  .mark{font-size:15px;white-space:nowrap}
+  .cta-row .btn{width:100%;justify-content:center}
+  .browser{margin-left:16px}
+  .chat{max-width:92%}
+  .two,.pref{grid-template-columns:1fr}
+  .pref label{justify-content:flex-start;text-align:left;min-height:48px;padding:12px 14px}
+  .example{position:static;display:block;margin-top:10px;text-align:right}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top">Watson <b>Web Studio</b></a>
+    <a class="btn btn-go" href="#wachtlijst"><span class="hide-s">Op de </span>wachtlijst</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="tag">Binnenkort open</div>
+        <h1 class="display">Vertel over je zaak. <em>Watson zet je website klaar.</em></h1>
+        <p class="lede">Geen offertes, geen weken wachten. Je vertelt Watson wat je doet, en je website verschijnt terwijl je praat. Klaar? Dan staat hij online.</p>
+        <div class="cta-row">
+          <a class="btn btn-go" href="#wachtlijst">Zet me op de wachtlijst</a>
+          <a class="btn btn-ghost" href="#hoe">Hoe het werkt</a>
+        </div>
+        <p class="note">We openen in fases. Wie op de wachtlijst staat, mag als eerste.</p>
+      </div>
+
+      <div class="demo" aria-label="Voorbeeld van een gesprek met Watson en de website die eruit volgt">
+        <div class="chat">
+          <div class="msg w m1"><small>Watson</small>Dag! Wat doe je, en voor wie?</div>
+          <div class="msg u m2">Ik ben loodgieter in Gent. Vooral lekken en nieuwe badkamers.</div>
+          <div class="msg w m3"><small>Watson</small>Duidelijk. Kijk eens rechts: zo zou je site eruitzien.</div>
+        </div>
+        <div class="browser" aria-hidden="true">
+          <div class="chrome"><i></i><i></i><i></i><span>jouwzaak.be</span></div>
+          <div class="site">
+            <div class="b s-nav">Loodgieter Gent <em>Bel nu</em></div>
+            <div class="b s-hero">Lek? Nieuwe badkamer?<br>Loodgieter in Gent</div>
+            <div class="b s-row"><div>Lekken opsporen</div><div>Badkamers</div><div>Werkgebied</div></div>
+            <div class="b s-cta">Vraag een afspraak</div>
+          </div>
+        </div>
+        <span class="example">Voorbeeld, geen echte klant</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="hoe">
+    <div class="wrap">
+      <div class="kicker">Hoe het werkt</div>
+      <h2 class="display">Van gesprek naar website, zonder technische kennis.</h2>
+      <div class="steps">
+        <div class="step"><b>1</b><h3>Vertel</h3><p>Wat je doet, voor wie en waar. Watson stelt de vragen en schrijft de teksten.</p></div>
+        <div class="step"><b>2</b><h3>Bekijk en verander</h3><p>Je ziet je site meteen. Iets anders? Zeg het gewoon, en Watson past het aan.</p></div>
+        <div class="step"><b>3</b><h3>Zet online</h3><p>Tevreden? Dan zetten we hem op je eigen domein. Wij houden hem draaiend.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="incl">
+    <div class="wrap incl-grid">
+      <div>
+        <div class="kicker">Inbegrepen</div>
+        <h2 class="display">Eén vaste prijs per maand. Wij zorgen voor de rest.</h2>
+      </div>
+      <div>
+        <ul>
+          <li><div>Je eigen domein<span>jouwzaak.be, gekoppeld en beveiligd.</span></div></li>
+          <li><div>Hosting en updates<span>Je hoeft nooit iets te installeren of bij te werken.</span></div></li>
+          <li><div>Goed op elke gsm<span>Je klanten zoeken je op hun telefoon. Daar is hij voor gebouwd.</span></div></li>
+          <li><div>Aanpassen door te praten<span>Nieuwe foto, ander uur, extra dienst: je vraagt het aan Watson.</span></div></li>
+        </ul>
+        <div class="more"><strong>Meer nodig?</strong> Een webshop, extra talen of beter gevonden worden in Google: het team van Watson Web Studio doet het op maat. <a href="https://watsonwebstudio.com/contact/">Neem contact op</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="wachtlijst">
+    <div class="wrap wl-grid">
+      <div class="wl-copy">
+        <div class="kicker">Wachtlijst</div>
+        <h2 class="display">Wees er als eerste bij.</h2>
+        <p>Je inschrijving is gratis en verplicht je tot niets.</p>
+        <ul>
+          <li><strong>Voorrang</strong> bij de opening</li>
+          <li><strong>De prijs</strong> hoor je als eerste</li>
+          <li><strong>Geen spam</strong>: we mailen alleen over je website</li>
+        </ul>
+      </div>
+
+      <form id="wl" novalidate>
+        <div class="two">
+          <div class="f"><label for="naam">Naam</label><input id="naam" name="naam" type="text" autocomplete="name" required><div class="err" data-for="naam"></div></div>
+          <div class="f"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required><div class="err" data-for="email"></div></div>
+        </div>
+        <div class="two">
+          <div class="f"><label for="bedrijfsnaam">Naam van je zaak <span>(optioneel)</span></label><input id="bedrijfsnaam" name="bedrijfsnaam" type="text" autocomplete="organization"><div class="err" data-for="bedrijfsnaam"></div></div>
+          <div class="f"><label for="sector">Wat doe je? <span>(optioneel)</span></label><input id="sector" name="sector" type="text" placeholder="bv. loodgieter, kapper, coach"><div class="err" data-for="sector"></div></div>
+        </div>
+        <div class="f"><label for="website">Huidige website <span>(als je er een hebt)</span></label><input id="website" name="website" type="text" inputmode="url" placeholder="jouwzaak.be"><div class="err" data-for="website"></div></div>
+        <div class="f"><label for="behoefte">Wat moet je website voor je doen? <span>(optioneel)</span></label><textarea id="behoefte" name="belangrijkste_behoefte" placeholder="bv. meer telefoontjes van mensen uit de buurt"></textarea><div class="err" data-for="belangrijkste_behoefte"></div></div>
+        <fieldset class="f">
+          <legend>Hoe wil je het aanpakken?</legend>
+          <div class="pref">
+            <input type="radio" id="p1" name="voorkeur" value="self" checked><label for="p1">Zelf, met Watson</label>
+            <input type="radio" id="p2" name="voorkeur" value="assisted"><label for="p2">Laat het doen</label>
+            <input type="radio" id="p3" name="voorkeur" value="unsure"><label for="p3">Weet ik nog niet</label>
+          </div>
+        </fieldset>
+        <div class="hp" aria-hidden="true"><label for="fax">Fax</label><input id="fax" name="bedrijfs_fax" type="text" tabindex="-1" autocomplete="off"></div>
+        <label class="consent"><input type="checkbox" name="toestemming" value="true" required><span>Ja, Watson Web Studio mag me mailen over de wachtlijst en de opening.</span></label>
+        <div class="err" data-for="toestemming" style="margin:-14px 0 16px"></div>
+        <button class="btn btn-go" type="submit">Zet me op de wachtlijst</button>
+        <div class="status" role="status" aria-live="polite"></div>
+      </form>
+      <div class="done" id="done" tabindex="-1">
+        <h3>Je staat erop.</h3>
+        <p>We mailen je zodra Watson opengaat. Vragen? <a href="mailto:info@watsonwebstudio.com">info@watsonwebstudio.com</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© Watson Web Studio · <a href="mailto:info@watsonwebstudio.com">info@watsonwebstudio.com</a></div>
+    <nav aria-label="Voettekst">
+      <a href="https://watsonwebstudio.com/realisaties/">Realisaties</a>
+      <a href="https://watsonwebstudio.com/blog/">Blog</a>
+      <a href="https://watsonwebstudio.com/watson-web-woordenboek/">Web woordenboek</a>
+      <a href="https://watsonwebstudio.com/contact/">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ENDPOINT = "https://app.sherlockseo.com/api/waitlist";
+  var form = document.getElementById("wl"), status = form.querySelector(".status"), btn = form.querySelector("button");
+  var q = new URLSearchParams(location.search);
+  function clearErrors(){ form.querySelectorAll(".err").forEach(function(e){e.textContent=""}) }
+  function showErrors(errs){
+    Object.keys(errs||{}).forEach(function(k){
+      var el = form.querySelector('.err[data-for="'+k+'"]'); if(el) el.textContent = errs[k];
+    });
+  }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault(); clearErrors(); status.textContent = "";
+    var fd = new FormData(form), body = {};
+    fd.forEach(function(v,k){ body[k] = v });
+    body.toestemming = form.toestemming.checked ? "true" : "";
+    body.campagne = q.get("utm_campaign") || "wws-home-v2";
+    body.utm_source = q.get("utm_source") || "";
+    body.utm_medium = q.get("utm_medium") || "";
+    body.landingspagina = location.origin + location.pathname;
+    btn.disabled = true; btn.textContent = "Even geduld…";
+    fetch(ENDPOINT, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(body)})
+      .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){ return {r:r, j:j} }) })
+      .then(function(x){
+        if (x.r.ok && x.j.ok) {
+          form.style.display = "none";
+          var d = document.getElementById("done"); d.style.display = "block"; d.focus();
+          return;
+        }
+        if (x.j.errors) showErrors(x.j.errors);
+        status.textContent = x.j.message || (x.j.errors ? "Kijk de velden hierboven even na." : "Dat lukte niet. Mail ons gerust: info@watsonwebstudio.com");
+      })
+      .catch(function(){ status.textContent = "Dat lukte niet. Mail ons gerust: info@watsonwebstudio.com" })
+      .finally(function(){ btn.disabled = false; btn.textContent = "Zet me op de wachtlijst" });
+  });
+})();
+</script>
+</body>
+</html>
