@@ -65,7 +65,7 @@ html[data-align=center] .cta-row{justify-content:center}
 .watson svg{width:clamp(130px,14vw,180px);height:auto;flex:0 0 auto}
 .name{margin-bottom:22px;line-height:1.3}.name b{display:block;font:900 22px/1 var(--display);text-transform:uppercase}.name span{font-size:14px;color:var(--mute)}
 .mouth{transform-origin:60px 96px}
-.talking .mouth{animation:talk .25s ease-in-out infinite alternate}
+[data-wt-figure].talking .mouth{animation:talk .25s ease-in-out infinite alternate}
 @keyframes talk{to{transform:scaleY(.35)}}
 .eyes{animation:blink 5s infinite}
 @keyframes blink{0%,96%,100%{transform:scaleY(1)}98%{transform:scaleY(.1)}}
@@ -192,8 +192,8 @@ footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);fo
         <p class="note">We openen in fases. Wie op de wachtlijst staat, mag als eerste.</p>
       </div>
 
-      <div class="studio">
-        <div class="watson" id="watson">
+      <div class="studio" data-watson-talk data-api="https://mcp-audit-platform-production.up.railway.app" data-greeting="Dag! Dit is mijn eigen website, en jij mag ze veranderen. Zeg bijvoorbeeld ‘maak het licht’, of klik op een titel en vertel wat erin moet.">
+        <div class="watson" data-wt-figure>
           <svg viewBox="0 0 120 150" role="img" aria-label="Watson">
             <ellipse cx="60" cy="146" rx="40" ry="4" fill="rgba(0,0,0,.25)"/>
             <path d="M22 150c0-26 17-40 38-40s38 14 38 40z" fill="#2b2f3a"/>
@@ -211,24 +211,24 @@ footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);fo
             <path d="M34 50c0-20 10-30 26-30s26 10 26 30z" fill="#2b2f3a"/>
             <path d="M34 44h52v5H34z" fill="var(--accent2)"/>
           </svg>
-          <div class="name"><b>Watson</b><span id="wstate">luistert</span></div>
+          <div class="name"><b>Watson</b><span data-wt-state>luistert</span></div>
         </div>
         <div class="chat">
-          <div class="log" id="log" aria-live="polite"></div>
-          <div class="chips" id="chips">
+          <div class="log" data-wt-log aria-live="polite"></div>
+          <div class="chips" data-wt-chips>
             <button class="chip" type="button">Maak het licht</button>
             <button class="chip" type="button">Geef het een warme rode kleur</button>
             <button class="chip" type="button">Een sierlijker lettertype</button>
             <button class="chip" type="button">Zet alles in het midden</button>
           </div>
-          <div class="selbar" id="selbar">Je klikte op <b id="selname"></b><button type="button" id="selclear" aria-label="Selectie wissen">×</button></div>
-          <form class="compose" id="compose" autocomplete="off" style="background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:12px">
-            <input id="say" type="text" maxlength="400" placeholder="Zeg wat je anders wil…" aria-label="Bericht aan Watson">
+          <div class="selbar" data-wt-sel>Je klikte op <b data-wt-selname></b><button type="button" data-wt-selclear aria-label="Selectie wissen">×</button></div>
+          <form class="compose" data-wt-compose autocomplete="off" style="background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:12px">
+            <input data-wt-say type="text" maxlength="400" placeholder="Zeg wat je anders wil…" aria-label="Bericht aan Watson">
             <input type="text" name="company_url" class="hp" tabindex="-1" aria-hidden="true">
-            <button type="submit" id="send" aria-label="Verstuur"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button type="submit" aria-label="Verstuur"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
         </div>
-        <div class="under"><span>Watson onthoudt je wijzigingen op dit toestel.</span><button type="button" id="reset">Terug naar origineel</button></div>
+        <div class="under"><span>Watson onthoudt je wijzigingen op dit toestel.</span><button type="button" data-wt-reset>Terug naar origineel</button></div>
       </div>
     </div>
   </div>
@@ -320,94 +320,8 @@ footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mute);fo
   </div>
 </footer>
 
+<script src="https://app.sherlockseo.com/embed/watson-talk.js" defer></script>
 <script>
-(function(){
-  var q = new URLSearchParams(location.search);
-  var API = q.get("api") || "https://sherlock-osbackend-staging.up.railway.app";
-  var KEY = "wws-demo-v1";
-  var FONTS = ["Raleway","Playfair Display","Inter","Fraunces","Space Grotesk","Nunito","Lora","Bebas Neue"];
-  var root = document.documentElement;
-  var log = document.getElementById("log"), say = document.getElementById("say"), send = document.getElementById("send");
-  var wstate = document.getElementById("wstate"), watson = document.getElementById("watson");
-  var selbar = document.getElementById("selbar"), selname = document.getElementById("selname");
-  var ORIGINAL = {};
-  document.querySelectorAll("[data-slot]").forEach(function(el){ ORIGINAL["text."+el.dataset.slot] = el.innerHTML; });
-  ORIGINAL["text.cta"] = document.querySelector("[data-text=cta]").textContent;
-
-  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || {} } catch(e){ return {} } }
-  function save(){ try { localStorage.setItem(KEY, JSON.stringify(mem)) } catch(e){} }
-  var mem = load(); mem.state = mem.state || {}; mem.history = mem.history || [];
-  if (!mem.sid) { var a = new Uint8Array(16); crypto.getRandomValues(a); mem.sid = Array.from(a, function(b){return ("0"+b.toString(16)).slice(-2)}).join(""); }
-  var selected = null, busy = false;
-
-  function luminance(hex){ var n=parseInt(hex.slice(1),16),r=(n>>16&255)/255,g=(n>>8&255)/255,b=(n&255)/255;
-    function c(v){return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)} return .2126*c(r)+.7152*c(g)+.0722*c(b); }
-  var loadedFonts = {"Raleway":1,"Open Sans":1};
-  function useFont(name){
-    if (loadedFonts[name]) return; loadedFonts[name]=1;
-    var l=document.createElement("link"); l.rel="stylesheet";
-    l.href="https://fonts.googleapis.com/css2?family="+encodeURIComponent(name).replace(/%20/g,"+")+":wght@400;600;700;900&display=swap";
-    document.head.appendChild(l);
-  }
-  function apply(slot, value, flash){
-    mem.state[slot] = value;
-    if (slot === "theme" || slot === "corners" || slot === "align" || slot === "size") root.setAttribute("data-"+slot, value);
-    else if (slot === "accent") { root.style.setProperty("--accent", value); root.style.setProperty("--on-accent", luminance(value) > .45 ? "#0b0b0b" : "#ffffff"); }
-    else if (slot === "accent2") root.style.setProperty("--accent2", value);
-    else if (slot === "font_display" || slot === "font_body") { if (FONTS.indexOf(value) < 0) return; useFont(value); root.style.setProperty(slot === "font_display" ? "--display" : "--body", '"'+value+'",system-ui,sans-serif'); }
-    else if (slot.indexOf("text.") === 0) {
-      var k = slot.slice(5), el = k === "cta" ? document.querySelector("[data-text=cta]") : document.querySelector('[data-slot="'+k+'"]');
-      if (!el) return; el.textContent = value; if (flash) { el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
-    }
-  }
-  function add(kind, text){ var d=document.createElement("div"); d.className="m "+kind; d.textContent=text; log.appendChild(d); log.scrollTop=log.scrollHeight; return d; }
-
-  Object.keys(mem.state).forEach(function(k){ apply(k, mem.state[k], false); });
-  if (mem.history.length) { mem.history.slice(-6).forEach(function(t){ add("u", t.u); add("w", t.w); }); }
-  else add("w", "Dag! Dit is mijn eigen website, en jij mag ze veranderen. Zeg bijvoorbeeld ‘maak het licht’, of klik op een titel en vertel wat erin moet.");
-
-  document.querySelectorAll("[data-slot]").forEach(function(el){
-    el.addEventListener("click", function(){
-      document.querySelectorAll("[data-slot].sel").forEach(function(x){ x.classList.remove("sel") });
-      selected = el.dataset.slot; el.classList.add("sel");
-      selname.textContent = el.dataset.label; selbar.classList.add("on");
-      say.placeholder = "Wat moet er in " + el.dataset.label + "?";
-      if (window.innerWidth < 900) say.scrollIntoView({block:"center"}); say.focus({preventScroll:true});
-    });
-  });
-  document.getElementById("selclear").onclick = clearSel;
-  function clearSel(){ selected=null; selbar.classList.remove("on"); say.placeholder="Zeg wat je anders wil…"; document.querySelectorAll("[data-slot].sel").forEach(function(x){x.classList.remove("sel")}); }
-
-  document.getElementById("chips").addEventListener("click", function(e){ if (e.target.classList.contains("chip")) { say.value = e.target.textContent; talk(); } });
-  document.getElementById("compose").addEventListener("submit", function(e){ e.preventDefault(); talk(); });
-  document.getElementById("reset").onclick = function(){
-    try { localStorage.removeItem(KEY) } catch(e){}
-    location.reload();
-  };
-
-  function talk(){
-    var msg = say.value.trim(); if (!msg || busy) return;
-    busy = true; send.disabled = true; say.value = "";
-    add("u", msg);
-    var t = add("w", ""); t.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
-    watson.classList.add("talking"); wstate.textContent = "past de pagina aan…";
-    fetch(API + "/api/public/watson/talk", {method:"POST", headers:{"content-type":"application/json"},
-      body: JSON.stringify({session_id: mem.sid, message: msg, state: mem.state, selected: selected, history: mem.history.slice(-6),
-        company_url: document.querySelector('.compose .hp').value})})
-      .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok, j:j}}) })
-      .then(function(x){
-        if (!x.ok) { t.className = "m err"; t.textContent = (x.j.detail && x.j.detail.detail) || "Watson kan nu even niet antwoorden. Probeer het zo meteen opnieuw."; return; }
-        t.textContent = x.j.reply;
-        (x.j.ops || []).forEach(function(op){ apply(op.set, op.value, true); });
-        mem.history.push({u: msg, w: x.j.reply}); mem.history = mem.history.slice(-12);
-        save(); clearSel();
-      })
-      .catch(function(){ t.className = "m err"; t.textContent = "Watson is even onbereikbaar. Probeer het zo meteen opnieuw."; })
-      .finally(function(){ busy = false; send.disabled = false; watson.classList.remove("talking"); wstate.textContent = "luistert"; log.scrollTop = log.scrollHeight; });
-  }
-  save();
-})();
-
 (function(){
   var ENDPOINT = "https://app.sherlockseo.com/api/waitlist";
   var form = document.getElementById("wl"), status = form.querySelector(".status"), btn = form.querySelector("button");
