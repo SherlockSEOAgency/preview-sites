@@ -65,7 +65,7 @@ function say(t,err){status.textContent=t;status.className=err?"err":"msg"}
 var answers;
 form.onsubmit=function(e){e.preventDefault();var f=new FormData(form);answers={session_id:sid,name:f.get("name").trim(),place:f.get("place").trim(),trade:f.get("trade").trim(),company_url:f.get("company_url")};
  form.querySelector("button").disabled=true;say("Watson zoekt je zaak op Google…");
- post("/find",answers).then(function(j){form.querySelector("button").disabled=false;say("");pick.innerHTML="";choose.hidden=false;
+ post("/find",answers).then(function(j){answers.search_id=j.search_id;form.querySelector("button").disabled=false;say("");pick.innerHTML="";choose.hidden=false;
   document.getElementById("chooseMsg").textContent=j.candidates.length?"Welke is van jou?":"Watson vond je zaak niet op Google. Geen probleem: hij bouwt je site uit je antwoorden.";
   j.candidates.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.textContent=c.name;var s=document.createElement("small");s.textContent=[c.category,c.address,c.website?("site: "+c.website):""].filter(Boolean).join(" · ");b.appendChild(s);b.onclick=function(){build(i)};pick.appendChild(b)});
   var n=document.createElement("button");n.type="button";n.textContent=j.candidates.length?"Geen van deze: bouw uit mijn antwoorden":"Bouw mijn site";n.onclick=function(){build(null)};pick.appendChild(n);
