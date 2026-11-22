@@ -16,7 +16,7 @@
 <meta name="description" content="CK Service uit Geel vervangt in één dag uw badkuip door een veilige, comfortabele cabine of inloopdouche. Gratis advies bij u thuis. Bel 0493 33 39 88.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600,100,0;1,9..144,600,100,1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600,100,0;1,9..144,600,100,1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#f7f1e6;
@@ -33,7 +33,7 @@
   --cold-ink:#3b4757;
   --star:#ffd23f; /* alleen voor reviewsterren */
   --sky:#dfe8ff;
-  --display:"Fraunces",Georgia,serif;
+  --display:"Nunito",system-ui,sans-serif;
   --stamp:"Anton","Impact","Arial Narrow",sans-serif;
   --hand:"Caveat","Comic Sans MS",cursive;
   --text:"Atkinson Hyperlegible",system-ui,sans-serif;
@@ -44,8 +44,8 @@ body{font-family:var(--text);font-size:19px;line-height:1.55;color:var(--ink);ba
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 .wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
-.display{font-family:var(--display);font-weight:600;font-variation-settings:"SOFT" 100;line-height:1.02;letter-spacing:-.02em}
-.display em{font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--brand)}
+.display{font-family:var(--display);font-weight:900;line-height:1.04;letter-spacing:-.015em}
+.display em{font-style:normal}
 :focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 .ico{width:26px;height:26px;flex:0 0 auto}
 
@@ -66,22 +66,21 @@ a{color:inherit}
 .call small{display:block;font-size:16px;font-weight:400}
 
 /* topbalk */
-.top{position:relative;z-index:1;background:var(--paper);border-bottom:1px solid var(--sand)}
+.top{position:relative;z-index:1;background:var(--cream)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px}
 .top .logo{height:46px;width:auto}
 .top-tel{display:none;align-items:center;gap:8px;min-height:48px;padding:8px 16px;border-radius:999px;background:var(--deep);color:#fff;font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}
 .top-tel .ico{width:20px;height:20px}
 
 /* opening */
-.hero{background:var(--deep);color:#fff}
+.hero{position:relative;background:linear-gradient(180deg,var(--deep) 0%,#24479a 100%);color:#fff;border-radius:0 0 50% 50% / 0 0 34px 34px;overflow:hidden}
 .hero-photo{position:relative;margin:0}
 .hero-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:65% 22%}
 .hero-photo .stamp{position:absolute;left:16px;bottom:18px;box-shadow:4px 4px 0 #fff}
 .hero-text{padding:24px 20px 40px}
 .hero h1{font-size:clamp(44px,11.5vw,78px);color:#fff;max-width:12ch}
-.hero h1 em{color:#ffe9b8;padding-bottom:.12em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 16' preserveAspectRatio='none'%3E%3Cpath d='M3 11 C30 4 70 3 117 8' stroke='%23ffe9b8' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") 0 100%/100% .22em no-repeat}
 .hero .promise{margin-top:20px;font-size:22px;line-height:1.45;color:#fff;max-width:30ch}
-.hero .promise mark{color:var(--deep);font-weight:700;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M4 12 C40 5 90 9 140 6 S190 8 196 11 L194 30 C150 36 100 31 60 35 S12 33 6 30 Z' fill='%23fff'/%3E%3C/svg%3E") center/100% 100% no-repeat;padding:.04em .34em .08em;margin:0 -.06em;display:inline-block;transform:rotate(-1.5deg);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .promise mark{color:var(--deep);font-weight:700;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20300%2060%27%20preserveAspectRatio%3D%27none%27%3E%3Cfilter%20id%3D%27r%27%20x%3D%27-5%25%27%20y%3D%27-20%25%27%20width%3D%27110%25%27%20height%3D%27140%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.035%200.9%27%20numOctaves%3D%273%27%20seed%3D%277%27/%3E%3CfeDisplacementMap%20in%3D%27SourceGraphic%27%20scale%3D%279%27/%3E%3C/filter%3E%3Cg%20filter%3D%27url%28%23r%29%27%20fill%3D%27%23fff%27%3E%3Cpath%20d%3D%27M10%2016%20C70%209%20150%2012%20230%208%20S292%2011%20294%2014%20L290%2047%20C220%2052%20140%2047%2080%2051%20S14%2050%208%2045%20Z%27%20opacity%3D%27.96%27/%3E%3Cpath%20d%3D%27M4%2022%20C60%2018%20120%2020%20200%2017%20L298%2020%20L296%2026%20C200%2025%20100%2027%206%2029%20Z%27%20opacity%3D%27.55%27/%3E%3Cpath%20d%3D%27M14%2040%20C90%2037%20170%2041%20286%2038%20L284%2044%20C170%2047%2090%2044%2016%2046%20Z%27%20opacity%3D%27.5%27/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;padding:.08em .5em .12em;margin:0 .05em 0 -.3em;display:inline-block;transform:rotate(-1.2deg);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .feats{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:19px;color:var(--sky)}
 .feats li{display:flex;align-items:center;gap:8px}
 .feats svg{width:20px;height:20px;flex:0 0 auto}
@@ -92,33 +91,39 @@ a{color:inherit}
 
 /* de reeks: koud -> warm */
 .pair{display:grid}
-.pair .bad{background:var(--cold);padding:44px 20px 52px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pair .bad{background:linear-gradient(180deg,var(--cream) 0%,var(--cold) 22%,var(--cold) 72%,var(--cream) 100%);padding:44px 20px 52px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .pair .bad figure{width:72%;max-width:340px;transform:rotate(-4deg);background:#fff;padding:8px 8px 8px;box-shadow:0 14px 30px -14px rgba(30,40,60,.45)}
 .pair .bad img{width:100%;aspect-ratio:1/1;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.95)}
-.pair .bad .q{margin-top:28px;font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(32px,8.5vw,48px);line-height:1.05;letter-spacing:-.02em;color:var(--cold-ink);max-width:13ch}
+.pair .bad .q{margin-top:28px;font-family:var(--display);font-weight:800;font-size:clamp(32px,8.5vw,48px);line-height:1.05;letter-spacing:-.02em;color:var(--cold-ink);max-width:13ch}
 .pair .good{background:var(--cream);position:relative;padding:0 0 44px}
-.pair .good::before{content:"";position:absolute;left:50%;top:-1px;transform:translateX(-50%);border:22px solid transparent;border-top-color:var(--cold);border-bottom:0}
 .pair .good img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.pair .good img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
 .pair .good .txt{padding:26px 20px 0}
-.pair .good .a{font-family:var(--display);font-weight:600;font-size:clamp(38px,10vw,60px);line-height:1.02;letter-spacing:-.02em;color:var(--deep);max-width:12ch}
+.pair .good .a{font-family:var(--display);font-weight:900;font-size:clamp(38px,10vw,60px);line-height:1.02;letter-spacing:-.02em;color:var(--deep);max-width:12ch}
 .pair .good p{margin-top:12px;font-size:20px;max-width:34ch}
 .pair .good .amount{display:block;margin-top:16px;font-family:var(--stamp);font-size:clamp(56px,15vw,96px);line-height:.95;color:var(--brand)}
 .pair .good .small{font-size:17px;color:var(--ink-soft);margin-top:8px}
 
 /* leef langer: één beeld, één titel */
-.life{position:relative;margin:0;background:var(--night);color:#fff}
-.life img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:28% 50%}
+.life{position:relative;margin:0;background:linear-gradient(180deg,var(--cream) 0,var(--night) 12%);color:#fff}
+.life img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 9%);mask-image:linear-gradient(180deg,transparent 0,#000 9%);width:100%;aspect-ratio:4/5;object-fit:cover;object-position:28% 50%}
 .life::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,26,54,0) 40%,rgba(13,26,54,.86) 100%);pointer-events:none}
 .life h2{position:absolute;z-index:1;left:20px;right:20px;bottom:44px;font-size:clamp(44px,12vw,104px);max-width:12ch;text-shadow:0 2px 18px rgba(0,0,0,.35)}
 .life figcaption{position:absolute;z-index:1;right:12px;bottom:10px;font-size:12px;color:rgba(255,255,255,.75)}
 
 /* het valcijfer: klein, eigen blok */
-.fact{background:var(--paper);padding:40px 0;border-bottom:1px solid var(--sand)}
+.fact{padding:36px 0}
 .fact-grid{display:grid;gap:22px;align-items:center}
 .fact .line{font-size:25px;line-height:1.35;font-weight:700;color:var(--deep);max-width:30ch}
 .fact .src{margin-top:8px;font-size:15px;color:var(--ink-soft)}
 /* het voorschrift van Dokter AI */
-.rx{background:var(--sky);padding:56px 0 60px}
+.stat{font-size:22px;line-height:1.35;font-weight:700;color:var(--ink);max-width:28ch;margin-bottom:28px}
+.stat .big{display:block;font-family:var(--display);font-weight:900;font-size:clamp(64px,19vw,140px);line-height:.95;letter-spacing:-.03em;color:var(--deep)}
+.stat sup,.calc sup{font-size:.45em;vertical-align:super}
+.stat .by{display:block;margin-top:6px;font-family:var(--hand);font-weight:700;font-size:28px;color:var(--mark-blue)}
+.calc{margin-top:22px;font-size:14px;line-height:1.45;color:var(--ink-soft);max-width:760px}
+
+.rx{background:linear-gradient(180deg,var(--cream) 0%,var(--sky) 18%,var(--sky) 80%,var(--cream) 100%);padding:56px 0 72px}
 .rx h2{font-size:clamp(44px,11vw,84px);color:var(--deep);max-width:13ch}
 .rx-grid{display:grid;gap:0;margin-top:26px;align-items:center}
 .doc{position:relative;margin:0;border-radius:14px;overflow:hidden;max-width:520px}
@@ -160,7 +165,7 @@ a{color:inherit}
 .plan .note{margin-top:10px;font-size:15px;color:var(--ink-soft)}
 
 /* wie het deed */
-.proof{background:var(--sand);padding:56px 0}
+.proof{background:linear-gradient(180deg,var(--cream) 0%,var(--sand) 25%,var(--sand) 75%,var(--cream) 100%);padding:56px 0 64px}
 .proof-grid{display:grid;gap:18px}
 .box{background:var(--paper);border-radius:12px;padding:24px 20px}
 .rating{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -170,9 +175,10 @@ a{color:inherit}
 .box.ph-l{background:transparent;border:3px dashed var(--brand);font-style:italic;font-size:20px;color:var(--ink)}
 
 /* slot */
-.end{background:var(--deep);color:#fff;padding:60px 0 44px;text-align:center}
+.end{background:linear-gradient(180deg,#24479a 0%,var(--deep) 40%);color:#fff;padding:68px 0 44px;text-align:center;border-radius:50% 50% 0 0 / 34px 34px 0 0}
+.end > .wrap > .call{display:none}
 .end h2{font-size:clamp(44px,11vw,92px);max-width:14ch;margin:0 auto}
-.end h2 em{color:#ffe9b8}
+
 .end .call{max-width:440px;margin:30px auto 0}
 .form{max-width:520px;margin:34px auto 0;background:var(--paper);color:var(--ink);border-radius:14px;padding:26px 22px;text-align:left}
 .form h3{font-size:24px;line-height:1.25;color:var(--deep)}
@@ -211,6 +217,7 @@ a{color:inherit}
 @media (min-width:1000px){
   body{padding-bottom:0}
   .dock{display:none}
+  .end > .wrap > .call{display:flex}
   .top-tel{display:inline-flex}
   .hero{display:grid;grid-template-columns:1fr 1.1fr;align-items:stretch}
   .hero-text{order:-1;padding:64px 56px 64px max(40px,calc((100vw - 1200px)/2 + 40px));display:flex;flex-direction:column;justify-content:center}
@@ -219,10 +226,10 @@ a{color:inherit}
   .hero .promise{font-size:25px}
   .hero-photo .stamp{left:28px;bottom:28px;font-size:22px}
   .pair{grid-template-columns:5fr 7fr}
-  .pair .bad{justify-content:center;padding:64px 48px}
+  .pair .bad{justify-content:center;padding:64px 48px;background:linear-gradient(90deg,var(--cold) 0%,var(--cold) 70%,var(--cream) 100%)}
   .pair .good{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0}
-  .pair .good::before{left:-1px;top:50%;transform:translateY(-50%);border:28px solid transparent;border-left-color:var(--cold);border-right:0}
-  .pair .good img{height:100%;aspect-ratio:auto;min-height:520px}
+    .pair .good img{height:100%;aspect-ratio:auto;min-height:520px}
+  .pair .good img{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 80%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 80%,transparent 100%)}
   .pair .good .txt{padding:40px 48px}
   .pair.flip .good{grid-template-columns:1fr 1fr}
   .how-grid{grid-template-columns:420px 1fr;gap:64px;align-items:center}
@@ -250,7 +257,7 @@ a{color:inherit}
     <h1 id="h1" class="display">Blijf langer <em>jong</em> in uw eigen badkamer.</h1>
     <p class="promise"><mark>In één dag</mark> van een gevaarlijke badkuip naar een veilige inloopdouche of douchecabine.</p>
     <ul class="feats"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Lage instap</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Onderhoudsvriendelijk</li></ul>
-    <a class="call light" href="tel:+32493333988"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>0493 33 39 88</a>
+    <a class="call light" href="#contact">Gratis advies bij u thuis</a>
     <p class="meta"><span class="s" aria-hidden="true">★★★★★</span><b>4,9 op Google</b> · 74 reviews</p>
   </div>
 </section>
@@ -269,15 +276,9 @@ a{color:inherit}
     </div>
 </section>
 
-<section class="fact" aria-label="Vallen bij 65-plussers">
-  <div class="wrap">
-    <p class="line">Bijna één op vier 65-plussers in België viel het afgelopen jaar.</p>
-    <p class="src">Bron: Sciensano, Gezondheidsenquête 2023-2024</p>
-  </div>
-</section>
-
 <section class="rx" aria-labelledby="h-rx">
   <div class="wrap">
+    <p class="stat"><span class="big">+8.550%<sup>*</sup></span> meer kans op een ongeval, per minuut en per m², in de badkamer dan in de rest van uw huis. <span class="by">— Dokter AI</span></p>
     <h2 id="h-rx" class="display">Wat de dokter voorschrijft</h2>
     <div class="rx-grid">
       <figure class="doc">
@@ -294,6 +295,7 @@ a{color:inherit}
       </div>
     </div>
   </div>
+  <p class="wrap calc"><sup>*</sup> Berekening: in de badkamer gebeurt 13,5% van de ongevallen in huis. U brengt er 2,6% van uw wakkere tijd door, op 6% van uw woonoppervlak. 13,5% ÷ (2,6% × 6%) = 86,5 keer de gemiddelde risicodichtheid in huis, dus +8.550%. Bron van het ongevalscijfer: VeiligheidNL (letselcijfers Nederland).</p>
 </section>
 
 <figure class="life" aria-labelledby="h-life">
