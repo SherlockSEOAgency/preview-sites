@@ -1,0 +1,56 @@
+{
+  "_sources": "Google Business Profile via DataForSEO maps/live 21/11/2026 (place_id ChIJle7Vhsflw0cR2i_mahg86vk) + google/reviews 22/11/2026. Services/area/steps = proposal, owner decides.",
+  "business": {
+    "name": "MK sanitair",
+    "initials": "MK",
+    "trade": "Loodgieter",
+    "city": "Mechelen",
+    "phone_e164": "+32476966420",
+    "phone_display": "0476 96 64 20",
+    "street": "Nekkerspoel-Borcht 15",
+    "postcode_city": "2800 Mechelen",
+    "hours": "24 uur per dag, 7 dagen per week",
+    "hours_short": "Dag en nacht bereikbaar, 7 op 7",
+    "rating": "5,0",
+    "rating_count": 8
+  },
+  "hero": {
+    "h1": "Loodgieter in Mechelen.<br>Snel ter plaatse, eerlijke prijs.",
+    "lead": "Lek, verstopping of een defecte douche? Bel MK sanitair, ook 's avonds en in het weekend. Voor kleine herstellingen en volledige badkamers."
+  },
+  "services_intro": "Van een druppende kraan tot een volledig nieuwe badkamer: één vakman voor het sanitair in en rond je woning.",
+  "services": [
+    {"icon": "lek", "title": "Lekken opsporen en herstellen", "text": "Natte plek, stijgende waterfactuur of een lekkende leiding: we zoeken de oorzaak en herstellen ze."},
+    {"icon": "ontstopping", "title": "Verstoppingen", "text": "Lavabo, douche, toilet of afvoer die niet meer doorloopt? We maken ze terug vrij."},
+    {"icon": "dringend", "title": "Dringende interventies", "text": "Water dat niet stopt met lopen? Bel meteen, ook buiten de kantooruren."},
+    {"icon": "badkamer", "title": "Badkamerrenovatie", "text": "Een volledige nieuwe badkamer, van ontwerp tot afwerking, of één toestel vervangen."},
+    {"icon": "boiler", "title": "Boilers en warm water", "text": "Geen warm water meer? Herstelling of vervanging van je boiler of doorstromer."},
+    {"icon": "leiding", "title": "Nieuwe leidingen", "text": "Water- en afvoerleidingen bij een renovatie, verbouwing of nieuwe keuken."}
+  ],
+  "steps": [
+    {"title": "Bel of stuur een foto", "text": "Dringend: bel, dag en nacht. Niet dringend: stuur een foto en we bellen je terug."},
+    {"title": "Je weet wat het kost", "text": "Matthias bekijkt het probleem en zegt je vooraf wat de herstelling kost."},
+    {"title": "We lossen het op", "text": "Zo snel mogelijk, soms nog dezelfde dag. Netjes afgewerkt."}
+  ],
+  "usps": [
+    {"title": "Snel.", "text": "Een klant: probleem gemeld en nog dezelfde dag opgelost."},
+    {"title": "Correcte prijs.", "text": "Drie van de acht beoordelingen noemen de prijs eerlijk of correct."},
+    {"title": "Ook grote werken.", "text": "Van een verstopte afvoer tot een volledige badkamerrenovatie."},
+    {"title": "5,0 op Google.", "text": "Alle acht beoordelingen geven vijf sterren."}
+  ],
+  "reviews": [
+    {"author": "Olivia S.", "when": "oktober 2026", "rating": 5, "text": "Kwam het snel oplossen (zelfde dag!). Vriendelijke service, een eerlijke prijs en de douche werkt weer perfect."},
+    {"author": "Ben H.", "when": "februari 2026", "rating": 5, "text": "Onze volledige badkamer laten renoveren door Matthias, heel tevreden van! Zeer professionele begeleiding en prachtige uitvoering!"},
+    {"author": "Jan H.", "when": "maart 2026", "rating": 5, "text": "Snelle communicatie, duidelijke tijdlijn en resultaat zoals gewenst."},
+    {"author": "Erika F.", "when": "februari 2026", "rating": 5, "text": "Snelle service en ze leveren proper werk aan de juiste prijs."}
+  ],
+  "photo_slots": ["Badkamerrenovatie", "Herstelling of ontstopping", "Voor en na"],
+  "area": ["Mechelen", "Walem", "Heffen", "Leest", "Hombeek", "Muizen", "Bonheiden", "Sint-Katelijne-Waver", "Duffel", "Willebroek", "Zemst"],
+  "preview": {
+    "why": "MK sanitair staat op plaats 3 in Google Maps voor \"loodgieter Mechelen\", met een perfecte score. Maar wie op je profiel \"Website\" zoekt, vindt niets, en op mksanitair.be staat nog de voorbeeldtekst van het sjabloon. Daarom hebben we deze site alvast voor je gemaakt.",
+    "source": "Uit je openbare Google-bedrijfsprofiel en je Google-beoordelingen.",
+    "known": ["Naam, adres en telefoonnummer", "Bereikbaar 24/7", "5,0 uit 8 Google-beoordelingen", "Reviewfragmenten, woord voor woord"],
+    "owner_decides": ["Welke diensten je wel en niet doet", "Je werkgebied", "Of je vooraf een prijs geeft", "Foto's van je eigen werk", "Logo en kleuren"],
+    "go_live": ["We zetten hem op mksanitair.be", "We koppelen hem aan je Google-profiel", "Hij wordt vindbaar in Google", "Terugbelverzoeken komen bij jou binnen"]
+  }
+}
