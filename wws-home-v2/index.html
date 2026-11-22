@@ -85,7 +85,9 @@ html[data-align=center] .lede{margin-left:auto;margin-right:auto}
 .compose button{flex:0 0 auto;height:52px;padding:0 22px;border-radius:var(--radius);border:0;background:var(--accent);color:var(--on-accent);font:700 16px/1 var(--display);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .compose button:disabled{opacity:.55;cursor:default}
 .compose .mic{background:transparent;color:var(--ink);border:2px solid var(--edge);padding:0 14px;font-size:22px}
-.compose .mic.on{background:var(--accent2);color:#fff;border-color:var(--accent2);animation:wtpulse 1s ease-in-out infinite}
+.compose .mic.on{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.compose .mic.hear{background:#d6302f;border-color:#d6302f;color:#fff;animation:wtpulse 1s ease-in-out infinite}
+.compose .mic.speak{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 @keyframes wtpulse{50%{transform:scale(1.08)}}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
