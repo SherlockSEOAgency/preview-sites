@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CK Service v3 · Van gevaarlijk bad naar veilige douche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1f4e9c;--blue-d:#163a78;--ink:#1d2433;--mute:#5a6375;--ice:#eef4fb;--line:#dde5f0;--hand:#1d7fc4;--warm:#f4a41c}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:400 17px/1.6 Montserrat,system-ui,sans-serif}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Oswald,sans-serif;text-transform:uppercase;color:var(--blue);line-height:1.05;margin:0}
+.concept{background:#fff7e6;border-bottom:1px solid #f3dca8;font-size:13px;color:#6b5420;text-align:center;padding:7px 16px}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+header img{height:42px;width:auto}
+header a.tel{font:700 18px Oswald,sans-serif;color:var(--blue);text-decoration:none}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--ice),#fff)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding-top:36px;padding-bottom:48px}
+.hero .photo{border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(31,78,156,.15)}
+.hero h1{font-size:clamp(34px,4.3vw,54px)}
+.hero h1 .ln{white-space:nowrap}
+.hero h1 .from{color:#b23a2e}
+.hero h1 .hand{display:inline-block;font-family:Caveat,cursive;text-transform:none;color:var(--hand);font-size:1.12em;line-height:.9;transform:rotate(-4deg);margin-top:6px;position:relative}
+.hero h1 .hand::after{content:"";position:absolute;left:2%;right:-4%;bottom:-2px;height:9px;background:var(--warm);opacity:.55;border-radius:6px;transform:rotate(-1.5deg);z-index:-1}
+.hero p.lead{font-size:19px;margin:18px 0 22px;max-width:30em}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(20,40,80,.07)}
+.card h3{font-size:19px;margin-bottom:12px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,textarea{width:100%;font:inherit;font-size:15px;padding:11px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:#fbfdff}
+textarea{min-height:64px}
+button{width:100%;border:0;border-radius:8px;background:var(--blue);color:#fff;font:700 17px Oswald,sans-serif;text-transform:uppercase;padding:14px;cursor:pointer}
+.small{font-size:13px;color:var(--mute);margin:8px 0 0}
+
+/* trust */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust ul{list-style:none;margin:0 auto;padding:14px 20px;max-width:1120px;display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+.trust li{font:600 15px Montserrat;color:var(--blue)}
+.trust b{font-family:Oswald;text-transform:uppercase;font-size:17px;font-weight:700}
+
+section{padding:64px 0}
+.eyebrow{font:600 13px Montserrat;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 6px}
+h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:22px}
+
+/* badkamergevoel */
+.gevoel{background:var(--ice)}
+.gevoel .wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:44px;align-items:center}
+.gevoel h2 .hand{font-family:Caveat,cursive;text-transform:none;color:var(--hand);font-size:1.15em}
+.gevoel ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.gevoel li{background:#fff;border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:baseline;border:1px solid var(--line)}
+.gevoel li b{font:700 20px Oswald;text-transform:uppercase;color:var(--blue)}
+.gevoel .ba{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gevoel .ba figure{margin:0;position:relative;border-radius:12px;overflow:hidden}
+.gevoel .ba img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.gevoel .ba span{position:absolute;top:10px;left:10px;background:var(--blue-d);color:#fff;font:700 12px Oswald;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+.gevoel .ba figcaption{grid-column:1/-1}
+.cap{font-size:14px;color:var(--mute);margin-top:8px}
+
+/* steps */
+.steps ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--blue);padding-top:14px}
+.steps li::before{content:counter(s);font:700 34px Oswald;color:var(--warm);display:block;line-height:1}
+.steps li b{display:block;font:700 20px Oswald;text-transform:uppercase;color:var(--blue);margin:4px 0}
+
+/* reviews */
+.reviews{background:linear-gradient(180deg,#fff,var(--ice))}
+.reviews .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.rev img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.rev div{padding:16px}
+.rev .st{color:var(--warm);letter-spacing:2px}
+.rev p{margin:6px 0 10px;font-size:15px}
+.rev small{color:var(--mute)}
+
+/* claude */
+.claude .wrap{display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:end}
+.claude img{max-height:420px;width:auto;margin:0 auto}
+.claude blockquote{margin:0 0 18px;font:700 clamp(30px,3.4vw,40px)/1.1 Caveat,cursive;color:var(--hand)}
+.claude p{max-width:34em}
+.claude .sig{font-weight:600;color:var(--blue)}
+
+/* premie + end */
+.premie{background:#fff;padding-top:0}
+.premie .box{border:2px dashed var(--warm);border-radius:14px;padding:22px 26px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.premie .amt{font:700 46px Oswald;color:var(--blue);line-height:1}
+.premie p{margin:0;flex:1;min-width:240px}
+.end{background:linear-gradient(135deg,var(--blue-d),var(--blue));color:#fff;text-align:center}
+.end h2{color:#fff}
+.end h2 .hand{font-family:Caveat,cursive;text-transform:none;color:#9fd3ff;font-size:1.15em}
+.end .card{max-width:560px;margin:22px auto 0;text-align:left;color:var(--ink)}
+.end a{color:#fff;font-weight:600}
+footer{background:var(--ice);padding:26px 0;font-size:14px;color:var(--mute)}
+
+.dock{display:none}
+@media(max-width:860px){
+  body{font-size:16px}
+  .hero .wrap,.gevoel .wrap,.claude .wrap{grid-template-columns:1fr;gap:26px}
+  .hero .wrap{padding-top:18px}
+  .hero .photo{order:-1}
+  .hero .photo img{aspect-ratio:4/3;object-fit:cover;object-position:center 30%}
+  form .row{grid-template-columns:1fr}
+  .trust ul{gap:10px 22px;justify-content:flex-start}
+  .gevoel li{grid-template-columns:1fr;gap:2px}
+  .steps ol,.reviews .grid{grid-template-columns:1fr}
+  .claude img{max-height:320px}
+  section{padding:48px 0}
+  header a.tel{display:none}
+  .dock{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--blue);text-align:center;padding:12px;z-index:9}
+  .dock a{color:#fff;font:700 18px Oswald;text-decoration:none;text-transform:uppercase}
+  footer{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+<div class="concept">Concept v3: vorm en verhaal. De tekst is werktekst, Jan schrijft de definitieve versie.</div>
+
+<div class="wrap"><header><img src="img/Logo-CK-Service-v2.png.webp" alt="CK Service"><a class="tel" href="tel:+32493333988">☎ 0493 33 39 88</a></header></div>
+
+<div class="hero"><div class="wrap">
+  <div class="photo"><img src="img/campagne-badkamergevoel-koppel.webp" alt="Lachend koppel in hun badkamer"></div>
+  <div>
+    <h1><span class="ln from">Van gevaarlijk bad</span><br><span class="ln">naar veilige douche</span><br><span class="hand">in één dag</span></h1>
+    <p class="lead">Niet langer over die gladde badrand klauteren. Wij halen je bad weg en zetten er een douche in waar je gewoon in stapt.</p>
+    <div class="card" id="advies">
+      <h3>Gratis advies bij je thuis</h3>
+      <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Concept: verstuurt niets'">
+        <div class="row"><input placeholder="Je naam*"><input placeholder="Je telefoonnummer*"></div>
+        <input placeholder="Je gemeente">
+        <button>Ja, kom eens kijken</button>
+      </form>
+      <p class="small">Gratis en vrijblijvend. Liever bellen? <a href="tel:+32493333988">0493 33 39 88</a></p>
+    </div>
+  </div>
+</div></div>
+
+<div class="trust"><ul>
+  <li><b>Sinds 2012</b> in de streek</li>
+  <li><b>In 1 dag</b> klaar</li>
+  <li><b>4,9 ★</b> op Google</li>
+  <li><b>Tot €1.250</b> premie</li>
+</ul></div>
+
+<section class="gevoel"><div class="wrap">
+  <div>
+    <p class="eyebrow">Daar kies je voor</p>
+    <h2>Het CK-<span class="hand">badkamergevoel</span></h2>
+    <ul>
+      <li><b>Veilig</b><span>Lage instap, vloer die niet glad wordt, een handgreep waar je hem nodig hebt.</span></li>
+      <li><b>Duurzaam</b><span>Glas en wandpanelen die jaren meegaan.</span></li>
+      <li><b>Hygiënisch</b><span>Geen siliconen voegen, dus minder kalk en schimmel. Snel proper.</span></li>
+      <li><b>Smaakvol</b><span>Jij kiest kleur en afwerking. Het blijft jouw badkamer.</span></li>
+      <li><b>Betaalbaar</b><span>Geen luxebadkamer van tienduizenden euro's. Je bad eruit, een douche erin.</span></li>
+    </ul>
+  </div>
+  <div class="ba">
+    <figure><img src="img/live-2020-10-ck-service-project-destelbergen-voor.jpg" alt="Badkamer voor de werken"><span>Voor</span></figure>
+    <figure><img src="img/live-2020-10-ck-service-project-destelbergen-na.jpg" alt="Dezelfde badkamer na de werken"><span>Na</span></figure>
+    <figcaption class="cap">Een gewone badkamer in Destelbergen, bij een echte klant.</figcaption>
+  </div>
+</div></section>
+
+<section class="steps"><div class="wrap">
+  <p class="eyebrow">Zo gaat het</p>
+  <h2>Eén bezoek, één dag, klaar</h2>
+  <ol>
+    <li><b>We komen langs</b>We bekijken je badkamer en maken een prijs op maat.</li>
+    <li><b>In één dag geplaatst</b>Bad eruit, douche erin. Op één werkdag.</li>
+    <li><b>Alles opgeruimd</b>We nemen het afval mee en helpen met je premie.</li>
+  </ol>
+</div></section>
+
+<section class="reviews"><div class="wrap">
+  <p class="eyebrow">4,9 op Google, 74 reviews</p>
+  <h2>Wat klanten zeggen</h2>
+  <div class="grid">
+    <div class="rev"><img src="img/reviews/sonja-turf.webp" alt=""><div><span class="st">★★★★★</span><p>De 2 mannen hebben mijn bad afgebroken en een regendouche geplaatst met veilige, niet gladde ondergrond. Zij werkten stipt, vlot en proper.</p><small>Sonja Turf, september 2026</small></div></div>
+    <div class="rev"><img src="img/reviews/hendrik-puttemans.webp" alt=""><div><span class="st">★★★★★</span><p>Toffe mensen, vriendelijk. Badkuip eruit en douchecabine in de plaats. En dat op 1 dag gedaan.</p><small>Hendrik Puttemans, juli 2026</small></div></div>
+    <div class="rev"><img src="img/reviews/els-cuyvers.webp" alt=""><div><span class="st">★★★★★</span><p>Heb bad laten vervangen door inloopdouche. Mooie afwerking. Alle afval meegenomen en goeie hulp bij het aanvragen van de premies.</p><small>Els Cuyvers, april 2025</small></div></div>
+  </div>
+</div></section>
+
+<section class="claude"><div class="wrap">
+  <img src="img/claude-vakman.webp" alt="Claude, zaakvoerder van CK Service">
+  <div>
+    <p class="eyebrow">Geen onderaannemers</p>
+    <blockquote>"De zaakvoerder werkt zelf mee."</blockquote>
+    <p>Bij ons staat er geen ploeg vreemden in je huis. Claude komt langs voor het advies en plaatst je douche samen met Lukasz. Eén gezicht, van het eerste bezoek tot het opruimen.</p>
+    <p class="sig">Claude, zaakvoerder CK Service</p>
+  </div>
+</div></section>
+
+<section class="premie"><div class="wrap"><div class="box">
+  <div class="amt">€1.250</div>
+  <p><b>Zoveel premie kan je terugkrijgen.</b> Wij doen het papierwerk. <span class="small">(onder voorwaarden van leeftijd en inkomen)</span></p>
+</div></div></section>
+
+<section class="end"><div class="wrap">
+  <h2>Zullen we eens komen kijken?<br><span class="hand">Claude komt gratis langs</span></h2>
+  <p>Gratis en vrijblijvend. Liever bellen? <a href="tel:+32493333988">0493 33 39 88</a></p>
+  <div class="card">
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Concept: verstuurt niets'">
+      <div class="row"><input placeholder="Je naam*"><input placeholder="Je telefoonnummer*"></div>
+      <input placeholder="Je gemeente">
+      <button>Ja, kom eens kijken</button>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap">CK Service · Zammelseweg 92, 2440 Geel · Vanuit Geel in de provincies Antwerpen, Limburg en Vlaams-Brabant.</div></footer>
+<div class="dock"><a href="tel:+32493333988">☎ Bel Claude: 0493 33 39 88</a></div>
+</body>
+</html>
