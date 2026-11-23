@@ -72,7 +72,7 @@ form.onsubmit=function(e){e.preventDefault();var f=new FormData(form);answers={s
   choose.scrollIntoView({behavior:"smooth"});
  }).catch(function(err){form.querySelector("button").disabled=false;say(String(err),true)})};
 function build(i){pick.querySelectorAll("button").forEach(function(b){b.disabled=true});document.getElementById("chooseMsg").textContent="Watson bouwt je site. Dat duurt een halve minuut…";
- post("/build",Object.assign({},answers,{pick:i})).then(function(j){location.href=API+j.url+"#k="+j.key})
+ post("/build",Object.assign({},answers,{pick:i})).then(function(j){location.href=API+j.url+(j.code?"#c="+j.code:"#k="+j.key)})
  .catch(function(err){document.getElementById("chooseMsg").textContent=String(err);pick.querySelectorAll("button").forEach(function(b){b.disabled=false})})}
 })();
 </script>
