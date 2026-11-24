@@ -211,3 +211,102 @@ img.ill{width:100%;height:auto;display:block;border-radius:6px}
 @media (max-width:960px){.hero-ill{grid-template-columns:1fr;gap:24px}}
 .ill-band{padding-block:0 56px;background:var(--ink)}
 .ill-band img.ill{max-width:820px;margin:0 auto}
+
+/* ===== v3 (24/11): verhaal, beelden, huisstijl-iconen, beweging ===== */
+:root{--h-red:#EA4436;--h-green:#68B968;--h-blue:#537DBE;--h-yellow:#F8BA15;--h-purple:#682D86}
+.btn-dark{background:var(--text-dark);color:var(--paper)}
+.btn-dark:hover{background:#3A1650}
+/* icon badge — huisstijl-iconen op papier, zoals op de live site */
+.ic{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:14px;background:var(--paper);flex:none}
+.ic img{width:34px;height:34px}
+.ic-lg{width:72px;height:72px;border-radius:18px}.ic-lg img{width:44px;height:44px}
+.ic-sm{width:40px;height:40px;border-radius:10px}.ic-sm img{width:24px;height:24px}
+.paperband .ic{background:#fff;box-shadow:0 1px 0 var(--line-light)}
+/* story split met illustratie */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story p{color:#D9CDE3;font-size:18px;max-width:54ch}
+.paperband .story p{color:#3A2F44}
+.plum .story p{color:#E6DAEE}
+.story .actions{margin-top:24px}
+.ticks{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px}
+.ticks li{display:flex;align-items:center;gap:14px;font-weight:600}
+.ticks.dark li{color:var(--text-dark)}
+img.ill{border-radius:10px}
+/* ticker */
+.ticker{background:var(--marker);color:var(--marker-ink);overflow:hidden;border-block:1px solid #6FC160}
+.ticker-track{display:flex;gap:0;width:max-content;padding-block:14px;font-family:var(--f-display);font-weight:900;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+.ticker-track span{padding:0 28px;position:relative}
+.ticker-track span::after{content:"";position:absolute;right:-4px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--plum)}
+/* exhibits: 4 */
+.ex4{grid-template-columns:repeat(4,1fr)}
+/* diensten */
+.svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{display:flex;flex-direction:column;background:var(--ink);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--paper);min-width:0;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .25s}
+.svc:hover{transform:translateY(-6px);border-color:var(--purple-hi)}
+.svc-ill{display:block;width:100%;aspect-ratio:16/8;object-fit:cover;background:#000;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.svc:hover .svc-ill{transform:scale(1.05)}
+.svc-body{position:relative;padding:0 24px 24px;margin-top:-28px;display:flex;flex-direction:column;flex:1}
+.svc-body .ic{box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.svc h3{font-family:var(--f-display);font-weight:900;font-size:26px;margin:14px 0 6px;letter-spacing:-.01em}
+.svc p{color:var(--mute);margin:0 0 16px;font-size:16px}
+.svc .more{margin-top:auto;color:var(--marker);font-weight:600;font-size:15px}
+/* stappen met huisstijl-iconen en getekend spoor */
+.steps-wrap{position:relative}
+.trail{position:absolute;left:0;right:0;top:12px;width:100%;height:60px;overflow:visible;pointer-events:none}
+.trail path{fill:none;stroke:var(--h-yellow);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;vector-effect:non-scaling-stroke;transition:stroke-dashoffset 2.2s cubic-bezier(.4,0,.2,1)}
+.steps-wrap.in .trail path{stroke-dashoffset:0}
+.steps-ic{border-top:0;gap:24px}
+.steps-ic li{padding:0;position:relative}
+.steps-ic .ic{margin-bottom:18px;position:relative;z-index:1}
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.q{margin:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.q-dark{background:var(--ink)}
+.q .qi{width:28px;height:28px;filter:invert(1);opacity:.85}
+.q blockquote{margin:0;font-family:var(--f-display);font-weight:800;font-size:19px;line-height:1.35}
+.q figcaption{margin-top:auto;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mute)}
+.q figcaption img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#fff}
+.q figcaption b{display:block;color:var(--paper);font-size:15px}
+.q3{margin-top:0}
+.stars{color:var(--h-yellow);letter-spacing:2px;font-size:15px}
+/* logo-wand */
+.logos{overflow:hidden;background:var(--paper);border-radius:10px;padding-block:22px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logos-track{display:flex;align-items:center;gap:56px;width:max-content}
+.logos img{height:44px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
+.logos img:hover{filter:none;opacity:1}
+.story .faces{margin-top:22px}
+/* ===== beweging ===== */
+@media (prefers-reduced-motion:no-preference){
+  [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+  [data-reveal].in{opacity:1;transform:none}
+  .ticker-track{animation:tick 38s linear infinite}
+  .logos-track{animation:tick 46s linear infinite}
+  .ticker:hover .ticker-track,.logos:hover .logos-track{animation-play-state:paused}
+  @keyframes tick{to{transform:translateX(-50%)}}
+  img.ill.float{animation:float 7s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .ex::before{transition:width .5s cubic-bezier(.2,.7,.2,1)}
+  a.ex:hover::before{width:100%;border-radius:6px 6px 0 0}
+  .ic{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in .ic,.svc:hover .ic{animation:pop .6s cubic-bezier(.2,.9,.3,1.4) both calc(var(--d,0ms) + 200ms)}
+  @keyframes pop{from{transform:scale(.6) rotate(-8deg)}to{transform:none}}
+}
+.no-js [data-reveal]{opacity:1;transform:none}
+@media (max-width:960px){
+  .story,.story-rev{grid-template-columns:1fr;gap:32px}
+  .story-rev > div:last-child{order:-1}
+  .ex4,.svcs,.quotes{grid-template-columns:1fr 1fr}
+  .trail{display:none}
+}
+@media (max-width:620px){
+  .ex4,.svcs,.quotes{grid-template-columns:1fr}
+  .ticker-track{font-size:16px}
+  .logos img{height:34px}
+}
+/* service-pagina's: iconen en tweede beeld */
+.card .ic{margin-bottom:12px}
+.how-item .num-dot{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;color:#fff;font-family:var(--f-display);font-weight:900;font-size:15px;margin-bottom:10px}
+.mid-ill{padding-block:64px;background:var(--ink)}
+.mid-ill .story p{max-width:46ch}
+.paperband a.btn-dark{color:var(--paper)}
+.ex4 .ex .file{flex-direction:column;gap:4px}
