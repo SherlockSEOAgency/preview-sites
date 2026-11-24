@@ -310,3 +310,12 @@ img.ill{border-radius:10px}
 .mid-ill .story p{max-width:46ch}
 .paperband a.btn-dark{color:var(--paper)}
 .ex4 .ex .file{flex-direction:column;gap:4px}
+/* v3.1 (Jef 24/11): witte trustband met logo's direct onder de hero; vervangt de groene ticker */
+.trust{background:#fff;color:var(--text-dark);border-block:1px solid #E7E0EC;padding-block:22px 26px}
+.trust-head{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-bottom:14px}
+.trust-head .file{color:var(--mute-dark);margin:0}
+.trust .stars{color:#F8BA15;letter-spacing:2px}
+.trust .logos img{filter:grayscale(1);opacity:.7}
+.trust .logos img:hover{filter:none;opacity:1}
+.svc-ill{background:transparent}
+.trust .logos{background:#fff;padding-block:6px;border-radius:0}
