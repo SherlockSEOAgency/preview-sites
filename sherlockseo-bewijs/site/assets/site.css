@@ -319,3 +319,8 @@ img.ill{border-radius:10px}
 .trust .logos img:hover{filter:none;opacity:1}
 .svc-ill{background:transparent}
 .trust .logos{background:#fff;padding-block:6px;border-radius:0}
+/* v3.2 (Jef 25/11): het slot (formulier + footer) vult het scherm; geen lichte streep bij overscroll of korte pagina's */
+html{background:var(--ink)}
+body{min-height:100svh;display:flex;flex-direction:column}
+body>main{flex:1 0 auto}
+.close{min-height:calc(100svh - var(--foot-h,0px));display:grid;align-content:center;padding-top:calc(var(--bar-h,0px) + 48px)}

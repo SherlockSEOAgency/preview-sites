@@ -6,3 +6,13 @@ function f(x){var v=Math.round(n*x);return dots?v.toLocaleString('nl-BE'):String
 function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1400),e=1-Math.pow(1-p,3);el.textContent=t.replace(raw,f(e));if(p<1)requestAnimationFrame(step);else el.textContent=t}requestAnimationFrame(step)}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');el.querySelectorAll('[data-count]').forEach(count);if(el.hasAttribute('data-count'))count(el);io.unobserve(el)})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('[data-reveal],.steps-wrap,.hero [data-count]').forEach(function(el){if(R){el.classList.add('in')}else io.observe(el)})})();
+// Slot vult het scherm: hoogte van footer en balk als CSS-variabelen (Jef 25/11).
+(function(){
+  var r=document.documentElement;
+  function fit(){
+    var f=document.querySelector('footer.foot'), b=document.querySelector('.bar');
+    if(f) r.style.setProperty('--foot-h', f.offsetHeight+'px');
+    if(b) r.style.setProperty('--bar-h', b.offsetHeight+'px');
+  }
+  fit(); addEventListener('resize', fit); addEventListener('load', fit);
+})();
