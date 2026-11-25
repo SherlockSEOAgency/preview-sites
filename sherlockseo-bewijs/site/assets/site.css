@@ -324,3 +324,6 @@ html{background:var(--ink)}
 body{min-height:100svh;display:flex;flex-direction:column}
 body>main{flex:1 0 auto}
 .close{min-height:calc(100svh - var(--foot-h,0px));display:grid;align-content:center;padding-top:calc(var(--bar-h,0px) + 48px)}
+/* v3.3 (Jef 25/11): hero + logoband vullen samen het eerste scherm; de band ligt tegen de onderkant */
+.hero-fill{min-height:calc(100svh - var(--hero-top,0px) - var(--trust-h,0px));display:grid;align-content:center}
+.trust{padding-block:20px}

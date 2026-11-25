@@ -13,6 +13,9 @@ document.querySelectorAll('[data-reveal],.steps-wrap,.hero [data-count]').forEac
     var f=document.querySelector('footer.foot'), b=document.querySelector('.bar');
     if(f) r.style.setProperty('--foot-h', f.offsetHeight+'px');
     if(b) r.style.setProperty('--bar-h', b.offsetHeight+'px');
+    var h=document.querySelector('.hero-fill'), t=document.querySelector('.trust');
+    if(h) r.style.setProperty('--hero-top', (h.getBoundingClientRect().top+scrollY)+'px');
+    if(t) r.style.setProperty('--trust-h', t.offsetHeight+'px');
   }
   fit(); addEventListener('resize', fit); addEventListener('load', fit);
 })();
